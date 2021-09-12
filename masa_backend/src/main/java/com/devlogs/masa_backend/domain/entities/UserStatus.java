@@ -1,0 +1,17 @@
+package com.devlogs.masa_backend.domain.entities;
+
+public class UserStatus {
+    public enum STATUS {
+        BLOCKED, ACTIVE
+    }
+
+    private STATUS status;
+
+    public UserStatus(STATUS status) {
+        this.status = status;
+    }
+
+    public STATUS getStatus() {
+        return status;
+    }
+}
