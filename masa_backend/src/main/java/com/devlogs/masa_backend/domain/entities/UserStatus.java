@@ -14,4 +14,11 @@ public class UserStatus {
     public STATUS getStatus() {
         return status;
     }
+
+    @Override
+    public String toString() {
+        return "UserStatus{" +
+                "status=" + status +
+                '}';
+    }
 }

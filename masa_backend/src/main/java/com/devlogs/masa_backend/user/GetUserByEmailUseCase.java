@@ -6,7 +6,10 @@ import com.devlogs.masa_backend.domain.errors.NotFoundException;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
 import com.devlogs.masa_backend.user.GetUserByEmailUseCase.Result.*;
 
-public class GetUserByEmailUseCase {
+import javax.inject.Inject;
+import javax.servlet.http.HttpServlet;
+
+public class GetUserByEmailUseCase{
 
     /**
      * Quy tắc viết Result
@@ -50,6 +53,7 @@ public class GetUserByEmailUseCase {
     /**@Important Usecase không có nhiệm vụ khởi tạo dependencies, nên tất cả dependencies đều phải truyền qua constructor*/
     private UserRepository userRepository;
 
+    @Inject
     public GetUserByEmailUseCase(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -58,9 +62,7 @@ public class GetUserByEmailUseCase {
         try {
             UserEntity user = userRepository.getUserByEmail(email);
             return new Success(user);
-        } catch (NotFoundException e) {
-            return new NotFoundError ();
-        } catch (ConnectionException e) {
+        }  catch (ConnectionException e) {
             return new ConnectionError();
         }
     }

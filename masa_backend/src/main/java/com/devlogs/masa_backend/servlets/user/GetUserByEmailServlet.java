@@ -1,9 +1,9 @@
 package com.devlogs.masa_backend.servlets.user;
 
-import com.devlogs.masa_backend.repository.mock.MockUserRepositoryImp;
 import com.devlogs.masa_backend.servlets.common.base.BaseHttpServlet;
 import com.devlogs.masa_backend.user.GetUserByEmailUseCase;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,18 +14,18 @@ import java.io.PrintWriter;
 @WebServlet(name = "GetUserByEmailServlet", urlPatterns = "/getUserByEmail")
 public class GetUserByEmailServlet extends BaseHttpServlet {
 
-    private GetUserByEmailUseCase getUserByEmailUseCase;
+    @Inject
+    public GetUserByEmailUseCase getUserByEmailUseCase;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        getControllerComponent().inject(this);
         String emailParam = req.getParameter("email");
         /*
         * Khởi tạo UseCase và truyền vào repository nào mình cần, ở đây mình giả sử là database chưa code xong
         * nên mình sẽ Fake data để code, nên mình truyền vào MockUserRepository, khi nào mà database code xong,
         * mình sẽ đổi nó thành UserRepositoryImp.
         * */
-        getUserByEmailUseCase = new GetUserByEmailUseCase(new MockUserRepositoryImp());
-        // Mỗi usecase đều trả về cái result của riêng nó, cẩn thận thôi sử dụng nhầm result của usecase khác nha.
         GetUserByEmailUseCase.Result result = getUserByEmailUseCase.executes(emailParam);
         PrintWriter writer = resp.getWriter();
 
@@ -37,7 +37,7 @@ public class GetUserByEmailServlet extends BaseHttpServlet {
         if (result instanceof GetUserByEmailUseCase.Result.Success ) {
             writer.println("Get user success,"
                     + " email: " + ((GetUserByEmailUseCase.Result.Success) result).getUser().getEmail()
-                    + " name: " + ((GetUserByEmailUseCase.Result.Success) result).getUser().getName());
+                    + " name: " + ((GetUserByEmailUseCase.Result.Success) result).getUser().getFullName());
         } else if (result instanceof GetUserByEmailUseCase.Result.ConnectionError ) {
             writer.println("Connection error nhaaaaaaaaaaaaa!!!!!");
         } else if (result instanceof GetUserByEmailUseCase.Result.NotFoundError ) {

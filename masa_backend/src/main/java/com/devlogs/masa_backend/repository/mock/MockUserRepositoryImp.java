@@ -2,9 +2,15 @@ package com.devlogs.masa_backend.repository.mock;
 
 import com.devlogs.masa_backend.data.mock.MockUserDataSource;
 import com.devlogs.masa_backend.domain.entities.UserEntity;
+import com.devlogs.masa_backend.domain.entities.UserRole;
+import com.devlogs.masa_backend.domain.entities.UserStatus;
+import com.devlogs.masa_backend.domain.errors.AlreadyExistException;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.errors.NotFoundException;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
+
+import javax.inject.Inject;
+import java.util.Optional;
 
 /**
  * Repository này thường sẽ được tạo bởi người code frontend, trong những trường hợp:
@@ -13,16 +19,31 @@ import com.devlogs.masa_backend.domain.ports.UserRepository;
  * Hay cần thêm dữ liệu mới nhưng database chưa update kịp.
  * */
 public class MockUserRepositoryImp implements UserRepository {
-    private MockUserDataSource mockData = new MockUserDataSource();
+    private MockUserDataSource mockData;
+
+    @Inject
+    public MockUserRepositoryImp(MockUserDataSource mockData) {
+        this.mockData = mockData;
+    }
 
     @Override
-    public UserEntity getUserByEmail(String email) throws NotFoundException, ConnectionException {
+    public UserEntity getUserByEmail(String email) throws ConnectionException {
         // Vì ở đây là dữ liệu ảo nên dữ liệu chỉ là mảng bình thường thôi
         // Nếu tìm thấy thì trả về
         // Nếu không tìm thấy thì ném exception
         // Đây là cú pháp của Java mới, nên ai chưa hiểu có thể bỏ qua.
-        return mockData.data.stream().filter( u-> u.getEmail().equals(email)).findFirst().orElseThrow(() ->
-             new NotFoundException("Could not found any user has email: " + email)
-        );
+        Optional<UserEntity> result = mockData.data.stream().filter(u-> u.getEmail().equals(email)).findFirst();
+        if (result.isPresent()) {
+            return result.get();
+        }
+        return null;
+    }
+
+    @Override
+    public UserEntity addUser(String email, String fullName, String avatar, UserRole role, UserStatus userStatus) throws ConnectionException, AlreadyExistException {
+        UserEntity newUser = new UserEntity(email,fullName, role, userStatus);
+        mockData.data.add(newUser);
+        return newUser;
+
     }
 }
