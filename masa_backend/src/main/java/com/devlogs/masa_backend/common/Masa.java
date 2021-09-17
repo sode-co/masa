@@ -12,13 +12,29 @@ public class Masa {
         public static String DATABASE_USER = "";
         public static String DATABASE_PASSWORD = "";
 
-    public static String GOOGLE_CLIENT_SECRET = "";
+        public static String GOOGLE_CLIENT_SECRET = "";
         public static String GOOGLE_REDIRECT_URI = "http://localhost:8080/masa/logingoogle";
         public static String GOOGLE_LINK_GET_TOKEN = "https://accounts.google.com/o/oauth2/token";
         public static String GOOGLE_LINK_GET_USER_INFO = "https://www.googleapis.com/oauth2/v1/userinfo?access_token=";
         public static String CLIENT_ID = "";
         public static String GOOGLE_GRANT_TYPE = "authorization_code";
 
+        public static class PAGE {
+            public static class STUDENT {
+                public static String MEETING_PAGE = "student/meeting/index.jsp";
+            }
+            public static class ADMIN {
+                public static String USER_MANAGEMENT_PAGE = "admin/user-management/index.jsp";
+            }
+
+            public static class MENTOR {
+                public static String MEETING_PAGE = "mentor/meeting/index.jsp";
+            }
+
+            public static class GUEST {
+                public static String WELCOME = "guest/welcome/index.jsp";
+            }
+        }
 
     public static void init (ServletContext context) {
         GOOGLE_CLIENT_SECRET = context.getInitParameter("GOOGLE_CLIENT_SECRET");
