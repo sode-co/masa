@@ -1,16 +1,15 @@
 package com.devlogs.masa_backend.login;
 
-import com.devlogs.masa_backend.api.google.GooglePojo;
-import com.devlogs.masa_backend.api.google.LoginWithGoogle;
+import com.devlogs.masa_backend.domain.ports.google_api.GooglePojo;
 import com.devlogs.masa_backend.domain.entities.UserEntity;
 import com.devlogs.masa_backend.domain.entities.UserRole;
 import com.devlogs.masa_backend.domain.entities.UserStatus;
 import com.devlogs.masa_backend.domain.errors.AlreadyExistException;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
+import com.devlogs.masa_backend.domain.ports.google_api.LoginWithGoogleApi;
 
 import javax.inject.Inject;
-import java.io.IOException;
 
 public class LoginWithGoogleUseCase {
     public static class Result {
@@ -31,12 +30,12 @@ public class LoginWithGoogleUseCase {
             }
         }
     }
-    private LoginWithGoogle loginApi;
+    private LoginWithGoogleApi loginApi;
     private UserRepository userRepository;
     private EmailLoginRule emailLoginRule;
 
     @Inject
-    public LoginWithGoogleUseCase(LoginWithGoogle loginApi, UserRepository userRepository, EmailLoginRule emailLoginRule) {
+    public LoginWithGoogleUseCase(LoginWithGoogleApi loginApi, UserRepository userRepository, EmailLoginRule emailLoginRule) {
         this.loginApi = loginApi;
         this.emailLoginRule = emailLoginRule;
         this.userRepository = userRepository;
@@ -46,7 +45,7 @@ public class LoginWithGoogleUseCase {
         GooglePojo pojo = null;
         try {
             pojo = loginApi.login(googleAccessToken);
-        } catch (IOException e) {
+        } catch (ConnectionException e) {
             return new Result.GeneralError(e.getMessage());
         }
         String fullName = pojo.getFamily_name() + " " + pojo.getGiven_name();

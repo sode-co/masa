@@ -1,4 +1,4 @@
-package com.devlogs.masa_backend.api.google;
+package com.devlogs.masa_backend.domain.ports.google_api;
 
 public class GooglePojo {
     private String id;
