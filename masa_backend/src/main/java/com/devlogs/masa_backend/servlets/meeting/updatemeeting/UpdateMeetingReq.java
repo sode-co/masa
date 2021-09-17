@@ -1,13 +1,16 @@
-package com.devlogs.masa_backend.servlets.meeting.createmeeting;
+package com.devlogs.masa_backend.servlets.meeting.updatemeeting;
 
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
 import com.devlogs.masa_backend.servlets.common.validation.EnumValidator;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-public class CreateMeetingReq {
+public class UpdateMeetingReq {
+    @NotBlank(message = "Your meeting id can not be empty")
+    private String id;
     @NotBlank(message = "Your meeting title can not be empty")
     @Length(min = 1, max = 28, message = "Meeting title have to be between 10 to 20 characters")
     private String title;
@@ -17,8 +20,9 @@ public class CreateMeetingReq {
             message = "Your platform have to be `ZOOM` or `GOOGLE_MEET`"
     )
     private String platform;
-    @NotBlank(message = "Your host id can not be empty")
-    private String host;
+    @NotBlank(message = "Your meeting url can not be empty")
+    @URL(message = "Your meeting url is incorrect")
+    private String platformUrl;
     @NotNull(message = "Your meeting startTime can not be empty")
     private long startTime;
     @NotNull(message = "Your meeting endTime can not be empty")
@@ -26,21 +30,21 @@ public class CreateMeetingReq {
     @NotBlank(message = "Your meeting description can not be empty")
     private String description;
 
-    public CreateMeetingReq( ) {
+    public UpdateMeetingReq( ) {
     }
 
-    public CreateMeetingReq(String title, String platform, String platformUrl, String host, long startTime, long endTime, String description) {
+    public UpdateMeetingReq(String title, String platform, String platformUrl, String host, long startTime, long endTime, String description) {
         this.title = title;
         this.platform = platform;
-        this.host = host;
+        this.platformUrl = platformUrl;
         this.startTime = startTime;
         this.endTime = endTime;
         this.description = description;
     }
 
     public boolean isUrlMatchPlatform () {
-        return (platform.equalsIgnoreCase("ZOOM") )
-                || (platform.equalsIgnoreCase("GOOGLE_MEET") );
+        return (platform.equalsIgnoreCase("ZOOM") && platformUrl.contains("zoom.us"))
+                || (platform.equalsIgnoreCase("GOOGLE_MEET") && platformUrl.contains("meet.google.com"));
 
     }
 
@@ -60,12 +64,12 @@ public class CreateMeetingReq {
         this.platform = platform;
     }
 
-    public String getHost() {
-        return host;
+    public String getPlatformUrl() {
+        return platformUrl;
     }
 
-    public void setHost(String host) {
-        this.host = host;
+    public void setPlatformUrl(String platformUrl) {
+        this.platformUrl = platformUrl;
     }
 
     public long getStartTime() {

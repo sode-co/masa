@@ -1,10 +1,11 @@
-package com.devlogs.masa_backend.servlets.meeting.createmeeting;
+package com.devlogs.masa_backend.servlets.meeting.updatemeeting;
 
 import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform.PLATFORM;
 import com.devlogs.masa_backend.meeting.CreateMeetingUseCase;
 import com.devlogs.masa_backend.servlets.common.base.BaseHttpServlet;
+import com.devlogs.masa_backend.servlets.meeting.createmeeting.CreateMeetingReq;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
@@ -21,7 +22,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @WebServlet(name = "create-meeting", urlPatterns = "/api/meeting/create")
-public class CreateMeetingServlet extends BaseHttpServlet {
+public class UpdateMeetingServlet extends BaseHttpServlet {
     @Inject
     public CreateMeetingUseCase createMeetingUseCase;
     @Inject

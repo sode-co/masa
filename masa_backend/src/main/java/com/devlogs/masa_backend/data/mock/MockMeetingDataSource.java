@@ -17,6 +17,7 @@ public class MockMeetingDataSource {
     public final long day = 24 * 60 * 60 *1000;
     public final long oneHour = day/24;
     public final long hafDay = day/2;
+
     @Inject
     public MockMeetingDataSource () {
         ArrayList<UserEntity> users = new MockUserDataSource().data;
@@ -24,12 +25,12 @@ public class MockMeetingDataSource {
             long startTime = System.currentTimeMillis() - new Random().nextLong();
             meetings.add(
                     new MeetingEntity(System.currentTimeMillis() + "", "Devlogs Talkshows",
-                    new MeetingPlatform(MeetingPlatform.PLATFORM.GOOGLE_MEET,
+                    new MeetingPlatform(MeetingPlatform.PLATFORM.GOOGLE_MEET, u.getId(),
                     "https://meet.google.com/spi-addt-gsk"),u,startTime,startTime + hafDay, "Xin chào, vào đây nói chuyện với mình nheeee" ));
             long startTime2 = System.currentTimeMillis() - new Random().nextLong();
             meetings.add(
                     new MeetingEntity(System.currentTimeMillis() + "", "Sode talkshows",
-                            new MeetingPlatform(MeetingPlatform.PLATFORM.ZOOM,
+                            new MeetingPlatform(MeetingPlatform.PLATFORM.ZOOM, u.getId(),
                                     "https://meet.google.com/jsg-rqjg-ybi"),u,startTime, startTime + oneHour, "Xin chào, vào đây nói chuyện với mình nheeee" ));
         });
     }

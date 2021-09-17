@@ -11,6 +11,6 @@ import java.util.List;
 public interface MeetingRepository {
     List<MeetingEntity> getAll () throws ConnectionException;
     List<MeetingEntity> getByHostId (String hostId) throws ConnectionException;
-    MeetingEntity create (String title, MeetingPlatform platform, String hostId, long startTime, long endTime, String description) throws ConnectionException, HostDoesNotExistException;
+    MeetingEntity create (String title, MeetingPlatform.PLATFORM platform, String hostId, long startTime, long endTime, String description) throws ConnectionException;
     MeetingEntity updateMeeting(String title, MeetingPlatform platform, long startTime, long endTime, String description) throws ConnectionException, NotFoundException;
 }

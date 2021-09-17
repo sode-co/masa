@@ -16,11 +16,13 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
 
     private MockMeetingDataSource dataSource;
     private MockUserRepositoryImp userDataSource;
+    private MockMeetingPlatformRepositoryImp mockMeetingPlatformRepositoryImp;
 
     @Inject
-    public MockMeetingRepositoryImp (MockMeetingDataSource dataSource, MockUserRepositoryImp userDataSource) {
+    public MockMeetingRepositoryImp (MockMeetingDataSource dataSource, MockUserRepositoryImp userDataSource, MockMeetingPlatformRepositoryImp mockMeetingPlatformRepositoryImp) {
         this.dataSource = dataSource;
         this.userDataSource = userDataSource;
+        this.mockMeetingPlatformRepositoryImp = mockMeetingPlatformRepositoryImp;
     }
 
     @Override
@@ -40,14 +42,17 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
     }
 
     @Override
-    public MeetingEntity create(String title, MeetingPlatform platform, String hostId, long startTime, long endTime, String description) throws ConnectionException, HostDoesNotExistException {
-        if (userDataSource.getUserById(hostId) ==null) {
-            throw new HostDoesNotExistException("Can not found any host with id: " + hostId);
-        }
+    public MeetingEntity create(String title, MeetingPlatform.PLATFORM platform, String hostId, long startTime, long endTime, String description) throws ConnectionException {
+        try {
         MeetingEntity meetingEntity =
-                new MeetingEntity(System.currentTimeMillis() + "", title,
-                        platform,userDataSource.getUserById(hostId),startTime,endTime, description);
-        return meetingEntity;
+                null;
+            meetingEntity = new MeetingEntity(System.currentTimeMillis() + "", title,
+                   new MeetingPlatform(platform,hostId, mockMeetingPlatformRepositoryImp.getMeetingUrl(hostId, platform)),userDataSource.getUserById(hostId),startTime,endTime, description);
+            return meetingEntity;
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

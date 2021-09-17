@@ -19,7 +19,7 @@ public class MockUserDataSource {
                 , new UserRole(UserRole.TYPE.STUDENT)
                 , new UserStatus(UserStatus.STATUS.ACTIVE)));
         data.add(new UserEntity ("1234","ngoc2@gmail.com", "Lam Tam Nhu3"
-                , new UserRole(UserRole.TYPE.STUDENT)
+                , new UserRole(UserRole.TYPE.MENTOR)
                 , new UserStatus(UserStatus.STATUS.ACTIVE)));
         data.add(new UserEntity ("12345","ngoc1@gmail.com", "Lam Tam Nhu2"
                 , new UserRole(UserRole.TYPE.MENTOR)
