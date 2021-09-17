@@ -1,10 +1,10 @@
 package com.devlogs.masa_backend.repository.mock;
 
+import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.data.mock.MockMeetingDataSource;
 import com.devlogs.masa_backend.domain.entities.MeetingEntity;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
-import com.devlogs.masa_backend.domain.errors.HostDoesNotExistException;
 import com.devlogs.masa_backend.domain.errors.NotFoundException;
 import com.devlogs.masa_backend.domain.ports.MeetingRepository;
 
@@ -27,13 +27,13 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
 
     @Override
     public List<MeetingEntity> getAll() throws ConnectionException {
-        return dataSource.meetings;
+        return MockMeetingDataSource.meetings;
     }
 
     @Override
     public List<MeetingEntity> getByHostId(String hostId) throws ConnectionException {
         ArrayList<MeetingEntity> results = new ArrayList<>();
-        dataSource.meetings.forEach(u -> {
+        MockMeetingDataSource.meetings.forEach(u -> {
             if (u.getHost().equals(hostId)) {
                 results.add(u);
             }
@@ -48,6 +48,8 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
                 null;
             meetingEntity = new MeetingEntity(System.currentTimeMillis() + "", title,
                    new MeetingPlatform(platform,hostId, mockMeetingPlatformRepositoryImp.getMeetingUrl(hostId, platform)),userDataSource.getUserById(hostId),startTime,endTime, description);
+            MockMeetingDataSource.meetings.add(meetingEntity);
+            MasaLog.normalLog("Added item: " + MockMeetingDataSource.meetings.get(MockMeetingDataSource.meetings.size()-1).toString() + ", sized: " + MockMeetingDataSource.meetings.size());
             return meetingEntity;
         } catch (NotFoundException e) {
             e.printStackTrace();
@@ -55,8 +57,26 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
         return null;
     }
 
+
     @Override
-    public MeetingEntity updateMeeting(String title, MeetingPlatform platform, long startTime, long endTime, String description) throws ConnectionException, NotFoundException {
-        return null;
-    }
+    public MeetingEntity updateMeeting(String meetingId, String title, MeetingPlatform.PLATFORM platform, long startTime, long endTime, String description) throws ConnectionException, NotFoundException {
+            MeetingEntity updatedMeeting = null;
+            for (MeetingEntity meeting : MockMeetingDataSource.meetings) {
+                if (meeting.getId().equals(meetingId)) {
+                    updatedMeeting = meeting;
+                    meeting.setDescription(description);
+                    if (meeting.getPlatform().getPlatform() != platform) {
+                        String url = mockMeetingPlatformRepositoryImp.getMeetingUrl(meeting.getHost().getId(), platform);
+                        meeting.setPlatform(new MeetingPlatform(platform, meeting.getHost().getId(), url));
+                    }
+                    meeting.setTitle(title);
+                    meeting.setEndTime(endTime);
+                    meeting.setStartTime(startTime);
+                }
+            }
+            if (updatedMeeting == null) {
+                throw new NotFoundException("Can not find any meeting with id: " + meetingId);
+            }
+            return updatedMeeting;
+        }
 }

@@ -32,7 +32,7 @@ public class MockUserRepositoryImp implements UserRepository {
         // Nếu tìm thấy thì trả về
         // Nếu không tìm thấy thì ném exception
         // Đây là cú pháp của Java mới, nên ai chưa hiểu có thể bỏ qua.
-        Optional<UserEntity> result = mockData.data.stream().filter(u-> u.getEmail().equals(email)).findFirst();
+        Optional<UserEntity> result = MockUserDataSource.data.stream().filter(u-> u.getEmail().equals(email)).findFirst();
         if (result.isPresent()) {
             return result.get();
         }
@@ -45,7 +45,7 @@ public class MockUserRepositoryImp implements UserRepository {
         // Nếu tìm thấy thì trả về
         // Nếu không tìm thấy thì ném exception
         // Đây là cú pháp của Java mới, nên ai chưa hiểu có thể bỏ qua.
-        Optional<UserEntity> result = mockData.data.stream().filter(u-> u.getId().equals(id)).findFirst();
+        Optional<UserEntity> result = MockUserDataSource.data.stream().filter(u-> u.getId().equals(id)).findFirst();
         if (result.isPresent()) {
             return result.get();
         }
@@ -55,7 +55,7 @@ public class MockUserRepositoryImp implements UserRepository {
     @Override
     public UserEntity addUser(String email, String fullName, String avatar, UserRole role, UserStatus userStatus) throws ConnectionException, AlreadyExistException {
         UserEntity newUser = new UserEntity(System.currentTimeMillis() + "",email,fullName, role, userStatus);
-        mockData.data.add(newUser);
+        MockUserDataSource.data.add(newUser);
         return newUser;
 
     }
