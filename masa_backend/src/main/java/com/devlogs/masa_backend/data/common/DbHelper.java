@@ -1,9 +1,7 @@
 package com.devlogs.masa_backend.data.common;
 
-import io.github.cdimascio.dotenv.Dotenv;
+import com.devlogs.masa_backend.common.Masa;
 import org.apache.commons.dbcp.BasicDataSource;
-
-import javax.inject.Inject;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -14,21 +12,16 @@ public class DbHelper {
     private String DB_PASSWORD;
 
     public DbHelper (String envFilePath) {
-        Dotenv env = Dotenv.configure().directory(envFilePath+"/env/masa.env").ignoreIfMalformed().ignoreIfMissing().load();
-        DB_USER = env.get("DATABASE_USER");
-        assert (DB_USER != null);
-        DB_PASSWORD = env.get("DATABASE_PASSWORD");
-        assert (DB_PASSWORD != null);
-        String DB_NAME = env.get("DATABASE_NAME");
-        assert (DB_NAME != null);
-        String DB_HOST = env.get("DATABASE_HOST");
-        assert (DB_HOST != null);
-        DB_URL = "jdbc:mysql://" + DB_HOST + "/" + DB_NAME;
+        DB_USER = Masa.DATABASE_USER;
+        DB_PASSWORD = Masa.DATABASE_PASSWORD;
+        String DB_NAME = Masa.DATABASE_NAME;
+        String DB_HOST = Masa.DATABASE_HOST;
+        DB_URL = "jdbc:sqlserver://" + DB_HOST + ";DatabaseName=" + DB_NAME;
     }
 
     public Connection connect () throws ClassNotFoundException, SQLException {
         if (dataSource == null) {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             dataSource = new BasicDataSource();
             dataSource.setUrl(DB_URL);
             dataSource.setUsername(DB_USER);
