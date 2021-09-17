@@ -1,12 +1,9 @@
 package com.devlogs.masa_backend.servlets.listeners;
 
-
 import com.devlogs.masa_backend.common.Masa;
 import com.devlogs.masa_backend.common.di.application.ApplicationModule;
 import com.devlogs.masa_backend.common.di.application.DaggerApplicationComponent;
-
 import javax.servlet.ServletContextEvent;
-//import com.devlogs.masa_backend.common.di.application.DaggerApplicationComponent;
 
 import javax.servlet.ServletContextListener;
 
