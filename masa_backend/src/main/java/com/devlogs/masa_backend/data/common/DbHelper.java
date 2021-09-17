@@ -3,6 +3,7 @@ package com.devlogs.masa_backend.data.common;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.apache.commons.dbcp.BasicDataSource;
 
+import javax.inject.Inject;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -13,7 +14,7 @@ public class DbHelper {
     private String DB_PASSWORD;
 
     public DbHelper (String envFilePath) {
-        Dotenv env = Dotenv.configure().directory(envFilePath+"/env/.env").ignoreIfMalformed().ignoreIfMissing().load();
+        Dotenv env = Dotenv.configure().directory(envFilePath+"/env/masa.env").ignoreIfMalformed().ignoreIfMissing().load();
         DB_USER = env.get("DATABASE_USER");
         assert (DB_USER != null);
         DB_PASSWORD = env.get("DATABASE_PASSWORD");

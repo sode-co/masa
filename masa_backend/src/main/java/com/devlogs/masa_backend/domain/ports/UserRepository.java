@@ -1,6 +1,9 @@
 package com.devlogs.masa_backend.domain.ports;
 
 import com.devlogs.masa_backend.domain.entities.UserEntity;
+import com.devlogs.masa_backend.domain.entities.UserRole;
+import com.devlogs.masa_backend.domain.entities.UserStatus;
+import com.devlogs.masa_backend.domain.errors.AlreadyExistException;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.errors.NotFoundException;
 
@@ -13,5 +16,7 @@ public interface UserRepository {
      * 4. Chỉ khai báo những exception mà mình dự đoán được sẽ xảy ra, nhưng không tránh được.
      * Mọi người có thể vào https://stackoverflow.com/questions/27578/when-to-choose-checked-and-unchecked-exceptions để biết thêm
      * */
-    UserEntity getUserByEmail (String email) throws NotFoundException, ConnectionException;
+    UserEntity getUserByEmail (String email) throws ConnectionException;
+    UserEntity addUser (String email, String fullName, String avatar, UserRole role, UserStatus userStatus) throws ConnectionException, AlreadyExistException;
+
 }

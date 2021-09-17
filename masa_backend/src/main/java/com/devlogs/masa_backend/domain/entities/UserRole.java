@@ -2,7 +2,7 @@ package com.devlogs.masa_backend.domain.entities;
 
 public class UserRole {
     public enum TYPE {
-        ADMIN, USER, MEMBER, LECTURER, MENTOR
+        ADMIN, STUDENT, GUEST, MENTOR
     }
 
     private TYPE type;
@@ -13,5 +13,12 @@ public class UserRole {
 
     public TYPE getType() {
         return type;
+    }
+
+    @Override
+    public String toString() {
+        return "UserRole{" +
+                "type=" + type +
+                '}';
     }
 }
