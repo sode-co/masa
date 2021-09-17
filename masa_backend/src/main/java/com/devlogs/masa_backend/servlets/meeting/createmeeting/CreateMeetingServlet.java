@@ -1,4 +1,4 @@
-package com.devlogs.masa_backend.servlets.meeting;
+package com.devlogs.masa_backend.servlets.meeting.createmeeting;
 
 import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
@@ -20,7 +20,7 @@ import java.io.PrintWriter;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@WebServlet(name = "createmeeting", urlPatterns = "/api/createmeeting")
+@WebServlet(name = "create-meeting", urlPatterns = "/api/meeting/create")
 public class CreateMeetingServlet extends BaseHttpServlet {
     @Inject
     public CreateMeetingUseCase createMeetingUseCase;

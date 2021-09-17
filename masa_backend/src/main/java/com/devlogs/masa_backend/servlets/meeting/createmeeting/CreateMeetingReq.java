@@ -1,4 +1,4 @@
-package com.devlogs.masa_backend.servlets.meeting;
+package com.devlogs.masa_backend.servlets.meeting.createmeeting;
 
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
 import com.devlogs.masa_backend.servlets.common.validation.EnumValidator;
