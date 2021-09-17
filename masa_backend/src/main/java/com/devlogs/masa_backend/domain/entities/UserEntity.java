@@ -1,16 +1,22 @@
 package com.devlogs.masa_backend.domain.entities;
 
 public class UserEntity {
+    private String id;
     private String email;
     private String fullName;
     private UserRole role;
     private UserStatus status;
 
-    public UserEntity(String email, String name, UserRole role, UserStatus status) {
+    public UserEntity(String id, String email, String name, UserRole role, UserStatus status) {
         this.email = email;
+        this.id = id;
         this.fullName = name;
         this.role = role;
         this.status = status;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getEmail() {

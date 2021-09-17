@@ -84,6 +84,11 @@
             <version>2.0.1.Final</version>
         </dependency>
         <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.13.Final</version>
+        </dependency>
+        <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>

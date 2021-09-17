@@ -11,7 +11,7 @@ public class DbHelper {
     private String DB_USER;
     private String DB_PASSWORD;
 
-    public DbHelper (String envFilePath) {
+    public DbHelper () {
         DB_USER = Masa.DATABASE_USER;
         DB_PASSWORD = Masa.DATABASE_PASSWORD;
         String DB_NAME = Masa.DATABASE_NAME;

@@ -14,6 +14,11 @@ public class UserRepositoryImp implements UserRepository {
     }
 
     @Override
+    public UserEntity getUserById(String id) throws ConnectionException {
+        return null;
+    }
+
+    @Override
     public UserEntity addUser(String email, String fullName, String avatar, UserRole role, UserStatus userStatus) throws ConnectionException, AlreadyExistException {
         return null;
     }
