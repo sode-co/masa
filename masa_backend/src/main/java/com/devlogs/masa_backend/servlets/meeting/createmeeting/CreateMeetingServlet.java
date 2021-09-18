@@ -29,7 +29,8 @@ public class CreateMeetingServlet extends BaseHttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("application/json; charset=utf-8");
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
         getControllerComponent().inject(this);
         out = resp.getWriter();
         String requestData = req.getReader().lines().collect(Collectors.joining());
@@ -39,15 +40,6 @@ public class CreateMeetingServlet extends BaseHttpServlet {
                 reqBody = getMeetingReqBodyFromReqBody(requestData);
             } catch (JsonSyntaxException ex) {
                 resp.setStatus(400);
-                out.print(ex.getMessage());
-                out.flush();
-                return;
-            }
-        } else {
-            try {
-                reqBody = getMeetingReqBodyFromReqParam(req);
-            } catch (NumberFormatException ex) {
-                resp.setStatus(400 );
                 out.print(ex.getMessage());
                 out.flush();
                 return;
@@ -65,6 +57,7 @@ public class CreateMeetingServlet extends BaseHttpServlet {
             invalidMessage += violation.getMessage() + ", \n";
         }
         if (invalidMessage.isEmpty()) {
+            MasaLog.normalLog("Start create metting");
             createMeeting(reqBody,resp);
         } else {
             resp.setStatus(400);
@@ -77,19 +70,6 @@ public class CreateMeetingServlet extends BaseHttpServlet {
 
     private CreateMeetingReq getMeetingReqBodyFromReqBody(String requestData) throws JsonSyntaxException {
            return  new Gson().fromJson(requestData, CreateMeetingReq.class);
-    }
-
-    private CreateMeetingReq getMeetingReqBodyFromReqParam (HttpServletRequest req) {
-        Long startTime = Long.parseLong(req.getParameter("startTime"));
-        Long endTime = Long.parseLong(req.getParameter("endTime"));
-        return new CreateMeetingReq(
-                req.getParameter("title"),
-                req.getParameter("platform"),
-                req.getParameter("platformUrl"),
-                req.getParameter("host"),
-                startTime,
-                endTime,
-                req.getParameter("description"));
     }
 
     private void createMeeting(CreateMeetingReq reqBody, HttpServletResponse resp) throws IOException {
@@ -108,9 +88,8 @@ public class CreateMeetingServlet extends BaseHttpServlet {
 
         if (result instanceof CreateMeetingUseCase.Result.Success) {
             resp.setStatus(200);
-            String resultJson = new Gson().toJson(((CreateMeetingUseCase.Result.Success) result).createdMeeting);
-            resp.setContentType("application/json");
-            resp.setCharacterEncoding("UTF-8");
+            String resultJson = new Gson().toJson(result);
+            MasaLog.normalLog("Created meeting: " + ((CreateMeetingUseCase.Result.Success) result).createdMeeting.getId());
             out.print(resultJson);
             out.flush();
         } else if (result instanceof CreateMeetingUseCase.Result.ConnectionError) {
@@ -119,8 +98,13 @@ public class CreateMeetingServlet extends BaseHttpServlet {
             out.flush();
             return;
         } else if (result instanceof CreateMeetingUseCase.Result.HostDoesNotExist) {
-            resp.setStatus(500);
+            resp.setStatus(400);
             out.print("Your host id doesn't exist");
+            out.flush();
+            return;
+        } else if (result instanceof CreateMeetingUseCase.Result.NotMentorError) {
+            resp.setStatus(400);
+            out.print("Only mentor can create meeting");
             out.flush();
             return;
         }

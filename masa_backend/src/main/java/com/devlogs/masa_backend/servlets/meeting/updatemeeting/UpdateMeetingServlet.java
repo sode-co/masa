@@ -42,15 +42,6 @@ public class UpdateMeetingServlet extends BaseHttpServlet {
                 out.flush();
                 return;
             }
-        } else {
-            try {
-                reqBody = getMeetingReqBodyFromReqParam(req);
-            } catch (NumberFormatException ex) {
-                resp.setStatus(400 );
-                out.print(ex.getMessage());
-                out.flush();
-                return;
-            }
         }
         Set<ConstraintViolation<UpdateMeetingReq>> violations = validator.validate(reqBody);
         String invalidMessage = "";
@@ -72,19 +63,6 @@ public class UpdateMeetingServlet extends BaseHttpServlet {
            return  new Gson().fromJson(requestData, UpdateMeetingReq.class);
     }
 
-    private UpdateMeetingReq getMeetingReqBodyFromReqParam (HttpServletRequest req) {
-        Long startTime = Long.parseLong(req.getParameter("startTime"));
-        Long endTime = Long.parseLong(req.getParameter("endTime"));
-        return new UpdateMeetingReq(
-                req.getParameter("title"),
-                req.getParameter("platform"),
-                req.getParameter("platformUrl"),
-                req.getParameter("host"),
-                startTime,
-                endTime,
-                req.getParameter("description"));
-    }
-
     private void updateMeeting(UpdateMeetingReq reqBody, HttpServletResponse resp) throws IOException {
         PLATFORM meetingPlatform;
         if (reqBody.getPlatform().equalsIgnoreCase("ZOOM")) {
@@ -101,7 +79,7 @@ public class UpdateMeetingServlet extends BaseHttpServlet {
 
         if (result instanceof UpdateMeetingUseCaseSync.Result.Success) {
             resp.setStatus(200);
-            String resultJson = new Gson().toJson(((UpdateMeetingUseCaseSync.Result.Success) result).createdMeeting);
+            String resultJson = new Gson().toJson(result);
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
             out.print(resultJson);

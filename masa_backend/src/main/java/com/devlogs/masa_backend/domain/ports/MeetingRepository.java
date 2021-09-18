@@ -12,4 +12,6 @@ public interface MeetingRepository {
     List<MeetingEntity> getByHostId (String hostId) throws ConnectionException;
     MeetingEntity create (String title, MeetingPlatform.PLATFORM platform, String hostId, long startTime, long endTime, String description) throws ConnectionException;
     MeetingEntity updateMeeting(String meetingId, String title, MeetingPlatform.PLATFORM platform, long startTime, long endTime, String description) throws ConnectionException, NotFoundException;
+
+    MeetingEntity getById(String meetingId) throws ConnectionException;
 }

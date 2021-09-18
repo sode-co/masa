@@ -2,6 +2,7 @@ package com.devlogs.masa_backend.repository.mock;
 
 import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.data.mock.MockMeetingDataSource;
+import com.devlogs.masa_backend.data.mock.MockMeetingPlatformDataSource;
 import com.devlogs.masa_backend.domain.entities.MeetingEntity;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
@@ -16,13 +17,13 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
 
     private MockMeetingDataSource dataSource;
     private MockUserRepositoryImp userDataSource;
-    private MockMeetingPlatformRepositoryImp mockMeetingPlatformRepositoryImp;
+    private MockMeetingPlatformDataSource mockMeetingPlatformDataSource;
 
     @Inject
-    public MockMeetingRepositoryImp (MockMeetingDataSource dataSource, MockUserRepositoryImp userDataSource, MockMeetingPlatformRepositoryImp mockMeetingPlatformRepositoryImp) {
+    public MockMeetingRepositoryImp (MockMeetingDataSource dataSource, MockUserRepositoryImp userDataSource, MockMeetingPlatformDataSource mockMeetingPlatformDataSource) {
         this.dataSource = dataSource;
         this.userDataSource = userDataSource;
-        this.mockMeetingPlatformRepositoryImp = mockMeetingPlatformRepositoryImp;
+        this.mockMeetingPlatformDataSource = mockMeetingPlatformDataSource;
     }
 
     @Override
@@ -34,7 +35,7 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
     public List<MeetingEntity> getByHostId(String hostId) throws ConnectionException {
         ArrayList<MeetingEntity> results = new ArrayList<>();
         MockMeetingDataSource.meetings.forEach(u -> {
-            if (u.getHost().equals(hostId)) {
+            if (u.getHostId().equals(hostId)) {
                 results.add(u);
             }
         });
@@ -47,14 +48,13 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
         MeetingEntity meetingEntity =
                 null;
             meetingEntity = new MeetingEntity(System.currentTimeMillis() + "", title,
-                   new MeetingPlatform(platform,hostId, mockMeetingPlatformRepositoryImp.getMeetingUrl(hostId, platform)),userDataSource.getUserById(hostId),startTime,endTime, description);
+                   new MeetingPlatform(platform,hostId, mockMeetingPlatformDataSource.getMeetingUrl(hostId, platform)),hostId,startTime,endTime, description);
             MockMeetingDataSource.meetings.add(meetingEntity);
             MasaLog.normalLog("Added item: " + MockMeetingDataSource.meetings.get(MockMeetingDataSource.meetings.size()-1).toString() + ", sized: " + MockMeetingDataSource.meetings.size());
             return meetingEntity;
         } catch (NotFoundException e) {
-            e.printStackTrace();
+            throw new ConnectionException(e.getMessage());
         }
-        return null;
     }
 
 
@@ -66,8 +66,8 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
                     updatedMeeting = meeting;
                     meeting.setDescription(description);
                     if (meeting.getPlatform().getPlatform() != platform) {
-                        String url = mockMeetingPlatformRepositoryImp.getMeetingUrl(meeting.getHost().getId(), platform);
-                        meeting.setPlatform(new MeetingPlatform(platform, meeting.getHost().getId(), url));
+                        String url = mockMeetingPlatformDataSource.getMeetingUrl(meeting.getHostId(), platform);
+                        meeting.setPlatform(new MeetingPlatform(platform, meeting.getHostId(), url));
                     }
                     meeting.setTitle(title);
                     meeting.setEndTime(endTime);
@@ -79,4 +79,14 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
             }
             return updatedMeeting;
         }
+
+    @Override
+    public MeetingEntity getById(String meetingId) throws ConnectionException {
+        for (MeetingEntity meeting : MockMeetingDataSource.meetings) {
+            if (meeting.getId().equals(meetingId)) {
+                return meeting;
+            }
+        }
+        return null;
+    }
 }

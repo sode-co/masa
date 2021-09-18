@@ -25,12 +25,12 @@ public class MockMeetingDataSource {
             meetings.add(
                     new MeetingEntity(System.currentTimeMillis() + "", "Devlogs Talkshows",
                             new MeetingPlatform(MeetingPlatform.PLATFORM.GOOGLE_MEET, u.getId(),
-                                    "https://meet.google.com/spi-addt-gsk"),u,startTime,startTime + hafDay, "Xin chào, vào đây nói chuyện với mình nheeee" ));
+                                    "https://meet.google.com/spi-addt-gsk"),u.getId(),startTime,startTime + hafDay, "Xin chào, vào đây nói chuyện với mình nheeee" ));
             long startTime2 = System.currentTimeMillis() - new Random().nextLong();
             meetings.add(
                     new MeetingEntity(System.currentTimeMillis() + "", "Sode talkshows",
                             new MeetingPlatform(MeetingPlatform.PLATFORM.ZOOM, u.getId(),
-                                    "https://meet.google.com/jsg-rqjg-ybi"),u,startTime, startTime + oneHour, "Xin chào, vào đây nói chuyện với mình nheeee" ));
+                                    "https://meet.google.com/jsg-rqjg-ybi"),u.getId(),startTime, startTime + oneHour, "Xin chào, vào đây nói chuyện với mình nheeee" ));
         });
     }
 
