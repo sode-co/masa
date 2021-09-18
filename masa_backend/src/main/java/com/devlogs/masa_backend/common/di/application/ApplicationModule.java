@@ -6,6 +6,9 @@ import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
 import javax.servlet.ServletContext;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import java.net.URL;
 
 @Module
@@ -20,6 +23,14 @@ public class ApplicationModule {
     @Provides
     @Singleton
     public DbHelper provideDbHelper () {
-        return new DbHelper(WEB_INF_PATH.toString());
+        return new DbHelper();
     }
+
+    @Provides
+    @Singleton
+    public Validator provideJavaBeanValidator () {
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        return factory.getValidator();
+    }
+
 }

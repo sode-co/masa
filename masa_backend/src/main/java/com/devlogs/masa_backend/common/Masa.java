@@ -36,6 +36,12 @@ public class Masa {
             }
         }
 
+        public static class API {
+            public static class MEETING {
+                public static String CREATE = "api/meeting/create";
+            }
+        }
+
     public static void init (ServletContext context) {
         GOOGLE_CLIENT_SECRET = context.getInitParameter("GOOGLE_CLIENT_SECRET");
         CLIENT_ID = context.getInitParameter("GOOGLE_CLIENT_ID");

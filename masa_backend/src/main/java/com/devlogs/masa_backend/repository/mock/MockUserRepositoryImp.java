@@ -40,8 +40,21 @@ public class MockUserRepositoryImp implements UserRepository {
     }
 
     @Override
+    public UserEntity getUserById(String id) throws ConnectionException {
+        // Vì ở đây là dữ liệu ảo nên dữ liệu chỉ là mảng bình thường thôi
+        // Nếu tìm thấy thì trả về
+        // Nếu không tìm thấy thì ném exception
+        // Đây là cú pháp của Java mới, nên ai chưa hiểu có thể bỏ qua.
+        Optional<UserEntity> result = mockData.data.stream().filter(u-> u.getId().equals(id)).findFirst();
+        if (result.isPresent()) {
+            return result.get();
+        }
+        return null;
+    }
+
+    @Override
     public UserEntity addUser(String email, String fullName, String avatar, UserRole role, UserStatus userStatus) throws ConnectionException, AlreadyExistException {
-        UserEntity newUser = new UserEntity(email,fullName, role, userStatus);
+        UserEntity newUser = new UserEntity(System.currentTimeMillis() + "",email,fullName, role, userStatus);
         mockData.data.add(newUser);
         return newUser;
 
