@@ -37,7 +37,7 @@ public class MeetingRepositoryImp implements MeetingRepository {
         } catch (SQLException throwables) {
             throw new RuntimeException(throwables.getMessage());
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         } finally {
 
         }
