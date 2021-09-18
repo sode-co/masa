@@ -27,14 +27,15 @@ public class GetMeetingByHostIdServlet extends BaseHttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String url = req.getRequestURL().toString();
         String hostId = url.substring(url.lastIndexOf("/") +1);
-        if (hostId.contains("/")) {hostId.replaceAll("/", "");}
 
+        if (hostId.contains("/")) {hostId = hostId.replaceAll("/", "");}
+        if (hostId.trim().isEmpty()) {
+            getRequestComponent().getResponseHelper().responseMessage(400, "Invalid host id");
+        }
         GetMeetingByHostUseCase.Result result = getMeetingByHostUseCase.executes(hostId);
         if (result instanceof GetMeetingByHostUseCase.Result.ConnectionError) {
-            resp.setStatus(500);
             getRequestComponent().getResponseHelper().responseMessage(500, "Connection to db error");
         } else if ( result instanceof GetMeetingByHostUseCase.Result.Success) {
-            resp.setStatus(200);
             String json = new Gson().toJson(result);
             getRequestComponent().getResponseHelper().responseJsonOk(json);
         }

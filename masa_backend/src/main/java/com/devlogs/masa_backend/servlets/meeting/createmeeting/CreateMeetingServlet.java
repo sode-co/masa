@@ -73,6 +73,7 @@ public class CreateMeetingServlet extends BaseHttpServlet {
             getRequestComponent().getResponseHelper().responseMessage(400, "Invalid meeting platform");
             return;
         }
+        MasaLog.normalLog("Meeting title: " + reqBody.getTitle());
         CreateMeetingUseCase.Result result = createMeetingUseCase.executes(reqBody.getTitle(), meetingPlatform, reqBody.getHost(), reqBody.getStartTime(), reqBody.getEndTime(), reqBody.getDescription());
 
         if (result instanceof CreateMeetingUseCase.Result.Success) {

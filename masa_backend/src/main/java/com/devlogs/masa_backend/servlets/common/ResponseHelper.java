@@ -7,34 +7,33 @@ import java.io.PrintWriter;
 public class ResponseHelper {
 
     private HttpServletResponse currentResponse;
-    private PrintWriter printWriter;
 
     public ResponseHelper(HttpServletResponse currentResponse) throws IOException {
         this.currentResponse = currentResponse;
-        this.printWriter = currentResponse.getWriter();
     }
 
     public HttpServletResponse getCurrentResponse() {
         return currentResponse;
     }
 
-    public void responseJson (int status, String json) {
-        currentResponse.setContentType("application/json");
-        currentResponse.setCharacterEncoding("UTF-8");
+    public void responseJson (int status, String json) throws IOException {
+        currentResponse.setContentType("application/json;charset=utf-8");
+        currentResponse.setCharacterEncoding("utf-8");
         currentResponse.setStatus(status);
+        PrintWriter printWriter = currentResponse.getWriter();
         printWriter.print(json);
         printWriter.flush();
     }
 
-    public void responseJsonOk (String json) {
+    public void responseJsonOk (String json) throws IOException {
         responseJson(200, json);
     }
 
-    public void responseMessage (int status, String message) {
-        currentResponse.setContentType("application/text");
-        currentResponse.setCharacterEncoding("UTF-8");
+    public void responseMessage (int status, String message) throws IOException {
+        currentResponse.setContentType("text/plain;charset=utf-8");
         currentResponse.setStatus(status);
-        printWriter.print(message);
+        PrintWriter printWriter = currentResponse.getWriter();
+        printWriter.write(message);
         printWriter.flush();
     }
 }
