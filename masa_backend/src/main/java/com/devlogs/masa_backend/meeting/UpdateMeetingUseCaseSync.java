@@ -49,6 +49,7 @@ public class UpdateMeetingUseCaseSync {
             }
             MeetingEntity updatedMeeting = meetingRepository.updateMeeting(meetingId,title, platform, startTime, endTime, description);
             return new Result.Success(updatedMeeting, userRepository.getUserById(updatedMeeting.getHostId()));
+
         } catch (ConnectionException e) {
             return new Result.ConnectionError();
         } catch (NotFoundException e) {

@@ -59,6 +59,7 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
 
 
     @Override
+<<<<<<< HEAD
     public MeetingEntity updateMeeting(String meetingId, String title, MeetingPlatform.PLATFORM platform, long startTime, long endTime, String description) throws ConnectionException, NotFoundException {
             MeetingEntity updatedMeeting = null;
             for (MeetingEntity meeting : MockMeetingDataSource.meetings) {
@@ -87,6 +88,9 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
                 return meeting;
             }
         }
+=======
+    public MeetingEntity updateMeeting(String meetingId, String title, MeetingPlatform platform, long startTime, long endTime, String description) throws ConnectionException, NotFoundException {
+>>>>>>> e56e8a064d74920db10ea4efc48d1816e3ee052d
         return null;
     }
 }
