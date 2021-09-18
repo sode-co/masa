@@ -1,7 +1,6 @@
 package com.devlogs.masa_backend.servlets.meeting.createmeeting;
 
 import com.devlogs.masa_backend.common.helper.MasaLog;
-import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform.PLATFORM;
 import com.devlogs.masa_backend.meeting.CreateMeetingUseCase;
 import com.devlogs.masa_backend.servlets.common.base.BaseHttpServlet;
