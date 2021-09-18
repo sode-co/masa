@@ -5,6 +5,7 @@ import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.errors.NotFoundException;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface MeetingRepository {
@@ -14,4 +15,5 @@ public interface MeetingRepository {
     MeetingEntity updateMeeting(String meetingId, String title, MeetingPlatform.PLATFORM platform, long startTime, long endTime, String description) throws ConnectionException, NotFoundException;
 
     MeetingEntity getById(String meetingId) throws ConnectionException;
+
 }
