@@ -42,7 +42,7 @@ public class UpdateMeetingReq {
         this.id = id;
     }
 
-    public UpdateMeetingReq(String title, String platform, String platformUrl, String host, long startTime, long endTime, String description) {
+    public UpdateMeetingReq(String title, String platform, long startTime, long endTime, String description) {
         this.title = title;
         this.platform = platform;
         this.startTime = startTime;

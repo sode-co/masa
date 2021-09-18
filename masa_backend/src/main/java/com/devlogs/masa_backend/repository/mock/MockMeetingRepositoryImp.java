@@ -21,7 +21,7 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
     private MockMeetingPlatformDataSource mockMeetingPlatformDataSource;
 
     @Inject
-    public MockMeetingRepositoryImp(MockMeetingDataSource dataSource, MockUserDataSource userDataSource, MockMeetingPlatformDataSource mockMeetingPlatformDataSource) {
+    public MockMeetingRepositoryImp (MockMeetingDataSource dataSource, MockUserDataSource userDataSource, MockMeetingPlatformDataSource mockMeetingPlatformDataSource) {
         this.dataSource = dataSource;
         this.userDataSource = userDataSource;
         this.mockMeetingPlatformDataSource = mockMeetingPlatformDataSource;

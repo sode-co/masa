@@ -17,16 +17,14 @@ public class MeetingRepositoryImp implements MeetingRepository {
 
     private MeetingDAO dataSource;
     private UserRepositoryImp userDataSource;
-    private MeetingPlatformRepositoryImp mockMeetingPlatformRepositoryImp;
 
-    public MeetingRepositoryImp(MeetingDAO dataSource, UserRepositoryImp userDataSource, MeetingPlatformRepositoryImp mockMeetingPlatformRepositoryImp) {
+    public MeetingRepositoryImp(MeetingDAO dataSource, UserRepositoryImp userDataSource) {
         this.dataSource = dataSource;
         this.userDataSource = userDataSource;
-        this.mockMeetingPlatformRepositoryImp = mockMeetingPlatformRepositoryImp;
     }
 
     @Override
-    public List<MeetingEntity> getAll() throws ConnectionException, SQLException, ClassNotFoundException {
+    public List<MeetingEntity> getAll() throws ConnectionException {
         try{
             dataSource.getAllMeetings();
             List<MeetingDTO> listDTO = dataSource.getListMeeting();
@@ -36,7 +34,11 @@ public class MeetingRepositoryImp implements MeetingRepository {
                 //eetingPlatform meetingPlatform = new MeetingPlatform(dto.getPlatform_id(), dto.getHost_id(), )
             }
 
-        }finally {
+        } catch (SQLException throwables) {
+            throw new RuntimeException(throwables.getMessage());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
 
         }
         return null;
@@ -53,7 +55,13 @@ public class MeetingRepositoryImp implements MeetingRepository {
     }
 
     @Override
-    public MeetingEntity updateMeeting(String meetingId, String title, MeetingPlatform platform, long startTime, long endTime, String description) throws ConnectionException, NotFoundException {
+    public MeetingEntity updateMeeting(String meetingId, String title, MeetingPlatform.PLATFORM platform, long startTime, long endTime, String description) throws ConnectionException, NotFoundException {
         return null;
     }
+
+    @Override
+    public MeetingEntity getById(String meetingId) throws ConnectionException {
+        return null;
+    }
+
 }
