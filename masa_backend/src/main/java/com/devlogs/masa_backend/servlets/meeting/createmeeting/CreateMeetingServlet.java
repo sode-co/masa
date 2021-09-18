@@ -19,40 +19,33 @@ import java.io.PrintWriter;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@WebServlet(name = "create-meeting", urlPatterns = "/api/meeting/create")
+@WebServlet(name = "create-meeting", urlPatterns = {"/api/meeting/create", "/api/meeting-management/create"})
 public class CreateMeetingServlet extends BaseHttpServlet {
     @Inject
     public CreateMeetingUseCase createMeetingUseCase;
     @Inject
     public Validator validator;
-    private PrintWriter out;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        getControllerComponent().inject(this);
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("application/json");
-        resp.setCharacterEncoding("UTF-8");
-        getControllerComponent().inject(this);
-        out = resp.getWriter();
         String requestData = req.getReader().lines().collect(Collectors.joining());
         CreateMeetingReq reqBody = null;
         if (requestData != null && !requestData.isEmpty()) {
             try{
                 reqBody = getMeetingReqBodyFromReqBody(requestData);
             } catch (JsonSyntaxException ex) {
-                resp.setStatus(400);
-                out.print(ex.getMessage());
-                out.flush();
+                getRequestComponent().getResponseHelper().responseMessage(400,ex.getMessage());
                 return;
             }
         }
         Set<ConstraintViolation<CreateMeetingReq>> violations = validator.validate(reqBody);
         String invalidMessage = "";
-        if (!reqBody.isUrlMatchPlatform()) {
-            resp.setStatus(400);
-            out.print("Your url is not belong to this platform");
-            out.flush();
-            return;
-        }
         for (ConstraintViolation<CreateMeetingReq> violation : violations) {
             invalidMessage += violation.getMessage() + ", \n";
         }
@@ -60,10 +53,8 @@ public class CreateMeetingServlet extends BaseHttpServlet {
             MasaLog.normalLog("Start create metting");
             createMeeting(reqBody,resp);
         } else {
-            resp.setStatus(400);
             MasaLog.normalLog("Violation req: " + invalidMessage);
-            out.print(invalidMessage);
-            out.flush();
+            getRequestComponent().getResponseHelper().responseMessage(400,invalidMessage);
             return;
         }
     }
@@ -79,33 +70,23 @@ public class CreateMeetingServlet extends BaseHttpServlet {
         } else if (reqBody.getPlatform().equalsIgnoreCase("GOOGLE_MEET")) {
             meetingPlatform = PLATFORM.GOOGLE_MEET;
         } else {
-            resp.setStatus(400);
-            out.print("Invalid meeting platform");
-            out.flush();
+            getRequestComponent().getResponseHelper().responseMessage(400, "Invalid meeting platform");
             return;
         }
         CreateMeetingUseCase.Result result = createMeetingUseCase.executes(reqBody.getTitle(), meetingPlatform, reqBody.getHost(), reqBody.getStartTime(), reqBody.getEndTime(), reqBody.getDescription());
 
         if (result instanceof CreateMeetingUseCase.Result.Success) {
-            resp.setStatus(200);
             String resultJson = new Gson().toJson(result);
             MasaLog.normalLog("Created meeting: " + ((CreateMeetingUseCase.Result.Success) result).createdMeeting.getId());
-            out.print(resultJson);
-            out.flush();
+            getRequestComponent().getResponseHelper().responseJsonOk(resultJson);
         } else if (result instanceof CreateMeetingUseCase.Result.ConnectionError) {
-            resp.setStatus(500);
-            out.print("Internal server error, can not connect to db");
-            out.flush();
+            getRequestComponent().getResponseHelper().responseMessage(500, "Internal server error, can not connect to db");
             return;
         } else if (result instanceof CreateMeetingUseCase.Result.HostDoesNotExist) {
-            resp.setStatus(400);
-            out.print("Your host id doesn't exist");
-            out.flush();
+            getRequestComponent().getResponseHelper().responseMessage(400, "Your host id doesn't exist");
             return;
         } else if (result instanceof CreateMeetingUseCase.Result.NotMentorError) {
-            resp.setStatus(400);
-            out.print("Only mentor can create meeting");
-            out.flush();
+            getRequestComponent().getResponseHelper().responseMessage(400, "Only mentor can create meeting");
             return;
         }
     }

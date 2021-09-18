@@ -14,32 +14,31 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@WebServlet(name = "update-meeting", urlPatterns = "/api/meeting/update")
+@WebServlet(name = "update-meeting", urlPatterns = {"/api/meeting/update", "/api/meeting-management/update"})
 public class UpdateMeetingServlet extends BaseHttpServlet {
     @Inject
     public UpdateMeetingUseCaseSync updateMeetingUseCase;
     @Inject
     public Validator validator;
-    private PrintWriter out;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        getControllerComponent().inject(this);
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("application/json; charset=utf-8");
-        getControllerComponent().inject(this);
-        out = resp.getWriter();
         String requestData = req.getReader().lines().collect(Collectors.joining());
         UpdateMeetingReq reqBody = null;
         if (requestData != null && !requestData.isEmpty()) {
             try{
                 reqBody = getMeetingReqBodyFromReqBody(requestData);
             } catch (JsonSyntaxException ex) {
-                resp.setStatus(400);
-                out.print(ex.getMessage());
-                out.flush();
+                getRequestComponent().getResponseHelper().responseMessage(400, ex.getMessage());
                 return;
             }
         }
@@ -51,10 +50,8 @@ public class UpdateMeetingServlet extends BaseHttpServlet {
         if (invalidMessage.isEmpty()) {
             updateMeeting(reqBody,resp);
         } else {
-            resp.setStatus(400);
             MasaLog.normalLog("Violation req: " + invalidMessage);
-            out.print(invalidMessage);
-            out.flush();
+            getRequestComponent().getResponseHelper().responseMessage(400, invalidMessage);
             return;
         }
     }
@@ -70,9 +67,7 @@ public class UpdateMeetingServlet extends BaseHttpServlet {
         } else if (reqBody.getPlatform().equalsIgnoreCase("GOOGLE_MEET")) {
             meetingPlatform = PLATFORM.GOOGLE_MEET;
         } else {
-            resp.setStatus(400);
-            out.print("Invalid meeting platform");
-            out.flush();
+            getRequestComponent().getResponseHelper().responseMessage(400, "Invalid meeting platform");
             return;
         }
         UpdateMeetingUseCaseSync.Result result = updateMeetingUseCase.executes(reqBody.getId(),reqBody.getTitle(), meetingPlatform, reqBody.getStartTime(), reqBody.getEndTime(), reqBody.getDescription());
@@ -82,18 +77,13 @@ public class UpdateMeetingServlet extends BaseHttpServlet {
             String resultJson = new Gson().toJson(result);
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
-            out.print(resultJson);
-            out.flush();
+            getRequestComponent().getResponseHelper().responseJsonOk(resultJson);
             return;
         } else if (result instanceof UpdateMeetingUseCaseSync.Result.ConnectionError) {
-            resp.setStatus(500);
-            out.print("Internal server error, can not connect to db");
-            out.flush();
+            getRequestComponent().getResponseHelper().responseMessage(500, "Internal server error, can not connect to db");
             return;
         } else if (result instanceof UpdateMeetingUseCaseSync.Result.MeetingDoesNotExist) {
-            resp.setStatus(500);
-            out.print("Meeting does not exist");
-            out.flush();
+            getRequestComponent().getResponseHelper().responseMessage(400, "Meeting does not exist");
             return;
         }
     }
