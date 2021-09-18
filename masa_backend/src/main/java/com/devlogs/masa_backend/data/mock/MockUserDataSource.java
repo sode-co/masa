@@ -17,11 +17,14 @@ public class MockUserDataSource {
         data.add( new UserEntity ("123","ngoc@gmail.com", "Lam Tam Nhu"
                 , new UserRole(UserRole.TYPE.STUDENT)
                 , new UserStatus(UserStatus.STATUS.ACTIVE)));
-        data.add(new UserEntity ("1234","ngoc2@gmail.com", "Lam Tam Nhu3"
+        data.add(new UserEntity ("12314","ngoc2@gmail.com", "Lam Tam Nhu3"
                 , new UserRole(UserRole.TYPE.MENTOR)
                 , new UserStatus(UserStatus.STATUS.ACTIVE)));
-        data.add(new UserEntity ("12345","ngoc1@gmail.com", "Lam Tam Nhu2"
+        data.add(new UserEntity ("123345","ngoc1@gmail.com", "Lam Tam Nhu2"
                 , new UserRole(UserRole.TYPE.MENTOR)
+                , new UserStatus(UserStatus.STATUS.ACTIVE)));
+        data.add(new UserEntity ("122345","tiendang1@gmail.com", "Lam Tam Nhu2"
+                , new UserRole(UserRole.TYPE.STUDENT)
                 , new UserStatus(UserStatus.STATUS.ACTIVE)));
     }
     @Inject

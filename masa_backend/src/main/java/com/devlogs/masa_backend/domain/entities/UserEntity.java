@@ -1,7 +1,5 @@
 package com.devlogs.masa_backend.domain.entities;
 
-import java.util.List;
-
 public class UserEntity {
     private String id;
     private String email;
