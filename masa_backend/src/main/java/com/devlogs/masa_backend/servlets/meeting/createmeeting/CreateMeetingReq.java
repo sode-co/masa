@@ -4,6 +4,8 @@ import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
 import com.devlogs.masa_backend.servlets.common.validation.EnumValidator;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
+
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -20,8 +22,10 @@ public class CreateMeetingReq {
     @NotBlank(message = "Your host id can not be empty")
     private String host;
     @NotNull(message = "Your meeting startTime can not be empty")
+    @Min(value = 1, message = "Your meeting startTime is invalid")
     private long startTime;
     @NotNull(message = "Your meeting endTime can not be empty")
+    @Min(value = 1, message = "Your meeting endTime is invalid")
     private long endTime;
     @NotBlank(message = "Your meeting description can not be empty")
     private String description;

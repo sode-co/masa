@@ -11,10 +11,9 @@ import java.util.ArrayList;
  * Fake dữ liệu ở đây, có thể push lên git share với người khác sử dụng cùng, hiệu quả hơn dễ thay đổi hơn
  * */
 public class MockUserDataSource {
-    public ArrayList<UserEntity> data = new ArrayList();
+    public static ArrayList<UserEntity> data = new ArrayList();
 
-    @Inject
-    public MockUserDataSource () {
+    static {
         data.add( new UserEntity ("123","ngoc@gmail.com", "Lam Tam Nhu"
                 , new UserRole(UserRole.TYPE.STUDENT)
                 , new UserStatus(UserStatus.STATUS.ACTIVE)));
@@ -24,5 +23,9 @@ public class MockUserDataSource {
         data.add(new UserEntity ("12345","ngoc1@gmail.com", "Lam Tam Nhu2"
                 , new UserRole(UserRole.TYPE.MENTOR)
                 , new UserStatus(UserStatus.STATUS.ACTIVE)));
+    }
+    @Inject
+    public MockUserDataSource () {
+
     }
 }

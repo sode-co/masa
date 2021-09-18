@@ -35,9 +35,9 @@ public class UpdateMeetingUseCaseSync {
         this.meetingRepository = meetingRepository;
     }
 
-    public Result executes (String meetingId, String title, MeetingPlatform platform, long startTime, long endTime, String description) {
+    public Result executes (String meetingId, String title, MeetingPlatform.PLATFORM platform, long startTime, long endTime, String description) {
         try {
-            MeetingEntity createdMeeting = meetingRepository.updateMeeting(title, platform, startTime, endTime, description);
+            MeetingEntity createdMeeting = meetingRepository.updateMeeting(meetingId,title, platform, startTime, endTime, description);
             return new Result.Success(createdMeeting);
         } catch (ConnectionException e) {
             return new Result.ConnectionError();

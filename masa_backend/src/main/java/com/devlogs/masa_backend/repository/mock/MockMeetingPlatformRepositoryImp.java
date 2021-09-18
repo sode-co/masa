@@ -20,7 +20,7 @@ public class MockMeetingPlatformRepositoryImp implements MeetingPlatformReposito
     @Override
     public String getMeetingUrl(String mentorId, MeetingPlatform.PLATFORM platform) throws NotFoundException, ConnectionException {
         AtomicReference<String> url = new AtomicReference<>("");
-        dataSource.datas.forEach(l -> {
+        MockMeetingUrlDataSource.datas.forEach(l -> {
             if (l.getMentorId().equals(mentorId) && l.getPlatform() == platform) {
                 url.set(l.getUrl());
             }

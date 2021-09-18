@@ -1,14 +1,11 @@
 package com.devlogs.masa_backend.servlets.meeting.updatemeeting;
 
 import com.devlogs.masa_backend.common.helper.MasaLog;
-import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform.PLATFORM;
-import com.devlogs.masa_backend.meeting.CreateMeetingUseCase;
+import com.devlogs.masa_backend.meeting.UpdateMeetingUseCaseSync;
 import com.devlogs.masa_backend.servlets.common.base.BaseHttpServlet;
-import com.devlogs.masa_backend.servlets.meeting.createmeeting.CreateMeetingReq;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,10 +18,10 @@ import java.io.PrintWriter;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@WebServlet(name = "create-meeting", urlPatterns = "/api/meeting/create")
+@WebServlet(name = "update-meeting", urlPatterns = "/api/meeting/update")
 public class UpdateMeetingServlet extends BaseHttpServlet {
     @Inject
-    public CreateMeetingUseCase createMeetingUseCase;
+    public UpdateMeetingUseCaseSync updateMeetingUseCase;
     @Inject
     public Validator validator;
     private PrintWriter out;
@@ -35,7 +32,7 @@ public class UpdateMeetingServlet extends BaseHttpServlet {
         getControllerComponent().inject(this);
         out = resp.getWriter();
         String requestData = req.getReader().lines().collect(Collectors.joining());
-        CreateMeetingReq reqBody = null;
+        UpdateMeetingReq reqBody = null;
         if (requestData != null && !requestData.isEmpty()) {
             try{
                 reqBody = getMeetingReqBodyFromReqBody(requestData);
@@ -55,19 +52,13 @@ public class UpdateMeetingServlet extends BaseHttpServlet {
                 return;
             }
         }
-        Set<ConstraintViolation<CreateMeetingReq>> violations = validator.validate(reqBody);
+        Set<ConstraintViolation<UpdateMeetingReq>> violations = validator.validate(reqBody);
         String invalidMessage = "";
-        if (!reqBody.isUrlMatchPlatform()) {
-            resp.setStatus(400);
-            out.print("Your url is not belong to this platform");
-            out.flush();
-            return;
-        }
-        for (ConstraintViolation<CreateMeetingReq> violation : violations) {
+        for (ConstraintViolation<UpdateMeetingReq> violation : violations) {
             invalidMessage += violation.getMessage() + ", \n";
         }
         if (invalidMessage.isEmpty()) {
-            createMeeting(reqBody,resp);
+            updateMeeting(reqBody,resp);
         } else {
             resp.setStatus(400);
             MasaLog.normalLog("Violation req: " + invalidMessage);
@@ -77,14 +68,14 @@ public class UpdateMeetingServlet extends BaseHttpServlet {
         }
     }
 
-    private CreateMeetingReq getMeetingReqBodyFromReqBody(String requestData) throws JsonSyntaxException {
-           return  new Gson().fromJson(requestData, CreateMeetingReq.class);
+    private UpdateMeetingReq getMeetingReqBodyFromReqBody(String requestData) throws JsonSyntaxException {
+           return  new Gson().fromJson(requestData, UpdateMeetingReq.class);
     }
 
-    private CreateMeetingReq getMeetingReqBodyFromReqParam (HttpServletRequest req) {
+    private UpdateMeetingReq getMeetingReqBodyFromReqParam (HttpServletRequest req) {
         Long startTime = Long.parseLong(req.getParameter("startTime"));
         Long endTime = Long.parseLong(req.getParameter("endTime"));
-        return new CreateMeetingReq(
+        return new UpdateMeetingReq(
                 req.getParameter("title"),
                 req.getParameter("platform"),
                 req.getParameter("platformUrl"),
@@ -94,7 +85,7 @@ public class UpdateMeetingServlet extends BaseHttpServlet {
                 req.getParameter("description"));
     }
 
-    private void createMeeting(CreateMeetingReq reqBody, HttpServletResponse resp) throws IOException {
+    private void updateMeeting(UpdateMeetingReq reqBody, HttpServletResponse resp) throws IOException {
         PLATFORM meetingPlatform;
         if (reqBody.getPlatform().equalsIgnoreCase("ZOOM")) {
             meetingPlatform = PLATFORM.ZOOM;
@@ -106,23 +97,24 @@ public class UpdateMeetingServlet extends BaseHttpServlet {
             out.flush();
             return;
         }
-        CreateMeetingUseCase.Result result = createMeetingUseCase.executes(reqBody.getTitle(), meetingPlatform, reqBody.getHost(), reqBody.getStartTime(), reqBody.getEndTime(), reqBody.getDescription());
+        UpdateMeetingUseCaseSync.Result result = updateMeetingUseCase.executes(reqBody.getId(),reqBody.getTitle(), meetingPlatform, reqBody.getStartTime(), reqBody.getEndTime(), reqBody.getDescription());
 
-        if (result instanceof CreateMeetingUseCase.Result.Success) {
+        if (result instanceof UpdateMeetingUseCaseSync.Result.Success) {
             resp.setStatus(200);
-            String resultJson = new Gson().toJson(((CreateMeetingUseCase.Result.Success) result).createdMeeting);
+            String resultJson = new Gson().toJson(((UpdateMeetingUseCaseSync.Result.Success) result).createdMeeting);
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
             out.print(resultJson);
             out.flush();
-        } else if (result instanceof CreateMeetingUseCase.Result.ConnectionError) {
+            return;
+        } else if (result instanceof UpdateMeetingUseCaseSync.Result.ConnectionError) {
             resp.setStatus(500);
             out.print("Internal server error, can not connect to db");
             out.flush();
             return;
-        } else if (result instanceof CreateMeetingUseCase.Result.HostDoesNotExist) {
+        } else if (result instanceof UpdateMeetingUseCaseSync.Result.MeetingDoesNotExist) {
             resp.setStatus(500);
-            out.print("Your host id doesn't exist");
+            out.print("Meeting does not exist");
             out.flush();
             return;
         }

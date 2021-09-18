@@ -66,4 +66,17 @@ public class MeetingEntity {
     public String getDescription() {
         return description;
     }
+
+    @Override
+    public String toString() {
+        return "MeetingEntity{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", platform=" + platform +
+                ", host=" + host +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

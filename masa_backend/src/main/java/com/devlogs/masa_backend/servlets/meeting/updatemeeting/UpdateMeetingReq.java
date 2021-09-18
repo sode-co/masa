@@ -3,8 +3,10 @@ package com.devlogs.masa_backend.servlets.meeting.updatemeeting;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
 import com.devlogs.masa_backend.servlets.common.validation.EnumValidator;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -20,12 +22,11 @@ public class UpdateMeetingReq {
             message = "Your platform have to be `ZOOM` or `GOOGLE_MEET`"
     )
     private String platform;
-    @NotBlank(message = "Your meeting url can not be empty")
-    @URL(message = "Your meeting url is incorrect")
-    private String platformUrl;
     @NotNull(message = "Your meeting startTime can not be empty")
+    @Min(value = 1, message = "Your meeting startTime is invalid")
     private long startTime;
     @NotNull(message = "Your meeting endTime can not be empty")
+    @Min(value = 1, message = "Your meeting endTime is invalid")
     private long endTime;
     @NotBlank(message = "Your meeting description can not be empty")
     private String description;
@@ -33,19 +34,20 @@ public class UpdateMeetingReq {
     public UpdateMeetingReq( ) {
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public UpdateMeetingReq(String title, String platform, String platformUrl, String host, long startTime, long endTime, String description) {
         this.title = title;
         this.platform = platform;
-        this.platformUrl = platformUrl;
         this.startTime = startTime;
         this.endTime = endTime;
         this.description = description;
-    }
-
-    public boolean isUrlMatchPlatform () {
-        return (platform.equalsIgnoreCase("ZOOM") && platformUrl.contains("zoom.us"))
-                || (platform.equalsIgnoreCase("GOOGLE_MEET") && platformUrl.contains("meet.google.com"));
-
     }
 
     public String getTitle() {
@@ -62,14 +64,6 @@ public class UpdateMeetingReq {
 
     public void setPlatform(String platform) {
         this.platform = platform;
-    }
-
-    public String getPlatformUrl() {
-        return platformUrl;
-    }
-
-    public void setPlatformUrl(String platformUrl) {
-        this.platformUrl = platformUrl;
     }
 
     public long getStartTime() {
