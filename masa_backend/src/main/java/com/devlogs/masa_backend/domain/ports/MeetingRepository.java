@@ -6,11 +6,12 @@ import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.errors.HostDoesNotExistException;
 import com.devlogs.masa_backend.domain.errors.NotFoundException;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface MeetingRepository {
-    List<MeetingEntity> getAll () throws ConnectionException;
+    List<MeetingEntity> getAll () throws ConnectionException, SQLException, ClassNotFoundException;
     List<MeetingEntity> getByHostId (String hostId) throws ConnectionException;
     MeetingEntity create (String title, MeetingPlatform.PLATFORM platform, String hostId, long startTime, long endTime, String description) throws ConnectionException;
-    MeetingEntity updateMeeting(String title, MeetingPlatform platform, long startTime, long endTime, String description) throws ConnectionException, NotFoundException;
+    MeetingEntity updateMeeting(String meetingId, String title, MeetingPlatform platform, long startTime, long endTime, String description) throws ConnectionException, NotFoundException;
 }

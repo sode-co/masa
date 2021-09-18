@@ -56,7 +56,7 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
     }
 
     @Override
-    public MeetingEntity updateMeeting(String title, MeetingPlatform platform, long startTime, long endTime, String description) throws ConnectionException, NotFoundException {
+    public MeetingEntity updateMeeting(String meetingId, String title, MeetingPlatform platform, long startTime, long endTime, String description) throws ConnectionException, NotFoundException {
         return null;
     }
 }
