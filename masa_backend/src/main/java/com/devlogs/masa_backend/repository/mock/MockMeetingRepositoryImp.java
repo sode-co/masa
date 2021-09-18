@@ -3,6 +3,7 @@ package com.devlogs.masa_backend.repository.mock;
 import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.data.mock.MockMeetingDataSource;
 import com.devlogs.masa_backend.data.mock.MockMeetingPlatformDataSource;
+import com.devlogs.masa_backend.data.mock.MockUserDataSource;
 import com.devlogs.masa_backend.domain.entities.MeetingEntity;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
@@ -16,11 +17,11 @@ import java.util.List;
 public class MockMeetingRepositoryImp implements MeetingRepository {
 
     private MockMeetingDataSource dataSource;
-    private MockUserRepositoryImp userDataSource;
+    private MockUserDataSource userDataSource;
     private MockMeetingPlatformDataSource mockMeetingPlatformDataSource;
 
     @Inject
-    public MockMeetingRepositoryImp (MockMeetingDataSource dataSource, MockUserRepositoryImp userDataSource, MockMeetingPlatformDataSource mockMeetingPlatformDataSource) {
+    public MockMeetingRepositoryImp (MockMeetingDataSource dataSource, MockUserDataSource userDataSource, MockMeetingPlatformDataSource mockMeetingPlatformDataSource) {
         this.dataSource = dataSource;
         this.userDataSource = userDataSource;
         this.mockMeetingPlatformDataSource = mockMeetingPlatformDataSource;
