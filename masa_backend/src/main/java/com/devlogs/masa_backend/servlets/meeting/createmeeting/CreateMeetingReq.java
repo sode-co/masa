@@ -33,19 +33,13 @@ public class CreateMeetingReq {
     public CreateMeetingReq( ) {
     }
 
-    public CreateMeetingReq(String title, String platform, String platformUrl, String host, long startTime, long endTime, String description) {
+    public CreateMeetingReq(String title, String platform, String host, long startTime, long endTime, String description) {
         this.title = title;
         this.platform = platform;
         this.host = host;
         this.startTime = startTime;
         this.endTime = endTime;
         this.description = description;
-    }
-
-    public boolean isUrlMatchPlatform () {
-        return (platform.equalsIgnoreCase("ZOOM") )
-                || (platform.equalsIgnoreCase("GOOGLE_MEET") );
-
     }
 
     public String getTitle() {
