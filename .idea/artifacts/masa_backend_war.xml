@@ -1,5 +1,9 @@
 <component name="ArtifactManager">
+<<<<<<< HEAD
+  <artifact type="war" build-on-make="true" name="masa_backend:war">
+=======
   <artifact type="war" name="masa_backend:war">
+>>>>>>> main
     <output-path>$PROJECT_DIR$/masa_backend/target</output-path>
     <properties id="maven-jee-properties">
       <options>
@@ -9,8 +13,12 @@
         <unpackNestedArchives>false</unpackNestedArchives>
       </options>
     </properties>
+<<<<<<< HEAD
+    <root id="archive" name="masa_backend.war" />
+=======
     <root id="archive" name="masa_backend.war">
       <element id="artifact" artifact-name="masa_backend:war exploded" />
     </root>
+>>>>>>> main
   </artifact>
 </component>

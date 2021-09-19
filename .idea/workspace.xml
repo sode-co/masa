@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="masa" />
+    </artifacts-to-build>
+  </component>
+=======
+>>>>>>> main
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="62931ee6-e2b3-434e-a114-a945dabda614" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/masa_backend/src/main/java/com/devlogs/masa_backend/data/remote_database/StudentDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/masa_backend/src/main/java/com/devlogs/masa_backend/data/remote_database/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/masa_backend/src/main/java/com/devlogs/masa_backend/data/remote_database/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/masa_backend/src/main/java/com/devlogs/masa_backend/data/remote_database/UserDao.java" afterDir="false" />
+    </list>
+=======
     <list default="true" id="20d203cf-f47c-4006-bea2-85ac604f6018" name="Changes" comment="" />
+>>>>>>> main
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,16 +44,63 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+<<<<<<< HEAD
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="JPA Palette" value="true" />
+        <entry key="JPA Structure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="JPA Palette" value="true" />
+        <entry key="JPA Structure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
+  <component name="ProjectId" id="1yGxIWXonl55vCamtjDYkSmnA3h" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+=======
   <component name="ProjectId" id="1yGofvtqpeB13kJDZFcT3oxXYjN" />
+>>>>>>> main
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+<<<<<<< HEAD
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+=======
+>>>>>>> main
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Facets" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.52" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.52" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="C:\Program Files\Java\jdk-11.0.1" nameIsGenerated="true">
+      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+=======
     <property name="last_opened_file_path" value="C:/Program Files/Java" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -47,6 +110,7 @@
   <component name="RunManager">
     <configuration name="Tomcat 9.0.52" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.52" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/masa/" />
+>>>>>>> main
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="masa">
@@ -56,7 +120,11 @@
         </artifact>
       </deployment>
       <server-settings>
+<<<<<<< HEAD
+        <option name="BASE_DIRECTORY_NAME" value="f2e44c65-2ab1-470d-837d-4da034bf66a7" />
+=======
         <option name="BASE_DIRECTORY_NAME" value="bfb4afeb-0311-4fad-8f8e-f01bc53d5d77" />
+>>>>>>> main
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -64,7 +132,11 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
+<<<<<<< HEAD
+        <option name="DEBUG_PORT" value="51099" />
+=======
         <option name="DEBUG_PORT" value="51500" />
+>>>>>>> main
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -128,7 +200,11 @@
       </ConfigurationWrapper>
       <method v="2">
         <option name="Make" enabled="true" />
+<<<<<<< HEAD
+        <option name="BuildArtifacts" enabled="false">
+=======
         <option name="BuildArtifacts" enabled="true">
+>>>>>>> main
           <artifact name="masa" />
         </option>
       </method>
@@ -137,6 +213,21 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
+      <changelist id="62931ee6-e2b3-434e-a114-a945dabda614" name="Changes" comment="" />
+      <created>1631891650928</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1631891650928</updated>
+      <workItem from="1631891650932" duration="6926000" />
+      <workItem from="1631926566635" duration="18038000" />
+      <workItem from="1631950493600" duration="269000" />
+      <workItem from="1631950770949" duration="29000" />
+      <workItem from="1631950834677" duration="67000" />
+      <workItem from="1631950928664" duration="423000" />
+      <workItem from="1631951864281" duration="7000" />
+      <workItem from="1631951905353" duration="284000" />
+=======
       <changelist id="20d203cf-f47c-4006-bea2-85ac604f6018" name="Changes" comment="" />
       <created>1631887395450</created>
       <option name="number" value="Default" />
@@ -148,12 +239,15 @@
       <workItem from="1631890227909" duration="4622000" />
       <workItem from="1631926874268" duration="91000" />
       <workItem from="1631926969769" duration="11500000" />
+>>>>>>> main
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+<<<<<<< HEAD
+=======
   <component name="UnknownFeatures">
     <option featureType="dependencySupport" implementationName="java:org.jetbrains:annotations" />
     <option featureType="dependencySupport" implementationName="java:javax.inject:javax.inject" />
@@ -195,16 +289,39 @@
     <option featureType="dependencySupport" implementationName="java:commons-logging:commons-logging" />
     <option featureType="dependencySupport" implementationName="java:org.checkerframework:checker-compat-qual" />
   </component>
+>>>>>>> main
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
+<<<<<<< HEAD
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+=======
             <State />
+>>>>>>> main
           </value>
         </entry>
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+<<<<<<< HEAD
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+=======
+>>>>>>> main
 </project>
