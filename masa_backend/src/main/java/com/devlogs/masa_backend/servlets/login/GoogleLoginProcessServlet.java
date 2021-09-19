@@ -1,5 +1,6 @@
 package com.devlogs.masa_backend.servlets.login;
 
+import com.devlogs.masa_backend.domain.entities.UserEntity;
 import com.devlogs.masa_backend.domain.entities.UserRole;
 import com.devlogs.masa_backend.login.LoginWithGoogleUseCase;
 import com.devlogs.masa_backend.servlets.common.base.BaseHttpServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static com.devlogs.masa_backend.common.Masa.SESSION_KEY.*;
 
 @WebServlet(name = "logingoogle", urlPatterns = "/logingoogle")
 public class GoogleLoginProcessServlet extends BaseHttpServlet {
@@ -23,13 +25,15 @@ public class GoogleLoginProcessServlet extends BaseHttpServlet {
             throws ServletException, IOException {
             getControllerComponent().inject(this);
             LoginWithGoogleUseCase.Result result = loginWithGoogleUseCase.executes(request.getParameter("code"));
-            processLoginResult(response, result);
+            processLoginResult(response,request, result);
     }
 
-    private void processLoginResult (HttpServletResponse response, LoginWithGoogleUseCase.Result result) throws IOException {
+    private void processLoginResult (HttpServletResponse response, HttpServletRequest request, LoginWithGoogleUseCase.Result result) throws IOException {
         PrintWriter out = response.getWriter();
         if (result instanceof LoginWithGoogleUseCase.Result.Success) {
-            navigateByUserRole(((LoginWithGoogleUseCase.Result.Success) result).user.getRole(), response);
+            UserEntity currentUser = ((LoginWithGoogleUseCase.Result.Success) result).user;
+            request.getSession(true).setAttribute(USER, currentUser);
+            navigateByUserRole(currentUser.getRole(), response);
         } else if (result instanceof LoginWithGoogleUseCase.Result.NotAllowed) {
             out.print("Not allowed");
         } else if (result instanceof LoginWithGoogleUseCase.Result.GeneralError) {

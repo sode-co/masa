@@ -19,6 +19,10 @@ public class Masa {
         public static String CLIENT_ID = "";
         public static String GOOGLE_GRANT_TYPE = "authorization_code";
 
+        public static class SESSION_KEY {
+            public static final String USER = "CURRENT_USER";
+        }
+
         public static class PAGE {
             public static class STUDENT {
                 public static String MEETING_PAGE = "student/meeting/index.jsp";
