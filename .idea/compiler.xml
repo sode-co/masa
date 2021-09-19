@@ -23,6 +23,10 @@
           <entry name="$MAVEN_REPOSITORY$/com/squareup/javapoet/1.8.0/javapoet-1.8.0.jar" />
           <entry name="$MAVEN_REPOSITORY$/javax/annotation/jsr250-api/1.0/jsr250-api-1.0.jar" />
         </processorPath>
+<<<<<<< HEAD
+=======
+        <module name="masa_backend" />
+>>>>>>> main
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -31,7 +35,11 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+<<<<<<< HEAD
       <module name="masa_backend" options="-endorseddirs C:\Users\Admin\Documents\GitHub\masa\masa_backend\target/endorsed" />
+=======
+      <module name="masa_backend" options="-endorseddirs E:\masa\masa_backend\target/endorsed" />
+>>>>>>> main
     </option>
   </component>
 </project>

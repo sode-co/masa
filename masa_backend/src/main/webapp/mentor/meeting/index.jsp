@@ -8,10 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Meeting</title>
+    <title>Mentor Profile</title>
 </head>
 <body>
-    <h1>Hello Mentor</h1>
-    <%@ include file="../../shared/meeting/_layout_meeting.jsp"%>
+    <h1>Mentor ne</h1>
+    <%@ include file="../../shared/meeting/_layout_create_meeting.jsp"%>
 </body>
 </html>

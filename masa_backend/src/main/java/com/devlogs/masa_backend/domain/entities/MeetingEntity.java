@@ -4,16 +4,16 @@ public class MeetingEntity {
     private String id;
     private String title;
     private MeetingPlatform platform;
-    private UserEntity host;
+    private String hostId;
     private long startTime;
     private long endTime;
     private String description;
 
-    public MeetingEntity(String id, String title, MeetingPlatform platform, UserEntity host, long startTime, long endTime, String description) {
+    public MeetingEntity(String id, String title, MeetingPlatform platform, String hostId, long startTime, long endTime, String description) {
         this.id = id;
         this.title = title;
         this.platform = platform;
-        this.host = host;
+        this.hostId = hostId;
         this.startTime = startTime;
         this.endTime = endTime;
         this.description = description;
@@ -51,8 +51,8 @@ public class MeetingEntity {
         return platform;
     }
 
-    public UserEntity getHost() {
-        return host;
+    public String getHostId() {
+        return hostId;
     }
 
     public long getStartTime() {
@@ -65,5 +65,18 @@ public class MeetingEntity {
 
     public String getDescription() {
         return description;
+    }
+
+    @Override
+    public String toString() {
+        return "MeetingEntity{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", platform=" + platform +
+                ", hostId=" + hostId +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

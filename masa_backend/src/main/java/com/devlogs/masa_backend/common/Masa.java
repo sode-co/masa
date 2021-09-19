@@ -39,6 +39,7 @@ public class Masa {
         public static class API {
             public static class MEETING {
                 public static String CREATE = "api/meeting/create";
+                public static String UPDATE = "api/meeting/update";
             }
         }
 
