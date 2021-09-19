@@ -59,7 +59,7 @@
             const start = new Date(startDate);
             const millisecondsStart = start.getTime();
 
-            const endDate = (""+document.getElementById("start-date").value+" "+ document.getElementById("start-time").value+":00").replace(/-/g,"/")
+            const endDate = (""+document.getElementById("end-date").value+" "+ document.getElementById("end-time").value+":00").replace(/-/g,"/")
             const end = new Date(endDate);
             const millisecondsEnd = end.getTime();
 
@@ -130,8 +130,7 @@
             </svg>
         </div>
         <div class="col-sm-3">
-            <input type="date" id="start-date" name="trip-start"
-                   class="form-control">
+            <input type="date" id="start-date" name="trip-start" class="form-control">
         </div>
         <div class="col-sm-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
@@ -140,7 +139,7 @@
             </svg>
         </div>
         <div class="col-sm-3">
-            <input type="time" name="time" id="start-time" class="form-control" />
+            <input type="time" id="start-time" class="form-control" />
         </div>
     </div>
 
@@ -154,8 +153,7 @@
             </svg>
         </div>
         <div class="col-sm-3">
-            <input type="date" id="end-date" name="trip-start"
-                   class="form-control">
+            <input type="date" id="end-date"class="form-control">
         </div>
         <div class="col-sm-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
@@ -164,7 +162,7 @@
             </svg>
         </div>
         <div class="col-sm-3">
-            <input type="time" name="time" id="end-time" class="form-control" />
+            <input type="time" id="end-time" class="form-control" />
         </div>
     </div>
 
@@ -178,8 +176,7 @@
             </svg>
         </div>
         <div class="col-sm-7">
-            <select class="form-select form-control" aria-label="Default select example" id="platform">
-                <option selected>Select your meeting platform</option>
+            <select class="form-select form-control" id="platform">
                 <option value="Zoom">Zoom</option>
                 <option value="Google Meet">Google Meet</option>
             </select>
