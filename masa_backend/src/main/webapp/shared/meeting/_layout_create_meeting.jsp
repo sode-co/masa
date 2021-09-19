@@ -63,28 +63,34 @@
             const end = new Date(endDate);
             const millisecondsEnd = end.getTime();
 
-            const json = {
-                "title": document.getElementById("title").value,
-                "platform": document.getElementById("platform").value,
-                // "host": document.getElementById("host").value,
-                "host": "12345",//chỗ này sẽ get Host ID, user name gì đấy
-                "startTime": millisecondsStart,
-                "endTime": millisecondsEnd,
-                // "description": document.getElementById("description").getAttribute('value')
-                "description": document.querySelector('[contenteditable]').textContent
-            }
-            console.log(json);
-            const options = {
-                method: 'POST',
-                body: JSON.stringify(json),
-                headers: {
-                    'Content-Type': 'application/json'
+            const duringTime = millisecondsEnd - millisecondsStart;
+
+            if(duringTime <= 0){
+                alert('End time of meeting must be bigger than start time');
+            }else{
+                const json = {
+                    "title": document.getElementById("title").value,
+                    "platform": document.getElementById("platform").value,
+                    // "host": document.getElementById("host").value,
+                    "host": "12345",//chỗ này sẽ get Host ID, user name gì đấy
+                    "startTime": millisecondsStart,
+                    "endTime": millisecondsEnd,
+                    // "description": document.getElementById("description").getAttribute('value')
+                    "description": document.querySelector('[contenteditable]').textContent
                 }
+                console.log(json);
+                const options = {
+                    method: 'POST',
+                    body: JSON.stringify(json),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+                fetch('../../api/meeting/create', options)
+                    .then(res => res.json())
+                    .then(res => console.log(res))
+                    .catch(err => console.error(err));
             }
-            fetch('../../api/meeting/create', options)
-                .then(res => res.json())
-                .then(res => console.log(res))
-                .catch(err => console.error(err));
         }
     </script>
 </head>
@@ -295,9 +301,6 @@
                     &nbsp;
                 </ul>
             </div>
-            <%--            <div contenteditable="true">--%>
-            <%--                <input id="description"  class="form-control"/>--%>
-            <%--            </div>--%>
             <div contenteditable="true" id="description">
             </div>
         </div>
