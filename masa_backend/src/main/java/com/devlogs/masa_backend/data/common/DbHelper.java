@@ -29,7 +29,6 @@ public class DbHelper {
     public Connection connect () throws ClassNotFoundException, SQLException {
         if (dataSource == null) {
             MasaLog.normalLog("Hello");
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             dataSource = new BasicDataSource();
             dataSource.setUrl(DB_URL);
             dataSource.setUsername(DB_USER);

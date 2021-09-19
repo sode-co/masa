@@ -2373,3 +2373,66 @@
 19-Sep-2021 11:47:43.724 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
 19-Sep-2021 11:47:43.852 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
 19-Sep-2021 11:47:43.930 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [6,842] milliseconds
+19-Sep-2021 15:36:43.368 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.20
+19-Sep-2021 15:36:43.397 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          May 3 2019 22:26:00 UTC
+19-Sep-2021 15:36:43.398 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.20.0
+19-Sep-2021 15:36:43.398 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Sep-2021 15:36:43.398 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.10.25-linuxkit
+19-Sep-2021 15:36:43.400 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Sep-2021 15:36:43.400 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/local/openjdk-11
+19-Sep-2021 15:36:43.402 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.3+7
+19-Sep-2021 15:36:43.402 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+19-Sep-2021 15:36:43.407 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /usr/local/tomcat
+19-Sep-2021 15:36:43.407 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /usr/local/tomcat
+19-Sep-2021 15:36:43.638 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+19-Sep-2021 15:36:43.638 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+19-Sep-2021 15:36:43.638 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+19-Sep-2021 15:36:43.644 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties
+19-Sep-2021 15:36:43.645 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Sep-2021 15:36:43.653 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Sep-2021 15:36:43.656 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Sep-2021 15:36:43.663 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Sep-2021 15:36:43.684 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n
+19-Sep-2021 15:36:43.685 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Sep-2021 15:36:43.689 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/usr/local/tomcat
+19-Sep-2021 15:36:43.691 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/usr/local/tomcat
+19-Sep-2021 15:36:43.692 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/usr/local/tomcat/temp
+19-Sep-2021 15:36:43.693 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded APR based Apache Tomcat Native library [1.2.21] using APR version [1.5.2].
+19-Sep-2021 15:36:43.708 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+19-Sep-2021 15:36:43.709 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+19-Sep-2021 15:36:43.871 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 1.1.0j  20 Nov 2018]
+19-Sep-2021 15:36:45.791 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+19-Sep-2021 15:36:46.258 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+19-Sep-2021 15:36:46.315 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [4,933] milliseconds
+19-Sep-2021 15:36:47.099 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Sep-2021 15:36:47.114 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.20]
+19-Sep-2021 15:36:47.674 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/usr/local/tomcat/webapps/masa.war]
+19-Sep-2021 15:36:56.228 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Sep-2021 15:36:56.715 WARNING [main] org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [287] milliseconds.
+19-Sep-2021 15:36:57.532 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/usr/local/tomcat/webapps/masa.war] has finished in [9,853] ms
+19-Sep-2021 15:36:57.543 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/usr/local/tomcat/webapps/docs]
+19-Sep-2021 15:36:57.770 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/usr/local/tomcat/webapps/docs] has finished in [226] ms
+19-Sep-2021 15:36:57.773 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/usr/local/tomcat/webapps/examples]
+19-Sep-2021 15:37:01.028 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/usr/local/tomcat/webapps/examples] has finished in [3,250] ms
+19-Sep-2021 15:37:01.037 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/usr/local/tomcat/webapps/ROOT]
+19-Sep-2021 15:37:02.257 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/usr/local/tomcat/webapps/ROOT] has finished in [1,207] ms
+19-Sep-2021 15:37:02.281 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/usr/local/tomcat/webapps/manager]
+19-Sep-2021 15:37:02.406 WARNING [main] org.apache.tomcat.util.digester.SetPropertiesRule.begin Match [Context/CookieProcessor] failed to set property [sameSiteCookies] to [strict]
+19-Sep-2021 15:37:03.179 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/usr/local/tomcat/webapps/manager] has finished in [895] ms
+19-Sep-2021 15:37:03.188 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/usr/local/tomcat/webapps/host-manager]
+19-Sep-2021 15:37:03.313 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/usr/local/tomcat/webapps/host-manager] has finished in [126] ms
+19-Sep-2021 15:37:03.460 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+19-Sep-2021 15:37:03.604 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+19-Sep-2021 15:37:03.714 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [17,397] milliseconds
+19-Sep-2021 15:38:53.730 INFO [Catalina-utility-2] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/masa]
+19-Sep-2021 15:38:55.463 INFO [Catalina-utility-2] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/usr/local/tomcat/webapps/masa.war]
+19-Sep-2021 15:39:00.855 INFO [Catalina-utility-2] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Sep-2021 15:39:00.898 INFO [Catalina-utility-2] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/usr/local/tomcat/webapps/masa.war] has finished in [5,435] ms
+19-Sep-2021 15:42:50.888 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/masa]
+19-Sep-2021 15:42:51.741 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/usr/local/tomcat/webapps/masa.war]
+19-Sep-2021 15:42:54.942 INFO [Catalina-utility-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Sep-2021 15:42:55.013 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/usr/local/tomcat/webapps/masa.war] has finished in [3,272] ms
+19-Sep-2021 15:44:05.004 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/masa]
+19-Sep-2021 15:44:05.104 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/usr/local/tomcat/webapps/masa.war]
+19-Sep-2021 15:44:07.612 INFO [Catalina-utility-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Sep-2021 15:44:07.656 INFO [Catalina-utility-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/usr/local/tomcat/webapps/masa.war] has finished in [2,551] ms
