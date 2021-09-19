@@ -14,7 +14,7 @@ services:
       - ./database/mssqlvolume:/var/opt/mssql/data # thư mục lưu DB
       - ./database/backup:/var/opt/mssql/backup     # thư  mục chứa file backup
     ports:
-      - "1433:1433"                     # cổng kết nối
+      - "1433:1433"     # cổng kết nối
   backend:
     restart: always
     container_name: masa_backend

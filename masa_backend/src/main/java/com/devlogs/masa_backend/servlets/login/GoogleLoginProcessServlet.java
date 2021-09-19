@@ -67,6 +67,7 @@ public class GoogleLoginProcessServlet extends BaseHttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
+            MasaLog.normalLog("Do get login");
             dbHelper.connect();
             response.getWriter().print("hihi connected");
         } catch (ClassNotFoundException e) {
