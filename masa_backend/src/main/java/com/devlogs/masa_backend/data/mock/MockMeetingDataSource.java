@@ -21,7 +21,7 @@ public class MockMeetingDataSource {
     static {
         ArrayList<UserEntity> users = new MockUserDataSource().data;
         users.forEach(u -> {
-            long startTime = System.currentTimeMillis();
+            long startTime = System.currentTimeMillis() - new Random().nextLong();
             meetings.add(
                     new MeetingEntity(System.currentTimeMillis() + "", "Devlogs Talkshows",
                             new MeetingPlatform(MeetingPlatform.PLATFORM.GOOGLE_MEET, u.getId(),

@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  mssql:
+    build: 
+      context: ./database
+      dockerfile: .dockerfile
+    container_name: mssqlserver
+    restart: always
+    hostname: mssql
+    environment:
+      SA_PASSWORD: Password123
+      ACCEPT_EULA: Y
+    volumes:
+      - ./database/mssqlvolume:/var/opt/mssql/data # thư mục lưu DB
+      - ./database/backup:/var/opt/mssql/backup     # thư  mục chứa file backup
+    ports:
+      - "1433:1433"                     # cổng kết nối
+  backend:
+    restart: always
+    container_name: masa_backend
+    build: 
+      context: ./
+      dockerfile: webserver/tomcat/.dockerfile
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./masa_backend/target/masa.war:/usr/local/tomcat/webapps/masa.war
+      - ./webserver/tomcat/logs:/usr/local/tomcat/logs
