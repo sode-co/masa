@@ -1,9 +1,12 @@
 package com.devlogs.masa_backend.common.di.controller;
 
+import com.devlogs.masa_backend.domain.ports.AppointmentRepository;
 import com.devlogs.masa_backend.domain.ports.MeetingRepository;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
 import com.devlogs.masa_backend.repository.meeting.MeetingRepositoryImp;
-import com.devlogs.masa_backend.repository.mock.MockMeetingRepositoryImp;
+import com.devlogs.masa_backend.repository.mock.MockAppointmentRepositoryImp;
+
+
 import com.devlogs.masa_backend.repository.mock.MockUserRepositoryImp;
 import dagger.Module;
 import dagger.Provides;
@@ -15,9 +18,15 @@ public class RepositoryModule {
     public UserRepository provideUserRepository (MockUserRepositoryImp userRepositoryImp) {
         return userRepositoryImp;
     }
+
     @Provides
     public MeetingRepository provideMeetingRepository (MeetingRepositoryImp meetingRepositoryImp) {
         return meetingRepositoryImp;
+    }
+
+    @Provides
+    public AppointmentRepository provideAppointmentRepository (MockAppointmentRepositoryImp appointmentRepositoryImp) {
+        return appointmentRepositoryImp;
     }
 
 }
