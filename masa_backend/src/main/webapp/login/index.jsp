@@ -8,11 +8,13 @@
 </head>
 <body>
 <h1>logi2n3</h1>
+<c:set var="redirectUrl" value="http://localhost:${pageContext.request.serverPort}/masa/logingoogle"/>
+
 <form id="googlelogin" method="post" action="https://accounts.google.com/o/oauth2/auth?" >
     <div>
         <input type="hidden" name="response_type" value="code" />
         <input type="hidden" name="client_id" value="${Masa.CLIENT_ID}" />
-        <input type="hidden" name="redirect_uri" value="${Masa.GOOGLE_REDIRECT_URI}" />
+        <input type="hidden" name="redirect_uri" value="${redirectUrl}" />
         <input type="hidden" name="scope" value="email profile" />
         <input type="hidden" name="approval_prompt" value="force" />
         <input type="submit" value="go" />
