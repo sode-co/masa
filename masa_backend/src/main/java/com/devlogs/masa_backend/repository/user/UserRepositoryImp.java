@@ -13,9 +13,9 @@ import java.sql.SQLException;
 
 public class UserRepositoryImp implements UserRepository {
 
-    UserEntity userEntity;
-    UserDao dao;
-    UserDto dto;
+    private UserEntity userEntity;
+    private UserDao dao;
+    private UserDto dto;
 
     public UserRole convertRole(int role_id) {
         UserRole.TYPE type = null;
