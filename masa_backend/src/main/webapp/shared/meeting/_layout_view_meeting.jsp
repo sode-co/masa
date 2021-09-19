@@ -25,8 +25,8 @@
             arr.forEach(element => {
                 let htmlElements = "";
                 for (let i = 0; i < arr.length; i++) {
-                    htmlElements += '<div class="box">' +
-                        +'<div class="p-5 bg-light bg-secondary" id="info">'
+                    htmlElements +=
+                        '<div class="p-5 bg-light bg-secondary" style="width: 70%; margin-left: 10%; border: solid; border-radius: 10px; padding-left: 10%; padding-bottom: 20px;  padding-top: 20px" id="info">'
                         +'<p class="header" style="font-weight: bold; font-size: larger">'+element.title+'</p>'
                         +'<div class="center">'
                         +'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">'
