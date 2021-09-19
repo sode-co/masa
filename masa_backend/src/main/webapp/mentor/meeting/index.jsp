@@ -9,9 +9,16 @@
 <html>
 <head>
     <title>Mentor Profile</title>
+    <style>
+        body{
+            background-color: black;
+        }
+    </style>
 </head>
 <body>
     <h1>Mentor ne</h1>
-    <%@ include file="../../shared/meeting/_layout_create_meeting.jsp"%>
+<%--    <%@ include file="../../shared/meeting/_layout_view_meeting.jsp"%>--%>
+<%--    <%@ include file="../../shared/meeting/_layout_create_meeting.jsp"%>--%>
+    <%@ include file="../../shared/meeting/_view_all_meeting.jsp"%>--%>
 </body>
 </html>
