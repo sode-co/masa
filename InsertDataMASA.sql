@@ -1,4 +1,5 @@
 use MASA
+go
 /* Insert 4 roles intor Role table*/
 INSERT INTO Roles(id, title)
 VALUES(1, 'ADMIN');
@@ -8,21 +9,20 @@ INSERT INTO Roles(id, title)
 VALUES(3, 'GUEST');
 INSERT INTO Roles(id, title)
 VALUES(4, 'MENTOR');
-
-select * from Roles go
-delete from Roles 
+go
+--select * from Roles go
+--delete from Roles 
 /* Insert 2 status intor UserStatus table*/
 insert into UserStatus (id, title)
-VALUES
-    (1,'BLOCKED');
+VALUES(1,'BLOCKED');
 	
 INSERT INTO UserStatus (id, title)
 VALUES(2,'ACTIVE');
 	
-select * from UserStatus go	
+--select * from UserStatus go	
 
-
-delete from UserStatus ;
+go
+--delete from UserStatus ;
 
 /* Insert data into Meeting table*/
 INSERT INTO Users(id, fullName, email, avatar_url, role_id, status_id)
@@ -61,10 +61,10 @@ INSERT INTO Users(id, fullName, email, avatar_url, role_id, status_id)
 VALUES
     ('AD100007', 'To Hong Dieu', 'dieuthAD100007@fpt.edu.vn', 'url9', 1, 2);
 
-	select * from Users 
+	--select * from Users 
 	go
 
-	delete from Users
+	--delete from Users
 
 		/* Insert data into Platform table*/
 INSERT INTO Platforms(id, title)
@@ -72,9 +72,9 @@ VALUES(1, 'GOOGLE MEET');
 INSERT INTO Platforms(id, title)
 VALUES(2, 'ZOOM');
 
-select * from Platforms;
-delete from Platforms;
-
+--select * from Platforms;
+--delete from Platforms;
+go
 /* Insert data into UserLink table*/
 INSERT INTO PlatformUrls(mentor_id, platform_id, url)
 VALUES('mentorE', 1, 'link1');
@@ -82,9 +82,9 @@ VALUES('mentorE', 1, 'link1');
 INSERT INTO PlatformUrls(mentor_id, platform_id, url)
 VALUES('mentorF', 2, 'link2');
 
-select * from PlatformUrls;
-
-delete from PlatformUrls;
+--select * from PlatformUrls;
+go
+--delete from PlatformUrls;
 
 /* Insert data into MeetingStatus table*/
 		
@@ -92,11 +92,11 @@ INSERT INTO MeetingStatus(id, title)
 VALUES( 1, 'COMING');
 INSERT INTO MeetingStatus(id, title)
 VALUES( 2, 'DONE');
-select * from MeetingStatus;
-delete from MeetingStatus;
-
+--select * from MeetingStatus;
+--delete from MeetingStatus;
+go
 	/* Insert data into Meeting table*/
-	delete from Meetings;
+	--delete from Meetings;
 
 INSERT INTO Meetings
     (id, title, time_start, time_end, mentor_id,platform_id, status_id, description)
@@ -108,11 +108,11 @@ VALUES
 VALUES
     ('M2', 'Thay F', 8, 10, 'mentorF', 2, 2, 'hoc C#');
 
-	select * from Meetings;
-	delete from Meetings;
-
+	--select * from Meetings;
+	--delete from Meetings;
+go
 /* Insert data into MeetingStatus table*/
-		INSERT INTO Appointments(meeting_id, user_id)
+INSERT INTO Appointments(meeting_id, user_id)
 VALUES( 'M1', 'SE100001');
 INSERT INTO Appointments(meeting_id, user_id)
 VALUES( 'M1', 'SE100002');
@@ -123,9 +123,9 @@ VALUES( 'M2', 'SE100003');
 INSERT INTO Appointments(meeting_id, user_id)
 VALUES( 'M2', 'GU100008');
 
-select * from Appointments;
-delete from Appointments;
-
+--select * from Appointments;
+--delete from Appointments;
+go
 /* Insert data into RequestStatus table*/
 insert into RequestStatus (id, title)
 VALUES(1,'DENIED');
@@ -133,17 +133,17 @@ insert into RequestStatus (id, title)
 VALUES(2,'PROCESSING');
 insert into RequestStatus (id, title)
 VALUES(3,'APPROVED');
-select * from RequestStatus
-delete from RequestStatus
-
+--select * from RequestStatus
+--delete from RequestStatus
+go
 /* Insert data into Requests table*/
 insert into Requests (id, description, user_id, status_id)
 VALUES(1,'No description','GU100007', 2 );
 insert into Requests (id, description, user_id, status_id)
 VALUES(2,'Bla bla','GU100008', 1 );
-select * from Requests
+--select * from Requests
 
-delete from Requests
+--delete from Requests
 
 /*
 select U.email, U.fullName, U.role_id, U.status_id 

@@ -22,5 +22,7 @@ public interface ControllerComponent {
     void inject(GetAllMeetingServlet getAllMeetingServlet);
 
     void inject(TestServlet testServlet);
+
     void inject(CreateAppointmentServlet followMeetingServlet);
+
 }

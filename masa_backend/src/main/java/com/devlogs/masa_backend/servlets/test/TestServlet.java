@@ -1,9 +1,6 @@
 package com.devlogs.masa_backend.servlets.test;
 
-import com.devlogs.masa_backend.data.remote_database.MeetingDAO;
-import com.devlogs.masa_backend.data.remote_database.MeetingDTO;
-import com.devlogs.masa_backend.data.remote_database.PlatformUrlsDAO;
-import com.devlogs.masa_backend.data.remote_database.PlatformUrlsDTO;
+import com.devlogs.masa_backend.data.remote_database.*;
 import com.devlogs.masa_backend.servlets.common.base.BaseHttpServlet;
 
 import javax.inject.Inject;
@@ -19,23 +16,22 @@ import java.util.List;
 @WebServlet(name = "TestServlet", urlPatterns = "/TestServlet")
 public class TestServlet extends BaseHttpServlet {
     @Inject
-    public PlatformUrlsDAO dao;
+    public AppointmentDAO dao;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getControllerComponent().inject(this);
 
-        try {
-            PlatformUrlsDTO dto = dao.addNewPlatformUrl("mentorF",1,"link4");
-            if(dto!=null){
-                //for(MeetingDTO dto : list){
-                    System.out.println(dto.toString());
-                //}
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+//        try {
+//
+////            AppointmentDTO list  = dao.createAppointment("GU100008","M1");
+//            //for (AppointmentDTO dto:list){
+//               // System.out.println(list);
+//            //}
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override
