@@ -2,7 +2,7 @@ package com.devlogs.masa_backend.domain.entities;
 
 public class MeetingPlatform {
     public enum PLATFORM {
-        ZOOM, GOOGLE_MEET
+        GOOGLE_MEET,ZOOM
     }
 
     private String mentorId;

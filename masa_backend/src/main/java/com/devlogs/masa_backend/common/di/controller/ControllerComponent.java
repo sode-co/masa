@@ -5,6 +5,7 @@ import com.devlogs.masa_backend.servlets.meeting.createmeeting.CreateMeetingServ
 import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetAllMeetingServlet;
 import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetMeetingByHostIdServlet;
 import com.devlogs.masa_backend.servlets.meeting.updatemeeting.UpdateMeetingServlet;
+import com.devlogs.masa_backend.servlets.test.TestServlet;
 import dagger.Subcomponent;
 
 @Subcomponent (modules = {DataModule.class, RepositoryModule.class, ApiModule.class})
@@ -18,4 +19,6 @@ public interface ControllerComponent {
     void inject(GetMeetingByHostIdServlet getMeetingByHostIdServlet);
 
     void inject(GetAllMeetingServlet getAllMeetingServlet);
+
+    void inject(TestServlet testServlet);
 }
