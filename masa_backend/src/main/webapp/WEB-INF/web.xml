@@ -2,19 +2,19 @@
 <web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
     <context-param>
         <param-name>DATABASE_HOST</param-name>
-        <param-value>127.0.0.1:3306</param-value>
+        <param-value>127.0.0.1:1433</param-value>
     </context-param>
     <context-param>
         <param-name>DATABASE_NAME</param-name>
-        <param-value>db_masa</param-value>
+        <param-value>MASA</param-value>
     </context-param>
     <context-param>
         <param-name>DATABASE_USER</param-name>
-        <param-value>masa_admin</param-value>
+        <param-value>sa</param-value>
     </context-param>
     <context-param>
         <param-name>DATABASE_PASSWORD</param-name>
-        <param-value>masa_password</param-value>
+        <param-value>khangdan2001</param-value>
     </context-param>
     <context-param>
         <param-name>ACCESS_TOKEN_SECRET_KEY</param-name>
