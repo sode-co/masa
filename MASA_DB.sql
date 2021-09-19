@@ -5,124 +5,133 @@ CREATE DATABASE MASA;
 USE MASA;
 
 CREATE TABLE UserStatus(
-	id varchar(15),
+	id integer,
+	title varchar(255) not null,
+	constraint UQ_UserStatus_Title unique(title),
 	constraint PK_UserStatus primary key(id),
 );
 
 CREATE TABLE MeetingStatus(
-	id varchar(15),
+	id integer,
+	title varchar(255) not null,
+	constraint UQ_MeetingStatus_Title unique(title),
 	constraint PK_MeetingStatus primary key(id),
 );
 
 CREATE TABLE RequestStatus(
-	id varchar(15),
+	id integer,
+	title varchar(255) not null,
+	constraint UQ_RequestStatus_Title unique(title),
 	constraint PK_RequestStatus primary key(id),
 );
 
-CREATE TABLE Role(
-	id varchar(15),
+CREATE TABLE Roles(
+	id integer,
+	title varchar(255) not null,
+	constraint UQ_Role_Title unique(title),
 	constraint PK_Role primary key(id),
 );
 
-CREATE TABLE Platform(
-	id varchar(15),
+CREATE TABLE Platforms(
+	id integer,
+	title varchar(255) not null,
+	constraint UQ_Platform_Title unique(title),
 	constraint PK_Platform primary key(id),
 );
 
-CREATE TABLE Account(
-	id varchar(25),
-	email varchar(30),
-	password varchar(20),
+CREATE TABLE Accounts(
+	id varchar(255),
+	email varchar(255) not null,
+	password varchar(255) not null,
 	constraint PK_Account primary key(id),
-	constraint UQ_Email_Account unique(email)
+	constraint UQ_Account_Email unique(email)
 );
 
 CREATE TABLE Users(
-	id varchar(15),
-	fullName nvarchar(30) not null,
-	email varchar(30) not null,
-	avatar_url varchar(50),
-	role_id varchar(15),
-	last_login bigint not null,
-	status_id varchar(15),
+	id varchar(255),
+	fullName nvarchar(255) not null,
+	email varchar(255) not null,
+	role_id integer not null,
+	status_id integer not null,
+	avatar_url varchar(255),
 	constraint PK_User primary key(id),
 	constraint UQ_email_Users unique(email),
 	constraint FK_Users_Status_id foreign key(status_id) references UserStatus(id),
-	constraint FK_Users_Role_id foreign key(role_id) references Role(id)
+	constraint FK_Users_Role_id foreign key(role_id) references Roles(id)
 );
 
-CREATE TABLE Request(
-	id bigint,
+CREATE TABLE Requests(
+	id varchar(255),
 	description varchar(255) not null,
-	user_id varchar(15),
-	status_id varchar(15),
+	user_id varchar(255) not null,
+	status_id integer not null,
 	constraint PK_Request primary key(id),
 	constraint FK_Request_User_id foreign key(user_id) references Users(id),
 	constraint FK_Request_Status_id foreign key(status_id) references RequestStatus(id)
 );
 
-CREATE TABLE UserLink(
-	mentor_id varchar(15),
-	platform_id varchar(15),
-	link_meeting varchar(30),
+CREATE TABLE PlatformUrls(
+	mentor_id varchar(255),
+	platform_id integer not null,
+	url varchar(255) not null,
 	constraint PK_UserLink primary key(mentor_id,platform_id),
 	constraint FK_UserLink_Mentor_id foreign key(mentor_id) references Users(id),
-	constraint FK_UserLink_Platform_id foreign key(platform_id) references Platform(id)
+	constraint FK_UserLink_Platform_id foreign key(platform_id) references Platforms(id)
 );
 
-CREATE TABLE Meeting(
-	id bigint,
-	title varchar(40) not null,
+CREATE TABLE Meetings(
+	id varchar(255),
+	title varchar(255) not null,
 	time_start bigint not null,
 	time_end bigint not null,
-	mentor_id varchar(15),
-	platform_id varchar(15),
-	status_id varchar(15),
+	mentor_id varchar(255) not null,
+	platform_id integer not null,
+	status_id integer not null,
 	description varchar(255),
 	constraint PK_Meeting primary key(id),
 	constraint FK_Meeting_Mentor_id foreign key(mentor_id) references Users(id),
-	constraint FK_Meeting_Platform_id foreign key(platform_id) references Platform(id),
+	constraint FK_Meeting_Platform_id foreign key(platform_id) references Platforms(id),
 	constraint FK_Meeting_Status_id foreign key(status_id) references MeetingStatus(id),
 	CONSTRAINT CheckTimeConstraint CHECK(time_start < time_end)
 );
 
-Create table MeetingStudents(
-	meeting_id bigint,
-	student_id varchar(15),
-	constraint PK_MeetingStudents primary key(meeting_id,student_id),
-	constraint FK_MeetingStudents_Student_id foreign key(student_id) references Users(id),
-	constraint FK_MeetingStudents_Meeting_id foreign key(meeting_id) references Meeting(id)
+Create table Appointments(
+	meeting_id varchar(255),
+	user_id varchar(255),
+	constraint PK_MeetingStudents primary key(meeting_id,user_id),
+	constraint FK_MeetingStudents_Student_id foreign key(user_id) references Users(id),
+	constraint FK_MeetingStudents_Meeting_id foreign key(meeting_id) references Meetings(id)
 );
 
 
 go
 --drop procedure addMeeting
 create procedure addMeeting
-	@id bigint,
-	@title varchar(40),
+	@id varchar(255),
+	@title varchar(255),
 	@time_start bigint ,
 	@time_end bigint ,
-	@mentor_id varchar(15),
-	@platform_id varchar(15),
-	@status_id varchar(15),
+	@mentor_id varchar(255),
+	@platform_id integer,
+	@status_id integer,
 	@description varchar(255)
 	as 
 	begin
-		insert into Meeting values(@id,@title,@time_start,@time_end,@mentor_id,@platform_id,@status_id,@description);
+		insert into Meetings values(@id,@title,@time_start,@time_end,@mentor_id,@platform_id,@status_id,@description);
 		end
 		go
 
 		--drop procedure updateMeeting
 create procedure updateMeeting
-	@id bigint,
-	@title varchar(40),
+	@id varchar(255),
+	@title varchar(255),
 	@time_start bigint ,
 	@time_end bigint ,
-	@platform_id varchar(15),
+	@platform_id integer,
 	@description varchar(255)
 	as 
 	begin
-		update Meeting
+		update Meetings
 		set 
 		title = @title,
 	time_start =@time_start,
@@ -138,9 +147,7 @@ create procedure updateMeeting
 as
 begin
 SELECT *
-from Meeting as mt
-inner join UserLink as ul
-on mt.mentor_id=ul.mentor_id and mt.platform_id=ul.platform_id;
+from Meetings
 end
 
 go
@@ -149,10 +156,10 @@ go
 go
 --drop procedure getMeetingsByHost
 create procedure getMeetingsByHost
-@id varchar(15)
+@id varchar(255)
 as
 begin
 SELECT *
-from Meeting
+from Meetings
 where mentor_id = @id;
 end

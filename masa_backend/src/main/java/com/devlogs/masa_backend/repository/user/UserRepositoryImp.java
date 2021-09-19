@@ -1,5 +1,6 @@
 package com.devlogs.masa_backend.repository.user;
 
+import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.data.remote_database.UserDao;
 import com.devlogs.masa_backend.data.remote_database.UserDto;
 import com.devlogs.masa_backend.domain.entities.UserEntity;
@@ -9,13 +10,20 @@ import com.devlogs.masa_backend.domain.errors.AlreadyExistException;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
 
+import javax.inject.Inject;
 import java.sql.SQLException;
 
 public class UserRepositoryImp implements UserRepository {
 
     private UserEntity userEntity;
-    private UserDao dao;
+    private UserDao dao;// chỉ có dao ở đây
     private UserDto dto;
+
+    @Inject
+    public UserRepositoryImp( UserDao dao) {
+        this.dao = dao;
+
+    }
 
     public UserRole convertRole(int role_id) {
         UserRole.TYPE type = null;
@@ -44,11 +52,13 @@ public class UserRepositoryImp implements UserRepository {
 
 
     @Override
-    public UserEntity getUserByEmail(String email) throws ConnectionException {
+        public UserEntity getUserByEmail(String email) throws ConnectionException {
 
        try {
            dto = dao.getUserByEmail(email);
-            userEntity = convertDto(dto);
+           if (dto != null) {
+               userEntity = convertDto(dto);
+           } else return null;
 
         }catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
@@ -62,8 +72,9 @@ public class UserRepositoryImp implements UserRepository {
     public UserEntity getUserById(String id) throws ConnectionException {
         try {
             dto = dao.getUserById(id);
-            System.out.println("@@@@@skjfkl");
-            userEntity = convertDto(dto);
+            if (dto != null) {
+                userEntity = convertDto(dto);
+            } else return null;
         }catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch(ClassNotFoundException ex) {
@@ -75,22 +86,39 @@ public class UserRepositoryImp implements UserRepository {
     @Override
     public UserEntity addUser(String email, String fullName, String avatar, UserRole role, UserStatus userStatus)
                     throws ConnectionException, AlreadyExistException {
-        try {
-            int role_id ;
-            if (role.toString().equals("ADMIN")){
-                role_id =1;
-            } else if (role.toString().equals("STUDENT")){
-                role_id =2;
-            } else if (role.toString().equals("GUEST")){
-                role_id =3;
-            } else role_id = 4 ;
 
-            int status_id = 0;
-            if (userStatus.toString().equals("BLOCKED")){
+        int role_id ;
+        int status_id ;
+        try {
+//            MasaLog.normalLog("role type:  " + role.getType() );
+//            MasaLog.normalLog("trung voi student khong " + (role.getType()).toString().equals("STUDENT") );
+            if ((role.getType()).toString().equals("ADMIN")){
+                role_id = 1;
+                MasaLog.normalLog("admin 1 ");
+            } else if ((role.getType()).toString().equals("STUDENT")){
+                role_id = 2;
+                MasaLog.normalLog("student");
+            } else if ((role.getType()).toString().equals("GUEST")){
+                role_id = 3;
+                MasaLog.normalLog("admin 3 ");
+            } else if ((role.getType()).toString().equals("MENTOR")){
+                role_id = 4;
+                MasaLog.normalLog("admin 4 ");
+            } else return null;
+
+
+            if ((userStatus.getStatus()).toString().equals("BLOCKED")){
                 status_id = 1;
-            } else status_id = 2;
+            } else if ((userStatus.getStatus()).toString().equals("ACTIVE")){
+                status_id = 2;
+            } else return null;
+
             dto = dao.addUser(email, fullName, avatar,role_id, status_id);
-            userEntity = convertDto(dto);
+            //MasaLog.normalLog("dto la: "+ dto.toString());
+
+            if ( dto != null ) {
+                userEntity = convertDto(dto);
+            } else return null;
 
         }catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());

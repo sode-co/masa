@@ -7,6 +7,8 @@ import com.devlogs.masa_backend.common.di.request.RequestComponent;
 import com.devlogs.masa_backend.common.di.request.RequestModule;
 import dagger.Subcomponent;
 
+import javax.validation.Validator;
+
 /**This component is inherited from ApplicationComponent
  * @see com.devlogs.masa_backend.common.di.application.ApplicationComponent @ApplicationComponent
  * */
@@ -15,4 +17,5 @@ import dagger.Subcomponent;
 public interface ServletComponent {
     ControllerComponent newControllerComponent (DataModule dataModule, RepositoryModule repositoryModule);
     RequestComponent newRequestComponent (RequestModule requestModule);
+    Validator getValidator ();
 }

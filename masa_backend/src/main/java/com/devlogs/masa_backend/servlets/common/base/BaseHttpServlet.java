@@ -11,10 +11,13 @@ import com.devlogs.masa_backend.common.di.servlet.ServletComponent;
 import com.devlogs.masa_backend.common.di.servlet.ServletModule;
 import com.devlogs.masa_backend.common.helper.MasaLog;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Validation;
+import javax.validation.Validator;
 import java.io.IOException;
 
 public class BaseHttpServlet extends HttpServlet {
@@ -43,7 +46,7 @@ public class BaseHttpServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (!resp.isCommitted()) {
-            requestComponent = getServletComponent().newRequestComponent(new RequestModule(resp, req));
+            requestComponent = getServletComponent().newRequestComponent(new RequestModule(resp, req, getServletComponent().getValidator()));
         } else {
             requestComponent = null;
         }
