@@ -46,10 +46,10 @@ public class FollowMeetingUseCase {
 
         public Result executes (String userId, String meetingId) {
             try {
-                UserEntity user = userRepository.getUserById(userId);
-                if (user == null) {
-                    return new Result.UserNotFound();
-                }
+//                UserEntity user = userRepository.getUserById(userId);
+//                if (user == null) {
+//                    return new Result.UserNotFound();
+//                }
                 MeetingEntity meeting = meetingRepository.getById(meetingId);
                 if (meeting == null) {
                     return new Result.MeetingNotFound();
