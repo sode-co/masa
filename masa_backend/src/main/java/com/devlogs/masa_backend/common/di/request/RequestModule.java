@@ -5,6 +5,7 @@ import com.devlogs.masa_backend.servlets.common.ResponseHelper;
 import dagger.Module;
 import dagger.Provides;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Validator;

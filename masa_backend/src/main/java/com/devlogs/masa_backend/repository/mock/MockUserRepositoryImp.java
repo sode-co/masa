@@ -10,6 +10,7 @@ import com.devlogs.masa_backend.domain.errors.NotFoundException;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
 
 import javax.inject.Inject;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -58,5 +59,32 @@ public class MockUserRepositoryImp implements UserRepository {
         MockUserDataSource.data.add(newUser);
         return newUser;
 
+    }
+
+    @Override
+    public List<UserEntity> getAllUser() throws ConnectionException {
+        return MockUserDataSource.data;
+    }
+
+    @Override
+    public UserEntity blockUser(String userID, UserStatus.STATUS status) throws ConnectionException, NotFoundException {
+        Optional<UserEntity> result = MockUserDataSource.data.stream().filter(u-> u.getId().equals(userID)).findFirst();
+        UserEntity userBlocked = null;
+        if (result.isPresent()) {
+            userBlocked = result.get();
+            userBlocked.setStatus(new UserStatus(status));
+        }
+        return userBlocked;
+    }
+
+    @Override
+    public UserEntity updateUserRole(String userID, UserRole.TYPE role) throws ConnectionException, NotFoundException {
+        Optional<UserEntity> result = MockUserDataSource.data.stream().filter(u-> u.getId().equals(userID)).findFirst();
+        UserEntity userUpdateRole = null;
+        if (result.isPresent()) {
+            userUpdateRole = result.get();
+            userUpdateRole.setRole(new UserRole(role));
+        }
+        return userUpdateRole;
     }
 }

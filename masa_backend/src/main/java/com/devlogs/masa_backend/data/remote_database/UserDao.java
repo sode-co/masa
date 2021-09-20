@@ -20,13 +20,6 @@ public class UserDao {
         this.dbHelper = dbHelper;
     }
 
-    public UserDao() {
-
-    }
-
-    public static void main(String[] args) {
-        UserDao dao = new UserDao();
-    }
 
 
     public UserDto getUserById(String Id)

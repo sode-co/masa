@@ -8,10 +8,12 @@ import com.devlogs.masa_backend.domain.entities.UserRole;
 import com.devlogs.masa_backend.domain.entities.UserStatus;
 import com.devlogs.masa_backend.domain.errors.AlreadyExistException;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
+import com.devlogs.masa_backend.domain.errors.NotFoundException;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
 
 import javax.inject.Inject;
 import java.sql.SQLException;
+import java.util.List;
 
 public class UserRepositoryImp implements UserRepository {
 
@@ -126,6 +128,21 @@ public class UserRepositoryImp implements UserRepository {
             throw new RuntimeException(ex.getMessage());
         }
         return userEntity;
+    }
+
+    @Override
+    public List<UserEntity> getAllUser() throws ConnectionException {
+        return null;
+    }
+
+    @Override
+    public UserEntity blockUser(String userID, UserStatus.STATUS status) throws ConnectionException, NotFoundException {
+        return null;
+    }
+
+    @Override
+    public UserEntity updateUserRole(String userID, UserRole.TYPE role) throws ConnectionException, NotFoundException {
+        return null;
     }
 
 }
