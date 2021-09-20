@@ -1,8 +1,5 @@
 package com.devlogs.masa_backend.data.remote_database;
 
-import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
-import com.devlogs.masa_backend.domain.entities.UserEntity;
-
 public class MeetingDTO {
     private String id;
     private String title;

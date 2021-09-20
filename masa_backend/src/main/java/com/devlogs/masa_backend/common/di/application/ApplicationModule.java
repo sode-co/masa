@@ -23,7 +23,7 @@ public class ApplicationModule {
     @Provides
     @Singleton
     public DbHelper provideDbHelper () {
-        return new DbHelper();
+        return new DbHelper(context.getRealPath("/WEB-INF"));
     }
 
     @Provides

@@ -13,7 +13,7 @@ public class Masa {
         public static String DATABASE_PASSWORD = "";
 
         public static String GOOGLE_CLIENT_SECRET = "";
-        public static String GOOGLE_REDIRECT_URI = "http://localhost:8080/masa/logingoogle";
+        public static String GOOGLE_REDIRECT_URI;
         public static String GOOGLE_LINK_GET_TOKEN = "https://accounts.google.com/o/oauth2/token";
         public static String GOOGLE_LINK_GET_USER_INFO = "https://www.googleapis.com/oauth2/v1/userinfo?access_token=";
         public static String CLIENT_ID = "";
@@ -46,7 +46,9 @@ public class Masa {
                 public static String UPDATE = "api/meeting/update";
             }
         }
-
+    public static void onServerPort (String port) {
+            GOOGLE_REDIRECT_URI = "http://localhost:"+port+"/masa/logingoogle";
+    }
     public static void init (ServletContext context) {
         GOOGLE_CLIENT_SECRET = context.getInitParameter("GOOGLE_CLIENT_SECRET");
         CLIENT_ID = context.getInitParameter("GOOGLE_CLIENT_ID");
