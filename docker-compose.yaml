@@ -7,6 +7,9 @@ services:
       - mailwithdevlogs
     container_name: serverdev_group
   mssql:
+    environment: 
+      SA_PASSWROD: Password123
+      ACCEPT_EULA: Y
     image: tiendvlp/masa_db:0.0
     container_name: mssqlserver
     restart: always
