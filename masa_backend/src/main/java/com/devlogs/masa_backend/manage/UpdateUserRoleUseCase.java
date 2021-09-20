@@ -34,7 +34,7 @@ public class UpdateUserRoleUseCase {
         this.userRepository = userRepository;
     }
 
-    public Result executes (String userID , UserRole.TYPE role) {
+    public Result executes (String userID , UserRole role) {
         try {
             UserEntity userEntity = userRepository.getUserById(userID);
             if (userEntity == null) {

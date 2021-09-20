@@ -33,7 +33,7 @@ public class BlockUserUseCase {
         this.userRepository = userRepository;
     }
 
-    public Result executes (String userID , UserStatus.STATUS status) {
+    public Result executes (String userID , UserStatus status) {
         try {
             UserEntity userEntity = userRepository.getUserById(userID);
             if (userEntity == null) {

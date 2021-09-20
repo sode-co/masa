@@ -26,7 +26,7 @@ public interface UserRepository {
 
     List<UserEntity> getAllUser() throws ConnectionException;
 
-    UserEntity blockUser(String userID, UserStatus.STATUS status) throws ConnectionException, NotFoundException;
+    UserEntity blockUser(String userID, UserStatus status) throws ConnectionException, NotFoundException;
 
-    UserEntity updateUserRole(String userID, UserRole.TYPE role) throws ConnectionException, NotFoundException;
+    UserEntity updateUserRole(String userID, UserRole role) throws ConnectionException, NotFoundException;
 }

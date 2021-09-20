@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class UserDao {
@@ -21,12 +23,11 @@ public class UserDao {
     }
 
 
-
     public UserDto getUserById(String Id)
-            throws SQLException, ConnectionException, ClassNotFoundException {
+            throws SQLException, ClassNotFoundException {
         Connection con = null;
-        PreparedStatement stm= null;
-        ResultSet rs= null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
         try {
             //1. connect database
             con = dbHelper.connect();
@@ -44,7 +45,7 @@ public class UserDao {
                 //4. execute query
                 rs = stm.executeQuery();
                 //5. process
-                if( rs.next()){
+                if (rs.next()) {
                     String id = rs.getString(1);
                     String fullName = rs.getString(2);
                     String email = rs.getString(3);
@@ -52,7 +53,7 @@ public class UserDao {
                     int role_id = rs.getInt(5);
                     int status_id = rs.getInt(6);
 
-                    return  new UserDto(id, fullName, email,avatar_url, role_id, status_id);
+                    return new UserDto(id, fullName, email, avatar_url, role_id, status_id);
                 }
             }
         } finally {
@@ -70,10 +71,10 @@ public class UserDao {
 
     }
 
-    public UserDto getUserByEmail(String email)  throws SQLException, ClassNotFoundException {
+    public UserDto getUserByEmail(String email) throws SQLException, ClassNotFoundException {
         Connection con = null;
-        PreparedStatement stm= null;
-        ResultSet rs= null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
 
         try {
             //1. connect database
@@ -92,7 +93,7 @@ public class UserDao {
                 //4. execute query
                 rs = stm.executeQuery();
                 //5. process
-                if( rs.next()) {
+                if (rs.next()) {
                     String id = rs.getString(1);
                     String fullName = rs.getString(2);
                     String email1 = rs.getString(3);
@@ -100,7 +101,7 @@ public class UserDao {
                     int role_id = rs.getInt(5);
                     int status_id = rs.getInt(6);
 
-                    return  new UserDto(id, fullName, email1, avatar_url, role_id, status_id);
+                    return new UserDto(id, fullName, email1, avatar_url, role_id, status_id);
                 }
             }
         } finally {
@@ -118,10 +119,10 @@ public class UserDao {
     }
 
 
-    public UserDto addUser (String email, String fullName, String avatar_url, int role_id, int status_id)
-            throws SQLException, ConnectionException, AlreadyExistException, ClassNotFoundException {
+    public UserDto addUser(String email, String fullName, String avatar_url, int role_id, int status_id)
+            throws SQLException, ClassNotFoundException {
         Connection con = null;
-        PreparedStatement stm= null;
+        PreparedStatement stm = null;
 
         try {
             //1. connect database
@@ -129,8 +130,8 @@ public class UserDao {
 
             //2. create sql statement String
             if (con != null) {
-                String id = UUID.randomUUID().toString().substring(0,8);
-                System.out.println("ID la  "+ id);
+                String id = UUID.randomUUID().toString().substring(0, 8);
+                System.out.println("ID la  " + id);
                 String sql = "INSERT INTO Users(id, fullName, email, avatar_url, role_id, status_id) "
                         + "VALUES(?, ?, ?, ?, ?, ?)";
 
@@ -149,7 +150,7 @@ public class UserDao {
                 //5. process
 //                if( rows > 0){
 //
-                    return  new UserDto(id, fullName, email,avatar_url, role_id, status_id);
+                return new UserDto(id, fullName, email, avatar_url, role_id, status_id);
 //                }
 
             }
@@ -163,6 +164,55 @@ public class UserDao {
         }
         return null;
 
+    }
+
+    public UserDto blockUser(String userId, int statusId) throws SQLException, ClassNotFoundException {
+        UserDto userBlocked = null;
+        try (Connection con = dbHelper.connect()) {
+            PreparedStatement ptm = con.prepareStatement("UPDATE Users SET status_id=? WHERE id=?;");
+            ptm.setInt(1,statusId);
+            ptm.setString(2,userId);
+            int result = ptm.executeUpdate();
+            if (result > 0) {
+                return userBlocked = getUserById(userId);
+            }
+        }
+        return userBlocked;
+    }
+
+    public List<UserDto> getAllUsers() throws SQLException, ClassNotFoundException {
+        List<UserDto> result = null;
+        try (Connection con = dbHelper.connect()) {
+            PreparedStatement ptm = con.prepareStatement("Select id, fullName, email, avatar_url, role_id, status_id From Users;");
+            ResultSet rs = ptm.executeQuery();
+            while (rs.next()) {
+                String id = rs.getString(1);
+                String fullName = rs.getString(2);
+                String email1 = rs.getString(3);
+                String avatar_url = rs.getString(4);
+                int role_id = rs.getInt(5);
+                int status_id = rs.getInt(6);
+                if(result == null){
+                    result = new ArrayList<>();
+                }
+                result.add(new UserDto(id, fullName, email1, avatar_url, role_id, status_id));
+            }
+        }
+        return result;
+    }
+
+    public UserDto updateUserRole(String userId, int roleId) throws SQLException, ClassNotFoundException {
+        UserDto userUpdated = null;
+        try(Connection con = dbHelper.connect()){
+            PreparedStatement ptm = con.prepareStatement("UPDATE Users SET role_id=? WHERE id=?;");
+            ptm.setInt(1,roleId);
+            ptm.setString(2,userId);
+            int result = ptm.executeUpdate();
+            if (result > 0) {
+                return userUpdated = getUserById(userId);
+            }
+        }
+        return userUpdated;
     }
 
 }

@@ -1,6 +1,8 @@
 package com.devlogs.masa_backend.servlets.test;
 
 import com.devlogs.masa_backend.common.helper.MasaLog;
+import com.devlogs.masa_backend.data.remote_database.UserDao;
+import com.devlogs.masa_backend.data.remote_database.UserDto;
 import com.devlogs.masa_backend.domain.entities.UserEntity;
 import com.devlogs.masa_backend.domain.entities.UserRole;
 import com.devlogs.masa_backend.domain.entities.UserStatus;
@@ -15,28 +17,29 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet(name = "TestServlet", urlPatterns = "/TestServlet")
 public class TestServlet extends BaseHttpServlet {
-    @Inject
-    public UserRepositoryImp imp;
 //    @Inject
-//    UserDao dao;
+//    public UserRepositoryImp imp;
+    @Inject
+    UserDao dao;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getControllerComponent().inject(this);
 
         try {
-        UserRole userRole =  new UserRole(UserRole.TYPE.STUDENT);
-        UserStatus userStatus =  new UserStatus(UserStatus.STATUS.ACTIVE);
-        UserEntity userEntity = imp.addUser("implementation@fpt.edu.vn", "Im pe men", "url10",
-                 userRole, userStatus);
-           if (userEntity != null ){
-               MasaLog.normalLog("Add thanh cong roi hihi ");
-           } else  MasaLog.normalLog("NULLLLL");
-        } catch (AlreadyExistException e) {
-            e.printStackTrace();
-        } catch (ConnectionException e) {
+            UserDto dto = dao.updateUserRole("SE100003",1);
+//            if (list != null) {
+//                for (UserDto dto : list){
+                    System.out.println(dto);
+//                }
+//            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
