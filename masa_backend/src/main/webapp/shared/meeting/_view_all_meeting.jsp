@@ -16,18 +16,47 @@
     <style>
 
     </style>
+    <script>
+        function follow(){
+            if(document.getElementById("follow").textContent === "Follow"){
+                const json = {
+                    "userId": document.getElementById("userId").textContent,
+                    "meetingId": document.getElementById("meetingId").textContent,
+                }
+                console.log(json);
+                const options = {
+                    method: 'POST',
+                    body: JSON.stringify(json),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+                fetch('../../api/appointment-management/create', options)
+                    .then(res => res.json())
+                    .then(res => console.log(res))
+                    .catch(err => console.error(err));
+                document.getElementById("follow").textContent = "Unfollow";
+            }else{
+                //Nhowf Tien xu ly not dum tui phan Unfollow tai doan nay nha: shared/meeting/_view_all_meeting
+                document.getElementById("follow").textContent = "Follow";
+            }
+        }
+    </script>
 </head>
 <body>
 <h1>View All meeting</h1>
+<h1 id="userId" style="display: none">${sessionScope.CURRENT_USER.getId()}</h1>
 <script>
     const container = document.getElementById('container');
     $.getJSON('http://localhost:8080/masa/api/meeting-management/meetings', function(data) {
         const arr = data["meetings"];
         arr.forEach(element => {
+
             let htmlElements = "";
             for (let i = 0; i < arr.length; i++) {
                 htmlElements +=
-                    '<div class="p-5 bg-light bg-secondary" style="width: 70%; margin-left: 10%; border: solid; border-radius: 10px; padding-left: 10%; padding-bottom: 20px;  padding-top: 20px" id="info">'
+                    '<h1 id="meetingId" style="display: none">'+element.id+'</h1>'
+                    +'<div class="p-5 bg-light bg-secondary" style="width: 70%; margin-left: 10%; border: solid; border-radius: 10px; padding-left: 10%; padding-bottom: 20px;  padding-top: 20px" id="info">'
                     +'<p class="header" style="font-weight: bold; font-size: larger">'+element.title+'</p>'
                     +'<div class="center">'
                     +'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">'
@@ -153,21 +182,26 @@
 
                     +'</div>'
                     +'<div class="modal-footer">'
-                    +'<button type="button" class="btn btn-primary" data-dismiss="modal">Follow</button>'
+                    +'<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="follow()" id="follow">Follow</button>'
                     +'</div>'
                     +'        </div>'
                     +'</div>'
                     +'</div>'
                 ;
             }
+
             let container = document.getElementById("container");
             container.innerHTML = htmlElements;
+
+
 
         });
 
 
     });
 
+</script>
+<script>
 </script>
 <div id="target"></div>
 <div id="container"></div>
