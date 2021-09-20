@@ -34,7 +34,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         </ul>
       </div>
     </nav>
-
+    <c:set var="redirectUrl" value="http://localhost:${pageContext.request.serverPort}/masa/logingoogle"/>
     <div class="container">
       <img
         src="https://i.imgur.com/EWj8mqZ.jpg"
@@ -48,15 +48,11 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         action="https://accounts.google.com/o/oauth2/auth?"
       >
         <div>
-          <input type="hidden" name="response_type" value="code" />
-          <input type="hidden" name="client_id" value="${Masa.CLIENT_ID}" />
-          <input
-            type="hidden"
-            name="redirect_uri"
-            value="${Masa.GOOGLE_REDIRECT_URI}"
-          />
-          <input type="hidden" name="scope" value="email profile" />
-          <input type="hidden" name="approval_prompt" value="force" />
+            <input type="hidden" name="response_type" value="code" />
+            <input type="hidden" name="client_id" value="${Masa.CLIENT_ID}" />
+            <input type="hidden" name="redirect_uri" value="${redirectUrl}" />
+            <input type="hidden" name="scope" value="email profile" />
+            <input type="hidden" name="approval_prompt" value="force" />
           <input type="submit" value="Login with Google" />
         </div>
       </form>

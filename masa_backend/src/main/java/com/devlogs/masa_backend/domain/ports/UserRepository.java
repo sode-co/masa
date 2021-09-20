@@ -5,7 +5,6 @@ import com.devlogs.masa_backend.domain.entities.UserRole;
 import com.devlogs.masa_backend.domain.entities.UserStatus;
 import com.devlogs.masa_backend.domain.errors.AlreadyExistException;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
-import com.devlogs.masa_backend.domain.errors.NotFoundException;
 
 public interface UserRepository {
     /*
@@ -17,6 +16,9 @@ public interface UserRepository {
      * Mọi người có thể vào https://stackoverflow.com/questions/27578/when-to-choose-checked-and-unchecked-exceptions để biết thêm
      * */
     UserEntity getUserByEmail (String email) throws ConnectionException;
+
+    UserEntity getUserById(String id) throws ConnectionException;
+
     UserEntity addUser (String email, String fullName, String avatar, UserRole role, UserStatus userStatus) throws ConnectionException, AlreadyExistException;
 
 }
