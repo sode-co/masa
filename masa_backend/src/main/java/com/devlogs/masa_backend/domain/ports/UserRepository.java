@@ -5,7 +5,6 @@ import com.devlogs.masa_backend.domain.entities.UserRole;
 import com.devlogs.masa_backend.domain.entities.UserStatus;
 import com.devlogs.masa_backend.domain.errors.AlreadyExistException;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
-import com.devlogs.masa_backend.domain.errors.NotFoundException;
 
 public interface UserRepository {
     /*
