@@ -28,7 +28,7 @@ public class PlatformCheckerImp implements PlatformChecker {
     public boolean isValid(MeetingPlatform.PLATFORM platform, String url) {
         if (!isValidUrl(url)) return false;
 
-        if (platform != MeetingPlatform.PLATFORM.ZOOM || platform != MeetingPlatform.PLATFORM.GOOGLE_MEET) {
+        if (platform != MeetingPlatform.PLATFORM.ZOOM && platform != MeetingPlatform.PLATFORM.GOOGLE_MEET) {
             return false;
         }
 

@@ -24,15 +24,15 @@ import java.io.IOException;
 public class TestServlet extends BaseHttpServlet {
     @Inject
     public UserRepositoryImp imp;
-//    @Inject
-//    public SendRequestToBecomeMentor sendRequestToBecomeMentor;
+    @Inject
+    public SendRequestToBecomeMentor sendRequestToBecomeMentor;
     @Inject
     UserDao dao;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getControllerComponent().inject(this);
-//        SendRequestToBecomeMentor.Result result = sendRequestToBecomeMentor.executes("GU100008", "Heloo description ne", "https://us05web.zoom.us/j/83708124951?pwd=MWhKNC9KWlZMa21kaTBEMXR0dGdpdz09", "https://meet.google.com/jsg-rqjg-ybi");
-//        MasaLog.normalLog("Send request result: " + result.getClass().getSimpleName());
+        SendRequestToBecomeMentor.Result result = sendRequestToBecomeMentor.executes("GU100008", "Heloo description ne", "https://www.us05web.zoom.us/j/83708124951?pwd=MWhKNC9KWlZMa21kaTBEMXR0dGdpdz09", "https://www.meet.google.com/jsg-rqjg-ybi");
+        MasaLog.normalLog("Send request result: " + result.getClass().getSimpleName());
     }
 
     @Override
