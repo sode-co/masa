@@ -1,28 +1,34 @@
 version: '3.8'
 services:
+  serverdev:
+    image: tianon/true
+    depends_on: 
+      - mssql
+      - mailwithdevlogs
+    container_name: serverdev_group
   mssql:
-    build: 
-      context: ./database
-      dockerfile: .dockerfile
+    image: tiendvlp/masa_db:0.0
     container_name: mssqlserver
     restart: always
     hostname: mssql
-    environment:
-      SA_PASSWORD: Password123
-      ACCEPT_EULA: Y
     volumes:
       - ./database/mssqlvolume:/var/opt/mssql/data # thư mục lưu DB
       - ./database/backup:/var/opt/mssql/backup     # thư  mục chứa file backup
     ports:
-      - "1433:1433"     # cổng kết nối
+      - "127.0.0.1:1433:1433"
   backend:
     restart: always
     container_name: masa_backend
-    build: 
-      context: ./
-      dockerfile: webserver/tomcat/.dockerfile
+    image: tiendvlp/masa_webserver:0.0
     ports:
-      - '8080:8080'
+      - '8081:8080'    # cổng kết nối với tomcat
     volumes:
       - ./masa_backend/target/masa.war:/usr/local/tomcat/webapps/masa.war
       - ./webserver/tomcat/logs:/usr/local/tomcat/logs
+  mailwithdevlogs:
+    container_name: mailwithdevlogs
+    image: tiendvlp/mailwithdevlogs:0.0
+    ports: 
+      - '8000:8000'
+    volumes: 
+      - ./maildata:/app/maildata
