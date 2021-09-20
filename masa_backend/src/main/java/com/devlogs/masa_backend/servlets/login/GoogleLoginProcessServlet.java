@@ -75,8 +75,8 @@ public class GoogleLoginProcessServlet extends BaseHttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-//        LoginWithGoogleUseCase.Result result = loginWithGoogleUseCase.executes(request.getParameter("code"));
-//        processLoginResult(response, result);
+        LoginWithGoogleUseCase.Result result = loginWithGoogleUseCase.executes(request.getParameter("code"));
+        processLoginResult(response, result);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
