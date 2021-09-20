@@ -1,5 +1,6 @@
 package com.devlogs.masa_backend.servlets.login;
 
+import com.devlogs.masa_backend.domain.entities.UserEntity;
 import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.data.common.DbHelper;
 import com.devlogs.masa_backend.domain.entities.UserRole;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static com.devlogs.masa_backend.common.Masa.SESSION_KEY.*;
 import java.sql.SQLException;
 
 @WebServlet(name = "logingoogle", urlPatterns = "/logingoogle")
@@ -22,10 +24,12 @@ public class GoogleLoginProcessServlet extends BaseHttpServlet {
     @Inject
     public LoginWithGoogleUseCase loginWithGoogleUseCase;
 
-    private void processLoginResult (HttpServletResponse response, LoginWithGoogleUseCase.Result result) throws IOException {
+    private void processLoginResult (HttpServletResponse response, HttpServletRequest request, LoginWithGoogleUseCase.Result result) throws IOException {
         PrintWriter out = response.getWriter();
         if (result instanceof LoginWithGoogleUseCase.Result.Success) {
-            navigateByUserRole(((LoginWithGoogleUseCase.Result.Success) result).user.getRole(), response);
+            UserEntity currentUser = ((LoginWithGoogleUseCase.Result.Success) result).user;
+            request.getSession(true).setAttribute(USER, currentUser);
+            navigateByUserRole(currentUser.getRole(), response);
         } else if (result instanceof LoginWithGoogleUseCase.Result.NotAllowed) {
             out.print("Not allowed");
         } else if (result instanceof LoginWithGoogleUseCase.Result.GeneralError) {
@@ -76,7 +80,7 @@ public class GoogleLoginProcessServlet extends BaseHttpServlet {
             e.printStackTrace();
         }
         LoginWithGoogleUseCase.Result result = loginWithGoogleUseCase.executes(request.getParameter("code"));
-        processLoginResult(response, result);
+        processLoginResult(response, request,result);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

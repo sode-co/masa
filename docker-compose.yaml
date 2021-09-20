@@ -7,6 +7,9 @@ services:
       - mailwithdevlogs
     container_name: serverdev_group
   mssql:
+    environment: 
+      SA_PASSWORD: Password123
+      ACCEPT_EULA: Y
     image: tiendvlp/masa_db:0.0
     container_name: mssqlserver
     restart: always
@@ -15,7 +18,7 @@ services:
       - ./database/mssqlvolume:/var/opt/mssql/data # thư mục lưu DB
       - ./database/backup:/var/opt/mssql/backup     # thư  mục chứa file backup
     ports:
-      - "127.0.0.1:1433:1433"
+      - "127.0.0.1:1533:1433"
   backend:
     restart: always
     container_name: masa_backend
