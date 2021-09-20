@@ -2,8 +2,12 @@ package com.devlogs.masa_backend.common.di.application;
 
 import com.devlogs.masa_backend.common.Masa;
 import com.devlogs.masa_backend.data.common.DbHelper;
+import com.devlogs.masa_backend.platform.PlatformChecker;
+import com.devlogs.masa_backend.platform.PlatformCheckerImp;
 import dagger.Module;
 import dagger.Provides;
+import okhttp3.OkHttpClient;
+
 import javax.inject.Singleton;
 import javax.servlet.ServletContext;
 import javax.validation.Validation;
@@ -24,6 +28,18 @@ public class ApplicationModule {
     @Singleton
     public DbHelper provideDbHelper () {
         return new DbHelper(context.getRealPath("/WEB-INF"));
+    }
+
+    @Provides
+    @Singleton
+    public OkHttpClient provideOkHttpClient () {
+        return new OkHttpClient();
+    }
+
+    @Provides
+    @Singleton
+    public PlatformChecker providePlatformChecker (PlatformCheckerImp platformCheckerImp) {
+        return platformCheckerImp;
     }
 
     @Provides
