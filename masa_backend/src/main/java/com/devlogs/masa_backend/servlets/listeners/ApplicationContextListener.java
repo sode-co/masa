@@ -10,6 +10,7 @@ import javax.servlet.ServletContextListener;
 public class ApplicationContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+        sce.getServletContext().log("The real real path: " + sce.getServletContext().getRealPath("/WEB-INF"));
         sce.getServletContext().setAttribute(Masa.Component.APPLICATION_COMPONENT,
                 DaggerApplicationComponent.builder()
                         .applicationModule(new ApplicationModule(sce.getServletContext())).build());
