@@ -3,6 +3,7 @@ package com.devlogs.masa_backend.servlets.test;
 import com.devlogs.masa_backend.become_mentor.SendRequestToBecomeMentor;
 import com.devlogs.masa_backend.common.Masa;
 import com.devlogs.masa_backend.common.helper.MasaLog;
+import com.devlogs.masa_backend.data.remote_database.UserDao;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
 import com.devlogs.masa_backend.domain.entities.UserEntity;
 import com.devlogs.masa_backend.domain.entities.UserRole;
@@ -23,15 +24,15 @@ import java.io.IOException;
 public class TestServlet extends BaseHttpServlet {
     @Inject
     public UserRepositoryImp imp;
-    @Inject
-    public SendRequestToBecomeMentor sendRequestToBecomeMentor;
 //    @Inject
-//    UserDao dao;
+//    public SendRequestToBecomeMentor sendRequestToBecomeMentor;
+    @Inject
+    UserDao dao;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getControllerComponent().inject(this);
-        SendRequestToBecomeMentor.Result result = sendRequestToBecomeMentor.executes("GU100008", "Heloo description ne", "https://us05web.zoom.us/j/83708124951?pwd=MWhKNC9KWlZMa21kaTBEMXR0dGdpdz09", "https://meet.google.com/jsg-rqjg-ybi");
-        MasaLog.normalLog("Send request result: " + result.getClass().getSimpleName());
+//        SendRequestToBecomeMentor.Result result = sendRequestToBecomeMentor.executes("GU100008", "Heloo description ne", "https://us05web.zoom.us/j/83708124951?pwd=MWhKNC9KWlZMa21kaTBEMXR0dGdpdz09", "https://meet.google.com/jsg-rqjg-ybi");
+//        MasaLog.normalLog("Send request result: " + result.getClass().getSimpleName());
     }
 
     @Override

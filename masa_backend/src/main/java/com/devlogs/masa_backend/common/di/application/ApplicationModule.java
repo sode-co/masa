@@ -18,16 +18,17 @@ import java.net.URL;
 @Module
 public class ApplicationModule {
     private ServletContext context;
-    private URL WEB_INF_PATH;
+    private String WEB_INF_PATH;
     public ApplicationModule (ServletContext applicationContext) {
         this.context = applicationContext;
         Masa.init(context);
+        WEB_INF_PATH = context.getRealPath("/WEB-INF");
     }
 
     @Provides
     @Singleton
     public DbHelper provideDbHelper () {
-        return new DbHelper(context.getRealPath("/WEB-INF"));
+        return new DbHelper(WEB_INF_PATH);
     }
 
     @Provides
