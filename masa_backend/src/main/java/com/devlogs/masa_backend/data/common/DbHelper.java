@@ -1,6 +1,5 @@
 package com.devlogs.masa_backend.data.common;
 
-import com.devlogs.masa_backend.common.Masa;
 import com.devlogs.masa_backend.common.helper.MasaLog;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.apache.commons.dbcp.BasicDataSource;
