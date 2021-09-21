@@ -51,25 +51,24 @@ public class LoginWithGoogleUseCase {
         String fullName = pojo.getFamily_name() + " " + pojo.getGiven_name();
         String email = pojo.getEmail();
         int numOfDigit = email.replaceAll("\\D+","").length();
-
-        if (!emailLoginRule.valid(email)) {
-            return new Result.NotAllowed();
-        }
-
-        UserRole userRole = null;
-        // Student
-        if (numOfDigit >= 4) {
-            userRole = new UserRole(UserRole.TYPE.STUDENT);
-            // Staff or Lecturer
-        } else {
-            userRole = new UserRole(UserRole.TYPE.GUEST);
-        }
-
         try {
             UserEntity user = userRepository.getUserByEmail(pojo.getEmail());
             if (user == null ) {
+                if (!emailLoginRule.valid(email)) {
+                    // check if they're admin
+                        return new Result.NotAllowed();
+                }
+                UserRole userRole = null;
+                // Student
+                if (numOfDigit >= 4) {
+                    userRole = new UserRole(UserRole.TYPE.STUDENT);
+                    // Staff or Lecturer
+                } else {
+                    userRole = new UserRole(UserRole.TYPE.GUEST);
+                }
                 user = userRepository.addUser(email,fullName, pojo.getPicture(), userRole, new UserStatus(UserStatus.STATUS.ACTIVE));
             }
+
             return new Result.Success(user);
         } catch (ConnectionException | AlreadyExistException ex) {
             return new Result.GeneralError(ex.getMessage());
