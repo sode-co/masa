@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 services:
   serverdev:
     image: tianon/true
@@ -10,19 +10,17 @@ services:
     environment: 
       SA_PASSWORD: Password123
       ACCEPT_EULA: Y
-    image: tiendvlp/masa_db:0.0
+    image:  tiendvlp/masa_db:0.1
     container_name: mssqlserver
     restart: always
-    hostname: mssql
     volumes:
-      - ./database/mssqlvolume:/var/opt/mssql/data # thư mục lưu DB
-      - ./database/backup:/var/opt/mssql/backup     # thư  mục chứa file backup
+      - vmssql:/var/opt/mssql     # thư  mục chứa file backup
     ports:
-      - "127.0.0.1:1533:1433"
+      - "1533:1433"
   backend:
     restart: always
     container_name: masa_backend
-    image: tiendvlp/masa_webserver:0.0
+    image: tiendvlp/masa_webserver:0.1
     ports:
       - '8081:8080'    # cổng kết nối với tomcat
     volumes:
@@ -35,3 +33,5 @@ services:
       - '8000:8000'
     volumes: 
       - ./maildata:/app/maildata
+volumes:
+ vmssql:
