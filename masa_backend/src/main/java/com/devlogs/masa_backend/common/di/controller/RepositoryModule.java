@@ -25,13 +25,12 @@ public class RepositoryModule {
     }
 
     @Provides
-    public MeetingRepository provideMeetingRepository (MockMeetingRepositoryImp meetingRepositoryImp) {
+    public MeetingRepository provideMeetingRepository (MeetingRepository meetingRepositoryImp) {
         return meetingRepositoryImp;
     }
-//    asdasdasd
 
     @Provides
-    public AppointmentRepository provideAppointmentRepository (MockAppointmentRepositoryImp appointmentRepositoryImp) {
+    public AppointmentRepository provideAppointmentRepository (AppointmentRepository appointmentRepositoryImp) {
         return appointmentRepositoryImp;
     }
 

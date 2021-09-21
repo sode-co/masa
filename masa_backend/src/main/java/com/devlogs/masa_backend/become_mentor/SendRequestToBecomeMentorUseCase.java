@@ -1,6 +1,6 @@
 package com.devlogs.masa_backend.become_mentor;
 
-import com.devlogs.masa_backend.become_mentor.SendRequestToBecomeMentor.Result.*;
+import com.devlogs.masa_backend.become_mentor.SendRequestToBecomeMentorUseCase.Result.*;
 import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
 import com.devlogs.masa_backend.domain.entities.RequestEntity;
@@ -17,7 +17,7 @@ import com.devlogs.masa_backend.platform.PlatformChecker;
 import javax.inject.Inject;
 import java.util.List;
 
-public class SendRequestToBecomeMentor {
+public class SendRequestToBecomeMentorUseCase {
     public static class Result {
         public static class Success extends Result {
 
@@ -52,7 +52,7 @@ public class SendRequestToBecomeMentor {
     private RequestRepository requestRepository;
 
     @Inject
-    public SendRequestToBecomeMentor(UserRepository userRepository, PlatformChecker platformChecker, SendMailGateway sendMailGateway, RequestRepository requestRepository) {
+    public SendRequestToBecomeMentorUseCase(UserRepository userRepository, PlatformChecker platformChecker, SendMailGateway sendMailGateway, RequestRepository requestRepository) {
         this.userRepository = userRepository;
         this.platformChecker = platformChecker;
         this.sendMailGateway = sendMailGateway;

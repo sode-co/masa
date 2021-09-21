@@ -1,6 +1,7 @@
 package com.devlogs.masa_backend.common.di.controller;
 
 import com.devlogs.masa_backend.servlets.appointments.CreateAppointmentServlet;
+import com.devlogs.masa_backend.servlets.become_mentor.BecomeMentorServlet;
 import com.devlogs.masa_backend.servlets.login.GoogleLoginProcessServlet;
 import com.devlogs.masa_backend.servlets.meeting.createmeeting.CreateMeetingServlet;
 import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetAllMeetingServlet;
@@ -32,4 +33,5 @@ public interface ControllerComponent {
     void inject(CreateAppointmentServlet followMeetingServlet);
 
 
+    void inject(BecomeMentorServlet becomeMentorServlet);
 }
