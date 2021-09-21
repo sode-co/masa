@@ -24,6 +24,7 @@ public class CreateAppointmentServlet extends BaseHttpServlet {
         super.init();
         getControllerComponent().inject(this);
     }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestHelper requestHelper = getRequestComponent().getRequestHelper();
