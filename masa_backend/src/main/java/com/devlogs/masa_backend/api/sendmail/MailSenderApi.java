@@ -34,8 +34,7 @@ public class MailSenderApi implements SendMailGateway {
 
     @Override
     public boolean sendEmailWithScheduler(Email email, String receiverEmail, Long scheduleMillis) throws ConnectionException, TimeOutException {
-        try {
-            Response resp = send(email, receiverEmail, scheduleMillis);
+        try (Response resp = send(email, receiverEmail, scheduleMillis)) {
             return resp.isSuccessful();
         } catch (IOException e) {
             throw new ConnectionException(e.getMessage());
@@ -44,8 +43,7 @@ public class MailSenderApi implements SendMailGateway {
 
     @Override
     public boolean sendEmailNow(Email email, String receiverEmail) throws ConnectionException, TimeOutException {
-        try {
-            Response resp = send(email, receiverEmail, 0l);
+        try (Response resp = send(email, receiverEmail, 0L)) {
             return resp.isSuccessful();
         } catch (IOException e) {
             throw new ConnectionException(e.getMessage());

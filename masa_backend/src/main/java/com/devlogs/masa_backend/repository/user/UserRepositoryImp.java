@@ -72,9 +72,9 @@ public class UserRepositoryImp implements UserRepository {
     }
 
     @Override
-    public List<UserEntity> getUserByRole(int roleId) throws ConnectionException {
+    public List<UserEntity> getAllAdmin() throws ConnectionException {
         try {
-            List<UserDto> queryResult = dao.getUserByRole(roleId);
+            List<UserDto> queryResult = dao.getUserByRole(1);
             return queryResult.stream().map((item) -> convertDto(item)).collect(Collectors.toList());
         }catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());

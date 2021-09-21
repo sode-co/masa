@@ -19,7 +19,7 @@ public interface UserRepository {
      * */
     UserEntity getUserByEmail (String email) throws ConnectionException;
 
-    List<UserEntity> getUserByRole (int roleId) throws ConnectionException;
+    List<UserEntity> getAllAdmin () throws ConnectionException;
 
     UserEntity getUserById(String id) throws ConnectionException;
 

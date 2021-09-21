@@ -1,6 +1,7 @@
 package com.devlogs.masa_backend.become_mentor;
 
 import com.devlogs.masa_backend.become_mentor.SendRequestToBecomeMentor.Result.*;
+import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
 import com.devlogs.masa_backend.domain.entities.RequestEntity;
 import com.devlogs.masa_backend.domain.entities.UserEntity;
@@ -14,6 +15,7 @@ import com.devlogs.masa_backend.domain.ports.sendmail.SendMailGateway;
 import com.devlogs.masa_backend.platform.PlatformChecker;
 
 import javax.inject.Inject;
+import java.util.List;
 
 public class SendRequestToBecomeMentor {
     public static class Result {
@@ -76,8 +78,13 @@ public class SendRequestToBecomeMentor {
             // save request
             requestRepository.addRequest(user.getId(), description, RequestEntity.TYPE.BECOME_MENTOR, RequestEntity.STATUS.PROCESSING);
             // send email to admin
+            List<UserEntity> admins = userRepository.getAllAdmin();
             BecomeMentorEmail email = new BecomeMentorEmail(zoomUrl, googleMeetUrl, user.getEmail(), user.getId(), user.getFullName(), description);
-            sendMailGateway.sendEmailNow(email, user.getEmail());
+
+            for (UserEntity admin : admins) {
+                sendMailGateway.sendEmailNow(email, admin.getEmail());
+                MasaLog.normalLog("Email-BecomeMentor-" +email.getSubject() + " had been sent to " + admin.getEmail());
+            }
             return new Success();
 
         } catch (ConnectionException e) {
@@ -86,4 +93,5 @@ public class SendRequestToBecomeMentor {
             return new SendMailFailedButRequestSaved();
         }
     }
+
 }
