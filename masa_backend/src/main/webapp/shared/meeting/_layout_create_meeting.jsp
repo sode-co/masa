@@ -59,7 +59,7 @@
             const start = new Date(startDate);
             const millisecondsStart = start.getTime();
 
-            const endDate = (""+document.getElementById("start-date").value+" "+ document.getElementById("start-time").value+":00").replace(/-/g,"/")
+            const endDate = (""+document.getElementById("end-date").value+" "+ document.getElementById("end-time").value+":00").replace(/-/g,"/")
             const end = new Date(endDate);
             const millisecondsEnd = end.getTime();
 
@@ -71,12 +71,10 @@
                 const json = {
                     "title": document.getElementById("title").value,
                     "platform": document.getElementById("platform").value,
-                    // "host": document.getElementById("host").value,
                     "host": "12345",//chỗ này sẽ get Host ID, user name gì đấy
                     "startTime": millisecondsStart,
                     "endTime": millisecondsEnd,
-                    // "description": document.getElementById("description").getAttribute('value')
-                    "description": document.querySelector('[contenteditable]').textContent
+                    "description": $("#description").html(),
                 }
                 console.log(json);
                 const options = {
