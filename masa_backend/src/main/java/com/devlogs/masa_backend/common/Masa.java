@@ -1,11 +1,15 @@
 package com.devlogs.masa_backend.common;
 
+import com.devlogs.masa_backend.common.helper.MasaLog;
+
 import javax.servlet.ServletContext;
 
 public class Masa {
     public static class Component {
         public static final String APPLICATION_COMPONENT = "APPLICATION_COMPONENT";
     }
+
+        public static String SERVER_HOST;
 
         public static String DATABASE_HOST = "";
         public static String DATABASE_NAME = "";
@@ -45,8 +49,16 @@ public class Masa {
                 public static String CREATE = "api/meeting/create";
                 public static String UPDATE = "api/meeting/update";
             }
+
+            public static class REQUEST {
+                public static final String ANSWER_BECOME_MENTOR_REQUEST_NAV = "/api/request-management/answer";
+            }
         }
-    public static void onServerPort (String port) {
+    public static void onServerName (String protocol, String serverName, int port) {
+            if (protocol.equals("HTTP/1.1")) {
+                SERVER_HOST = "http://"+serverName+":"+port+"/masa";
+            }
+            MasaLog.normalLog("Server host: " + SERVER_HOST);
             GOOGLE_REDIRECT_URI = "http://localhost:"+port+"/masa/logingoogle";
     }
     public static void init (ServletContext context) {

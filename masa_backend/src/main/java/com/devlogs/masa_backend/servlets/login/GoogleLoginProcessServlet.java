@@ -6,6 +6,8 @@ import com.devlogs.masa_backend.data.common.DbHelper;
 import com.devlogs.masa_backend.domain.entities.UserRole;
 import com.devlogs.masa_backend.login.LoginWithGoogleUseCase;
 import com.devlogs.masa_backend.servlets.common.base.BaseHttpServlet;
+import com.google.gson.Gson;
+
 import static com.devlogs.masa_backend.common.Masa.*;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -15,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static com.devlogs.masa_backend.common.Masa.SESSION_KEY.*;
-import java.sql.SQLException;
+import java.util.Base64;
 
 @WebServlet(name = "logingoogle", urlPatterns = "/logingoogle")
 public class GoogleLoginProcessServlet extends BaseHttpServlet {
@@ -70,15 +72,15 @@ public class GoogleLoginProcessServlet extends BaseHttpServlet {
     protected DbHelper dbHelper;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            MasaLog.normalLog("Do get login");
-            dbHelper.connect();
-            response.getWriter().print("hihi connected");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        String stateParam = request.getParameter("state");
+        String redirectUrl = "";
+        if (stateParam != null) {
+            byte[] decodedBytes = Base64.getDecoder().decode(stateParam);
+            String jsonState = new String(decodedBytes);
+            GoogleLoginState state = new Gson().fromJson(jsonState, GoogleLoginState.class);
+            redirectUrl = state.getRedirectUrl();
         }
+        MasaLog.normalLog("ggredirectUrl: " + redirectUrl);
         LoginWithGoogleUseCase.Result result = loginWithGoogleUseCase.executes(request.getParameter("code"));
         processLoginResult(response, request,result);
     }

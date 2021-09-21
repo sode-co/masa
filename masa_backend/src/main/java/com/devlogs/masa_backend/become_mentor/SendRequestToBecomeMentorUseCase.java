@@ -76,10 +76,10 @@ public class SendRequestToBecomeMentorUseCase {
                 return new InvalidPlatform();
             }
             // save request
-            requestRepository.addRequest(user.getId(), description, RequestEntity.TYPE.BECOME_MENTOR, RequestEntity.STATUS.PROCESSING);
+            RequestEntity addedRequest = requestRepository.addRequest(user.getId(), description, RequestEntity.TYPE.BECOME_MENTOR, RequestEntity.STATUS.PROCESSING);
             // send email to admin
             List<UserEntity> admins = userRepository.getAllAdmin();
-            BecomeMentorEmail email = new BecomeMentorEmail(zoomUrl, googleMeetUrl, user.getEmail(), user.getId(), user.getFullName(), description);
+            BecomeMentorEmail email = new BecomeMentorEmail(zoomUrl, googleMeetUrl, user.getEmail(), user.getId(), user.getFullName(), description, addedRequest.getId());
 
             for (UserEntity admin : admins) {
                 sendMailGateway.sendEmailNow(email, admin.getEmail());
