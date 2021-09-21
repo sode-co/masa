@@ -23,9 +23,9 @@
 		- user: SA
 
 -- CÁCH REFRESH LẠI DATABASE:
-	- RUN $docker-compose down
-	- XÓA FOLDER DATABASE/MSSQLVOLUME
-	- RUN $docker-compose up -d serverdev
+	- Open docker desktop
+	- Switch to volume tab VOLUMES
+	- DELETE VOLUME vmssql
 
 -- CÁCH XEM VÀ REFRESH LẠI EMAIL:
 	- MỞ FILE MAIL.JSON ĐỂ XEM CÁC EMAIL ĐANG GỬI.
