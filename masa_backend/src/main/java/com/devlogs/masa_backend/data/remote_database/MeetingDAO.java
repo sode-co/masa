@@ -108,7 +108,7 @@ public class MeetingDAO {
 
     public MeetingDTO getMeetingByID(String meetingId) throws SQLException, ClassNotFoundException {
         try (Connection con = dbHelper.connect()) {
-            CallableStatement ctm = con.prepareCall("EXEC getMeetingByID ?;");
+            PreparedStatement ctm = con.prepareStatement("SELECT id, title, time_start, time_end, mentor_id, platform_id, status_id, description FROM Meetings WHERE id=? ;");
             ctm.setString(1, meetingId);
             ResultSet rs = ctm.executeQuery();
             while (rs.next()) {
