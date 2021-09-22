@@ -4,6 +4,7 @@ import com.devlogs.masa_backend.common.Masa;
 import com.devlogs.masa_backend.data.common.DbHelper;
 import com.devlogs.masa_backend.platform.PlatformChecker;
 import com.devlogs.masa_backend.platform.PlatformCheckerImp;
+import com.devlogs.masa_backend.servlets.common.RoleAndRequestMapper;
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
@@ -23,6 +24,12 @@ public class ApplicationModule {
         this.context = applicationContext;
         Masa.init(context);
         WEB_INF_PATH = context.getRealPath("/WEB-INF");
+    }
+
+    @Provides
+    @Singleton
+    public RoleAndRequestMapper provideRoleAndRequestMapper () {
+        return new RoleAndRequestMapper();
     }
 
     @Provides

@@ -1,5 +1,6 @@
 package com.devlogs.masa_backend.login;
 
+import com.devlogs.masa_backend.common.annotations.AccessRole;
 import com.devlogs.masa_backend.domain.ports.google_api.GooglePojo;
 import com.devlogs.masa_backend.domain.entities.UserEntity;
 import com.devlogs.masa_backend.domain.entities.UserRole;
@@ -8,10 +9,24 @@ import com.devlogs.masa_backend.domain.errors.AlreadyExistException;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
 import com.devlogs.masa_backend.domain.ports.google_api.LoginWithGoogleApi;
+import okhttp3.Challenge;
+import org.reflections.Reflections;
 
 import javax.inject.Inject;
+import java.lang.annotation.Annotation;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class LoginWithGoogleUseCase {
+    private static <T> T createNewInstanceOfClass(Class<T> someClass) {
+        try {
+            return someClass.newInstance();
+        } catch (Exception e) {
+            return null; //Bad idea but now it's waste of time
+        }
+    }
+
     public static class Result {
         public static class Success extends Result {
             public UserEntity user;

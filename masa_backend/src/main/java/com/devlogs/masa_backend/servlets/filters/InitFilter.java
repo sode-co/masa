@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-@WebFilter(filterName = "InitFilter", urlPatterns = "/*")
 public class InitFilter implements Filter {
     public void init(FilterConfig config) throws ServletException {
     }

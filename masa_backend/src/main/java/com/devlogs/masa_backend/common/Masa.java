@@ -28,6 +28,11 @@ public class Masa {
         }
 
         public static class PAGE {
+            public static class AUTH {
+                public static class PERMISSION_MANAGEMENT {
+                    public static final String DENIED_PAGE = "auth/permission-management/permission-denied";
+                }
+            }
             public static class STUDENT {
                 public static String MEETING_PAGE = "student/meeting/index.jsp";
             }

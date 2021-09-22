@@ -1,6 +1,7 @@
 package com.devlogs.masa_backend.servlets.appointments;
 
 import com.devlogs.masa_backend.appointment.FollowMeetingUseCase;
+import com.devlogs.masa_backend.common.annotations.AccessRole;
 import com.devlogs.masa_backend.servlets.common.RequestHelper;
 import com.devlogs.masa_backend.servlets.common.RequestHelper.ValidateResult;
 import com.devlogs.masa_backend.servlets.common.ResponseHelper;
@@ -13,6 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.ADMIN;
+import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.MENTOR;
+
+@AccessRole(roles = {MENTOR, ADMIN})
 @WebServlet(name = "followmeetingservlet", urlPatterns = "/api/appointment-management/create")
 public class CreateAppointmentServlet extends BaseHttpServlet {
 

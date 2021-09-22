@@ -2,6 +2,7 @@ package com.devlogs.masa_backend.servlets.become_mentor;
 
 
 import com.devlogs.masa_backend.become_mentor.SendRequestToBecomeMentorUseCase;
+import com.devlogs.masa_backend.common.annotations.AccessRole;
 import com.devlogs.masa_backend.platform.PlatformChecker;
 import com.devlogs.masa_backend.servlets.common.RequestHelper;
 import com.devlogs.masa_backend.servlets.common.RequestHelper.ValidateResult;
@@ -15,6 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.*;
+
+@AccessRole(roles = {GUEST})
 @WebServlet(name = "BecomeMentorServlet", urlPatterns = "/api/mentor-management/become-mentor/*")
 public class BecomeMentorServlet extends BaseHttpServlet {
 
