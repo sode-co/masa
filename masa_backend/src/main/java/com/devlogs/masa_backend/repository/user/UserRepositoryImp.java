@@ -12,6 +12,9 @@ import com.devlogs.masa_backend.domain.ports.UserRepository;
 
 import javax.inject.Inject;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserRepositoryImp implements UserRepository {
 
@@ -66,6 +69,18 @@ public class UserRepositoryImp implements UserRepository {
             throw new RuntimeException(ex.getMessage());
         }
         return userEntity;
+    }
+
+    @Override
+    public List<UserEntity> getAllAdmin() throws ConnectionException {
+        try {
+            List<UserDto> queryResult = dao.getUserByRole(1);
+            return queryResult.stream().map((item) -> convertDto(item)).collect(Collectors.toList());
+        }catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch(ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
     }
 
     @Override

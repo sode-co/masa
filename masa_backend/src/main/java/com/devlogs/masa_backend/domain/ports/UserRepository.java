@@ -6,6 +6,8 @@ import com.devlogs.masa_backend.domain.entities.UserStatus;
 import com.devlogs.masa_backend.domain.errors.AlreadyExistException;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 
+import java.util.List;
+
 public interface UserRepository {
     /*
      * Quy tắc tạo ports cho usecase ở đây là repository interface:
@@ -16,6 +18,8 @@ public interface UserRepository {
      * Mọi người có thể vào https://stackoverflow.com/questions/27578/when-to-choose-checked-and-unchecked-exceptions để biết thêm
      * */
     UserEntity getUserByEmail (String email) throws ConnectionException;
+
+    List<UserEntity> getAllAdmin () throws ConnectionException;
 
     UserEntity getUserById(String id) throws ConnectionException;
 

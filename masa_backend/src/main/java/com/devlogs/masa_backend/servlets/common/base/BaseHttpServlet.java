@@ -60,5 +60,13 @@ public class BaseHttpServlet extends HttpServlet {
         return requestComponent;
     }
 
+    protected HttpServletRequest getCurrentRequest () {
+        return getRequestComponent().getCurrentRequest();
+    }
+
+    protected HttpServletResponse getCurrentResponse () {
+        return getRequestComponent().getCurrentResponse();
+    }
+
 
 }
