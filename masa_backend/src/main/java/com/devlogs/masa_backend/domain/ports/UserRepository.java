@@ -18,7 +18,6 @@ public interface UserRepository {
      * Mọi người có thể vào https://stackoverflow.com/questions/27578/when-to-choose-checked-and-unchecked-exceptions để biết thêm
      * */
     UserEntity getUserByEmail (String email) throws ConnectionException;
-
     List<UserEntity> getAllAdmin () throws ConnectionException;
 
     UserEntity getUserById(String id) throws ConnectionException;

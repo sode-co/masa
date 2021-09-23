@@ -16,7 +16,8 @@
         <input type="hidden" name="client_id" value="${Masa.CLIENT_ID}" />
         <input type="hidden" name="redirect_uri" value="${redirectUrl}" />
         <input type="hidden" name="scope" value="email profile" />
-        <input type="hidden" name="approval_prompt" value="force" />
+        <input type="hidden" name="access_type" value="offline" />
+        <input type="hidden" name="prompt" value="consent"/>
         <input type="submit" value="go" />
     </div>
 </form>

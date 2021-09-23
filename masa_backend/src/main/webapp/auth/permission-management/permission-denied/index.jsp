@@ -12,7 +12,7 @@
 </head>
 <body>
     <h1>
-        You do not have access to this page
+        You do not have permission to access this page !!
     </h1>
 </body>
 </html>

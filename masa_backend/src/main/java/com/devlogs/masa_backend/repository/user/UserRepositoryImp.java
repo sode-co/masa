@@ -9,12 +9,18 @@ import com.devlogs.masa_backend.domain.entities.UserStatus;
 import com.devlogs.masa_backend.domain.errors.AlreadyExistException;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
+import com.devlogs.masa_backend.domain.ports.google_api.GooglePojo;
+import com.google.gson.Gson;
+import org.apache.http.client.fluent.Request;
 
 import javax.inject.Inject;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.devlogs.masa_backend.common.Masa.GOOGLE_LINK_GET_USER_INFO;
 
 public class UserRepositoryImp implements UserRepository {
 
@@ -69,6 +75,19 @@ public class UserRepositoryImp implements UserRepository {
             throw new RuntimeException(ex.getMessage());
         }
         return userEntity;
+    }
+
+    public UserEntity getUserByGGAccessToken (String accessToken) throws ConnectionException {
+        String link = GOOGLE_LINK_GET_USER_INFO + accessToken;
+        String response = null;
+        try {
+            response = Request.Get(link).execute().returnContent().asString();
+            MasaLog.normalLog("Json: " + response);
+            GooglePojo googlePojo = new Gson().fromJson(response, GooglePojo.class);
+            return getUserByEmail(googlePojo.getEmail());
+        } catch (IOException e) {
+            throw new ConnectionException(e.getMessage());
+        }
     }
 
     @Override

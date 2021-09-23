@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.*;
 
@@ -44,6 +45,7 @@ public class BecomeMentorServlet extends BaseHttpServlet {
             }
             return true;
         });
+
         // check reqBody
         ValidateResult<BecomeMentorReqBody> reqBodyValidateResult =  requestHelper.getRequestBody(BecomeMentorReqBody.class);
 

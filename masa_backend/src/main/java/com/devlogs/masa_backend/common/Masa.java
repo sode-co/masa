@@ -27,16 +27,23 @@ public class Masa {
             public static final String USER = "CURRENT_USER";
         }
 
+        public static class COOKIE {
+            public static final String GOOGLE_ACCESS_TOKEN = "GOOGLE_ACCESS_TOKEN";
+        }
+
         public static class PAGE {
             public static class AUTH {
                 public static class PERMISSION_MANAGEMENT {
-                    public static final String DENIED_PAGE = "auth/permission-management/permission-denied";
+                    public static final String DENIED_PAGE = "auth/permission-management/permission-denied/index.jsp";
                 }
             }
             public static class STUDENT {
                 public static String MEETING_PAGE = "student/meeting/index.jsp";
             }
             public static class ADMIN {
+                public static class REQUEST_MANAGEMENT {
+                    public static String RESPONSE = "admin/request-management/response/index.jsp";
+                }
                 public static String USER_MANAGEMENT_PAGE = "admin/user-management/index.jsp";
             }
 

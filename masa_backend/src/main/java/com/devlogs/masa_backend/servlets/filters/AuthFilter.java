@@ -7,7 +7,6 @@ import com.devlogs.masa_backend.servlets.login.GoogleLoginState;
 import com.google.gson.Gson;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -50,18 +49,16 @@ public class AuthFilter implements Filter {
         }
 
         String resource = UrlHelper.getResourceUrl(request.getRequestURI());
-        if (resource.contains("logingoogle")) {
+        if (resource.contains("login")) {
             chain.doFilter(request, response);
             return;
         }
-        MasaLog.normalLog("Request resource: " + resource);
-        GoogleLoginState ggState = new GoogleLoginState("/"+resource);
+        GoogleLoginState ggState = new GoogleLoginState(resource);
         String resourceInJson = new Gson().toJson(ggState);
         MasaLog.normalLog("Request resource in json: " + resourceInJson);
         String encodedResource = Base64.getEncoder().encodeToString(resourceInJson.getBytes());
         MasaLog.normalLog("EncodedResource" + encodedResource);
-        String googleProcessLogin = "http://localhost:"+request.getServerPort()+"/masa/logingoogle";
-        MasaLog.normalLog("Google redirect url: "+ googleProcessLogin);
+
         if (googleAccessToken.isEmpty()) {
             if (resource.isEmpty()) {
                 MasaLog.normalLog("NO ACCESS_TOKEN GO MAIN PAGE, ALLOWED");
@@ -70,21 +67,34 @@ public class AuthFilter implements Filter {
                 return;
             }
             // if user want to access but don't have google_token => forward to google login page => forward to resource
+            if (resource.contains("api")) {
+                // that's mean user access it as api => return 500 code
+                response.setStatus(500);
+                response.getWriter().println("UnAuthorized");
+            } else {
+                String googleProcessLogin = "http://localhost:"+request.getServerPort()+"/masa/logingoogle";
+                MasaLog.normalLog("Google redirect url: "+ googleProcessLogin);
             String loginWithGoogleUrl = String.format(
                     "https://accounts.google.com/o/oauth2/auth?" +
                     "response_type=code" +
                     "&client_id=%s" +
                     "&redirect_uri=%s" +
                     "&scope=email profile" +
-                    "&approval_prompt=force"+
+                    "&approval_prompt=consent"+
+                    "&access_type=offline"+
                     "&state=%s",Masa.CLIENT_ID, googleProcessLogin, encodedResource);
             MasaLog.normalLog("NO ACCESS_TOKEN GO RESOURCE PAGE, NOT ALLOWED => GOOGLE LOGIN API: " + loginWithGoogleUrl);
             response.sendRedirect(loginWithGoogleUrl);
+            return;
+            }
         } else {
-            MasaLog.normalLog("HAVE ACCESS_TOKEN GO RESOURCE PAGE, ALLOWED => GOOGLE LOGIN PROCESS");
+            String loginServlet = "/login";
+            MasaLog.normalLog("HAVE ACCESS_TOKEN GO RESOURCE PAGE, ALLOWED => LOGIN SERVLET");
             // if user have google_access_token => forward to resource
-            response.sendRedirect(googleProcessLogin+"?code="+googleAccessToken+"&state="+encodedResource);
+            request.setAttribute("access_token", googleAccessToken);
+            request.setAttribute("state", encodedResource);
+            request.getRequestDispatcher(loginServlet).forward(request, response);
+            return;
         }
-        chain.doFilter(r, rs);
     }
 }
