@@ -27,6 +27,18 @@ public class RequestModule {
 
     @Provides
     @RequestScope
+    public HttpServletResponse provideCurrentHttpServletResponse () {
+        return response;
+    }
+
+    @Provides
+    @RequestScope
+    public HttpServletRequest provideCurrentHttpServletRequest () {
+        return request;
+    }
+
+    @Provides
+    @RequestScope
     public ResponseHelper provideResponseHelper () {
         return responseHelper;
     }

@@ -37,6 +37,43 @@
         <description>ServletContextListener</description>
         <listener-class>com.devlogs.masa_backend.servlets.listeners.ApplicationContextListener</listener-class>
     </listener>
+
+    <filter>
+        <filter-name>CharsetFilter</filter-name>
+        <filter-class>com.devlogs.masa_backend.servlets.filters.CharsetFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharsetFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>InitFilter</filter-name>
+        <filter-class>com.devlogs.masa_backend.servlets.filters.InitFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>InitFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.devlogs.masa_backend.servlets.filters.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>RoleFilter</filter-name>
+        <filter-class>com.devlogs.masa_backend.servlets.filters.RoleFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>RoleFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
     <welcome-file-list>
         <welcome-file>login/index.jsp</welcome-file>
     </welcome-file-list>

@@ -71,6 +71,18 @@ public class UserRepositoryImp implements UserRepository {
     }
 
     @Override
+    public List<UserEntity> getAllAdmin() throws ConnectionException {
+        try {
+            List<UserDto> queryResult = dao.getUserByRole(1);
+            return queryResult.stream().map((item) -> convertDto(item)).collect(Collectors.toList());
+        }catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch(ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
+    }
+
+    @Override
     public UserEntity getUserById(String id) throws ConnectionException {
         try {
             dto = dao.getUserById(id);

@@ -68,7 +68,6 @@ public class UserDao {
             }
         }
         return null;
-
     }
 
     public UserDto getUserByEmail(String email) throws SQLException, ClassNotFoundException {
@@ -137,7 +136,6 @@ public class UserDao {
 
                 //3. Create statement to set sql
                 stm = con.prepareStatement(sql);
-
                 stm.setString(1, id);
                 stm.setString(2, fullName);
                 stm.setString(3, email);
@@ -163,7 +161,6 @@ public class UserDao {
             }
         }
         return null;
-
     }
 
     public UserDto blockUser(String userId, int statusId) throws SQLException, ClassNotFoundException {
@@ -214,5 +211,25 @@ public class UserDao {
         }
         return userUpdated;
     }
+    public List<UserDto> getUserByRole(int roleId) throws SQLException, ClassNotFoundException {
+        ArrayList<UserDto> results = new ArrayList();
+        try (Connection connection = dbHelper.connect()) {
+            PreparedStatement statement = connection.prepareStatement("SELECT ID, FULLNAME, EMAIL, AVATAR_URL, ROLE_ID, STATUS_ID FROM USERS WHERE ROLE_ID = ?");
+            statement.setInt(1, roleId);
+            ResultSet resultSet = statement.executeQuery();
+
+            UserDto cached;
+            while (resultSet.next()) {
+                String id = resultSet.getString(1);
+                String fullName = resultSet.getString(2);
+                String email = resultSet.getString(3);
+                String avatar_url = resultSet.getString(4);
+                int role_id = resultSet.getInt(5);
+                int status_id = resultSet.getInt(6);
+                results.add(new UserDto(id, fullName, email, avatar_url, role_id, status_id));
+            }
+        }
+        return results;
+}
 
 }

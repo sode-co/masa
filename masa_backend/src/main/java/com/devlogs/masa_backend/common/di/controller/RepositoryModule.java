@@ -3,6 +3,7 @@ package com.devlogs.masa_backend.common.di.controller;
 
 import com.devlogs.masa_backend.domain.ports.AppointmentRepository;
 import com.devlogs.masa_backend.domain.ports.MeetingRepository;
+import com.devlogs.masa_backend.domain.ports.RequestRepository;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
 import com.devlogs.masa_backend.repository.appointment.AppointmentRepositoryImp;
 import com.devlogs.masa_backend.repository.meeting.MeetingRepositoryImp;
@@ -26,6 +27,11 @@ public class RepositoryModule {
     @Provides
     public AppointmentRepository provideAppointmentRepository (AppointmentRepositoryImp appointmentRepositoryImp) {
         return appointmentRepositoryImp;
+    }
+
+    @Provides
+    public RequestRepository provideRequestRepository(RequestRepositoryImp requestRepositoryImp) {
+        return requestRepositoryImp;
     }
 
 

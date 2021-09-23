@@ -1,5 +1,6 @@
 package com.devlogs.masa_backend.servlets.test;
 
+import com.devlogs.masa_backend.become_mentor.SendRequestToBecomeMentorUseCase;
 import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.data.remote_database.UserDao;
 import com.devlogs.masa_backend.data.remote_database.UserDto;
@@ -22,8 +23,6 @@ import java.util.List;
 
 @WebServlet(name = "TestServlet", urlPatterns = "/TestServlet")
 public class TestServlet extends BaseHttpServlet {
-//    @Inject
-//    public UserRepositoryImp imp;
     @Inject
     UserDao dao;
     @Override
