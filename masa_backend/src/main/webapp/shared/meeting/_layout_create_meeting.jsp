@@ -53,7 +53,6 @@
 
 
     <script>
-
         function jsonCreate () {
             const startDate = (""+document.getElementById("start-date").value+" "+ document.getElementById("start-time").value+":00").replace(/-/g,"/")
             const start = new Date(startDate);
@@ -63,20 +62,30 @@
             const end = new Date(endDate);
             const millisecondsEnd = end.getTime();
 
-            const duringTime = millisecondsEnd - millisecondsStart;
 
-            if(duringTime <= 0){
+            let diff = Math.round((millisecondsEnd-millisecondsStart)/1000);
+
+            const d = Math.floor(diff/(24*60*60));
+            diff = diff-(d*24*60*60);
+            const h = Math.floor(diff/(60*60));
+            diff = diff-(h*60*60);
+            const m = Math.floor(diff/(60));
+            diff = diff-(m*60);
+            const s = diff;
+
+            document.getElementById("time-elapsed").innerHTML = "Your meeting lasts: "+d+" day(s), "+h+" hour(s), "+m+" minute(s), "+s+" second(s)";
+
+
+            if(millisecondsEnd <= millisecondsStart){
                 alert('End time of meeting must be bigger than start time');
             }else{
                 const json = {
                     "title": document.getElementById("title").value,
                     "platform": document.getElementById("platform").value,
-                    // "host": document.getElementById("host").value,
-                    "host": "12345",//chỗ này sẽ get Host ID, user name gì đấy
+                    "host": document.getElementById("host").value,
                     "startTime": millisecondsStart,
                     "endTime": millisecondsEnd,
-                    // "description": document.getElementById("description").getAttribute('value')
-                    "description": document.querySelector('[contenteditable]').textContent
+                    "description": $("#description").html(),
                 }
                 console.log(json);
                 const options = {
@@ -95,6 +104,7 @@
     </script>
 </head>
 <body>
+<h1 style="display: none" id="current-user">${sessionScope.CURRENT_USER}</h1>
 <div class="container text-center">
     <div class="row">
         <div class="col-sm-1">
@@ -116,7 +126,7 @@
             </svg>
         </div>
         <div class="col-sm-7">
-            <input type="text" class="form-control" placeholder="Host Name" aria-label="Host" aria-describedby="basic-addon1" id="host" readonly>
+            <input type="text" class="form-control" placeholder="${sessionScope.CURRENT_USER.fullName}" aria-label="Host" aria-describedby="basic-addon1" id="host" value="${sessionScope.CURRENT_USER.fullName}">
         </div>
     </div>
 
@@ -131,6 +141,7 @@
         </div>
         <div class="col-sm-3">
             <input type="date" id="start-date" name="trip-start" class="form-control">
+
         </div>
         <div class="col-sm-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
@@ -154,6 +165,7 @@
         </div>
         <div class="col-sm-3">
             <input type="date" id="end-date"class="form-control">
+
         </div>
         <div class="col-sm-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
@@ -165,6 +177,7 @@
             <input type="time" id="end-time" class="form-control" />
         </div>
     </div>
+    <p id="time-elapsed" style="font-style: italic"></p>
 
     <br/>
 

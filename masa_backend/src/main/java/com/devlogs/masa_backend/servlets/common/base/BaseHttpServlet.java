@@ -46,6 +46,7 @@ public class BaseHttpServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (!resp.isCommitted()) {
+            MasaLog.normalLog("do Services:2 " + this.getClass().getSimpleName());
             requestComponent = getServletComponent().newRequestComponent(new RequestModule(resp, req, getServletComponent().getValidator()));
         } else {
             requestComponent = null;
@@ -58,6 +59,14 @@ public class BaseHttpServlet extends HttpServlet {
             throw new RuntimeException("You're out of request scope");
         }
         return requestComponent;
+    }
+
+    protected HttpServletRequest getCurrentRequest () {
+        return getRequestComponent().getCurrentRequest();
+    }
+
+    protected HttpServletResponse getCurrentResponse () {
+        return getRequestComponent().getCurrentResponse();
     }
 
 

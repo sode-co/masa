@@ -10,7 +10,9 @@ import com.devlogs.masa_backend.domain.errors.NotFoundException;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
 
 import javax.inject.Inject;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Repository này thường sẽ được tạo bởi người code frontend, trong những trường hợp:
@@ -37,6 +39,20 @@ public class MockUserRepositoryImp implements UserRepository {
             return result.get();
         }
         return null;
+    }
+
+    @Override
+    public List<UserEntity> getAllAdmin() throws ConnectionException {
+        return MockUserDataSource.data.stream().filter((i) -> i.getRole().getType() == UserRole.TYPE.ADMIN).collect(Collectors.toList());
+    }
+
+    @Override
+    public void updateUserRole(String userId, UserRole newRole) throws ConnectionException {
+        for (UserEntity data : MockUserDataSource.data) {
+            if (data.getId().equals(userId)) {
+                data.setRole(newRole);
+            }
+        }
     }
 
     @Override

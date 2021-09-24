@@ -1,5 +1,6 @@
 package com.devlogs.masa_backend.servlets.meeting.updatemeeting;
 
+import com.devlogs.masa_backend.common.annotations.AccessRole;
 import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform.PLATFORM;
 import com.devlogs.masa_backend.meeting.UpdateMeetingUseCaseSync;
@@ -17,6 +18,9 @@ import java.io.IOException;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.*;
+
+@AccessRole(roles = {ADMIN, MENTOR})
 @WebServlet(name = "update-meeting", urlPatterns = {"/api/meeting/update", "/api/meeting-management/update"})
 public class UpdateMeetingServlet extends BaseHttpServlet {
     @Inject

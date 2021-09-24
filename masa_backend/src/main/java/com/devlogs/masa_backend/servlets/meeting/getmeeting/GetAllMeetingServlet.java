@@ -1,5 +1,6 @@
 package com.devlogs.masa_backend.servlets.meeting.getmeeting;
 
+import com.devlogs.masa_backend.common.annotations.AccessRole;
 import com.devlogs.masa_backend.meeting.GetAllMeetingUseCase;
 import com.devlogs.masa_backend.meeting.GetMeetingByHostUseCase;
 import com.devlogs.masa_backend.servlets.common.base.BaseHttpServlet;
@@ -12,6 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.*;
+
+@AccessRole(roles = {ADMIN, MENTOR, STUDENT})
 @WebServlet(name = "getallmeetingservlet", urlPatterns = {"/api/meeting-management/meetings"})
 public class GetAllMeetingServlet extends BaseHttpServlet {
 
