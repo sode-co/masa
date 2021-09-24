@@ -16,7 +16,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css"
       rel="stylesheet"
     />
-
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   </head>
   <body>
     <!-- Navigation -->
@@ -51,6 +51,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                   border-b-2 border-green-800
                   mx-1.5
                   sm:mx-6
+                  hover:text-gray-800
                 "
                 href="#navi"
               >
@@ -175,49 +176,80 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <!-- End of Intro -->
  
     <!-- Footer -->
-    <footer class="relative pt-1 bg-white border-b-2 border-blue-700 footer" id="footer">
-        <div class="container px-6 mx-auto">
-    
-            <div class="sm:flex sm:mt-8">
-                <div class="flex flex-col justify-between mt-8 sm:mt-0 sm:w-full sm:px-8 md:flex-row">
-                    <div class="flex flex-col flex-1">
-                        <span class="mb-2 font-bold text-center text-green-700 uppercase">A product of Sode team</span>
-                        <span class="my-2"><p class="text-gray-700 text-md">
-                            We created an application that makes it easy for students to create meetings between students and mentors
-                        </p></span>
-                    </div>
-                    <div class="flex flex-col flex-1">
-                        <span class="mt-4 mb-2 font-bold text-center text-green-700 uppercase md:mt-0">Contact us</span>
-                        <span class="my-2 ml-48">
-                            <i class="fab fa-facebook"></i>
-                            <a href="#" class="text-gray-700 hover:no-underline text-md hover:text-blue-500">Facebook: Sode Team - SlimAir.Co
-                            </a>
-                        </span>
-                        <span class="my-2 ml-48"><a href="#" class="text-gray-700 hover:no-underline text-md hover:text-blue-500 glyphicon glyphicon-earphone" aria-hidden="true">Phone: 0901824848</a></span>
-                        <span class="my-2 ml-48">
-                            <i class="fab fa-google"></i>
-                            <a href="#" class="text-gray-700 text-md hover:text-blue-500 hover:no-underline">Email: Slimair.co@gmail.com</a></span>
-                    </div>
-                    <div class="flex flex-col flex-1 place-items-center">
-                        <img class="my-2"
-                        src="/masa/shared/icon/fpt-university.png"
-                        width="50%"
-                        height="50%"
-                        />
-                    </div>
-                </div>
+    <footer
+      class="relative pt-1 bg-white border-b-2 border-blue-700 footer"
+      id="footer"
+    >
+      <div class="container px-6 mx-auto">
+        <div class="sm:flex sm:mt-8">
+          <div
+            class="flex flex-col justify-between mt-8 sm:mt-0 sm:w-full sm:px-8 md:flex-row"
+          >
+            <div class="flex flex-col flex-1">
+              <span class="mb-2 font-bold text-center text-green-700 uppercase"
+                >A product of Sode team</span
+              >
+              <span class="my-2"
+                ><p class="text-gray-700 text-md">
+                  We created an application that makes it easy for students to
+                  create meetings between students and mentors
+                </p></span
+              >
             </div>
-        </div>
-        <div class="container px-6 mx-auto">
-            <div class="flex flex-col items-center mt-16 border-t-2 border-gray-300">
-                <div class="py-6 text-center sm:w-2/3">
-                    <p class="mb-2 text-sm font-bold text-gray-700">
-                        ©2021-Sode Team-FPTU HCM
-                    </p>
-                </div>
+            <div class="flex flex-col flex-1">
+              <span
+                class="mt-4 mb-2 font-bold text-center text-green-700 uppercase md:mt-0"
+                >Contact us</span
+              >
+              <span class="my-2 ml-48">
+                <i class="fab fa-facebook"></i>
+                <a
+                  href="#"
+                  class="text-gray-700 hover:no-underline text-md hover:text-blue-500"
+                  >Facebook: Sode Team - SlimAir.Co
+                </a>
+              </span>
+              <span class="my-2 ml-48"
+                ><a
+                  href="#"
+                  class="text-gray-700 hover:no-underline text-md hover:text-blue-500 glyphicon glyphicon-earphone"
+                  aria-hidden="true"
+                  >Phone: 0901824848</a
+                ></span
+              >
+              <span class="my-2 ml-48">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <a
+                  href="#"
+                  class="text-gray-700 text-md hover:text-blue-500 hover:no-underline"
+                  >Email: Slimair.co@gmail.com</a
+                ></span
+              >
             </div>
+            <div class="flex flex-col flex-1 place-items-center">
+              <img
+                class="my-2"
+                src="/masa/shared/icon/fpt-university.png"
+                width="50%"
+                height="50%"
+              />
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="container px-6 mx-auto">
+        <div
+          class="flex flex-col items-center mt-16 border-t-2 border-gray-300"
+        >
+          <div class="py-6 text-center sm:w-2/3">
+            <p class="mb-2 text-sm font-bold text-gray-700">
+              ©2021-Sode Team-FPTU HCM
+            </p>
+          </div>
+        </div>
+      </div>
     </footer>
+    <!-- End of Footer -->
     </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
