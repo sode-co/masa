@@ -109,4 +109,18 @@ public class RequestDao {
             return result;
         }
     }
+
+    public RequestDto updateRequestStatus(String requestId, int statusId) throws SQLException, ClassNotFoundException {
+        RequestDto requestUpdated = null;
+        try (Connection con = dbHelper.connect()) {
+            PreparedStatement queryStatement = con.prepareStatement("UPDATE REQUESTS SET STATUS_ID=? WHERE ID = ?");
+            queryStatement.setInt(1, statusId);
+            queryStatement.setString(2, requestId);
+            int  result = queryStatement.executeUpdate();
+            if (result > 0 ) {
+                requestUpdated = getById(requestId);
+            }
+            return requestUpdated;
+        }
+    }
 }

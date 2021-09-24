@@ -21,20 +21,30 @@ public class RequestRepositoryImp implements RequestRepository {
         this.requestDao = requestDao;
     }
 
-    private RequestEntity fromRequestDto (RequestDto dto) {
+    private RequestEntity fromRequestDto(RequestDto dto) {
         RequestEntity.TYPE requestType = null;
 
         switch (dto.getTypeId()) {
-            case 1: requestType = RequestEntity.TYPE.BECOME_MENTOR; break;
-            default: throw new RuntimeException("Invalid requestTypeId: " + dto.getTypeId());
+            case 1:
+                requestType = RequestEntity.TYPE.BECOME_MENTOR;
+                break;
+            default:
+                throw new RuntimeException("Invalid requestTypeId: " + dto.getTypeId());
         }
 
         RequestEntity.STATUS status = null;
         switch (dto.getStatusId()) {
-            case 1: status = RequestEntity.STATUS.DENIED; break;
-            case 2: status = RequestEntity.STATUS.PROCESSING; break;
-            case 3: status = RequestEntity.STATUS.APPROVED; break;
-            default: throw new RuntimeException("Invalid request status: " + dto.getStatusId());
+            case 1:
+                status = RequestEntity.STATUS.DENIED;
+                break;
+            case 2:
+                status = RequestEntity.STATUS.PROCESSING;
+                break;
+            case 3:
+                status = RequestEntity.STATUS.APPROVED;
+                break;
+            default:
+                throw new RuntimeException("Invalid request status: " + dto.getStatusId());
         }
 
         return new RequestEntity(dto.getId(), dto.getDescription(), requestType, dto.getUserId(), status);
@@ -48,10 +58,11 @@ public class RequestRepositoryImp implements RequestRepository {
                 typeId = 1;
                 break;
             }
-            default: throw new RuntimeException(String.format("Type ? is not supported by repository", type.name()));
+            default:
+                throw new RuntimeException(String.format("Type ? is not supported by repository", type.name()));
         }
         try {
-            RequestDto addedRequest = requestDao.addRequest(UUID.randomUUID().toString().substring(0,8), userId, description, typeId, 2);
+            RequestDto addedRequest = requestDao.addRequest(UUID.randomUUID().toString().substring(0, 8), userId, description, typeId, 2);
             return fromRequestDto(addedRequest);
         } catch (SQLException e) {
             throw new RuntimeException("Sql exception: " + e.getMessage());
@@ -65,7 +76,7 @@ public class RequestRepositoryImp implements RequestRepository {
         try {
             List<RequestDto> results = requestDao.getAll();
             return results.stream().map(this::fromRequestDto).collect(Collectors.toList());
-        }  catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException("Sql exception: " + e.getMessage());
         } catch (ClassNotFoundException e) {
             throw new ConnectionException(e.getMessage());
@@ -77,7 +88,7 @@ public class RequestRepositoryImp implements RequestRepository {
         try {
             List<RequestDto> results = requestDao.getByUserId(userId);
             return results.stream().map(this::fromRequestDto).collect(Collectors.toList());
-        }  catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException("Sql exception: " + e.getMessage());
         } catch (ClassNotFoundException e) {
             throw new ConnectionException(e.getMessage());
@@ -94,5 +105,35 @@ public class RequestRepositoryImp implements RequestRepository {
         } catch (ClassNotFoundException e) {
             throw new ConnectionException(e.getMessage());
         }
+    }
+
+    @Override
+    public RequestEntity updateRequestStatus(String requestId, RequestEntity.STATUS status) throws ConnectionException {
+        RequestEntity requestUpdated = null;
+        try {
+            int statusId = 0;
+            switch (status) {
+                case DENIED:
+                    statusId = 1;
+                    break;
+                case PROCESSING:
+                    statusId = 2;
+                    break;
+                case APPROVED:
+                    statusId = 3;
+                    break;
+            }
+            if (statusId != 0) {
+                RequestDto dto = requestDao.updateRequestStatus(requestId, statusId);
+                if (dto != null) {
+                    requestUpdated = fromRequestDto(dto);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Sql exception: " + e.getMessage());
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+        return requestUpdated;
     }
 }

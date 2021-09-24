@@ -2,6 +2,7 @@ package com.devlogs.masa_backend.domain.ports;
 
 import com.devlogs.masa_backend.domain.entities.RequestEntity;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
+import com.devlogs.masa_backend.domain.errors.NotFoundException;
 
 import java.util.List;
 
@@ -11,4 +12,6 @@ public interface RequestRepository {
     List<RequestEntity> getAll () throws ConnectionException;
     List<RequestEntity> getRequestByUserId (String userId) throws ConnectionException;
     RequestEntity getRequestById (String id) throws ConnectionException;
+
+    RequestEntity updateRequestStatus(String requestId, RequestEntity.STATUS status) throws ConnectionException, NotFoundException;
 }

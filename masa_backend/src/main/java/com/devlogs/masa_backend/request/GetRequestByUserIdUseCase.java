@@ -1,22 +1,20 @@
-package com.devlogs.masa_backend.meeting;
+package com.devlogs.masa_backend.request;
 
-import com.devlogs.masa_backend.domain.entities.MeetingEntity;
+import com.devlogs.masa_backend.domain.entities.RequestEntity;
 import com.devlogs.masa_backend.domain.entities.UserEntity;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
-import com.devlogs.masa_backend.domain.ports.MeetingRepository;
+import com.devlogs.masa_backend.domain.ports.RequestRepository;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
-import com.devlogs.masa_backend.manage.BlockUserUseCase;
 
 import javax.inject.Inject;
 import java.util.List;
 
-public class GetMeetingByHostUseCase {
+public class GetRequestByUserIdUseCase {
     public static class Result {
         public static class Success extends Result {
-            public List<MeetingEntity> meetings;
-
-            public Success(List<MeetingEntity> meetings) {
-                this.meetings = meetings;
+            public List<RequestEntity> requests;
+            public Success(List<RequestEntity> requests) {
+                this.requests = requests;
             }
         }
 
@@ -28,11 +26,11 @@ public class GetMeetingByHostUseCase {
         }
     }
 
-    private MeetingRepository meetingRepository;
+    private RequestRepository requestRepository;
     private UserRepository userRepository;
     @Inject
-    public GetMeetingByHostUseCase(MeetingRepository meetingRepository, UserRepository userRepository) {
-        this.meetingRepository = meetingRepository;
+    public GetRequestByUserIdUseCase(RequestRepository requestRepository, UserRepository userRepository) {
+        this.requestRepository = requestRepository;
         this.userRepository = userRepository;
     }
 
@@ -42,8 +40,8 @@ public class GetMeetingByHostUseCase {
             if (userEntity == null) {
                 return new Result.UserDoesNotExist();
             }
-            List<MeetingEntity> meetings = meetingRepository.getByHostId(hostId);
-            return new Result.Success(meetings);
+            List<RequestEntity> requests = requestRepository.getRequestByUserId(hostId);
+            return new Result.Success(requests);
         } catch (ConnectionException e) {
             return new Result.ConnectionError();
         }
