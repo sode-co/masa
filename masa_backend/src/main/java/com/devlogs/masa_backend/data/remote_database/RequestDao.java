@@ -1,6 +1,8 @@
 package com.devlogs.masa_backend.data.remote_database;
 
 import com.devlogs.masa_backend.data.common.DbHelper;
+import com.devlogs.masa_backend.domain.entities.RequestEntity;
+
 import javax.inject.Inject;
 import java.sql.*;
 import java.util.ArrayList;
@@ -110,17 +112,18 @@ public class RequestDao {
         }
     }
 
-    public RequestDto updateRequestStatus(String requestId, int statusId) throws SQLException, ClassNotFoundException {
-        RequestDto requestUpdated = null;
+
+    public void updateRequestStatus(String requestId, int statusId) throws SQLException, ClassNotFoundException {
+        int effectedRow = 0;
         try (Connection con = dbHelper.connect()) {
-            PreparedStatement queryStatement = con.prepareStatement("UPDATE REQUESTS SET STATUS_ID=? WHERE ID = ?");
+            PreparedStatement queryStatement = con.prepareStatement("UPDATE REQUESTS SET STATUS_ID = ? WHERE ID = ?");
             queryStatement.setInt(1, statusId);
             queryStatement.setString(2, requestId);
-            int  result = queryStatement.executeUpdate();
-            if (result > 0 ) {
-                requestUpdated = getById(requestId);
+            effectedRow = queryStatement.executeUpdate();
+            if (effectedRow == 0) {
+                throw new RuntimeException("An expected exception has occur while update the requests status");
             }
-            return requestUpdated;
         }
     }
+
 }

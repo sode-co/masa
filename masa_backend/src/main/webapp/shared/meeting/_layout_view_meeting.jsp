@@ -16,6 +16,44 @@
     <style>
 
     </style>
+    <script>
+        function jsonUpdate () {
+            const startDate = (""+document.getElementById("start-date").value+" "+ document.getElementById("start-time").value+":00").replace(/-/g,"/")
+            const start = new Date(startDate);
+            const millisecondsStart = start.getTime();
+
+            const endDate = (""+document.getElementById("end-date").value+" "+ document.getElementById("end-time").value+":00").replace(/-/g,"/")
+            const end = new Date(endDate);
+            const millisecondsEnd = end.getTime();
+
+            const duringTime = millisecondsEnd - millisecondsStart;
+
+            if(duringTime <= 0){
+                alert('End time of meeting must be bigger than start time');
+            }else{
+                const json = {
+                    "id": document.getElementById("id-meeting").value,
+                    "title": document.getElementById("title").value,
+                    "platform": document.getElementById("platform").value,
+                    "startTime": millisecondsStart,
+                    "endTime": millisecondsEnd,
+                    "description": document.getElementById("description").value
+                }
+                console.log(json);
+                const options = {
+                    method: 'POST',
+                    body: JSON.stringify(json),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+                fetch('../../api/meeting/update', options)
+                    .then(res => res.json())
+                    .then(res => console.log(res))
+                    .catch(err => console.error(err));
+            }
+        }
+    </script>
 </head>
 <body>
     <script>
@@ -77,6 +115,9 @@
                         +'<br/>'
                         +'    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">'
                         +'        See more'
+                        +'    </button>'
+                        +'    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal">'
+                        +'        Update'
                         +'    </button>'
                         +'</div>'
                         +'<hr/>'
@@ -153,6 +194,72 @@
                         +'</div>'
                         +'<div class="modal-footer">'
                         +'<button type="button" class="btn btn-primary" data-dismiss="modal">Follow</button>'
+                        +'</div>'
+                        +'        </div>'
+                        +'</div>'
+                        +'</div>'
+
+
+
+
+
+                        +'<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">'
+                        +'<div class="modal-dialog modal-dialog-centered" role="document">'
+                        +'<div class="modal-content">'
+                        +'<div class="modal-header">'
+                        +'<h5 class="modal-title" id="exampleModalLongTitle">'+element.title+'</h5>'
+                        +'<button type="button" class="close" data-dismiss="modal" aria-label="Close">'
+                        +'<span aria-hidden="true">&times;</span>'
+                        +'</button>'
+                        +'</div>'
+                        +'<div class="modal-body">'
+                        +'<div class="meetingid">'
+                        +'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">'
+                        +'<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>'
+                        +'<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>'
+                        +'</svg>'
+                        +'<input type="text" class="form-control" aria-label="Host" aria-describedby="basic-addon1" id="title" placeholder='+element.id+' readonly value'+element.id+'>'
+                        +'</div>'
+
+                        +'<div class="title">'
+                        +'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">'
+                        +'<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>'
+                        +'<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>'
+                        +'</svg>'
+                        +'<input type="text" class="form-control" aria-label="Host" aria-describedby="basic-addon1" id="id-meeting" placeholder='+element.title+' value'+element.id+'>'
+                        +'</div>'
+
+
+                        +'<div class="platform">'
+                        +'<select class="form-select form-control" id="platform">'
+                        +'<option value="Zoom">Zoom</option>'
+                        +'<option value="Google Meet">Google Meet</option>'
+                        +'</select>'
+                        +'</div>'
+
+                        +'<div>'
+                        +'<input type="date" id="start-date" class="form-control">'
+                        +'</div>'
+
+                        +'<div>'
+                        +'<input type="time" id="start-time" class="form-control" />'
+                        +'</div>'
+
+                        +'<div>'
+                        +'<input type="date" id="end-date" class="form-control">'
+                        +'</div>'
+
+                        +'<div>'
+                        +'<input type="time" id="end-time" class="form-control" />'
+                        +'</div>'
+
+                        +'<div>'
+                        +'<input type="text" id="description" class="form-control" placeholder='+element.description+'/>'
+                        +'</div>'
+
+                        +'</div>'
+                        +'<div class="modal-footer">'
+                        +'<button type="button" onclick="jsonUpdate()" class="btn btn-primary" data-dismiss="modal">Update</button>'
                         +'</div>'
                         +'        </div>'
                         +'</div>'

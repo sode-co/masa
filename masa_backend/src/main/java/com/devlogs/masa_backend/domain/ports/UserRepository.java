@@ -21,9 +21,8 @@ public interface UserRepository {
      * Mọi người có thể vào https://stackoverflow.com/questions/27578/when-to-choose-checked-and-unchecked-exceptions để biết thêm
      * */
     UserEntity getUserByEmail (String email) throws ConnectionException;
-
     List<UserEntity> getAllAdmin () throws ConnectionException;
-
+//    void updateUserRole (String userId, UserRole newRole) throws ConnectionException;
     UserEntity getUserById(String id) throws ConnectionException;
 
     UserEntity addUser (String email, String fullName, String avatar, UserRole role, UserStatus userStatus) throws ConnectionException, AlreadyExistException;
@@ -33,4 +32,5 @@ public interface UserRepository {
     UserEntity blockUser(String userID, UserStatus status) throws ConnectionException, NotFoundException;
 
     UserEntity updateUserRole(String userID, UserRole role) throws ConnectionException, NotFoundException;
+
 }

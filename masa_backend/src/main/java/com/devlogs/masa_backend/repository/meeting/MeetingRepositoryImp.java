@@ -9,8 +9,6 @@ import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.errors.NotFoundException;
 import com.devlogs.masa_backend.domain.ports.MeetingRepository;
-import com.devlogs.masa_backend.repository.user.UserRepositoryImp;
-
 import javax.inject.Inject;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -40,9 +38,15 @@ public class MeetingRepositoryImp implements MeetingRepository {
                 for(MeetingDTO dto:listDTO){
                     //get PlatformUrlsDTO
                     PlatformUrlsDTO platformUrlsDTO = meetingPlatformUrlSource.getUrl(dto.getHost_id(), dto.getPlatform_id());
+                    if (platformUrlsDTO == null) {
+                        throw new RuntimeException("Platform urls not found");
+                    }
                     MeetingPlatform.PLATFORM platform;
                     result.add(new MeetingEntity(dto.getId(),dto.getTitle(),
-                            new MeetingPlatform(MeetingPlatform.PLATFORM.values()[platformUrlsDTO.getPlaformId()-1], dto.getHost_id(),platformUrlsDTO.getUrl()),
+                            new MeetingPlatform(MeetingPlatform.PLATFORM.values()
+                                    [platformUrlsDTO.getPlaformId()-1],
+                                    dto.getHost_id(),
+                                    platformUrlsDTO.getUrl()),
                             dto.getHost_id(),dto.getStartTime(),dto.getEndTime(),dto.getDescription()));
                 }//end traversed listDTO
             }//end if listDTO existed

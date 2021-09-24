@@ -1,5 +1,6 @@
 package com.devlogs.masa_backend.data.remote_database;
 
+import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.data.common.DbHelper;
 import com.devlogs.masa_backend.domain.errors.AlreadyExistException;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;

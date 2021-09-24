@@ -1,16 +1,19 @@
 package com.devlogs.masa_backend.common;
 
+import com.devlogs.masa_backend.common.helper.EnvHelper;
 import com.devlogs.masa_backend.common.helper.MasaLog;
+import io.github.cdimascio.dotenv.Dotenv;
 
 import javax.servlet.ServletContext;
 
 public class Masa {
+    public static String AUTH_MODE = "CHECK";
+
     public static class Component {
         public static final String APPLICATION_COMPONENT = "APPLICATION_COMPONENT";
     }
 
         public static String SERVER_HOST;
-
         public static String DATABASE_HOST = "";
         public static String DATABASE_NAME = "";
         public static String DATABASE_USER = "";
@@ -27,16 +30,23 @@ public class Masa {
             public static final String USER = "CURRENT_USER";
         }
 
+        public static class COOKIE {
+            public static final String GOOGLE_ACCESS_TOKEN = "GOOGLE_ACCESS_TOKEN";
+        }
+
         public static class PAGE {
             public static class AUTH {
                 public static class PERMISSION_MANAGEMENT {
-                    public static final String DENIED_PAGE = "auth/permission-management/permission-denied";
+                    public static final String DENIED_PAGE = "auth/permission-management/permission-denied/index.jsp";
                 }
             }
             public static class STUDENT {
                 public static String MEETING_PAGE = "student/meeting/index.jsp";
             }
             public static class ADMIN {
+                public static class REQUEST_MANAGEMENT {
+                    public static String RESPONSE = "admin/request-management/response/index.jsp";
+                }
                 public static String USER_MANAGEMENT_PAGE = "admin/user-management/index.jsp";
             }
 
@@ -66,7 +76,9 @@ public class Masa {
             MasaLog.normalLog("Server host: " + SERVER_HOST);
             GOOGLE_REDIRECT_URI = "http://localhost:"+port+"/masa/logingoogle";
     }
-    public static void init (ServletContext context) {
+    public static void init (ServletContext context, String webInfPath) {
+        Dotenv env = io.github.cdimascio.dotenv.Dotenv.configure().directory(webInfPath+"/env/.env").ignoreIfMalformed().ignoreIfMissing().load();
+        AUTH_MODE = env.get("AUTH");
         GOOGLE_CLIENT_SECRET = context.getInitParameter("GOOGLE_CLIENT_SECRET");
         CLIENT_ID = context.getInitParameter("GOOGLE_CLIENT_ID");
 
