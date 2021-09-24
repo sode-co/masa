@@ -15,11 +15,15 @@ public class BecomeMentorEmail implements Email{
         html = html.replace("_user_description", userDescription);
         html = html.replace("_user_id", userId);
         html = html.replace("_user_fullname", userFullName);
-        html = html.replace("_request_link", userFullName);
+        html = html.replace("_request_link", getRequestUrl(requestId, userId, userFullName));
     }
 
-    private String getRequestUrl (String requestId) {
-        return Masa.SERVER_HOST + "/request-managements/response/"+requestId;
+    private String getRequestUrl(String id, String userId, String fullName) {
+        return Masa.SERVER_HOST + String.format(
+                "/admin/request-management/response/index.jsp" +
+                        "?id=%s" +
+                        "&userId=%s" +
+                        "&fullName=%s", id, userId, fullName);
     }
 
     @Override

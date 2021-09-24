@@ -15,6 +15,7 @@ import com.devlogs.masa_backend.domain.ports.sendmail.SendMailGateway;
 import com.devlogs.masa_backend.platform.PlatformChecker;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SendRequestToBecomeMentorUseCase {
@@ -59,6 +60,12 @@ public class SendRequestToBecomeMentorUseCase {
         this.requestRepository = requestRepository;
     }
 
+    ArrayList<Exception> ex = new ArrayList<>();
+
+    private void handleException (Exception exception) {
+        ex.add(exception);
+    }
+
     public Result executes (String userId, String description,  String zoomUrl, String googleMeetUrl) {
         try {
             UserEntity user = userRepository.getUserById(userId);
@@ -80,17 +87,43 @@ public class SendRequestToBecomeMentorUseCase {
             // send email to admin
             List<UserEntity> admins = userRepository.getAllAdmin();
             BecomeMentorEmail email = new BecomeMentorEmail(zoomUrl, googleMeetUrl, user.getEmail(), user.getId(), user.getFullName(), description, addedRequest.getId());
-
+            ArrayList<Thread> ts = new ArrayList<>();
             for (UserEntity admin : admins) {
-                sendMailGateway.sendEmailNow(email, admin.getEmail());
+                Thread t = new Thread(() -> {
+                    try {
+                        sendMailGateway.sendEmailNow(email, admin.getEmail());
+                    } catch (ConnectionException e) {
+                        handleException(e);
+                    } catch (TimeOutException e) {
+                        handleException(e);
+                    }
+                });
+                ts.add(t);
+                t.start();
                 MasaLog.normalLog("Email-BecomeMentor-" +email.getSubject() + " had been sent to " + admin.getEmail());
+            }
+
+            for (Thread t : ts) {
+                t.join();
+            }
+
+            if (ex.size() > 0) {
+                MasaLog.warningLog("Has exception: " + ex.size());
+                for (Exception exception : ex) {
+                    if (exception instanceof ConnectionException) {
+                        return new Result.SendMailFailedButRequestSaved();
+                    }
+                    if (exception instanceof TimeOutException) {
+                        return new Result.SendMailFailedButRequestSaved();
+                    }
+                }
             }
             return new Success();
 
         } catch (ConnectionException e) {
             return new GeneralError(e.getMessage());
-        } catch (TimeOutException e) {
-            return new SendMailFailedButRequestSaved();
+        } catch (InterruptedException e) {
+            return new Result.GeneralError(e.getMessage());
         }
     }
 
