@@ -12,11 +12,6 @@ import javax.inject.Inject;
 public class UpdateUserRoleUseCase {
     public static class Result {
         public static class Success extends Result {
-            public UserEntity userEntity;
-
-            public Success(UserEntity userEntity) {
-                this.userEntity = userEntity;
-            }
         }
 
         public static class ConnectionError extends Result {
@@ -40,12 +35,10 @@ public class UpdateUserRoleUseCase {
             if (userEntity == null) {
                 return new Result.UserDoesNotExist();
             }
-            UserEntity userUpdated = userRepository.updateUserRole(userID,role);
-            return new Result.Success(userUpdated);
+            userRepository.updateUserRole(userID,role);
+            return new Result.Success();
         } catch (ConnectionException e) {
             return new Result.ConnectionError();
-        } catch (NotFoundException e) {
-            return new Result.UserDoesNotExist();
         }
     }
 }
