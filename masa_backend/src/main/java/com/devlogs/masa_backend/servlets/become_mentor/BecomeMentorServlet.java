@@ -36,6 +36,15 @@ public class BecomeMentorServlet extends BaseHttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doRequest(req, resp);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doRequest(req, resp);
+    }
+
+    protected void doRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestHelper requestHelper = getRequestComponent().getRequestHelper();
         ResponseHelper responseHelper = getRequestComponent().getResponseHelper();
         // check url param

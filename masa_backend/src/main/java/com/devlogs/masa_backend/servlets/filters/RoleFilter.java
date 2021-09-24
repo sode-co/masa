@@ -37,7 +37,11 @@ public class RoleFilter extends BaseServletFilter {
         request.setCharacterEncoding("UTF-8");
         MasaLog.normalLog("role check nha");
         Masa.onServerName(request.getProtocol(),request.getServerName(),request.getServerPort());
-
+        if (Masa.AUTH_MODE.equals("UNCHECK")) {
+            MasaLog.warningLog("YOU'RE IN UNCHECK AUTH MODE, IN SECURE");
+            chain.doFilter(request, response);
+            return;
+        }
         UserEntity currentUser = (UserEntity) request.getSession(true).getAttribute(Masa.SESSION_KEY.USER);
         String requestedResource = UrlHelper.getResourceUrl(request.getRequestURI());
         if (currentUser != null) {

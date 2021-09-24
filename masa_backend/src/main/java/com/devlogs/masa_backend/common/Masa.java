@@ -1,16 +1,19 @@
 package com.devlogs.masa_backend.common;
 
+import com.devlogs.masa_backend.common.helper.EnvHelper;
 import com.devlogs.masa_backend.common.helper.MasaLog;
+import io.github.cdimascio.dotenv.Dotenv;
 
 import javax.servlet.ServletContext;
 
 public class Masa {
+    public static String AUTH_MODE = "CHECK";
+
     public static class Component {
         public static final String APPLICATION_COMPONENT = "APPLICATION_COMPONENT";
     }
 
         public static String SERVER_HOST;
-
         public static String DATABASE_HOST = "";
         public static String DATABASE_NAME = "";
         public static String DATABASE_USER = "";
@@ -73,7 +76,9 @@ public class Masa {
             MasaLog.normalLog("Server host: " + SERVER_HOST);
             GOOGLE_REDIRECT_URI = "http://localhost:"+port+"/masa/logingoogle";
     }
-    public static void init (ServletContext context) {
+    public static void init (ServletContext context, String webInfPath) {
+        Dotenv env = io.github.cdimascio.dotenv.Dotenv.configure().directory(webInfPath+"/env/.env").ignoreIfMalformed().ignoreIfMissing().load();
+        AUTH_MODE = env.get("AUTH");
         GOOGLE_CLIENT_SECRET = context.getInitParameter("GOOGLE_CLIENT_SECRET");
         CLIENT_ID = context.getInitParameter("GOOGLE_CLIENT_ID");
 

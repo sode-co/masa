@@ -1,5 +1,6 @@
 package com.devlogs.masa_backend.repository.request;
 
+import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.data.remote_database.RequestDao;
 import com.devlogs.masa_backend.data.remote_database.RequestDto;
 import com.devlogs.masa_backend.domain.entities.RequestEntity;
@@ -49,7 +50,7 @@ public class RequestRepositoryImp implements RequestRepository {
         int statusId = 1;
         switch (status) {
             case PROCESSING: {
-                statusId = 3;
+                statusId = 2;
                 break;
             }
             case DENIED: {
@@ -57,7 +58,7 @@ public class RequestRepositoryImp implements RequestRepository {
                 break;
             }
             case APPROVED: {
-                statusId = 2;
+                statusId = 3;
                 break;
             }
             default: {
@@ -119,8 +120,12 @@ public class RequestRepositoryImp implements RequestRepository {
 
     @Override
     public RequestEntity getRequestById(String id) throws ConnectionException {
+        MasaLog.normalLog("RequestId: " + id);
         try {
             RequestDto result = requestDao.getById(id);
+            if (result == null) {
+                return null;
+            }
             return fromRequestDto(result);
         } catch (SQLException e) {
             throw new RuntimeException("Sql exception: " + e.getMessage());

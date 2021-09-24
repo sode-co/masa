@@ -1,5 +1,6 @@
 package com.devlogs.masa_backend.become_mentor;
 
+import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.domain.entities.RequestEntity;
 import com.devlogs.masa_backend.domain.entities.UserEntity;
 import com.devlogs.masa_backend.domain.entities.UserRole;
@@ -20,7 +21,9 @@ public class AnswerBecomeMentorRequestUseCaseSync {
         public static class GeneralError extends Result {
 
         }
+        public static class RequestAlreadyAnswered extends Result {
 
+        }
         public static class RequestNotFound extends Result {
 
         }
@@ -33,12 +36,14 @@ public class AnswerBecomeMentorRequestUseCaseSync {
     private UserRepository userRepository;
 
     @Inject
-    public AnswerBecomeMentorRequestUseCaseSync(RequestRepository requestRepository) {
+    public AnswerBecomeMentorRequestUseCaseSync(RequestRepository requestRepository, UserRepository userRepository) {
         this.requestRepository = requestRepository;
+        this.userRepository = userRepository;
     }
 
     public Result executes (String requestId, String userId, RequestEntity.STATUS answer) {
         try {
+            MasaLog.normalLog("Answer become request with id: " + requestId);
             RequestEntity request = requestRepository.getRequestById(requestId);
             UserEntity user = userRepository.getUserById(userId);
 
@@ -53,8 +58,13 @@ public class AnswerBecomeMentorRequestUseCaseSync {
             if (user.getRole().getType() != UserRole.TYPE.GUEST) {
                 return new Result.InvalidUserRole();
             }
-            requestRepository.answerRequest(requestId, answer);
 
+            if (request.getStatus() != RequestEntity.STATUS.PROCESSING) {
+                return new Result.RequestAlreadyAnswered();
+            }
+
+            requestRepository.answerRequest(requestId, answer);
+            userRepository.updateUserRole(userId, new UserRole(UserRole.TYPE.MENTOR));
             return new Result.Success();
         } catch (ConnectionException e) {
             return new Result.GeneralError();

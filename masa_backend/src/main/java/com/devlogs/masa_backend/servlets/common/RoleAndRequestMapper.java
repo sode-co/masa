@@ -24,7 +24,7 @@ public class RoleAndRequestMapper {
             AccessRole accessRole = servletClazz.getAnnotation(AccessRole.class);
 
             if (webServlet == null) {
-                throw new RuntimeException("AccessRole annotation can only use for servlet");
+                throw new RuntimeException(String.format("AccessRole annotation can only use for servlet {%s}", servletClazz.getSimpleName()));
             }
 
             for (String s : webServlet.urlPatterns()) {

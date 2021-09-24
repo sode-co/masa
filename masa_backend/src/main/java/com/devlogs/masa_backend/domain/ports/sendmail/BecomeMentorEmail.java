@@ -20,7 +20,7 @@ public class BecomeMentorEmail implements Email{
 
     private String getRequestUrl(String id, String userId, String fullName) {
         return Masa.SERVER_HOST + String.format(
-                "admin/request-management/response/index.jsp" +
+                "/admin/request-management/response/index.jsp" +
                         "?id=%s" +
                         "&userId=%s" +
                         "&fullName=%s", id, userId, fullName);

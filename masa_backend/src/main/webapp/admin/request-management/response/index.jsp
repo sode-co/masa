@@ -11,11 +11,11 @@
     <title>Title</title>
 </head>
 <body>
-    ${requestScope.fullName} want to become a mentor
+    ${param.fullName} want to become a mentor
 
-    <form action="/admin/request-management/response">
-        <input type="hidden" value="${request.id}" name="id">
-        <input type="hidden" value="${request.userId}" name="userId">
+    <form action="/masa/api/admin/request-management/response">
+        <input type="hidden" value="${param.id}" name="id">
+        <input type="hidden" value="${param.userId}" name="userId">
         <input type="submit" value="Denied" name="btAnswer">
         <input type="submit" value="Accept" name="btAnswer">
     </form>

@@ -30,6 +30,11 @@ public class AuthFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) rs;
         request.setCharacterEncoding("UTF-8");
         MasaLog.normalLog("Auth check nha");
+        if (Masa.AUTH_MODE.equals("UNCHECK")) {
+            MasaLog.warningLog("YOU'RE IN UNCHECK AUTH MODE, IN SECURE");
+            chain.doFilter(request, response);
+            return;
+        }
         Masa.onServerName(request.getProtocol(),request.getServerName(),request.getServerPort());
 
         if (request.getSession(true).getAttribute(Masa.SESSION_KEY.USER) != null) {
@@ -80,7 +85,7 @@ public class AuthFilter implements Filter {
                     "&client_id=%s" +
                     "&redirect_uri=%s" +
                     "&scope=email profile" +
-                    "&approval_prompt=consent"+
+                    "&prompt=consent"+
                     "&access_type=offline"+
                     "&state=%s",Masa.CLIENT_ID, googleProcessLogin, encodedResource);
             MasaLog.normalLog("NO ACCESS_TOKEN GO RESOURCE PAGE, NOT ALLOWED => GOOGLE LOGIN API: " + loginWithGoogleUrl);

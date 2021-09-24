@@ -112,17 +112,16 @@ public class RequestDao {
         }
     }
 
-    public boolean updateRequestStatus(String requestId, int statusId) throws SQLException, ClassNotFoundException {
+    public void updateRequestStatus(String requestId, int statusId) throws SQLException, ClassNotFoundException {
         int effectedRow = 0;
         try (Connection con = dbHelper.connect()) {
             PreparedStatement queryStatement = con.prepareStatement("UPDATE REQUESTS SET STATUS_ID = ? WHERE ID = ?");
             queryStatement.setInt(1, statusId);
             queryStatement.setString(2, requestId);
             effectedRow = queryStatement.executeUpdate();
-            if (effectedRow > 0) {
-                return true;
+            if (effectedRow == 0) {
+                throw new RuntimeException("An expected exception has occur while update the requests status");
             }
-            return false;
         }
     }
 }

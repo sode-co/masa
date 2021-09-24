@@ -128,7 +128,7 @@ public class UserRepositoryImp implements UserRepository {
         }
 
         try {
-           dao.updateUserRole(userId, roleId + "");
+           dao.updateUserRole(userId, roleId);
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         } catch (ClassNotFoundException e) {
