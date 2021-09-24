@@ -191,4 +191,14 @@ public class UserDao {
         return results;
 }
 
+        public void updateUserRole (String userId, String roleId) throws SQLException, ClassNotFoundException {
+            try (Connection connection = dbHelper.connect()) {
+                PreparedStatement updateRoleStatement = connection.prepareStatement("UPDATE USERS SET ROLE_ID = ? WHERE ID = ?");
+                int effectedRow = updateRoleStatement.executeUpdate();
+                if (effectedRow == 0) {
+                    throw new RuntimeException("Invalid result when update user role");
+                }
+            }
+        }
+
 }

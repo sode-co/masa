@@ -11,7 +11,7 @@ import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetAllMeetingServlet
 import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetMeetingByHostIdServlet;
 import com.devlogs.masa_backend.servlets.meeting.updatemeeting.UpdateMeetingServlet;
 
-import com.devlogs.masa_backend.servlets.request_managment.AnswerBecomeMentorNavigationServlet;
+import com.devlogs.masa_backend.servlets.request_managment.AnswerRequestServlet;
 import com.devlogs.masa_backend.servlets.test.TestServlet;
 
 import dagger.Subcomponent;
@@ -39,11 +39,11 @@ public interface ControllerComponent {
 
     void inject(BecomeMentorServlet becomeMentorServlet);
 
-    void inject(AnswerBecomeMentorNavigationServlet answerBecomeMentorNavigationServlet);
-
     void inject(AuthFilter authFilter);
 
     void inject(RoleFilter roleFilter);
 
     void inject(LoginServlet loginServlet);
+
+    void inject(AnswerRequestServlet answerRequestServlet);
 }

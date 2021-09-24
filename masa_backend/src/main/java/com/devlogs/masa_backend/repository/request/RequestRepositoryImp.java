@@ -40,6 +40,39 @@ public class RequestRepositoryImp implements RequestRepository {
         return new RequestEntity(dto.getId(), dto.getDescription(), requestType, dto.getUserId(), status);
     }
 
+    /*
+    * 1: DENIED
+    * 2: APPROVE
+    * 3: PROCESSING
+    * */
+    public void answerRequest (String requestId, RequestEntity.STATUS status) throws ConnectionException {
+        int statusId = 1;
+        switch (status) {
+            case PROCESSING: {
+                statusId = 3;
+                break;
+            }
+            case DENIED: {
+                statusId = 1;
+                break;
+            }
+            case APPROVED: {
+                statusId = 2;
+                break;
+            }
+            default: {
+                throw new RuntimeException("Your status is not supported yet: " + status);
+            }
+        }
+        try {
+           requestDao.updateRequestStatus(requestId, statusId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            throw new ConnectionException(e.getMessage());
+        }
+    }
+
     @Override
     public RequestEntity addRequest(String userId, String description, RequestEntity.TYPE type, RequestEntity.STATUS status) throws ConnectionException {
         int typeId = -1;

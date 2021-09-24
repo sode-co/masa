@@ -11,10 +11,11 @@
     <title>Title</title>
 </head>
 <body>
-    ${requestScope.FullName} want to become a mentor
+    ${requestScope.fullName} want to become a mentor
 
     <form action="/admin/request-management/response">
         <input type="hidden" value="${request.id}" name="id">
+        <input type="hidden" value="${request.userId}" name="userId">
         <input type="submit" value="Denied" name="btAnswer">
         <input type="submit" value="Accept" name="btAnswer">
     </form>
