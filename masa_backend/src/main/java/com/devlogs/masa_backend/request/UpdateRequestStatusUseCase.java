@@ -7,7 +7,7 @@ import com.devlogs.masa_backend.domain.ports.RequestRepository;
 
 import javax.inject.Inject;
 
-public class UpdatRequestStatusUseCase {
+public class UpdateRequestStatusUseCase {
     public static class Result {
         public static class Success extends Result {
             public RequestEntity requestEntity;
@@ -28,7 +28,7 @@ public class UpdatRequestStatusUseCase {
 
     private RequestRepository requestRepository;
     @Inject
-    public UpdatRequestStatusUseCase(RequestRepository requestRepository) {
+    public UpdateRequestStatusUseCase(RequestRepository requestRepository) {
         this.requestRepository = requestRepository;
     }
 
