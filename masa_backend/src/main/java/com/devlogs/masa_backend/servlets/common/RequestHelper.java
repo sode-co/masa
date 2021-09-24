@@ -15,6 +15,7 @@ public class RequestHelper {
     public interface ValidateTailParam {
         boolean isValid(String param);
     }
+
     private HttpServletRequest currentRequest;
     private Validator validator;
 
