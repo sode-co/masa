@@ -75,4 +75,31 @@ public class MockUserRepositoryImp implements UserRepository {
         return newUser;
 
     }
+
+    @Override
+    public List<UserEntity> getAllUser() throws ConnectionException {
+        return MockUserDataSource.data;
+    }
+
+    @Override
+    public UserEntity blockUser(String userID, UserStatus status) throws ConnectionException, NotFoundException {
+        Optional<UserEntity> result = MockUserDataSource.data.stream().filter(u-> u.getId().equals(userID)).findFirst();
+        UserEntity userBlocked = null;
+        if (result.isPresent()) {
+            userBlocked = result.get();
+            userBlocked.setStatus(new UserStatus(status.getStatus()));
+        }
+        return userBlocked;
+    }
+
+    @Override
+    public UserEntity updateUserRole(String userID, UserRole role) throws ConnectionException, NotFoundException {
+        Optional<UserEntity> result = MockUserDataSource.data.stream().filter(u-> u.getId().equals(userID)).findFirst();
+        UserEntity userUpdateRole = null;
+        if (result.isPresent()) {
+            userUpdateRole = result.get();
+            userUpdateRole.setRole(new UserRole(role.getType()));
+        }
+        return userUpdateRole;
+    }
 }

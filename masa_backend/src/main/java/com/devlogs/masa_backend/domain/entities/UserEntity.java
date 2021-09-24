@@ -39,8 +39,12 @@ public class UserEntity {
         return status;
     }
 
-    public void setStatus (UserStatus status) {
+    public void setStatus(UserStatus status) {
         this.status = status;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 
     @Override

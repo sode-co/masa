@@ -8,6 +8,7 @@ import com.devlogs.masa_backend.domain.entities.UserRole;
 import com.devlogs.masa_backend.domain.entities.UserStatus;
 import com.devlogs.masa_backend.domain.errors.AlreadyExistException;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
+import com.devlogs.masa_backend.domain.errors.NotFoundException;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
 import com.devlogs.masa_backend.domain.ports.google_api.GooglePojo;
 import com.google.gson.Gson;
@@ -29,7 +30,7 @@ public class UserRepositoryImp implements UserRepository {
     private UserDto dto;
 
     @Inject
-    public UserRepositoryImp( UserDao dao) {
+    public UserRepositoryImp(UserDao dao) {
         this.dao = dao;
 
     }
@@ -37,41 +38,40 @@ public class UserRepositoryImp implements UserRepository {
     public UserRole convertRole(int role_id) {
         UserRole.TYPE type = null;
         for (UserRole.TYPE value : UserRole.TYPE.values()) {
-                type = UserRole.TYPE.values()[role_id-1];
+            type = UserRole.TYPE.values()[role_id - 1];
         }
         return new UserRole(type);
     }
 
     public UserStatus convertStatus(int status_id) {
         UserStatus.STATUS status;
-        if (status_id == 1){
+        if (status_id == 1) {
             status = UserStatus.STATUS.BLOCKED;
-        }
-        else status = UserStatus.STATUS.ACTIVE;
+        } else status = UserStatus.STATUS.ACTIVE;
 
         return new UserStatus(status);
     }
 
-    public UserEntity convertDto(UserDto dto ){
+    public UserEntity convertDto(UserDto dto) {
 
         UserEntity entity = new UserEntity(dto.getId(), dto.getEmail(), dto.getFullName(),
-                                           convertRole(dto.getRole_ID()), convertStatus(dto.getStatus_id()));
-         return entity;
+                convertRole(dto.getRole_ID()), convertStatus(dto.getStatus_id()));
+        return entity;
     }
 
 
     @Override
-        public UserEntity getUserByEmail(String email) throws ConnectionException {
+    public UserEntity getUserByEmail(String email) throws ConnectionException {
 
-       try {
-           dto = dao.getUserByEmail(email);
-           if (dto != null) {
-               userEntity = convertDto(dto);
-           } else return null;
+        try {
+            dto = dao.getUserByEmail(email);
+            if (dto != null) {
+                userEntity = convertDto(dto);
+            } else return null;
 
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
-        } catch(ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex) {
             throw new RuntimeException(ex.getMessage());
         }
         return userEntity;
@@ -143,9 +143,9 @@ public class UserRepositoryImp implements UserRepository {
             if (dto != null) {
                 userEntity = convertDto(dto);
             } else return null;
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
-        } catch(ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex) {
             throw new RuntimeException(ex.getMessage());
         }
         return userEntity;
@@ -153,47 +153,117 @@ public class UserRepositoryImp implements UserRepository {
 
     @Override
     public UserEntity addUser(String email, String fullName, String avatar, UserRole role, UserStatus userStatus)
-                    throws ConnectionException, AlreadyExistException {
+            throws ConnectionException, AlreadyExistException {
 
-        int role_id ;
-        int status_id ;
+        int role_id;
+        int status_id;
         try {
 //            MasaLog.normalLog("role type:  " + role.getType() );
 //            MasaLog.normalLog("trung voi student khong " + (role.getType()).toString().equals("STUDENT") );
-            if ((role.getType()).toString().equals("ADMIN")){
+            if ((role.getType()).toString().equals("ADMIN")) {
                 role_id = 1;
                 MasaLog.normalLog("admin 1 ");
-            } else if ((role.getType()).toString().equals("STUDENT")){
+            } else if ((role.getType()).toString().equals("STUDENT")) {
                 role_id = 2;
                 MasaLog.normalLog("student");
-            } else if ((role.getType()).toString().equals("GUEST")){
+            } else if ((role.getType()).toString().equals("GUEST")) {
                 role_id = 3;
                 MasaLog.normalLog("admin 3 ");
-            } else if ((role.getType()).toString().equals("MENTOR")){
+            } else if ((role.getType()).toString().equals("MENTOR")) {
                 role_id = 4;
                 MasaLog.normalLog("admin 4 ");
             } else return null;
 
 
-            if ((userStatus.getStatus()).toString().equals("BLOCKED")){
+            if ((userStatus.getStatus()).toString().equals("BLOCKED")) {
                 status_id = 1;
-            } else if ((userStatus.getStatus()).toString().equals("ACTIVE")){
+            } else if ((userStatus.getStatus()).toString().equals("ACTIVE")) {
                 status_id = 2;
             } else return null;
 
-            dto = dao.addUser(email, fullName, avatar,role_id, status_id);
+            dto = dao.addUser(email, fullName, avatar, role_id, status_id);
             //MasaLog.normalLog("dto la: "+ dto.toString());
 
-            if ( dto != null ) {
+            if (dto != null) {
                 userEntity = convertDto(dto);
             } else return null;
 
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
-        } catch(ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex) {
             throw new RuntimeException(ex.getMessage());
         }
         return userEntity;
+    }
+
+    @Override
+    public List<UserEntity> getAllUser() throws ConnectionException {
+        List<UserEntity> result = null;
+        try {
+            List<UserDto> list = dao.getAllUsers();
+            if (list != null) {
+                for (UserDto dto : list) {
+                    if (result == null) {
+                        result = new ArrayList<>();
+                        result.add(convertDto(dto));
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new RuntimeException(ex.getMessage());
+        }
+        return result;
+    }
+
+    @Override
+    public UserEntity blockUser(String userID, UserStatus status) throws ConnectionException, NotFoundException {
+        UserEntity result = null;
+        try {
+            int statusID = 0;
+            if (status.getStatus().toString().equals("BLOCKED")) {
+                statusID = 1;
+            }
+            if (statusID == 1) {
+                UserDto dto = dao.blockUser(userID, statusID);
+                if (dto != null) {
+                    result = convertDto(dto);
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new RuntimeException(ex.getMessage());
+        }
+        return result;
+    }
+
+    @Override
+    public UserEntity updateUserRole(String userID, UserRole role) throws ConnectionException, NotFoundException {
+        UserEntity result = null;
+        try {
+            int role_id = 0;
+            if ((role.getType()).toString().equals("ADMIN")) {
+                role_id = 1;
+            } else if ((role.getType()).toString().equals("STUDENT")) {
+                role_id = 2;
+            } else if ((role.getType()).toString().equals("GUEST")) {
+                role_id = 3;
+            } else role_id = 4;
+
+            if (role_id != 0) {
+                UserDto dto = dao.updateUserRole(userID, role_id);
+                if (dto != null) {
+                    result = convertDto(dto);
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new RuntimeException(ex.getMessage());
+        }
+        return result;
     }
 
 }

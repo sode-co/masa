@@ -23,16 +23,9 @@ public class UserDao {
         this.dbHelper = dbHelper;
     }
 
-    public UserDao() {
-
-    }
-
-    public static void main(String[] args) {
-        UserDao dao = new UserDao();
-    }
 
     public UserDto getUserById(String Id)
-            throws SQLException, ConnectionException, ClassNotFoundException {
+            throws SQLException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -127,7 +120,7 @@ public class UserDao {
 
 
     public UserDto addUser(String email, String fullName, String avatar_url, int role_id, int status_id)
-            throws SQLException, ConnectionException, AlreadyExistException, ClassNotFoundException {
+            throws SQLException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement stm = null;
 
@@ -171,6 +164,54 @@ public class UserDao {
         return null;
     }
 
+    public UserDto blockUser(String userId, int statusId) throws SQLException, ClassNotFoundException {
+        UserDto userBlocked = null;
+        try (Connection con = dbHelper.connect()) {
+            PreparedStatement ptm = con.prepareStatement("UPDATE Users SET status_id=? WHERE id=?;");
+            ptm.setInt(1,statusId);
+            ptm.setString(2,userId);
+            int result = ptm.executeUpdate();
+            if (result > 0) {
+                return userBlocked = getUserById(userId);
+            }
+        }
+        return userBlocked;
+    }
+
+    public List<UserDto> getAllUsers() throws SQLException, ClassNotFoundException {
+        List<UserDto> result = null;
+        try (Connection con = dbHelper.connect()) {
+            PreparedStatement ptm = con.prepareStatement("Select id, fullName, email, avatar_url, role_id, status_id From Users;");
+            ResultSet rs = ptm.executeQuery();
+            while (rs.next()) {
+                String id = rs.getString(1);
+                String fullName = rs.getString(2);
+                String email1 = rs.getString(3);
+                String avatar_url = rs.getString(4);
+                int role_id = rs.getInt(5);
+                int status_id = rs.getInt(6);
+                if(result == null){
+                    result = new ArrayList<>();
+                }
+                result.add(new UserDto(id, fullName, email1, avatar_url, role_id, status_id));
+            }
+        }
+        return result;
+    }
+
+    public UserDto updateUserRole(String userId, int roleId) throws SQLException, ClassNotFoundException {
+        UserDto userUpdated = null;
+        try(Connection con = dbHelper.connect()){
+            PreparedStatement ptm = con.prepareStatement("UPDATE Users SET role_id=? WHERE id=?;");
+            ptm.setInt(1,roleId);
+            ptm.setString(2,userId);
+            int result = ptm.executeUpdate();
+            if (result > 0) {
+                return userUpdated = getUserById(userId);
+            }
+        }
+        return userUpdated;
+    }
     public List<UserDto> getUserByRole(int roleId) throws SQLException, ClassNotFoundException {
         ArrayList<UserDto> results = new ArrayList();
         try (Connection connection = dbHelper.connect()) {

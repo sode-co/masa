@@ -112,6 +112,7 @@ public class RequestDao {
         }
     }
 
+
     public void updateRequestStatus(String requestId, int statusId) throws SQLException, ClassNotFoundException {
         int effectedRow = 0;
         try (Connection con = dbHelper.connect()) {

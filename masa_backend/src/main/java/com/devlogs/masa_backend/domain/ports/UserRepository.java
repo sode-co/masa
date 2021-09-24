@@ -5,6 +5,9 @@ import com.devlogs.masa_backend.domain.entities.UserRole;
 import com.devlogs.masa_backend.domain.entities.UserStatus;
 import com.devlogs.masa_backend.domain.errors.AlreadyExistException;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
+import com.devlogs.masa_backend.domain.errors.NotFoundException;
+
+import java.util.List;
 
 import java.util.List;
 
@@ -24,4 +27,9 @@ public interface UserRepository {
 
     UserEntity addUser (String email, String fullName, String avatar, UserRole role, UserStatus userStatus) throws ConnectionException, AlreadyExistException;
 
+    List<UserEntity> getAllUser() throws ConnectionException;
+
+    UserEntity blockUser(String userID, UserStatus status) throws ConnectionException, NotFoundException;
+
+    UserEntity updateUserRole(String userID, UserRole role) throws ConnectionException, NotFoundException;
 }
