@@ -22,7 +22,7 @@ public interface UserRepository {
      * */
     UserEntity getUserByEmail (String email) throws ConnectionException;
     List<UserEntity> getAllAdmin () throws ConnectionException;
-//    void updateUserRole (String userId, UserRole newRole) throws ConnectionException;
+    void updateUserRole (String userId, UserRole newRole) throws ConnectionException;
     UserEntity getUserById(String id) throws ConnectionException;
 
     UserEntity addUser (String email, String fullName, String avatar, UserRole role, UserStatus userStatus) throws ConnectionException, AlreadyExistException;
@@ -31,6 +31,7 @@ public interface UserRepository {
 
     UserEntity blockUser(String userID, UserStatus status) throws ConnectionException, NotFoundException;
 
-    UserEntity updateUserRole(String userID, UserRole role) throws ConnectionException, NotFoundException;
+
+//    UserEntity updateUserRole(String userID, UserRole role) throws ConnectionException, NotFoundException;
 
 }

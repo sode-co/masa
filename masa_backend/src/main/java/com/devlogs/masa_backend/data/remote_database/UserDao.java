@@ -199,19 +199,6 @@ public class UserDao {
         return result;
     }
 
-    public UserDto updateUserRole(String userId, int roleId) throws SQLException, ClassNotFoundException {
-        UserDto userUpdated = null;
-        try(Connection con = dbHelper.connect()){
-            PreparedStatement ptm = con.prepareStatement("UPDATE Users SET role_id=? WHERE id=?;");
-            ptm.setInt(1,roleId);
-            ptm.setString(2,userId);
-            int result = ptm.executeUpdate();
-            if (result > 0) {
-                return userUpdated = getUserById(userId);
-            }
-        }
-        return userUpdated;
-    }
     public List<UserDto> getUserByRole(int roleId) throws SQLException, ClassNotFoundException {
         ArrayList<UserDto> results = new ArrayList();
         try (Connection connection = dbHelper.connect()) {
@@ -232,5 +219,17 @@ public class UserDao {
         }
         return results;
 }
+        public void updateUserRole (String userId, int roleId) throws SQLException, ClassNotFoundException {
+            try (Connection connection = dbHelper.connect()) {
+                PreparedStatement updateRoleStatement = connection.prepareStatement("UPDATE USERS SET ROLE_ID = ? WHERE ID = ?");
+                updateRoleStatement.setInt(1, roleId);
+                updateRoleStatement.setString(2, userId);
+                int effectedRow = updateRoleStatement.executeUpdate();
+                if (effectedRow == 0) {
+                    throw new RuntimeException("Invalid result when update user role");
+                }
+            }
+        }
+
 
 }

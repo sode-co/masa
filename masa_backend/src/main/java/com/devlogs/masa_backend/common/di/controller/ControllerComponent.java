@@ -3,6 +3,7 @@ package com.devlogs.masa_backend.common.di.controller;
 import com.devlogs.masa_backend.request.GetRequestByUserIdUseCase;
 import com.devlogs.masa_backend.servlets.appointments.CreateAppointmentServlet;
 import com.devlogs.masa_backend.servlets.become_mentor.BecomeMentorServlet;
+import com.devlogs.masa_backend.servlets.filters.AuthFilter;
 import com.devlogs.masa_backend.servlets.filters.RoleFilter;
 import com.devlogs.masa_backend.servlets.login.GoogleLoginProcessServlet;
 import com.devlogs.masa_backend.servlets.login.LoginServlet;
@@ -11,7 +12,7 @@ import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetAllMeetingServlet
 import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetMeetingByHostIdServlet;
 import com.devlogs.masa_backend.servlets.meeting.updatemeeting.UpdateMeetingServlet;
 
-import com.devlogs.masa_backend.servlets.request_managment.AnswerBecomeMentorNavigationServlet;
+//import com.devlogs.masa_backend.servlets.request_managment.AnswerBecomeMentorNavigationServlet;
 import com.devlogs.masa_backend.servlets.request_managment.createRequest.CreateRequestServlet;
 import com.devlogs.masa_backend.servlets.request_managment.getRequest.GetAllRequestServlet;
 import com.devlogs.masa_backend.servlets.request_managment.getRequest.GetRequestByUserIdServlet;
@@ -48,7 +49,7 @@ public interface ControllerComponent {
 
     void inject(ShowAllUserServlet showAllUserServlet);
 
-    void inject(AnswerBecomeMentorNavigationServlet authFilter);
+//    void inject(AnswerBecomeMentorNavigationServlet authFilter);
 
     void inject(AuthFilter authFilter);
 

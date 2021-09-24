@@ -23,8 +23,7 @@ public class GetGoogleAccessToken {
         JsonObject jobj = new Gson().fromJson(response, JsonObject.class);
         MasaLog.normalLog("Refresh token: " + jobj);
         String accessToken = jobj.get("access_token").toString().replaceAll("\"", "");
-        String refreshToken = jobj.get("refresh_token").toString().replaceAll("\"", "");
-        String[] tokens = {accessToken, refreshToken};
+        String[] tokens = {accessToken};
         return tokens;
     }
 

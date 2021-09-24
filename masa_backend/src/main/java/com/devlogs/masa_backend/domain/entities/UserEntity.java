@@ -39,10 +39,6 @@ public class UserEntity {
         this.status = status;
     }
 
-    public void setRole(UserRole role) {
-        this.role = role;
-    }
-
     @Override
     public String toString() {
         return "UserEntity{" +
@@ -51,5 +47,9 @@ public class UserEntity {
                 ", role=" + role +
                 ", status=" + status +
                 '}';
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 }

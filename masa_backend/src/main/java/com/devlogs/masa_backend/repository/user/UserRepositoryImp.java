@@ -239,31 +239,6 @@ public class UserRepositoryImp implements UserRepository {
         return result;
     }
 
-    @Override
-    public UserEntity updateUserRole(String userID, UserRole role) throws ConnectionException, NotFoundException {
-        UserEntity result = null;
-        try {
-            int role_id = 0;
-            if ((role.getType()).toString().equals("ADMIN")) {
-                role_id = 1;
-            } else if ((role.getType()).toString().equals("STUDENT")) {
-                role_id = 2;
-            } else if ((role.getType()).toString().equals("GUEST")) {
-                role_id = 3;
-            } else role_id = 4;
 
-            if (role_id != 0) {
-                UserDto dto = dao.updateUserRole(userID, role_id);
-                if (dto != null) {
-                    result = convertDto(dto);
-                }
-            }
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex.getMessage());
-        } catch (ClassNotFoundException ex) {
-            throw new RuntimeException(ex.getMessage());
-        }
-        return result;
-    }
 
 }

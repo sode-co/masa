@@ -29,18 +29,18 @@ public class TestServlet extends BaseHttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getControllerComponent().inject(this);
 
-        try {
-            UserDto dto = dao.updateUserRole("SE100003",1);
+//        try {
+//            UserDto dto = dao.updateUserRole("SE100003",1);
 //            if (list != null) {
 //                for (UserDto dto : list){
-                    System.out.println(dto);
+//                    System.out.println(dto);
 //                }
 //            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override

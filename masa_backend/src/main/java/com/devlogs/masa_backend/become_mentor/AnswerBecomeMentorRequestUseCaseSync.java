@@ -63,7 +63,7 @@ public class AnswerBecomeMentorRequestUseCaseSync {
                 return new Result.RequestAlreadyAnswered();
             }
 
-            requestRepository.answerRequest(requestId, answer);
+            requestRepository.updateRequestStatus(requestId, answer);
             userRepository.updateUserRole(userId, new UserRole(UserRole.TYPE.MENTOR));
             return new Result.Success();
         } catch (ConnectionException e) {
