@@ -115,6 +115,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         height="95%"
         class="ml-5"
       />
+
     </div>
 
     <!-- End of welcome banner -->

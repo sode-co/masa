@@ -1,6 +1,5 @@
 package com.devlogs.masa_backend.data.common;
 
-import com.devlogs.masa_backend.common.Masa;
 import com.devlogs.masa_backend.common.helper.MasaLog;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.apache.commons.dbcp.BasicDataSource;
@@ -15,7 +14,12 @@ public class DbHelper {
 
     public DbHelper (String realPath) {
         MasaLog.normalLog("Log nheeee");
-        Dotenv env = Dotenv.configure().directory(realPath+"/env/.env").ignoreIfMalformed().ignoreIfMissing().load();
+        try {
+            Class.forName("io.github.cdimascio.dotenv.Dotenv");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        Dotenv env = io.github.cdimascio.dotenv.Dotenv.configure().directory(realPath+"/env/.env").ignoreIfMalformed().ignoreIfMissing().load();
         DB_USER = env.get("DATABASE_USER");
         DB_PASSWORD = env.get("DATABASE_PASSWORD");
         String DB_NAME = env.get("DATABASE_NAME");

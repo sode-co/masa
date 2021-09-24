@@ -1,7 +1,9 @@
 package com.devlogs.masa_backend.servlets.meeting.createmeeting;
 
+import com.devlogs.masa_backend.common.annotations.AccessRole;
 import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform.PLATFORM;
+import com.devlogs.masa_backend.domain.entities.UserRole;
 import com.devlogs.masa_backend.meeting.CreateMeetingUseCase;
 import com.devlogs.masa_backend.servlets.common.base.BaseHttpServlet;
 import com.google.gson.Gson;
@@ -19,6 +21,10 @@ import java.io.PrintWriter;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.ADMIN;
+import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.MENTOR;
+
+@AccessRole(roles = {ADMIN, MENTOR})
 @WebServlet(name = "create-meeting", urlPatterns = {"/api/meeting/create", "/api/meeting-management/create"})
 public class CreateMeetingServlet extends BaseHttpServlet {
     @Inject
