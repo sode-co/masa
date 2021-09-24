@@ -1,5 +1,6 @@
 package com.devlogs.masa_backend.data.remote_database;
 
+import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.data.common.DbHelper;
 import com.devlogs.masa_backend.domain.errors.AlreadyExistException;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
@@ -191,6 +192,27 @@ public class UserDao {
         return results;
 }
 
+    public List<UserDto> getAllUsers() throws SQLException, ClassNotFoundException {
+        MasaLog.normalLog("aaaaaa");
+        List<UserDto> result = null;
+        try (Connection con = dbHelper.connect()) {
+            PreparedStatement ptm = con.prepareStatement("Select id, fullName, email, avatar_url, role_id, status_id From Users;");
+            ResultSet rs = ptm.executeQuery();
+            while (rs.next()) {
+                String id = rs.getString(1);
+                String fullName = rs.getString(2);
+                String email1 = rs.getString(3);
+                String avatar_url = rs.getString(4);
+                int role_id = rs.getInt(5);
+                int status_id = rs.getInt(6);
+                if(result == null){
+                    result = new ArrayList<>();
+                }
+                result.add(new UserDto(id, fullName, email1, avatar_url, role_id, status_id));
+            }
+        }
+        return result;
+    }
         public void updateUserRole (String userId, int roleId) throws SQLException, ClassNotFoundException {
             try (Connection connection = dbHelper.connect()) {
                 PreparedStatement updateRoleStatement = connection.prepareStatement("UPDATE USERS SET ROLE_ID = ? WHERE ID = ?");
