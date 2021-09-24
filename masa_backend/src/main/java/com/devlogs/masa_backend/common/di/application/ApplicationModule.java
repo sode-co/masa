@@ -22,8 +22,8 @@ public class ApplicationModule {
     private String WEB_INF_PATH;
     public ApplicationModule (ServletContext applicationContext) {
         this.context = applicationContext;
-        Masa.init(context);
         WEB_INF_PATH = context.getRealPath("/WEB-INF");
+        Masa.init(context, WEB_INF_PATH);
     }
 
     @Provides
