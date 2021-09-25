@@ -158,7 +158,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                 
                       <form
                         id="googlelogin"
-                        method="post" class="text-center"
+                        method="post" class="max-w-5xl text-center"
                         action="https://accounts.google.com/o/oauth2/auth?"
                       >
                         <span class="inline-block">
