@@ -1,6 +1,6 @@
 package com.devlogs.masa_backend.servlets.request_managment.getRequest;
 
-import com.devlogs.masa_backend.meeting.GetAllMeetingUseCase;
+import com.devlogs.masa_backend.common.annotations.AccessRole;
 import com.devlogs.masa_backend.request.GetAllRequestUseCase;
 import com.devlogs.masa_backend.servlets.common.base.BaseHttpServlet;
 import com.google.gson.Gson;
@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.ADMIN;
+
+@AccessRole(roles = {ADMIN})
 @WebServlet(name = "getallrequestservlet", urlPatterns = {"/api/request-management/requests"})
 public class GetAllRequestServlet extends BaseHttpServlet {
     @Inject

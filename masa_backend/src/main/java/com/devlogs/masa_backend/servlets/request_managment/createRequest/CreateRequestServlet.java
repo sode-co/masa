@@ -49,7 +49,7 @@ public class CreateRequestServlet extends BaseHttpServlet {
             invalidMessage += violation.getMessage() + ", \n";
         }
         if (invalidMessage.isEmpty()) {
-            MasaLog.normalLog("Start create metting");
+            MasaLog.normalLog("Start create request");
             createRequest(reqBody,resp);
         } else {
             MasaLog.normalLog("Violation req: " + invalidMessage);
