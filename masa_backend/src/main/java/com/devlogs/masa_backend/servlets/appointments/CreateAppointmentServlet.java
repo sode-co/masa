@@ -49,7 +49,7 @@ public class CreateAppointmentServlet extends BaseHttpServlet {
             responseHelper.responseMessage(400, "Your user id does not exist");
         } else if (result instanceof FollowMeetingUseCase.Result.ConnectionError) {
             responseHelper.responseMessage(400, "Db connection error");
-        } else if (result instanceof FollowMeetingUseCase.Result.Success) {
+        } else if (result instanceof FollowMeetingUseCase.Result.Success || result instanceof FollowMeetingUseCase.Result.AppointmentAlreadyExist) {
             responseHelper.responseJsonOk(new Gson().toJson(result));
         }
     }
