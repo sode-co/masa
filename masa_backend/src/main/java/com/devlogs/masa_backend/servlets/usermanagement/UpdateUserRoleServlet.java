@@ -1,26 +1,25 @@
 package com.devlogs.masa_backend.servlets.usermanagement;
 
-
 import com.devlogs.masa_backend.common.helper.MasaLog;
-
 import com.devlogs.masa_backend.manage.GetAllUserUserCase;
-import com.devlogs.masa_backend.servlets.common.base.BaseHttpServlet;
-
+import com.devlogs.masa_backend.manage.UpdateUserRoleUseCase;
+import com.devlogs.masa_backend.servlets.common.RequestHelper;
 import com.devlogs.masa_backend.servlets.common.ResponseHelper;
+import com.devlogs.masa_backend.servlets.common.base.BaseHttpServlet;
 import com.google.gson.Gson;
+
 import javax.inject.Inject;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 import java.io.IOException;
 
 
-@WebServlet(name = "ShowAllUserServlet", urlPatterns = "/api/user-management/all")
-public class ShowAllUserServlet extends BaseHttpServlet {
+@WebServlet(name = "UpdateUserRoleServlet", value = "/api/user-management/updateuser")
+public class UpdateUserRoleServlet extends BaseHttpServlet {
 
     @Inject
-    protected GetAllUserUserCase getAllUserUserCase;
+    protected UpdateUserRoleUseCase updateUserRoleUseCase;
 
     @Override
     public void init() throws ServletException {
@@ -28,8 +27,10 @@ public class ShowAllUserServlet extends BaseHttpServlet {
         getControllerComponent().inject(this);
     }
 
+
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestHelper requestHelper = this.getRequestComponent().getRequestHelper();
         ResponseHelper responseHelper = this.getRequestComponent().getResponseHelper();
 
         GetAllUserUserCase.Result result = getAllUserUserCase.executes();
@@ -37,13 +38,15 @@ public class ShowAllUserServlet extends BaseHttpServlet {
         if (result instanceof GetAllUserUserCase.Result.Success) {
             responseHelper.responseJsonOk(new Gson().toJson(result));
 
+            MasaLog.normalLog("TRueeeeee");
         } else
             responseHelper.responseMessage(400,"No user is existed!!!" );
 
     }
+    }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       // doGet(req, resp);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 }

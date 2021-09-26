@@ -198,15 +198,13 @@ public class UserRepositoryImp implements UserRepository {
 
     @Override
     public List<UserEntity> getAllUser() throws ConnectionException {
-        List<UserEntity> result = null;
+        List<UserEntity> result = new ArrayList<>();
         try {
             List<UserDto> list = dao.getAllUsers();
-            if (list != null) {
+            if (list.size() != 0) {
                 for (UserDto dto : list) {
-                    if (result == null) {
-                        result = new ArrayList<>();
                         result.add(convertDto(dto));
-                    }
+
                 }
             }
         } catch (SQLException ex) {

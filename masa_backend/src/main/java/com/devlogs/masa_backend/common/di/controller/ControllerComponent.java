@@ -15,6 +15,7 @@ import com.devlogs.masa_backend.servlets.request_managment.AnswerRequestServlet;
 import com.devlogs.masa_backend.servlets.test.TestServlet;
 
 import com.devlogs.masa_backend.servlets.usermanagement.ShowAllUserServlet;
+import com.devlogs.masa_backend.servlets.usermanagement.UpdateUserRoleServlet;
 import dagger.Subcomponent;
 
 @Subcomponent (modules = {DataModule.class, RepositoryModule.class, ApiModule.class})
@@ -49,4 +50,6 @@ public interface ControllerComponent {
     void inject(LoginServlet loginServlet);
 
     void inject(AnswerRequestServlet answerRequestServlet);
+
+    void inject(UpdateUserRoleServlet updateUserRoleServlet);
 }

@@ -3,6 +3,7 @@ package com.devlogs.masa_backend.manage;
 import com.devlogs.masa_backend.domain.entities.UserEntity;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
+import com.devlogs.masa_backend.repository.user.UserRepositoryImp;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -35,4 +36,20 @@ public class GetAllUserUserCase {
             return new Result.ConnectionError();
         }
     }
+
+//    private UserRepositoryImp userRepositoryImp;
+//
+//    @Inject
+//    public GetAllUserUserCase(UserRepositoryImp userRepositoryImp) {
+//        this.userRepositoryImp = userRepositoryImp;
+//    }
+//
+//    public Result executes() {
+//        try {
+//            List<UserEntity> users = userRepositoryImp.getAllUser();
+//            return new Result.Success(users);
+//        } catch (ConnectionException e) {
+//            return new Result.ConnectionError();
+//        }
+//    }
 }
