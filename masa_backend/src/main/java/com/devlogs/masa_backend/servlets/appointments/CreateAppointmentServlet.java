@@ -35,7 +35,9 @@ public class CreateAppointmentServlet extends BaseHttpServlet {
         RequestHelper requestHelper = getRequestComponent().getRequestHelper();
         ResponseHelper responseHelper = getRequestComponent().getResponseHelper();
         ValidateResult<CreateAppointmentReqBody> validateResult = requestHelper.getRequestBody(CreateAppointmentReqBody.class);
-
+        requestHelper.getTailRequestParam((value) -> {
+           return true;
+        });
         if (validateResult instanceof ValidateResult.InValid) {
             getRequestComponent().getResponseHelper().responseMessage(400, ((ValidateResult.InValid<CreateAppointmentReqBody>) validateResult).getMessage());
         }
