@@ -65,7 +65,7 @@ Become mentor page -->
                 </div>
                 <div class="form-check">
                     <label for="googleMeetUrl">Google Meet Url</label>
-                    <input type="link" class="form-control" id="googleMeetUrl" placeholder="Your Google Meet url here"><br>
+                    <input type="link" class="form-control" id="googleMeetUrl" placeholder="Your Google Meet url here">
                 </div>
                 <button onclick="becomeMentor()" class="btn btn-primary">Become Mentor</button>
             </form>
