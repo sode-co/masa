@@ -23,8 +23,8 @@ import java.util.List;
 
 @WebServlet(name = "TestServlet", urlPatterns = "/TestServlet")
 public class TestServlet extends BaseHttpServlet {
-    @Inject
-    UserDao dao;
+//    @Inject
+//    UserDao dao;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getControllerComponent().inject(this);
