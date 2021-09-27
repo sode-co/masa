@@ -9,6 +9,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
         background-color: black;
       }
     </style>
+<<<<<<< HEAD
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -205,4 +206,13 @@ contentType="text/html;charset=UTF-8" language="java" %>
     integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
     crossorigin="anonymous"
   ></script>
+=======
+</head>
+<body>
+    <h1>Mentor ne</h1>
+    <%@ include file="../../shared/meeting/_layout_view_meeting.jsp"%>
+    <%@ include file="../../shared/meeting/_layout_create_meeting.jsp"%>
+<%--    <%@ include file="../../shared/meeting/_view_all_meeting.jsp"%>--%>
+</body>
+>>>>>>> de842e85169927b86f517895a7ce9554184791b5
 </html>

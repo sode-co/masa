@@ -57,11 +57,13 @@
             const startDate = (""+document.getElementById("start-date").value+" "+ document.getElementById("start-time").value+":00").replace(/-/g,"/")
             const start = new Date(startDate);
             const millisecondsStart = start.getTime();
-
+            console.log("millisStart: " + millisecondsStart)
+            // var dateString = "10/23/2015"; // Oct 23
+            // var dateObject = new Date(dateString);
             const endDate = (""+document.getElementById("end-date").value+" "+ document.getElementById("end-time").value+":00").replace(/-/g,"/")
             const end = new Date(endDate);
             const millisecondsEnd = end.getTime();
-
+            console.log("milliesEnd: " + millisecondsEnd)
 
             let diff = Math.round((millisecondsEnd-millisecondsStart)/1000);
 
