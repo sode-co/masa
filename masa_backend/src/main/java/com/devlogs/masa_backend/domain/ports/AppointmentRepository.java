@@ -8,5 +8,6 @@ import java.util.List;
 public interface AppointmentRepository {
     AppointmentEntity createAppointment (String userId, String meetingId) throws ConnectionException;
     List<AppointmentEntity> getUserAppointment (String userId) throws ConnectionException;
+    AppointmentEntity getAppointment (String userId, String meetingId) throws ConnectionException;
     List<AppointmentEntity> getMeetingAppointment (String meetingId) throws ConnectionException;
 }

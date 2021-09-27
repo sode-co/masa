@@ -48,7 +48,7 @@ public class AnswerRequestServlet extends BaseHttpServlet {
             MasaLog.normalLog("Answer become mentor request result: " + result.getClass().getSimpleName());
 
             if (result instanceof AnswerBecomeMentorRequestUseCaseSync.Result.Success) {
-                getRequestComponent().getResponseHelper().responseMessage(200, "Approved");
+                getRequestComponent().getResponseHelper().responseMessage(200, status.name());
             } else if (result instanceof AnswerBecomeMentorRequestUseCaseSync.Result.RequestAlreadyAnswered) {
                 getRequestComponent().getResponseHelper().responseMessage(200, "Request already answered");
             } else if (result instanceof AnswerBecomeMentorRequestUseCaseSync.Result.UserNotFound) {

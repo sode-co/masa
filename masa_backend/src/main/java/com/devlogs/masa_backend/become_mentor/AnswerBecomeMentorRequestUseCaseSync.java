@@ -64,7 +64,9 @@ public class AnswerBecomeMentorRequestUseCaseSync {
             }
 
             requestRepository.updateRequestStatus(requestId, answer);
-            userRepository.updateUserRole(userId, new UserRole(UserRole.TYPE.MENTOR));
+            if (answer == RequestEntity.STATUS.APPROVED) {
+                userRepository.updateUserRole(userId, new UserRole(UserRole.TYPE.MENTOR));
+            }
             return new Result.Success();
         } catch (ConnectionException e) {
             return new Result.GeneralError();
