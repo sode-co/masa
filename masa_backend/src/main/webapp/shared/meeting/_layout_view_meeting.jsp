@@ -58,12 +58,17 @@
 <body>
     <script>
         const container = document.getElementById('container');
-        $.getJSON('http://localhost:8080/masa/api/meeting-management/meetings/host/123', function(data) {
+        $.getJSON('http://localhost:8080/masa/api/meeting-management/meetings/host/${CURRENT_USER.getId()}', function(data) {
             const arr = data["meetings"];
+            let htmlElements = "";
             arr.forEach(element => {
-                let htmlElements = "";
-                for (let i = 0; i < arr.length; i++) {
-                    htmlElements +=
+                console.log("start date: " + element.startTime);
+                let endDate = new Date(element.endTime);
+                let startDate = new Date(element.startTime);
+                let formatedEndTime = endDate.getDate() + "-" + (endDate.getMonth()+1) + "-" + endDate.getFullYear()+ " " + endDate.getHours() + ":" + endDate.getMinutes()
+                let formatedStartTime = startDate.getHours() + ":" + startDate.getMinutes() + ":" + " " + startDate.getDate() + "-" + (startDate.getMonth()+1) + "-" + startDate.getFullYear()
+
+                htmlElements +=
                         '<div class="p-5 bg-light bg-secondary" style="width: 70%; margin-left: 10%; border: solid; border-radius: 10px; padding-left: 10%; padding-bottom: 20px;  padding-top: 20px" id="info">'
                         +'<p class="header" style="font-weight: bold; font-size: larger">'+element.title+'</p>'
                         +'<div class="center">'
@@ -98,7 +103,7 @@
                         +'&nbsp;'
                         +'<span>Start:</span>'
                         +'&nbsp;'
-                        +'<span>'+element.startTime+'</span>'
+                        +'<span>'+formatedStartTime+'</span>'
                         +'</div>'
                         +'&nbsp;'
                         +'<div>'
@@ -109,7 +114,7 @@
                         +'&nbsp;'
                         +'<span>End:</span>'
                         +'&nbsp;'
-                        +'<span>'+element.endTime+'</span>'
+                        +'<span>'+formatedEndTime+'</span>'
                         +'</div>'
                         +'&nbsp;'
                         +'<br/>'
@@ -178,7 +183,7 @@
                         +'&nbsp;'
                         +'<span>Start:</span>'
                         +'&nbsp;'
-                        +'<span>'+element.startTime+'</span>'
+                        +'<span>'+formatedStartTime+'</span>'
                         +'</div>'
                         +'<div>'
                         +'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar4-week" viewBox="0 0 16 16">'
@@ -188,7 +193,7 @@
                         +'&nbsp;'
                         +'<span>End:</span>'
                         +'&nbsp;'
-                        +'<span>'+element.endTime+'</span>'
+                        +'<span>'+formatedEndTime+'</span>'
                         +'</div>'
 
                         +'</div>'
@@ -265,7 +270,6 @@
                         +'</div>'
                         +'</div>'
                     ;
-                }
                 let container = document.getElementById("container");
                 container.innerHTML = htmlElements;
 
