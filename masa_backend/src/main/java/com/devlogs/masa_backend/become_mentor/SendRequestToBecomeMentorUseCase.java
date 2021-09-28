@@ -8,7 +8,7 @@ import com.devlogs.masa_backend.domain.entities.UserEntity;
 import com.devlogs.masa_backend.domain.entities.UserRole;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.errors.TimeOutException;
-import com.devlogs.masa_backend.domain.ports.RequestRepository;
+import com.devlogs.masa_backend.domain.ports.BecomeMentorRequestRepository;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
 import com.devlogs.masa_backend.domain.ports.sendmail.BecomeMentorEmail;
 import com.devlogs.masa_backend.domain.ports.sendmail.SendMailGateway;
@@ -50,10 +50,10 @@ public class SendRequestToBecomeMentorUseCase {
     private UserRepository userRepository;
     private PlatformChecker platformChecker;
     private SendMailGateway sendMailGateway;
-    private RequestRepository requestRepository;
+    private BecomeMentorRequestRepository requestRepository;
 
     @Inject
-    public SendRequestToBecomeMentorUseCase(UserRepository userRepository, PlatformChecker platformChecker, SendMailGateway sendMailGateway, RequestRepository requestRepository) {
+    public SendRequestToBecomeMentorUseCase(UserRepository userRepository, PlatformChecker platformChecker, SendMailGateway sendMailGateway, BecomeMentorRequestRepository requestRepository) {
         this.userRepository = userRepository;
         this.platformChecker = platformChecker;
         this.sendMailGateway = sendMailGateway;
@@ -84,7 +84,7 @@ public class SendRequestToBecomeMentorUseCase {
             }
             MasaLog.normalLog("Send email to become mentor");
             // save request
-            RequestEntity addedRequest = requestRepository.addRequest(user.getId(), description, RequestEntity.TYPE.BECOME_MENTOR, RequestEntity.STATUS.PROCESSING);
+            RequestEntity addedRequest = requestRepository.addRequest(user.getId(), description, googleMeetUrl, zoomUrl, RequestEntity.STATUS.PROCESSING);
             // send email to admin
             List<UserEntity> admins = userRepository.getAllAdmin();
             BecomeMentorEmail email = new BecomeMentorEmail(zoomUrl, googleMeetUrl, user.getEmail(), user.getId(), user.getFullName(), description, addedRequest.getId());

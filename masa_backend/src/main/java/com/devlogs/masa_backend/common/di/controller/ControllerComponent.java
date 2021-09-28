@@ -12,7 +12,11 @@ import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetAllUserFollowedMe
 import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetMeetingByHostIdServlet;
 import com.devlogs.masa_backend.servlets.meeting.updatemeeting.UpdateMeetingServlet;
 
+import com.devlogs.masa_backend.servlets.request_managment.getRequest.GetAllRequestServlet;
+import com.devlogs.masa_backend.servlets.request_managment.getRequest.GetRequestByUserIdServlet;
+
 import com.devlogs.masa_backend.servlets.request_managment.AnswerRequestServlet;
+
 import com.devlogs.masa_backend.servlets.test.TestServlet;
 
 import com.devlogs.masa_backend.servlets.usermanagement.ShowAllUserServlet;
@@ -43,13 +47,21 @@ public interface ControllerComponent {
 
     void inject(ShowAllUserServlet showAllUserServlet);
 
+
     void inject(AuthFilter authFilter);
 
     void inject(RoleFilter roleFilter);
+
+
+    void inject(GetAllRequestServlet getAllRequestServlet);
+
+    void inject(GetRequestByUserIdServlet getRequestByUserIdServlet);
+
 
     void inject(LoginServlet loginServlet);
 
     void inject(AnswerRequestServlet answerRequestServlet);
 
     void inject(GetAllUserFollowedMeetingServlet getAllUserFollowedMeetingServlet);
+
 }
