@@ -6,8 +6,9 @@ import com.devlogs.masa_backend.domain.entities.RequestEntity;
 import com.devlogs.masa_backend.domain.entities.UserEntity;
 import com.devlogs.masa_backend.domain.entities.UserRole;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
+import com.devlogs.masa_backend.domain.ports.BecomeMentorRequestRepository;
+
 import com.devlogs.masa_backend.domain.ports.PlatformRepository;
-import com.devlogs.masa_backend.domain.ports.RequestRepository;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
 
 import javax.inject.Inject;
@@ -34,12 +35,12 @@ public class AnswerBecomeMentorRequestUseCaseSync {
         }
     }
 
-    private RequestRepository requestRepository;
+    private BecomeMentorRequestRepository requestRepository;
     private UserRepository userRepository;
     private PlatformRepository platformRepository;
 
     @Inject
-    public AnswerBecomeMentorRequestUseCaseSync(PlatformRepository platformRepository, RequestRepository requestRepository, UserRepository userRepository) {
+    public AnswerBecomeMentorRequestUseCaseSync(PlatformRepository platformRepository, BecomeMentorRequestRepository requestRepository, UserRepository userRepository) {
         this.requestRepository = requestRepository;
         this.userRepository = userRepository;
         this.platformRepository = platformRepository;

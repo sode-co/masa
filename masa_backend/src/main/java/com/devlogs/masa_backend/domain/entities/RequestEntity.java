@@ -1,24 +1,25 @@
 package com.devlogs.masa_backend.domain.entities;
 
 public class RequestEntity {
-    public enum TYPE {
-        BECOME_MENTOR
-    }
     public enum STATUS {
         PROCESSING, DENIED, APPROVED
     }
     private String id;
     private String description;
-    private TYPE type;
     private String userId;
     private STATUS status;
+    private long createdDate;
 
-    public RequestEntity(String id, String description, TYPE type, String userId, STATUS status) {
+    public RequestEntity(String id, String description, String userId, STATUS status, Long createdDate) {
         this.id = id;
         this.description = description;
-        this.type = type;
         this.userId = userId;
         this.status = status;
+        this.createdDate = createdDate;
+    }
+
+    public long getCreatedDate() {
+        return createdDate;
     }
 
     public STATUS getStatus() {
@@ -31,10 +32,6 @@ public class RequestEntity {
 
     public String getDescription() {
         return description;
-    }
-
-    public TYPE getType() {
-        return type;
     }
 
     public String getUserId() {

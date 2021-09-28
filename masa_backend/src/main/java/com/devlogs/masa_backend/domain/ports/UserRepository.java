@@ -31,4 +31,7 @@ public interface UserRepository {
 
     UserEntity blockUser(String userID, UserStatus status) throws ConnectionException, NotFoundException;
 
+
+//    UserEntity updateUserRole(String userID, UserRole role) throws ConnectionException, NotFoundException;
+
 }
