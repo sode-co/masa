@@ -58,6 +58,7 @@
             const start = new Date(startDate);
             const millisecondsStart = start.getTime();
             console.log("millisStart: " + millisecondsStart)
+            console.log("millisStart: " + document.getElementById("start-date").value)
             // var dateString = "10/23/2015"; // Oct 23
             // var dateObject = new Date(dateString);
             const endDate = (""+document.getElementById("end-date").value+" "+ document.getElementById("end-time").value+":00").replace(/-/g,"/")
@@ -84,7 +85,7 @@
                 const json = {
                     "title": document.getElementById("title").value,
                     "platform": document.getElementById("platform").value,
-                    "host": document.getElementById("host").value,
+                    "host": ${CURRENT_USER.getId()},
                     "startTime": millisecondsStart,
                     "endTime": millisecondsEnd,
                     "description": $("#description").html(),
