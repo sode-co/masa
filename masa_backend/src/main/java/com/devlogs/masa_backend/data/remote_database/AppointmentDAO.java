@@ -66,4 +66,18 @@ public class AppointmentDAO {
         }
         return result;
     }
+
+    public AppointmentDTO getAppointment(String userId, String meetingId) throws SQLException, ClassNotFoundException {
+        AppointmentDTO result = null;
+        try (Connection con = dbHelper.connect()) {
+            PreparedStatement ptm = con.prepareStatement("SELECT meeting_id FROM Appointments WHERE user_id =? AND MEETING_ID = ?");
+            ptm.setString(1, userId);
+            ptm.setString(2, meetingId);
+            ResultSet rs = ptm.executeQuery();
+            if (rs.next()) {
+                result = new AppointmentDTO(userId, meetingId);
+            }
+        }
+        return result;
+    }
 }

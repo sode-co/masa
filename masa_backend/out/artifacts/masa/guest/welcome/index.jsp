@@ -9,9 +9,19 @@
 <html>
 <head>
     <title>Welcome</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+=======
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+>>>>>>> 430806e8516b7b8f67d9cd10db7b5176c57a2b36
 
     <script>
         function becomeMentor () {
@@ -41,10 +51,41 @@
 </head>
 <body>
 <body>
+<<<<<<< HEAD
 <h1>Hello guest</h1>
 Become mentor page
 
 <form>
+=======
+<!-- <h1>Hello guest</h1>
+Become mentor page -->
+<div class="container">
+    <div class="register-form">
+        <div class="main-div">
+            <div class="panel">
+                <h2>Hello guest</h2>
+                <p>Become mentor now!</p>
+            </div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" class="form-control" id="description" aria-describedby="description" placeholder="Why do you want to become mentor...">
+                </div>
+                <div class="form-group">
+                    <label for="zoomUrl">Zoom Url</label>
+                    <input type="link" class="form-control" id="zoomUrl" placeholder="Your Zoom url here">
+                </div>
+                <div class="form-check">
+                    <label for="googleMeetUrl">Google Meet Url</label>
+                    <input type="link" class="form-control" id="googleMeetUrl" placeholder="Your Google Meet url here">
+                </div>
+                <button onclick="becomeMentor()" class="btn btn-primary">Become Mentor</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- <form>
+>>>>>>> 430806e8516b7b8f67d9cd10db7b5176c57a2b36
     <div class="form-group">
         <label for="description">Description</label>
         <input type="text" class="form-control" id="description" aria-describedby="description" placeholder="Why do you want to become mentor...">
@@ -58,7 +99,11 @@ Become mentor page
         <input type="link" class="form-control" id="googleMeetUrl" placeholder="Your Google Meet url here">
     </div>
     <button onclick="becomeMentor()" class="btn btn-primary">Become Mentor</button>
+<<<<<<< HEAD
 </form>
+=======
+</form> -->
+>>>>>>> 430806e8516b7b8f67d9cd10db7b5176c57a2b36
 </div>
 
 </body>

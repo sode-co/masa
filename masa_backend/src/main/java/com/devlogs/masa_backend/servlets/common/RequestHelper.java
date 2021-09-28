@@ -28,6 +28,9 @@ public class RequestHelper {
         String url = currentRequest.getRequestURL().toString();
         try {
             String result = url.substring(url.lastIndexOf("/") +1);
+            if (validator == null) {
+                return result;
+            }
             if (validator.isValid(result)) {
                 return result;
             }
