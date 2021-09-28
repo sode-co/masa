@@ -77,7 +77,6 @@ contentType="text/html;charset=UTF-8" language="java" %>
               const arr = data["meetings"];
               arr.forEach((element) => {
                 let htmlElements = "";
-                for (let i = 0; i < arr.length; i++) {
                   htmlElements +=
                     '<h1 id="meetingId" style="display: none">' +
                     element.id +
@@ -225,7 +224,6 @@ contentType="text/html;charset=UTF-8" language="java" %>
                     "        </div>" +
                     "</div>" +
                     "</div>";
-                }
 
                 let container = document.getElementById("container");
                 container.innerHTML = htmlElements;
