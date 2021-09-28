@@ -138,7 +138,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
                     "</div>" +
                     "&nbsp;" +
                     "<br/>" +
-                    '    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">' +
+                    '    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="background-color: #d1fae5; border: #d1fae5; color: black; font-weight: bold">' +
                     "        See more" +
                     "    </button>" +
                     "</div>" +
@@ -219,7 +219,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
                     "</div>" +
                     "</div>" +
                     '<div class="modal-footer">' +
-                    '<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="follow()" id="follow">Follow</button>' +
+                    '<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="follow()" id="follow" style="background-color: #d1fae5; border: #d1fae5; color: black; font-weight: bold">Follow</button>' +
                     "</div>" +
                     "        </div>" +
                     "</div>" +

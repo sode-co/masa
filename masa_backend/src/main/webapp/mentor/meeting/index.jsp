@@ -81,9 +81,9 @@
                   mx-1.5
                   sm:mx-6
                 "
-                href="#meeting"
+                href="/masa/mentor/meeting/index.jsp"
               >
-                View meeting
+                View my meeting
               </a>
             </li>
             <li class="nav-item">
@@ -118,16 +118,20 @@
         <h1 class="mb-4 text-5xl font-bold text-green-800">
           Welcome Mentor! <br />
         </h1>
-        <p class="inline-block text-2xl text-gray-600 sm:block">
-          Create a new meeting now!
-        </p>
+        <button class="inline-block text-2xl text-gray-600 sm:block">
+          <a
+                  href="/masa/mentor/meeting/create_meeting.jsp"
+                  class="text-gray-700  hover:no-underline text-md hover:text-blue-500"
+          >
+            Create a new meeting now!
+          </a>
+
+        </button>
       </div>
     </div>
 
     <!-- End of noti -->
-    <%@ include file="../../shared/meeting/_layout_view_meeting.jsp"%> <%@
-    include file="../../shared/meeting/_layout_create_meeting.jsp"%> <%-- <%@
-    include file="../../shared/meeting/_view_all_meeting.jsp"%>--%>
+    <%@ include file="../../shared/meeting/_layout_view_meeting.jsp"%>
     <!-- Footer -->
     <footer
       class="relative pt-1 bg-white border-b-2 border-blue-700 footer"
