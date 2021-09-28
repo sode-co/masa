@@ -9,9 +9,8 @@
 <%@ page import="com.devlogs.masa_backend.common.Masa"%>
 <html>
 <head>
-<%--    <link rel="shortcut icon" href="${Masa.ICON_URL}"/>--%>
-<%--    <link rel="shortcut icon" href="${Masa.ICON_URL}"/>--%>
-    <title>Admin Page</title>
+    <link rel="shortcut icon" href="${Masa.ICON_URL}"/>
+    <title>Mentor Profile</title>
     <style>
         body {
             background-color: black;
@@ -82,9 +81,9 @@
                   mx-1.5
                   sm:mx-6
                 "
-                            href="/masa/admin/meeting/view_all.jsp"
+                            href="/masa/mentor/meeting/index.jsp"
                     >
-                        View  meeting
+                        View my meeting
                     </a>
                 </li>
                 <li class="nav-item">
@@ -117,13 +116,13 @@
 >
     <div class="text-center sm:ml-20 text-gray-50 sm:text-left">
         <h1 class="mb-4 text-5xl font-bold text-green-800">
-            Admin <br />
+            Create your sharing here! <br />
         </h1>
     </div>
 </div>
-
+<br/>
 <!-- End of noti -->
-<%@ include file="../../shared/user/_view_all_user.jsp"%>
+<%@include file="../../shared/meeting/_layout_create_meeting.jsp"%>
 <!-- Footer -->
 <footer
         class="relative pt-1 bg-white border-b-2 border-blue-700 footer"

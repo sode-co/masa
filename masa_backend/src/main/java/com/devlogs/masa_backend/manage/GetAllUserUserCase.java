@@ -21,6 +21,7 @@ public class GetAllUserUserCase {
 
         }
     }
+
     private UserRepository userRepository;
 
     @Inject

@@ -82,6 +82,7 @@ public class SendRequestToBecomeMentorUseCase {
             if (!platformChecker.isValid(MeetingPlatform.PLATFORM.ZOOM, zoomUrl) && !platformChecker.isValid(MeetingPlatform.PLATFORM.GOOGLE_MEET, googleMeetUrl)) {
                 return new InvalidPlatform();
             }
+            MasaLog.normalLog("Send email to become mentor");
             // save request
             RequestEntity addedRequest = requestRepository.addRequest(user.getId(), description, RequestEntity.TYPE.BECOME_MENTOR, RequestEntity.STATUS.PROCESSING);
             // send email to admin
@@ -89,6 +90,7 @@ public class SendRequestToBecomeMentorUseCase {
             BecomeMentorEmail email = new BecomeMentorEmail(zoomUrl, googleMeetUrl, user.getEmail(), user.getId(), user.getFullName(), description, addedRequest.getId());
             ArrayList<Thread> ts = new ArrayList<>();
             for (UserEntity admin : admins) {
+                MasaLog.normalLog("Send email to become mentor3: " + admin.getEmail());
                 Thread t = new Thread(() -> {
                     try {
                         sendMailGateway.sendEmailNow(email, admin.getEmail());
@@ -102,6 +104,7 @@ public class SendRequestToBecomeMentorUseCase {
                 t.start();
                 MasaLog.normalLog("Email-BecomeMentor-" +email.getSubject() + " had been sent to " + admin.getEmail());
             }
+            MasaLog.normalLog("Send email to become mentor2");
 
             for (Thread t : ts) {
                 t.join();

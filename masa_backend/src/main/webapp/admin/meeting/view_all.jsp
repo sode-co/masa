@@ -1,22 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: dangminhtien
-  Date: 17/09/2021
-  Time: 16:50
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.devlogs.masa_backend.common.Masa"%>
+<%-- Created by IntelliJ IDEA. User: dangminhtien Date: 17/09/2021 Time: 14:28
+To change this template use File | Settings | File Templates. --%> <%@ page
+        contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-<%--    <link rel="shortcut icon" href="${Masa.ICON_URL}"/>--%>
-<%--    <link rel="shortcut icon" href="${Masa.ICON_URL}"/>--%>
-    <title>Admin Page</title>
-    <style>
-        body {
-            background-color: black;
-        }
-    </style>
+    <title>All Meeting</title>
     <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -64,7 +51,7 @@
                   sm:mx-6
                   hover:text-gray-800
                 "
-                            href="#navi"
+                            href="/masa/admin/user-management/index.jsp"
                     >
                         Home
                     </a>
@@ -82,9 +69,9 @@
                   mx-1.5
                   sm:mx-6
                 "
-                            href="/masa/admin/meeting/view_all.jsp"
+                            href="#meeting"
                     >
-                        View  meeting
+                        View meeting
                     </a>
                 </li>
                 <li class="nav-item">
@@ -110,20 +97,19 @@
     </div>
 </nav>
 <!-- End of navigation -->
-
 <!-- Noti -->
 <div
         class="container flex items-center mx-auto bg-green-100 rounded-md h-96"
 >
     <div class="text-center sm:ml-20 text-gray-50 sm:text-left">
         <h1 class="mb-4 text-5xl font-bold text-green-800">
-            Admin <br />
+            Manage All Meeting, Admin <br />
         </h1>
     </div>
 </div>
 
 <!-- End of noti -->
-<%@ include file="../../shared/user/_view_all_user.jsp"%>
+<%@ include file="../../shared/meeting/_admin_view_all_meeting.jsp"%>
 <!-- Footer -->
 <footer
         class="relative pt-1 bg-white border-b-2 border-blue-700 footer"
