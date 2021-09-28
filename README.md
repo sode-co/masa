@@ -35,8 +35,9 @@
 	- RUN $docker-compose down
 	
 # CÁCH UPDATE DOCKER:
-	- $docker-compose down
+	- RUN $docker-compose down
 	- Open Docker App
 	- Select Volumes
 	- Delete _vmssql Volumes
-	- $docker-compose up -d serverdev --build
+	- RUN $docker-compose pull
+	- RUN $docker-compose up -d serverdev --build
