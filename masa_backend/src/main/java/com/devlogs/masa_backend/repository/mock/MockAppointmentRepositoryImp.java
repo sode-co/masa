@@ -38,6 +38,11 @@ public class MockAppointmentRepositoryImp implements AppointmentRepository {
     }
 
     @Override
+    public AppointmentEntity getAppointment(String userId, String meetingId) throws ConnectionException {
+        return null;
+    }
+
+    @Override
     public List<AppointmentEntity> getMeetingAppointment(String meetingId) throws ConnectionException {
         ArrayList<AppointmentEntity> results = new ArrayList<>();
 

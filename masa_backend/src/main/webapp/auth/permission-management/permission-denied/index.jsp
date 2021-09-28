@@ -9,10 +9,36 @@
 <html>
 <head>
     <title>Title</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-    <h1>
+    
+    <div id="clouds">
+        <div class="cloud x1"></div>
+        <div class="cloud x1_5"></div>
+        <div class="cloud x2"></div>
+        <div class="cloud x3"></div>
+        <div class="cloud x4"></div>
+        <div class="cloud x5"></div>
+    </div>
+<header id="header">
+<div class="main_nav">
+<div class="container">
+  <div class="mobile-toggle"> <span></span> <span></span> <span></span> </div>
+</div>
+</div>
+<div class="title">
+<h1 class="heading">SORRY</h1>
+<h2 class="heading">You do not have permission to access this page!</h2>
+    <div class="smallsep heading"></div>
+</a> </div>
+</header>
+
+
+    </div>
+
+    <!-- <h1>
         You do not have permission to access this page !!
-    </h1>
+    </h1> -->
 </body>
 </html>
