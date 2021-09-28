@@ -116,17 +116,8 @@
 >
     <div class="text-center sm:ml-20 text-gray-50 sm:text-left">
         <h1 class="mb-4 text-5xl font-bold text-green-800">
-            Welcome Mentor! <br />
+            Admin <br />
         </h1>
-        <button class="inline-block text-2xl text-gray-600 sm:block">
-            <a
-                    href="/masa/mentor/meeting/create_meeting.jsp"
-                    class="text-gray-700  hover:no-underline text-md hover:text-blue-500"
-            >
-                Create a new meeting now!
-            </a>
-
-        </button>
     </div>
 </div>
 
