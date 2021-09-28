@@ -42,12 +42,12 @@ template use File | Settings | File Templates. --%> <%@ page
                 <div class="w-20 h-1 bg-green-500 rounded"></div>
             </div>
         </div>
-<%--        <h1 id="userId" style="display: none">--%>
-<%--            ${sessionScope.CURRENT_USER.getId()}--%>
-<%--        </h1>--%>
-        <h1>View all users</h1>
+        <%--        <h1 id="userId" style="display: none">--%>
+        <%--            ${sessionScope.CURRENT_USER.getId()}--%>
+        <%--        </h1>--%>
         <script>
             const container = document.getElementById("container");
+            let i = 0;
             $.getJSON(
                 "http://localhost:8080/masa/api/user-management/all",
                 function (data) {
@@ -55,8 +55,27 @@ template use File | Settings | File Templates. --%> <%@ page
                     let htmlElements = "";
                     const arr = data["users"];
                     arr.forEach((element) => {
-                        // htmlElements +=
-                        console.log(element);
+                        i++;
+                        htmlElements +=
+                            '<tr>'
+                            +'<th id="index">'+i+'</th>'
+                            +'<td id="iD">'
+                            +element.id
+                            +'</td>'
+                            +'<td id="email">'
+                            +element.email
+                            +'</td>'
+                            +'<td id="fullName">'
+                            +element.fullName
+                            +'</td>'
+                            +'<td id="role">'
+                            +element.role.type
+                            +'</td>'
+                            +'<td id="status">'
+                            +element.status.status
+                            +'</td>'
+                            +'</tr>';
+                        // console.log(element);
                         let container = document.getElementById("container");
                         container.innerHTML = htmlElements;
                     });
@@ -67,7 +86,26 @@ template use File | Settings | File Templates. --%> <%@ page
     </div>
 
 </section>
+<%--<div id="container"></div>--%>
+
 <div id="target"></div>
-<div id="container"></div>
+<table class="table table-dark" style="padding: 10px">
+    <thead thead-light>
+    <tr>
+        <th scope="col">Index</th>
+        <th scope="col">ID</th>
+        <th scope="col">Email</th>
+        <th scope="col">Full Name</th>
+        <th scope="col">Role</th>
+        <th scope="col">Status</th>
+    </tr>
+    <tbody id="container">
+    <%--        <tr>--%>
+    <%--            <div id="container"></div>--%>
+    <%--        </tr>--%>
+    </tbody>
+    </thead>
+</table>
+<br/>
 </body>
 </html>

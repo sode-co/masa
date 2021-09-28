@@ -9,7 +9,8 @@
 <%@ page import="com.devlogs.masa_backend.common.Masa"%>
 <html>
 <head>
-    <link rel="shortcut icon" href="${Masa.ICON_URL}"/>
+    <%--    <link rel="shortcut icon" href="${Masa.ICON_URL}"/>--%>
+    <%--    <link rel="shortcut icon" href="${Masa.ICON_URL}"/>--%>
     <title>Admin Page</title>
     <style>
         body {
@@ -81,9 +82,9 @@
                   mx-1.5
                   sm:mx-6
                 "
-                            href="/masa/mentor/meeting/index.jsp"
+                            href="/masa/admin/meeting/view_all.jsp"
                     >
-                        View my meeting
+                        View  meeting
                     </a>
                 </li>
                 <li class="nav-item">
