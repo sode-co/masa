@@ -3,7 +3,7 @@
 # HOW TO BUILD:
 	- RUN DOCKER-COMPOSE
 
-	# serverdev là nhóm các services nhưng không bao gồm tomcat
+	serverdev là nhóm các services nhưng không bao gồm tomcat
 	- $docker-compose up -d serverdev
 
 # GIẢI THÍCH CẤU TRÚC FOLDERS:
