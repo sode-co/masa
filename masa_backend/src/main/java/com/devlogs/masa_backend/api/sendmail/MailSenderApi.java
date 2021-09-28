@@ -1,5 +1,6 @@
 package com.devlogs.masa_backend.api.sendmail;
 
+import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.errors.TimeOutException;
 import com.devlogs.masa_backend.domain.ports.sendmail.Email;
@@ -25,8 +26,9 @@ public class MailSenderApi implements SendMailGateway {
                 .add("html", email.getHtml())
                 .build();
         Request sendMailReq = new Request.Builder()
+                .header("Content-Type", "application/json")
+                .header("Content-Length", "80000")
                 .url("http://localhost:8000/sendmail")
-                .addHeader("User-Agent", "OkHttp Bot")
                 .post(formBody)
                 .build();
             return httpClient.newCall(sendMailReq).execute();
@@ -44,6 +46,7 @@ public class MailSenderApi implements SendMailGateway {
     @Override
     public boolean sendEmailNow(Email email, String receiverEmail) throws ConnectionException, TimeOutException {
         try (Response resp = send(email, receiverEmail, 0L)) {
+            MasaLog.normalLog("Send mail result: " + resp.message());
             return resp.isSuccessful();
         } catch (IOException e) {
             throw new ConnectionException(e.getMessage());

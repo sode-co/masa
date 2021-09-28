@@ -13,6 +13,8 @@ public class Masa {
         public static final String APPLICATION_COMPONENT = "APPLICATION_COMPONENT";
     }
 
+        public static String ICON_URL = "https://cdn-icons-png.flaticon.com/512/2370/2370279.png";
+
         public static String SERVER_HOST;
         public static String DATABASE_HOST = "";
         public static String DATABASE_NAME = "";

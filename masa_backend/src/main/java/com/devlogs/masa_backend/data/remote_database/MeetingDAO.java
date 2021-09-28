@@ -125,4 +125,27 @@ public class MeetingDAO {
         }
         return null;
     }
+
+    public List<MeetingDTO> getUserFollowedMeetings (String userId) throws SQLException, ClassNotFoundException {
+        ArrayList<MeetingDTO> followedMeetings = new ArrayList<>();
+        try (Connection connection = dbHelper.connect()) {
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, DESCRIPTION " +
+                                                                                "FROM MEETINGS " +
+                                                                                "WHERE ID IN (SELECT MEETING_ID FROM APPOINTMENTS WHERE USER_ID = ?)");
+            queryStatement.setString(1, userId);
+            ResultSet result = queryStatement.executeQuery();
+            while (result.next()) {
+                String id = result.getString(1);
+                String title = result.getString(2);
+                long startTime = result.getLong(3);
+                long endTime = result.getLong(4);
+                String host_id = result.getString(5);
+                int platform_id = result.getInt(6);
+                int status_id = result.getInt(7);
+                String description = result.getString(8);
+                followedMeetings.add(new MeetingDTO(id, title, platform_id, host_id, status_id, startTime, endTime, description));
+            }
+        }
+        return followedMeetings;
+    }
 }

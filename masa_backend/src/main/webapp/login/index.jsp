@@ -1,12 +1,13 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ page
-import="com.devlogs.masa_backend.common.Masa"%> <%@taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.devlogs.masa_backend.common.Masa"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Login</title>
     <meta charset="utf-8" />
+    <link rel="shortcut icon" href="${Masa.ICON_URL}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"

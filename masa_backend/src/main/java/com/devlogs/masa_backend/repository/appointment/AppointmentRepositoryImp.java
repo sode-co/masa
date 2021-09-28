@@ -57,6 +57,23 @@ public class AppointmentRepositoryImp implements AppointmentRepository {
     }
 
     @Override
+    public AppointmentEntity getAppointment(String userId, String meetingId) throws ConnectionException {
+        try {
+            AppointmentDTO queryResult = appointmentDatasource.getAppointment(userId, meetingId);
+            if (queryResult == null) {
+                return null;
+            }
+            return new AppointmentEntity(queryResult.getUserId(), queryResult.getMeetingId());
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            throw new ConnectionException(e.getMessage());
+        }
+
+    }
+
+
+    @Override
     public List<AppointmentEntity> getMeetingAppointment(String meetingId) throws ConnectionException {
         List<AppointmentEntity> result = null;
         try{

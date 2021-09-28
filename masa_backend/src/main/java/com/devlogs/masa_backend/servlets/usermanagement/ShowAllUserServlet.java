@@ -1,9 +1,12 @@
 package com.devlogs.masa_backend.servlets.usermanagement;
 
+import com.devlogs.masa_backend.common.annotations.AccessRole;
 import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.data.remote_database.UserDao;
 import com.devlogs.masa_backend.data.remote_database.UserDto;
+import com.devlogs.masa_backend.domain.entities.UserRole;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
+import com.devlogs.masa_backend.manage.GetAllUserUserCase;
 import com.devlogs.masa_backend.servlets.common.base.BaseHttpServlet;
 
 import com.devlogs.masa_backend.appointment.FollowMeetingUseCase;
@@ -21,7 +24,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @WebServlet(name = "ShowAllUserServlet", urlPatterns = "/api/user-management/all")
 public class ShowAllUserServlet extends BaseHttpServlet {
