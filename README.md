@@ -19,7 +19,7 @@
 
 	-- CONNECT DB USING AZURE:
 		- server: localhost,1533
-		- password: SA
+		- password: Password123
 		- user: SA
 
 # CÁCH REFRESH LẠI DATABASE:
