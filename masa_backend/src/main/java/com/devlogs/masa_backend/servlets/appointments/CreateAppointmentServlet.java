@@ -35,7 +35,9 @@ public class CreateAppointmentServlet extends BaseHttpServlet {
         RequestHelper requestHelper = getRequestComponent().getRequestHelper();
         ResponseHelper responseHelper = getRequestComponent().getResponseHelper();
         ValidateResult<CreateAppointmentReqBody> validateResult = requestHelper.getRequestBody(CreateAppointmentReqBody.class);
-
+        requestHelper.getTailRequestParam((value) -> {
+           return true;
+        });
         if (validateResult instanceof ValidateResult.InValid) {
             getRequestComponent().getResponseHelper().responseMessage(400, ((ValidateResult.InValid<CreateAppointmentReqBody>) validateResult).getMessage());
         }
@@ -49,7 +51,7 @@ public class CreateAppointmentServlet extends BaseHttpServlet {
             responseHelper.responseMessage(400, "Your user id does not exist");
         } else if (result instanceof FollowMeetingUseCase.Result.ConnectionError) {
             responseHelper.responseMessage(400, "Db connection error");
-        } else if (result instanceof FollowMeetingUseCase.Result.Success) {
+        } else if (result instanceof FollowMeetingUseCase.Result.Success || result instanceof FollowMeetingUseCase.Result.AppointmentAlreadyExist) {
             responseHelper.responseJsonOk(new Gson().toJson(result));
         }
     }

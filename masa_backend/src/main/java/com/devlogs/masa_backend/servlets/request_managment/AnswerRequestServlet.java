@@ -34,6 +34,8 @@ public class AnswerRequestServlet extends BaseHttpServlet {
         String requestId = req.getParameter("id");
         String btAnswer = req.getParameter("btAnswer");
         String userId = req.getParameter("userId");
+        String zoom = req.getParameter("zoom");
+        String meet = req.getParameter("meet");
 
         RequestEntity.STATUS status = null;
 
@@ -43,12 +45,12 @@ public class AnswerRequestServlet extends BaseHttpServlet {
             status = RequestEntity.STATUS.DENIED;
         }
         if (status != null) {
-            AnswerBecomeMentorRequestUseCaseSync.Result result = answerBecomeMentorRequestUseCaseSync.executes(requestId,userId, status);
+            AnswerBecomeMentorRequestUseCaseSync.Result result = answerBecomeMentorRequestUseCaseSync.executes(requestId,zoom, meet,userId, status);
 
             MasaLog.normalLog("Answer become mentor request result: " + result.getClass().getSimpleName());
 
             if (result instanceof AnswerBecomeMentorRequestUseCaseSync.Result.Success) {
-                getRequestComponent().getResponseHelper().responseMessage(200, "Approved");
+                getRequestComponent().getResponseHelper().responseMessage(200, status.name());
             } else if (result instanceof AnswerBecomeMentorRequestUseCaseSync.Result.RequestAlreadyAnswered) {
                 getRequestComponent().getResponseHelper().responseMessage(200, "Request already answered");
             } else if (result instanceof AnswerBecomeMentorRequestUseCaseSync.Result.UserNotFound) {
