@@ -74,9 +74,9 @@ contentType="text/html;charset=UTF-8" language="java" %>
           $.getJSON(
             "http://localhost:8080/masa/api/meeting-management/meetings",
             function (data) {
+              let htmlElements = "";
               const arr = data["meetings"];
               arr.forEach((element) => {
-                let htmlElements = "";
                   htmlElements +=
                     '<h1 id="meetingId" style="display: none">' +
                     element.id +
@@ -223,7 +223,8 @@ contentType="text/html;charset=UTF-8" language="java" %>
                     "</div>" +
                     "        </div>" +
                     "</div>" +
-                    "</div>";
+                    "</div>" +
+                    "<br/>";
 
                 let container = document.getElementById("container");
                 container.innerHTML = htmlElements;
@@ -232,9 +233,11 @@ contentType="text/html;charset=UTF-8" language="java" %>
           );
         </script>
         <script></script>
-        <div id="target"></div>
-        <div id="container"></div>
       </div>
+
     </section>
+    <div id="target"></div>
+    <div id="container"></div>
+
   </body>
 </html>
