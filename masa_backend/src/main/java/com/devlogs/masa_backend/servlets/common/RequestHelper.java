@@ -40,7 +40,7 @@ public class RequestHelper {
     public <T> ValidateResult<T> getRequestBody  (Class<T> clazz) throws IOException {
         try {
             String requestData = currentRequest.getReader().lines().collect(Collectors.joining());
-        T bean = new Gson().fromJson(requestData, clazz);
+            T bean = new Gson().fromJson(requestData, clazz);
             Set<ConstraintViolation<T>> violations = validator.validate(bean);
             if (violations.isEmpty()) {
                 return new ValidateResult.Valid<T>(bean);
