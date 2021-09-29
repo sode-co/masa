@@ -71,7 +71,7 @@ template use File | Settings | File Templates. --%> <%@ page
         <script>
             const container = document.getElementById("container");
             $.getJSON(
-                "http://localhost:8080/masa/api/meeting-management/not-followed-meetings/${CURRENT_USER.getId()}",
+                'http://localhost:8080/masa/api/meeting-management/not-followed-meetings/${sessionScope.CURRENT_USER.getId()}',
                 function (data) {
                     let htmlElements = "";
                     const arr = data["meetings"];
