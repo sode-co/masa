@@ -65,7 +65,7 @@ Become mentor page -->
                     <label for="zoomUrl">Zoom Url</label>
                     <input type="link" class="form-control" id="zoomUrl" placeholder="Your Zoom url here">
                 </div>
-                <div class="form-check">
+                <div class="form-group">
                     <label for="googleMeetUrl">Google Meet Url</label>
                     <input type="link" class="form-control" id="googleMeetUrl" placeholder="Your Google Meet url here"><br>
                 </div>

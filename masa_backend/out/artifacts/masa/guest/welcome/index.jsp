@@ -6,8 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.devlogs.masa_backend.common.Masa"%>
 <html>
 <head>
+    <link rel="shortcut icon" href="${Masa.ICON_URL}"/>
+
     <title>Welcome</title>
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -20,8 +23,7 @@
     <script>
         function becomeMentor () {
             var xhr = new XMLHttpRequest();
-            const guestId = 'GU100007';
-            const url = `http://localhost:8080/masa/api/mentor-management/become-mentor/`+ guestId;
+            const url = `http://localhost:8080/masa/api/mentor-management/become-mentor/${CURRENT_USER.getId()}`;
             console.log('url', url);
             xhr.open("POST", url);
             xhr.setRequestHeader("Accept", "application/json");
@@ -63,9 +65,9 @@ Become mentor page -->
                     <label for="zoomUrl">Zoom Url</label>
                     <input type="link" class="form-control" id="zoomUrl" placeholder="Your Zoom url here">
                 </div>
-                <div class="form-check">
+                <div class="form-group">
                     <label for="googleMeetUrl">Google Meet Url</label>
-                    <input type="link" class="form-control" id="googleMeetUrl" placeholder="Your Google Meet url here">
+                    <input type="link" class="form-control" id="googleMeetUrl" placeholder="Your Google Meet url here"><br>
                 </div>
                 <button onclick="becomeMentor()" class="btn btn-primary">Become Mentor</button>
             </form>
