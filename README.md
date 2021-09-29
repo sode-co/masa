@@ -9,12 +9,12 @@ serverdev là nhóm các services nhưng không bao gồm tomcat
 
 ### CẤU HÌNH DATABASE:
 
--- DATABASE NAME: MASA
--- DATABASE USER: SA
--- DATABASE USER PASSWORD: Password123
--- PORT: 1533
--- SERVER: LOCALHOST
--- CONNECT DB USING AZURE:
+- DATABASE NAME: MASA
+- DATABASE USER: SA
+- DATABASE USER PASSWORD: Password123
+- PORT: 1533
+- SERVER: LOCALHOST
+- CONNECT DB USING AZURE:
 
 	server: localhost,1533
 	password: Password123
