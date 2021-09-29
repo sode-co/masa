@@ -74,4 +74,18 @@ public class AppointmentDAO {
         }
         return result;
     }
+
+    public void deleteAppointment (String userId, String meetingId) throws SQLException, ClassNotFoundException {
+        try (Connection connection = dbHelper.connect()) {
+            PreparedStatement deleteStatement = connection.prepareStatement("DELETE APPOINTMENTS WHERE USER_ID = ? AND MEETING_ID = ?");
+            deleteStatement.setString(1, userId);
+            deleteStatement.setString(2, meetingId);
+
+            int effectedRow = deleteStatement.executeUpdate();
+
+            if (effectedRow != 1) {
+                throw  new RuntimeException("SQL execution unexcepted exception happen the effected row is: " + effectedRow);
+            }
+        }
+    }
 }

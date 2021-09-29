@@ -1,6 +1,7 @@
 package com.devlogs.masa_backend.common.di.controller;
 
 import com.devlogs.masa_backend.servlets.appointments.CreateAppointmentServlet;
+import com.devlogs.masa_backend.servlets.appointments.RemoveAppointmentServlet;
 import com.devlogs.masa_backend.servlets.become_mentor.BecomeMentorServlet;
 import com.devlogs.masa_backend.servlets.filters.AuthFilter;
 import com.devlogs.masa_backend.servlets.filters.RoleFilter;
@@ -66,4 +67,5 @@ public interface ControllerComponent {
     void inject(GetAllUserFollowedMeetingServlet getAllUserFollowedMeetingServlet);
 
     void inject(GetAllUserNotFollowedMeetingServlet getAllUserNotFollowedMeetingServlet);
+    void inject(RemoveAppointmentServlet removeAppointmentServlet);
 }
