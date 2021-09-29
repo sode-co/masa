@@ -24,9 +24,9 @@ serverdev là nhóm các services nhưng không bao gồm tomcat
 -- Tắt container: 
 
 	docker-compose down
-- Mở docker app
-- Chuyển qua tab Volumes
-- Xóa volume xx_vmssql
+-- Xóa volume xx_vmssql
+	
+	docker volume rm masa_vmssql
 
 ### CÁCH XEM VÀ RESET LẠI DỮ LIỆU CỦA SERVER EMAIL:
 -- XÓA FILE MAIL.JSON ĐỂ HỦY HÀNG ĐỢI GỬI EMAIL.
@@ -38,14 +38,9 @@ serverdev là nhóm các services nhưng không bao gồm tomcat
 -- Tắt container: 
 	
 	docker-compose down
-- Xóa volumes để reset dữ liệu: 
-	 - Cách 1: Sử dụng docker desktop:
-		- Open Docker App
-		- Select Volumes
-		- Delete xx_vmssql Volumes
-	 - Cách 2: Sử dụng lệnh:
+-- Xóa volumes để reset dữ liệu: 
 	 
-	 	docker volume rm masa_vmssql
+	docker volume rm masa_vmssql
 -- Tải bản cập nhật mới:
 
 	docker-compose pull
