@@ -71,7 +71,7 @@ To change this template use File | Settings | File Templates. --%> <%@ page
                 "
                   href='/masa/student/meeting/index.jsp'
           >
-            View all meeting
+            View new meeting
           </a>
         </li>
         <li class="nav-item">
@@ -106,7 +106,7 @@ To change this template use File | Settings | File Templates. --%> <%@ page
       Hello Student! <br />
     </h1>
     <p class="inline-block text-2xl text-gray-600 sm:block">
-      Many interesting meetings are coming up....
+      See all your followed meeting here
     </p>
   </div>
 </div>

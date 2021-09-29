@@ -27,8 +27,30 @@ template use File | Settings | File Templates. --%> <%@ page
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style></style>
     <script>
-        function unfollow() {
+        function follow() {
+            if (document.getElementById("follow").textContent === "Follow") {
+                const json = {
+                    userId: document.getElementById("userId").textContent,
+                    <%--userId: ${CURRENT_USER.getId()},--%>
+                    meetingId: document.getElementById("meetingId").textContent,
+                };
+                console.log(json);
+                const options = {
+                    method: "POST",
+                    body: JSON.stringify(json),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                };
+                fetch("../../api/appointment-management/create", options)
+                    .then((res) => res.json())
+                    .then((res) => console.log(res))
+                    .catch((err) => console.error(err));
+                document.getElementById("follow").textContent = "Unfollow";
+            } else {
                 //Nhowf Tien xu ly not dum tui phan Unfollow tai doan nay nha: shared/meeting/_view_all_meeting
+                document.getElementById("follow").textContent = "Follow";
+            }
         }
     </script>
 </head>
@@ -45,17 +67,11 @@ template use File | Settings | File Templates. --%> <%@ page
                 <div class="w-20 h-1 bg-green-500 rounded"></div>
             </div>
         </div>
-        <h1 id="userId" style="display: none">
-            ${sessionScope.CURRENT_USER.getId()}
-        </h1>
+        <h1 id="userId" style="display: none">${sessionScope.CURRENT_USER.getId()}</h1>
         <script>
-            <%--var urlTest = "http://localhost:8080/masa/api/meeting-management/followed-meetings/${CURRENT_USER.getId()}";--%>
-            <%--console.log('urlTest :'+urlTest);--%>
-            <%--console.log('id current user:  ${CURRENT_USER.getId()}');--%>
             const container = document.getElementById("container");
             $.getJSON(
-                // 'http://localhost:8080/masa/api/meeting-management/followed-meetings/SE100001',
-                'http://localhost:8080/masa/api/meeting-management/followed-meetings/${CURRENT_USER.getId()}',
+                "http://localhost:8080/masa/api/meeting-management/not-followed-meetings/${CURRENT_USER.getId()}",
                 function (data) {
                     let htmlElements = "";
                     const arr = data["meetings"];
@@ -202,7 +218,7 @@ template use File | Settings | File Templates. --%> <%@ page
                             "</div>" +
                             "</div>" +
                             '<div class="modal-footer">' +
-                            '<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="unfollow()" id="follow" style="background-color: #d1fae5; border: #d1fae5; color: black; font-weight: bold">Unfollow</button>' +
+                            '<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="follow()" id="follow" style="background-color: #d1fae5; border: #d1fae5; color: black; font-weight: bold">Follow</button>' +
                             "</div>" +
                             "        </div>" +
                             "</div>" +
@@ -217,10 +233,16 @@ template use File | Settings | File Templates. --%> <%@ page
         </script>
         <script></script>
     </div>
-
 </section>
 <div id="target"></div>
 <div id="container"></div>
-
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script
+        defer
+        src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
+        integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
+        crossorigin="anonymous"
+></script>
 </html>

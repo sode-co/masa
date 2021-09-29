@@ -112,7 +112,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
     </div>
 
     <!-- End of noti -->
-    <%@ include file="../../shared/meeting/_view_all_meeting.jsp"%>
+    <%@ include file="../../shared/meeting/_view_new_meeting.jsp"%>
     <!-- Footer -->
     <footer
       class="relative pt-1 bg-white border-b-2 border-blue-700 footer"
