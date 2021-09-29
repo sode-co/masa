@@ -93,7 +93,7 @@
                 const json = {
                     "title": document.getElementById("title").value,
                     "platform": document.getElementById("platform").value,
-                    "host": ${CURRENT_USER.getId()},
+                    "host": "${CURRENT_USER.getId()}",
                     "startTime": millisecondsStart,
                     "endTime": millisecondsEnd,
                     "description": $("#description").html(),
