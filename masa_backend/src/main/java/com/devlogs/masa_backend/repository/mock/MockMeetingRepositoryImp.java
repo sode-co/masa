@@ -97,4 +97,9 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
 
         return null;
     }
+
+    @Override
+    public List<MeetingEntity> getNotFollowedMeetings(String userId) throws ConnectionException {
+        return null;
+    }
 }
