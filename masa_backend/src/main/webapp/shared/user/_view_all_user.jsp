@@ -1,7 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <%-- Created by
 IntelliJ IDEA. User: Ngoc Thieu Date: 9/19/2021 Time: 1:11 PM To change this
-template use File | Settings | File Templates. --%> <%@ page
+template use File | Settings | File Templates. --%>
+<%@ page
         contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>All User In System</title>
@@ -55,6 +57,7 @@ template use File | Settings | File Templates. --%> <%@ page
                     let htmlElements = "";
                     const arr = data["users"];
                     arr.forEach((element) => {
+                        const roleType = element.role.type;
                         i++;
                         htmlElements +=
                             '<tr>'
@@ -73,6 +76,14 @@ template use File | Settings | File Templates. --%> <%@ page
                             +'</td>'
                             +'<td id="status">'
                             +element.status.status
+                            +'</td>'
+                            +'<td id="update">'
+                            <%--+'<c:if test = "${element.role.type == ADMIN}">'--%>
+                            +'<button type="button" class="btn btn-dark" style="background-color: #777777">'
+                            +'UPDATE'
+                            +'</button>'
+                            +(element.role.type)
+                            <%--+'</c:if>'--%>
                             +'</td>'
                             +'</tr>';
                         // console.log(element);
@@ -98,6 +109,7 @@ template use File | Settings | File Templates. --%> <%@ page
         <th scope="col">Full Name</th>
         <th scope="col">Role</th>
         <th scope="col">Status</th>
+        <th scope="col">Update</th>
     </tr>
     <tbody id="container">
 <%--        <tr>--%>
