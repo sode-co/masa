@@ -35,9 +35,13 @@
 	- RUN $docker-compose down
 	
 ### CÁCH UPDATE DOCKER:
-	- RUN $docker-compose down
-	- Open Docker App
-	- Select Volumes
-	- Delete _vmssql Volumes
-	- RUN $docker-compose pull
-	- RUN $docker-compose up -d serverdev --build
+	- Tắt container: RUN $docker-compose down
+	- Xóa volumes để reset dữ liệu: 
+	 - Cách 1: Sử dụng docker desktop:
+		- Open Docker App
+		- Select Volumes
+		- Delete _vmssql Volumes
+	 - Cách 2: Sử dụng lệnh:
+	 	- RUN $docker volume rm masa_vmssql
+	- Tải bản cập nhật mới: RUN $docker-compose pull
+	- Khởi động lại Docker và đợi 30 giây RUN $docker-compose up -d serverdev --build
