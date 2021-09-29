@@ -1,13 +1,11 @@
 # Masa: Meetings management
 
 ### HOW TO BUILD:
-	- RUN DOCKER-COMPOSE
-
-	serverdev là nhóm các services nhưng không bao gồm tomcat
 	- $docker-compose up -d serverdev
+serverdev là nhóm các services nhưng không bao gồm tomcat
 
 ### GIẢI THÍCH CẤU TRÚC FOLDERS:
-	- MAILDATA: CHỨA NHỮNG EMAIL ĐANG GỬI
+- MAILDATA: CHỨA NHỮNG EMAIL ĐANG GỬI
 
 ### CẤU HÌNH DATABASE:
 
@@ -17,18 +15,18 @@
 	-- PORT: 1533
 	-- SERVER: LOCALHOST
 
-	-- CONNECT DB USING AZURE:
-		- server: localhost,1533
-		- password: Password123
-		- user: SA
+- CONNECT DB USING AZURE:
+	- server: localhost,1533
+	- password: Password123
+	- user: SA
 
-### CÁCH REFRESH LẠI DATABASE:
-	- Open docker desktop
-	- Switch to volume tab VOLUMES
-	- DELETE VOLUME vmssql
+### CÁCH RESET LẠI DỮ LIỆU TRONG DATABASE:
+	- Tắt container: RUN $docker-compose down
+	- Mở docker app
+	- Chuyển qua tab Volumes
+	- Xóa volume xx_vmssql
 
-### CÁCH XEM VÀ REFRESH LẠI EMAIL:
-	- MỞ FILE MAIL.JSON ĐỂ XEM CÁC EMAIL ĐANG GỬI.
+### CÁCH XEM VÀ RESET LẠI DỮ LIỆU CỦA SERVER EMAIL:
 	- XÓA FILE MAIL.JSON ĐỂ HỦY HÀNG ĐỢI GỬI EMAIL.
 
 ### CÁCH DỌN DẸP SAU KHI CODE XONG:
@@ -40,7 +38,7 @@
 	 - Cách 1: Sử dụng docker desktop:
 		- Open Docker App
 		- Select Volumes
-		- Delete _vmssql Volumes
+		- Delete xx_vmssql Volumes
 	 - Cách 2: Sử dụng lệnh:
 	 	- RUN $docker volume rm masa_vmssql
 	- Tải bản cập nhật mới: RUN $docker-compose pull
