@@ -14,7 +14,7 @@ serverdev là nhóm các services nhưng không bao gồm tomcat
 - DATABASE USER PASSWORD: Password123
 - PORT: 1533
 - SERVER: LOCALHOST
-- CONNECT DB USING AZURE:
+-- CONNECT DB USING AZURE:
 
 	server: localhost,1533
 	password: Password123
