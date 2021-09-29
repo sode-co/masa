@@ -1,6 +1,6 @@
-### fpt_masa
+# fpt_masa
 
-# HOW TO BUILD:
+### HOW TO BUILD:
 	- RUN DOCKER-COMPOSE
 
 	serverdev là nhóm các services nhưng không bao gồm tomcat
