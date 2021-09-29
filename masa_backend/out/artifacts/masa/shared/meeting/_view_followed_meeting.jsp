@@ -28,7 +28,26 @@ template use File | Settings | File Templates. --%> <%@ page
     <style></style>
     <script>
         function unfollow() {
-                //Nhowf Tien xu ly not dum tui phan Unfollow tai doan nay nha: shared/meeting/_view_all_meeting
+            if (document.getElementById("unfollow").textContent === "Unfollow") {
+                const json = {
+                    userId: document.getElementById("userId").textContent,
+                    <%--userId: ${CURRENT_USER.getId()},--%>
+                    meetingId: document.getElementById("meetingId").textContent,
+                };
+                console.log(json);
+                const options = {
+                    method: "POST",
+                    body: JSON.stringify(json),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                };
+                fetch("../../api/appointment-management/remove", options)
+                    .then((res) => res.json())
+                    .then((res) => console.log(res))
+                    .catch((err) => console.error(err));
+                document.getElementById("unfollow").textContent = "Follow";
+            }
         }
     </script>
 </head>
@@ -45,9 +64,7 @@ template use File | Settings | File Templates. --%> <%@ page
                 <div class="w-20 h-1 bg-green-500 rounded"></div>
             </div>
         </div>
-        <h1 id="userId" style="display: none">
-            ${sessionScope.CURRENT_USER.getId()}
-        </h1>
+        <h1 id="userId" style="display: none">${sessionScope.CURRENT_USER.getId()}</h1>
         <script>
             <%--var urlTest = "http://localhost:8080/masa/api/meeting-management/followed-meetings/${CURRENT_USER.getId()}";--%>
             <%--console.log('urlTest :'+urlTest);--%>
@@ -55,7 +72,7 @@ template use File | Settings | File Templates. --%> <%@ page
             const container = document.getElementById("container");
             $.getJSON(
                 // 'http://localhost:8080/masa/api/meeting-management/followed-meetings/SE100001',
-                'http://localhost:8080/masa/api/meeting-management/followed-meetings/${CURRENT_USER.getId()}',
+                'http://localhost:8080/masa/api/meeting-management/followed-meetings/${sessionScope.CURRENT_USER.getId()}',
                 function (data) {
                     let htmlElements = "";
                     const arr = data["meetings"];
@@ -202,7 +219,7 @@ template use File | Settings | File Templates. --%> <%@ page
                             "</div>" +
                             "</div>" +
                             '<div class="modal-footer">' +
-                            '<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="unfollow()" id="follow" style="background-color: #d1fae5; border: #d1fae5; color: black; font-weight: bold">Unfollow</button>' +
+                            '<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="unfollow()" id="unfollow" style="background-color: #d1fae5; border: #d1fae5; color: black; font-weight: bold">Unfollow</button>' +
                             "</div>" +
                             "        </div>" +
                             "</div>" +

@@ -31,11 +31,11 @@ template use File | Settings | File Templates. --%> <%@ page
 </head>
 <body>
 <section class="text-gray-600 body-font">
-    <div class="container px-5 py-24 mx-auto">
+    <div class="container px-5 py-5 mx-auto">
         <div class="flex flex-wrap w-full mb-8">
             <div class="w-full mb-6 lg:mb-0 sm:ml-20">
                 <h1
-                        class="mb-2 text-5xl font-medium text-gray-900  sm:text-4xl title-font"
+                        class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font"
                 >
                     All Users In Masa System
                 </h1>
@@ -89,7 +89,7 @@ template use File | Settings | File Templates. --%> <%@ page
 <%--<div id="container"></div>--%>
 
 <div id="target"></div>
-<table class="table table-dark" style="padding: 10px">
+<table class="table table-dark sm:ml-20" style="padding: 10px">
     <thead thead-light>
     <tr>
         <th scope="col">Index</th>
