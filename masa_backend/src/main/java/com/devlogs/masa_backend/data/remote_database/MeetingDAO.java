@@ -16,7 +16,7 @@ public class MeetingDAO {
     }
 
     public List<MeetingDTO> getAllMeetings() throws SQLException, ClassNotFoundException {
-        List<MeetingDTO> listMeeting = null;
+        List<MeetingDTO> listMeeting = new ArrayList<>();
         try (Connection con = dbHelper.connect()) {
             CallableStatement ctm = con.prepareCall("EXEC getAllMeetings;");
             ResultSet rs = ctm.executeQuery();
@@ -29,9 +29,6 @@ public class MeetingDAO {
                 int platform_id = rs.getInt(6);
                 int status_id = rs.getInt(7);
                 String description = rs.getString(8);
-                if (listMeeting == null) {
-                    listMeeting = new ArrayList<>();
-                }
                 listMeeting.add(new MeetingDTO(id, title, platform_id, host_id, status_id, startTime, endTime, description));
             }
         }
@@ -39,7 +36,7 @@ public class MeetingDAO {
     }
 
     public List<MeetingDTO> getMeetingsByHost(String hostId) throws SQLException, ClassNotFoundException {
-        List<MeetingDTO> listMeetingByHostID = null;
+        List<MeetingDTO> listMeetingByHostID = new ArrayList<>();
         try (Connection con = dbHelper.connect()) {
             CallableStatement ctm = con.prepareCall("EXEC getMeetingsByHost ?;");
             ctm.setString(1, hostId);
@@ -53,9 +50,6 @@ public class MeetingDAO {
                 int platform_id = rs.getInt(6);
                 int status_id = rs.getInt(7);
                 String description = rs.getString(8);
-                if (listMeetingByHostID == null) {
-                    listMeetingByHostID = new ArrayList<>();
-                }
                 listMeetingByHostID.add(new MeetingDTO(id, title, platform_id, host_id, status_id, startTime, endTime, description));
             }
         }
@@ -147,5 +141,28 @@ public class MeetingDAO {
             }
         }
         return followedMeetings;
+    }
+
+    public List<MeetingDTO> getUserNotFollowedMeetings (String userId) throws SQLException, ClassNotFoundException {
+        ArrayList<MeetingDTO> notFollowedMeetings = new ArrayList<>();
+        try (Connection connection = dbHelper.connect()) {
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, DESCRIPTION " +
+                    "FROM MEETINGS " +
+                    "WHERE ID NOT IN (SELECT MEETING_ID FROM APPOINTMENTS WHERE USER_ID = ?)");
+            queryStatement.setString(1, userId);
+            ResultSet result = queryStatement.executeQuery();
+            while (result.next()) {
+                String id = result.getString(1);
+                String title = result.getString(2);
+                long startTime = result.getLong(3);
+                long endTime = result.getLong(4);
+                String host_id = result.getString(5);
+                int platform_id = result.getInt(6);
+                int status_id = result.getInt(7);
+                String description = result.getString(8);
+                notFollowedMeetings.add(new MeetingDTO(id, title, platform_id, host_id, status_id, startTime, endTime, description));
+            }
+        }
+        return notFollowedMeetings;
     }
 }

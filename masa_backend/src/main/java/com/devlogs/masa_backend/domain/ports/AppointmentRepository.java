@@ -10,4 +10,5 @@ public interface AppointmentRepository {
     List<AppointmentEntity> getUserAppointment (String userId) throws ConnectionException;
     AppointmentEntity getAppointment (String userId, String meetingId) throws ConnectionException;
     List<AppointmentEntity> getMeetingAppointment (String meetingId) throws ConnectionException;
+    void removeAppointment(String userId, String meetingId) throws ConnectionException;
 }
