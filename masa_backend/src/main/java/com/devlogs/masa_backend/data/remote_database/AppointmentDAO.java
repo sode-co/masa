@@ -34,16 +34,13 @@ public class AppointmentDAO {
     }
 
     public List<AppointmentDTO> getUserAppointments(String userId) throws SQLException, ClassNotFoundException {
-        List<AppointmentDTO> result = null;
+        List<AppointmentDTO> result = new ArrayList<>();
         try (Connection con = dbHelper.connect()) {
             PreparedStatement ptm = con.prepareStatement("SELECT meeting_id FROM Appointments WHERE user_id =?;");
             ptm.setString(1, userId);
             ResultSet rs = ptm.executeQuery();
             while (rs.next()) {
                 String meetingId = rs.getString(1);
-                if (result == null) {
-                    result = new ArrayList<>();
-                }
                 result.add(new AppointmentDTO(userId, meetingId));
             }
         }
@@ -51,16 +48,13 @@ public class AppointmentDAO {
     }
 
     public List<AppointmentDTO> getMeetingAppointments(String meetingId) throws SQLException, ClassNotFoundException {
-        List<AppointmentDTO> result = null;
+        List<AppointmentDTO> result = new ArrayList<>();
         try (Connection con = dbHelper.connect()) {
             PreparedStatement ptm = con.prepareStatement("SELECT user_id FROM Appointments WHERE meeting_id =?;");
             ptm.setString(1, meetingId);
             ResultSet rs = ptm.executeQuery();
             while (rs.next()) {
                 String userId = rs.getString(1);
-                if (result == null) {
-                    result = new ArrayList<>();
-                }
                 result.add(new AppointmentDTO(userId, meetingId));
             }
         }
