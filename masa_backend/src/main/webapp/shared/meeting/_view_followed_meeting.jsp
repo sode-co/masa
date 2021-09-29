@@ -27,29 +27,8 @@ template use File | Settings | File Templates. --%> <%@ page
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style></style>
     <script>
-        function follow() {
-            if (document.getElementById("follow").textContent === "Follow") {
-                const json = {
-                    userId: document.getElementById("userId").textContent,
-                    meetingId: document.getElementById("meetingId").textContent,
-                };
-                console.log(json);
-                const options = {
-                    method: "POST",
-                    body: JSON.stringify(json),
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                };
-                fetch("../../api/appointment-management/create", options)
-                    .then((res) => res.json())
-                    .then((res) => console.log(res))
-                    .catch((err) => console.error(err));
-                document.getElementById("follow").textContent = "Unfollow";
-            } else {
+        function unfollow() {
                 //Nhowf Tien xu ly not dum tui phan Unfollow tai doan nay nha: shared/meeting/_view_all_meeting
-                document.getElementById("follow").textContent = "Follow";
-            }
         }
     </script>
 </head>
@@ -224,7 +203,7 @@ template use File | Settings | File Templates. --%> <%@ page
                             "</div>" +
                             "</div>" +
                             '<div class="modal-footer">' +
-                            '<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="follow()" id="follow" style="background-color: #d1fae5; border: #d1fae5; color: black; font-weight: bold">Follow</button>' +
+                            '<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="unfollow()" id="follow" style="background-color: #d1fae5; border: #d1fae5; color: black; font-weight: bold">Unfollow</button>' +
                             "</div>" +
                             "        </div>" +
                             "</div>" +
