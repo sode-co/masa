@@ -52,20 +52,6 @@ public class LoginWithGoogleUseCaseTest {
         SUT = new LoginWithGoogleUseCase(googleGetUserEndpointTd, userRepository,emailValidator);
     }
 
-    /*
-    1. Điền đúng access token của admin, trả về success với role admin
-    2. Điền đúng access token, trả về success
-    3. Điền access token có tồn tại trong db, có gọi get user ( có sự tương tác với userRepository.Get)
-    4. Access token có truyền được tới endpoint
-    5. Endpoint general error, trả về general error
-    6. Endpoint auth error, trả về auth error
-    7. Access token có email không thuộc về fpt cũng không phải admin, trả về not allow
-    8. Access token có email không thuộc về fpt nhưng đã đăng ký là admin, trả về Success
-    9. Nếu user email là của fpt nhưng không tồn tại trong db, có gọi tạo user mới (có tương tác với userRepository.Add)
-    10. Access token có email không thuộc về fpt cũng không phải admin, không lưu vào db (không có sự tương tác với userRepository.Add)
-    11. Thông tin của user lấy từ db với user trả về trong success phải giống nhau
-     */
-
     @Test
     public void loginWithGoogle_correctAccessToken_successReturned () {
         Result result = SUT.executes(ACCESS_TOKEN);
@@ -90,6 +76,34 @@ public class LoginWithGoogleUseCaseTest {
         googleGetUserEndpointTd.isAuthError = true;
         Result result = SUT.executes(ACCESS_TOKEN);
         assertThat(result, instanceOf(AuthError.class));
+    }
+
+    @Test
+    public void loginWithGoogle_endPointConnectionExceptionOccurs_noInteractionWithRepository () {
+        googleGetUserEndpointTd.isConnectionError = true;
+        SUT.executes(ACCESS_TOKEN);
+        assertThat(userRepository.user, is(NON_INITIALIZE_USER));
+    }
+
+    @Test
+    public void loginWithGoogle_endPointGeneralError_noInteractionWithRepository () {
+        googleGetUserEndpointTd.isGeneralError = true;
+        SUT.executes(ACCESS_TOKEN);
+        assertThat(userRepository.user, is(NON_INITIALIZE_USER));
+    }
+
+    @Test
+    public void loginWithGoogle_endPointAuthError_noInteractionWithRepository () {
+        googleGetUserEndpointTd.isAuthError = true;
+        SUT.executes(ACCESS_TOKEN);
+        assertThat(userRepository.user, is(NON_INITIALIZE_USER));
+    }
+
+    @Test
+    public void loginWithGoogle_userRepositoryConnectionExceptionOccurs_GeneralErrorReturned () {
+        userRepository.isConnectionExceptionOccurs = true;
+        Result result = SUT.executes(ACCESS_TOKEN);
+        assertThat(result, instanceOf(GeneralError.class));
     }
 
     @Test
