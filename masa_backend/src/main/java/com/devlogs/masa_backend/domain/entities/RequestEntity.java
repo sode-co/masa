@@ -1,10 +1,9 @@
 package com.devlogs.masa_backend.domain.entities;
 
-public class RequestEntity {
+public class RequestEntity extends Entity {
     public enum STATUS {
         PROCESSING, DENIED, APPROVED
     }
-    private String id;
     private String description;
     private String userId;
     private STATUS status;
