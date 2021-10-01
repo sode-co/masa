@@ -60,7 +60,7 @@ public class MockUserRepositoryImp implements UserRepository {
     }
 
     @Override
-    public UserEntity addUser(String email, String fullName, String avatar, UserRole role, UserStatus userStatus) throws ConnectionException, AlreadyExistException {
+    public UserEntity addUser(String email, String fullName, String avatar, UserRole role, UserStatus userStatus) throws ConnectionException {
         UserEntity newUser = new UserEntity(System.currentTimeMillis() + "",email,fullName, role, userStatus);
         MockUserDataSource.data.add(newUser);
         return newUser;

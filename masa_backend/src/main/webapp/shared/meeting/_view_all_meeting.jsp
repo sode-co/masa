@@ -77,9 +77,9 @@ contentType="text/html;charset=UTF-8" language="java" %>
               const arr = data["meetings"];
               arr.forEach((element) => {
                 htmlElements +=
-                  // '<h1 id="meetingId" style="display: none">' +
-                  // element.id +
-                  // "</h1>" +
+                  '<h1 id="meetingId" style="display: none">' +
+                  element.id +
+                  "</h1>"
                   // '<div class="p-5 bg-light bg-secondary" style="width: 70%; margin-left: 10%; border: solid; border-radius: 10px; padding-left: 10%; padding-bottom: 20px;  padding-top: 20px" id="info">' +
                   // '<p class="header" style="font-weight: bold; font-size: larger">' +
                   // element.title +

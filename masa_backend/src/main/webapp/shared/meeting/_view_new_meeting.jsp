@@ -28,6 +28,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
     <style></style>
     <script>
       function follow() {
+
           if (document.getElementById("follow").textContent === "Follow") {
               const json = {
                   userId: document.getElementById("userId").textContent,
@@ -67,9 +68,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
             <div class="w-20 h-1 bg-green-500 rounded"></div>
           </div>
         </div>
-        <h1 id="userId" style="display: none">
-          ${sessionScope.CURRENT_USER.getId()}
-        </h1>
+        <h1 id="userId" style="display: none">${sessionScope.CURRENT_USER.getId()}</h1>
         <script>
           const container = document.getElementById("container");
           $.getJSON(
@@ -79,9 +78,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
               const arr = data["meetings"];
               arr.forEach((element) => {
                 htmlElements +=
-                  // '<h1 id="meetingId" style="display: none">' +
-                  // element.id +
-                  // "</h1>" +
+                  '<h1 id="meetingId" style="display: none">'+element.id+"</h1>"+
                   // '<div class="p-5 bg-light bg-secondary" style="width: 70%; margin-left: 10%; border: solid; border-radius: 10px; padding-left: 10%; padding-bottom: 20px;  padding-top: 20px" id="info">' +
                   // '<p class="header" style="font-weight: bold; font-size: larger">' +
                   // element.title +

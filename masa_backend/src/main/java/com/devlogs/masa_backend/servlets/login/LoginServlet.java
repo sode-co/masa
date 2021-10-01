@@ -38,7 +38,7 @@ public class LoginServlet extends BaseHttpServlet {
             out.flush();
         } else if (result instanceof LoginWithGoogleUseCase.Result.GeneralError) {
             response.setStatus(500);
-            out.print("General error: " + ((LoginWithGoogleUseCase.Result.GeneralError) result).message);
+            out.print("General error");
             out.flush();
         }
         return null;

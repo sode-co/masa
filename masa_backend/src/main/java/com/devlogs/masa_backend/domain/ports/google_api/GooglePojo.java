@@ -67,4 +67,8 @@ public class GooglePojo {
     public void setPicture(String picture) {
         this.picture = picture;
     }
+
+    public String getFullName() {
+        return family_name + " " + given_name;
+    }
 }
