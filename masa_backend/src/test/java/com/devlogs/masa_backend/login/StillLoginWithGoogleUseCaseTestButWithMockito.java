@@ -59,6 +59,10 @@ public class StillLoginWithGoogleUseCaseTestButWithMockito {
         when(googleGetUserEndpoint.getUser(ACCESS_TOKEN)).thenThrow(new ConnectionException(""));
     }
 
+    private void userRepositoryConnectionExceptionOccurs() throws ConnectionException {
+        when (userRepository.getUserByEmail(EMAIL)).thenThrow(new ConnectionException(""));
+    }
+
     @BeforeMethod(alwaysRun = true)
     public void setup () throws ConnectionException {
         googleGetUserEndpoint = mock(GoogleGetUserEndpoint.class);
@@ -128,10 +132,6 @@ public class StillLoginWithGoogleUseCaseTestButWithMockito {
         userRepositoryConnectionExceptionOccurs();
         Result result = SUT.executes(ACCESS_TOKEN);
         assertTrue(result instanceof GeneralError);
-    }
-
-    private void userRepositoryConnectionExceptionOccurs() throws ConnectionException {
-         when (userRepository.getUserByEmail(EMAIL)).thenThrow(new ConnectionException(""));
     }
 
     @Test
