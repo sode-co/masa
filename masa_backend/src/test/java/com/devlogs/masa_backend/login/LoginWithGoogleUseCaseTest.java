@@ -34,7 +34,7 @@ public class LoginWithGoogleUseCaseTest {
 
     static {
         GOOGLE_POJO = new GooglePojo(ID,EMAIL, true,NAME,GIVEN_NAME, FAMILY_NAME, "","");
-        FULL_NAME = GIVEN_NAME + " " + FAMILY_NAME;
+        FULL_NAME = FAMILY_NAME + " " + GIVEN_NAME;
         USER = new UserEntity(ID,EMAIL, FULL_NAME, NOT_ADMIN_ROLE, ACTIVE_STATUS);
     }
     //endregion
