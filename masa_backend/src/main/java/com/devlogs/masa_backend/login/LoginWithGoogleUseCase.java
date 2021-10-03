@@ -29,20 +29,20 @@ public class LoginWithGoogleUseCase {
         }
     }
 
-    private final GoogleGetUserEndpoint loginApi;
+    private final GoogleGetUserEndpoint googleGetUserEndpoint;
     private final UserRepository userRepository;
     private final EmailValidator emailValidator;
 
     @Inject
     public LoginWithGoogleUseCase(GoogleGetUserEndpoint loginApi, UserRepository userRepository, EmailValidator emailValidator) {
-        this.loginApi = loginApi;
+        this.googleGetUserEndpoint = loginApi;
         this.userRepository = userRepository;
         this.emailValidator = emailValidator;
     }
 
     public Result executes(String googleAccessToken) {
         try {
-            GoogleGetUserEndpoint.Result getUserResult = loginApi.getUser(googleAccessToken);
+            GoogleGetUserEndpoint.Result getUserResult = googleGetUserEndpoint.getUser(googleAccessToken);
 
             if (getUserResult instanceof GoogleGetUserEndpoint.Result.AuthError) {
                 return new AuthError();

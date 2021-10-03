@@ -79,7 +79,7 @@ public class StillLoginWithGoogleUseCaseTestButWithMockito {
     }
 
     @Test
-    public void loginWithGoogle_endPointGeneralError_GeneralErrorReturned () throws ConnectionException {
+    public void loginWithGoogle_endPointGeneralError_generalErrorReturned () throws ConnectionException {
         endpointGeneralError();
         Result result = SUT.executes(ACCESS_TOKEN);
         assertTrue(result instanceof GeneralError);
@@ -91,7 +91,7 @@ public class StillLoginWithGoogleUseCaseTestButWithMockito {
     }
 
     @Test
-    public void loginWithGoogle_endPointAuthError_AuthErrorReturned () throws ConnectionException {
+    public void loginWithGoogle_endPointAuthError_authErrorReturned () throws ConnectionException {
         endPointAuthError();
         Result result = SUT.executes(ACCESS_TOKEN);
         assertTrue(result instanceof AuthError);
@@ -127,7 +127,7 @@ public class StillLoginWithGoogleUseCaseTestButWithMockito {
     }
 
     @Test
-    public void loginWithGoogle_userRepositoryConnectionExceptionOccurs_GeneralErrorReturned () throws ConnectionException {
+    public void loginWithGoogle_userRepositoryConnectionExceptionOccurs_generalErrorReturned () throws ConnectionException {
         userRepositoryConnectionExceptionOccurs();
         Result result = SUT.executes(ACCESS_TOKEN);
         assertTrue(result instanceof GeneralError);
@@ -138,14 +138,14 @@ public class StillLoginWithGoogleUseCaseTestButWithMockito {
     }
 
     @Test
-    public void loginWithGoogle_endPointConnectionExceptionOccurs_GeneralErrorReturned () throws ConnectionException {
+    public void loginWithGoogle_endPointConnectionExceptionOccurs_generalErrorReturned () throws ConnectionException {
         endPointConnectionExceptionOccurs();
         Result result = SUT.executes(ACCESS_TOKEN);
         assertTrue(result instanceof GeneralError);
     }
 
     @Test
-    public void loginWithGoogle_accessTokenNotFptAndNotAdmin_NotAllowReturned () {
+    public void loginWithGoogle_accessTokenNotFptAndNotInDb_notAllowReturned () {
         when(emailValidator.check(EMAIL)).thenReturn(new EmailValidator.Result(NOT_ADMIN_ROLE, false));
         Result result = SUT.executes(ACCESS_TOKEN);
         assertTrue(result instanceof NotAllowed);
