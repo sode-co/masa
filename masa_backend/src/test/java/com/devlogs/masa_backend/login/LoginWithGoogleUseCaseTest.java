@@ -135,8 +135,8 @@ public class LoginWithGoogleUseCaseTest {
     //region 2.GOOGLE POJO IS PASSED CORRECTLY TO REPOSITORY
     @Test
     public void loginWithGoogle_googlePojoIsPassedCorrectlyToRepository () {
-        userRepository.isUserNotfound = true;
-        emailValidator.isFptEmail = true;
+        userRepository.isUserNotfound = true; // chưa đăng nhập vào ứng dụng
+        emailValidator.isFptEmail = true; // là thành viên của fpt
         SUT.executes(ACCESS_TOKEN);
         assertEquals(userRepository.user.getFullName(), GOOGLE_POJO.getFullName());
         assertEquals(userRepository.user.getEmail(), GOOGLE_POJO.getEmail());
@@ -164,7 +164,8 @@ public class LoginWithGoogleUseCaseTest {
     //region 5.ACCESS TOKEN NOT FPT BUT IN DB, THEN SUCCESS RETURNED
     @Test
     public void loginWithGoogle_accessTokenNotFptButAdmin_successReturned () {
-        emailValidator.isFptEmail = false;
+        emailValidator.isFptEmail = false; // không phải email của fpt
+        userRepository.isUserNotfound = false; // nhưng có tồn tại trong database
         Result result = SUT.executes(ACCESS_TOKEN);
         assertTrue(result instanceof Success);
     }
