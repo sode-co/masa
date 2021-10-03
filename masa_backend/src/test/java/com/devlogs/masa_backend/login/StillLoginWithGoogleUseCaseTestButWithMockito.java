@@ -12,7 +12,6 @@ import com.devlogs.masa_backend.login.LoginWithGoogleUseCase.Result;
 import com.devlogs.masa_backend.login_convention.EmailValidator;
 import org.mockito.ArgumentCaptor;
 import org.mockito.stubbing.OngoingStubbing;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
