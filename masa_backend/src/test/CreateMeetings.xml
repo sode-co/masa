@@ -3,13 +3,9 @@
 
 <suite name="UserRepository suit">
     <test name="Interaction with UserRepository Suit" preserve-order="true" verbose="2">
-        <groups>
-            <run>
-                <include name="HAS_INTERACTION_WITH_USER_REPOSITORY"/>
-            </run>
-        </groups>
-        <packages>
-            <package name="com.devlogs.masa_backend.*"/>
-        </packages>
+        <classes>
+            <class name="com.devlogs.masa_backend.login.LoginWithGoogleUseCaseTest"></class>
+<!--            <class name="com.devlogs.masa_backend.meetings.MeetingRepository"></class>-->
+        </classes>
     </test>
 </suite>
