@@ -44,7 +44,6 @@ public class GetUserByRoleServlet extends BaseHttpServlet {
             }
             return false;
         } );
-        MasaLog.normalLog("role la "+ role);
 
         GetUserByRoleUserCase.Result result = getUserByRoleUserCase.executes(role);
 
