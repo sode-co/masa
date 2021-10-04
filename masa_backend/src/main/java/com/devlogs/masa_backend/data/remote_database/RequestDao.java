@@ -84,7 +84,7 @@ public class RequestDao {
         int effectedRow = 0;
         try (Connection con = dbHelper.connect()) {
             PreparedStatement insertStatement = con.prepareStatement(
-                    "INSERT INTO REQUESTS (ID, USER_ID, DESCRIPTION, TYPE_ID, STATUS_ID, PAYLOAD, CREATED_DATE) VALUES (?,?,?,?,?,?)"
+                    "INSERT INTO REQUESTS (ID, USER_ID, DESCRIPTION, TYPE_ID, STATUS_ID, PAYLOAD, CREATED_DATE) VALUES (?,?,?,?,?,?,?)"
             );
             insertStatement.setString(1, id);
             insertStatement.setString(2, userId);
@@ -92,6 +92,7 @@ public class RequestDao {
             insertStatement.setInt(4, typeId);
             insertStatement.setInt(5, statusId);
             insertStatement.setString(6, payload);
+            insertStatement.setLong(7, createdDate);
             effectedRow = insertStatement.executeUpdate();
 
             if (effectedRow == 1) {

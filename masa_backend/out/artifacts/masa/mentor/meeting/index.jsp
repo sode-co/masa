@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ae12eeb8dcf0dedab23036c8225f8ce85a769a4d
 <%--
   Created by IntelliJ IDEA.
   User: dangminhtien
@@ -7,6 +10,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<<<<<<< HEAD
 <html>
 <head>
     <title>Mentor Profile</title>
@@ -26,8 +30,12 @@
 <%-- Created by IntelliJ IDEA. User: dangminhtien Date: 17/09/2021 Time: 16:50
 To change this template use File | Settings | File Templates. --%> <%@ page
 contentType="text/html;charset=UTF-8" language="java" %>
+=======
+<%@ page import="com.devlogs.masa_backend.common.Masa"%>
+>>>>>>> ae12eeb8dcf0dedab23036c8225f8ce85a769a4d
 <html>
-  <head>
+<head>
+    <link rel="shortcut icon" href="${Masa.ICON_URL}"/>
     <title>Mentor Profile</title>
     <style>
       body {
@@ -99,9 +107,9 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   mx-1.5
                   sm:mx-6
                 "
-                href="#meeting"
+                href="/masa/mentor/meeting/index.jsp"
               >
-                View meeting
+                View my meeting
               </a>
             </li>
             <li class="nav-item">
@@ -136,16 +144,20 @@ contentType="text/html;charset=UTF-8" language="java" %>
         <h1 class="mb-4 text-5xl font-bold text-green-800">
           Welcome Mentor! <br />
         </h1>
-        <p class="inline-block text-2xl text-gray-600 sm:block">
-          Create a new meeting now!
-        </p>
+        <button class="inline-block text-2xl text-gray-600 sm:block">
+          <a
+                  href="/masa/mentor/meeting/create_meeting.jsp"
+                  class="text-gray-700  hover:no-underline text-md hover:text-blue-500"
+          >
+            Create a new meeting now!
+          </a>
+
+        </button>
       </div>
     </div>
 
     <!-- End of noti -->
-    <%@ include file="../../shared/meeting/_layout_view_meeting.jsp"%> <%@
-    include file="../../shared/meeting/_layout_create_meeting.jsp"%> <%-- <%@
-    include file="../../shared/meeting/_view_all_meeting.jsp"%>--%>
+    <%@ include file="../../shared/meeting/_layout_view_meeting.jsp"%>
     <!-- Footer -->
     <footer
       class="relative pt-1 bg-white border-b-2 border-blue-700 footer"

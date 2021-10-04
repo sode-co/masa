@@ -100,8 +100,6 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   "       " +
                   "      </div>" +
                   "    </div>" +
-                  "<hr/>" +
-                  "<hr/>" +
                   // '<h1 id="meetingId" style="display: none">' +
                   // element.id +
                   // "</h1>" +
@@ -166,7 +164,8 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   // "        See more" +
                   // "    </button>" +
                   // "</div>" +
-
+                  "<hr/>" +
+                  "<hr/>" +
                   // '<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">' +
                   // '<div class="modal-dialog modal-dialog-centered" role="document">' +
                   // '<div class="modal-content">' +

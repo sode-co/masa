@@ -1,42 +1,50 @@
-# fpt_masa
+# Masa: Meetings management
 
-# HOW TO BUILD:
-	- RUN DOCKER-COMPOSE
+### HOW TO BUILD:
+	docker-compose up -d serverdev
+serverdev là nhóm các services nhưng không bao gồm tomcat
 
-	serverdev là nhóm các services nhưng không bao gồm tomcat
-	- $docker-compose up -d serverdev
+### GIẢI THÍCH CẤU TRÚC FOLDERS:
+- MAILDATA: CHỨA NHỮNG EMAIL ĐANG GỬI
 
-# GIẢI THÍCH CẤU TRÚC FOLDERS:
-	- MAILDATA: CHỨA NHỮNG EMAIL ĐANG GỬI
+### CẤU HÌNH DATABASE:
 
-# CẤU HÌNH DATABASE:
+- DATABASE NAME: MASA
+- DATABASE USER: SA
+- DATABASE USER PASSWORD: Password123
+- PORT: 1533
+- SERVER: LOCALHOST
 
-	-- DATABASE NAME: MASA
-	-- DATABASE USER: SA
-	-- DATABASE USER PASSWORD: Password123
-	-- PORT: 1533
-	-- SERVER: LOCALHOST
+#### CONNECT DB USING AZURE:
 
-	-- CONNECT DB USING AZURE:
-		- server: localhost,1533
-		- password: Password123
-		- user: SA
+	server: localhost,1533
+	password: Password123
+	user: SA
 
-# CÁCH REFRESH LẠI DATABASE:
-	- Open docker desktop
-	- Switch to volume tab VOLUMES
-	- DELETE VOLUME vmssql
+### CÁCH RESET LẠI DỮ LIỆU TRONG DATABASE:
+-- Tắt container: 
 
-# CÁCH XEM VÀ REFRESH LẠI EMAIL:
-	- MỞ FILE MAIL.JSON ĐỂ XEM CÁC EMAIL ĐANG GỬI.
-	- XÓA FILE MAIL.JSON ĐỂ HỦY HÀNG ĐỢI GỬI EMAIL.
-
-# CÁCH DỌN DẸP SAU KHI CODE XONG:
-	- RUN $docker-compose down
+	docker-compose down
+-- Xóa volume xx_vmssql
 	
-# CÁCH UPDATE DOCKER:
-	- $docker-compose down
-	- Open Docker App
-	- Select Volumes
-	- Delete _vmssql Volumes
-	- $docker-compose up -d serverdev --build
+	docker volume rm masa_vmssql
+
+### CÁCH XEM VÀ RESET LẠI DỮ LIỆU CỦA SERVER EMAIL:
+-- XÓA FILE MAIL.JSON ĐỂ HỦY HÀNG ĐỢI GỬI EMAIL.
+
+### CÁCH DỌN DẸP SAU KHI CODE XONG:
+	docker-compose down
+	
+### CÁCH UPDATE DOCKER:
+-- Tắt container: 
+	
+	docker-compose down
+-- Xóa volumes để reset dữ liệu: 
+	 
+	docker volume rm masa_vmssql
+-- Tải bản cập nhật mới:
+
+	docker-compose pull
+-- Khởi động lại Docker và đợi 30 giây:
+
+	docker-compose up -d serverdev --build

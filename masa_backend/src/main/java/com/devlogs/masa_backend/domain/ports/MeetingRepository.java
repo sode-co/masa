@@ -20,4 +20,6 @@ public interface MeetingRepository {
     MeetingEntity getById(String meetingId) throws ConnectionException;
 
     List<MeetingEntity> getFollowedMeetings(String userId) throws ConnectionException;
+
+    List<MeetingEntity> getNotFollowedMeetings(String userId) throws ConnectionException;
 }

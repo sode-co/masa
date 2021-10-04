@@ -153,7 +153,7 @@ public class UserRepositoryImp implements UserRepository {
 
     @Override
     public UserEntity addUser(String email, String fullName, String avatar, UserRole role, UserStatus userStatus)
-            throws ConnectionException, AlreadyExistException {
+            throws ConnectionException {
 
         int role_id;
         int status_id;

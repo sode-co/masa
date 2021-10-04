@@ -93,4 +93,15 @@ public class AppointmentRepositoryImp implements AppointmentRepository {
         }
         return  result;
     }
+
+    @Override
+    public void removeAppointment(String userId, String meetingId) throws ConnectionException {
+        try {
+            appointmentDatasource.deleteAppointment(userId, meetingId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            throw new ConnectionException(e.getMessage());
+        }
+    }
 }

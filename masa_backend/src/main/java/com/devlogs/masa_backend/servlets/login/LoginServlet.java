@@ -38,7 +38,7 @@ public class LoginServlet extends BaseHttpServlet {
             out.flush();
         } else if (result instanceof LoginWithGoogleUseCase.Result.GeneralError) {
             response.setStatus(500);
-            out.print("General error: " + ((LoginWithGoogleUseCase.Result.GeneralError) result).message);
+            out.print("General error");
             out.flush();
         }
         return null;
@@ -101,6 +101,7 @@ public class LoginServlet extends BaseHttpServlet {
         request.getSession(true).setAttribute(USER, user);
         if (user != null) {
             Cookie ggCookie = new Cookie(Masa.COOKIE.GOOGLE_ACCESS_TOKEN, googleAccessToken);
+            ggCookie.setMaxAge(3500);
             response.addCookie(ggCookie);
             MasaLog.normalLog("ggredirectUrl: " + redirectUrl);
             if (redirectUrl != null && !redirectUrl.isEmpty()) {

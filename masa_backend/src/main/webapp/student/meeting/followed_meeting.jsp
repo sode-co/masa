@@ -1,27 +1,9 @@
-<<<<<<< HEAD
-<%--
-  Created by IntelliJ IDEA.
-  User: dangminhtien
-  Date: 17/09/2021
-  Time: 14:28
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Student Meeting</title>
-</head>
-<body>
-    <h1>Hello student</h1>
-    <%@ include file="../../shared/meeting/_view_all_meeting.jsp"%>
-</body>
-=======
 <%-- Created by IntelliJ IDEA. User: dangminhtien Date: 17/09/2021 Time: 14:28
 To change this template use File | Settings | File Templates. --%> <%@ page
 contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>Student Meeting</title>
+    <title>Student Followed Meeting</title>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -87,9 +69,9 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   mx-1.5
                   sm:mx-6
                 "
-                href='/masa/student/meeting/followed_meeting.jsp'
+                href="/masa/student/meeting/index.jsp"
               >
-                View followed meeting
+                View new meeting
               </a>
             </li>
             <li class="nav-item">
@@ -124,13 +106,13 @@ contentType="text/html;charset=UTF-8" language="java" %>
           Hello Student! <br />
         </h1>
         <p class="inline-block text-2xl text-gray-600 sm:block">
-          Many interesting meetings are coming up....
+          See all your followed meeting here
         </p>
       </div>
     </div>
 
     <!-- End of noti -->
-    <%@ include file="../../shared/meeting/_view_new_meeting.jsp"%>
+    <%@ include file="../../shared/meeting/_view_followed_meeting.jsp"%>
     <!-- Footer -->
     <footer
       class="relative pt-1 bg-white border-b-2 border-blue-700 footer"
@@ -215,5 +197,4 @@ contentType="text/html;charset=UTF-8" language="java" %>
     integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
     crossorigin="anonymous"
   ></script>
->>>>>>> 430806e8516b7b8f67d9cd10db7b5176c57a2b36
 </html>
