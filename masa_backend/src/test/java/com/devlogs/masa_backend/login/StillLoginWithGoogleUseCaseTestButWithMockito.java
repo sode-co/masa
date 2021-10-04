@@ -75,6 +75,23 @@ public class StillLoginWithGoogleUseCaseTestButWithMockito {
     }
 
     @Test
+    public void loginWithGoogle_accessTokenPassedToEndPoint () throws ConnectionException {
+        ArgumentCaptor<String> ac = ArgumentCaptor.forClass(String.class);
+        SUT.executes(ACCESS_TOKEN);
+        verify(googleGetUserEndpoint,times(1)).getUser(ac.capture());
+        assertEquals(ac.getAllValues().get(0), ACCESS_TOKEN);
+    }
+
+    @Test
+    public void loginWithGoogle_googlePojoIsPassedCorrectlyToRepository () throws ConnectionException {
+        ArgumentCaptor<String> ac = ArgumentCaptor.forClass(String.class);
+        SUT.executes(ACCESS_TOKEN);
+        verify(userRepository,times(1)).addUser(ac.capture(), ac.capture(), anyString(), any(), any());
+        assertEquals(ac.getAllValues().get(0), EMAIL);
+        assertEquals(ac.getAllValues().get(1), FULL_NAME);
+    }
+
+    @Test
     public void loginWithGoogle_correctAccessToken_successReturned () throws ConnectionException {
         when(emailValidator.check(ACCESS_TOKEN)).thenReturn(new EmailValidator.Result(NOT_ADMIN_ROLE, true));
         Result result = SUT.executes(ACCESS_TOKEN);
@@ -82,11 +99,18 @@ public class StillLoginWithGoogleUseCaseTestButWithMockito {
     }
 
     @Test
-    public void loginWithGoogle_accessTokenPassedToEndPoint () throws ConnectionException {
-        ArgumentCaptor<String> ac = ArgumentCaptor.forClass(String.class);
+    public void loginWithGoogle_accessTokenNotFptAndNotInDb_notAllowReturned () {
+        when(emailValidator.check(EMAIL)).thenReturn(new EmailValidator.Result(NOT_ADMIN_ROLE, false));
+        Result result = SUT.executes(ACCESS_TOKEN);
+        assertTrue(result instanceof NotAllowed);
+    }
+
+    @Test
+    public void loginWithGoogle_accessTokenIsNotFptAndNotInDb_noInteractionWithUserRepositoryAddMethod () throws ConnectionException {
+        when(emailValidator.check(EMAIL)).thenReturn(new EmailValidator.Result(null,false));
+        when(userRepository.getUserByEmail(EMAIL)).thenReturn(NON_INITIALIZE_USER);
         SUT.executes(ACCESS_TOKEN);
-        verify(googleGetUserEndpoint,times(1)).getUser(ac.capture());
-        assertEquals(ac.getAllValues().get(0), ACCESS_TOKEN);
+        verify(userRepository, never()).addUser(anyString(), anyString(), anyString(), any(), any());
     }
 
     @Test
@@ -103,8 +127,6 @@ public class StillLoginWithGoogleUseCaseTestButWithMockito {
         Result result = SUT.executes(ACCESS_TOKEN);
         assertTrue(result instanceof AuthError);
     }
-
-
 
     @Test
     public void loginWithGoogle_endPointConnectionExceptionOccurs_noInteractionWithRepository () throws ConnectionException {
@@ -141,12 +163,6 @@ public class StillLoginWithGoogleUseCaseTestButWithMockito {
         assertTrue(result instanceof GeneralError);
     }
 
-    @Test
-    public void loginWithGoogle_accessTokenNotFptAndNotInDb_notAllowReturned () {
-        when(emailValidator.check(EMAIL)).thenReturn(new EmailValidator.Result(NOT_ADMIN_ROLE, false));
-        Result result = SUT.executes(ACCESS_TOKEN);
-        assertTrue(result instanceof NotAllowed);
-    }
 
     @Test
     public void loginWithGoogle_accessTokenNotFptButInDb_successReturned () throws ConnectionException {
@@ -162,23 +178,6 @@ public class StillLoginWithGoogleUseCaseTestButWithMockito {
         when(userRepository.getUserByEmail(EMAIL)).thenReturn(NON_INITIALIZE_USER);
         SUT.executes(ACCESS_TOKEN);
         verify(userRepository, times(1)).addUser(anyString(), anyString(), anyString(), any(), any());
-    }
-
-    @Test
-    public void loginWithGoogle_accessTokenIsNotFptAndNotInDb_noInteractionWithUserRepositoryAddMethod () throws ConnectionException {
-        when(emailValidator.check(EMAIL)).thenReturn(new EmailValidator.Result(null,false));
-        when(userRepository.getUserByEmail(EMAIL)).thenReturn(NON_INITIALIZE_USER);
-        SUT.executes(ACCESS_TOKEN);
-        verify(userRepository, never()).addUser(anyString(), anyString(), anyString(), any(), any());
-    }
-
-    @Test
-    public void loginWithGoogle_googlePojoIsPassedCorrectlyToRepository () throws ConnectionException {
-        ArgumentCaptor<String> ac = ArgumentCaptor.forClass(String.class);
-        SUT.executes(ACCESS_TOKEN);
-        verify(userRepository,times(1)).addUser(ac.capture(), ac.capture(), anyString(), any(), any());
-        assertEquals(ac.getAllValues().get(0), EMAIL);
-        assertEquals(ac.getAllValues().get(1), FULL_NAME);
     }
 
     @Test
