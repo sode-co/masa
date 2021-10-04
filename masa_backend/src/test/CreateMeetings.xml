@@ -9,7 +9,7 @@
             </run>
         </groups>
         <packages>
-            <package name="com.devlogs.masa_backend.login.*"/>
+            <package name="com.devlogs.masa_backend.*"/>
         </packages>
     </test>
 </suite>
