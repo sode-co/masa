@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%--
   Created by IntelliJ IDEA.
   User: dangminhtien
@@ -7,27 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.devlogs.masa_backend.common.Masa"%>
 <html>
 <head>
-    <title>Mentor Profile</title>
-    <style>
-        body{
-            background-color: black;
-        }
-    </style>
-</head>
-<body>
-    <h1>Mentor ne</h1>
-    <%@ include file="../../shared/meeting/_layout_view_meeting.jsp"%>
-<%--    <%@ include file="../../shared/meeting/_layout_create_meeting.jsp"%>--%>
-<%--    <%@ include file="../../shared/meeting/_view_all_meeting.jsp"%>--%>
-</body>
-=======
-<%-- Created by IntelliJ IDEA. User: dangminhtien Date: 17/09/2021 Time: 16:50
-To change this template use File | Settings | File Templates. --%> <%@ page
-contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-  <head>
+    <link rel="shortcut icon" href="${Masa.ICON_URL}"/>
     <title>Mentor Profile</title>
     <style>
       body {
@@ -99,9 +81,9 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   mx-1.5
                   sm:mx-6
                 "
-                href="#meeting"
+                href="/masa/mentor/meeting/index.jsp"
               >
-                View meeting
+                View my meeting
               </a>
             </li>
             <li class="nav-item">
@@ -136,16 +118,20 @@ contentType="text/html;charset=UTF-8" language="java" %>
         <h1 class="mb-4 text-5xl font-bold text-green-800">
           Welcome Mentor! <br />
         </h1>
-        <p class="inline-block text-2xl text-gray-600 sm:block">
-          Create a new meeting now!
-        </p>
+        <button class="inline-block text-2xl text-gray-600 sm:block">
+          <a
+                  href="/masa/mentor/meeting/create_meeting.jsp"
+                  class="text-gray-700  hover:no-underline text-md hover:text-blue-500"
+          >
+            Create a new meeting now!
+          </a>
+
+        </button>
       </div>
     </div>
 
     <!-- End of noti -->
-    <%@ include file="../../shared/meeting/_layout_view_meeting.jsp"%> <%@
-    include file="../../shared/meeting/_layout_create_meeting.jsp"%> <%-- <%@
-    include file="../../shared/meeting/_view_all_meeting.jsp"%>--%>
+    <%@ include file="../../shared/meeting/_layout_view_meeting.jsp"%>
     <!-- Footer -->
     <footer
       class="relative pt-1 bg-white border-b-2 border-blue-700 footer"
@@ -230,5 +216,4 @@ contentType="text/html;charset=UTF-8" language="java" %>
     integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
     crossorigin="anonymous"
   ></script>
->>>>>>> 430806e8516b7b8f67d9cd10db7b5176c57a2b36
 </html>

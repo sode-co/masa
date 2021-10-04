@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-<%--
-  Created by IntelliJ IDEA.
-  User: dangminhtien
-  Date: 17/09/2021
-  Time: 14:28
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Student Meeting</title>
-</head>
-<body>
-    <h1>Hello student</h1>
-    <%@ include file="../../shared/meeting/_view_all_meeting.jsp"%>
-</body>
-=======
 <%-- Created by IntelliJ IDEA. User: dangminhtien Date: 17/09/2021 Time: 14:28
 To change this template use File | Settings | File Templates. --%> <%@ page
 contentType="text/html;charset=UTF-8" language="java" %>
@@ -215,5 +197,4 @@ contentType="text/html;charset=UTF-8" language="java" %>
     integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
     crossorigin="anonymous"
   ></script>
->>>>>>> 430806e8516b7b8f67d9cd10db7b5176c57a2b36
 </html>
