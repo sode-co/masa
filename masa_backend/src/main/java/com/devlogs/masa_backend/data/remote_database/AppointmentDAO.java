@@ -34,16 +34,13 @@ public class AppointmentDAO {
     }
 
     public List<AppointmentDTO> getUserAppointments(String userId) throws SQLException, ClassNotFoundException {
-        List<AppointmentDTO> result = null;
+        List<AppointmentDTO> result = new ArrayList<>();
         try (Connection con = dbHelper.connect()) {
             PreparedStatement ptm = con.prepareStatement("SELECT meeting_id FROM Appointments WHERE user_id =?;");
             ptm.setString(1, userId);
             ResultSet rs = ptm.executeQuery();
             while (rs.next()) {
                 String meetingId = rs.getString(1);
-                if (result == null) {
-                    result = new ArrayList<>();
-                }
                 result.add(new AppointmentDTO(userId, meetingId));
             }
         }
@@ -51,16 +48,13 @@ public class AppointmentDAO {
     }
 
     public List<AppointmentDTO> getMeetingAppointments(String meetingId) throws SQLException, ClassNotFoundException {
-        List<AppointmentDTO> result = null;
+        List<AppointmentDTO> result = new ArrayList<>();
         try (Connection con = dbHelper.connect()) {
             PreparedStatement ptm = con.prepareStatement("SELECT user_id FROM Appointments WHERE meeting_id =?;");
             ptm.setString(1, meetingId);
             ResultSet rs = ptm.executeQuery();
             while (rs.next()) {
                 String userId = rs.getString(1);
-                if (result == null) {
-                    result = new ArrayList<>();
-                }
                 result.add(new AppointmentDTO(userId, meetingId));
             }
         }
@@ -79,5 +73,19 @@ public class AppointmentDAO {
             }
         }
         return result;
+    }
+
+    public void deleteAppointment (String userId, String meetingId) throws SQLException, ClassNotFoundException {
+        try (Connection connection = dbHelper.connect()) {
+            PreparedStatement deleteStatement = connection.prepareStatement("DELETE APPOINTMENTS WHERE USER_ID = ? AND MEETING_ID = ?");
+            deleteStatement.setString(1, userId);
+            deleteStatement.setString(2, meetingId);
+
+            int effectedRow = deleteStatement.executeUpdate();
+
+            if (effectedRow != 1) {
+                throw  new RuntimeException("SQL execution unexcepted exception happen the effected row is: " + effectedRow);
+            }
+        }
     }
 }

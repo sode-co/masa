@@ -25,24 +25,39 @@ contentType="text/html;charset=UTF-8" language="java" %>
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style>
-      .date:after {
-        content: "";
-        position: absolute;
-        border-top: 1px solid #e2e8f0;
-        top: 12px;
-        width: 150px;
-      }
+    <style></style>
+    <script>
+      function follow() {
 
-      .date:after {
-        margin-left: 15px;
+          if (document.getElementById("follow").textContent === "Follow") {
+              const json = {
+                  userId: document.getElementById("userId").textContent,
+                  <%--userId: ${CURRENT_USER.getId()},--%>
+                  meetingId: document.getElementById("meetingId").textContent,
+              };
+              console.log(json);
+              const options = {
+                  method: "POST",
+                  body: JSON.stringify(json),
+                  headers: {
+                      "Content-Type": "application/json",
+                  },
+              };
+              fetch("../../api/appointment-management/create", options)
+                  .then((res) => res.json())
+                  .then((res) => console.log(res))
+                  .catch((err) => console.error(err));
+              document.getElementById("follow").textContent = "Unfollow";
+          } else {
+              //Nhowf Tien xu ly not dum tui phan Unfollow tai doan nay nha: shared/meeting/_view_all_meeting
+              document.getElementById("follow").textContent = "Follow";
+          }
       }
-    </style>
-    <script></script>
+    </script>
   </head>
   <body>
     <section class="text-gray-600 body-font">
-      <div class="container px-5 py-5 mx-auto">
+      <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-wrap w-full mb-8">
           <div class="w-full mb-6 lg:mb-0 sm:ml-20">
             <h1
@@ -53,58 +68,17 @@ contentType="text/html;charset=UTF-8" language="java" %>
             <div class="w-20 h-1 bg-green-500 rounded"></div>
           </div>
         </div>
-        <h1 id="userId" style="display: none">
-          ${sessionScope.CURRENT_USER.getId()}
-        </h1>
+        <h1 id="userId" style="display: none">${sessionScope.CURRENT_USER.getId()}</h1>
         <script>
           const container = document.getElementById("container");
           $.getJSON(
-            "http://localhost:8080/masa/api/meeting-management/meetings",
+            "http://localhost:8080/masa/api/meeting-management/not-followed-meetings/${sessionScope.CURRENT_USER.getId()}",
             function (data) {
               let htmlElements = "";
               const arr = data["meetings"];
               arr.forEach((element) => {
                 htmlElements +=
-                  '<div class="flex items-center border border-gray-400 rounded-lg shadow lg:flex sm:ml-24 sm:mr-24">' +
-                  '      <div class="block h-full py-4 bg-green-600 rounded-lg shadow-inner lg:w-2/12">' +
-                  '        <div class="tracking-wide text-center">' +
-                  '          <div class="font-bold text-white text-7xl ">24</div>' +
-                  '          <div class="text-4xl font-normal text-white">Sept</div>' +
-                  "        </div>" +
-                  "      </div>" +
-                  '      <div class="w-full px-1 py-5 tracking-wide bg-white lg:w-11/12 xl:w-full lg:px-2 lg:py-2">' +
-                  '        <div class="flex flex-row justify-center lg:justify-start">' +
-                  '          <div class="px-2 text-lg font-medium text-center text-gray-700 lg:text-left">' +
-                  '            <i class="far fa-clock"></i> ' +
-                  element.startTime +
-                  "-" +
-                  element.endTime +
-                  "          </div>" +
-                  '          <div class="px-2 text-lg font-medium text-center text-gray-700 lg:text-left">' +
-                  "            Mentor : " +
-                  element.hostId +
-                  "          </div>" +
-                  "        </div>" +
-                  '        <div class="px-2 text-4xl font-semibold text-center text-gray-800 lg:text-left">' +
-                  element.title +
-                  "        </div>" +
-                  "" +
-                  '        <div class="px-2 pt-1 text-lg font-medium text-center text-gray-600 lg:text-left">' +
-                  element.description +
-                  "        </div>" +
-                  "      </div>" +
-                  '      <div class="flex flex-row items-center justify-center w-full px-2 py-4 bg-white lg:w-1/3 lg:justify-end lg:px-0">' +
-                  '    <button type="button" class="px-4 mx-4 text-lg font-semibold leading-loose tracking-wider text-green-800 bg-green-200 rounded" data-toggle="modal" data-target="#exampleModalCenter" style="background-color: #d1fae5; border: #d1fae5; color: black; font-weight: bold">' +
-                  "        See more" +
-                  "    </button>" +
-                  "       " +
-                  "      </div>" +
-                  "    </div>" +
-                  "<hr/>" +
-                  "<hr/>" +
-                  // '<h1 id="meetingId" style="display: none">' +
-                  // element.id +
-                  // "</h1>" +
+                  '<h1 id="meetingId" style="display: none">'+element.id+"</h1>"+
                   // '<div class="p-5 bg-light bg-secondary" style="width: 70%; margin-left: 10%; border: solid; border-radius: 10px; padding-left: 10%; padding-bottom: 20px;  padding-top: 20px" id="info">' +
                   // '<p class="header" style="font-weight: bold; font-size: larger">' +
                   // element.title +
@@ -166,7 +140,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   // "        See more" +
                   // "    </button>" +
                   // "</div>" +
-
+                  // "<hr/>" +
                   // '<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">' +
                   // '<div class="modal-dialog modal-dialog-centered" role="document">' +
                   // '<div class="modal-content">' +
@@ -243,12 +217,50 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   // "</div>" +
                   // "</div>" +
                   // '<div class="modal-footer">' +
-                  // '<button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #d1fae5; border: #d1fae5; color: black; font-weight: bold">Close</button>' +
+                  // '<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="follow()" id="follow" style="background-color: #d1fae5; border: #d1fae5; color: black; font-weight: bold">Follow</button>' +
                   // "</div>" +
                   // "        </div>" +
                   // "</div>" +
                   // "</div>" +
+                  // "<br/>";
 
+                  '<div class="flex items-center border border-gray-400 rounded-lg shadow lg:flex sm:ml-24 sm:mr-24">' +
+                  '      <div class="block h-full py-4 bg-green-600 rounded-lg shadow-inner lg:w-2/12">' +
+                  '        <div class="tracking-wide text-center">' +
+                  '          <div class="font-bold text-white text-7xl ">24</div>' +
+                  '          <div class="text-4xl font-normal text-white">Sept</div>' +
+                  "        </div>" +
+                  "      </div>" +
+                  '      <div class="w-full px-1 py-5 tracking-wide bg-white lg:w-11/12 xl:w-full lg:px-2 lg:py-2">' +
+                  '        <div class="flex flex-row justify-center lg:justify-start">' +
+                  '          <div class="px-2 text-lg font-medium text-center text-gray-700 lg:text-left">' +
+                  '            <i class="far fa-clock"></i> ' +
+                  element.startTime +
+                  "-" +
+                  element.endTime +
+                  "          </div>" +
+                  '          <div class="px-2 text-lg font-medium text-center text-gray-700 lg:text-left">' +
+                  "            Mentor : " +
+                  element.hostId +
+                  "          </div>" +
+                  "        </div>" +
+                  '        <div class="px-2 text-4xl font-semibold text-center text-gray-800 lg:text-left">' +
+                  element.title +
+                  "        </div>" +
+                  "" +
+                  '        <div class="px-2 pt-1 text-lg font-medium text-center text-gray-600 lg:text-left">' +
+                  element.description +
+                  "        </div>" +
+                  "      </div>" +
+                  '      <div class="flex flex-row items-center justify-center w-full px-2 py-4 bg-white lg:w-1/3 lg:justify-end lg:px-0">' +
+                  '    <button type="button" class="px-4 mx-4 text-lg font-semibold leading-loose tracking-wider text-green-800 bg-green-200 rounded" data-toggle="modal" data-target="#exampleModalCenter" style="background-color: #d1fae5; border: #d1fae5; color: black; font-weight: bold">' +
+                  "        See more" +
+                  "    </button>" +
+                  "       " +
+                  "      </div>" +
+                  "    </div>" +
+                  "<hr/>" +
+                  "<hr/>" +
                   '<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">' +
                   '<div class="modal-dialog modal-dialog-centered" role="document">' +
                   '<div class="modal-content">' +
@@ -299,13 +311,12 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   "    </div>" +
                   "  </div>" +
                   '<div class="modal-footer">' +
-                  '<button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #d1fae5; border: #d1fae5; color: black; font-weight: bold">Close</button>' +
+                  '<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="follow()" id="follow" style="background-color: #d1fae5; border: #d1fae5; color: black; font-weight: bold">Follow</button>' +
                   "</div>" +
                   "      </div>" +
                   "    </div>" +
                   "  </div>" +
                   "<br/>";
-
                 let container = document.getElementById("container");
                 container.innerHTML = htmlElements;
               });
@@ -318,4 +329,12 @@ contentType="text/html;charset=UTF-8" language="java" %>
     <div id="target"></div>
     <div id="container"></div>
   </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script
+    defer
+    src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
+    integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
+    crossorigin="anonymous"
+  ></script>
 </html>

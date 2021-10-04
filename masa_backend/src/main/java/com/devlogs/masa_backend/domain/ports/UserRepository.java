@@ -25,7 +25,7 @@ public interface UserRepository {
     void updateUserRole (String userId, UserRole newRole) throws ConnectionException;
     UserEntity getUserById(String id) throws ConnectionException;
 
-    UserEntity addUser (String email, String fullName, String avatar, UserRole role, UserStatus userStatus) throws ConnectionException, AlreadyExistException;
+    UserEntity addUser (String email, String fullName, String avatar, UserRole role, UserStatus userStatus) throws ConnectionException;
 
     List<UserEntity> getAllUser() throws ConnectionException;
 
