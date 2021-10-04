@@ -63,7 +63,7 @@
                   sm:mx-6
                   hover:text-gray-800
                 "
-                href="#navi"
+                href="http://localhost:8080/masa/mentor/meeting/index.jsp"
               >
                 Home
               </a>
@@ -81,9 +81,9 @@
                   mx-1.5
                   sm:mx-6
                 "
-                href="/masa/mentor/meeting/index.jsp"
+                href="/masa/mentor/meeting/create_meeting.jsp"
               >
-                View my meeting
+                Create new meeting
               </a>
             </li>
             <li class="nav-item">

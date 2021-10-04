@@ -115,6 +115,7 @@
     </script>
 </head>
 <body>
+<%--<h1 id="current-user">${sessionScope.CURRENT_USER}</h1>--%>
 <h1 style="display: none" id="current-user">${sessionScope.CURRENT_USER}</h1>
 <div class="container text-center">
     <div class="row">
