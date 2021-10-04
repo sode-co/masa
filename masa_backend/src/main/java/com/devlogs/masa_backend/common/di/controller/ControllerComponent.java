@@ -69,4 +69,5 @@ public interface ControllerComponent {
 
     void inject(GetUserByRoleServlet getUserByRoleServlet) ;
 
+
 }

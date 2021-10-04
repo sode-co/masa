@@ -1,5 +1,9 @@
 <%-- Created by IntelliJ IDEA. User: dangminhtien Date: 17/09/2021 Time: 14:28
 To change this template use File | Settings | File Templates. --%> <%@ page
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3aa2c4438a1f86dcc6f1a5ab53714fa1f931caa7
 contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
@@ -104,6 +108,10 @@ contentType="text/html;charset=UTF-8" language="java" %>
           class="container flex flex-wrap items-center justify-between px-4 mx-auto "
   >
     <div
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3aa2c4438a1f86dcc6f1a5ab53714fa1f931caa7
             class="relative flex justify-between w-full px-4 lg:w-auto lg:static lg:block lg:justify-start"
     >
       <img

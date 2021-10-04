@@ -33,6 +33,8 @@ public interface UserRepository {
 
     List<UserEntity> getUserByRole(UserRole role) throws ConnectionException;
 
-//    UserEntity updateUserRole(String userID) throws ConnectionException, NotFoundException;
+    UserEntity updateUserRole(String userID) throws ConnectionException, NotFoundException;
+
+    List<UserEntity> getUserByName(String name) throws ConnectionException;
 
 }

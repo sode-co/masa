@@ -232,4 +232,26 @@ public class UserDao {
         }
 
 
+        public List<UserDto> getUserByName(String name) throws SQLException, ClassNotFoundException {
+            ArrayList<UserDto> results = new ArrayList();
+            try (Connection connection = dbHelper.connect()) {
+                PreparedStatement statement = connection.prepareStatement("SELECT ID, FULLNAME, EMAIL, AVATAR_URL, ROLE_ID, STATUS_ID FROM USERS WHERE FULLNAME LIKE ?");
+                statement.setString(1, name);
+                ResultSet resultSet = statement.executeQuery();
+
+                UserDto cached;
+                while (resultSet.next()) {
+                    String id = resultSet.getString(1);
+                    String fullName = resultSet.getString(2);
+                    String email = resultSet.getString(3);
+                    String avatar_url = resultSet.getString(4);
+                    int role_id = resultSet.getInt(5);
+                    int status_id = resultSet.getInt(6);
+                    results.add(new UserDto(id, fullName, email, avatar_url, role_id, status_id));
+                }
+            }
+            return results;
+        }
+
+
 }
