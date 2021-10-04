@@ -1,7 +1,10 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> ae12eeb8dcf0dedab23036c8225f8ce85a769a4d
+=======
+>>>>>>> feature/getuserbyrole
 <%--
   Created by IntelliJ IDEA.
   User: dangminhtien
@@ -10,6 +13,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <html>
 <head>
@@ -35,6 +39,11 @@ contentType="text/html;charset=UTF-8" language="java" %>
 >>>>>>> ae12eeb8dcf0dedab23036c8225f8ce85a769a4d
 <html>
 <head>
+=======
+<%@ page import="com.devlogs.masa_backend.common.Masa"%>
+<html>
+<head>
+>>>>>>> feature/getuserbyrole
     <link rel="shortcut icon" href="${Masa.ICON_URL}"/>
     <title>Mentor Profile</title>
     <style>
@@ -242,5 +251,4 @@ contentType="text/html;charset=UTF-8" language="java" %>
     integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
     crossorigin="anonymous"
   ></script>
->>>>>>> 430806e8516b7b8f67d9cd10db7b5176c57a2b36
 </html>

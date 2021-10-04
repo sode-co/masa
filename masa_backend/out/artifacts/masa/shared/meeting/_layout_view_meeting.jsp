@@ -74,6 +74,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
   <body>
     <script>
 <<<<<<< HEAD
+<<<<<<< HEAD
         const container = document.getElementById('container');
 <<<<<<< HEAD
         $.getJSON('http://localhost:8080/masa/api/meeting-management/meetings/host/123', function(data) {
@@ -325,6 +326,8 @@ contentType="text/html;charset=UTF-8" language="java" %>
         });
 
 =======
+=======
+>>>>>>> feature/getuserbyrole
       const container = document.getElementById("container");
       $.getJSON(
         "http://localhost:8080/masa/api/meeting-management/meetings/host/${CURRENT_USER.getId()}",
@@ -571,7 +574,10 @@ contentType="text/html;charset=UTF-8" language="java" %>
           });
         }
       );
+<<<<<<< HEAD
 >>>>>>> ae12eeb8dcf0dedab23036c8225f8ce85a769a4d
+=======
+>>>>>>> feature/getuserbyrole
     </script>
     <div id="target"></div>
     <div id="container"></div>
