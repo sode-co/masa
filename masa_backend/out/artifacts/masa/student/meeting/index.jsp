@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <%--
   Created by IntelliJ IDEA.
   User: dangminhtien
@@ -16,6 +17,8 @@
     <%@ include file="../../shared/meeting/_view_all_meeting.jsp"%>
 </body>
 =======
+=======
+>>>>>>> main
 <%-- Created by IntelliJ IDEA. User: dangminhtien Date: 17/09/2021 Time: 14:28
 To change this template use File | Settings | File Templates. --%> <%@ page
 contentType="text/html;charset=UTF-8" language="java" %>
@@ -87,9 +90,9 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   mx-1.5
                   sm:mx-6
                 "
-                href="#meeting"
+                href='/masa/student/meeting/followed_meeting.jsp'
               >
-                View meeting
+                View followed meeting
               </a>
             </li>
             <li class="nav-item">
@@ -130,7 +133,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
     </div>
 
     <!-- End of noti -->
-    <%@ include file="../../shared/meeting/_view_all_meeting.jsp"%>
+    <%@ include file="../../shared/meeting/_view_new_meeting.jsp"%>
     <!-- Footer -->
     <footer
       class="relative pt-1 bg-white border-b-2 border-blue-700 footer"
@@ -215,5 +218,8 @@ contentType="text/html;charset=UTF-8" language="java" %>
     integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
     crossorigin="anonymous"
   ></script>
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 </html>

@@ -3,9 +3,11 @@ package com.devlogs.masa_backend.repository.request;
 import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.data.remote_database.RequestDao;
 import com.devlogs.masa_backend.data.remote_database.RequestDto;
+import com.devlogs.masa_backend.domain.entities.BecomeMentorRequestEntity;
 import com.devlogs.masa_backend.domain.entities.RequestEntity;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
-import com.devlogs.masa_backend.domain.ports.RequestRepository;
+import com.devlogs.masa_backend.domain.ports.BecomeMentorRequestRepository;
+import com.google.gson.Gson;
 
 import javax.inject.Inject;
 import java.sql.SQLException;
@@ -13,26 +15,16 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-public class RequestRepositoryImp implements RequestRepository {
+public class BecomeMentorRequestRepositoryImp implements BecomeMentorRequestRepository {
     private RequestDao requestDao;
     private UUID uuid;
 
     @Inject
-    public RequestRepositoryImp(RequestDao requestDao) {
+    public BecomeMentorRequestRepositoryImp(RequestDao requestDao) {
         this.requestDao = requestDao;
     }
 
-    private RequestEntity fromRequestDto(RequestDto dto) {
-        RequestEntity.TYPE requestType = null;
-
-        switch (dto.getTypeId()) {
-            case 1:
-                requestType = RequestEntity.TYPE.BECOME_MENTOR;
-                break;
-            default:
-                throw new RuntimeException("Invalid requestTypeId: " + dto.getTypeId());
-        }
-
+    private BecomeMentorRequestEntity fromRequestDto(RequestDto dto) {
         RequestEntity.STATUS status = null;
         switch (dto.getStatusId()) {
             case 1:
@@ -48,7 +40,8 @@ public class RequestRepositoryImp implements RequestRepository {
                 throw new RuntimeException("Invalid request status: " + dto.getStatusId());
         }
 
-        return new RequestEntity(dto.getId(), dto.getDescription(), requestType, dto.getUserId(), status);
+        BecomeMentorRequestPayload payload = new Gson().fromJson(dto.getPayload(), BecomeMentorRequestPayload.class);
+        return new BecomeMentorRequestEntity(dto.getId(), dto.getDescription(), dto.getUserId(), status,payload.getZoomUrl(), payload.getMeetUrl(),dto.getCreatedDate());
     }
 
     /*
@@ -58,18 +51,12 @@ public class RequestRepositoryImp implements RequestRepository {
     * */
 
     @Override
-    public RequestEntity addRequest(String userId, String description, RequestEntity.TYPE type, RequestEntity.STATUS status) throws ConnectionException {
-        int typeId = -1;
-        switch (type) {
-            case BECOME_MENTOR: {
-                typeId = 1;
-                break;
-            }
-            default:
-                throw new RuntimeException(String.format("Type ? is not supported by repository", type.name()));
-        }
+    public BecomeMentorRequestEntity addRequest(String userId, String description, String meetUrl, String zoomUrl, RequestEntity.STATUS status) throws ConnectionException {
+        BecomeMentorRequestPayload payload = new BecomeMentorRequestPayload(zoomUrl, meetUrl);
+        String payloadInJson= new Gson().toJson(payload);
+
         try {
-            RequestDto addedRequest = requestDao.addRequest(UUID.randomUUID().toString().substring(0, 8), userId, description, typeId, 2);
+            RequestDto addedRequest = requestDao.addRequest(UUID.randomUUID().toString().substring(0, 8), userId, description, 1, 2,payloadInJson, System.currentTimeMillis());
             return fromRequestDto(addedRequest);
         } catch (SQLException e) {
             throw new RuntimeException("Sql exception: " + e.getMessage());
@@ -79,7 +66,7 @@ public class RequestRepositoryImp implements RequestRepository {
     }
 
     @Override
-    public List<RequestEntity> getAll() throws ConnectionException {
+    public List<BecomeMentorRequestEntity> getAll() throws ConnectionException {
         try {
             List<RequestDto> results = requestDao.getAll();
             return results.stream().map(this::fromRequestDto).collect(Collectors.toList());
@@ -91,7 +78,7 @@ public class RequestRepositoryImp implements RequestRepository {
     }
 
     @Override
-    public List<RequestEntity> getRequestByUserId(String userId) throws ConnectionException {
+    public List<BecomeMentorRequestEntity> getRequestByUserId(String userId) throws ConnectionException {
         try {
             List<RequestDto> results = requestDao.getByUserId(userId);
             return results.stream().map(this::fromRequestDto).collect(Collectors.toList());
@@ -103,7 +90,7 @@ public class RequestRepositoryImp implements RequestRepository {
     }
 
     @Override
-    public RequestEntity getRequestById(String id) throws ConnectionException {
+    public BecomeMentorRequestEntity getRequestById(String id) throws ConnectionException {
         MasaLog.normalLog("RequestId: " + id);
         try {
             RequestDto result = requestDao.getById(id);
@@ -116,6 +103,11 @@ public class RequestRepositoryImp implements RequestRepository {
         } catch (ClassNotFoundException e) {
             throw new ConnectionException(e.getMessage());
         }
+    }
+
+    @Override
+    public void answerRequest(String requestId, RequestEntity.STATUS status) throws ConnectionException {
+
     }
 
     @Override
@@ -134,7 +126,7 @@ public class RequestRepositoryImp implements RequestRepository {
                     break;
             }
             if (statusId != 0) {
-                 requestDao.updateRequestStatus(requestId, statusId);
+                requestDao.updateRequestStatus(requestId, statusId);
             }
         } catch (SQLException e) {
             throw new RuntimeException("Sql exception: " + e.getMessage());

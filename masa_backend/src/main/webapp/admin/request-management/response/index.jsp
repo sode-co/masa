@@ -1,27 +1,42 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: dangminhtien
-  Date: 23/09/2021
-  Time: 21:50
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.devlogs.masa_backend.common.Masa"%>
+<%-- Created by IntelliJ IDEA. User: dangminhtien Date: 23/09/2021 Time: 21:50
+To change this template use File | Settings | File Templates. --%> <%@ page
+contentType="text/html;charset=UTF-8" language="java" %> <%@ page
+import="com.devlogs.masa_backend.common.Masa"%>
 <html>
-<head>
-    <link rel="shortcut icon" href="${Masa.ICON_URL}"/>
+  <head>
+    <link rel="shortcut icon" href="${Masa.ICON_URL}" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="path/to/font-awesome/css/font-awesome.min.css"
+    />
     <title>Title</title>
-</head>
-<body>
+  </head>
+  <body>
     ${param.fullName} want to become a mentor
 
     <form action="/masa/api/admin/request-management/response">
-        <input type="hidden" value="${param.id}" name="id">
-        <input type="hidden" value="${param.userId}" name="userId">
-        <input type="hidden" value="${param.meet}" name="meet">
-        <input type="hidden" value="${param.zoom}" name="zoom">
-        <input type="submit" value="Denied" name="btAnswer">
-        <input type="submit" value="Accept" name="btAnswer">
+      <input type="hidden" value="${param.id}" name="id" />
+      <input type="hidden" value="${param.userId}" name="userId" />
+      <input type="hidden" value="${param.meet}" name="meet" />
+      <input type="hidden" value="${param.zoom}" name="zoom" />
+      <input type="submit" value="Denied" name="btAnswer" />
+      <input type="submit" value="Accept" name="btAnswer" />
     </form>
-</body>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script
+    defer
+    src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
+    integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
+    crossorigin="anonymous"
+  ></script>
 </html>

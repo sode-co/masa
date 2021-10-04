@@ -12,6 +12,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link
+    href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="path/to/font-awesome/css/font-awesome.min.css"
+  />
     <style>
         .hello{
             display: inline-block;
@@ -85,7 +93,7 @@
                 const json = {
                     "title": document.getElementById("title").value,
                     "platform": document.getElementById("platform").value,
-                    "host": ${CURRENT_USER.getId()},
+                    "host": "${CURRENT_USER.getId()}",
                     "startTime": millisecondsStart,
                     "endTime": millisecondsEnd,
                     "description": $("#description").html(),
@@ -320,7 +328,7 @@
         <hr/>
         <br/>
         <br/>
-        <div class="row text-center">
+        <div class="text-center row">
             <div class="col-sm-2">
             </div>
             <div class="col-sm-9">
@@ -360,4 +368,5 @@
 
 
 </body>
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
 </html>

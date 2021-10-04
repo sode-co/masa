@@ -37,9 +37,6 @@ public class UpdateUserRoleServlet extends BaseHttpServlet {
     @Inject
     protected UpdateUserRoleUseCase updateUserRoleUseCase;
 
-    @Inject
-    protected UserRepositoryImp imp ;
-
     @Override
     public void init() throws ServletException {
         super.init();

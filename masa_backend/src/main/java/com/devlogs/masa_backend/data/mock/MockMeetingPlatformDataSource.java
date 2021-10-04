@@ -31,5 +31,6 @@ public class MockMeetingPlatformDataSource {
 
     @Inject
     public MockMeetingPlatformDataSource( ) {
-            }
+
+    }
 }

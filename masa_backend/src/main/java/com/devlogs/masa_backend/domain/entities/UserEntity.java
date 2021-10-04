@@ -15,10 +15,6 @@ public class UserEntity {
         this.status = status;
     }
 
-    public void setRole(UserRole role) {
-        this.role = role;
-    }
-
     public String getId() {
         return id;
     }
@@ -51,5 +47,9 @@ public class UserEntity {
                 ", role=" + role +
                 ", status=" + status +
                 '}';
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 }

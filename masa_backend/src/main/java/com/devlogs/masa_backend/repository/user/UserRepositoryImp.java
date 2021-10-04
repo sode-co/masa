@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import org.apache.http.client.fluent.Request;
 
 import javax.inject.Inject;
+import javax.xml.registry.infomodel.User;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -153,7 +154,7 @@ public class UserRepositoryImp implements UserRepository {
 
     @Override
     public UserEntity addUser(String email, String fullName, String avatar, UserRole role, UserStatus userStatus)
-            throws ConnectionException, AlreadyExistException {
+            throws ConnectionException {
 
         int role_id;
         int status_id;
@@ -237,6 +238,44 @@ public class UserRepositoryImp implements UserRepository {
         return result;
     }
 
+    @Override
+    public List<UserEntity> getUserByRole(UserRole role) throws ConnectionException {
+        int roleId = 0;
+        List<UserDto> resultDto;
+        List<UserEntity> resultEntity = new ArrayList<>();
+        switch (role.getType()) {
+            case MENTOR: {
+                roleId = 4;
+                break;
+            }
+            case GUEST: {
+                roleId = 3;
+                break;
+            }
+            case ADMIN: {
+                roleId = 1;
+                break;
+            }
+            case STUDENT:{
+                roleId = 2;
+                break;
+            }
+        }
+        try {
+            resultDto = dao.getUserByRole(roleId);
+            for (UserDto dto : resultDto) {
+                resultEntity.add(convertDto(dto));
+            }
+            if (resultEntity.size() != 0) {
+                return resultEntity;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            throw new ConnectionException(e.getMessage());
+        }
+        return null;
+    }
 
 
 }

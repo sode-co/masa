@@ -1,19 +1,20 @@
-package com.devlogs.masa_backend.request;
+package com.devlogs.masa_backend.request.become_mentor;
 
+import com.devlogs.masa_backend.domain.entities.BecomeMentorRequestEntity;
 import com.devlogs.masa_backend.domain.entities.RequestEntity;
 import com.devlogs.masa_backend.domain.entities.UserEntity;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
-import com.devlogs.masa_backend.domain.ports.RequestRepository;
+import com.devlogs.masa_backend.domain.ports.BecomeMentorRequestRepository;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
 
 import javax.inject.Inject;
 import java.util.List;
 
-public class GetRequestByUserIdUseCase {
+public class GetBecomeMentorRequestByUserIdUseCase {
     public static class Result {
         public static class Success extends Result {
-            public List<RequestEntity> requests;
-            public Success(List<RequestEntity> requests) {
+            public List<BecomeMentorRequestEntity> requests;
+            public Success(List<BecomeMentorRequestEntity> requests) {
                 this.requests = requests;
             }
         }
@@ -26,10 +27,10 @@ public class GetRequestByUserIdUseCase {
         }
     }
 
-    private RequestRepository requestRepository;
+    private BecomeMentorRequestRepository requestRepository;
     private UserRepository userRepository;
     @Inject
-    public GetRequestByUserIdUseCase(RequestRepository requestRepository, UserRepository userRepository) {
+    public GetBecomeMentorRequestByUserIdUseCase(BecomeMentorRequestRepository requestRepository, UserRepository userRepository) {
         this.requestRepository = requestRepository;
         this.userRepository = userRepository;
     }
@@ -40,7 +41,7 @@ public class GetRequestByUserIdUseCase {
             if (userEntity == null) {
                 return new Result.UserDoesNotExist();
             }
-            List<RequestEntity> requests = requestRepository.getRequestByUserId(hostId);
+            List<BecomeMentorRequestEntity> requests = requestRepository.getRequestByUserId(hostId);
             return new Result.Success(requests);
         } catch (ConnectionException e) {
             return new Result.ConnectionError();
