@@ -6,6 +6,7 @@ import com.devlogs.masa_backend.data.mock.MockMeetingPlatformDataSource;
 import com.devlogs.masa_backend.data.mock.MockUserDataSource;
 import com.devlogs.masa_backend.domain.entities.MeetingEntity;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
+import com.devlogs.masa_backend.domain.entities.TopicEntity;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.errors.NotFoundException;
 import com.devlogs.masa_backend.domain.ports.MeetingRepository;
@@ -44,18 +45,8 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
     }
 
     @Override
-    public MeetingEntity create(String title, MeetingPlatform.PLATFORM platform, String hostId, long startTime, long endTime, String description) throws ConnectionException {
-        try {
-            MeetingEntity meetingEntity =
-                    null;
-            meetingEntity = new MeetingEntity(System.currentTimeMillis() + "", title,
-                    new MeetingPlatform(platform, hostId, mockMeetingPlatformDataSource.getMeetingUrl(hostId, platform)), hostId, startTime, endTime, description);
-            MockMeetingDataSource.meetings.add(meetingEntity);
-            MasaLog.normalLog("Added item: " + MockMeetingDataSource.meetings.get(MockMeetingDataSource.meetings.size() - 1).toString() + ", sized: " + MockMeetingDataSource.meetings.size());
-            return meetingEntity;
-        } catch (NotFoundException e) {
-            throw new ConnectionException(e.getMessage());
-        }
+    public MeetingEntity create(String title, MeetingPlatform.PLATFORM platform, String hostId, TopicEntity topic, long startTime, long endTime, String description) throws ConnectionException {
+        return null;
     }
 
 
