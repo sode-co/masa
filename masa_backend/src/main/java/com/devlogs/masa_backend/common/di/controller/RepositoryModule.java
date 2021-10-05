@@ -7,6 +7,7 @@ import com.devlogs.masa_backend.repository.meeting.MeetingRepositoryImp;
 import com.devlogs.masa_backend.repository.meeting_platform.MeetingPlatformRepositoryImp;
 import com.devlogs.masa_backend.repository.request.BecomeMentorRequestRepositoryImp;
 
+import com.devlogs.masa_backend.repository.topic.TopicRepositoryImp;
 import com.devlogs.masa_backend.repository.user.UserRepositoryImp;
 import dagger.Module;
 import dagger.Provides;
@@ -39,6 +40,10 @@ public class RepositoryModule {
         return platformRepositoryImp;
     }
 
+    @Provides
+    public TopicRepository provideTopicRepository(TopicRepositoryImp topicRepositoryImp) {
+        return topicRepositoryImp;
+    }
 
 }
 
