@@ -17,13 +17,13 @@ public class MeetingRepositoryImp implements MeetingRepository {
     private MeetingDAO meetingSource;
     private PlatformUrlsDAO meetingPlatformUrlSource;
     private TopicDAO topicSource;
+
     @Inject
     public MeetingRepositoryImp(MeetingDAO meetingSource, PlatformUrlsDAO meetingPlatformUrlSource, TopicDAO topicSource) {
         this.meetingSource = meetingSource;
         this.meetingPlatformUrlSource = meetingPlatformUrlSource;
         this.topicSource = topicSource;
     }
-
 
     public MeetingEntity toMeetingEntity(MeetingDTO meetingDTO) throws SQLException,ClassNotFoundException{
         MeetingEntity meeting = null;
