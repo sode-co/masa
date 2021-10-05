@@ -285,21 +285,14 @@ public class UserRepositoryImp implements UserRepository {
         List<UserEntity> result = new ArrayList<>();
         try {
             List<UserDto> list = dao.getUserByName(name);
-            if (list.size() != 0) {
                 for (UserDto dto : list) {
                     result.add(convertDto(dto));
                 }
-                if(result.size() != 0){
-                    return result;
-                }
-            }
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (ClassNotFoundException ex) {
             throw new RuntimeException(ex.getMessage());
         }
-        return null;
+        return result;
     }
-
-
 }

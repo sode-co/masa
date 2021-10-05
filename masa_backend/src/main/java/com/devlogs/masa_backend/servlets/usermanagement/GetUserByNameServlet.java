@@ -1,5 +1,6 @@
 package com.devlogs.masa_backend.servlets.usermanagement;
 
+import com.devlogs.masa_backend.common.Masa;
 import com.devlogs.masa_backend.common.annotations.AccessRole;
 import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.manage.GetUserByNameUseCase;
@@ -28,7 +29,7 @@ public class GetUserByNameServlet extends BaseHttpServlet {
     public void init() throws ServletException {
         super.init();
         getControllerComponent().inject(this);
-        MasaLog.normalLog("AHIHIH " );
+
     }
 
     protected void doRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -41,16 +42,18 @@ public class GetUserByNameServlet extends BaseHttpServlet {
             }
             return false;
         } );
-        MasaLog.normalLog("name la: " + name);
+        MasaLog.normalLog("NAME "+ name);
+
         GetUserByNameUseCase.Result result = getUserByNameUseCase.executes(name);
-        MasaLog.normalLog("okkkkkkk " );
 
         if (result instanceof GetUserByNameUseCase.Result.Success) {
             responseHelper.responseJsonOk(new Gson().toJson(result) );
         } else if (result instanceof GetUserByNameUseCase.Result.ConnectionError) {
             responseHelper.responseMessage(400, "Db connection error");
         } else if (result instanceof  GetUserByNameUseCase.Result.NoUserExist) {
-            responseHelper.responseMessage(400, "Can not find user like "+ name);
+            responseHelper.responseMessage(400, "Can not find user like: "+ "'"+ name+ "'");
+        }else if (result instanceof  GetUserByNameUseCase.Result.EmptySearchContent) {
+            responseHelper.responseMessage(400, "Your search content can not be empty!!!!" );
         }
     }
 

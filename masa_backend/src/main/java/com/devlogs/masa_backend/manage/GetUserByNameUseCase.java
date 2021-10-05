@@ -25,6 +25,9 @@ public class GetUserByNameUseCase {
         public static class NoUserExist extends Result {
 
         }
+        public static class EmptySearchContent extends Result {
+
+        }
     }
 
     private UserRepository userRepository;
@@ -35,8 +38,13 @@ public class GetUserByNameUseCase {
     }
 
     public Result executes(String name) {
+
         try {
+            if (name == null ){
+                return new Result.EmptySearchContent();
+            }
             List<UserEntity> users = userRepository.getUserByName(name);
+            MasaLog.normalLog("user size "+ users.size());
             if ( users.size() != 0) {
                 return new Result.Success(users);
             } else
