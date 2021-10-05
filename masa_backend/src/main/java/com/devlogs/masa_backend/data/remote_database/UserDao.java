@@ -236,10 +236,9 @@ public class UserDao {
             ArrayList<UserDto> results = new ArrayList();
             try (Connection connection = dbHelper.connect()) {
                 PreparedStatement statement = connection.prepareStatement("SELECT ID, FULLNAME, EMAIL, AVATAR_URL, ROLE_ID, STATUS_ID FROM USERS WHERE FULLNAME LIKE ?");
-                statement.setString(1, name);
+                statement.setString(1, "%" + name +"%");
                 ResultSet resultSet = statement.executeQuery();
 
-                UserDto cached;
                 while (resultSet.next()) {
                     String id = resultSet.getString(1);
                     String fullName = resultSet.getString(2);

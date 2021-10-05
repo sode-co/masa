@@ -88,10 +88,10 @@ public class MockUserRepositoryImp implements UserRepository {
         return null;
     }
 
-    @Override
-    public UserEntity updateUserRole(String userID) throws ConnectionException, NotFoundException {
-        return null;
-    }
+//    @Override
+//    public UserEntity updateUserRole(String userID) throws ConnectionException, NotFoundException {
+//        return null;
+//    }
 
     @Override
     public List<UserEntity> getUserByName(String name) throws ConnectionException {

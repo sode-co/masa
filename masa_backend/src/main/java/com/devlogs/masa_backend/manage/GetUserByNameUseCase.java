@@ -1,5 +1,6 @@
 package com.devlogs.masa_backend.manage;
 
+import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.domain.entities.UserEntity;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
@@ -33,16 +34,16 @@ public class GetUserByNameUseCase {
         this.userRepository = userRepository;
     }
 
-//    public Result executes() {
-//        try {
-//            List<UserEntity> users = userRepository.getuser(role);
-//            if ( users.size() != 0) {
-//                return new Result.Success(users);
-//            } else
-//                return new Result.NoUserExist();
-//        } catch (ConnectionException e) {
-//            return new Result.ConnectionError();
-//        }
-//    }
+    public Result executes(String name) {
+        try {
+            List<UserEntity> users = userRepository.getUserByName(name);
+            if ( users.size() != 0) {
+                return new Result.Success(users);
+            } else
+                return new Result.NoUserExist();
+        } catch (ConnectionException e) {
+            return new Result.ConnectionError();
+        }
+    }
 
 }
