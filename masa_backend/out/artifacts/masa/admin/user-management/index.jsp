@@ -99,9 +99,13 @@ import="com.devlogs.masa_backend.common.Masa"%>
                   sm:mx-6
                 "
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 3aa2c4438a1f86dcc6f1a5ab53714fa1f931caa7
+=======
+
+>>>>>>> d86ec4c29780401e1cab39f84bb38dd4c0483c59
                 href="#footer"
               >
                 Contact

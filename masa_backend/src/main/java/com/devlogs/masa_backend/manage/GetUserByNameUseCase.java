@@ -33,7 +33,7 @@ public class GetUserByNameUseCase {
         this.userRepository = userRepository;
     }
 
-    public Result executes() {
+//    public Result executes() {
 //        try {
 //            List<UserEntity> users = userRepository.getuser(role);
 //            if ( users.size() != 0) {
@@ -43,6 +43,6 @@ public class GetUserByNameUseCase {
 //        } catch (ConnectionException e) {
 //            return new Result.ConnectionError();
 //        }
-    }
+//    }
 
 }

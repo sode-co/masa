@@ -1,9 +1,13 @@
 <%-- Created by IntelliJ IDEA. User: dangminhtien Date: 17/09/2021 Time: 14:28
 To change this template use File | Settings | File Templates. --%> <%@ page
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 3aa2c4438a1f86dcc6f1a5ab53714fa1f931caa7
+=======
+
+>>>>>>> d86ec4c29780401e1cab39f84bb38dd4c0483c59
 contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
@@ -109,9 +113,13 @@ contentType="text/html;charset=UTF-8" language="java" %>
   >
     <div
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 3aa2c4438a1f86dcc6f1a5ab53714fa1f931caa7
+=======
+
+>>>>>>> d86ec4c29780401e1cab39f84bb38dd4c0483c59
             class="relative flex justify-between w-full px-4 lg:w-auto lg:static lg:block lg:justify-start"
     >
       <img

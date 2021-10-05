@@ -520,3 +520,34 @@ nav {
 }
 }
 
+<<<<<<< HEAD
+=======
+.u-full-width {
+	width: 100%;
+	box-sizing: border-box;
+}
+.u-max-full-width {
+	max-width: 100%;
+	box-sizing: border-box;
+}
+.u-pull-right {
+	float: right;
+}
+.u-pull-left {
+	float: left;
+}
+
+.container:after, .row:after, .u-cf {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.block {
+	width: 70px;
+	height: 2px;
+	margin-bottom: 50px;
+
+}
+
+>>>>>>> d86ec4c29780401e1cab39f84bb38dd4c0483c59

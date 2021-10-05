@@ -107,6 +107,18 @@ import="com.devlogs.masa_backend.common.Masa"%>
         </div>
       </div>
     </nav>
+
+
+    <div class="flex flex-wrap w-full mb-8">
+      <div class="w-full mb-6 lg:mb-0 sm:ml-20">
+        <h1
+                class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font"
+        >
+        </h1>
+        <div class="w-20 h-1 bg-green-500 rounded"></div>
+      </div>
+    </div>
+
     <!-- End of navigation -->
 
     <!-- Noti -->
@@ -114,8 +126,9 @@ import="com.devlogs.masa_backend.common.Masa"%>
       class="container flex items-center mx-auto bg-green-100 rounded-md h-96"
     >
       <div class="text-center sm:ml-20 text-gray-50 sm:text-left">
-        <h1 class="mb-4 text-5xl font-bold text-green-800">Admin <br /></h1>
+        <h1 class="mb-4 text-5xl font-bold text-green-800">ADMINISTRATOR PAGE<br /></h1>
       </div>
+      <br/>
     </div>
 
     <!-- End of noti -->

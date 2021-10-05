@@ -66,8 +66,13 @@ public interface ControllerComponent {
     void inject(GetAllUserNotFollowedMeetingServlet getAllUserNotFollowedMeetingServlet);
 
     void inject(RemoveAppointmentServlet removeAppointmentServlet);
+<<<<<<< HEAD
 
     void inject(GetUserByRoleServlet getUserByRoleServlet) ;
 
 
+=======
+
+    void inject(GetUserByRoleServlet getUserByRoleServlet);
+>>>>>>> d86ec4c29780401e1cab39f84bb38dd4c0483c59
 }
