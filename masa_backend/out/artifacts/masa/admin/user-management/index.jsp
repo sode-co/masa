@@ -98,6 +98,7 @@ import="com.devlogs.masa_backend.common.Masa"%>
                   mx-1.5
                   sm:mx-6
                 "
+
                 href="#footer"
               >
                 Contact

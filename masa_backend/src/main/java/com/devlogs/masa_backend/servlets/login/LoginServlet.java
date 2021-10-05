@@ -102,6 +102,7 @@ public class LoginServlet extends BaseHttpServlet {
         if (user != null) {
             Cookie ggCookie = new Cookie(Masa.COOKIE.GOOGLE_ACCESS_TOKEN, googleAccessToken);
             ggCookie.setMaxAge(3500);
+            ggCookie.setPath("/");
             response.addCookie(ggCookie);
             MasaLog.normalLog("ggredirectUrl: " + redirectUrl);
             if (redirectUrl != null && !redirectUrl.isEmpty()) {
