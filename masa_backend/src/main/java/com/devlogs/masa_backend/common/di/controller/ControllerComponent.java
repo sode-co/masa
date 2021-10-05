@@ -16,8 +16,6 @@ import com.devlogs.masa_backend.servlets.request_managment.getRequest.GetRequest
 
 import com.devlogs.masa_backend.servlets.request_managment.AnswerRequestServlet;
 
-import com.devlogs.masa_backend.servlets.test.TestServlet;
-
 import com.devlogs.masa_backend.servlets.usermanagement.GetUserByRoleServlet;
 import com.devlogs.masa_backend.servlets.usermanagement.ShowAllUserServlet;
 import com.devlogs.masa_backend.servlets.usermanagement.UpdateUserRoleServlet;
@@ -34,8 +32,6 @@ public interface ControllerComponent {
     void inject(GetMeetingByHostIdServlet getMeetingByHostIdServlet);
 
     void inject(GetAllMeetingServlet getAllMeetingServlet);
-
-    void inject(TestServlet testServlet);
 
     void inject(CreateAppointmentServlet followMeetingServlet);
 
