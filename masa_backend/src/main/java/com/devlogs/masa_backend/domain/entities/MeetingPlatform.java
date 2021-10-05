@@ -1,6 +1,6 @@
 package com.devlogs.masa_backend.domain.entities;
 
-public class MeetingPlatform {
+public class MeetingPlatform extends Entity {
     public enum PLATFORM {
         GOOGLE_MEET,ZOOM
     }

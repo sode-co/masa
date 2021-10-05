@@ -1,7 +1,6 @@
 package com.devlogs.masa_backend.domain.entities;
 
-public class MeetingEntity {
-    private String id;
+public class MeetingEntity extends Entity {
     private String title;
     private MeetingPlatform platform;
     private String hostId;
