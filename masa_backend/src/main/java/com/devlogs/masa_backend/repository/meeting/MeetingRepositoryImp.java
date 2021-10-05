@@ -163,6 +163,48 @@ public class MeetingRepositoryImp implements MeetingRepository {
     }
 
     @Override
+    public List<MeetingEntity> getNewMeetings() throws ConnectionException {
+        List<MeetingEntity> result = new ArrayList<>();
+        try {
+            List<MeetingDTO> listDTO = meetingSource.getMeetingFromTime(System.currentTimeMillis());
+            if (listDTO != null) {
+                for (MeetingDTO dto : listDTO) {
+                    PlatformUrlsDTO platformUrlsDTO = meetingPlatformUrlSource.getUrl(dto.getHost_id(), dto.getPlatform_id());
+                    result.add(new MeetingEntity(dto.getId(), dto.getTitle(),
+                            new MeetingPlatform(MeetingPlatform.PLATFORM.values()[platformUrlsDTO.getPlaformId() - 1], dto.getHost_id(), platformUrlsDTO.getUrl()),
+                            dto.getHost_id(), dto.getStartTime(), dto.getEndTime(), dto.getDescription()));
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
+        return result;
+    }
+
+    @Override
+    public List<MeetingEntity> getMeetingsByTime(long from, long to) throws ConnectionException {
+        List<MeetingEntity> result = new ArrayList<>();
+        try {
+            List<MeetingDTO> listDTO = meetingSource.getMeetingFromTimeToTime(from, to);
+            if (listDTO != null) {
+                for (MeetingDTO dto : listDTO) {
+                    PlatformUrlsDTO platformUrlsDTO = meetingPlatformUrlSource.getUrl(dto.getHost_id(), dto.getPlatform_id());
+                    result.add(new MeetingEntity(dto.getId(), dto.getTitle(),
+                            new MeetingPlatform(MeetingPlatform.PLATFORM.values()[platformUrlsDTO.getPlaformId() - 1], dto.getHost_id(), platformUrlsDTO.getUrl()),
+                            dto.getHost_id(), dto.getStartTime(), dto.getEndTime(), dto.getDescription()));
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
+        return result;
+    }
+
+    @Override
     public MeetingEntity updateMeeting(String meetingId, String title, MeetingPlatform.PLATFORM platform, long startTime, long endTime, String description) throws ConnectionException, NotFoundException {
         MeetingEntity meeting = null;
         try{
