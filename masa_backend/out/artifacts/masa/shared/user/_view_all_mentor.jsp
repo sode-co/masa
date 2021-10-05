@@ -44,7 +44,7 @@ template use File | Settings | File Templates. --%> <%@ page
         }
         .tbl-content{
             height:300px;
-            overflow-x:hidden;
+            overflow-x:auto;
             margin-top: 0px;
             border: 1px solid rgba(255,255,255,0.3);
         }
@@ -74,7 +74,7 @@ template use File | Settings | File Templates. --%> <%@ page
             background: -webkit-linear-gradient(left, #25c481, #25b7c4);
             background: linear-gradient(to right, #25c481, #25b7c4);
             font-family: 'Roboto', sans-serif;
-            overflow-x: hidden;
+            overflow: hidden;
 
         }
         section{
@@ -99,7 +99,7 @@ template use File | Settings | File Templates. --%> <%@ page
             const container = document.getElementById("container");
             let i = 0;
             $.getJSON(
-                "http://localhost:8080/masa/api/user-management/all",
+                "http://localhost:8080/masa/api/user-management/get-user-by-role/mentor",
                 function (data) {
                     let htmlElements = "";
                     const arr = data["users"];
