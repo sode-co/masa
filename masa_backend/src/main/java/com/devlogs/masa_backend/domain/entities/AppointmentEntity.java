@@ -1,6 +1,6 @@
 package com.devlogs.masa_backend.domain.entities;
 
-public class AppointmentEntity {
+public class AppointmentEntity extends Entity{
     private String userId;
     private String meetingId;
 
