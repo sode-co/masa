@@ -49,6 +49,16 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
         return null;
     }
 
+    @Override
+    public List<MeetingEntity> getMeetingsByTime(long from, long to) throws ConnectionException {
+        return null;
+    }
+
+    @Override
+    public List<MeetingEntity> getMeetingsByTopic(int topicId) throws ConnectionException {
+        return null;
+    }
+
 
     @Override
     public MeetingEntity updateMeeting(String meetingId, String title, MeetingPlatform.PLATFORM platform, long startTime, long endTime, String description) throws ConnectionException, NotFoundException {
@@ -91,6 +101,11 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
 
     @Override
     public List<MeetingEntity> getNotFollowedMeetings(String userId) throws ConnectionException {
+        return null;
+    }
+
+    @Override
+    public List<MeetingEntity> getNewMeetings() throws ConnectionException {
         return null;
     }
 }

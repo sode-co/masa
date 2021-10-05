@@ -1,5 +1,7 @@
 package com.devlogs.masa_backend.domain.entities;
 
+import java.util.Objects;
+
 public class MeetingEntity extends Entity {
     private String title;
     private MeetingPlatform platform;
@@ -88,5 +90,19 @@ public class MeetingEntity extends Entity {
                 ", endTime=" + endTime +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        MeetingEntity that = (MeetingEntity) o;
+        return startTime == that.startTime && endTime == that.endTime && Objects.equals(title, that.title) && Objects.equals(platform, that.platform) && Objects.equals(topic, that.topic) && Objects.equals(hostId, that.hostId) && Objects.equals(description, that.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, platform, topic, hostId, startTime, endTime, description);
     }
 }
