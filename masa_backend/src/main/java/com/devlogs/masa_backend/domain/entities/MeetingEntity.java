@@ -1,18 +1,19 @@
 package com.devlogs.masa_backend.domain.entities;
 
-public class MeetingEntity {
-    private String id;
+public class MeetingEntity extends Entity {
     private String title;
     private MeetingPlatform platform;
+    private TopicEntity topic;
     private String hostId;
     private long startTime;
     private long endTime;
     private String description;
 
-    public MeetingEntity(String id, String title, MeetingPlatform platform, String hostId, long startTime, long endTime, String description) {
+    public MeetingEntity(String id, String title, MeetingPlatform platform, TopicEntity topic, String hostId, long startTime, long endTime, String description) {
         this.id = id;
         this.title = title;
         this.platform = platform;
+        this.topic = topic;
         this.hostId = hostId;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -67,13 +68,22 @@ public class MeetingEntity {
         return description;
     }
 
+    public TopicEntity getTopic() {
+        return topic;
+    }
+
+    public void setTopic(TopicEntity topic) {
+        this.topic = topic;
+    }
+
     @Override
     public String toString() {
         return "MeetingEntity{" +
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", platform=" + platform +
-                ", hostId=" + hostId +
+                ", topic=" + topic +
+                ", hostId='" + hostId + '\'' +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
                 ", description='" + description + '\'' +

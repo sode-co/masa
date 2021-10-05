@@ -3,7 +3,6 @@ package com.devlogs.masa_backend.servlets.meeting.createmeeting;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
 import com.devlogs.masa_backend.servlets.common.validation.EnumValidator;
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -21,6 +20,8 @@ public class CreateMeetingReq {
     private String platform;
     @NotBlank(message = "Your host id can not be empty")
     private String host;
+    @NotBlank(message = "Your topic can not be empty")
+    private String topic;
     @NotNull(message = "Your meeting startTime can not be empty")
     @Min(value = 1, message = "Your meeting startTime is invalid")
     private long startTime;
@@ -33,10 +34,11 @@ public class CreateMeetingReq {
     public CreateMeetingReq( ) {
     }
 
-    public CreateMeetingReq(String title, String platform, String host, long startTime, long endTime, String description) {
+    public CreateMeetingReq(String title, String platform, String host, String topic, long startTime, long endTime, String description) {
         this.title = title;
         this.platform = platform;
         this.host = host;
+        this.topic = topic;
         this.startTime = startTime;
         this.endTime = endTime;
         this.description = description;
@@ -64,6 +66,14 @@ public class CreateMeetingReq {
 
     public void setHost(String host) {
         this.host = host;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
     }
 
     public long getStartTime() {

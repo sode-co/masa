@@ -25,103 +25,101 @@
   <body>
     <main class="bg-white font-montserrat">
       <header class="flex items-center h-24 sm:h-32">
-        <nav
-          class="relative flex flex-wrap items-center justify-between px-2 py-3 mb-3 bg-white "
+        <div
+          class="container flex items-center justify-between px-6 mx-auto  sm:px-12"
         >
-          <div
-            class="container flex flex-wrap items-center justify-between px-4 mx-auto "
-          >
-            <div
-              class="relative flex justify-between w-full px-4  lg:w-auto lg:static lg:block lg:justify-start"
-            >
-              <img
-                src="/masa/shared/icon/weblogo.svg"
-                alt="Logo"
-                width="30%"
-                height="30%"
-              />
-            </div>
-            <div class="items-center flex-grow lg:flex" id="navi">
-              <ul class="flex flex-col ml-auto list-none lg:flex-row">
-                <li class="nav-item">
-                  <a
-                    class="
-                      font-sans
-                      text-2xl
-                      font-semibold
-                      text-gray-800
-                      dark:text-gray-200 dark:hover:text-gray-200
-                      hover:no-underline
-                      border-b-2 border-green-800
-                      mx-1.5
-                      sm:mx-6
-                      hover:text-gray-800
-                    "
-                    href="#navi"
-                  >
-                    Home
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="
-                      font-sans
-                      text-2xl
-                      font-semibold
-                      border-b-2 border-transparent
-                      hover:text-gray-800
-                      dark:hover:text-gray-200
-                      hover:border-green-800 hover:no-underline
-                      mx-1.5
-                      sm:mx-6
-                    "
-                    href="#info"
-                  >
-                    About us
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="
-                      font-sans
-                      text-2xl
-                      font-semibold
-                      border-b-2 border-transparent
-                      hover:text-gray-800
-                      dark:hover:text-gray-200
-                      hover:border-green-800 hover:no-underline
-                      mx-1.5
-                      sm:mx-6
-                    "
-                    href="#footer"
-                  >
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </div>
+          <div class="flex items-center text-2xl font-black text-black">
+            <img
+              src="/masa/shared/icon/weblogo.svg"
+              alt="Logo"
+              width="30%"
+              height="30%"
+            />
           </div>
-        </nav>
-        <button class="flex flex-col lg:hidden">
-          <span class="w-6 h-px mb-1 bg-gray-900"></span>
-          <span class="w-6 h-px mb-1 bg-gray-900"></span>
-          <span class="w-6 h-px mb-1 bg-gray-900"></span>
-        </button>
+          <div class="flex items-center">
+            <nav class="items-center hidden text-lg text-black lg:flex">
+              <a
+                href="#navi"
+                class="
+                  py-2
+                  px-6
+                  flex
+                  font-sans
+                  text-2xl
+                  font-semibold
+                  text-gray-800
+                  dark:text-gray-200 dark:hover:text-gray-200
+                  hover:no-underline
+                  border-b-2 border-green-800
+                  mx-1.5
+                  sm:mx-6
+                  hover:text-gray-800
+                "
+              >
+                Home
+              </a>
+              <a
+                href="#info"
+                class="
+                  flex
+                  px-6
+                  py-2
+                  font-sans
+                  text-2xl
+                  font-semibold
+                  border-b-2 border-transparent
+                  hover:text-gray-800
+                  dark:hover:text-gray-200
+                  hover:border-green-800 hover:no-underline
+                  mx-1.5
+                  sm:mx-6
+                "
+              >
+                About us
+              </a>
+              <a
+                href="#footer"
+                class="
+                  flex
+                  px-6
+                  py-2
+                  font-sans
+                  text-2xl
+                  font-semibold
+                  border-b-2 border-transparent
+                  hover:text-gray-800
+                  dark:hover:text-gray-200
+                  hover:border-green-800 hover:no-underline
+                  mx-1.5
+                  sm:mx-6
+                "
+              >
+                Contact us
+              </a>
+            </nav>
+            <button class="flex flex-col lg:hidden">
+              <span class="w-6 h-px mb-1 bg-gray-900"></span>
+              <span class="w-6 h-px mb-1 bg-gray-900"></span>
+              <span class="w-6 h-px mb-1 bg-gray-900"></span>
+            </button>
+          </div>
+        </div>
       </header>
       <div
         class="container flex flex-col-reverse items-center px-6 mx-auto  sm:px-12 sm:flex-row"
       >
         <div class="flex flex-col items-start mt-8 sm:w-2/5 sm:mt-0">
           <h1 class="mb-4 text-4xl leading-none lg:text-6xl">
-            <strong class="font-black">Lecturer</strong> Welcome to MASA
+            <strong class="font-black">Lectuere</strong><br />
+            Welcome to MASA
           </h1>
-          <p class="mb-4 lg:text-lg sm:mb-12">
+          <p class="mb-4 lg:text-md sm:mb-12">
             Becoming a mentor to share more information with students.
           </p>
           <a
             href="#"
-            class="px-10 py-3 text-lg font-semibold text-white bg-blue-500 rounded-full  hover:bg-blue-400"
-            >Become mentor now</a
+            class="px-10 py-4 font-semibold text-white bg-blue-500 rounded-full  text-md hover:bg-blue-400"
+            >Become Mentor now</a
           >
         </div>
         <div class="sm:w-3/5">

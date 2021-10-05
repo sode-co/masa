@@ -2,6 +2,7 @@ package com.devlogs.masa_backend.data.mock;
 
 import com.devlogs.masa_backend.domain.entities.MeetingEntity;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
+import com.devlogs.masa_backend.domain.entities.TopicEntity;
 import com.devlogs.masa_backend.domain.entities.UserEntity;
 
 import javax.inject.Inject;
@@ -25,12 +26,12 @@ public class MockMeetingDataSource {
             meetings.add(
                     new MeetingEntity(System.currentTimeMillis() + "", "Devlogs Talkshows",
                             new MeetingPlatform(MeetingPlatform.PLATFORM.GOOGLE_MEET, u.getId(),
-                                    "https://meet.google.com/spi-addt-gsk"),u.getId(),startTime,startTime + hafDay, "Xin chào, vào đây nói chuyện với mình nheeee" ));
+                                    "https://meet.google.com/spi-addt-gsk"),new TopicEntity(1,"Software Engineering"),u.getId(),startTime,startTime + hafDay, "Xin chào, vào đây nói chuyện với mình nheeee" ));
             long startTime2 = System.currentTimeMillis() - new Random().nextLong();
             meetings.add(
                     new MeetingEntity(System.currentTimeMillis() + "", "Sode talkshows",
                             new MeetingPlatform(MeetingPlatform.PLATFORM.ZOOM, u.getId(),
-                                    "https://meet.google.com/jsg-rqjg-ybi"),u.getId(),startTime, startTime + oneHour, "Xin chào, vào đây nói chuyện với mình nheeee" ));
+                                    "https://meet.google.com/jsg-rqjg-ybi"),new TopicEntity(9,"Soft Skills"),u.getId(),startTime, startTime + oneHour, "Xin chào, vào đây nói chuyện với mình nheeee" ));
         });
     }
 

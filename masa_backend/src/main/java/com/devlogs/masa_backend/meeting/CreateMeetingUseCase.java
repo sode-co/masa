@@ -1,11 +1,9 @@
 package com.devlogs.masa_backend.meeting;
 
-import com.devlogs.masa_backend.domain.entities.MeetingEntity;
-import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
-import com.devlogs.masa_backend.domain.entities.UserEntity;
-import com.devlogs.masa_backend.domain.entities.UserRole;
+import com.devlogs.masa_backend.domain.entities.*;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.ports.MeetingRepository;
+import com.devlogs.masa_backend.domain.ports.TopicRepository;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
 
 import javax.inject.Inject;
@@ -38,14 +36,15 @@ public class CreateMeetingUseCase {
 
     private MeetingRepository meetingRepository;
     private UserRepository userRepository;
-
+    private TopicRepository topicRepository;
     @Inject
-    public CreateMeetingUseCase(MeetingRepository meetingRepository,UserRepository userRepository) {
+    public CreateMeetingUseCase(MeetingRepository meetingRepository, UserRepository userRepository, TopicRepository topicRepository) {
         this.meetingRepository = meetingRepository;
         this.userRepository = userRepository;
+        this.topicRepository = topicRepository;
     }
 
-    public Result executes (String title, MeetingPlatform.PLATFORM platform, String hostId, long startTime, long endTime, String description) {
+    public Result executes (String title, MeetingPlatform.PLATFORM platform, String hostId, String topicTitle,long startTime, long endTime, String description) {
         try {
             UserEntity host = userRepository.getUserById(hostId);
             if (host == null) {
@@ -54,7 +53,11 @@ public class CreateMeetingUseCase {
             if (host.getRole().getType() != UserRole.TYPE.MENTOR) {
                return new Result.NotMentorError();
             }
-            MeetingEntity createdMeeting = meetingRepository.create(title , platform,hostId , startTime, endTime, description);
+            TopicEntity topic = topicRepository.getByTitle(topicTitle);
+            if(topic == null){
+                topic = topicRepository.createTopic(topicTitle);
+            }
+            MeetingEntity createdMeeting = meetingRepository.create(title , platform,hostId , topic,startTime, endTime, description);
             return new Result.Success(createdMeeting, host);
         } catch (ConnectionException e) {
             return new Result.ConnectionError();

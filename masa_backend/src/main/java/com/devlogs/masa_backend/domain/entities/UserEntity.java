@@ -1,7 +1,6 @@
 package com.devlogs.masa_backend.domain.entities;
 
-public class UserEntity {
-    private String id;
+public class UserEntity extends Entity {
     private String email;
     private String fullName;
     private UserRole role;
