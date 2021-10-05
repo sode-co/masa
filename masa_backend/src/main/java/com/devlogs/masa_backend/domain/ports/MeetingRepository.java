@@ -2,10 +2,10 @@ package com.devlogs.masa_backend.domain.ports;
 
 import com.devlogs.masa_backend.domain.entities.MeetingEntity;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
+import com.devlogs.masa_backend.domain.entities.TopicEntity;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.errors.NotFoundException;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface MeetingRepository {
@@ -13,7 +13,7 @@ public interface MeetingRepository {
 
     List<MeetingEntity> getByHostId(String hostId) throws ConnectionException;
 
-    MeetingEntity create(String title, MeetingPlatform.PLATFORM platform, String hostId, long startTime, long endTime, String description) throws ConnectionException;
+    MeetingEntity create(String title, MeetingPlatform.PLATFORM platform, String hostId, TopicEntity topic, long startTime, long endTime, String description) throws ConnectionException;
 
     List<MeetingEntity> getMeetingsByTime(long from, long to) throws ConnectionException;
 

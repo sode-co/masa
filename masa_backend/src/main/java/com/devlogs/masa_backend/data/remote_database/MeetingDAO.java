@@ -19,18 +19,20 @@ public class MeetingDAO {
     public List<MeetingDTO> getAllMeetings() throws SQLException, ClassNotFoundException {
         List<MeetingDTO> listMeeting = new ArrayList<>();
         try (Connection con = dbHelper.connect()) {
-            CallableStatement ctm = con.prepareCall("EXEC getAllMeetings;");
-            ResultSet rs = ctm.executeQuery();
-            while (rs.next()) {
-                String id = rs.getString(1);
-                String title = rs.getString(2);
-                long startTime = rs.getLong(3);
-                long endTime = rs.getLong(4);
-                String host_id = rs.getString(5);
-                int platform_id = rs.getInt(6);
-                int status_id = rs.getInt(7);
-                String description = rs.getString(8);
-                listMeeting.add(new MeetingDTO(id, title, platform_id, host_id, status_id, startTime, endTime, description));
+            CallableStatement ctm = con.prepareCall("SELECT ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, TOPIC_ID, DESCRIPTION " +
+                    "FROM MEETINGS;");
+            ResultSet result = ctm.executeQuery();
+            while (result.next()) {
+                String id = result.getString(1);
+                String title = result.getString(2);
+                long startTime = result.getLong(3);
+                long endTime = result.getLong(4);
+                String host_id = result.getString(5);
+                int platform_id = result.getInt(6);
+                int status_id = result.getInt(7);
+                int topic_id = result.getInt(8);
+                String description = result.getString(9);
+                listMeeting.add(new MeetingDTO(id,title,platform_id,host_id,status_id,topic_id,startTime,endTime,description));
             }
         }
         return listMeeting;
@@ -39,30 +41,33 @@ public class MeetingDAO {
     public List<MeetingDTO> getMeetingsByHost(String hostId) throws SQLException, ClassNotFoundException {
         List<MeetingDTO> listMeetingByHostID = new ArrayList<>();
         try (Connection con = dbHelper.connect()) {
-            CallableStatement ctm = con.prepareCall("EXEC getMeetingsByHost ?;");
+            CallableStatement ctm = con.prepareCall("SELECT ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, TOPIC_ID, DESCRIPTION " +
+                    "FROM MEETINGS WHERE MENTOR_ID=?;");
             ctm.setString(1, hostId);
-            ResultSet rs = ctm.executeQuery();
-            while (rs.next()) {
-                String id = rs.getString(1);
-                String title = rs.getString(2);
-                long startTime = rs.getLong(3);
-                long endTime = rs.getLong(4);
-                String host_id = rs.getString(5);
-                int platform_id = rs.getInt(6);
-                int status_id = rs.getInt(7);
-                String description = rs.getString(8);
-                listMeetingByHostID.add(new MeetingDTO(id, title, platform_id, host_id, status_id, startTime, endTime, description));
+            ResultSet result = ctm.executeQuery();
+            while (result.next()) {
+                String id = result.getString(1);
+                String title = result.getString(2);
+                long startTime = result.getLong(3);
+                long endTime = result.getLong(4);
+                String host_id = result.getString(5);
+                int platform_id = result.getInt(6);
+                int status_id = result.getInt(7);
+                int topic_id = result.getInt(8);
+                String description = result.getString(9);
+                listMeetingByHostID.add(new MeetingDTO(id,title,platform_id,host_id,status_id,topic_id,startTime,endTime,description));
             }
         }
         return listMeetingByHostID;
     }
 
     public MeetingDTO createMeeting(String id, String title, int platform_id, String host_id,
-                                    int status_id, long startTime, long endTime, String description)
+                                    int status_id, int topic_id,long startTime, long endTime, String description)
             throws SQLException, ClassNotFoundException {
         int rowEffect = 0;
         try (Connection con = dbHelper.connect()) {
-            CallableStatement ctm = con.prepareCall("INSERT INTO Meetings(id,title,time_start,time_end,mentor_id,platform_id,status_id,description) VALUES (?,?,?,?,?,?,?,?);");
+            CallableStatement ctm = con.prepareCall("INSERT INTO Meetings(ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, TOPIC_ID, DESCRIPTION) " +
+                    "VALUES (?,?,?,?,?,?,?,?,?);");
             ctm.setString(1, id);
             ctm.setString(2, title);
             ctm.setLong(3, startTime);
@@ -70,10 +75,11 @@ public class MeetingDAO {
             ctm.setString(5, host_id);
             ctm.setInt(6, platform_id);
             ctm.setInt(7, status_id);
-            ctm.setString(8, description);
+            ctm.setInt(8, topic_id);
+            ctm.setString(9, description);
             rowEffect = ctm.executeUpdate();
             if (rowEffect > 0) {
-                return new MeetingDTO(id, title, platform_id, host_id, status_id, startTime, endTime, description);
+                return new MeetingDTO(id, title, platform_id, host_id, status_id, topic_id, startTime, endTime, description);
             }
         }
         return null;
@@ -103,19 +109,21 @@ public class MeetingDAO {
 
     public MeetingDTO getMeetingByID(String meetingId) throws SQLException, ClassNotFoundException {
         try (Connection con = dbHelper.connect()) {
-            PreparedStatement ctm = con.prepareStatement("SELECT id, title, time_start, time_end, mentor_id, platform_id, status_id, description FROM Meetings WHERE id=? ;");
+            PreparedStatement ctm = con.prepareStatement("SELECT ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, TOPIC_ID,DESCRIPTION " +
+                    "FROM Meetings WHERE id=? ;");
             ctm.setString(1, meetingId);
-            ResultSet rs = ctm.executeQuery();
-            while (rs.next()) {
-                String id = rs.getString(1);
-                String title = rs.getString(2);
-                long startTime = rs.getLong(3);
-                long endTime = rs.getLong(4);
-                String host_id = rs.getString(5);
-                int platform_id = rs.getInt(6);
-                int status_id = rs.getInt(7);
-                String description = rs.getString(8);
-                return new MeetingDTO(id, title, platform_id, host_id, status_id, startTime, endTime, description);
+            ResultSet result = ctm.executeQuery();
+            while (result.next()) {
+                String id = result.getString(1);
+                String title = result.getString(2);
+                long startTime = result.getLong(3);
+                long endTime = result.getLong(4);
+                String host_id = result.getString(5);
+                int platform_id = result.getInt(6);
+                int status_id = result.getInt(7);
+                int topic_id = result.getInt(8);
+                String description = result.getString(9);
+                return new MeetingDTO(id, title, platform_id, host_id, status_id, topic_id,startTime, endTime, description);
             }
         }
         return null;
@@ -124,7 +132,7 @@ public class MeetingDAO {
     public List<MeetingDTO> getUserFollowedMeetings (String userId) throws SQLException, ClassNotFoundException {
         ArrayList<MeetingDTO> followedMeetings = new ArrayList<>();
         try (Connection connection = dbHelper.connect()) {
-            PreparedStatement queryStatement = connection.prepareStatement("SELECT ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, DESCRIPTION " +
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, TOPIC_ID,DESCRIPTION " +
                                                                                 "FROM MEETINGS " +
                                                                                 "WHERE ID IN (SELECT MEETING_ID FROM APPOINTMENTS WHERE USER_ID = ?)");
             queryStatement.setString(1, userId);
@@ -137,8 +145,9 @@ public class MeetingDAO {
                 String host_id = result.getString(5);
                 int platform_id = result.getInt(6);
                 int status_id = result.getInt(7);
-                String description = result.getString(8);
-                followedMeetings.add(new MeetingDTO(id, title, platform_id, host_id, status_id, startTime, endTime, description));
+                int topic_id = result.getInt(8);
+                String description = result.getString(9);
+                followedMeetings.add(new MeetingDTO(id, title, platform_id, host_id, status_id, topic_id,startTime, endTime, description));
             }
         }
         return followedMeetings;
@@ -147,7 +156,7 @@ public class MeetingDAO {
     public List<MeetingDTO> getUserNotFollowedMeetings (String userId) throws SQLException, ClassNotFoundException {
         ArrayList<MeetingDTO> notFollowedMeetings = new ArrayList<>();
         try (Connection connection = dbHelper.connect()) {
-            PreparedStatement queryStatement = connection.prepareStatement("SELECT ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, DESCRIPTION " +
+            PreparedStatement queryStatement = connection.prepareStatement("SELECT ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, TOPIC_ID,DESCRIPTION " +
                     "FROM MEETINGS " +
                     "WHERE ID NOT IN (SELECT MEETING_ID FROM APPOINTMENTS WHERE USER_ID = ?)");
             queryStatement.setString(1, userId);
@@ -160,8 +169,9 @@ public class MeetingDAO {
                 String host_id = result.getString(5);
                 int platform_id = result.getInt(6);
                 int status_id = result.getInt(7);
-                String description = result.getString(8);
-                notFollowedMeetings.add(new MeetingDTO(id, title, platform_id, host_id, status_id, startTime, endTime, description));
+                int topic_id = result.getInt(8);
+                String description = result.getString(9);
+                notFollowedMeetings.add(new MeetingDTO(id, title, platform_id, host_id, status_id, topic_id,startTime, endTime, description));
             }
         }
         return notFollowedMeetings;
