@@ -2,12 +2,16 @@
 To change this template use File | Settings | File Templates. --%> <%@ page
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 3aa2c4438a1f86dcc6f1a5ab53714fa1f931caa7
 =======
 
 >>>>>>> d86ec4c29780401e1cab39f84bb38dd4c0483c59
+=======
+
+>>>>>>> 4f4e8a66c6c58605298d97c0b167b883c9b460a4
 contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
@@ -114,12 +118,16 @@ contentType="text/html;charset=UTF-8" language="java" %>
     <div
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 3aa2c4438a1f86dcc6f1a5ab53714fa1f931caa7
 =======
 
 >>>>>>> d86ec4c29780401e1cab39f84bb38dd4c0483c59
+=======
+
+>>>>>>> 4f4e8a66c6c58605298d97c0b167b883c9b460a4
             class="relative flex justify-between w-full px-4 lg:w-auto lg:static lg:block lg:justify-start"
     >
       <img
