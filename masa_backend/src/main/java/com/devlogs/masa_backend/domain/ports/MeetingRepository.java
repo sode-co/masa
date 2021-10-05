@@ -15,6 +15,10 @@ public interface MeetingRepository {
 
     MeetingEntity create(String title, MeetingPlatform.PLATFORM platform, String hostId, TopicEntity topic, long startTime, long endTime, String description) throws ConnectionException;
 
+    List<MeetingEntity> getMeetingsByTime(long from, long to) throws ConnectionException;
+
+    List<MeetingEntity> getMeetingsByTopic(int topicId) throws ConnectionException;
+
     MeetingEntity updateMeeting(String meetingId, String title, MeetingPlatform.PLATFORM platform, long startTime, long endTime, String description) throws ConnectionException, NotFoundException;
 
     MeetingEntity getById(String meetingId) throws ConnectionException;
@@ -22,4 +26,6 @@ public interface MeetingRepository {
     List<MeetingEntity> getFollowedMeetings(String userId) throws ConnectionException;
 
     List<MeetingEntity> getNotFollowedMeetings(String userId) throws ConnectionException;
+
+    List<MeetingEntity> getNewMeetings() throws ConnectionException;
 }

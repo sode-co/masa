@@ -3,6 +3,7 @@ package com.devlogs.masa_backend.data.remote_database;
 import com.devlogs.masa_backend.data.common.DbHelper;
 
 import javax.inject.Inject;
+import javax.management.QueryEval;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -174,5 +175,104 @@ public class MeetingDAO {
             }
         }
         return notFollowedMeetings;
+    }
+
+    public List<MeetingDTO> getMeetingFromTimeToTime(long from, long to) throws SQLException, ClassNotFoundException {
+        List<MeetingDTO> listMeeting = new ArrayList<>();
+        try (Connection con = dbHelper.connect()) {
+            PreparedStatement queryStatement = con.prepareStatement("SELECT ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, TOPIC_ID,DESCRIPTION " +
+                    "FROM MEETINGS " +
+                    "WHERE TIME_START >= ? AND TIME_START <= ?");
+            queryStatement.setLong(1, from);
+            queryStatement.setLong(2, to);
+            ResultSet rs = queryStatement.executeQuery();
+            while (rs.next()) {
+                String id = rs.getString(1);
+                String title = rs.getString(2);
+                long startTime = rs.getLong(3);
+                long endTime = rs.getLong(4);
+                String host_id = rs.getString(5);
+                int platform_id = rs.getInt(6);
+                int status_id = rs.getInt(7);
+                int topic_id = rs.getInt(8);
+                String description = rs.getString(9);
+                listMeeting.add(new MeetingDTO(id, title, platform_id, host_id, status_id,topic_id, startTime, endTime, description));
+            }
+        }
+        return listMeeting;
+    }
+
+    public List<MeetingDTO> getAllOnGoingMeetings() throws SQLException, ClassNotFoundException {
+        List<MeetingDTO> listMeeting = new ArrayList<>();
+        try (Connection con = dbHelper.connect()) {
+            PreparedStatement queryStatement = con.prepareStatement("SELECT ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, TOPIC_ID,DESCRIPTION " +
+                    "FROM MEETINGS " +
+                    "WHERE TIME_START <= ? AND END_TIME >= ?");
+            queryStatement.setLong(1, System.currentTimeMillis());
+            queryStatement.setLong(2, System.currentTimeMillis());
+            ResultSet rs = queryStatement.executeQuery();
+            while (rs.next()) {
+                String id = rs.getString(1);
+                String title = rs.getString(2);
+                long startTime = rs.getLong(3);
+                long endTime = rs.getLong(4);
+                String host_id = rs.getString(5);
+                int platform_id = rs.getInt(6);
+                int status_id = rs.getInt(7);
+                int topic_id = rs.getInt(8);
+                String description = rs.getString(9);
+                listMeeting.add(new MeetingDTO(id, title, platform_id, host_id, status_id,topic_id, startTime, endTime, description));
+            }
+        }
+        return listMeeting;
+    }
+
+    public List<MeetingDTO> getMeetingsByTopic(int topicId) throws SQLException, ClassNotFoundException {
+        List<MeetingDTO> listMeeting = new ArrayList<>();
+        try (Connection con = dbHelper.connect()) {
+            PreparedStatement queryStatement = con.prepareStatement("SELECT ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, TOPIC_ID,DESCRIPTION " +
+                    "FROM MEETINGS " +
+                    "WHERE TOPIC_ID = ?");
+            queryStatement.setInt(1, topicId);
+            ResultSet rs = queryStatement.executeQuery();
+            while (rs.next()) {
+                String id = rs.getString(1);
+                String title = rs.getString(2);
+                long startTime = rs.getLong(3);
+                long endTime = rs.getLong(4);
+                String host_id = rs.getString(5);
+                int platform_id = rs.getInt(6);
+                int status_id = rs.getInt(7);
+                int topic_id = rs.getInt(8);
+                String description = rs.getString(9);
+                listMeeting.add(new MeetingDTO(id, title, platform_id, host_id, status_id,topic_id, startTime, endTime, description));
+            }
+        }
+        return listMeeting;
+    }
+
+
+    public List<MeetingDTO> getMeetingFromTime(long since) throws SQLException, ClassNotFoundException {
+        List<MeetingDTO> listMeeting = new ArrayList<>();
+        try (Connection con = dbHelper.connect()) {
+            PreparedStatement queryStatement = con.prepareStatement("SELECT ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, TOPIC_ID,DESCRIPTION " +
+                                                                          "FROM MEETINGS " +
+                                                                          "WHERE TIME_END >= ?");
+            queryStatement.setLong(1, since);
+            ResultSet rs = queryStatement.executeQuery();
+            while (rs.next()) {
+                String id = rs.getString(1);
+                String title = rs.getString(2);
+                long startTime = rs.getLong(3);
+                long endTime = rs.getLong(4);
+                String host_id = rs.getString(5);
+                int platform_id = rs.getInt(6);
+                int status_id = rs.getInt(7);
+                int topic_id = rs.getInt(8);
+                String description = rs.getString(9);
+                listMeeting.add(new MeetingDTO(id, title, platform_id, host_id, status_id,topic_id, startTime, endTime, description));
+            }
+        }
+        return listMeeting;
     }
 }

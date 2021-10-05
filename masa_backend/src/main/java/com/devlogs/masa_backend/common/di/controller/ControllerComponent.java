@@ -8,10 +8,7 @@ import com.devlogs.masa_backend.servlets.filters.RoleFilter;
 import com.devlogs.masa_backend.servlets.login.GoogleLoginProcessServlet;
 import com.devlogs.masa_backend.servlets.login.LoginServlet;
 import com.devlogs.masa_backend.servlets.meeting.createmeeting.CreateMeetingServlet;
-import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetAllMeetingServlet;
-import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetAllUserFollowedMeetingServlet;
-import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetAllUserNotFollowedMeetingServlet;
-import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetMeetingByHostIdServlet;
+import com.devlogs.masa_backend.servlets.meeting.getmeeting.*;
 import com.devlogs.masa_backend.servlets.meeting.updatemeeting.UpdateMeetingServlet;
 
 import com.devlogs.masa_backend.servlets.request_managment.getRequest.GetAllRequestServlet;
@@ -67,4 +64,10 @@ public interface ControllerComponent {
     void inject(RemoveAppointmentServlet removeAppointmentServlet);
 
     void inject(GetUserByRoleServlet getUserByRoleServlet);
+
+    void inject(GetNewMeetingsServlet getNewMeetingsServlet);
+
+    void inject(GetMeetingsByTopicServlet getMeetingsByTopicServlet);
+
+    void inject(GetMeetingsByMultipleTopicsServlet getMeetingsByMultipleTopicsServlet);
 }

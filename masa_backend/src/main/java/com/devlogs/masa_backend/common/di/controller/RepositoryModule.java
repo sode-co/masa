@@ -21,11 +21,6 @@ public class RepositoryModule {
     }
 
     @Provides
-    public com.devlogs.masa_backend.domain.ports.testonly.UserRepository provideUserRepositoryTest (com.devlogs.masa_backend.repository.testonly.UserRepositoryImp userRepositoryImp) {
-        return userRepositoryImp;
-    }
-
-    @Provides
     public MeetingRepository provideMeetingRepository (MeetingRepositoryImp meetingRepositoryImp) {
         return meetingRepositoryImp;
     }
