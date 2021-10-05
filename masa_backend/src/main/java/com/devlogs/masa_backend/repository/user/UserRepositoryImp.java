@@ -281,6 +281,39 @@ public class UserRepositoryImp implements UserRepository {
     public UserEntity updateUserRole(String userID) throws ConnectionException, NotFoundException {
         return null;
     }
+    @Override
+    public void updateUserRole(String userId, UserRole newRole) throws ConnectionException {
+        int roleId = 0;
+        switch (newRole.getType()) {
+            case MENTOR: {
+                roleId = 4;
+                break;
+            }
+            case GUEST: {
+                roleId = 3;
+                break;
+            }
+            case ADMIN: {
+                roleId = 1;
+                break;
+            }
+            case STUDENT:{
+                roleId = 2;
+                break;
+            }
+            default: {
+                throw new RuntimeException(String.format("UserRole {%s} is not yet supported by userRepository", newRole.getType().name()));
+            }
+        }
+
+        try {
+            dao.updateUserRole(userId, roleId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            throw new ConnectionException(e.getMessage());
+        }
+    }
 
     @Override
     public List<UserEntity> getUserByName(String name) throws ConnectionException {

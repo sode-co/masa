@@ -8,7 +8,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 
 @WebServlet(name = "GetUserByNamServlet", urlPatterns = "/api/user-management/get-user-by-name/*")
-public class GetUserByNamServlet extends BaseHttpServlet {
+public class GetUserByNameServlet extends BaseHttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
