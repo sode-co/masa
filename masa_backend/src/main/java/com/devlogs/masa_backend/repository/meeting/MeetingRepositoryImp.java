@@ -75,34 +75,31 @@ public class MeetingRepositoryImp implements MeetingRepository {
                 }
                 for(MeetingDTO dto:listDTO){
                     result.add(toMeetingEntity(dto));
-                }//end traversed listDTO
-            }//end if listDTO existed
+                }
+            }
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            throw new RuntimeException(ex.getMessage());
+            throw new ConnectionException(ex.getMessage());
         }
         return result;
     }
 
     @Override
     public List<MeetingEntity> getByHostId(String hostId) throws ConnectionException {
-        List<MeetingEntity> result = null;
+        List<MeetingEntity> result = new ArrayList<>();
         try{
             //get data from DAO
             List<MeetingDTO> listDTO = meetingSource.getMeetingsByHost(hostId);
             if (listDTO != null) {
-                if(result == null){
-                    result = new ArrayList<>();
-                }
                 for(MeetingDTO dto:listDTO){
                     result.add(toMeetingEntity(dto));
-                }//end traversed listDTO
-            }//end if listDTO existed
+                }
+            }
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            throw new RuntimeException(ex.getMessage());
+            throw new ConnectionException(ex.getMessage());
         }
         return result;
     }
@@ -125,43 +122,37 @@ public class MeetingRepositoryImp implements MeetingRepository {
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            throw new RuntimeException(ex.getMessage());
+            throw new ConnectionException(ex.getMessage());
         }
         return meeting;
     }
 
     @Override
     public List<MeetingEntity> getFollowedMeetings(String userId) throws ConnectionException {
-        List<MeetingEntity> result = null;
+        List<MeetingEntity> result = new ArrayList<>();
         try{
             //get data from DAO
             List<MeetingDTO> listDTO = meetingSource.getUserFollowedMeetings(userId);
             if (listDTO != null) {
-                if(result == null){
-                    result = new ArrayList<>();
-                }
-                for(MeetingDTO dto:listDTO){
+                for (MeetingDTO dto : listDTO) {
                     result.add(toMeetingEntity(dto));
-                }//end traversed listDTO
-            }//end if listDTO existed
+                }
+            }
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            throw new RuntimeException(ex.getMessage());
+            throw new ConnectionException(ex.getMessage());
         }
         return result;
     }
 
     @Override
     public List<MeetingEntity> getNotFollowedMeetings(String userId) throws ConnectionException {
-        List<MeetingEntity> result = null;
+        List<MeetingEntity> result = new ArrayList<>();
         try{
             //get data from DAO
             List<MeetingDTO> listDTO = meetingSource.getUserNotFollowedMeetings(userId);
             if (listDTO != null) {
-                if(result == null){
-                    result = new ArrayList<>();
-                }
                 for(MeetingDTO dto:listDTO){
                     result.add(toMeetingEntity(dto));
                 }//end traversed listDTO
@@ -169,7 +160,7 @@ public class MeetingRepositoryImp implements MeetingRepository {
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            throw new RuntimeException(ex.getMessage());
+            throw new ConnectionException(ex.getMessage());
         }
         return result;
     }
@@ -191,7 +182,7 @@ public class MeetingRepositoryImp implements MeetingRepository {
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            throw new RuntimeException(ex.getMessage());
+            throw new ConnectionException(ex.getMessage());
         }
         return meeting;
     }
@@ -208,7 +199,7 @@ public class MeetingRepositoryImp implements MeetingRepository {
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            throw new RuntimeException(ex.getMessage());
+            throw new ConnectionException(ex.getMessage());
         }
         return result;
     }
