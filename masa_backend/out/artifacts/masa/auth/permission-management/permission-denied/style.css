@@ -520,37 +520,3 @@ nav {
 }
 }
 
-<<<<<<< HEAD
-=======
-.u-full-width {
-	width: 100%;
-	box-sizing: border-box;
-}
-.u-max-full-width {
-	max-width: 100%;
-	box-sizing: border-box;
-}
-.u-pull-right {
-	float: right;
-}
-.u-pull-left {
-	float: left;
-}
-
-.container:after, .row:after, .u-cf {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-.block {
-	width: 70px;
-	height: 2px;
-	margin-bottom: 50px;
-
-}
-
-<<<<<<< HEAD
->>>>>>> d86ec4c29780401e1cab39f84bb38dd4c0483c59
-=======
->>>>>>> 4f4e8a66c6c58605298d97c0b167b883c9b460a4
