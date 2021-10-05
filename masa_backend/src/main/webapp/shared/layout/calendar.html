@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar Layout</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="path/to/font-awesome/css/font-awesome.min.css"
+    />
+    <link rel="dns-prefetch" href="//unpkg.com" />
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+  </head>
+  <body>
+    <!-- Month / Week -->
+
+    <!-- End -->
+
+    <div className="h-screen bg-gray-100 p-6">
+      <div
+        class="flex justify-start px-2 py-4 mx-auto overflow-x-scroll bg-white rounded-lg shadow-md  md:justify-center md:mx-52"
+      >
+        <div
+          class="flex justify-center w-32 mx-5 transition-all duration-300 rounded-lg cursor-pointer  group hover:bg-green-100 hover:shadow-lg hover-light-shadow"
+        >
+          <div class="flex items-center px-4 py-4">
+            <div class="text-center">
+              <p
+                class="text-lg text-gray-900 transition-all duration-300  group-hover:text-green-900"
+              >
+                Sun
+              </p>
+              <p
+                class="mt-3 text-gray-900 transition-all duration-300  group-hover:text-green-900 group-hover:font-bold"
+              >
+                11
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="flex justify-center w-32 mx-5 transition-all duration-300 rounded-lg cursor-pointer  group hover:bg-green-100 hover:shadow-lg hover-light-shadow"
+        >
+          <div class="flex items-center px-4 py-4">
+            <div class="text-center">
+              <p
+                class="text-lg text-gray-900 transition-all duration-300  group-hover:text-green-900"
+              >
+                Mon
+              </p>
+              <p
+                class="mt-3 text-gray-900 transition-all duration-300  group-hover:text-green-900 group-hover:font-bold"
+              >
+                12
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="flex justify-center w-32 mx-5 transition-all duration-300 rounded-lg cursor-pointer  group hover:bg-green-100 hover:shadow-lg hover-light-shadow"
+        >
+          <div class="flex items-center px-4 py-4">
+            <div class="text-center">
+              <p
+                class="text-lg text-gray-900 transition-all duration-300  group-hover:text-green-900"
+              >
+                Tue
+              </p>
+              <p
+                class="mt-3 text-gray-900 transition-all duration-300  group-hover:text-green-900 group-hover:font-bold"
+              >
+                13
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="relative flex content-center justify-center w-32 mx-5 bg-green-300 rounded-lg shadow-lg cursor-pointer  group light-shadow"
+        >
+          <span class="absolute flex w-3 h-3 -top-1 -right-1">
+            <span
+              class="absolute inline-flex w-full h-full bg-green-400 rounded-full opacity-0  animate-ping group-hover:opacity-75"
+            ></span>
+            <span
+              class="relative inline-flex w-3 h-3 bg-green-500 rounded-full"
+            ></span>
+          </span>
+          <div class="flex items-center px-4 py-4">
+            <div class="text-center">
+              <p class="text-lg text-green-900">Wed</p>
+              <p class="mt-3 font-bold text-green-900">14</p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="flex content-center justify-center w-32 mx-5 transition-all duration-300 rounded-lg cursor-pointer  group hover:bg-green-100 hover:shadow-lg hover-light-shadow"
+        >
+          <div class="flex items-center px-4 py-4">
+            <div class="text-center">
+              <p
+                class="text-lg text-gray-900 transition-all duration-300  group-hover:text-green-900"
+              >
+                Thu
+              </p>
+              <p
+                class="mt-3 text-gray-900 transition-all duration-300  group-hover:text-green-900 group-hover:font-bold"
+              >
+                15
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="flex justify-center w-32 mx-5 transition-all duration-300 rounded-lg cursor-pointer  group hover:bg-green-100 hover:shadow-lg hover-light-shadow"
+        >
+          <div class="flex items-center px-4 py-4">
+            <div class="text-center">
+              <p
+                class="text-lg text-gray-900 transition-all duration-300  group-hover:text-green-900"
+              >
+                Fri
+              </p>
+              <p
+                class="mt-3 text-gray-900 transition-all duration-300  group-hover:text-green-900 group-hover:font-bold"
+              >
+                16
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="flex justify-center w-32 mx-5 transition-all duration-300 rounded-lg cursor-pointer  group hover:bg-green-100 hover:shadow-lg hover-light-shadow"
+        >
+          <div class="flex items-center px-4 py-4">
+            <div class="text-center">
+              <p
+                class="text-lg text-gray-900 transition-all duration-300  group-hover:text-green-900"
+              >
+                Sat
+              </p>
+              <p
+                class="mt-3 text-gray-900 transition-all duration-300  group-hover:text-green-900 group-hover:font-bold"
+              >
+                17
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script
+    defer
+    src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
+    integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
+    defer
+  ></script>
+</html>
