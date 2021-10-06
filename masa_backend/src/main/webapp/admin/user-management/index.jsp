@@ -124,15 +124,25 @@ import="com.devlogs.masa_backend.common.Masa"%>
     <!-- Noti -->
     <div
       class="container flex items-center mx-auto bg-green-100 rounded-md h-96"
+      style="padding: 10px"
     >
-      <div class="text-center sm:ml-20 text-gray-50 sm:text-left">
-        <h1 class="mb-4 text-5xl font-bold text-green-800">ADMINISTRATOR PAGE<br /></h1>
+      <div  style="margin-left: 50px" >
+        <%@ include file="../../shared/admin/_vertical_menu.jsp"%>
+      </div>
+      <div class="text-center sm:ml-20 text-gray-50 sm:text-left"" >
+        <h1 class="mb-7 text-5xl font-bold text-green-800" style="width: 700px !important;">ADMINISTRATOR PAGE</h1>
       </div>
       <br/>
     </div>
 
     <!-- End of noti -->
-    <%@ include file="../../shared/user/_view_all_user.jsp"%>
+
+    <div style="margin-left: 1000px; margin-top: -70px">
+      <%@ include file="../../shared/admin/_search_bar.jsp"%>
+    </div>
+    <div>
+      <%@ include file="../../shared/user/_view_all_user.jsp"%>
+    </div>
     <!-- Footer -->
     <footer
       class="relative pt-1 bg-white border-b-2 border-blue-700 footer"

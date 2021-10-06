@@ -1,11 +1,9 @@
 package com.devlogs.masa_backend.repository.meeting;
 
-import com.devlogs.masa_backend.data.remote_database.MeetingDAO;
-import com.devlogs.masa_backend.data.remote_database.MeetingDTO;
-import com.devlogs.masa_backend.data.remote_database.PlatformUrlsDAO;
-import com.devlogs.masa_backend.data.remote_database.PlatformUrlsDTO;
+import com.devlogs.masa_backend.data.remote_database.*;
 import com.devlogs.masa_backend.domain.entities.MeetingEntity;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
+import com.devlogs.masa_backend.domain.entities.TopicEntity;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.errors.NotFoundException;
 import com.devlogs.masa_backend.domain.ports.MeetingRepository;
@@ -18,11 +16,51 @@ public class MeetingRepositoryImp implements MeetingRepository {
 
     private MeetingDAO meetingSource;
     private PlatformUrlsDAO meetingPlatformUrlSource;
+    private TopicDAO topicSource;
 
     @Inject
-    public MeetingRepositoryImp(MeetingDAO meetingSource, PlatformUrlsDAO meetingPlatformUrlSource) {
+    public MeetingRepositoryImp(MeetingDAO meetingSource, PlatformUrlsDAO meetingPlatformUrlSource, TopicDAO topicSource) {
         this.meetingSource = meetingSource;
         this.meetingPlatformUrlSource = meetingPlatformUrlSource;
+        this.topicSource = topicSource;
+    }
+
+    public MeetingEntity toMeetingEntity(MeetingDTO meetingDTO) throws SQLException,ClassNotFoundException{
+        MeetingEntity meeting = null;
+        PlatformUrlsDTO platformUrlsDTO = meetingPlatformUrlSource.getUrl(meetingDTO.getHost_id(), meetingDTO.getPlatform_id());
+        TopicDTO topicDTO = topicSource.getTopicByID(meetingDTO.getTopic_id());
+        if (platformUrlsDTO == null) {
+            throw new RuntimeException("Platform urls not found");
+        }
+        if (topicDTO == null) {
+            throw new RuntimeException("Topic not found");
+        }
+
+        TopicEntity topic = topicEntity(topicDTO);
+        MeetingPlatform platform = toPlatform(meetingDTO.getPlatform_id(), platformUrlsDTO.getHostId(),platformUrlsDTO.getUrl());
+
+        if (platform!=null && topic!=null){
+            meeting = new MeetingEntity(meetingDTO.getId(),meetingDTO.getTitle(),platform,topic,meetingDTO.getHost_id(),
+                    meetingDTO.getStartTime(),meetingDTO.getEndTime(),meetingDTO.getDescription());
+        }
+        return meeting;
+    }
+
+    public TopicEntity topicEntity(TopicDTO dto){
+        return new TopicEntity(dto.getId(), dto.getTitle());
+    }
+
+    public MeetingPlatform toPlatform(int id,String host_id, String url){
+        MeetingPlatform platform = null;
+        switch (id){
+            case 1:
+                platform = new MeetingPlatform(MeetingPlatform.PLATFORM.GOOGLE_MEET,host_id,url);
+                break;
+            case 2:
+                platform = new MeetingPlatform(MeetingPlatform.PLATFORM.ZOOM,host_id,url);
+                break;
+        }
+        return platform;
     }
 
     @Override
@@ -36,56 +74,38 @@ public class MeetingRepositoryImp implements MeetingRepository {
                     result = new ArrayList<>();
                 }
                 for(MeetingDTO dto:listDTO){
-                    //get PlatformUrlsDTO
-                    PlatformUrlsDTO platformUrlsDTO = meetingPlatformUrlSource.getUrl(dto.getHost_id(), dto.getPlatform_id());
-                    if (platformUrlsDTO == null) {
-                        throw new RuntimeException("Platform urls not found");
-                    }
-                    MeetingPlatform.PLATFORM platform;
-                    result.add(new MeetingEntity(dto.getId(),dto.getTitle(),
-                            new MeetingPlatform(MeetingPlatform.PLATFORM.values()
-                                    [platformUrlsDTO.getPlaformId()-1],
-                                    dto.getHost_id(),
-                                    platformUrlsDTO.getUrl()),
-                            dto.getHost_id(),dto.getStartTime(),dto.getEndTime(),dto.getDescription()));
-                }//end traversed listDTO
-            }//end if listDTO existed
+                    result.add(toMeetingEntity(dto));
+                }
+            }
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            throw new RuntimeException(ex.getMessage());
+            throw new ConnectionException(ex.getMessage());
         }
         return result;
     }
 
     @Override
     public List<MeetingEntity> getByHostId(String hostId) throws ConnectionException {
-        List<MeetingEntity> result = null;
+        List<MeetingEntity> result = new ArrayList<>();
         try{
             //get data from DAO
             List<MeetingDTO> listDTO = meetingSource.getMeetingsByHost(hostId);
             if (listDTO != null) {
-                if(result == null){
-                    result = new ArrayList<>();
-                }
                 for(MeetingDTO dto:listDTO){
-                    //get PlatformUrlsDTO
-                    PlatformUrlsDTO platformUrlsDTO = meetingPlatformUrlSource.getUrl(dto.getHost_id(), dto.getPlatform_id());
-                    result.add(new MeetingEntity(dto.getId(),dto.getTitle(),
-                            new MeetingPlatform(MeetingPlatform.PLATFORM.values()[platformUrlsDTO.getPlaformId()-1], dto.getHost_id(),platformUrlsDTO.getUrl()),
-                            dto.getHost_id(),dto.getStartTime(),dto.getEndTime(),dto.getDescription()));
-                }//end traversed listDTO
-            }//end if listDTO existed
+                    result.add(toMeetingEntity(dto));
+                }
+            }
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            throw new RuntimeException(ex.getMessage());
+            throw new ConnectionException(ex.getMessage());
         }
         return result;
     }
 
     @Override
-    public MeetingEntity create(String title, MeetingPlatform.PLATFORM platform, String hostId, long startTime, long endTime, String description) throws ConnectionException {
+    public MeetingEntity create(String title, MeetingPlatform.PLATFORM platform, String hostId, TopicEntity topic, long startTime, long endTime, String description) throws ConnectionException {
         MeetingEntity meeting = null;
         try{
             int platformId = 0;
@@ -95,69 +115,109 @@ public class MeetingRepositoryImp implements MeetingRepository {
                 platformId=2;
             }
             String id = System.currentTimeMillis()+"";
-            MeetingDTO dto = meetingSource.createMeeting(id,title,platformId,hostId,1,startTime,endTime,description);
+            MeetingDTO dto = meetingSource.createMeeting(id,title,platformId,hostId,1,topic.getId(),startTime,endTime,description);
             if(dto!=null){
-                PlatformUrlsDTO platformUrlsDTO = meetingPlatformUrlSource.getUrl(dto.getHost_id(), dto.getPlatform_id());
-                meeting = new MeetingEntity(id,title,
-                        new MeetingPlatform(MeetingPlatform.PLATFORM.values()[platformId-1], hostId,platformUrlsDTO.getUrl()),
-                        hostId,startTime,endTime,description);
+                meeting = toMeetingEntity(dto);
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            throw new RuntimeException(ex.getMessage());
+            throw new ConnectionException(ex.getMessage());
         }
         return meeting;
     }
 
     @Override
     public List<MeetingEntity> getFollowedMeetings(String userId) throws ConnectionException {
-        List<MeetingEntity> result = null;
+        List<MeetingEntity> result = new ArrayList<>();
         try{
             //get data from DAO
             List<MeetingDTO> listDTO = meetingSource.getUserFollowedMeetings(userId);
             if (listDTO != null) {
-                if(result == null){
-                    result = new ArrayList<>();
+                for (MeetingDTO dto : listDTO) {
+                    result.add(toMeetingEntity(dto));
                 }
-                for(MeetingDTO dto:listDTO){
-                    //get PlatformUrlsDTO
-                    PlatformUrlsDTO platformUrlsDTO = meetingPlatformUrlSource.getUrl(dto.getHost_id(), dto.getPlatform_id());
-                    result.add(new MeetingEntity(dto.getId(),dto.getTitle(),
-                            new MeetingPlatform(MeetingPlatform.PLATFORM.values()[platformUrlsDTO.getPlaformId()-1], dto.getHost_id(),platformUrlsDTO.getUrl()),
-                            dto.getHost_id(),dto.getStartTime(),dto.getEndTime(),dto.getDescription()));
-                }//end traversed listDTO
-            }//end if listDTO existed
+            }
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            throw new RuntimeException(ex.getMessage());
+            throw new ConnectionException(ex.getMessage());
         }
         return result;
     }
 
     @Override
     public List<MeetingEntity> getNotFollowedMeetings(String userId) throws ConnectionException {
-        List<MeetingEntity> result = null;
+        List<MeetingEntity> result = new ArrayList<>();
         try{
             //get data from DAO
             List<MeetingDTO> listDTO = meetingSource.getUserNotFollowedMeetings(userId);
             if (listDTO != null) {
-                if(result == null){
-                    result = new ArrayList<>();
-                }
                 for(MeetingDTO dto:listDTO){
-                    //get PlatformUrlsDTO
-                    PlatformUrlsDTO platformUrlsDTO = meetingPlatformUrlSource.getUrl(dto.getHost_id(), dto.getPlatform_id());
-                    result.add(new MeetingEntity(dto.getId(),dto.getTitle(),
-                            new MeetingPlatform(MeetingPlatform.PLATFORM.values()[platformUrlsDTO.getPlaformId()-1], dto.getHost_id(),platformUrlsDTO.getUrl()),
-                            dto.getHost_id(),dto.getStartTime(),dto.getEndTime(),dto.getDescription()));
+                    result.add(toMeetingEntity(dto));
                 }//end traversed listDTO
             }//end if listDTO existed
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
+        return result;
+    }
+
+    @Override
+    public List<MeetingEntity> getNewMeetings() throws ConnectionException {
+        List<MeetingEntity> result = new ArrayList<>();
+        try{
+            //get data from DAO
+            List<MeetingDTO> listDTO = meetingSource.getMeetingFromTime(System.currentTimeMillis());
+            if (listDTO != null) {
+                for(MeetingDTO dto:listDTO){
+                    result.add(toMeetingEntity(dto));
+                }//end traversed listDTO
+            }//end if listDTO existed
+        } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
+        return result;
+    }
+
+    @Override
+    public List<MeetingEntity> getMeetingsByTime(long from, long to) throws ConnectionException {
+        List<MeetingEntity> result = new ArrayList<>();
+        try{
+            //get data from DAO
+            List<MeetingDTO> listDTO = meetingSource.getMeetingFromTimeToTime(from, to);
+            if (listDTO != null) {
+                for(MeetingDTO dto:listDTO){
+                    result.add(toMeetingEntity(dto));
+                }//end traversed listDTO
+            }//end if listDTO existed
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
+        return result;
+    }
+
+    @Override
+    public List<MeetingEntity> getMeetingsByTopic(int topicId) throws ConnectionException {
+        List<MeetingEntity> result = new ArrayList<>();
+        try{
+            //get data from DAO
+            List<MeetingDTO> listDTO = meetingSource.getMeetingsByTopic(topicId);
+            if (listDTO != null) {
+                for(MeetingDTO dto:listDTO){
+                    result.add(toMeetingEntity(dto));
+                }//end traversed listDTO
+            }//end if listDTO existed
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
         }
         return result;
     }
@@ -174,15 +234,12 @@ public class MeetingRepositoryImp implements MeetingRepository {
             }
             MeetingDTO dto = meetingSource.updateMeeting(meetingId,title,platformId,startTime,endTime,description);
             if(dto!=null){
-                PlatformUrlsDTO platformUrlsDTO = meetingPlatformUrlSource.getUrl(dto.getHost_id(), dto.getPlatform_id());
-                meeting = new MeetingEntity(meetingId,title,
-                        new MeetingPlatform(MeetingPlatform.PLATFORM.values()[platformId-1], platformUrlsDTO.getHostId(),platformUrlsDTO.getUrl()),
-                        platformUrlsDTO.getHostId(),startTime,endTime,description);
+                meeting = toMeetingEntity(dto);
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            throw new RuntimeException(ex.getMessage());
+            throw new ConnectionException(ex.getMessage());
         }
         return meeting;
     }
@@ -194,16 +251,12 @@ public class MeetingRepositoryImp implements MeetingRepository {
             //get data from DAO
             MeetingDTO dto = meetingSource.getMeetingByID(meetingId);
             if (dto != null) {
-                    //get PlatformUrlsDTO
-                    PlatformUrlsDTO platformUrlsDTO = meetingPlatformUrlSource.getUrl(dto.getHost_id(), dto.getPlatform_id());
-                    result = new MeetingEntity(dto.getId(),dto.getTitle(),
-                            new MeetingPlatform(MeetingPlatform.PLATFORM.values()[platformUrlsDTO.getPlaformId()-1], dto.getHost_id(),platformUrlsDTO.getUrl()),
-                            dto.getHost_id(),dto.getStartTime(),dto.getEndTime(),dto.getDescription());
+                    result = toMeetingEntity(dto);
             }//end if DTO existed
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            throw new RuntimeException(ex.getMessage());
+            throw new ConnectionException(ex.getMessage());
         }
         return result;
     }

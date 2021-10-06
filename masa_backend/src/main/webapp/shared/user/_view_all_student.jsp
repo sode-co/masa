@@ -89,49 +89,49 @@ template use File | Settings | File Templates. --%> <%@ page
 <section class="text-gray-600 body-font">
     <div class="container px-5 py-5 mx-auto" id="divinfo">
         <div style="width: 1000px">
-                <h1 class="mb-2 text-9xl font-bold text-gray-1000 sm:text-4xl title-font" style="width: 1330px !important;">
-                    All Members In Masa System
-                </h1>
-            </div>
+            <h1 class="mb-2 text-9xl font-bold text-gray-1000 sm:text-4xl title-font" style="width: 1330px !important;">
+                All Students In Masa System
+            </h1>
         </div>
+    </div>
     <script>
-            const container = document.getElementById("container");
-            let i = 0;
-            $.getJSON(
-                "http://localhost:8080/masa/api/user-management/all",
-                function (data) {
-                    let htmlElements = "";
-                    const arr = data["users"];
-                    arr.forEach((element) => {
-                        i++;
-                        htmlElements +=
-                            '<tr>'
-                            +'<td></td>'
-                            +'<td id="index" style="font-size: 20px; color: black">'+i+'</td>'
-                            +'<td id="id" style="font-size: 20px; color: black">'
-                            +element.id
-                            +'</td>'
-                            +'<td id="email" style="font-size: 20px; color: black">'
-                            +element.email
-                            +'</td>'
-                            +'<td id="fullName" style="font-size: 20px; color: black">'
-                            +element.fullName
-                            +'</td>'
-                            +'<td id="role" style="font-size: 20px; color: black">'
-                            +element.role.type
-                            +'</td>'
-                            +'<td id="status" style="font-size: 20px; color: black">'
-                            +element.status.status
-                            +'</td>'
-                            +'</tr>';
-                        // console.log(element);
-                        let container = document.getElementById("container");
-                        container.innerHTML = htmlElements;
-                    });
-                }
-            );
-        </script>
-        <script></script>
+        const container = document.getElementById("container");
+        let i = 0;
+        $.getJSON(
+            "http://localhost:8080/masa/api/user-management/get-user-by-role/student",
+            function (data) {
+                let htmlElements = "";
+                const arr = data["users"];
+                arr.forEach((element) => {
+                    i++;
+                    htmlElements +=
+                        '<tr>'
+                        +'<td></td>'
+                        +'<td id="index" style="font-size: 20px; color: black">'+i+'</td>'
+                        +'<td id="id" style="font-size: 20px; color: black">'
+                        +element.id
+                        +'</td>'
+                        +'<td id="email" style="font-size: 20px; color: black">'
+                        +element.email
+                        +'</td>'
+                        +'<td id="fullName" style="font-size: 20px; color: black">'
+                        +element.fullName
+                        +'</td>'
+                        +'<td id="role" style="font-size: 20px; color: black">'
+                        +element.role.type
+                        +'</td>'
+                        +'<td id="status" style="font-size: 20px; color: black">'
+                        +element.status.status
+                        +'</td>'
+                        +'</tr>';
+                    // console.log(element);
+                    let container = document.getElementById("container");
+                    container.innerHTML = htmlElements;
+                });
+            }
+        );
+    </script>
+    <script></script>
     </div>
 
 </section>

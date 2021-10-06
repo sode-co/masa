@@ -8,10 +8,7 @@ import com.devlogs.masa_backend.servlets.filters.RoleFilter;
 import com.devlogs.masa_backend.servlets.login.GoogleLoginProcessServlet;
 import com.devlogs.masa_backend.servlets.login.LoginServlet;
 import com.devlogs.masa_backend.servlets.meeting.createmeeting.CreateMeetingServlet;
-import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetAllMeetingServlet;
-import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetAllUserFollowedMeetingServlet;
-import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetAllUserNotFollowedMeetingServlet;
-import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetMeetingByHostIdServlet;
+import com.devlogs.masa_backend.servlets.meeting.getmeeting.*;
 import com.devlogs.masa_backend.servlets.meeting.updatemeeting.UpdateMeetingServlet;
 
 import com.devlogs.masa_backend.servlets.request_managment.getRequest.GetAllRequestServlet;
@@ -19,8 +16,8 @@ import com.devlogs.masa_backend.servlets.request_managment.getRequest.GetRequest
 
 import com.devlogs.masa_backend.servlets.request_managment.AnswerRequestServlet;
 
-import com.devlogs.masa_backend.servlets.test.TestServlet;
 
+import com.devlogs.masa_backend.servlets.topics.GetAllTopicsServlet;
 import com.devlogs.masa_backend.servlets.usermanagement.GetUserByNameServlet;
 import com.devlogs.masa_backend.servlets.usermanagement.GetUserByRoleServlet;
 import com.devlogs.masa_backend.servlets.usermanagement.ShowAllUserServlet;
@@ -38,8 +35,6 @@ public interface ControllerComponent {
     void inject(GetMeetingByHostIdServlet getMeetingByHostIdServlet);
 
     void inject(GetAllMeetingServlet getAllMeetingServlet);
-
-    void inject(TestServlet testServlet);
 
     void inject(CreateAppointmentServlet followMeetingServlet);
 
@@ -63,13 +58,21 @@ public interface ControllerComponent {
 
     void inject(GetAllUserFollowedMeetingServlet getAllUserFollowedMeetingServlet);
 
-
     void inject(GetAllUserNotFollowedMeetingServlet getAllUserNotFollowedMeetingServlet);
 
     void inject(RemoveAppointmentServlet removeAppointmentServlet);
 
 
     void inject(GetUserByRoleServlet getUserByRoleServlet);
+
+
+    void inject(GetNewMeetingsServlet getNewMeetingsServlet);
+
+    void inject(GetMeetingsByTopicServlet getMeetingsByTopicServlet);
+
+    void inject(GetMeetingsByMultipleTopicsServlet getMeetingsByMultipleTopicsServlet);
+
+    void inject(GetAllTopicsServlet getAllTopicsServlet);
 
     void inject(GetUserByNameServlet getUserByNameServlet);
 }
