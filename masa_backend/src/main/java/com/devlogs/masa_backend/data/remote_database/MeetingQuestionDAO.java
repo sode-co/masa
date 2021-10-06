@@ -28,14 +28,14 @@ public class MeetingQuestionDAO {
                 String title = result.getString(2);
                 String userId = result.getString(3);
                 String metingId = result.getString(4);
-                String createdDate= result.getString(5);
+                long createdDate= result.getLong(5);
                 meetingQuestionDTOList.add(new MeetingQuestionDTO(id,title,userId,metingId,createdDate));
             }
         }
         return meetingQuestionDTOList;
     }
 
-    public MeetingQuestionDTO createQuestions(String id,String title,String user_id,String meeting_id,String created_date) throws SQLException, ClassNotFoundException {
+    public MeetingQuestionDTO createQuestions(String id,String title,String user_id,String meeting_id,long created_date) throws SQLException, ClassNotFoundException {
         MeetingQuestionDTO meetingQuestionDTO = null;
         try (Connection con = dbHelper.connect()) {
             CallableStatement ctm = con.prepareCall("INSERT INTO MEETINGQUESTIONS(ID, TITLE, USER_ID, MEETING_ID, CREATED_DATE) " +
@@ -44,7 +44,7 @@ public class MeetingQuestionDAO {
             ctm.setString(2,title);
             ctm.setString(3,user_id);
             ctm.setString(4,meeting_id);
-            ctm.setString(5,created_date);
+            ctm.setLong(5,created_date);
             int result = ctm.executeUpdate();
             if (result>0) {
                 meetingQuestionDTO = new MeetingQuestionDTO(id,title,user_id,meeting_id,created_date);

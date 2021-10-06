@@ -10,6 +10,7 @@ import com.devlogs.masa_backend.servlets.login.LoginServlet;
 import com.devlogs.masa_backend.servlets.meeting.createmeeting.CreateMeetingServlet;
 import com.devlogs.masa_backend.servlets.meeting.getmeeting.*;
 import com.devlogs.masa_backend.servlets.meeting.updatemeeting.UpdateMeetingServlet;
+import com.devlogs.masa_backend.servlets.meeting_question.createMeetingQuestion.CreateMeetingQuestionServlet;
 import com.devlogs.masa_backend.servlets.meeting_question.getMeetingQuestion.GetAllMeetingQuestionByMeetingIdServlet;
 import com.devlogs.masa_backend.servlets.request_managment.AnswerRequestServlet;
 import com.devlogs.masa_backend.servlets.request_managment.getRequest.GetAllRequestServlet;
@@ -72,4 +73,5 @@ public interface ControllerComponent {
 
     void inject(GetAllTopicsServlet getAllTopicsServlet);
 
+    void inject(CreateMeetingQuestionServlet createMeetingQuestionServlet);
 }

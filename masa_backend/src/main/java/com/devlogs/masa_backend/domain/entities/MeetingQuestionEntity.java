@@ -5,9 +5,9 @@ public class MeetingQuestionEntity {
     private String title;
     private String userId;
     private String meetingId;
-    private String createdDate;
+    private long createdDate;
 
-    public MeetingQuestionEntity(String id, String title, String userId, String meetingId, String createdDate) {
+    public MeetingQuestionEntity(String id, String title, String userId, String meetingId, long createdDate) {
         this.id = id;
         this.title = title;
         this.userId = userId;
@@ -19,39 +19,39 @@ public class MeetingQuestionEntity {
         return id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public String getMeetingId() {
-        return meetingId;
-    }
-
-    public String getCreatedDate() {
-        return createdDate;
-    }
-
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getMeetingId() {
+        return meetingId;
     }
 
     public void setMeetingId(String meetingId) {
         this.meetingId = meetingId;
     }
 
-    public void setCreatedDate(String createdDate) {
+    public long getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(long createdDate) {
         this.createdDate = createdDate;
     }
 

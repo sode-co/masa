@@ -41,7 +41,7 @@ public class MeetingQuestionRepositoryImp implements MeetingQuestionRepository {
         MeetingQuestionEntity result = null;
         try {
             String id= System.currentTimeMillis()+"";
-            String createdDate = System.currentTimeMillis()+"";
+            long createdDate = System.currentTimeMillis();
             MeetingQuestionDTO dto = meetingQuestionDAO.createQuestions(id,title,userId,meetingId,createdDate);
             if (dto!=null){
                 result = new MeetingQuestionEntity(dto.getId(), dto.getTitle(), dto.getUserId(), dto.getMeetingId(), dto.getCreatedDate());

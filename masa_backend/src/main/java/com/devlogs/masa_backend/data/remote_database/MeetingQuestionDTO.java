@@ -5,9 +5,9 @@ public class MeetingQuestionDTO {
     private String title;
     private String userId;
     private String meetingId;
-    private String createdDate;
+    private long createdDate;
 
-    public MeetingQuestionDTO(String id, String title, String userId, String meetingId, String createdDate) {
+    public MeetingQuestionDTO(String id, String title, String userId, String meetingId, long createdDate) {
         this.id = id;
         this.title = title;
         this.userId = userId;
@@ -47,11 +47,11 @@ public class MeetingQuestionDTO {
         this.meetingId = meetingId;
     }
 
-    public String getCreatedDate() {
+    public long getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(String createdDate) {
+    public void setCreatedDate(long createdDate) {
         this.createdDate = createdDate;
     }
 
