@@ -5,6 +5,8 @@ import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
 import com.devlogs.masa_backend.meeting.CreateMeetingUseCase;
 import com.devlogs.masa_backend.meeting_question.CreateQuestionUseCase;
+import com.devlogs.masa_backend.servlets.common.RequestHelper;
+import com.devlogs.masa_backend.servlets.common.ResponseHelper;
 import com.devlogs.masa_backend.servlets.common.base.BaseHttpServlet;
 import com.devlogs.masa_backend.servlets.meeting.createmeeting.CreateMeetingReq;
 import com.google.gson.Gson;
@@ -40,33 +42,18 @@ public class CreateMeetingQuestionServlet extends BaseHttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String requestData = req.getReader().lines().collect(Collectors.joining());
-        CreateMeetingQuestionReq reqBody = null;
-        if (requestData != null && !requestData.isEmpty()) {
-            try{
-                reqBody = getMeetingQuestionReqBodyFromReqBody(requestData);
-            } catch (JsonSyntaxException ex) {
-                getRequestComponent().getResponseHelper().responseMessage(400,ex.getMessage());
-                return;
-            }
-        }
-        Set<ConstraintViolation<CreateMeetingQuestionReq>> violations = validator.validate(reqBody);
-        String invalidMessage = "";
-        for (ConstraintViolation<CreateMeetingQuestionReq> violation : violations) {
-            invalidMessage += violation.getMessage() + ", \n";
-        }
-        if (invalidMessage.isEmpty()) {
-            MasaLog.normalLog("Start create metting question");
-            createMeetingQuestion(reqBody,resp);
-        } else {
-            MasaLog.normalLog("Violation req: " + invalidMessage);
-            getRequestComponent().getResponseHelper().responseMessage(400,invalidMessage);
+        RequestHelper requestHelper = getRequestComponent().getRequestHelper();
+        ResponseHelper responseHelper = getRequestComponent().getResponseHelper();
+        RequestHelper.ValidateResult<CreateMeetingQuestionReq> validatorResult = requestHelper.getRequestBody(CreateMeetingQuestionReq.class);
+
+        if (!validatorResult.isValid()) {
+            responseHelper.responseMessage(400, validatorResult.getFailMessage());
             return;
         }
-    }
+        CreateMeetingQuestionReq reqBody = validatorResult.getValidReqBody();
+        MasaLog.normalLog("Start create metting question");
+        createMeetingQuestion(reqBody, resp);
 
-    private CreateMeetingQuestionReq getMeetingQuestionReqBodyFromReqBody(String requestData) throws JsonSyntaxException {
-        return  new Gson().fromJson(requestData, CreateMeetingQuestionReq.class);
     }
 
     private void createMeetingQuestion(CreateMeetingQuestionReq reqBody, HttpServletResponse resp) throws IOException {
