@@ -277,5 +277,22 @@ public class UserRepositoryImp implements UserRepository {
         return null;
     }
 
+//
 
+    @Override
+    public List<UserEntity> getUserByName(String name) throws ConnectionException {
+
+        List<UserEntity> result = new ArrayList<>();
+        try {
+            List<UserDto> list = dao.getUserByName(name);
+                for (UserDto dto : list) {
+                    result.add(convertDto(dto));
+                }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new RuntimeException(ex.getMessage());
+        }
+        return result;
+    }
 }

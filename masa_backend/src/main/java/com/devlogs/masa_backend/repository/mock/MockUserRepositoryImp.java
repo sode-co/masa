@@ -88,6 +88,16 @@ public class MockUserRepositoryImp implements UserRepository {
         return null;
     }
 
+//    @Override
+//    public UserEntity updateUserRole(String userID) throws ConnectionException, NotFoundException {
+//        return null;
+//    }
+
+    @Override
+    public List<UserEntity> getUserByName(String name) throws ConnectionException {
+        return null;
+    }
+
     @Override
     public void updateUserRole(String userID, UserRole role) throws ConnectionException {
         Optional<UserEntity> result = MockUserDataSource.data.stream().filter(u-> u.getId().equals(userID)).findFirst();

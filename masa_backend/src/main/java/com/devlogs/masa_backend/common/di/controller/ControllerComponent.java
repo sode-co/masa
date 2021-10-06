@@ -17,7 +17,9 @@ import com.devlogs.masa_backend.servlets.request_managment.getRequest.GetRequest
 
 import com.devlogs.masa_backend.servlets.request_managment.AnswerRequestServlet;
 
+
 import com.devlogs.masa_backend.servlets.topics.GetAllTopicsServlet;
+import com.devlogs.masa_backend.servlets.usermanagement.GetUserByNameServlet;
 import com.devlogs.masa_backend.servlets.usermanagement.GetUserByRoleServlet;
 import com.devlogs.masa_backend.servlets.usermanagement.ShowAllUserServlet;
 //import com.devlogs.masa_backend.servlets.usermanagement.UpdateUserRoleServlet;
@@ -62,6 +64,7 @@ public interface ControllerComponent {
 
     void inject(RemoveAppointmentServlet removeAppointmentServlet);
 
+
     void inject(GetUserByRoleServlet getUserByRoleServlet);
 
 
@@ -72,4 +75,8 @@ public interface ControllerComponent {
     void inject(GetMeetingsByMultipleTopicsServlet getMeetingsByMultipleTopicsServlet);
 
     void inject(GetAllTopicsServlet getAllTopicsServlet);
+
+    void inject(GetUserByNameServlet getUserByNameServlet);
 }
+
+
