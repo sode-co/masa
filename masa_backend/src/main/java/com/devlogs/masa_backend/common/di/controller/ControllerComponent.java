@@ -8,10 +8,7 @@ import com.devlogs.masa_backend.servlets.filters.RoleFilter;
 import com.devlogs.masa_backend.servlets.login.GoogleLoginProcessServlet;
 import com.devlogs.masa_backend.servlets.login.LoginServlet;
 import com.devlogs.masa_backend.servlets.meeting.createmeeting.CreateMeetingServlet;
-import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetAllMeetingServlet;
-import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetAllUserFollowedMeetingServlet;
-import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetAllUserNotFollowedMeetingServlet;
-import com.devlogs.masa_backend.servlets.meeting.getmeeting.GetMeetingByHostIdServlet;
+import com.devlogs.masa_backend.servlets.meeting.getmeeting.*;
 import com.devlogs.masa_backend.servlets.meeting.updatemeeting.UpdateMeetingServlet;
 
 import com.devlogs.masa_backend.servlets.request_managment.getRequest.GetAllRequestServlet;
@@ -19,9 +16,13 @@ import com.devlogs.masa_backend.servlets.request_managment.getRequest.GetRequest
 
 import com.devlogs.masa_backend.servlets.request_managment.AnswerRequestServlet;
 
-import com.devlogs.masa_backend.servlets.test.TestServlet;
 
 import com.devlogs.masa_backend.servlets.usermanagement.*;
+
+import com.devlogs.masa_backend.servlets.usermanagement.GetUserByRoleServlet;
+import com.devlogs.masa_backend.servlets.usermanagement.ShowAllUserServlet;
+import com.devlogs.masa_backend.servlets.usermanagement.UpdateUserRoleServlet;
+
 import dagger.Subcomponent;
 
 @Subcomponent (modules = {DataModule.class, RepositoryModule.class, ApiModule.class})
@@ -35,8 +36,6 @@ public interface ControllerComponent {
     void inject(GetMeetingByHostIdServlet getMeetingByHostIdServlet);
 
     void inject(GetAllMeetingServlet getAllMeetingServlet);
-
-    void inject(TestServlet testServlet);
 
     void inject(CreateAppointmentServlet followMeetingServlet);
 
@@ -60,7 +59,6 @@ public interface ControllerComponent {
 
     void inject(GetAllUserFollowedMeetingServlet getAllUserFollowedMeetingServlet);
 
-
     void inject(GetAllUserNotFollowedMeetingServlet getAllUserNotFollowedMeetingServlet);
 
     void inject(RemoveAppointmentServlet removeAppointmentServlet);
@@ -68,9 +66,18 @@ public interface ControllerComponent {
 
     void inject(GetUserByRoleServlet getUserByRoleServlet);
 
+
     void inject(GetUserByNameServlet getUserByNameServlet);
 
     void inject(UpdateUserStatusServlet updateUserStatusServlet);
+
+    void inject(GetNewMeetingsServlet getNewMeetingsServlet);
+
+    void inject(GetMeetingsByTopicServlet getMeetingsByTopicServlet);
+
+    void inject(GetMeetingsByMultipleTopicsServlet getMeetingsByMultipleTopicsServlet);
+
+
 }
 
 

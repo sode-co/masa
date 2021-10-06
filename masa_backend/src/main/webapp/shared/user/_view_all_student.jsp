@@ -83,14 +83,6 @@ template use File | Settings | File Templates. --%> <%@ page
 
     </style>
     <script>
-        function mentorToGuest(){
-            const idsession = document.getElementById("id").textContent;
-            const url = "http://localhost:8080/masa/api/user-management/update-role/"+ idsession;
-            console.log('url'+url);
-            $.getJSON(url, function(data) {
-                console.log(data);
-            });
-        }
     </script>
 </head>
 <body>
@@ -98,7 +90,7 @@ template use File | Settings | File Templates. --%> <%@ page
     <div class="container px-5 py-5 mx-auto" id="divinfo">
         <div style="width: 1000px">
             <h1 class="mb-2 text-9xl font-bold text-gray-1000 sm:text-4xl title-font" style="width: 1330px !important;">
-                All Mentors In Masa System
+                All Students In Masa System
             </h1>
         </div>
     </div>
@@ -106,7 +98,7 @@ template use File | Settings | File Templates. --%> <%@ page
         const container = document.getElementById("container");
         let i = 0;
         $.getJSON(
-            "http://localhost:8080/masa/api/user-management/get-user-by-role/mentor",
+            "http://localhost:8080/masa/api/user-management/get-user-by-role/student",
             function (data) {
                 let htmlElements = "";
                 const arr = data["users"];
@@ -114,7 +106,8 @@ template use File | Settings | File Templates. --%> <%@ page
                     i++;
                     htmlElements +=
                         '<tr>'
-                        +'<td id="index" style="font-size: 20px; color: black; text-align: center">'+i+'</td>'
+                        +'<td></td>'
+                        +'<td id="index" style="font-size: 20px; color: black">'+i+'</td>'
                         +'<td id="id" style="font-size: 20px; color: black">'
                         +element.id
                         +'</td>'
@@ -130,7 +123,6 @@ template use File | Settings | File Templates. --%> <%@ page
                         +'<td id="status" style="font-size: 20px; color: black">'
                         +element.status.status
                         +'</td>'
-                        +'<td><button style="background-color: orange; width: 100px; height: 30px; border-radius: 20px !important; font-weight: 300 !important" onclick="mentorToGuest()">UPDATE</button></td>'
                         +'</tr>';
                     // console.log(element);
                     let container = document.getElementById("container");
@@ -146,16 +138,16 @@ template use File | Settings | File Templates. --%> <%@ page
 <%--<div id="container"></div>--%>
 
 <div id="target"></div>
-<table class="table table-dark" id="tableinfo" style="padding: 4rem">
+<table class="table table-dark" id="tableinfo" style="padding: 1rem">
     <thead thead-light>
     <tr>
-        <th scope="col" style="font-size: 20px; width: 170px;text-align: center">Index</th>
+        <th scope="col" style="width: 100px"></th>
+        <th scope="col" style="font-size: 20px; width: 170px;">Index</th>
         <th scope="col" style="font-size: 20px; width: 220px">ID</th>
         <th scope="col" style="font-size: 20px; width: 330px">Email</th>
         <th scope="col" style="font-size: 20px; width: 330px">Full Name</th>
         <th scope="col" style="font-size: 20px">Role</th>
         <th scope="col" style="font-size: 20px">Status</th>
-        <th scope="col" style="font-size: 20px"></th>
     </tr>
     <tbody id="container">
     <%--        <tr>--%>
