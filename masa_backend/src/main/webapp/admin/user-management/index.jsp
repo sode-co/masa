@@ -130,6 +130,7 @@ import="com.devlogs.masa_backend.common.Masa"%>
         <%@ include file="../../shared/admin/_vertical_menu.jsp"%>
       </div>
       <div class="text-center sm:ml-20 text-gray-50 sm:text-left" >
+
         <h1 class="mb-7 text-5xl font-bold text-green-800" style="width: 700px !important;">ADMINISTRATOR PAGE</h1>
       </div>
       <br/>
