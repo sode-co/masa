@@ -94,7 +94,7 @@ template use File | Settings | File Templates. --%> <%@ page
                 </h1>
             </div>
         </div>
-        <script>
+    <script>
             const container = document.getElementById("container");
             let i = 0;
             $.getJSON(
