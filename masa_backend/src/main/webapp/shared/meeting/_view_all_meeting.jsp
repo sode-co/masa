@@ -73,6 +73,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
           $.getJSON(
             "http://localhost:8080/masa/api/meeting-management/meetings",
             function (data) {
+              console.log('data'+data);
               let htmlElements = "";
               const arr = data["meetings"];
               arr.forEach((element) => {
