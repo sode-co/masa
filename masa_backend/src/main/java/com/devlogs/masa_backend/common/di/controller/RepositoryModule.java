@@ -5,6 +5,7 @@ import com.devlogs.masa_backend.domain.ports.*;
 import com.devlogs.masa_backend.repository.appointment.AppointmentRepositoryImp;
 import com.devlogs.masa_backend.repository.meeting.MeetingRepositoryImp;
 import com.devlogs.masa_backend.repository.meeting_platform.MeetingPlatformRepositoryImp;
+import com.devlogs.masa_backend.repository.meeting_question.MeetingQuestionRepositoryImp;
 import com.devlogs.masa_backend.repository.request.BecomeMentorRequestRepositoryImp;
 
 import com.devlogs.masa_backend.repository.topic.TopicRepositoryImp;
@@ -48,6 +49,11 @@ public class RepositoryModule {
     @Provides
     public TopicRepository provideTopicRepository(TopicRepositoryImp topicRepositoryImp) {
         return topicRepositoryImp;
+    }
+
+    @Provides
+    public MeetingQuestionRepository provideMeetingQuestionRepository(MeetingQuestionRepositoryImp meetingQuestionRepositoryImp) {
+        return meetingQuestionRepositoryImp;
     }
 
 }
