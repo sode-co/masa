@@ -166,6 +166,63 @@ public class MeetingRepositoryImp implements MeetingRepository {
     }
 
     @Override
+    public List<MeetingEntity> getNewMeetings() throws ConnectionException {
+        List<MeetingEntity> result = new ArrayList<>();
+        try{
+            //get data from DAO
+            List<MeetingDTO> listDTO = meetingSource.getMeetingFromTime(System.currentTimeMillis());
+            if (listDTO != null) {
+                for(MeetingDTO dto:listDTO){
+                    result.add(toMeetingEntity(dto));
+                }//end traversed listDTO
+            }//end if listDTO existed
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
+        return result;
+    }
+
+    @Override
+    public List<MeetingEntity> getMeetingsByTime(long from, long to) throws ConnectionException {
+        List<MeetingEntity> result = new ArrayList<>();
+        try{
+            //get data from DAO
+            List<MeetingDTO> listDTO = meetingSource.getMeetingFromTimeToTime(from, to);
+            if (listDTO != null) {
+                for(MeetingDTO dto:listDTO){
+                    result.add(toMeetingEntity(dto));
+                }//end traversed listDTO
+            }//end if listDTO existed
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
+        return result;
+    }
+
+    @Override
+    public List<MeetingEntity> getMeetingsByTopic(int topicId) throws ConnectionException {
+        List<MeetingEntity> result = new ArrayList<>();
+        try{
+            //get data from DAO
+            List<MeetingDTO> listDTO = meetingSource.getMeetingsByTopic(topicId);
+            if (listDTO != null) {
+                for(MeetingDTO dto:listDTO){
+                    result.add(toMeetingEntity(dto));
+                }//end traversed listDTO
+            }//end if listDTO existed
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
+        return result;
+    }
+
+    @Override
     public MeetingEntity updateMeeting(String meetingId, String title, MeetingPlatform.PLATFORM platform, long startTime, long endTime, String description) throws ConnectionException, NotFoundException {
         MeetingEntity meeting = null;
         try{

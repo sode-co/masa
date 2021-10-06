@@ -64,7 +64,7 @@ public class TopicDAO {
         List<TopicDTO> list = new ArrayList<>();
         try (Connection con = dbHelper.connect()) {
             PreparedStatement ctm = con.prepareStatement("SELECT ID, TITLE " +
-                    "FROM Topics;");
+                    "FROM Topics");
             ResultSet result = ctm.executeQuery();
             while (result.next()) {
                 int id = result.getInt(1);
