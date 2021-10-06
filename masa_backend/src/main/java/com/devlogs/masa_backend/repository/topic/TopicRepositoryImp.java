@@ -72,15 +72,13 @@ public class TopicRepositoryImp implements TopicRepository {
         List<TopicEntity> results = new ArrayList<>();
         try {
             List<TopicDTO> list = topicDAO.getAllTopics();
-            if (list != null){
-                for (TopicDTO dto : list){
-                    results.add(new TopicEntity(dto.getId(), dto.getTitle()));
-                }
+            for (TopicDTO dto : list) {
+                results.add(new TopicEntity(dto.getId(), dto.getTitle()));
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            throw new RuntimeException(ex.getMessage());
+            throw new ConnectionException(ex.getMessage());
         }
         return results;
     }
