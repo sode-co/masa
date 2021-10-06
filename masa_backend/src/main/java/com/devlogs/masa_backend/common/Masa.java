@@ -71,23 +71,26 @@ public class Masa {
                 public static final String ANSWER_BECOME_MENTOR_REQUEST_NAV = "/api/request-management/answer";
             }
         }
-    public static void onServerName (String protocol, String serverName, int port) {
-            if (protocol.equals("HTTP/1.1")) {
-                SERVER_HOST = "http://"+serverName+":"+port+"/masa";
-            }
-            MasaLog.normalLog("Server host: " + SERVER_HOST);
-            GOOGLE_REDIRECT_URI = "http://localhost:"+port+"/masa/logingoogle";
-    }
-    public static void init (ServletContext context, String webInfPath) {
-        Dotenv env = io.github.cdimascio.dotenv.Dotenv.configure().directory(webInfPath+"/env/.env").ignoreIfMalformed().ignoreIfMissing().load();
-        AUTH_MODE = env.get("AUTH");
-        GOOGLE_CLIENT_SECRET = context.getInitParameter("GOOGLE_CLIENT_SECRET");
-        CLIENT_ID = context.getInitParameter("GOOGLE_CLIENT_ID");
 
-        DATABASE_HOST = context.getInitParameter("DATABASE_HOST");
-        DATABASE_NAME = context.getInitParameter("DATABASE_NAME");
-        DATABASE_USER = context.getInitParameter("DATABASE_USER");
-        DATABASE_PASSWORD = context.getInitParameter("DATABASE_PASSWORD");
-    }
+        public static void onServerName (String protocol, String serverName, int port) {
+                if (protocol.equals("HTTP/1.1")) {
+                    SERVER_HOST = "http://"+serverName+":"+port+"/masa";
+                }
+                MasaLog.normalLog("Server host: " + SERVER_HOST);
+                GOOGLE_REDIRECT_URI = "http://localhost:"+port+"/masa/logingoogle";
+        }
+
+        public static void init (ServletContext context, String webInfPath) {
+            Dotenv env = io.github.cdimascio.dotenv.Dotenv.configure().directory(webInfPath+"/env/.env").ignoreIfMalformed().ignoreIfMissing().load();
+            AUTH_MODE = env.get("AUTH");
+            MasaLog.normalLog("Auth mode: " + AUTH_MODE);
+            GOOGLE_CLIENT_SECRET = context.getInitParameter("GOOGLE_CLIENT_SECRET");
+            CLIENT_ID = context.getInitParameter("GOOGLE_CLIENT_ID");
+
+            DATABASE_HOST = context.getInitParameter("DATABASE_HOST");
+            DATABASE_NAME = context.getInitParameter("DATABASE_NAME");
+            DATABASE_USER = context.getInitParameter("DATABASE_USER");
+            DATABASE_PASSWORD = context.getInitParameter("DATABASE_PASSWORD");
+        }
 
 }
