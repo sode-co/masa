@@ -3,7 +3,6 @@ package com.devlogs.masa_backend.servlets.meeting.createmeeting;
 import com.devlogs.masa_backend.common.annotations.AccessRole;
 import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.domain.entities.MeetingPlatform.PLATFORM;
-import com.devlogs.masa_backend.domain.entities.UserRole;
 import com.devlogs.masa_backend.meeting.CreateMeetingUseCase;
 import com.devlogs.masa_backend.servlets.common.base.BaseHttpServlet;
 import com.google.gson.Gson;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -80,7 +78,8 @@ public class CreateMeetingServlet extends BaseHttpServlet {
             return;
         }
         MasaLog.normalLog("Meeting title: " + reqBody.getTitle());
-        CreateMeetingUseCase.Result result = createMeetingUseCase.executes(reqBody.getTitle(), meetingPlatform, reqBody.getHost(), reqBody.getStartTime(), reqBody.getEndTime(), reqBody.getDescription());
+        CreateMeetingUseCase.Result result = createMeetingUseCase.executes(reqBody.getTitle(), meetingPlatform,
+                reqBody.getHost(), reqBody.getTopic(), reqBody.getStartTime(), reqBody.getEndTime(), reqBody.getDescription());
 
         if (result instanceof CreateMeetingUseCase.Result.Success) {
             String resultJson = new Gson().toJson(result);

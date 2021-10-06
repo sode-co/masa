@@ -98,7 +98,7 @@ template use File | Settings | File Templates. --%> <%@ page
     <div class="container px-5 py-5 mx-auto" id="divinfo">
         <div style="width: 1000px">
             <h1 class="mb-2 text-9xl font-bold text-gray-1000 sm:text-4xl title-font" style="width: 1330px !important;">
-                All Mentors In Masa System
+                All LECTURERs In Masa System
             </h1>
         </div>
     </div>
@@ -106,7 +106,7 @@ template use File | Settings | File Templates. --%> <%@ page
         const container = document.getElementById("container");
         let i = 0;
         $.getJSON(
-            "http://localhost:8080/masa/api/user-management/get-user-by-role/mentor",
+            "http://localhost:8080/masa/api/user-management/get-user-by-role/guest",
             function (data) {
                 let htmlElements = "";
                 const arr = data["users"];
