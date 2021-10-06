@@ -11,15 +11,22 @@ import com.devlogs.masa_backend.servlets.meeting.createmeeting.CreateMeetingServ
 
 import com.devlogs.masa_backend.servlets.meeting.getmeeting.*;
 import com.devlogs.masa_backend.servlets.meeting.updatemeeting.UpdateMeetingServlet;
-
+import com.devlogs.masa_backend.servlets.meeting_question.createMeetingQuestion.CreateMeetingQuestionServlet;
+import com.devlogs.masa_backend.servlets.meeting_question.getMeetingQuestion.GetAllMeetingQuestionByMeetingIdServlet;
+import com.devlogs.masa_backend.servlets.request_managment.AnswerRequestServlet;
 import com.devlogs.masa_backend.servlets.request_managment.getRequest.GetAllRequestServlet;
 import com.devlogs.masa_backend.servlets.request_managment.getRequest.GetRequestByUserIdServlet;
+
+
+import com.devlogs.masa_backend.servlets.topics.GetAllTopicsServlet;
+
 
 import com.devlogs.masa_backend.servlets.request_managment.AnswerRequestServlet;
 
 
 import com.devlogs.masa_backend.servlets.topics.GetAllTopicsServlet;
 import com.devlogs.masa_backend.servlets.usermanagement.GetUserByNameServlet;
+
 import com.devlogs.masa_backend.servlets.usermanagement.GetUserByRoleServlet;
 import com.devlogs.masa_backend.servlets.usermanagement.ShowAllUserServlet;
 //import com.devlogs.masa_backend.servlets.usermanagement.UpdateUserRoleServlet;
@@ -68,6 +75,8 @@ public interface ControllerComponent {
     void inject(GetUserByRoleServlet getUserByRoleServlet);
 
 
+    void inject(GetAllMeetingQuestionByMeetingIdServlet getAllMeetingQuestionByMeetingIdServlet);
+
     void inject(GetNewMeetingsServlet getNewMeetingsServlet);
 
     void inject(GetMeetingsByTopicServlet getMeetingsByTopicServlet);
@@ -76,7 +85,10 @@ public interface ControllerComponent {
 
     void inject(GetAllTopicsServlet getAllTopicsServlet);
 
+    void inject(CreateMeetingQuestionServlet createMeetingQuestionServlet);
+
     void inject(GetUserByNameServlet getUserByNameServlet);
+
 }
 
 
