@@ -111,34 +111,6 @@ template use File | Settings | File Templates. --%>
                     const arr = data["users"];
                     arr.forEach((element) => {
                         const roleType = element.role.type;
-                        i++;
-                        htmlElements +=
-                            '<tr>'
-                            +'<th id="index">'+i+'</th>'
-                            +'<td id="iD">'
-                            +element.id
-                            +'</td>'
-                            +'<td id="email">'
-                            +element.email
-                            +'</td>'
-                            +'<td id="fullName">'
-                            +element.fullName
-                            +'</td>'
-                            +'<td id="role">'
-                            +element.role.type
-                            +'</td>'
-                            +'<td id="status">'
-                            +element.status.status
-                            +'</td>'
-                            +'<td id="update">'
-                            <%--+'<c:if test = "${element.role.type == ADMIN}">'--%>
-                            +'<button type="button" class="btn btn-dark" style="background-color: #777777">'
-                            +'UPDATE'
-                            +'</button>'
-                            +(element.role.type)
-                            <%--+'</c:if>'--%>
-                            +'</td>'
-                        i++;
                         htmlElements +=
                             '<tr>'
                             +'<td></td>'
@@ -173,16 +145,6 @@ template use File | Settings | File Templates. --%>
 <%--<div id="container"></div>--%>
 
 <div id="target"></div>
-<table class="table table-dark" style="padding: 10px">
-<table class="table table-dark sm:ml-20" style="padding: 10px">
-    <thead thead-light>
-    <tr>
-        <th scope="col">Index</th>
-        <th scope="col">ID</th>
-        <th scope="col">Email</th>
-        <th scope="col">Full Name</th>
-        <th scope="col">Role</th>
-        <th scope="col">Status</th>
 <table class="table table-dark" id="tableinfo" style="padding: 1rem">
     <thead thead-light>
     <tr>
