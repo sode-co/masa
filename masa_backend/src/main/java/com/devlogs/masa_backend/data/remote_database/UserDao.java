@@ -178,6 +178,19 @@ public class UserDao {
         return userBlocked;
     }
 
+    public void updateStatus(String userId, int statusId) throws SQLException, ClassNotFoundException {
+        try (Connection connection = dbHelper.connect()) {
+            PreparedStatement updateRoleStatement = connection.prepareStatement("UPDATE USERS SET STATUS_ID = ? WHERE ID = ?");
+            updateRoleStatement.setInt(1, statusId);
+            updateRoleStatement.setString(2, userId);
+            int effectedRow = updateRoleStatement.executeUpdate();
+            if (effectedRow == 0) {
+                throw new RuntimeException("Invalid result when update user status");
+            }
+        }
+    }
+
+
     public List<UserDto> getAllUsers() throws SQLException, ClassNotFoundException {
         List<UserDto> result = null;
         try (Connection con = dbHelper.connect()) {

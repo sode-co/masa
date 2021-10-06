@@ -80,6 +80,10 @@ template use File | Settings | File Templates. --%> <%@ page
         section{
             margin: 50px;
         }
+<<<<<<< HEAD:masa_backend/out/artifacts/masa/shared/user/_view_all_user.jsp
+
+=======
+>>>>>>> main:masa_backend/src/main/webapp/admin/user/_view_all_mentor.jsp
     </style>
     <script>
     </script>
@@ -87,9 +91,14 @@ template use File | Settings | File Templates. --%> <%@ page
 <body>
 <section class="text-gray-600 body-font">
     <div class="container px-5 py-5 mx-auto" id="divinfo">
+<<<<<<< HEAD:masa_backend/out/artifacts/masa/shared/user/_view_all_user.jsp
+        <div style="width: 1000px">
+                <h1 class="mb-2 text-9xl font-bold text-gray-1000 sm:text-4xl title-font" style="width: 1330px !important;">
+=======
         <div class="flex flex-wrap w-full mb-8">
             <div class="w-full mb-6 lg:mb-0 sm:ml-20">
                 <h1 class="mb-2 text-9xl font-bold text-gray-900 sm:text-4xl title-font">
+>>>>>>> main:masa_backend/src/main/webapp/admin/user/_view_all_mentor.jsp
                     All Members In Masa System
                 </h1>
                 <div class="w-20 h-1 bg-green-500 rounded"></div>
@@ -108,6 +117,22 @@ template use File | Settings | File Templates. --%> <%@ page
                         htmlElements +=
                             '<tr>'
                             +'<td></td>'
+<<<<<<< HEAD:masa_backend/out/artifacts/masa/shared/user/_view_all_user.jsp
+                            +'<td id="index" style="font-size: 20px; color: black">'+i+'</td>'
+                            +'<td id="id" style="font-size: 20px; color: black">'
+                            +element.id
+                            +'</td>'
+                            +'<td id="email" style="font-size: 20px; color: black">'
+                            +element.email
+                            +'</td>'
+                            +'<td id="fullName" style="font-size: 20px; color: black">'
+                            +element.fullName
+                            +'</td>'
+                            +'<td id="role" style="font-size: 20px; color: black">'
+                            +element.role.type
+                            +'</td>'
+                            +'<td id="status" style="font-size: 20px; color: black">'
+=======
                             +'<td id="index" style="font-size: 20px;">'+i+'</td>'
                             +'<td id="id" style="font-size: 20px;">'
                             +element.id
@@ -122,6 +147,7 @@ template use File | Settings | File Templates. --%> <%@ page
                             +element.role.type
                             +'</td>'
                             +'<td id="status" style="font-size: 20px;">'
+>>>>>>> main:masa_backend/src/main/webapp/admin/user/_view_all_mentor.jsp
                             +element.status.status
                             +'</td>'
                             +'</tr>';
@@ -139,6 +165,16 @@ template use File | Settings | File Templates. --%> <%@ page
 <%--<div id="container"></div>--%>
 
 <div id="target"></div>
+<<<<<<< HEAD:masa_backend/out/artifacts/masa/shared/user/_view_all_user.jsp
+<table class="table table-dark" id="tableinfo" style="padding: 1rem">
+    <thead thead-light>
+    <tr>
+        <th scope="col" style="width: 100px"></th>
+        <th scope="col" style="font-size: 20px; width: 170px;">Index</th>
+        <th scope="col" style="font-size: 20px; width: 220px">ID</th>
+        <th scope="col" style="font-size: 20px; width: 330px">Email</th>
+        <th scope="col" style="font-size: 20px; width: 330px">Full Name</th>
+=======
 <table class="table table-dark" id="tableinfo" style="">
     <thead thead-light>
     <tr>
@@ -147,6 +183,7 @@ template use File | Settings | File Templates. --%> <%@ page
         <th scope="col" style="font-size: 20px; width: 220px">ID</th>
         <th scope="col" style="font-size: 20px">Email</th>
         <th scope="col" style="font-size: 20px">Full Name</th>
+>>>>>>> main:masa_backend/src/main/webapp/admin/user/_view_all_mentor.jsp
         <th scope="col" style="font-size: 20px">Role</th>
         <th scope="col" style="font-size: 20px">Status</th>
     </tr>

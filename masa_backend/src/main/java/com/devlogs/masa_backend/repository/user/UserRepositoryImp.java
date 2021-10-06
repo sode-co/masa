@@ -295,4 +295,31 @@ public class UserRepositoryImp implements UserRepository {
         }
         return result;
     }
+
+    @Override
+    public void updateUserStatus(String userId, UserStatus statusId) throws ConnectionException {
+        int status = 0;
+        switch (statusId.getStatus()) {
+            case BLOCKED: {
+                status = 1;
+                break;
+            }
+            case ACTIVE: {
+                status = 2;
+                break;
+            }
+            default: {
+                throw new RuntimeException(String.format("UserStatus {%s} is not yet supported by userRepository",
+                        statusId.getStatus().name()));
+            }
+        }
+        try {
+            dao.updateStatus(userId, status);
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            throw new ConnectionException(e.getMessage());
+        }
+    }
+
 }

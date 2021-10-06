@@ -24,13 +24,12 @@ import com.devlogs.masa_backend.servlets.topics.GetAllTopicsServlet;
 import com.devlogs.masa_backend.servlets.request_managment.AnswerRequestServlet;
 
 
-import com.devlogs.masa_backend.servlets.topics.GetAllTopicsServlet;
-import com.devlogs.masa_backend.servlets.usermanagement.GetUserByNameServlet;
 
-import com.devlogs.masa_backend.servlets.usermanagement.GetUserByRoleServlet;
-import com.devlogs.masa_backend.servlets.usermanagement.ShowAllUserServlet;
+import com.devlogs.masa_backend.servlets.topics.GetAllTopicsServlet;
+import com.devlogs.masa_backend.servlets.usermanagement.*;
+
 //import com.devlogs.masa_backend.servlets.usermanagement.UpdateUserRoleServlet;
-import com.devlogs.masa_backend.servlets.usermanagement.UpdateUserRoleServlet;
+
 import dagger.Subcomponent;
 
 @Subcomponent (modules = {DataModule.class, RepositoryModule.class, ApiModule.class})
@@ -75,6 +74,7 @@ public interface ControllerComponent {
     void inject(GetUserByRoleServlet getUserByRoleServlet);
 
 
+
     void inject(GetAllMeetingQuestionByMeetingIdServlet getAllMeetingQuestionByMeetingIdServlet);
 
     void inject(GetNewMeetingsServlet getNewMeetingsServlet);
@@ -83,12 +83,14 @@ public interface ControllerComponent {
 
     void inject(GetMeetingsByMultipleTopicsServlet getMeetingsByMultipleTopicsServlet);
 
+
     void inject(GetAllTopicsServlet getAllTopicsServlet);
 
     void inject(CreateMeetingQuestionServlet createMeetingQuestionServlet);
 
     void inject(GetUserByNameServlet getUserByNameServlet);
 
+    void inject(UpdateUserStatusServlet updateUserStatusServlet);
 }
 
 
