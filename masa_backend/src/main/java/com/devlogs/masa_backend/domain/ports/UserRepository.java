@@ -37,4 +37,6 @@ public interface UserRepository {
 
     List<UserEntity> getUserByName(String name) throws ConnectionException;
 
+    void updateUserStatus (String userId, UserStatus status) throws ConnectionException;
+
 }
