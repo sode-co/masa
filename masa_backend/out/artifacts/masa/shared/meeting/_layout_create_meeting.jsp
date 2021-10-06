@@ -93,7 +93,7 @@
                 const json = {
                     "title": document.getElementById("title").value,
                     "platform": document.getElementById("platform").value,
-                    "host": ${CURRENT_USER.getId()},
+                    "host": "${CURRENT_USER.getId()}",
                     "startTime": millisecondsStart,
                     "endTime": millisecondsEnd,
                     "description": $("#description").html(),
@@ -115,6 +115,7 @@
     </script>
 </head>
 <body>
+<%--<h1 id="current-user">${sessionScope.CURRENT_USER}</h1>--%>
 <h1 style="display: none" id="current-user">${sessionScope.CURRENT_USER}</h1>
 <div class="container text-center">
     <div class="row">

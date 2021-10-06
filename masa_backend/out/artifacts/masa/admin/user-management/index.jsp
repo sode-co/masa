@@ -98,7 +98,6 @@ import="com.devlogs.masa_backend.common.Masa"%>
                   mx-1.5
                   sm:mx-6
                 "
-
                 href="#footer"
               >
                 Contact
@@ -108,19 +107,39 @@ import="com.devlogs.masa_backend.common.Masa"%>
         </div>
       </div>
     </nav>
+
+
+    <div class="flex flex-wrap w-full mb-8">
+      <div class="w-full mb-6 lg:mb-0 sm:ml-20">
+        <h1
+                class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font"
+        >
+        </h1>
+        <div class="w-20 h-1 bg-green-500 rounded"></div>
+      </div>
+    </div>
+
     <!-- End of navigation -->
 
     <!-- Noti -->
     <div
       class="container flex items-center mx-auto bg-green-100 rounded-md h-96"
+      style="padding: 10px"
     >
-      <div class="text-center sm:ml-20 text-gray-50 sm:text-left">
-        <h1 class="mb-4 text-5xl font-bold text-green-800">Admin <br /></h1>
+      <div  style="margin-left: 50px" >
+        <%@ include file="../../shared/admin/_vertical_menu.jsp"%>
       </div>
+      <div class="text-center sm:ml-20 text-gray-50 sm:text-left"" >
+        <h1 class="mb-7 text-5xl font-bold text-green-800" style="width: 700px !important;">ADMINISTRATOR PAGE</h1>
+      </div>
+      <br/>
     </div>
 
     <!-- End of noti -->
-    <%@ include file="../../shared/user/_view_all_user.jsp"%>
+
+    <div>
+      <%@ include file="../../shared/user/_view_all_user.jsp"%>
+    </div>
     <!-- Footer -->
     <footer
       class="relative pt-1 bg-white border-b-2 border-blue-700 footer"
