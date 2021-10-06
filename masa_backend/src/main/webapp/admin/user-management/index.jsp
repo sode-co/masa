@@ -4,16 +4,22 @@ contentType="text/html;charset=UTF-8" language="java" %> <%@ page
 import="com.devlogs.masa_backend.common.Masa"%>
 <html>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <head>
 <%--    <link rel="shortcut icon" href="${Masa.ICON_URL}"/>--%>
 <%--    <link rel="shortcut icon" href="${Masa.ICON_URL}"/>--%>
 =======
+=======
+>>>>>>> main
   <head>
     <%--
     <link rel="shortcut icon" href="${Masa.ICON_URL}" />
     --%> <%--
     <link rel="shortcut icon" href="${Masa.ICON_URL}" />
     --%>
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
     <title>Admin Page</title>
     <style>
@@ -87,6 +93,7 @@ import="com.devlogs.masa_backend.common.Masa"%>
                   sm:mx-6
                 "
 <<<<<<< HEAD
+<<<<<<< HEAD
                             href="/masa/admin/meeting/view_all.jsp"
                     >
                         View  meeting
@@ -96,6 +103,8 @@ import="com.devlogs.masa_backend.common.Masa"%>
                     <a
                             class="
 =======
+=======
+>>>>>>> main
                 href="/masa/admin/meeting/view_all.jsp"
               >
                 Meeting Management
@@ -104,6 +113,9 @@ import="com.devlogs.masa_backend.common.Masa"%>
             <li class="nav-item">
               <a
                 class="
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
                   font-sans
                   text-2xl
@@ -124,6 +136,7 @@ import="com.devlogs.masa_backend.common.Masa"%>
         </div>
       </div>
     </nav>
+<<<<<<< HEAD
     <!-- End of navigation -->
 
     <!-- Noti -->
@@ -137,6 +150,44 @@ import="com.devlogs.masa_backend.common.Masa"%>
 
     <!-- End of noti -->
     <%@ include file="../../shared/user/_view_all_user.jsp"%>
+=======
+
+
+    <div class="flex flex-wrap w-full mb-8">
+      <div class="w-full mb-6 lg:mb-0 sm:ml-20">
+        <h1
+                class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font"
+        >
+        </h1>
+        <div class="w-20 h-1 bg-green-500 rounded"></div>
+      </div>
+    </div>
+
+    <!-- End of navigation -->
+
+    <!-- Noti -->
+    <div
+      class="container flex items-center mx-auto bg-green-100 rounded-md h-96"
+      style="padding: 10px"
+    >
+      <div  style="margin-left: 50px" >
+        <%@ include file="../../shared/admin/_vertical_menu.jsp"%>
+      </div>
+      <div class="text-center sm:ml-20 text-gray-50 sm:text-left"" >
+        <h1 class="mb-7 text-5xl font-bold text-green-800" style="width: 700px !important;">ADMINISTRATOR PAGE</h1>
+      </div>
+      <br/>
+    </div>
+
+    <!-- End of noti -->
+
+    <div style="margin-left: 1000px; margin-top: -70px">
+      <%@ include file="../../shared/admin/_search_bar.jsp"%>
+    </div>
+    <div>
+      <%@ include file="../../shared/user/_view_all_user.jsp"%>
+    </div>
+>>>>>>> main
     <!-- Footer -->
     <footer
       class="relative pt-1 bg-white border-b-2 border-blue-700 footer"
@@ -187,6 +238,7 @@ import="com.devlogs.masa_backend.common.Masa"%>
                   >Email: Slimair.co@gmail.com</a
                 ></span
               >
+<<<<<<< HEAD
             </div>
             <div class="flex flex-col flex-1 place-items-center">
               <img
@@ -196,6 +248,17 @@ import="com.devlogs.masa_backend.common.Masa"%>
                 height="50%"
               />
             </div>
+=======
+            </div>
+            <div class="flex flex-col flex-1 place-items-center">
+              <img
+                class="my-2"
+                src="/masa/shared/icon/fpt-university.png"
+                width="50%"
+                height="50%"
+              />
+            </div>
+>>>>>>> main
           </div>
         </div>
       </div>

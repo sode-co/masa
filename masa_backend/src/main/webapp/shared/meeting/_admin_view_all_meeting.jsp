@@ -2,6 +2,7 @@
 IntelliJ IDEA. User: Ngoc Thieu Date: 9/19/2021 Time: 1:11 PM To change this
 template use File | Settings | File Templates. --%> <%@ page
 <<<<<<< HEAD
+<<<<<<< HEAD
         contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -218,6 +219,8 @@ template use File | Settings | File Templates. --%> <%@ page
 
 </body>
 =======
+=======
+>>>>>>> main
 contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
@@ -535,5 +538,8 @@ contentType="text/html;charset=UTF-8" language="java" %>
     <div id="target"></div>
     <div id="container"></div>
   </body>
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 </html>
