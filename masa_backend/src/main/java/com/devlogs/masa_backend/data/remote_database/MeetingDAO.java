@@ -19,6 +19,7 @@ public class MeetingDAO {
     public List<MeetingDTO> getAllMeetings() throws SQLException, ClassNotFoundException {
         List<MeetingDTO> listMeeting = new ArrayList<>();
         try (Connection con = dbHelper.connect()) {
+
             CallableStatement ctm = con.prepareCall("SELECT ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, TOPIC_ID, DESCRIPTION " +
                     "FROM MEETINGS;");
             ResultSet result = ctm.executeQuery();
@@ -44,6 +45,7 @@ public class MeetingDAO {
             CallableStatement ctm = con.prepareCall("SELECT ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, TOPIC_ID, DESCRIPTION " +
                     "FROM MEETINGS WHERE MENTOR_ID=?;");
             ctm.setString(1, hostId);
+
             ResultSet result = ctm.executeQuery();
             while (result.next()) {
                 String id = result.getString(1);
@@ -275,4 +277,6 @@ public class MeetingDAO {
         }
         return listMeeting;
     }
+
+
 }
