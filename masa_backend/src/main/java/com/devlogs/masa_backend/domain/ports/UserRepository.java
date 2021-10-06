@@ -35,4 +35,6 @@ public interface UserRepository {
 
 //    UserEntity updateUserRole(String userID) throws ConnectionException, NotFoundException;
 
+    List<UserEntity> getUserByName(String name) throws ConnectionException;
+
 }

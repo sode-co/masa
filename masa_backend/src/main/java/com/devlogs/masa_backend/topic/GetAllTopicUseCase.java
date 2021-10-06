@@ -1,14 +1,13 @@
-package com.devlogs.masa_backend.topics;
+package com.devlogs.masa_backend.topic;
 
 import com.devlogs.masa_backend.domain.entities.TopicEntity;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.ports.TopicRepository;
-import com.devlogs.masa_backend.topics.GetAllTopicsUseCase;
+
 import javax.inject.Inject;
-import java.util.Iterator;
 import java.util.List;
 
-public class GetAllTopicsUseCase {
+public class GetAllTopicUseCase {
     public static class Result {
         public static class Success extends Result {
             public List<TopicEntity> topics;
@@ -17,16 +16,14 @@ public class GetAllTopicsUseCase {
                 this.topics = topics;
             }
         }
-
-        public static class GeneralError extends Result {
+        public static class ConnectionError extends Result {
 
         }
     }
 
-    private final TopicRepository topicRepository;
-
+    private TopicRepository topicRepository;
     @Inject
-    public GetAllTopicsUseCase(TopicRepository topicRepository) {
+    public GetAllTopicUseCase(TopicRepository topicRepository) {
         this.topicRepository = topicRepository;
     }
 
@@ -35,7 +32,7 @@ public class GetAllTopicsUseCase {
             List<TopicEntity> topics = topicRepository.getAllTopic();
             return new Result.Success(topics);
         } catch (ConnectionException e) {
-            return new Result.GeneralError();
+            return new Result.ConnectionError();
         }
     }
 }

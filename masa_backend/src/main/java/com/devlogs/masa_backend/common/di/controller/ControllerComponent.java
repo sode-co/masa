@@ -8,17 +8,28 @@ import com.devlogs.masa_backend.servlets.filters.RoleFilter;
 import com.devlogs.masa_backend.servlets.login.GoogleLoginProcessServlet;
 import com.devlogs.masa_backend.servlets.login.LoginServlet;
 import com.devlogs.masa_backend.servlets.meeting.createmeeting.CreateMeetingServlet;
+
 import com.devlogs.masa_backend.servlets.meeting.getmeeting.*;
 import com.devlogs.masa_backend.servlets.meeting.updatemeeting.UpdateMeetingServlet;
-
+import com.devlogs.masa_backend.servlets.meeting_question.createMeetingQuestion.CreateMeetingQuestionServlet;
+import com.devlogs.masa_backend.servlets.meeting_question.getMeetingQuestion.GetAllMeetingQuestionByMeetingIdServlet;
+import com.devlogs.masa_backend.servlets.request_managment.AnswerRequestServlet;
 import com.devlogs.masa_backend.servlets.request_managment.getRequest.GetAllRequestServlet;
 import com.devlogs.masa_backend.servlets.request_managment.getRequest.GetRequestByUserIdServlet;
 
-import com.devlogs.masa_backend.servlets.request_managment.AnswerRequestServlet;
 
 import com.devlogs.masa_backend.servlets.topics.GetAllTopicsServlet;
+
+
+import com.devlogs.masa_backend.servlets.request_managment.AnswerRequestServlet;
+
+
+import com.devlogs.masa_backend.servlets.topics.GetAllTopicsServlet;
+import com.devlogs.masa_backend.servlets.usermanagement.GetUserByNameServlet;
+
 import com.devlogs.masa_backend.servlets.usermanagement.GetUserByRoleServlet;
 import com.devlogs.masa_backend.servlets.usermanagement.ShowAllUserServlet;
+//import com.devlogs.masa_backend.servlets.usermanagement.UpdateUserRoleServlet;
 import com.devlogs.masa_backend.servlets.usermanagement.UpdateUserRoleServlet;
 import dagger.Subcomponent;
 
@@ -60,7 +71,11 @@ public interface ControllerComponent {
 
     void inject(RemoveAppointmentServlet removeAppointmentServlet);
 
+
     void inject(GetUserByRoleServlet getUserByRoleServlet);
+
+
+    void inject(GetAllMeetingQuestionByMeetingIdServlet getAllMeetingQuestionByMeetingIdServlet);
 
     void inject(GetNewMeetingsServlet getNewMeetingsServlet);
 
@@ -69,4 +84,11 @@ public interface ControllerComponent {
     void inject(GetMeetingsByMultipleTopicsServlet getMeetingsByMultipleTopicsServlet);
 
     void inject(GetAllTopicsServlet getAllTopicsServlet);
+
+    void inject(CreateMeetingQuestionServlet createMeetingQuestionServlet);
+
+    void inject(GetUserByNameServlet getUserByNameServlet);
+
 }
+
+
