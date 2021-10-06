@@ -136,6 +136,10 @@ To change this template use File | Settings | File Templates. --%> <%@ page
 </div>
 
 <!-- End of noti -->
+<div style="margin-left: 1000px; margin-top: -70px">
+    <%@ include file="../../shared/admin/_search_bar.jsp"%>
+</div>
+
 
 <div>
     <%@ include file="../../shared/user/_view_all_guest.jsp"%>

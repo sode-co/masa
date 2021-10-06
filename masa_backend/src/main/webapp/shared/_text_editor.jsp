@@ -13,6 +13,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<<<<<<< HEAD
+
+    <script src="https://cdn.tiny.cloud/1/jq1a1p24pc9o6qg9ovftz51uteowbcodeq41e39ci12r0pnt/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+        function testText(){
+            const test = $("#mytextarea").html();
+            console.log(tinyMCE.activeEditor.getContent());
+            console.debug(tinyMCE.activeEditor.getContent());
+
+        }
+    </script>
+=======
     <script src="https://cdn.tiny.cloud/1/jq1a1p24pc9o6qg9ovftz51uteowbcodeq41e39ci12r0pnt/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -86,10 +102,16 @@
         }
     </style>
 
+>>>>>>> main
 
 </head>
 
 <body>
+<<<<<<< HEAD
+    <h1>TinyMCE Quick Start Guide</h1>
+        <div id="mytextarea">Hello, World!</div>
+    <button onclick="testText()">Test</button>
+=======
 
 <%@include  file="/shared/header/navbar.html"%>
 
@@ -228,5 +250,6 @@
 
 <%@include  file="/shared/footer/footer.html"%>
 
+>>>>>>> main
 </body>
 </html>

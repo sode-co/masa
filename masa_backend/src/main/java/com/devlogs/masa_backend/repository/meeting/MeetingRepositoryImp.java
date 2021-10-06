@@ -129,11 +129,13 @@ public class MeetingRepositoryImp implements MeetingRepository {
 
     @Override
     public List<MeetingEntity> getFollowedMeetings(String userId) throws ConnectionException {
+
         List<MeetingEntity> result = new ArrayList<>();
         try{
             //get data from DAO
             List<MeetingDTO> listDTO = meetingSource.getUserFollowedMeetings(userId);
             if (listDTO != null) {
+
                 for (MeetingDTO dto : listDTO) {
                     result.add(toMeetingEntity(dto));
                 }
@@ -160,6 +162,7 @@ public class MeetingRepositoryImp implements MeetingRepository {
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (ClassNotFoundException ex) {
+
             throw new ConnectionException(ex.getMessage());
         }
         return result;
@@ -185,6 +188,7 @@ public class MeetingRepositoryImp implements MeetingRepository {
     }
 
     @Override
+
     public List<MeetingEntity> getMeetingsByTime(long from, long to) throws ConnectionException {
         List<MeetingEntity> result = new ArrayList<>();
         try{
@@ -198,6 +202,7 @@ public class MeetingRepositoryImp implements MeetingRepository {
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (ClassNotFoundException ex) {
+
             throw new ConnectionException(ex.getMessage());
         }
         return result;

@@ -45,6 +45,10 @@ serverdev là nhóm các services nhưng không bao gồm tomcat
 -- Tải bản cập nhật mới:
 
 	docker-compose pull
--- Khởi động lại Docker và đợi 30 giây:
-
-	docker-compose up -d serverdev --build
+-- Rebuild docker
+	
+	docker-compose build
+-- Khởi động lại Docker và đợi 50 giây:
+	
+	docker-compose up -d serverdev
+	
