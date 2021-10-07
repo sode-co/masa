@@ -70,6 +70,9 @@
         .form li a.profile {
             border-left:5px solid #008747;
         }
+        .form li a.all {
+            border-left:5px solid #f57640;
+        }
 
         .form li a.messages {
             border-left:5px solid #fecf54;
@@ -156,6 +159,7 @@
 
 <body>
 <ul class="form">
+    <li><a class="all" href="/masa/admin/user-management/index.jsp"><i class="icon-user"></i>MANAGE ALL USERS</a></li>
     <li><a class="profile" href="/masa/admin/user-management/manage_mentor.jsp"><i class="icon-user"></i>MANAGE MENTOR</a></li>
     <li class="selected"><a class="messages" href="/masa/admin/user-management/manage_guest.jsp"><i class="icon-bell"></i>MANAGE LECTURE<em>new</em></a></li>
     <li><a class="settings" href="/masa/admin/user-management/manage_student.jsp"><i class="icon-cog"></i>MANAGE STUDENT</a></li>

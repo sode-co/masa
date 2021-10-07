@@ -83,14 +83,6 @@ template use File | Settings | File Templates. --%> <%@ page
 
     </style>
     <script>
-        function mentorToGuest(){
-            const idsession = document.getElementById("id").textContent;
-            const url = "http://localhost:8080/masa/api/user-management/update-role/"+ idsession;
-            console.log('url'+url);
-            $.getJSON(url, function(data) {
-                console.log(data);
-            });
-        }
     </script>
 </head>
 <body>
@@ -98,20 +90,26 @@ template use File | Settings | File Templates. --%> <%@ page
     <div class="container px-5 py-5 mx-auto" id="divinfo">
         <div style="width: 1000px">
             <h1 class="mb-2 text-9xl font-bold text-gray-1000 sm:text-4xl title-font" style="width: 1330px !important;">
-                All Mentors In Masa System
+                All LECTURERs In Masa System
             </h1>
         </div>
     </div>
     <script>
         const container = document.getElementById("container");
         let i = 0;
+        const urlStatus="http://localhost:8080/masa/api/user-management/update-status/";
+        const urlRole=" http://localhost:8080/masa/api/user-management/update-role/";
+        let idsession = 0;
         $.getJSON(
             "http://localhost:8080/masa/api/user-management/get-user-by-role/mentor",
             function (data) {
                 let htmlElements = "";
                 const arr = data["users"];
                 arr.forEach((element) => {
+                    const urlHref = "http://localhost:8080/masa/api/user-management/update-role/";
+
                     i++;
+                    idsession = element.id;
                     htmlElements +=
                         '<tr>'
                         +'<td id="index" style="font-size: 20px; color: black; text-align: center">'+i+'</td>'
@@ -130,7 +128,36 @@ template use File | Settings | File Templates. --%> <%@ page
                         +'<td id="status" style="font-size: 20px; color: black">'
                         +element.status.status
                         +'</td>'
-                        +'<td><button style="background-color: orange; width: 100px; height: 30px; border-radius: 20px !important; font-weight: 300 !important" onclick="mentorToGuest()">UPDATE</button></td>'
+                        +'<td>'
+                        +'<div style="background-color: orange; width: 90px; height: 30px; border-radius: 25px; padding-top: 7px; padding-left: 25px">'
+                        +'<a href="" onClick="(function(){'
+                        +'const varToString = varObj => Object.keys(varObj)[0];'
+                        +'const '+idsession+'=i;'
+                        +'const x = varToString({'+idsession+'});'
+                        +'const url = urlRole + x;'
+                        +'$.getJSON(url, function(data) {'
+                        +'console.log(data);'
+                        +'});'
+                        +'})();return false;">'
+                        +'<button>ROLE</button>'
+                        +'</a>'
+                        +'</div>'
+                        +'</td>'
+                        +'<td>'
+                        +'<div style="background-color: black; width: 90px; height: 30px; border-radius: 25px; padding-top: 7px; padding-left: 19px; font-weight: 300">'
+                        +'<a href="" onClick="(function(){'
+                        +'const varToString = varObj => Object.keys(varObj)[0];'
+                        +'const '+idsession+'=i;'
+                        +'const x = varToString({'+idsession+'});'
+                        +'const url = urlStatus + x;'
+                        +'$.getJSON(url, function(data) {'
+                        +'console.log(data);'
+                        +'});'
+                        +'})();return false;">'
+                        +'<button>STATUS</button>'
+                        +'</a>'
+                        +'</div>'
+                        +'</td>'
                         +'</tr>';
                     // console.log(element);
                     let container = document.getElementById("container");
@@ -155,7 +182,8 @@ template use File | Settings | File Templates. --%> <%@ page
         <th scope="col" style="font-size: 20px; width: 330px">Full Name</th>
         <th scope="col" style="font-size: 20px">Role</th>
         <th scope="col" style="font-size: 20px">Status</th>
-        <th scope="col" style="font-size: 20px"></th>
+        <th scope="col" style="font-size: 20px">Update</th>
+        <th scope="col" style="font-size: 20px">Update </th>
     </tr>
     <tbody id="container">
     <%--        <tr>--%>
