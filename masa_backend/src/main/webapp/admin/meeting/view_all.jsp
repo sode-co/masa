@@ -93,6 +93,11 @@ contentType="text/html;charset=UTF-8" language="java" %>
                 Contact
               </a>
             </li>
+            <li class="nav-item" style="width: 80px;padding-left: 10px; background-color: #f68859; color: white; border-radius: 10px">
+              <a href="/masa/auth-management/signout">
+                Log Out
+              </a>
+            </li>
           </ul>
         </div>
       </div>

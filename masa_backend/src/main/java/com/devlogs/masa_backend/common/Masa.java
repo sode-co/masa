@@ -57,7 +57,7 @@ public class Masa {
             }
 
             public static class GUEST {
-                public static String WELCOME = "guest/welcome/index.jsp";
+                public static String WELCOME = "guest/welcome/home.jsp";
             }
         }
 

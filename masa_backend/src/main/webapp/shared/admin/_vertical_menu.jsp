@@ -163,7 +163,7 @@
     <li><a class="profile" href="/masa/admin/user-management/manage_mentor.jsp"><i class="icon-user"></i>MANAGE MENTOR</a></li>
     <li class="selected"><a class="messages" href="/masa/admin/user-management/manage_guest.jsp"><i class="icon-bell"></i>MANAGE LECTURE<em>new</em></a></li>
     <li><a class="settings" href="/masa/admin/user-management/manage_student.jsp"><i class="icon-cog"></i>MANAGE STUDENT</a></li>
-    <li><a class="calendar" href="/masa/admin/meeting/manage_meeting.jsp"><i class="icon-calendar"></i>MANAGE MEETING</a></li>
+<%--    <li><a class="calendar" href="/masa/admin/meeting/view_all.jsp"><i class="icon-calendar"></i>MANAGE MEETING</a></li>--%>
 <%--    <li><a class="logout" href="#"><i class="icon-signout"></i>LOGOUT</a></li>--%>
 </ul>
 
