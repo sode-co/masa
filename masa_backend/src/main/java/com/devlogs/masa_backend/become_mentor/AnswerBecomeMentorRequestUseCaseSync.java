@@ -1,10 +1,7 @@
 package com.devlogs.masa_backend.become_mentor;
 
 import com.devlogs.masa_backend.common.helper.MasaLog;
-import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
-import com.devlogs.masa_backend.domain.entities.RequestEntity;
-import com.devlogs.masa_backend.domain.entities.UserEntity;
-import com.devlogs.masa_backend.domain.entities.UserRole;
+import com.devlogs.masa_backend.domain.entities.*;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.ports.BecomeMentorRequestRepository;
 
@@ -46,19 +43,21 @@ public class AnswerBecomeMentorRequestUseCaseSync {
         this.platformRepository = platformRepository;
     }
 
-    public Result executes (String requestId, String zoom, String meet, String userId, RequestEntity.STATUS answer) {
+    public Result executes (String requestId, RequestEntity.STATUS answer) {
         try {
             MasaLog.normalLog("Answer become request with id: " + requestId);
-            RequestEntity request = requestRepository.getRequestById(requestId);
-            UserEntity user = userRepository.getUserById(userId);
+            BecomeMentorRequestEntity request = requestRepository.getRequestById(requestId);
+
+            if (request == null) {
+                return new Result.RequestNotFound();
+            }
+
+            UserEntity user = userRepository.getUserById(request.getUserId());
 
             if (user == null) {
                 return new Result.UserNotFound();
             }
 
-            if (request == null) {
-                return new Result.RequestNotFound();
-            }
 
             if (user.getRole().getType() != UserRole.TYPE.GUEST) {
                 return new Result.InvalidUserRole();
@@ -70,9 +69,9 @@ public class AnswerBecomeMentorRequestUseCaseSync {
 
             requestRepository.updateRequestStatus(requestId, answer);
             if (answer == RequestEntity.STATUS.APPROVED) {
-                userRepository.updateUserRole(userId, new UserRole(UserRole.TYPE.MENTOR));
-                platformRepository.addPlatform(new MeetingPlatform(MeetingPlatform.PLATFORM.GOOGLE_MEET,userId, meet));
-                platformRepository.addPlatform(new MeetingPlatform(MeetingPlatform.PLATFORM.ZOOM,userId, zoom));
+                userRepository.updateUserRole(request.getUserId(), new UserRole(UserRole.TYPE.MENTOR));
+                platformRepository.addPlatform(new MeetingPlatform(MeetingPlatform.PLATFORM.GOOGLE_MEET,request.getUserId(), request.getMeetUrl()));
+                platformRepository.addPlatform(new MeetingPlatform(MeetingPlatform.PLATFORM.ZOOM,request.getUserId(), request.getZoomUrl()));
             }
             return new Result.Success();
         } catch (ConnectionException e) {

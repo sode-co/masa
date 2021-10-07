@@ -26,6 +26,7 @@ import java.util.stream.Collectors;
 
 import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.*;
 
+
 @AccessRole(roles = {ADMIN, MENTOR,STUDENT})
 @WebServlet(name = "createmeetingquestion", urlPatterns = {"/api/meeting_question/create"})
 public class CreateMeetingQuestionServlet extends BaseHttpServlet {
@@ -42,8 +43,10 @@ public class CreateMeetingQuestionServlet extends BaseHttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         RequestHelper requestHelper = getRequestComponent().getRequestHelper();
         ResponseHelper responseHelper = getRequestComponent().getResponseHelper();
+
         RequestHelper.ValidateResult<CreateMeetingQuestionReq> validatorResult = requestHelper.getRequestBody(CreateMeetingQuestionReq.class);
 
         if (!validatorResult.isValid()) {
@@ -53,6 +56,32 @@ public class CreateMeetingQuestionServlet extends BaseHttpServlet {
         CreateMeetingQuestionReq reqBody = validatorResult.getValidReqBody();
         MasaLog.normalLog("Start create metting question");
         createMeetingQuestion(reqBody, resp);
+
+
+
+
+
+
+        Student student = new Student(); //json
+        Human human = student; // txt
+
+
+
+
+
+        student = (Student) human;
+//      human.name;
+//      student.className;
+
+
+
+
+
+
+
+
+
+
 
     }
 
@@ -74,4 +103,13 @@ public class CreateMeetingQuestionServlet extends BaseHttpServlet {
             return;
         }
     }
+}
+
+
+class Human {
+    public String name;
+}
+
+class Student extends Human {
+    public String className;
 }
