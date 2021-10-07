@@ -288,8 +288,12 @@ public class UserRepositoryImp implements UserRepository {
         try {
             List<UserDto> list = dao.getUserByName(name);
                 for (UserDto dto : list) {
-                    result.add(convertDto(dto));
+                    // get all users except admin
+                    if (dto.getRole_ID() != 1) {
+                        result.add(convertDto(dto));
+                    }
                 }
+
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
         } catch (ClassNotFoundException ex) {
