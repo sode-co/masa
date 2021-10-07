@@ -36,7 +36,7 @@ public class TopicDAO {
     public TopicDTO getTopicByTitle(String title) throws SQLException, ClassNotFoundException {
         try (Connection con = dbHelper.connect()) {
             PreparedStatement ctm = con.prepareStatement("SELECT ID, TITLE " +
-                    "FROM Topics WHERE title=? ;");
+                    "FROM Topics WHERE UPPER(TITLE)=UPPER(?) ;");
             ctm.setString(1, title);
             ResultSet result = ctm.executeQuery();
             while (result.next()) {
