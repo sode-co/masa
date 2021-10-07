@@ -204,8 +204,10 @@ public class UserRepositoryImp implements UserRepository {
             List<UserDto> list = dao.getAllUsers();
             if (list.size() != 0) {
                 for (UserDto dto : list) {
+                    // get all users except admin
+                    if (dto.getRole_ID() != 1) {
                         result.add(convertDto(dto));
-
+                    }
                 }
             }
         } catch (SQLException ex) {

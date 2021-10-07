@@ -1,6 +1,8 @@
 package com.devlogs.masa_backend.manage;
 
+import com.devlogs.masa_backend.common.helper.MasaLog;
 import com.devlogs.masa_backend.domain.entities.UserEntity;
+import com.devlogs.masa_backend.domain.entities.UserRole;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
 import com.devlogs.masa_backend.repository.user.UserRepositoryImp;
@@ -23,6 +25,8 @@ public class GetAllUserUserCase {
     }
 
     private UserRepository userRepository;
+
+
 
     @Inject
     public GetAllUserUserCase(UserRepository userRepository) {
