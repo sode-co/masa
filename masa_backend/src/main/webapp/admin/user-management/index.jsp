@@ -27,6 +27,14 @@ To change this template use File | Settings | File Templates. --%> <%@ page
             rel="stylesheet"
             href="path/to/font-awesome/css/font-awesome.min.css"
     />
+    <script>
+        function logout(){
+            console.log('test');
+            $.getJSON("http://localhost:8080/masa/auth-management/signout", function(data) {
+            console.log(data);
+            });
+        }
+    </script>
 </head>
 <body>
 <!-- Navigation -->
@@ -64,7 +72,7 @@ To change this template use File | Settings | File Templates. --%> <%@ page
                 "
                             href="/masa/admin/user-management/index.jsp"
                     >
-                        User Management
+                        All Users Management
                     </a>
                 </li>
                 <li class="nav-item">
@@ -80,7 +88,7 @@ To change this template use File | Settings | File Templates. --%> <%@ page
                   mx-1.5
                   sm:mx-6
                 "
-                            href="/masa/admin/meeting/view_all.jsp"
+                            href="/masa/admin/meeting/manage_meeting.jsp"
                     >
                         Meeting Management
                     </a>
@@ -98,16 +106,20 @@ To change this template use File | Settings | File Templates. --%> <%@ page
                   mx-1.5
                   sm:mx-6
                 "
-                            href="#footer"
-                    >
+                    href="#footer"
+                    onClick="logout()">
                         Contact
                     </a>
+                </li>
+                <li class="nav-item" style="width: 80px;padding-left: 10px; background-color: #f68859; color: white; border-radius: 10px">
+                   <a href="/masa/auth-management/signout">
+                            Log Out
+                   </a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-
 
 <div class="flex flex-wrap w-full mb-8">
     <div class="w-full mb-6 lg:mb-0 sm:ml-20">

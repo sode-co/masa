@@ -64,7 +64,7 @@ To change this template use File | Settings | File Templates. --%> <%@ page
                 "
                             href="/masa/admin/user-management/index.jsp"
                     >
-                        User Management
+                        All Users Management
                     </a>
                 </li>
                 <li class="nav-item">
@@ -101,6 +101,11 @@ To change this template use File | Settings | File Templates. --%> <%@ page
                             href="#footer"
                     >
                         Contact
+                    </a>
+                </li>
+                <li class="nav-item" style="width: 80px;padding-left: 10px; background-color: #f68859; color: white; border-radius: 10px">
+                    <a href="/masa/auth-management/signout">
+                        Log Out
                     </a>
                 </li>
             </ul>
