@@ -21,15 +21,8 @@ import="com.devlogs.masa_backend.common.Masa"%>
   </head>
   <body>
     ${param.fullName} want to become a mentor
-
-    <form action="/masa/api/admin/request-management/response">
-      <input type="hidden" value="${param.id}" name="id" />
-      <input type="hidden" value="${param.userId}" name="userId" />
-      <input type="hidden" value="${param.meet}" name="meet" />
-      <input type="hidden" value="${param.zoom}" name="zoom" />
-      <input type="submit" value="Denied" name="btAnswer" />
-      <input type="submit" value="Accept" name="btAnswer" />
-    </form>
+      <a href="/masa/api/admin/request-management/response/${param.id}?answer=accept">Accept</a>
+      <a href=/masa/api/admin/request-management/response/${param.id}?answer=denied">Denied</a>
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
