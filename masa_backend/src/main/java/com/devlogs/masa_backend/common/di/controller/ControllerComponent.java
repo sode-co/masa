@@ -91,6 +91,8 @@ public interface ControllerComponent {
     void inject(GetUserByNameServlet getUserByNameServlet);
 
     void inject(UpdateUserStatusServlet updateUserStatusServlet);
+
+    void inject(GetMeetingsByTopicNameServlet getMeetingsByTopicNameServlet);
 }
 
 
