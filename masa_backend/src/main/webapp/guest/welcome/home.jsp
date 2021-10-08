@@ -1,20 +1,9 @@
-<%-- Created by IntelliJ IDEA. User: dangminhtien Date: 17/09/2021 Time: 16:50
+<%-- Created by IntelliJ IDEA. User: dangminhtien Date: 17/09/2021 Time: 14:28
 To change this template use File | Settings | File Templates. --%> <%@ page
-        contentType="text/html;charset=UTF-8" language="java" %> <%@ page
-        import="com.devlogs.masa_backend.common.Masa"%>
+        contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%--
-    <link rel="shortcut icon" href="${Masa.ICON_URL}" />
-    --%> <%--
-    <link rel="shortcut icon" href="${Masa.ICON_URL}" />
-    --%>
-    <title>Admin Page</title>
-    <style>
-        body {
-            background-color: black;
-        }
-    </style>
+    <title>All Meeting</title>
     <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -30,6 +19,7 @@ To change this template use File | Settings | File Templates. --%> <%@ page
 </head>
 <body>
 <!-- Navigation -->
+
 <nav
         class="relative flex flex-wrap items-center justify-between px-2 py-3 mb-3 bg-white "
 >
@@ -62,27 +52,9 @@ To change this template use File | Settings | File Templates. --%> <%@ page
                   sm:mx-6
                   hover:text-gray-800
                 "
-                            href="/masa/admin/user-management/index.jsp"
+                            href="/masa/guest/welcome/index.jsp"
                     >
-                        All Users Management
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a
-                            class="
-                  font-sans
-                  text-2xl
-                  font-semibold
-                  border-b-2 border-transparent
-                  hover:text-gray-800
-                  dark:hover:text-gray-200
-                  hover:border-green-800 hover:no-underline
-                  mx-1.5
-                  sm:mx-6
-                "
-                            href="/masa/admin/meeting/view_all.jsp"
-                    >
-                        Meeting Management
+                        Register Become Mentor
                     </a>
                 </li>
                 <li class="nav-item">
@@ -112,43 +84,17 @@ To change this template use File | Settings | File Templates. --%> <%@ page
         </div>
     </div>
 </nav>
-
-
-<div class="flex flex-wrap w-full mb-8">
-    <div class="w-full mb-6 lg:mb-0 sm:ml-20">
-        <h1
-                class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font"
-        >
-        </h1>
-        <div class="w-20 h-1 bg-green-500 rounded"></div>
-    </div>
 </div>
-
+</nav>
 <!-- End of navigation -->
-
 <!-- Noti -->
-<div
-        class="container flex items-center mx-auto bg-green-100 rounded-md h-96"
-        style="padding: 10px"
->
-    <div  style="margin-left: 50px" >
-        <%@ include file="../../shared/admin/_vertical_menu.jsp"%>
-    </div>
-    <div class="text-center sm:ml-20 text-gray-50 sm:text-left"" >
-    <h1 class="mb-7 text-5xl font-bold text-green-800" style="width: 700px !important;">ADMINISTRATOR PAGE</h1>
-</div>
-<br/>
-</div>
+<!-- Welcome -->
 
+
+
+<!-- End of Welcome -->
 <!-- End of noti -->
-<div style="margin-left: 1000px; margin-top: -70px">
-    <%@ include file="../../shared/admin/_search_bar.jsp"%>
-</div>
-
-
-<div>
-    <%@ include file="../../shared/user/_view_all_guest.jsp"%>
-</div>
+<%@ include file="../../shared/meeting/_admin_view_all_meeting.jsp"%>
 <!-- Footer -->
 <footer
         class="relative pt-1 bg-white border-b-2 border-blue-700 footer"
