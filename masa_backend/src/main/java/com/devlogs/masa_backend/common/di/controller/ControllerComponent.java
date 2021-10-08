@@ -30,6 +30,7 @@ import com.devlogs.masa_backend.servlets.usermanagement.*;
 
 //import com.devlogs.masa_backend.servlets.usermanagement.UpdateUserRoleServlet;
 
+import com.devlogs.masa_backend.servlets.usermanagement.get_user_from_request.GetUserFromRequestProcessingServlet;
 import dagger.Subcomponent;
 
 @Subcomponent (modules = {DataModule.class, RepositoryModule.class, ApiModule.class})
@@ -93,6 +94,8 @@ public interface ControllerComponent {
     void inject(UpdateUserStatusServlet updateUserStatusServlet);
 
     void inject(GetMeetingsByTopicNameServlet getMeetingsByTopicNameServlet);
+
+    void inject(GetUserFromRequestProcessingServlet getUserFromRequestProcessingServlet);
 }
 
 
