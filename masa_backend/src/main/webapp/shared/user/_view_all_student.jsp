@@ -100,10 +100,10 @@ template use File | Settings | File Templates. --%> <%@ page
         const urlStatus="http://localhost:8080/masa/api/user-management/update-status/";
         const urlRole=" http://localhost:8080/masa/api/user-management/update-role/";
         let idsession = 0;
+        let htmlElements = "";
         $.getJSON(
             "http://localhost:8080/masa/api/user-management/get-user-by-role/student",
             function (data) {
-                let htmlElements = "";
                 const arr = data["users"];
                 arr.forEach((element) => {
                     const urlHref = "http://localhost:8080/masa/api/user-management/update-role/";
@@ -143,6 +143,72 @@ template use File | Settings | File Templates. --%> <%@ page
                         +'</a>'
                         +'</div>'
                         +'</td>'
+                        +'<td>'
+                        +'</td>'
+                        +'</tr>';
+                    // console.log(element);
+                    // let container = document.getElementById("container");
+                    // container.innerHTML = htmlElements;
+                });
+            }
+        );
+        $.getJSON(
+            "http://localhost:8080/masa/api/user-management/get-user-by-role/member",
+            function (data) {
+                const arr = data["users"];
+                arr.forEach((element) => {
+                    const urlHref = "http://localhost:8080/masa/api/user-management/update-role/";
+
+                    i++;
+                    idsession = element.id;
+                    htmlElements +=
+                        '<tr>'
+                        +'<td id="index" style="font-size: 20px; color: black; text-align: center">'+i+'</td>'
+                        +'<td id="id" style="font-size: 20px; color: black">'
+                        +element.id
+                        +'</td>'
+                        +'<td id="email" style="font-size: 20px; color: black">'
+                        +element.email
+                        +'</td>'
+                        +'<td id="fullName" style="font-size: 20px; color: black">'
+                        +element.fullName
+                        +'</td>'
+                        +'<td id="role" style="font-size: 20px; color: black">'
+                        +element.role.type
+                        +'</td>'
+                        +'<td id="status" style="font-size: 20px; color: black">'
+                        +element.status.status
+                        +'</td>'
+                        +'<td>'
+                        +'<div style="background-color: black; width: 90px; height: 30px; border-radius: 25px; padding-top: 7px; padding-left: 19px; font-weight: 300">'
+                        +'<a href="" onClick="(function(){'
+                        +'const varToString = varObj => Object.keys(varObj)[0];'
+                        +'const '+idsession+'=i;'
+                        +'const x = varToString({'+idsession+'});'
+                        +'const url = urlStatus + x;'
+                        +'$.getJSON(url, function(data) {'
+                        +'console.log(data);'
+                        +'});'
+                        +'})();return false;">'
+                        +'<button>STATUS</button>'
+                        +'</a>'
+                        +'</div>'
+                        +'</td>'
+                        +'<td>'
+                        +'<div style="background-color: orange; width: 90px; height: 30px; border-radius: 25px; padding-top: 7px; padding-left: 25px">'
+                        +'<a href="" onClick="(function(){'
+                        +'const varToString = varObj => Object.keys(varObj)[0];'
+                        +'const '+idsession+'=i;'
+                        +'const x = varToString({'+idsession+'});'
+                        +'const url = urlRole + x;'
+                        +'$.getJSON(url, function(data) {'
+                        +'console.log(data);'
+                        +'});'
+                        +'})();return false;">'
+                        +'<button>ROLE</button>'
+                        +'</a>'
+                        +'</div>'
+                        +'</td>'
                         +'</tr>';
                     // console.log(element);
                     let container = document.getElementById("container");
@@ -150,6 +216,7 @@ template use File | Settings | File Templates. --%> <%@ page
                 });
             }
         );
+        console.log(htmlElements);
     </script>
     <script></script>
     </div>
@@ -167,6 +234,7 @@ template use File | Settings | File Templates. --%> <%@ page
         <th scope="col" style="font-size: 20px; width: 330px">Full Name</th>
         <th scope="col" style="font-size: 20px">Role</th>
         <th scope="col" style="font-size: 20px">Status</th>
+        <th scope="col" style="font-size: 20px">Update </th>
         <th scope="col" style="font-size: 20px">Update </th>
     </tr>
     <tbody id="container">
