@@ -39,8 +39,8 @@ public class GetUserByRoleUserCase {
         UserRole role;
         if (roleName.equalsIgnoreCase("MENTOR")){
             role = new UserRole(UserRole.TYPE.MENTOR);
-        } else if (roleName.equalsIgnoreCase("GUEST")) {
-            role = new UserRole(UserRole.TYPE.GUEST);
+        } else if (roleName.equalsIgnoreCase("MEMBER")) {
+            role = new UserRole(UserRole.TYPE.MEMBER);
         } else if  (roleName.equalsIgnoreCase("ADMIN")) {
             role = new UserRole(UserRole.TYPE.ADMIN);
         } else if  (roleName.equalsIgnoreCase("STUDENT")) {

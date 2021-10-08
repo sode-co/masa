@@ -69,7 +69,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   mx-1.5
                   sm:mx-6
                 "
-                href="/masa/student/meeting/index.jsp"
+                href="/masa/member/meeting/index.jsp"
               >
                 View new meeting
               </a>

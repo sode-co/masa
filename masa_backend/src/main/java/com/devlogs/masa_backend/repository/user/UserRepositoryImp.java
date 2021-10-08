@@ -6,7 +6,6 @@ import com.devlogs.masa_backend.data.remote_database.UserDto;
 import com.devlogs.masa_backend.domain.entities.UserEntity;
 import com.devlogs.masa_backend.domain.entities.UserRole;
 import com.devlogs.masa_backend.domain.entities.UserStatus;
-import com.devlogs.masa_backend.domain.errors.AlreadyExistException;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.errors.NotFoundException;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
@@ -15,7 +14,6 @@ import com.google.gson.Gson;
 import org.apache.http.client.fluent.Request;
 
 import javax.inject.Inject;
-import javax.xml.registry.infomodel.User;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -111,7 +109,7 @@ public class UserRepositoryImp implements UserRepository {
                 roleId = 4;
                 break;
             }
-            case GUEST: {
+            case MEMBER: {
                 roleId = 3;
                 break;
             }
@@ -250,7 +248,7 @@ public class UserRepositoryImp implements UserRepository {
                 roleId = 4;
                 break;
             }
-            case GUEST: {
+            case MEMBER: {
                 roleId = 3;
                 break;
             }

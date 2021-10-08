@@ -69,7 +69,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   mx-1.5
                   sm:mx-6
                 "
-                href='/masa/student/meeting/followed_meeting.jsp'
+                href='/masa/member/meeting/followed_meeting.jsp'
               >
                 View followed meeting
               </a>

@@ -56,10 +56,10 @@ public class RoleFilter extends BaseServletFilter {
                             break;
                         }
                         case STUDENT: {
-                            response.sendRedirect(Masa.PAGE.STUDENT.MEETING_PAGE);
+                            response.sendRedirect(Masa.PAGE.MEMBER.MEETING_PAGE);
                             break;
                         }
-                        case GUEST: {
+                        case MEMBER: {
                             response.sendRedirect(Masa.PAGE.GUEST.WELCOME);
                             break;
                         }

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@AccessRole(roles = {UserRole.TYPE.STUDENT, UserRole.TYPE.ADMIN, UserRole.TYPE.MENTOR, UserRole.TYPE.GUEST})
+@AccessRole(roles = {UserRole.TYPE.STUDENT, UserRole.TYPE.ADMIN, UserRole.TYPE.MENTOR, UserRole.TYPE.MEMBER})
 @WebServlet(name = "getalltopicservlet", urlPatterns = {"/api/topic-management/all"})
 public class GetAllTopicsServlet extends BaseHttpServlet {
 

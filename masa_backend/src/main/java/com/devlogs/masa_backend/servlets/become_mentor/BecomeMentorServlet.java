@@ -15,11 +15,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.*;
 
-@AccessRole(roles = {GUEST})
+@AccessRole(roles = {MEMBER})
 @WebServlet(name = "BecomeMentorServlet", urlPatterns = "/api/mentor-management/become-mentor/*")
 public class BecomeMentorServlet extends BaseHttpServlet {
 

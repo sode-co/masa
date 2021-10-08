@@ -42,8 +42,8 @@ public class Masa {
                     public static final String DENIED_PAGE = "auth/permission-management/permission-denied/index.jsp";
                 }
             }
-            public static class STUDENT {
-                public static String MEETING_PAGE = "student/meeting/index.jsp";
+            public static class MEMBER {
+                public static String MEETING_PAGE = "member/meeting/index.jsp";
             }
             public static class ADMIN {
                 public static class REQUEST_MANAGEMENT {

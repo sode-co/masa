@@ -50,12 +50,9 @@ public class LoginServlet extends BaseHttpServlet {
                 response.sendRedirect(PAGE.ADMIN.USER_MANAGEMENT_PAGE);
                 break;
             }
-            case STUDENT: {
-                response.sendRedirect(PAGE.STUDENT.MEETING_PAGE);
-                break;
-            }
-            case GUEST: {
-                response.sendRedirect(PAGE.GUEST.WELCOME);
+            case STUDENT:
+            case MEMBER: {
+                response.sendRedirect(PAGE.MEMBER.MEETING_PAGE);
                 break;
             }
             case MENTOR: {

@@ -39,7 +39,7 @@ public class GetUserByRoleServlet extends BaseHttpServlet {
             if (    param.equalsIgnoreCase("MENTOR"   )
                     || param.equalsIgnoreCase("ADMIN" )
                     ||param.equalsIgnoreCase("STUDENT")
-                    || param.equalsIgnoreCase("GUEST" ) ) {
+                    || param.equalsIgnoreCase("MEMBER")) {
                 return true;
             }
             return false;

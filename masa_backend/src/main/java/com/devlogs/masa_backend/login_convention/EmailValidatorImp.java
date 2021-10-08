@@ -28,7 +28,7 @@ public class EmailValidatorImp implements EmailValidator {
             userRole = new UserRole(UserRole.TYPE.STUDENT);
             // Staff or Lecturer
         } else {
-            userRole = new UserRole(UserRole.TYPE.GUEST);
+            userRole = new UserRole(UserRole.TYPE.MEMBER);
         }
 
         return new Result(userRole, true);

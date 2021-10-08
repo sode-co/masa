@@ -59,7 +59,7 @@ public class AnswerBecomeMentorRequestUseCaseSync {
             }
 
 
-            if (user.getRole().getType() != UserRole.TYPE.GUEST) {
+            if (user.getRole().getType() != UserRole.TYPE.MEMBER) {
                 return new Result.InvalidUserRole();
             }
 

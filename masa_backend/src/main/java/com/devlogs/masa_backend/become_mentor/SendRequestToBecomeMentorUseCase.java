@@ -75,7 +75,7 @@ public class SendRequestToBecomeMentorUseCase {
             if (user.getRole().getType() == UserRole.TYPE.MENTOR) {
                 return new UserAlreadyAMentor();
             }
-            else if(user.getRole().getType() != UserRole.TYPE.GUEST) {
+            else if(user.getRole().getType() != UserRole.TYPE.MEMBER) {
                 return new OnlyGuestCanBecomeMentor();
             }
             // check platform

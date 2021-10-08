@@ -2,7 +2,7 @@ package com.devlogs.masa_backend.domain.entities;
 
 public class UserRole {
     public enum TYPE {
-        ADMIN, STUDENT, GUEST, MENTOR
+        ADMIN, STUDENT, MEMBER, MENTOR
     }
 
     private TYPE type;
