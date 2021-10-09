@@ -80,6 +80,25 @@ contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri =
                 class="px-5 py-2 font-sans text-2xl font-semibold leading-5 text-white bg-green-500 rounded-full  hover:no-underline hover:text-white text-md"
                 href="/masa/auth-management/signout"
               >
+
+                Contact
+              </a>
+            </li>
+            <li class="nav-item">
+              <c:if test = "${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MEMBER}'}">
+              <a
+                      class="
+                  font-sans
+                  text-2xl
+                  font-semibold
+                "
+                      href="/masa/member/registermentor.jsp"
+                      style="background-color: #117e5b; color: white; border-radius: 10px"
+              ><button style="width: 200px;">Register become mentor</button></a>
+            </c:if>
+            </li>
+            <li class="nav-item" style="width: 80px;padding-left: 10px; background-color: #f68859; color: white; border-radius: 10px">
+              <a style="color: white; font-size: 14px; padding: 2px" href="/masa/auth-management/signout">
                 Log Out
               </a>
             </li>
@@ -94,8 +113,20 @@ contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri =
     >
       <div class="text-center sm:ml-20 text-gray-50 sm:text-left">
         <h1 class="mb-4 text-5xl font-bold text-green-800">
-          Hello Student! <br />
+          Hi ${sessionScope.CURRENT_USER.fullName}! <br />
         </h1>
+        <c:if test = "${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MEMBER}'}">
+          <a
+                  class="
+                  font-sans
+                  text-4xl
+                  font-semibold
+                "
+                  href="/masa/member/registermentor.jsp"
+                  style="background-color: #ff3206; color: white; border-radius: 10px"
+          ><button style="width: 300px; height: 40px; ">Register become mentor</button></a>
+          <hr/>
+        </c:if>
         <p class="inline-block text-2xl text-gray-600 sm:block">
           Many interesting meetings are coming up....
         </p>

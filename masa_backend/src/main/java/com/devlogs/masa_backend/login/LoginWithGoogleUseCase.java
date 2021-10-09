@@ -1,6 +1,5 @@
 package com.devlogs.masa_backend.login;
 
-
 import com.devlogs.masa_backend.domain.ports.UserRepository;
 import com.devlogs.masa_backend.domain.ports.google_api.GoogleGetUserEndpoint;
 import com.devlogs.masa_backend.domain.ports.google_api.GooglePojo;
@@ -27,6 +26,7 @@ public class LoginWithGoogleUseCase {
 
         public static class AuthError extends Result {
         }
+
         public static class GeneralError extends Result {
         }
     }
@@ -38,7 +38,6 @@ public class LoginWithGoogleUseCase {
 
     @Inject
     public LoginWithGoogleUseCase(GoogleGetUserEndpoint loginApi, UserRepository userRepository, EmailValidator emailValidator) {
-
         this.googleGetUserEndpoint = loginApi;
         this.userRepository = userRepository;
         this.emailValidator = emailValidator;
@@ -46,7 +45,6 @@ public class LoginWithGoogleUseCase {
 
     public Result executes(String googleAccessToken) {
         try {
-
             GoogleGetUserEndpoint.Result getUserResult = googleGetUserEndpoint.getUser(googleAccessToken);
 
             if (getUserResult instanceof GoogleGetUserEndpoint.Result.AuthError) {

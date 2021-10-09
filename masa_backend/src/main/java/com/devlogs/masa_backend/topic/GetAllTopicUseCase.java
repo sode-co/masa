@@ -21,7 +21,7 @@ public class GetAllTopicUseCase {
         }
     }
 
-    private TopicRepository topicRepository;
+    private final TopicRepository topicRepository;
     @Inject
     public GetAllTopicUseCase(TopicRepository topicRepository) {
         this.topicRepository = topicRepository;

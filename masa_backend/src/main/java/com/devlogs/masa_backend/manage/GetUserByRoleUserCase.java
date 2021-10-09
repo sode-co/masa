@@ -4,7 +4,6 @@ import com.devlogs.masa_backend.domain.entities.UserEntity;
 import com.devlogs.masa_backend.domain.entities.UserRole;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
-
 import javax.inject.Inject;
 import java.util.List;
 
