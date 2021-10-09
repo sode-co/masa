@@ -352,8 +352,11 @@
 <h1 style="display: none" id="current-user">${sessionScope.CURRENT_USER.id}</h1>
 <div class="container text-center createform">
     <div class="row">
-        <div class="col-sm-8" style="font-size: 50px; font-weight: bolder; color: black;">
-            Share your sharing here
+        <div class="col-sm-8" style="font-size: 25px; font-weight: bolder; color: black;">
+            Dear ${sessionScope.CURRENT_USER.fullName},
+        </div>
+        <div class="col-sm-8" style="font-size: 20px; font-weight: bold; color: black;">
+            Power is gained by sharing knowledge not hoarding it!
         </div>
     </div>
     <br/>
@@ -477,7 +480,7 @@
 
         <div class="text-center row">
             <div class="col-sm-9">
-                <button onclick="jsonCreate()" class="btn btn-dark" style="background-color: #4ac496; color: white; font-size: 30px">Create Meeting!</button>
+                <button onclick="jsonCreate()" class="btn btn-dark" style="background-color: #3051a2; color: white; font-size: 20px; border-radius: 10px">Create Meeting!</button>
             </div>
         </div>
     </div>

@@ -83,6 +83,18 @@ template use File | Settings | File Templates. --%> <%@ page
 
     </style>
     <script>
+        let urlTable = "http://localhost:8080/masa/api/user-management/all";
+        if(location.search.replace('?name=','')===''){
+            urlTable = "http://localhost:8080/masa/api/user-management/all";
+        }else{
+            urlTable = "http://localhost:8080/masa/api/user-management/get-user-by-name/"+location.search.replace('?name=','').replace('%20',' ');
+        }
+        function search(){
+            if(document.getElementById('namesearch').value===''){
+                location.replace("http://localhost:8080/masa/admin/user-management/index.jsp?name="+document.getElementById('namesearch').value);
+            }
+            location.replace("http://localhost:8080/masa/admin/user-management/index.jsp?name="+document.getElementById('namesearch').value);
+        }
     </script>
 </head>
 <body>
@@ -90,18 +102,21 @@ template use File | Settings | File Templates. --%> <%@ page
     <div class="container px-5 py-5 mx-auto" id="divinfo">
         <div style="width: 1000px">
             <h1 class="mb-2 text-9xl font-bold text-gray-1000 sm:text-4xl title-font" style="width: 1330px !important;">
-                All LECTURERs In Masa System
+                All USERS In Masa System
             </h1>
         </div>
     </div>
+    <input type="text"  id="namesearch" placeholder="Enter user's name..." style="border-radius: 7px; width: 300px; height: 30px; padding-left: 15px">
+    <button onclick="search()"><i class="icon-search"></i></button>
     <script>
         const container = document.getElementById("container");
         let i = 0;
         const urlStatus="http://localhost:8080/masa/api/user-management/update-status/";
         const urlRole=" http://localhost:8080/masa/api/user-management/update-role/";
         let idsession = 0;
+        // let urlTable ="http://localhost:8080/masa/api/user-management/all";
         $.getJSON(
-            "http://localhost:8080/masa/api/user-management/all",
+            urlTable,
             function (data) {
                 let htmlElements = "";
                 const arr = data["users"];

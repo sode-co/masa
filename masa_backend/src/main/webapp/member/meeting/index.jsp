@@ -94,21 +94,16 @@ To change this template use File | Settings | File Templates. --%>
               </a>
             </li>
             <li class="nav-item">
-              <c:if test = "${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=STUDENT}'}">
+              <c:if test = "${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MEMBER}'}">
               <a
                       class="
                   font-sans
                   text-2xl
                   font-semibold
-                  border-b-2 border-transparent
-                  hover:text-gray-800
-                  dark:hover:text-gray-200
-                  hover:border-green-800 hover:no-underline
-                  mx-1.5
-                  sm:mx-6
                 "
                       href="/masa/member/registermentor.jsp"
-              >Register become mentor</a>
+                      style="background-color: #117e5b; color: white; border-radius: 10px"
+              ><button style="width: 200px;">Register become mentor</button></a>
             </c:if>
             </li>
             <li class="nav-item" style="width: 80px;padding-left: 10px; background-color: #f68859; color: white; border-radius: 10px">
@@ -127,8 +122,20 @@ To change this template use File | Settings | File Templates. --%>
     >
       <div class="text-center sm:ml-20 text-gray-50 sm:text-left">
         <h1 class="mb-4 text-5xl font-bold text-green-800">
-          Hello Student! <br />
+          Hi ${sessionScope.CURRENT_USER.fullName}! <br />
         </h1>
+        <c:if test = "${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MEMBER}'}">
+          <a
+                  class="
+                  font-sans
+                  text-4xl
+                  font-semibold
+                "
+                  href="/masa/member/registermentor.jsp"
+                  style="background-color: #ff3206; color: white; border-radius: 10px"
+          ><button style="width: 300px; height: 40px; ">Register become mentor</button></a>
+          <hr/>
+        </c:if>
         <p class="inline-block text-2xl text-gray-600 sm:block">
           Many interesting meetings are coming up....
         </p>
