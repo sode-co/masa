@@ -1,6 +1,7 @@
 <%-- Created by IntelliJ IDEA. User: dangminhtien Date: 17/09/2021 Time: 14:28
-To change this template use File | Settings | File Templates. --%> <%@ page
-contentType="text/html;charset=UTF-8" language="java" %>
+To change this template use File | Settings | File Templates. --%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
   <head>
     <title>Student Meeting</title>
@@ -90,6 +91,29 @@ contentType="text/html;charset=UTF-8" language="java" %>
                 href="#footer"
               >
                 Contact
+              </a>
+            </li>
+            <li class="nav-item">
+              <c:if test = "${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=STUDENT}'}">
+              <a
+                      class="
+                  font-sans
+                  text-2xl
+                  font-semibold
+                  border-b-2 border-transparent
+                  hover:text-gray-800
+                  dark:hover:text-gray-200
+                  hover:border-green-800 hover:no-underline
+                  mx-1.5
+                  sm:mx-6
+                "
+                      href="/masa/member/registermentor.jsp"
+              >Register become mentor</a>
+            </c:if>
+            </li>
+            <li class="nav-item" style="width: 80px;padding-left: 10px; background-color: #f68859; color: white; border-radius: 10px">
+              <a style="color: white; font-size: 14px; padding: 2px" href="/masa/auth-management/signout">
+                Log Out
               </a>
             </li>
           </ul>
