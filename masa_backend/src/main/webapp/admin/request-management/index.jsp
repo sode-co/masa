@@ -11,40 +11,29 @@
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
-            let arrRequests =  new Array();
-            let arrUserRequests =  new Array();
-            let m = new Array();
-            $.getJSON(
-                "http://localhost:8080/masa/api/request-management/requests",
-                function (data) {
-                    const arr = data["requests"];
-                    let m1 = new Map();
-                    arr.forEach((element) => {
-                        if(element.status==="PROCESSING"){
-                            console.log('PROCESSING', element)
-                            arrRequests.push(element);
-                            m.push(element);
-                        }
-                    });
-                }
-            )
+            let result =  new Array();
             $.getJSON(
                 "http://localhost:8080/masa/api/user-management/get_user_in_processing",
                 function (data) {
                     const arr = data["userEntities"];
                     arr.forEach((element) => {
-                        arrUserRequests.push(element);
-                        m.push(element);
+                        $.getJSON(
+                            "http://localhost:8080/masa/api/request-management/requests",
+                            function (data2) {
+                                const arr2 = data2["requests"];
+                                arr2.forEach((element2) => {
+                                    console.log(element2.userId);
+                                    console.log(element.id);
+                                    if(element2.userId===element.id){
+                                        console.log(element, element2);
+                                        console.log('success');
+                                        console.log(Object.assign(element,element2));
+                                    }
+                                });
+                            });
                     });
-                }
-            )
-            console.log('map outside ',m);
-            console.log('arr outside ', arrRequests);
-            console.log('arr outside ', arrUserRequests);
-            for(let i=0; i<=arrRequests.length; i++){
-                console.log('test');
-                console.log(arrRequests);
-            }
+                });
+
 
 
         </script>

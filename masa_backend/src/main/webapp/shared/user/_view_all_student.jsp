@@ -238,9 +238,6 @@ template use File | Settings | File Templates. --%> <%@ page
         <th scope="col" style="font-size: 20px">Update </th>
     </tr>
     <tbody id="container">
-    <%--        <tr>--%>
-    <%--            <div id="container"></div>--%>
-    <%--        </tr>--%>
     </tbody>
     </thead>
 </table>
