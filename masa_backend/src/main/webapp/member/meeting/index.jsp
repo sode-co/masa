@@ -1,7 +1,7 @@
 <%-- Created by IntelliJ IDEA. User: dangminhtien Date: 17/09/2021 Time: 14:28
-To change this template use File | Settings | File Templates. --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+To change this template use File | Settings | File Templates. --%> <%@ page
+contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri =
+"http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
   <head>
     <title>Student Meeting</title>
@@ -70,49 +70,16 @@ To change this template use File | Settings | File Templates. --%>
                   mx-1.5
                   sm:mx-6
                 "
-                href='/masa/member/meeting/followed_meeting.jsp'
+                href="/masa/member/meeting/followed_meeting.jsp"
               >
                 View followed meeting
               </a>
             </li>
             <li class="nav-item">
               <a
-                class="
-                  font-sans
-                  text-2xl
-                  font-semibold
-                  border-b-2 border-transparent
-                  hover:text-gray-800
-                  dark:hover:text-gray-200
-                  hover:border-green-800 hover:no-underline
-                  mx-1.5
-                  sm:mx-6
-                "
-                href="#footer"
+                class="px-5 py-2 font-sans text-2xl font-semibold leading-5 text-white bg-green-500 rounded-full  hover:no-underline hover:text-white text-md"
+                href="/masa/auth-management/signout"
               >
-                Contact
-              </a>
-            </li>
-            <li class="nav-item">
-              <c:if test = "${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=STUDENT}'}">
-              <a
-                      class="
-                  font-sans
-                  text-2xl
-                  font-semibold
-                  border-b-2 border-transparent
-                  hover:text-gray-800
-                  dark:hover:text-gray-200
-                  hover:border-green-800 hover:no-underline
-                  mx-1.5
-                  sm:mx-6
-                "
-                      href="/masa/member/registermentor.jsp"
-              >Register become mentor</a>
-            </c:if>
-            </li>
-            <li class="nav-item" style="width: 80px;padding-left: 10px; background-color: #f68859; color: white; border-radius: 10px">
-              <a style="color: white; font-size: 14px; padding: 2px" href="/masa/auth-management/signout">
                 Log Out
               </a>
             </li>
@@ -132,6 +99,17 @@ To change this template use File | Settings | File Templates. --%>
         <p class="inline-block text-2xl text-gray-600 sm:block">
           Many interesting meetings are coming up....
         </p>
+      </div>
+      <div>
+        <c:if
+          test="${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=STUDENT}'}"
+        >
+          <a
+            class="px-5 py-2 font-sans text-2xl font-semibold leading-5 text-white bg-green-500 rounded-full  mt-15 hover:no-underline hover:text-white text-md"
+            href="/masa/member/registermentor.jsp"
+            >Register become mentor</a
+          >
+        </c:if>
       </div>
     </div>
 
