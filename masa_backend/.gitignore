@@ -27,6 +27,7 @@ nb-configuration.xml
 .classpath
 .project
 .settings/
+.factorypath
 
 # Intellij
 .idea/
