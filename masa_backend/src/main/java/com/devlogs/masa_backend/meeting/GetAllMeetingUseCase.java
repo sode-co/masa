@@ -3,6 +3,7 @@ package com.devlogs.masa_backend.meeting;
 import com.devlogs.masa_backend.domain.entities.MeetingEntity;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.ports.MeetingRepository;
+import com.devlogs.masa_backend.domain.ports.UserRepository;
 
 import javax.inject.Inject;
 import java.util.List;
