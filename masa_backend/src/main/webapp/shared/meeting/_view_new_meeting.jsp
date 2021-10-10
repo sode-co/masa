@@ -66,12 +66,17 @@ template use File | Settings | File Templates. --%> <%@ page
     let unfollowText = "Unfollow";
     let followId = "follow";
     let i = 0;
+    let urlAskPage ="http://localhost:8080/masa/member/meeting/ask_question.jsp";
+    let userParam = "?user=";
+    let meetingParam = "&meeting=";
     const urlThisPage = "http://localhost:8080/masa/member/meeting/index.jsp";
+    const quotationMarks = '"';
       $.getJSON(url, function (data) {
       const arr = data["meetings"];
       const width = arr.length;
       arr.forEach((element) => {
         idsession = element.id;
+        let urlRedirectAsk =
         htmlElements +=
                 '<div class="relative flex flex-col justify-between p-8 lg:p-6 xl:p-8 rounded-2xl mb-11">' +
                 '<div class="absolute inset-0 w-full h-full transform bg-green-50 rounded-2xl">' +
@@ -100,6 +105,23 @@ template use File | Settings | File Templates. --%> <%@ page
                 '<svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">' +
                 '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>'+'' +
                 '<span>Description</span></li></ul>'
+                +'<a href="" onClick="(function(){'
+                +'const varToString = varObj => Object.keys(varObj)[0];'
+                +'const '+idsession+'=i;'
+                +'const x = varToString({'+idsession+'});'
+                +'const url = urlAskPage+userParam+userId+meetingParam+x;'
+                +'console.log(url);'
+                +'window.open(url);'
+                +'})();return false;">'
+                +'<button href="#heheh" class="relative flex items-center justify-center w-full px-3 py-3 text-lg font-medium text-white rounded-xl group">'+
+                '<span class="absolute inset-0 w-full h-full transition-all duration-200 ease-out transform bg-green-500 group-hover:translate-y-0 group-hover:translate-x-0 rounded-xl"></span>'+
+                '<span class="absolute inset-0 w-full h-full border-0 border-gray-900 rounded-xl">'
+                +'</span><span class="relative" id="ask">Ask</span>'
+                +'<svg class="w-5 h-5 ml-2 transition-all duration-200 ease-out transform group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>'+
+                '</button>'
+                +'</a>'
+                +'<br/>'
+
                 +'<a href="" onClick="(function(){'
                 +'const varToString = varObj => Object.keys(varObj)[0];'
                 +'const '+idsession+'=i;'
