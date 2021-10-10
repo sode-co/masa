@@ -144,7 +144,17 @@ contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri =
     </div>
 
     <!-- End of noti -->
-    <%@ include file="../../shared/meeting/_view_new_meeting.jsp"%>
+    <div>
+      <%@ include file="../../shared/meeting/_view_new_meeting.jsp"%>
+    </div>
+    <br/>
+    <div>
+      <%@ include file="../../shared/meeting/_technology_meeting.jsp"%>
+    </div>
+  <div>
+<%--    <%@ include file="../../shared/meeting/_technology_meeting.jsp"%>--%>
+
+  </div>
     <!-- Footer -->
     <footer
       class="relative pt-1 bg-white border-b-2 border-blue-700 footer"
