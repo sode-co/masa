@@ -51,27 +51,9 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   sm:mx-6
                   hover:text-gray-800
                 "
-                href="#navi"
+                href="http://localhost:8080/masa/member/meeting/index.jsp"
               >
                 Home
-              </a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="
-                  font-sans
-                  text-2xl
-                  font-semibold
-                  border-b-2 border-transparent
-                  hover:text-gray-800
-                  dark:hover:text-gray-200
-                  hover:border-green-800 hover:no-underline
-                  mx-1.5
-                  sm:mx-6
-                "
-                href="/masa/member/meeting/index.jsp"
-              >
-                View new meeting
               </a>
             </li>
             <li class="nav-item">

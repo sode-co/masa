@@ -39,7 +39,7 @@ template use File | Settings | File Templates. --%> <%@ page
         <h1
                 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font"
         >
-          All upcoming meetings...
+          All new meetings, follow now
         </h1>
         <div class="w-20 h-1 bg-green-500 rounded"></div>
       </div>

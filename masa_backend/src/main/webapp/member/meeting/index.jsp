@@ -52,7 +52,7 @@ contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri =
                   sm:mx-6
                   hover:text-gray-800
                 "
-                href="#navi"
+                href="http://localhost:8080/masa/member/meeting/index.jsp"
               >
                 Home
               </a>
@@ -143,7 +143,13 @@ contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri =
       </div>
     </div>
 
+
     <!-- End of noti -->
+    <br/>
+    <div style="margin-left: 1400px">
+      <p style="font-weight: bolder">Search Meetings By Topic Name</p>
+      <%@ include file="../../shared/topic/_auto_search_topic_name.jsp"%>
+    </div>
     <div>
       <%@ include file="../../shared/meeting/_view_new_meeting.jsp"%>
     </div>

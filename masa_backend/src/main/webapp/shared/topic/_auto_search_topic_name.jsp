@@ -36,14 +36,16 @@
         input {
             border: 1px solid transparent;
             background-color: #f1f1f1;
-            padding: 10px;
             font-size: 13px;
             border-radius: 5px !important;
+            height: 50px;
+            padding-left: 10px;
         }
 
         input[type=text] {
             background-color: #f1f1f1;
             width: 100%;
+            padding-left: 10px;
         }
 
         input[type=submit] {
@@ -98,11 +100,17 @@
     </style>
 </head>
 <body>
+<script>
+    function searchtopic(){
+        const searchKeyword = document.getElementById("myInput").value;
+        window.open("http://localhost:8080/masa/member/meeting/view_meeting_by_topic_name.jsp?&search="+searchKeyword);
+    }
+</script>
 <div class="searchBar" style="display: inline-block">
     <div class="autocomplete" style="width:300px;">
         <input id="myInput" type="text" name="topic" placeholder="Enter topic name here...">
     </div>
-    <button style="background-color: transparent; border: none; cursor: pointer">
+    <button style="background-color: transparent; border: none; cursor: pointer" onclick="searchtopic()">
         <i class="icon-search icon-2x"></i>
     </button>
 </div>
