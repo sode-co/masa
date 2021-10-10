@@ -239,18 +239,23 @@
           "http://localhost:8080/masa/api/meeting-management/meetings/host/ME100001",
           function (data) {
               let htmlElements = "";
+              console.log(data);
+              const arr = [1,2,3,4,5,6,7];
               arr.forEach((element) => {
                   htmlElements +=
-                      +'<div class="col-xs-12 col-sm-6 col-md-2">'
-                      +'<a href="#"><img src="https://d5nunyagcicgy.cloudfront.net/external_assets/hero_examples/hair_beach_v391182663/original.jpeg" class="img-responsive center-block"></a>'
-                  +'<span class="badge">10%</span>'
-                  +'<h4 class="text-center">PANTALONE TERI 2</h4>'
-                  +'<h5 class="text-center">4000,00 TK</h5>'
-                  +'<h6 class="text-center">5000,00 TK</h6>'
-              +'</div>'
-                  let container = document.getElementById("container");
-                  container.innerHTML = htmlElements;
+                      '<div class="item">'
+                          +'<div class="col-xs-12 col-sm-6 col-md-2">'
+                              +'<a href="#"><img src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=04aebe9a22884efa1a5f61e434215597&auto=format&fit=crop&w=500&q=60" class="img-responsive center-block"></a>'
+                              +'<span class="badge">10%</span>'
+                              +'<h4 class="text-center">NGOOOCh4>'
+                              +'<h5 class="text-center">221021,00 TK</h5>'
+                              +'<h5 class="text-center">4000,00 TK</h5>'
+                          +'</div>'
+                      +'</div>'
               });
+              // let container = document.getElementById("containerREPEAT");
+              // container.innerHTML = '"'+htmlElements+'"';
+              // console.log(container.innerHTML);
           });
   </script>
 
@@ -261,66 +266,61 @@
           <div class="col-xs-12 col-sm-12 col-md-12">
               <div class="carousel carousel-showmanymoveone slide" id="itemslider">
                   <div class="carousel-inner">
-                      <div class="item"></div>
+                        <div  class="carousel-inner" id="containerREPEAT"></div>
+<%--                      <div class="item">--%>
+<%--                          <div class="col-xs-12 col-sm-6 col-md-2">--%>
+<%--                              <a href="#"><img src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=04aebe9a22884efa1a5f61e434215597&auto=format&fit=crop&w=500&q=60" class="img-responsive center-block"></a>--%>
+<%--                              <span class="badge">10%</span>--%>
+<%--                              <h4 class="text-center">PANTALONE TERI 2</h4>--%>
+<%--                              <h5 class="text-center">4000,00 TK</h5>--%>
+<%--                              <h6 class="text-center">5000,00 TK</h6>--%>
+<%--                          </div>--%>
+<%--                      </div>--%>
+<%--                      <div class="item">--%>
+<%--                          <div class="col-xs-12 col-sm-6 col-md-2">--%>
+<%--                              <a href="#"><img src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=04aebe9a22884efa1a5f61e434215597&auto=format&fit=crop&w=500&q=60" class="img-responsive center-block"></a>--%>
+<%--                              <span class="badge">10%</span>--%>
+<%--                              <h4 class="text-center">PANTALONE TERI 2</h4>--%>
+<%--                              <h5 class="text-center">4000,00 TK</h5>--%>
+<%--                              <h6 class="text-center">5000,00 TK</h6>--%>
+<%--                          </div>--%>
+<%--                      </div>--%>
+<%--                      <div class="item">--%>
+<%--                          <div class="col-xs-12 col-sm-6 col-md-2">--%>
+<%--                              <a href="#"><img src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=04aebe9a22884efa1a5f61e434215597&auto=format&fit=crop&w=500&q=60" class="img-responsive center-block"></a>--%>
+<%--                              <span class="badge">10%</span>--%>
+<%--                              <h4 class="text-center">PANTALONE TERI 2</h4>--%>
+<%--                              <h5 class="text-center">4000,00 TK</h5>--%>
+<%--                              <h6 class="text-center">5000,00 TK</h6>--%>
+<%--                          </div>--%>
+<%--                      </div>--%>
 
-                      <div class="item">
-                          <div class="col-xs-12 col-sm-6 col-md-2">
-                              <a href="#"><img src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=04aebe9a22884efa1a5f61e434215597&auto=format&fit=crop&w=500&q=60" class="img-responsive center-block"></a>
-                              <span class="badge">10%</span>
-                              <h4 class="text-center">PANTALONE TERI 2</h4>
-                              <h5 class="text-center">4000,00 TK</h5>
-                              <h6 class="text-center">5000,00 TK</h6>
-                          </div>
-                      </div>
-                      <div class="item">
-                          <div class="col-xs-12 col-sm-6 col-md-2">
-                              <a href="#"><img src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=04aebe9a22884efa1a5f61e434215597&auto=format&fit=crop&w=500&q=60" class="img-responsive center-block"></a>
-                              <span class="badge">10%</span>
-                              <h4 class="text-center">PANTALONE TERI 2</h4>
-                              <h5 class="text-center">4000,00 TK</h5>
-                              <h6 class="text-center">5000,00 TK</h6>
-                          </div>
-                      </div>
-                      <div class="item">
-                          <div class="col-xs-12 col-sm-6 col-md-2">
-                              <a href="#"><img src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=04aebe9a22884efa1a5f61e434215597&auto=format&fit=crop&w=500&q=60" class="img-responsive center-block"></a>
-                              <span class="badge">10%</span>
-                              <h4 class="text-center">PANTALONE TERI 2</h4>
-                              <h5 class="text-center">4000,00 TK</h5>
-                              <h6 class="text-center">5000,00 TK</h6>
-                          </div>
-                      </div>
+<%--                      <div class="item active">--%>
+<%--                          <div class="col-xs-12 col-sm-6 col-md-2">--%>
+<%--                              <a href="#"><img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" class="img-responsive center-block"></a>--%>
+<%--                              <h4 class="text-center">MAYORAL SUKNJA</h4>--%>
+<%--                              <h5 class="text-center">200,00 TK</h5>--%>
+<%--                          </div>--%>
+<%--                      </div>--%>
 
-                      <div class="item active">
-                          <div class="col-xs-12 col-sm-6 col-md-2">
-                              <a href="#"><img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" class="img-responsive center-block"></a>
-                              <h4 class="text-center">MAYORAL SUKNJA</h4>
-                              <h5 class="text-center">200,00 TK</h5>
-                          </div>
-                      </div>
+<%--                      <div class="item">--%>
+<%--                          <div class="col-xs-12 col-sm-6 col-md-2">--%>
+<%--                              <a href="#"><img src="https://images.unsplash.com/photo-1524010349062-860def6649c3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e725946a3f177dce83a705d4b12019c2&auto=format&fit=crop&w=500&q=60" class="img-responsive center-block"></a>--%>
+<%--                              <h4 class="text-center">MAYORAL KOŠULJA</h4>--%>
+<%--                              <h5 class="text-center">800 TK</h5>--%>
+<%--                          </div>--%>
+<%--                      </div>--%>
 
-                      <div class="item">
-                          <div class="col-xs-12 col-sm-6 col-md-2">
-                              <a href="#"><img src="https://images.unsplash.com/photo-1524010349062-860def6649c3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e725946a3f177dce83a705d4b12019c2&auto=format&fit=crop&w=500&q=60" class="img-responsive center-block"></a>
-                              <h4 class="text-center">MAYORAL KOŠULJA</h4>
-                              <h5 class="text-center">800 TK</h5>
-                          </div>
-                      </div>
-
-                      <div class="item">
-                          <div class="col-xs-12 col-sm-6 col-md-2">
-                              <a href="#"><img src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=04aebe9a22884efa1a5f61e434215597&auto=format&fit=crop&w=500&q=60" class="img-responsive center-block"></a>
-                              <span class="badge">10%</span>
-                              <h4 class="text-center">PANTALONE TERI 2</h4>
-                              <h5 class="text-center">4000,00 TK</h5>
-                              <h6 class="text-center">5000,00 TK</h6>
-                          </div>
-                      </div>
-
-
-
-
-                              </div>
+<%--                      <div class="item">--%>
+<%--                          <div class="col-xs-12 col-sm-6 col-md-2">--%>
+<%--                              <a href="#"><img src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=04aebe9a22884efa1a5f61e434215597&auto=format&fit=crop&w=500&q=60" class="img-responsive center-block"></a>--%>
+<%--                              <span class="badge">10%</span>--%>
+<%--                              <h4 class="text-center">PANTALONE TERI 2</h4>--%>
+<%--                              <h5 class="text-center">4000,00 TK</h5>--%>
+<%--                              <h6 class="text-center">5000,00 TK</h6>--%>
+<%--                          </div>--%>
+<%--                      </div>--%>
+                  </div>
 
                   <div id="slider-control">
                       <a class="left carousel-control" href="#itemslider" data-slide="prev"><img src="https://cdn0.iconfinder.com/data/icons/website-kit-2/512/icon_402-512.png" alt="Left" class="img-responsive"></a>
