@@ -265,7 +265,7 @@
     <link rel="shortcut icon" href="${Masa.ICON_URL}"/>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="${Masa.ICON_URL}"/>
-    <title>Create new meeting</title>
+    <title>Ask question for meeing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/jq1a1p24pc9o6qg9ovftz51uteowbcodeq41e39ci12r0pnt/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
@@ -327,7 +327,6 @@
         </div>
         <div id="meetinginfo" style="padding-left: 10px">
             <script>
-                console.log('test');
                 let container = document.getElementById("meetinginfo");
                 let htmlElements = '';
                 let urlHref = window.location.href;

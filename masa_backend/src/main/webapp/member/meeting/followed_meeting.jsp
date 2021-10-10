@@ -92,6 +92,11 @@ contentType="text/html;charset=UTF-8" language="java" %>
                 Contact
               </a>
             </li>
+            <li class="nav-item" style="width: 80px;padding-left: 10px; background-color: #f68859; color: white; border-radius: 10px">
+              <a style="color: white; font-size: 14px; padding: 2px" href="/masa/auth-management/signout">
+                Log Out
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -102,8 +107,8 @@ contentType="text/html;charset=UTF-8" language="java" %>
       class="container flex items-center mx-auto bg-green-100 rounded-md h-96"
     >
       <div class="text-center sm:ml-20 text-gray-50 sm:text-left">
-        <h1 class="mb-4 text-5xl font-bold text-green-800">
-          Hello Student! <br />
+        <h1 class="mb-4 text-4xl font-bold text-green-800">
+          Hi ${sessionScope.CURRENT_USER.fullName} <br />
         </h1>
         <p class="inline-block text-2xl text-gray-600 sm:block">
           See all your followed meeting here
