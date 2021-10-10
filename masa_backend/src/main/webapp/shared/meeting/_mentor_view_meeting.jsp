@@ -50,8 +50,7 @@ template use File | Settings | File Templates. --%> <%@ page
     </div>
     <script>
         let container = document.getElementById("carousel_wrapper");
-        const url =
-            "http://localhost:8080/masa/api/meeting-management/meetings/host/ME100001";
+        const url ="http://localhost:8080/masa/api/meeting-management/meetings/host/ME100001";
         console.log(url);
         let htmlElements = '';
         const postMethod = "POST";
@@ -85,6 +84,7 @@ template use File | Settings | File Templates. --%> <%@ page
                 idsession = element.id;
                 idhostsession = element.hostId;
                 titlesession = element.title;
+                console.log('titlesession',titlesession);
                 platformsession = element.platform.platform;
                 topicsession = element.topic.title;
                 descriptionsession = element.description;
@@ -133,15 +133,8 @@ template use File | Settings | File Templates. --%> <%@ page
                     '</button>'
                     +'</a>'
                     +'<br/>'
-                // idsession = element.id;
-                // idhostsession = element.hostId;
-                // titlesession = element.title;
-                // platformsession = element.platform.platform;
-                // topicsession = element.topic.title;
-                // descriptionsession = element.description;
 
                     +'<a href="" onClick="(function(){'
-                    +'console.log(idsession)'
                     +'const varToString = varObj => Object.keys(varObj)[0];'
                     +'const '+idsession+'=i;'
                     +'const a = varToString({'+idsession+'});'
@@ -149,23 +142,24 @@ template use File | Settings | File Templates. --%> <%@ page
                     +'const b = varToString({'+idhostsession+'});'
                     +'const '+titlesession+'=i;'
                     +'const c = varToString({'+titlesession+'});'
-                    +'const '+platformsession+'=i;'
-                    +'const d = varToString({'+platformsession+'});'
-                    +'const '+topicsession+'=i;'
-                    +'const e = varToString({'+topicsession+'});'
-                    +'const '+descriptionsession+'=i;'
-                    +'const f = varToString({'+descriptionsession+'});'
-                    +'const urlRedirect = urlUpdatePage+idparam + a+hostParam+b+titleParam+c+platformParam+d+topicParam+e+descriptionParam+f;'
-                    +'console.log(urlRedirect);'
-                    +'window.location.replace(urlUpdate);'
-                    +'}'
+                    +'window.open(urlUpdatePage);'
                     +'})();return false;">'
-                // let idParam ="?id=";
-                // let titleParam ="&title=";
-                // let hostParam ="&host=";
-                // let platformParam ="&platform=";
-                // let topicParam ="&topic=";
-                // let descriptionParam = "&description=";
+                    // +'const varToString = varObj => Object.keys(varObj)[0];'
+                    // +'const '+idsession+'=i;'
+                    // +'const a = varToString({'+idsession+'});'
+                    // +'const '+idhostsession+'=i;'
+                    // +'const b = varToString({'+idhostsession+'});'
+                    // +'const '+titlesession+'=i;'
+                    // +'const c = varToString({'+titlesession+'});'
+                    // +'const '+platformsession+'=i;'
+                    // +'const d = varToString({'+platformsession+'});'
+                    // +'const '+topicsession+'=i;'
+                    // +'const e = varToString({'+topicsession+'});'
+                    // +'const '+descriptionsession+'=i;'
+                    // +'const f = varToString({'+descriptionsession+'});'
+                    // +'const urlRedirect = urlUpdatePage+idparam + a+hostParam+b+titleParam+c+platformParam+d+topicParam+e+descriptionParam+f;'
+                    // +'console.log(urlRedirect);'
+                    // +'window.location.replace(urlUpdate);'
                     +'<button href="#heheh" class="relative flex items-center justify-center w-full px-3 py-3 text-lg font-medium text-white rounded-xl group">'+
                     '<span class="absolute inset-0 w-full h-full transition-all duration-200 ease-out transform bg-green-500 group-hover:translate-y-0 group-hover:translate-x-0 rounded-xl"></span>'+
                     '<span class="absolute inset-0 w-full h-full border-0 border-gray-900 rounded-xl">'
