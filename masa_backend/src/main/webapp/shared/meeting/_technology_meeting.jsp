@@ -70,28 +70,28 @@ template use File | Settings | File Templates. --%> <%@ page
         </div>
     </div>
     <script>
-        const urlFollow = "http://localhost:8080/masa/api/appointment-management/create";
-        const urlUnfollow = "http://localhost:8080/masa/api/appointment-management/remove";
+        const urlFollow1 = "http://localhost:8080/masa/api/appointment-management/create";
         let container1 = document.getElementById("carousel_wrapper1");
-        const url =
+        console.log('container1', container1);
+        const url1 =
             "http://localhost:8080/masa/api/meeting-management/not-followed-meetings/" +
             "${sessionScope.CURRENT_USER.getId()}";
-        console.log(url);
-        let htmlElements = '';
-        const postMethod = "POST";
-        const contentType ="Content-Type";
-        const appJson = "application/json";
-        const userId = document.getElementById("userId").textContent;
-        let idsession = 0;
-        let followText = "Follow";
-        let unfollowText = "Unfollow";
-        let followId = "follow";
-        let i = 0;
-        let urlAskPage ="http://localhost:8080/masa/member/meeting/ask_question.jsp";
-        let userParam = "?user=";
-        let meetingParam = "&meeting=";
-        const urlThisPage = "http://localhost:8080/masa/member/meeting/index.jsp";
-        const quotationMarks = '"';
+        console.log(url1);
+        let htmlElements1 = '';
+        const postMethod1 = "POST";
+        const contentType1 ="Content-Type";
+        const appJson1 = "application/json";
+        const userId1 = document.getElementById("userId").textContent;
+        let idsession1 = 0;
+        let followText1 = "Follow";
+        let unfollowText1 = "Unfollow";
+        let followId1 = "follow";
+        let i1 = 0;
+        let urlAskPage1 ="http://localhost:8080/masa/member/meeting/ask_question.jsp";
+        let userParam1 = "?user=";
+        let meetingParam1 = "&meeting=";
+        const urlThisPage1 = "http://localhost:8080/masa/member/meeting/index.jsp";
+        const quotationMarks1 = '"';
 
         const json = {
             "topicName": [
@@ -114,8 +114,8 @@ template use File | Settings | File Templates. --%> <%@ page
                 const arr = res["meetings"];
                 const width = arr.length;
                 arr.forEach((element) => {
-                    idsession = element.id;
-                    htmlElements +=
+                    idsession1 = element.id;
+                    htmlElements1 +=
                         '<div class="relative flex flex-col justify-between p-8 lg:p-6 xl:p-8 rounded-2xl mb-11">' +
                         '<div class="absolute inset-0 w-full h-full transform bg-green-50 rounded-2xl">' +
                         '</div><div class="absolute inset-0 w-full h-full border-2 border-gray-900 rounded-2xl">' +
@@ -147,9 +147,9 @@ template use File | Settings | File Templates. --%> <%@ page
 
                         +'<a href="" onClick="(function(){'
                         +'const varToString = varObj => Object.keys(varObj)[0];'
-                        +'const '+idsession+'=i;'
-                        +'const x = varToString({'+idsession+'});'
-                        +'const url = urlAskPage+userParam+userId+meetingParam+x;'
+                        +'const '+idsession1+'=i1;'
+                        +'const x = varToString({'+idsession1+'});'
+                        +'const url = urlAskPage1+userParam1+userId1+meetingParam1+x;'
                         +'console.log(url);'
                         +'window.open(url);'
                         +'})();return false;">'
@@ -168,27 +168,27 @@ template use File | Settings | File Templates. --%> <%@ page
 
                         +'<a href="" onClick="(function(){'
                         +'const varToString = varObj => Object.keys(varObj)[0];'
-                        +'const '+idsession+'=i;'
-                        +'const x = varToString({'+idsession+'});'
-                        +'const url = urlFollow + x;'
+                        +'const '+idsession1+'=i1;'
+                        +'const x = varToString({'+idsession1+'});'
+                        +'const url = urlFollow1 + x;'
                         +'const json = {'
-                        +'userId: userId,'
+                        +'userId: userId1,'
                         +'meetingId: x,'
                         +'};'
                         +'console.log(json);'
                         +'const options = {'
-                        +'method: postMethod,'
+                        +'method: postMethod1,'
                         +'body: JSON.stringify(json),'
                         +'headers: {'
-                        +'contentType: appJson,'
+                        +'contentType1: appJson1,'
                         +'},'
                         +'};'
-                        +'if (document.getElementById(followId).textContent === followText) {'
-                        +'fetch(urlFollow, options)'
+                        +'if (document.getElementById(followId1).textContent === followText1) {'
+                        +'fetch(urlFollow1, options)'
                         +'.then((res) => res.json())'
                         +'.then((res) => console.log(res))'
                         +'.catch((err) => console.error(err));'
-                        +'window.location.replace(urlThisPage)'
+                        +'window.location.replace(urlThisPage1)'
                         +'}'
                         +'})();return false;">'
                         +'<button href="#heheh" class="relative flex items-center justify-center w-full px-3 py-3 text-lg font-medium text-white rounded-xl group">'+
@@ -200,11 +200,11 @@ template use File | Settings | File Templates. --%> <%@ page
                         +'</a>'
                         +'</div>'
                 });
-                container1.innerHTML = htmlElements;
+                container1.innerHTML = htmlElements1;
             })
             .catch(err => console.error(err));
 
-        container1.innerHTML = htmlElements;
+        container1.innerHTML = htmlElements1;
     </script>
 </section>
 <div id="target"></div>
