@@ -32,7 +32,11 @@ public class GetMeetingsByMultipleTopicsServlet extends BaseHttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doProcess(req,resp);
+    }
+
+    protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ResponseHelper responseHelper = getRequestComponent().getResponseHelper();
         RequestHelper requestHelper = getRequestComponent().getRequestHelper();
 
@@ -52,5 +56,10 @@ public class GetMeetingsByMultipleTopicsServlet extends BaseHttpServlet {
             String json = new Gson().toJson(result);
             responseHelper.responseJsonOk(json);
         }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+      doProcess(req,resp);
     }
 }

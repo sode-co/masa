@@ -30,7 +30,16 @@ public class GetMeetingsByTopicNameServlet extends BaseHttpServlet {
     }
 
     @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doProcess(req, resp);
+    }
+
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doProcess(req, resp);
+    }
+
+    protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ResponseHelper responseHelper = getRequestComponent().getResponseHelper();
         RequestHelper requestHelper = getRequestComponent().getRequestHelper();
 
