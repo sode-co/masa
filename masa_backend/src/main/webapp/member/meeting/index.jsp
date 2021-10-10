@@ -77,8 +77,18 @@ contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri =
             </li>
             <li class="nav-item">
               <a
-                class="px-5 py-2 font-sans text-2xl font-semibold leading-5 text-white bg-green-500 rounded-full  hover:no-underline hover:text-white text-md"
-                href="/masa/auth-management/signout"
+                      class="
+                  font-sans
+                  text-2xl
+                  font-semibold
+                  border-b-2 border-transparent
+                  hover:text-gray-800
+                  dark:hover:text-gray-200
+                  hover:border-green-800 hover:no-underline
+                  mx-1.5
+                  sm:mx-6
+                "
+                      href="#footer"
               >
 
                 Contact
@@ -127,20 +137,9 @@ contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri =
           ><button style="width: 300px; height: 40px; ">Register become mentor</button></a>
           <hr/>
         </c:if>
-        <p class="inline-block text-2xl text-gray-600 sm:block">
+        <p class="inline-block text-3xl text-gray-600 sm:block">
           Many interesting meetings are coming up....
         </p>
-      </div>
-      <div>
-        <c:if
-          test="${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=STUDENT}'}"
-        >
-          <a
-            class="px-5 py-2 font-sans text-2xl font-semibold leading-5 text-white bg-green-500 rounded-full  mt-15 hover:no-underline hover:text-white text-md"
-            href="/masa/member/registermentor.jsp"
-            >Register become mentor</a
-          >
-        </c:if>
       </div>
     </div>
 
