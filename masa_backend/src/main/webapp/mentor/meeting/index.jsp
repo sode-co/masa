@@ -131,7 +131,7 @@
     </div>
 
     <!-- End of noti -->
-    <%@ include file="../../shared/meeting/_layout_view_meeting.jsp"%>
+    <%@ include file="../../shared/meeting/_mentor_view_meeting.jsp"%>
     <!-- Footer -->
     <footer
       class="relative pt-1 bg-white border-b-2 border-blue-700 footer"
