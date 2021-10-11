@@ -80,11 +80,14 @@ template use File | Settings | File Templates. --%> <%@ page
             const arr = data["meetings"];
             const width = arr.length;
             arr.forEach((element) => {
-                console.log(element);
+                var startConvert = new Date(element.startTime); // create Date object
+                var startConvertTime = startConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
+                var endConvert = new Date(element.startTime); // create Date object
+                var endConvertTime = endConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
+
                 idsession = element.id;
                 idhostsession = element.hostId;
                 titlesession = element.title;
-                console.log('titlesession',titlesession);
                 platformsession = element.platform.platform;
                 topicsession = element.topic.title;
                 descriptionsession = element.description;
@@ -101,9 +104,9 @@ template use File | Settings | File Templates. --%> <%@ page
                     element.id +
                     '</h6>' +
                     '<p class="tracking-tight text-gray-500"><span class="text-3xl font-bold text-green-700">' +
-                    element.startTime +
+                    startConvertTime +
                     '-' +
-                    element.endTime +
+                    endConvertTime +
                     '</span>' +
                     '</p></div></div><ul class="relative py-12 space-y-3">' +
                     '<li class="flex items-center space-x-2 text-sm font-medium text-gray-500">' +
@@ -121,6 +124,7 @@ template use File | Settings | File Templates. --%> <%@ page
                     +'const varToString = varObj => Object.keys(varObj)[0];'
                     +'const '+idsession+'=i;'
                     +'const x = varToString({'+idsession+'});'
+                    +'console.log(x);'
                     +'const url = urlViewQuestionPage+meetingParam+x;'
                     +'console.log(url);'
                     +'window.open(url);'
@@ -140,9 +144,12 @@ template use File | Settings | File Templates. --%> <%@ page
                     +'const a = varToString({'+idsession+'});'
                     +'const '+idhostsession+'=i;'
                     +'const b = varToString({'+idhostsession+'});'
-                    +'const '+titlesession+'=i;'
-                    +'const c = varToString({'+titlesession+'});'
-                    +'window.open(urlUpdatePage);'
+                    // +'const '+mee+'=i;'
+                    // +'const b = varToString({'+idhostsession+'});'
+                    // +'const '+titlesession+'=i;'
+                    // +'const c = varToString({'+titlesession+'});'
+                    +'console.log(urlUpdatePage);'
+                    +'window.open(urlUpdatePage+idParam+a+hostParam+b);'
                     +'})();return false;">'
                     // +'const varToString = varObj => Object.keys(varObj)[0];'
                     // +'const '+idsession+'=i;'
