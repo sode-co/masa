@@ -347,7 +347,20 @@
 </head>
 
 <body>
-
+<script>
+    const url = "http://localhost:8080/masa/api/meeting-management/meetings/host/"+window.location.href.slice(window.location.href.indexOf('&host=')).replace('&host=','');
+    console.log('url', url);
+    $.getJSON(url, function (data) {
+        const arr = data["meetings"];
+        const meetingId = window.location.href.slice(window.location.href.indexOf('?id='), window.location.href.indexOf('&host=')).replace('?id=','');
+        console.log(meetingId);
+        arr.forEach((element) => {
+            if(element.id===meetingId){
+                console.log(element.id);
+            }
+        });
+    });
+</script>
 <%@include  file="/shared/header/navbar.html"%>
 <h1 style="display: none" id="current-user">${sessionScope.CURRENT_USER.id}</h1>
 <div class="container text-center createform">

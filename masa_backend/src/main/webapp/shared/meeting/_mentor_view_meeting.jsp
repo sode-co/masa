@@ -85,14 +85,9 @@ template use File | Settings | File Templates. --%> <%@ page
                 var endConvert = new Date(element.startTime); // create Date object
                 var endConvertTime = endConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
 
-
-
-
-
                 idsession = element.id;
                 idhostsession = element.hostId;
                 titlesession = element.title;
-                console.log('titlesession',titlesession);
                 platformsession = element.platform.platform;
                 topicsession = element.topic.title;
                 descriptionsession = element.description;
@@ -129,6 +124,7 @@ template use File | Settings | File Templates. --%> <%@ page
                     +'const varToString = varObj => Object.keys(varObj)[0];'
                     +'const '+idsession+'=i;'
                     +'const x = varToString({'+idsession+'});'
+                    +'console.log(x);'
                     +'const url = urlViewQuestionPage+meetingParam+x;'
                     +'console.log(url);'
                     +'window.open(url);'
@@ -148,9 +144,12 @@ template use File | Settings | File Templates. --%> <%@ page
                     +'const a = varToString({'+idsession+'});'
                     +'const '+idhostsession+'=i;'
                     +'const b = varToString({'+idhostsession+'});'
-                    +'const '+titlesession+'=i;'
-                    +'const c = varToString({'+titlesession+'});'
-                    +'window.open(urlUpdatePage);'
+                    // +'const '+mee+'=i;'
+                    // +'const b = varToString({'+idhostsession+'});'
+                    // +'const '+titlesession+'=i;'
+                    // +'const c = varToString({'+titlesession+'});'
+                    +'console.log(urlUpdatePage);'
+                    +'window.open(urlUpdatePage+idParam+a+hostParam+b);'
                     +'})();return false;">'
                     // +'const varToString = varObj => Object.keys(varObj)[0];'
                     // +'const '+idsession+'=i;'
