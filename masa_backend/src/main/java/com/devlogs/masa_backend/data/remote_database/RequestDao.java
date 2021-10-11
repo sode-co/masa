@@ -111,7 +111,7 @@ public class RequestDao {
             if (dbResults.next()) {
                 int typeId = dbResults.getInt("TYPE_ID");
                 int statusId = dbResults.getInt("STATUS_ID");
-                String userId = dbResults.getString("USER_ID");
+                String userId= dbResults.getString("USER_ID");
                 String description = dbResults.getString("DESCRIPTION");
                 String payload = dbResults.getString("PAYLOAD");
                 long createdDate = dbResults.getLong("CREATED_DATE");
