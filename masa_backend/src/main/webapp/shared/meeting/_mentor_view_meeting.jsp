@@ -50,7 +50,7 @@ template use File | Settings | File Templates. --%> <%@ page
     </div>
     <script>
         let container = document.getElementById("carousel_wrapper");
-        const url ="http://localhost:8080/masa/api/meeting-management/meetings/host/ME100001";
+        const url ="http://localhost:8080/masa/api/meeting-management/meetings/host/"+"${sessionScope.CURRENT_USER.getId()}";
         console.log(url);
         let htmlElements = '';
         const postMethod = "POST";
