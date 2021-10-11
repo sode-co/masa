@@ -56,18 +56,19 @@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri = "
                         <li class="nav-item">
                             <a
                                 class="
+                                    text-white
                                     font-sans
                                     text-2xl
                                     font-semibold
                                     border-b-2 border-transparent
                                     hover:text-white
                                     dark:hover:text-white
-                                    hover:border-green-800 hover:no-underline
+                                    hover:border-transparent hover:no-underline hover:bg-green-800
                                     mx-1.5
                                     sm:mx-6
                                     bg-green-500
-                                    px-3
-                                    py-2
+                                    px-5
+                                    py-3
                                     rounded-full
                                 "
                                 href="/masa/auth-management/signout"

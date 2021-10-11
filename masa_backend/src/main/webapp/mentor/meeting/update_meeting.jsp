@@ -265,7 +265,7 @@
     <link rel="shortcut icon" href="${Masa.ICON_URL}"/>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="${Masa.ICON_URL}"/>
-    <title>Create new meeting</title>
+    <title>Update meeting</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/jq1a1p24pc9o6qg9ovftz51uteowbcodeq41e39ci12r0pnt/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
@@ -306,15 +306,20 @@
 
             document.getElementById("time-elapsed").innerHTML = "Your meeting lasts: "+d+" day(s), "+h+" hour(s), "+m+" minute(s), "+s+" second(s)";
 
-
+            let platformInput = document.getElementById("platform").value;
+            if (platformInput.includes('G')) platformInput="GOOGLE_MEET";
+            else platformInput='ZOOM';
             if(millisecondsEnd <= millisecondsStart){
                 alert('End time of meeting must be bigger than start time');
             }else{
                 const description = $("#mytextarea").html();
                 const json = {
+                    "id": window.location.href.slice(window.location.href.indexOf('?id='), window.location.href.indexOf('&host=')).replace('?id=',''),
                     "title": document.getElementById("title").value,
-                    "platform": document.getElementById("platform").value,
+                    // "host": "ME100001",
                     "host": "${CURRENT_USER.getId()}",
+                    "platform": platformInput,
+                    "topic": document.getElementById("topic").value,
                     "startTime": millisecondsStart,
                     "endTime": millisecondsEnd,
                     "description": tinyMCE.activeEditor.getContent(),
@@ -327,7 +332,7 @@
                         'Content-Type': 'application/json'
                     }
                 }
-                fetch('../../api/meeting/create', options)
+                fetch('http://localhost:8080/masa/api/meeting/update', options)
                     .then(res => res.json())
                     .then(res => console.log(res))
                     .catch(err => console.error(err));
@@ -463,6 +468,33 @@
     </div>
 
     <br/>
+    <div class="row">
+        <div class="col-sm-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+            </svg>
+        </div>
+        <div class="col-sm-7">
+            <select class="form-select form-control" id="topic">
+                <option value="Agile">Agile</option>
+                <option value="Artificial Intelligence">Artificial Intelligence</option>
+                <option value="Business management">Business management</option>
+                <option value="Digital Maketing">Digital Maketing</option>
+                <option value="English Language">English Language</option>
+                <option value="Information Assurance">Information Assurance</option>
+                <option value="Japanese Language">Japanese Language</option>
+                <option value="Multimedia">Multimedia</option>
+                <option value="Photoshop">Photoshop</option>
+                <option value="Soft Skills">Soft Skills</option>
+                <option value="Software Engineering">Software Engineering</option>
+            </select>
+
+            <%--            <input type="text" class="form-control" placeholder="Platform" aria-label="Platform" aria-describedby="basic-addon1">--%>
+        </div>
+    </div>
+
+    <br/>
 
     <div class="row">
         <div class="col-sm-1">
@@ -480,7 +512,7 @@
 
         <div class="text-center row">
             <div class="col-sm-9">
-                <button onclick="jsonCreate()" class="btn btn-dark" style="background-color: #3051a2; color: white; font-size: 20px; border-radius: 10px">Create Meeting!</button>
+                <button onclick="jsonCreate()" class="btn btn-dark" style="background-color: #3051a2; color: white; font-size: 20px; border-radius: 10px">Update Your Meeting!</button>
             </div>
         </div>
     </div>
@@ -490,6 +522,26 @@
 
 
 <%@include  file="/shared/footer/footer.html"%>
-
+<script>
+    const url = "http://localhost:8080/masa/api/meeting-management/meetings/host/"+window.location.href.slice(window.location.href.indexOf('&host=')).replace('&host=','');
+    console.log('url', url);
+    $.getJSON(url, function (data) {
+        const arr = data["meetings"];
+        const meetingId = window.location.href.slice(window.location.href.indexOf('?id='), window.location.href.indexOf('&host=')).replace('?id=','');
+        arr.forEach((element) => {
+            if(element.id===meetingId){
+                document.getElementById("title").value = element.title;
+                if(element.platform.platform.includes("Z")){
+                    document.getElementById("platform").value = "Zoom";
+                }
+                else{
+                    document.getElementById("platform").value = "Google Meet";
+                }
+                document.getElementById("topic").value = element.topic.title;
+                document.getElementById("mytextarea").value = element.description;
+            }
+        });
+    });
+</script>
 </body>
 </html>
