@@ -41,9 +41,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
             <div class="w-20 h-1 bg-green-500 rounded"></div>
           </div>
         </div>
-        <h1 id="userId" style="display: none">
-          ${sessionScope.CURRENT_USER.getId()}
-        </h1>
+        <h1 id="userId" style="display: none">${sessionScope.CURRENT_USER.getId()}</h1>
         <div
           id="carousel_wrapper"
           class="min-w-full overflow-auto  md:flex md:justify-center md:space-x-8 md:px-14"
