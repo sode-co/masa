@@ -53,21 +53,27 @@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri = "
                                 View followed meeting
                             </a>
                         </li>
-                        <li
-                            class="
-                                px-8
-                                py-3
-                                text-2xl
-                                font-semibold
-                                text-white
-                                bg-green-800
-                                rounded-full
-                                dark:hover:text-white
-                                nav-item
-                                hover:text-yellow-200 hover:bg-green-500
-                            "
-                        >
-                            <a href="/masa/auth-management/signout"> Log Out </a>
+                        <li class="nav-item">
+                            <a
+                                class="
+                                    font-sans
+                                    text-2xl
+                                    font-semibold
+                                    border-b-2 border-transparent
+                                    hover:text-white
+                                    dark:hover:text-white
+                                    hover:border-green-800 hover:no-underline
+                                    mx-1.5
+                                    sm:mx-6
+                                    bg-green-500
+                                    px-3
+                                    py-2
+                                    rounded-full
+                                "
+                                href="/masa/auth-management/signout"
+                            >
+                                Log Out
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -104,9 +110,6 @@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri = "
                     Hi
                     <strong class="block text-5xl font-black sm:text-4xl">${sessionScope.CURRENT_USER.fullName}!</strong>
                 </h1>
-                <p class="text-3xl leading-relaxed text-center text-gray-500 lg:text-left sm:text-md lg:pr-40">
-                    Many interesting meetings are comming up...
-                </p>
                 <c:if test="${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MEMBER}'}">
                     <a
                         href="/masa/member/registermentor.jsp"
@@ -114,6 +117,9 @@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri = "
                         >Register to become a mentor</a
                     >
                 </c:if>
+                <p class="text-3xl leading-relaxed text-center text-gray-500 lg:text-left sm:text-md lg:pr-40">
+                    Many interesting meetings are comming up...
+                </p>
             </div>
             <div class="sm:w-2/4">
                 <img class="w-full" src="https://i.pinimg.com/originals/ae/5a/e1/ae5ae16a1f8bdad663c96a699d91e646.jpg" alt="Welcome Student" />
@@ -122,7 +128,7 @@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri = "
         <!-- End of notification -->
 
         <br />
-        <div class="p-4 py-5 ml-40 bg-white rounded-md w-96">
+        <div class="relative flex flex-col items-center px-8 py-5 mx-auto bg-white rounded-md lg:py-5 lg:flex-row w-96">
             <h1 class="text-3xl font-bold text-gray-500">Search new meetings by topic</h1>
             <%@ include file="../../shared/topic/_auto_search_topic_name.jsp"%>
         </div>
