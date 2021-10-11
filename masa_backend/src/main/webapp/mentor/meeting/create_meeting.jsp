@@ -306,6 +306,9 @@
 
             document.getElementById("time-elapsed").innerHTML = "Your meeting lasts: "+d+" day(s), "+h+" hour(s), "+m+" minute(s), "+s+" second(s)";
 
+            let platformInput = document.getElementById("platform").value;
+            if (platformInput.includes('G')) platformInput="GOOGLE_MEET";
+            else platformInput='ZOOM';
 
             if(millisecondsEnd <= millisecondsStart){
                 alert('End time of meeting must be bigger than start time');
@@ -313,7 +316,7 @@
                 const description = $("#mytextarea").html();
                 const json = {
                     "title": document.getElementById("title").value,
-                    "platform": document.getElementById("platform").value,
+                    "platform": platformInput,
                     "topic": document.getElementById("topic").value,
                     "host": "${CURRENT_USER.getId()}",
                     "startTime": millisecondsStart,
