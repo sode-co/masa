@@ -352,6 +352,9 @@
 
 <body>
 
+
+
+
 <%@include  file="/shared/header/navbar.html"%>
 <h1 style="display: none" id="current-user">${sessionScope.CURRENT_USER.id}</h1>
 <div class="container text-center createform">

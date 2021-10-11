@@ -186,14 +186,14 @@ change this template use File | Settings | File Templates. --%> <%@ page content
         ></div>
       </div>
       <script>
+        console.log('abc');
         const urlFollow =
           "http://localhost:8080/masa/api/appointment-management/create";
         const urlUnfollow =
           "http://localhost:8080/masa/api/appointment-management/remove";
         let container = document.getElementById("carousel_wrapper");
         const url =
-          "http://localhost:8080/masa/api/meeting-management/not-followed-meetings/" +
-          "${sessionScope.CURRENT_USER.getId()}";
+          "http://localhost:8080/masa/api/meeting-management/not-followed-meetings/" +"${sessionScope.CURRENT_USER.getId()}";
         console.log(url);
         let htmlElements = "";
         const postMethod = "POST";
