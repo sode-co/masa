@@ -80,7 +80,15 @@ template use File | Settings | File Templates. --%> <%@ page
             const arr = data["meetings"];
             const width = arr.length;
             arr.forEach((element) => {
-                console.log(element);
+                var startConvert = new Date(element.startTime); // create Date object
+                var startConvertTime = startConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
+                var endConvert = new Date(element.startTime); // create Date object
+                var endConvertTime = endConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
+
+
+
+
+
                 idsession = element.id;
                 idhostsession = element.hostId;
                 titlesession = element.title;
@@ -101,9 +109,9 @@ template use File | Settings | File Templates. --%> <%@ page
                     element.id +
                     '</h6>' +
                     '<p class="tracking-tight text-gray-500"><span class="text-3xl font-bold text-green-700">' +
-                    element.startTime +
+                    startConvertTime +
                     '-' +
-                    element.endTime +
+                    endConvertTime +
                     '</span>' +
                     '</p></div></div><ul class="relative py-12 space-y-3">' +
                     '<li class="flex items-center space-x-2 text-sm font-medium text-gray-500">' +
