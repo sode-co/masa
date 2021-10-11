@@ -103,6 +103,8 @@ template use File | Settings | File Templates. --%> <%@ page
         let accept = "?answer=accept";
         let idsession = 0;
         let htmlElements = "";
+        const spec = 'ZZZ';
+        const space = '';
         $.getJSON(
             "http://localhost:8080/masa/api/user-management/get_user_in_processing",
             function (data) {
@@ -119,7 +121,7 @@ template use File | Settings | File Templates. --%> <%@ page
                                 if(element2.userId===element.id){
 
                                     i++;
-                                    idsession = element.id;
+                                    idsession = 'ZZZ'+element2.id;
                                     htmlElements +=
                                         '<tr>'
                                         +'<td id="index" style="font-size: 15px; color: black; text-align: center">'+i+'</td>'
@@ -147,10 +149,11 @@ template use File | Settings | File Templates. --%> <%@ page
                                         +'<td>'
                                         +'<div style="background-color: #33bd43; width: 90px; height: 30px; border-radius: 25px; padding-top: 7px; padding-left: 25px">'
                                         +'<a href="" onClick="(function(){'
+                                        +'console.log(idsession);'
                                         +'const varToString = varObj => Object.keys(varObj)[0];'
-                                        +'const '+idsession+'=i;'
+                                        +"const "+idsession+"=i;"
                                         +'const x = varToString({'+idsession+'});'
-                                        +'const url = urlAccept + x +accept;'
+                                        +'const url = (urlAccept + x +accept).replace(spec, space);'
                                         +'$.getJSON(url, function(data) {'
                                         +'console.log(data);'
                                         +'});'
