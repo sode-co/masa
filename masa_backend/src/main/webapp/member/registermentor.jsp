@@ -269,7 +269,7 @@
           </div>
           <div class="w-full px-4 py-7 md:px-10">
             <div class="mb-10 text-center">
-              <h1 class="text-3xl font-bold text-gray-900">REGISTER</h1>
+              <h1 class="text-3xl font-bold text-gray-900" style="color: #f57640">REGISTER</h1>
               <p>Wanna become a mentor? Register here</p>
             </div>
             <div class="flex -mx-3">
@@ -339,6 +339,7 @@
                   <%--      <input type="submit" value="BECOME MENTOR" onclick="becomeMentor()">--%>
                   <button onclick="becomeMentor()"
                     class="block w-full max-w-xs px-3 py-3 mx-auto font-semibold text-white bg-indigo-500 rounded-lg hover:bg-indigo-700 focus:bg-indigo-700"
+                    style="color: white; background-color: #3bc064"
                   >
                     REGISTER NOW
                   </button>
