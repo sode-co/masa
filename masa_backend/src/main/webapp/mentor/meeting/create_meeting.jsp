@@ -262,6 +262,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Create new meeting</title>
     <link rel="shortcut icon" href="${Masa.ICON_URL}"/>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="${Masa.ICON_URL}"/>

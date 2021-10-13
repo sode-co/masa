@@ -82,7 +82,7 @@ template use File | Settings | File Templates. --%> <%@ page
             arr.forEach((element) => {
                 var startConvert = new Date(element.startTime); // create Date object
                 var startConvertTime = startConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
-                var endConvert = new Date(element.startTime); // create Date object
+                var endConvert = new Date(element.endTime); // create Date object
                 var endConvertTime = endConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
 
                 idsession = "Z"+element.id;
@@ -104,11 +104,11 @@ template use File | Settings | File Templates. --%> <%@ page
                     element.id +
                     '</h6>' +
                     '<p class="tracking-tight text-gray-500"><span class="text-3xl font-bold text-green-700">' +
-                    startConvertTime.slice(0,21) +
+                    startConvertTime.slice(0,11) +' '+startConvertTime.slice(15, 21)+
                     '<br/>'+
                     '-' +
                     '<br/>'+
-                    endConvertTime.slice(0,21) +
+                    endConvertTime.slice(0,11) +' '+endConvertTime.slice(15, 21)+
                     '</span>' +
                     '</p></div></div><ul class="relative py-12 space-y-3">' +
                     '<li class="flex items-center space-x-2 text-sm font-medium text-gray-500">' +
