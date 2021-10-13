@@ -314,9 +314,9 @@
             }else{
                 const description = $("#mytextarea").html();
                 const json = {
-                    "id": window.location.href.slice(window.location.href.indexOf('?id='), window.location.href.indexOf('&host=')).replace('?id=',''),
+                    "id": window.location.href.slice(window.location.href.indexOf('?id='), window.location.href.indexOf('&host=')).replace('?id=','').replace('Z',''),
                     "title": document.getElementById("title").value,
-                    // "host": "ME100001",
+                     //"host": "ME100001",
                     "host": "${CURRENT_USER.getId()}",
                     "platform": platformInput,
                     "topic": document.getElementById("topic").value,
@@ -334,8 +334,8 @@
                 }
                 fetch('http://localhost:8080/masa/api/meeting/update', options)
                     .then(res => res.json())
-                    .then(res => console.log(res))
-                    .catch(err => console.error(err));
+                    .then(res => alert('Update your meeting SUCCESS!'))
+                    .catch(err => alert(err));
             }
         }
     </script>
@@ -353,7 +353,68 @@
 
 <body>
 
-<%@include  file="/shared/header/navbar.html"%>
+<div class="items-center flex-grow lg:flex" id="navi">
+    <ul class="flex flex-col ml-auto list-none lg:flex-row">
+        <li class="nav-item">
+            <a
+                    class="
+                                    font-sans
+                                    text-2xl
+                                    font-semibold
+                                    text-gray-800
+                                    dark:text-gray-200 dark:hover:text-gray-200
+                                    hover:no-underline
+                                    border-b-2 border-green-800
+                                    mx-1.5
+                                    sm:mx-6
+                                    hover:text-gray-800
+                                "
+                    href="http://localhost:8080/masa/mentor/meeting/index.jsp"
+            >
+                Home
+            </a>
+        </li>
+        <li class="nav-item">
+            <a
+                    class="
+                                    font-sans
+                                    text-2xl
+                                    font-semibold
+                                    border-b-2 border-transparent
+                                    hover:text-gray-800
+                                    dark:hover:text-gray-200
+                                    hover:border-green-800 hover:no-underline
+                                    mx-1.5
+                                    sm:mx-6
+                                "
+                    href="/masa/mentor/meeting/create_meeting.jsp"
+            >
+                Create new meeting
+            </a>
+        </li>
+        <li class="nav-item">
+            <a
+                    class="
+                                    font-sans
+                                    text-2xl
+                                    font-semibold
+                                    border-b-2 border-transparent
+                                    hover:text-gray-800
+                                    dark:hover:text-gray-200
+                                    hover:border-green-800 hover:no-underline
+                                    mx-1.5
+                                    sm:mx-6
+                                "
+                    href="#footer"
+            >
+                Contact
+            </a>
+        </li>
+        <li class="nav-item" style="width: 80px; padding-left: 10px; background-color: #f68859; color: white; border-radius: 10px">
+            <a style="color: white; font-size: 14px; padding: 2px" href="/masa/auth-management/signout"> Log Out </a>
+        </li>
+    </ul>
+</div>
 <h1 style="display: none" id="current-user">${sessionScope.CURRENT_USER.id}</h1>
 <div class="container text-center createform">
     <div class="row">
@@ -527,7 +588,7 @@
     console.log('url', url);
     $.getJSON(url, function (data) {
         const arr = data["meetings"];
-        const meetingId = window.location.href.slice(window.location.href.indexOf('?id='), window.location.href.indexOf('&host=')).replace('?id=','');
+        const meetingId = window.location.href.slice(window.location.href.indexOf('?id='), window.location.href.indexOf('&host=')).replace('?id=','').replace('Z','');
         arr.forEach((element) => {
             if(element.id===meetingId){
                 document.getElementById("title").value = element.title;

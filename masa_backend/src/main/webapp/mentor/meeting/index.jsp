@@ -94,15 +94,15 @@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ page import="c
         >
             <div class="flex items-center h-full bg-gray-900 bg-opacity-50">
                 <div class="max-w-xl px-10">
-                    <h2 class="text-2xl font-semibold text-white">Hi, mentor</h2>
-                    <p class="mt-2 text-gray-400">Create more meeting for sharing now!</p>
+                    <h2 class="text-3xl font-semibold text-white">Hi, ${sessionScope.CURRENT_USER.fullName}, </h2>
+                    <p class="mt-3 text-gray-400">Create more meeting for sharing now!</p>
                     <a
                         href="/masa/mentor/meeting/create_meeting.jsp"
-                        class="flex items-center px-3 py-2 mt-4 text-sm font-medium text-white uppercase bg-blue-600 rounded  hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
+                        class="flex items-center px-3 py-2 mt-4 text-sm font-medium text-white uppercase bg-blue-800 rounded  hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
                     >
-                        <span>Create a new meeting now</span>
+                        <span style="color: white; font-size: 15px">    Create a new meeting now</span>
                         <svg
-                            class="w-5 h-5 mx-2"
+                            class="w-15 h-9 mx-2"
                             fill="none"
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -117,16 +117,6 @@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ page import="c
             </div>
         </div>
 
-        <!-- <div class="container flex items-center mx-auto bg-green-100 rounded-md h-96">
-            <div class="text-center sm:ml-20 text-gray-50 sm:text-left">
-                <h1 class="mb-4 text-5xl font-bold text-green-800">Welcome Mentor! <br /></h1>
-                <button class="inline-block text-2xl text-gray-600 sm:block">
-                    <a href="/masa/mentor/meeting/create_meeting.jsp" class="text-gray-700 hover:no-underline text-md hover:text-blue-500">
-                        Create a new meeting now!
-                    </a>
-                </button>
-            </div>
-        </div> -->
 
         <!-- End of noti -->
         <%@ include file="../../shared/meeting/_mentor_view_meeting.jsp"%>
