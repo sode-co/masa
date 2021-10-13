@@ -86,15 +86,14 @@ To change this template use File | Settings | File Templates. --%> <%@ page
 <!-- End of navigation -->
 <!-- Noti -->
 <div
-        class="container flex items-center mx-auto bg-green-100 rounded-md h-96"
+        class="container h-64 overflow-hidden bg-center bg-cover rounded-md"
+        style="background-image: url('https://news.blr.com/app/uploads/sites/3/2021/09/shutterstock_1752871988.jpg')"
 >
-    <div class="text-center sm:ml-20 text-gray-50 sm:text-left">
-        <h1 class="mb-4 text-4xl font-bold text-green-800">
-            Hi ${sessionScope.CURRENT_USER.fullName} <br />
-        </h1>
-        <p class="inline-block text-2xl text-gray-600 sm:block">
-            See all question for your meeting
-        </p>
+    <div class="flex items-center h-full bg-gray-900 bg-opacity-50">
+        <div class="max-w-xl px-10">
+            <h2 class="text-3xl font-semibold text-white">Hi ${sessionScope.CURRENT_USER.fullName}, </h2>
+            <p style="color: white; font-weight: bold">See all questions for your meeting</p>
+        </div>
     </div>
 </div>
 

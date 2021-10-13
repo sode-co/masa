@@ -46,7 +46,7 @@ template use File | Settings | File Templates. --%> <%@ page
         <script>
             const urlFollow = "http://localhost:8080/masa/api/appointment-management/create";
             const urlUnfollow = "http://localhost:8080/masa/api/appointment-management/remove";
-            const url ="http://localhost:8080/masa/api/meeting_question/questions/"+window.location.href.slice(window.location.href.indexOf('meeting=')).replace('meeting=','');
+            const url ="http://localhost:8080/masa/api/meeting_question/questions/"+window.location.href.slice(window.location.href.indexOf('meeting=')).replace('meeting=','').replace('Z','');
             console.log(url);
             let htmlElements = '';
             const postMethod = "POST";
@@ -75,16 +75,16 @@ template use File | Settings | File Templates. --%> <%@ page
                             '<div class="flex items-center border border-gray-400 rounded-lg shadow lg:flex sm:ml-24 sm:mr-24">' +
                             '      <div class="block h-full py-4 bg-green-600 rounded-lg shadow-inner lg:w-2/12">' +
                             '        <div class="tracking-wide text-center">' +
-                            '          <div class="font-bold text-white text-7xl ">24</div>' +
-                            '          <div class="text-4xl font-normal text-white">Sept</div>' +
+                            '          <div class="font-bold text-white text-7xl ">'+stringdatetime.slice(8,11)+'</div>' +
+                            '          <div class="text-4xl font-normal text-white">'+stringdatetime.slice(4,8) +'</div>' +
                             "        </div>" +
                             "      </div>" +
                             '      <div class="w-full px-1 py-5 tracking-wide bg-white lg:w-11/12 xl:w-full lg:px-2 lg:py-2">' +
-                            '        <div class="px-2 text-4xl font-semibold text-center text-gray-800 lg:text-left">' +
+                            '        <div class="px-2 text-4xl font-semibold text-center text-gray-800 lg:text-left" style="color: #2c1d0d; padding-left: 30px">' +
                             element.title +
                             "        </div>" +
                             "" +
-                            '        <div class="px-2 pt-1 text-lg font-medium text-center text-gray-600 lg:text-left">' +
+                            '        <div class="px-2 pt-1 text-lg font-medium text-center text-gray-600 lg:text-left" style="color: #c76e10; padding-left: 30px">' +
                             stringdatetime +
                             "        </div>" +
                             "      </div>" +
