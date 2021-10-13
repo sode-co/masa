@@ -88,24 +88,6 @@ To change this template use File | Settings | File Templates. --%> <%@ page
                   mx-1.5
                   sm:mx-6
                 "
-                            href="/masa/admin/meeting/manage_meeting.jsp"
-                    >
-                        Meeting Management
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a
-                            class="
-                  font-sans
-                  text-2xl
-                  font-semibold
-                  border-b-2 border-transparent
-                  hover:text-gray-800
-                  dark:hover:text-gray-200
-                  hover:border-green-800 hover:no-underline
-                  mx-1.5
-                  sm:mx-6
-                "
                     href="#footer"
                     onClick="logout()">
                         Contact
