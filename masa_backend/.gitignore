@@ -19,7 +19,6 @@ nbbuild/
 # the dist file could make some problems
 # dist/
 nbdist/
-.env
 nbactions.xml
 nb-configuration.xml
 .nb-gradle/
