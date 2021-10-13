@@ -108,8 +108,8 @@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri = "
 
         <!-- End of noti -->
         <br />
-        <div style="margin-left: 1400px">
-            <p style="font-weight: bolder">Search Meetings By Topic Name</p>
+        <div style="margin-left: 100px">
+            <p style="font-weight: bolder">Search Meetings By Topic</p>
             <%@ include file="../../shared/topic/_auto_search_topic_name.jsp"%>
         </div>
         <br />
