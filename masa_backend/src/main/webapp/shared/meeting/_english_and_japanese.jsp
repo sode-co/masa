@@ -50,7 +50,7 @@ change this template use File | Settings | File Templates. --%> <%@ page content
         let space3 = '';
 
         const json3 = {
-            topicName: ["Software engineering", "Artificial Intelligence", "Business management"],
+            topicName: ["Japanese Language", "English Language"],
         };
         console.log(json3);
         const options3 = {

@@ -133,9 +133,9 @@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri = "
             <h1 class="text-3xl font-bold text-gray-500">Search meeting by topic</h1>
             <%@ include file="../../shared/topic/_auto_search_topic_name.jsp"%>
         </div>
-        <br/>
-        <div><%@ include file="../../shared/meeting/_view_new_meeting.jsp"%></div>
-        <br />
+<%--        <br/>--%>
+<%--        <div><%@ include file="../../shared/meeting/_view_new_meeting.jsp"%></div>--%>
+<%--        <br />--%>
         <div><%@ include file="../../shared/meeting/_technology_meeting.jsp"%></div>
         <br />
         <div><%@ include file="../../shared/meeting/_agile_and_business.jsp"%></div>
