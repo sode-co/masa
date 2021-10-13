@@ -111,6 +111,9 @@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri = "
                     Hi
                     <strong class="block text-5xl font-black sm:text-4xl">${sessionScope.CURRENT_USER.fullName}!</strong>
                 </h1>
+                <p class="text-3xl leading-relaxed text-center text-gray-500 lg:text-left sm:text-md lg:pr-40">
+                    Many interesting meetings are comming up...
+                </p>
                 <c:if test="${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MEMBER}'}">
                     <a
                         href="/masa/member/registermentor.jsp"
@@ -118,9 +121,6 @@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri = "
                         >Register to become a mentor</a
                     >
                 </c:if>
-                <p class="text-3xl leading-relaxed text-center text-gray-500 lg:text-left sm:text-md lg:pr-40">
-                    Many interesting meetings are comming up...
-                </p>
             </div>
             <div class="sm:w-2/4">
                 <img class="w-full" src="https://i.pinimg.com/originals/ae/5a/e1/ae5ae16a1f8bdad663c96a699d91e646.jpg" alt="Welcome Student" />
