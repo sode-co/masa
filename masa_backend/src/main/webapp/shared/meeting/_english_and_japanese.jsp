@@ -51,6 +51,9 @@ change this template use File | Settings | File Templates. --%> <%@ page content
         let meetingParam3 = "&meeting=";
         const urlThisPage3 = "http://localhost:8080/masa/member/meeting/index.jsp";
         const quotationMarks3 = '"';
+        let followNoti3 = "Follow meeting success";
+        let z3 = 'Z';
+        let space3 = '';
 
         const json3 = {
             topicName: ["Software engineering", "Artificial Intelligence", "Business management"],
@@ -73,7 +76,7 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                     var startConvertTime = startConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
                     var endConvert = new Date(element.startTime); // create Date object
                     var endConvertTime = endConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
-                    idsession3 = element.id;
+                    idsession3 = "Z"+element.id;
                     htmlElements3 +=
                         '<div class="relative flex flex-col justify-between flex-1 max-w-md p-8 lg:p-6 xl:p-8 rounded-2xl mb-11">' +
                         '<div class="absolute inset-0 w-full h-full transform bg-white rounded-2xl">' +
@@ -136,23 +139,21 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                         "const url = urlFollow3 + x;" +
                         "const json3 = {" +
                         "userId: userId3," +
-                        "meetingId: x," +
+                        "meetingId: x.replace(z3,space3)," +
                         "};" +
                         "console.log(json3);" +
-                        "const options3 = {" +
+                        "const options = {" +
                         "method: postMethod3," +
                         "body: JSON.stringify(json3)," +
                         "headers: {" +
-                        "contentType3: appJson3," +
+                        "contentType: appJson3," +
                         "}," +
                         "};" +
-                        "if (document.getElementById(followId3).textContent === followText3) {" +
-                        "fetch(urlFollow3, options3)" +
+                        "fetch(urlFollow3, options)" +
                         ".then((res) => res.json())" +
-                        ".then((res) => console.log(res))" +
-                        ".catch((err) => console.error(err));" +
+                        ".then((res) => alert(followNoti3))" +
+                        ".catch((err) => alert(err));" +
                         "window.location.replace(urlThisPage3)" +
-                        "}" +
                         '})();return false;">' +
                         '<button href="#heheh" class="relative flex items-center justify-center w-full px-3 py-3 text-lg font-medium text-white rounded-xl group">' +
                         '<span class="absolute inset-0 w-full h-full transition-all duration-200 ease-out transform bg-green-500 group-hover:translate-y-0 group-hover:translate-x-0 rounded-xl"></span>' +
