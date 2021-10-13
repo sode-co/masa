@@ -154,7 +154,6 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                         ".then((res) => res.json())" +
                         ".then((res) => alert(followNoti2))" +
                         ".catch((err) => alert(err));" +
-                        "window.location.replace(urlThisPage2)" +
                         '})();return false;">' +
                         '<button href="#heheh" class="relative flex items-center justify-center w-full px-3 py-3 text-lg font-medium text-white rounded-xl group">' +
                         '<span class="absolute inset-0 w-full h-full transition-all duration-200 ease-out transform bg-green-500 group-hover:translate-y-0 group-hover:translate-x-0 rounded-xl"></span>' +
