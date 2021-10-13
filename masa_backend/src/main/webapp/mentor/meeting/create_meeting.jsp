@@ -265,7 +265,6 @@
     <link rel="shortcut icon" href="${Masa.ICON_URL}"/>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="${Masa.ICON_URL}"/>
-    <title>Create new meeting</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/jq1a1p24pc9o6qg9ovftz51uteowbcodeq41e39ci12r0pnt/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
@@ -352,11 +351,59 @@
 </head>
 
 <body>
+<nav class="relative flex flex-wrap items-center justify-between px-2 py-3 mb-3 bg-white">
+    <div class="container flex flex-wrap items-center justify-between px-4 mx-auto">
+        <div class="relative flex justify-between w-full px-4 lg:w-auto lg:static lg:block lg:justify-start">
+            <img src="/masa/shared/icon/weblogo.svg" alt="Logo" width="30%" height="30%" />
+        </div>
+        <div class="items-center flex-grow lg:flex" id="navi">
+            <ul class="flex flex-col ml-auto list-none lg:flex-row">
+                <li class="nav-item">
+                    <a
+                            class="
+                                    font-sans
+                                    text-2xl
+                                    font-semibold
+                                    text-gray-800
+                                    dark:text-gray-200 dark:hover:text-gray-200
+                                    hover:no-underline
+                                    border-b-2 border-green-800
+                                    mx-1.5
+                                    sm:mx-6
+                                    hover:text-gray-800
+                                "
+                            href="http://localhost:8080/masa/mentor/meeting/index.jsp"
+                    >
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a
+                            class="
+                                    font-sans
+                                    text-2xl
+                                    font-semibold
+                                    border-b-2 border-transparent
+                                    hover:text-gray-800
+                                    dark:hover:text-gray-200
+                                    hover:border-green-800 hover:no-underline
+                                    mx-1.5
+                                    sm:mx-6
+                                "
+                            href="#footer"
+                    >
+                        Contact
+                    </a>
+                </li>
+                <li class="nav-item" style="width: 80px; padding-left: 10px; background-color: #f68859; color: white; border-radius: 10px">
+                    <a style="color: white; font-size: 14px; padding: 2px" href="/masa/auth-management/signout"> Log Out </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 
-
-
-<%@include  file="/shared/header/navbar.html"%>
 <h1 style="display: none" id="current-user">${sessionScope.CURRENT_USER.id}</h1>
 <div class="container text-center createform">
     <div class="row">
