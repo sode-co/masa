@@ -319,6 +319,7 @@
                     "platform": platformInput,
                     "topic": document.getElementById("topic").value,
                     "host": "${CURRENT_USER.getId()}",
+                    //"host": "ME100002",
                     "startTime": millisecondsStart,
                     "endTime": millisecondsEnd,
                     "description": tinyMCE.activeEditor.getContent(),
@@ -333,8 +334,8 @@
                 }
                 fetch('../../api/meeting/create', options)
                     .then(res => res.json())
-                    .then(res => console.log(res))
-                    .catch(err => console.error(err));
+                    .then(res => alert('CREATE NEW MEETING SUCCESS!'))
+                    .catch(err => alert(err));
             }
         }
     </script>
