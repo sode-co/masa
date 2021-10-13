@@ -21,7 +21,7 @@ change this template use File | Settings | File Templates. --%> <%@ page content
             <div class="container px-5 py-5 mx-auto">
                 <div class="flex flex-wrap w-full mb-8">
                     <div class="w-full mb-6 lg:mb-0 sm:ml-20">
-                        <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">Category Technology</h1>
+                        <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">Software Engineering and AI</h1>
                         <br/>
                         <div class="w-20 h-1 bg-green-500 rounded"></div>
                     </div>
@@ -55,7 +55,7 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                 let z1 = 'Z';
                 let space1 = '';
                 const json1 = {
-                    topicName: ["Software engineering", "Artificial Intelligence", "Business management"],
+                    topicName: ["Software engineering", "Artificial Intelligence"],
                 };
                 console.log(json1);
                 const options = {

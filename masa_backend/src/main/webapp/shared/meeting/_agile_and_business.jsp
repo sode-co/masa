@@ -21,7 +21,7 @@ change this template use File | Settings | File Templates. --%> <%@ page content
     <div class="container px-5 py-5 mx-auto">
         <div class="flex flex-wrap w-full mb-8">
             <div class="w-full mb-6 lg:mb-0 sm:ml-20">
-                <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">Category Bussiness</h1>
+                <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">Agile and Business management</h1>
                 <br/>
                 <div class="w-20 h-1 bg-green-500 rounded"></div>
             </div>
@@ -56,7 +56,7 @@ change this template use File | Settings | File Templates. --%> <%@ page content
         let followNoti2 = "Follow meeting success";
 
         const json2 = {
-            topicName: ["Software engineering", "Artificial Intelligence", "Business management"],
+            topicName: ["Agile", "Business management"],
         };
         console.log(json2);
         const options2 = {

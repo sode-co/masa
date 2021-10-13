@@ -55,7 +55,7 @@ change this template use File | Settings | File Templates. --%> <%@ page content
         let space4 = '';
 
         const json4 = {
-            topicName: ["Software engineering", "Artificial Intelligence", "Business management"],
+            topicName: ["Soft Skills"],
         };
         console.log(json4);
         const options4 = {
