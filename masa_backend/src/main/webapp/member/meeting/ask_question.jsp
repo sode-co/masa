@@ -28,7 +28,7 @@
                 const json = {
                     "title": tinyMCE.activeEditor.getContent(),
                     "userId": urlHref.slice(urlHref.indexOf('user='), urlHref.indexOf('&meeting=')).replace('user=',''),
-                    "meetingId": urlHref.slice(urlHref.indexOf('meeting=')).replace('meeting=','')
+                    "meetingId": urlHref.slice(urlHref.indexOf('meeting=')).replace('meeting=','').replace('Z','')
                 }
                 console.log(json);
                 const options = {

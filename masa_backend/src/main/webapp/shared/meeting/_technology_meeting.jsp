@@ -49,7 +49,7 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                 let urlAskPage1 = "http://localhost:8080/masa/member/meeting/ask_question.jsp";
                 let userParam1 = "?user=";
                 let meetingParam1 = "&meeting=";
-                let followNoti = "Follow meeting success";
+                let followNoti1 = "Follow meeting success";
                 const urlThisPage1 = "http://localhost:8080/masa/member/meeting/index.jsp";
                 const quotationMarks1 = '"';
                 let z1 = 'Z';
@@ -153,7 +153,7 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                                 "};" +
                                 "fetch(urlFollow1, options)" +
                                 ".then((res) => res.json())" +
-                                ".then((res) => alert(followNoti))" +
+                                ".then((res) => alert(followNoti1))" +
                                 ".catch((err) => alert(err));" +
                                 "window.location.replace(urlThisPage1)" +
                                 '})();return false;">' +
