@@ -129,10 +129,11 @@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri = "
         <!-- End of notification -->
 
         <br />
-        <div class="relative flex flex-col items-center px-8 py-5 mx-auto bg-white rounded-md lg:py-5 lg:flex-row w-96">
-            <h1 class="text-3xl font-bold text-gray-500">Search new meetings by topic</h1>
+        <div style="padding-left: 70px">
+            <h1 class="text-3xl font-bold text-gray-500">Search meeting by topic</h1>
             <%@ include file="../../shared/topic/_auto_search_topic_name.jsp"%>
         </div>
+        <br/>
         <div><%@ include file="../../shared/meeting/_view_new_meeting.jsp"%></div>
         <br />
         <div><%@ include file="../../shared/meeting/_technology_meeting.jsp"%></div>

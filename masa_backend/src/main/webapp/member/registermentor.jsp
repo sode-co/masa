@@ -36,8 +36,8 @@
 
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
-          console.log(xhr.status);
-          console.log(xhr.responseText);
+          alert(xhr.status);
+          alert(xhr.responseText);
         }};
       const json = {
         "description": document.getElementById("description").value,
@@ -267,7 +267,7 @@
               />
             </svg>
           </div>
-          <div class="w-full px-5 py-10 md:w-1/2 md:px-10">
+          <div class="w-full px-4 py-7 md:px-10">
             <div class="mb-10 text-center">
               <h1 class="text-3xl font-bold text-gray-900">REGISTER</h1>
               <p>Wanna become a mentor? Register here</p>
