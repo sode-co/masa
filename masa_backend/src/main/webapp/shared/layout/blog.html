@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+</head>
+<body>
+    <div class="py-12">
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <form method="POST" action="action.php">
+                        <div class="mb-4">
+                            <label class="text-xl text-gray-600">Title <span class="text-red-500">*</span></label></br>
+                            <input type="text" class="w-full p-2 border-2 border-gray-300" name="title" id="title" value="" required>
+                        </div>
+    
+                        <div class="mb-4">
+                            <label class="text-xl text-gray-600">Description</label></br>
+                            <input type="text" class="w-full p-2 border-2 border-gray-300" name="description" id="description" placeholder="(Optional)">
+                        </div>
+    
+                        <div class="mb-8">
+                            <label class="text-xl text-gray-600">Content <span class="text-red-500">*</span></label></br>
+                            <textarea name="content" class="border-2 border-gray-500">
+                                
+                            </textarea>
+                        </div>
+    
+                        <div class="flex p-1">
+                            <button role="submit" class="p-3 text-white bg-blue-500 hover:bg-blue-400" required>Create meeting</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
+      integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
+      crossorigin="anonymous"
+    ></script>
+    
+<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+    
+<script>
+    CKEDITOR.replace( 'content' );
+</script>
+</html>
