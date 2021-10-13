@@ -137,7 +137,8 @@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri = "
         <div><%@ include file="../../shared/meeting/_view_new_meeting.jsp"%></div>
         <br />
         <div><%@ include file="../../shared/meeting/_technology_meeting.jsp"%></div>
-        <div><%-- <%@ include file="../../shared/meeting/_technology_meeting.jsp"%>--%></div>
+        <br />
+        <div><%@ include file="../../shared/meeting/_agile_and_business.jsp"%></div>
         <!-- Footer -->
         <footer class="relative pt-1 bg-white border-b-2 border-blue-700 footer" id="footer">
             <div class="container px-6 mx-auto">
