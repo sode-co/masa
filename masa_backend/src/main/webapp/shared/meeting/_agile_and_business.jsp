@@ -73,7 +73,6 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                     var startConvertTime = startConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
                     var endConvert = new Date(element.startTime); // create Date object
                     var endConvertTime = endConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
-                    console.log('agile', res);
                     idsession2 = element.id;
                     htmlElements2 +=
                         '<div class="relative flex flex-col justify-between flex-1 max-w-md p-8 lg:p-6 xl:p-8 rounded-2xl mb-11">' +

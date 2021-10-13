@@ -49,9 +49,11 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                 let urlAskPage1 = "http://localhost:8080/masa/member/meeting/ask_question.jsp";
                 let userParam1 = "?user=";
                 let meetingParam1 = "&meeting=";
+                let followNoti = "Follow meeting success";
                 const urlThisPage1 = "http://localhost:8080/masa/member/meeting/index.jsp";
                 const quotationMarks1 = '"';
-
+                let z1 = 'Z';
+                let space1 = '';
                 const json1 = {
                     topicName: ["Software engineering", "Artificial Intelligence", "Business management"],
                 };
@@ -74,7 +76,8 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                             var endConvert = new Date(element.startTime); // create Date object
                             var endConvertTime = endConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
 
-                            idsession1 = element.id;
+                            idsession1 = "Z"+element.id;
+                            console.log('idsession1',idsession1);
                             htmlElements1 +=
                                 '<div class="relative flex flex-col justify-between flex-1 max-w-md p-8 lg:p-6 xl:p-8 rounded-2xl mb-11">' +
                                 '<div class="absolute inset-0 w-full h-full transform bg-white rounded-2xl">' +
@@ -134,26 +137,25 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                                 "const x = varToString({" +
                                 idsession1 +
                                 "});" +
-                                "const url = urlFollow1 + x;" +
+                                "const url = urlFollow1;" +
+                                'console.log(url);'+
                                 "const json1 = {" +
                                 "userId: userId1," +
-                                "meetingId: x," +
+                                "meetingId: x.replace(z1,space1)," +
                                 "};" +
                                 "console.log(json1);" +
                                 "const options = {" +
                                 "method: postMethod1," +
                                 "body: JSON.stringify(json1)," +
                                 "headers: {" +
-                                "contentType1: appJson1," +
+                                "contentType: appJson1," +
                                 "}," +
                                 "};" +
-                                "if (document.getElementById(followId1).textContent === followText1) {" +
                                 "fetch(urlFollow1, options)" +
                                 ".then((res) => res.json())" +
-                                ".then((res) => console.log(res))" +
-                                ".catch((err) => console.error(err));" +
+                                ".then((res) => alert(followNoti))" +
+                                ".catch((err) => alert(err));" +
                                 "window.location.replace(urlThisPage1)" +
-                                "}" +
                                 '})();return false;">' +
                                 '<button href="#heheh" class="relative flex items-center justify-center w-full px-3 py-3 text-lg font-medium text-white rounded-xl group">' +
                                 '<span class="absolute inset-0 w-full h-full transition-all duration-200 ease-out transform bg-green-500 group-hover:translate-y-0 group-hover:translate-x-0 rounded-xl"></span>' +
