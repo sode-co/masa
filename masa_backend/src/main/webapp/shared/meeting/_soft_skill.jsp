@@ -5,6 +5,12 @@ change this template use File | Settings | File Templates. --%> <%@ page content
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
     <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+    <script
+            defer
+            src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
+            integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04Kz43K2bwfV9YBauFfnzvynJ"
+            crossorigin="anonymous"
+    ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style></style>
@@ -15,63 +21,65 @@ change this template use File | Settings | File Templates. --%> <%@ page content
     <div class="container px-5 py-5 mx-auto">
         <div class="flex flex-wrap w-full mb-8">
             <div class="w-full mb-6 lg:mb-0 sm:ml-20">
-                <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">Foreign Language</h1>
+                <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">Soft Skill</h1>
                 <br/>
                 <div class="w-20 h-1 bg-green-500 rounded"></div>
             </div>
             <br/>
         </div>
         <h1 id="userId" style="display: none">${sessionScope.CURRENT_USER.getId()}</h1>
-        <div id="carousel_wrapper3" class="min-w-full overflow-auto md:flex md:justify-center md:space-x-8 md:px-14"></div>
+        <div id="carousel_wrapper4" class="min-w-full overflow-auto md:flex md:justify-center md:space-x-8 md:px-14"></div>
     </div>
     <script>
-        const urlFollow3 = "http://localhost:8080/masa/api/appointment-management/create";
-        let container3 = document.getElementById("carousel_wrapper3");
-        console.log("container3", container3);
-        const url3 = "http://localhost:8080/masa/api/meeting-management/not-followed-meetings/" + "${sessionScope.CURRENT_USER.getId()}";
-        console.log(url3);
-        let htmlElements3 = "";
-        const postMethod3 = "POST";
-        const contentType3 = "Content-Type";
-        const appJson3 = "application/json";
-        const userId3 = document.getElementById("userId").textContent;
-        let idsession3 = 0;
-        let followText3 = "Follow";
-        let unfollowText3 = "Unfollow";
-        let followId3 = "follow";
-        let i3 = 0;
-        let urlAskPage3 = "http://localhost:8080/masa/member/meeting/ask_question.jsp";
-        let userParam3 = "?user=";
-        let meetingParam3 = "&meeting=";
-        const urlThisPage3 = "http://localhost:8080/masa/member/meeting/index.jsp";
-        const quotationMarks3 = '"';
-        let followNoti3 = "Follow meeting success";
-        let z3 = 'Z';
-        let space3 = '';
+        const urlFollow4 = "http://localhost:8080/masa/api/appointment-management/create";
+        let container4 = document.getElementById("carousel_wrapper4");
+        const url4 = "http://localhost:8080/masa/api/meeting-management/not-followed-meetings/" + "${sessionScope.CURRENT_USER.getId()}";
+        console.log(url4);
+        let htmlElements4 = "";
+        const postMethod4 = "POST";
+        const contentType4 = "Content-Type";
+        const appJson4 = "application/json";
+        const userId4 = document.getElementById("userId").textContent;
+        let idsession4 = 0;
+        let followText4 = "Follow";
+        let unfollowText4 = "Unfollow";
+        let followId4 = "follow";
+        let i4 = 0;
+        let urlAskPage4 = "http://localhost:8080/masa/member/meeting/ask_question.jsp";
+        let userParam4 = "?user=";
+        let meetingParam4 = "&meeting=";
+        const urlThisPage4 = "http://localhost:8080/masa/member/meeting/index.jsp";
+        const quotationMarks4 = '"';
+        let followNoti4 = "Follow meeting success";
+        let z4 = 'Z';
+        let space4 = '';
 
-        const json3 = {
+        const json4 = {
             topicName: ["Software engineering", "Artificial Intelligence", "Business management"],
         };
-        console.log(json3);
-        const options3 = {
+        console.log(json4);
+        const options4 = {
             method: "POST",
-            body: JSON.stringify(json3),
+            body: JSON.stringify(json4),
             headers: {
                 "Content-Type": "application/json",
             },
         };
-        fetch("http://localhost:8080/masa/api/meeting-management/topic-name/meetings", options3)
+        fetch("http://localhost:8080/masa/api/meeting-management/topic-name/meetings", options4)
             .then((res) => res.json())
             .then((res) => {
                 const arr = res["meetings"];
                 const width = arr.length;
                 arr.forEach((element) => {
+
                     var startConvert = new Date(element.startTime); // create Date object
                     var startConvertTime = startConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
                     var endConvert = new Date(element.startTime); // create Date object
                     var endConvertTime = endConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
-                    idsession3 = "Z"+element.id;
-                    htmlElements3 +=
+                    idsession4 = "Z"+element.id;
+                    console.log('softskill');
+
+                    htmlElements4 +=
                         '<div class="relative flex flex-col justify-between flex-1 max-w-md p-8 lg:p-6 xl:p-8 rounded-2xl mb-11">' +
                         '<div class="absolute inset-0 w-full h-full transform bg-white rounded-2xl">' +
                         '</div><div class="absolute inset-0 w-full h-full border-2 border-gray-900 rounded-2xl">' +
@@ -105,12 +113,12 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                         '<a href="" onClick="(function(){' +
                         "const varToString = varObj => Object.keys(varObj)[0];" +
                         "const " +
-                        idsession3 +
-                        "=i3;" +
+                        idsession4 +
+                        "=i4;" +
                         "const x = varToString({" +
-                        idsession3 +
+                        idsession4 +
                         "});" +
-                        "const url = urlAskPage3+userParam3+userId3+meetingParam3+x;" +
+                        "const url = urlAskPage4+userParam4+userId4+meetingParam4+x;" +
                         "console.log(url);" +
                         "window.open(url);" +
                         '})();return false;" style="background-color: black">' +
@@ -125,29 +133,28 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                         '<a href="" onClick="(function(){' +
                         "const varToString = varObj => Object.keys(varObj)[0];" +
                         "const " +
-                        idsession3 +
-                        "=i3;" +
+                        idsession4 +
+                        "=i4;" +
                         "const x = varToString({" +
-                        idsession3 +
+                        idsession4 +
                         "});" +
-                        "const url = urlFollow3 + x;" +
-                        "const json3 = {" +
-                        "userId: userId3," +
-                        "meetingId: x.replace(z3,space3)," +
+                        "const url = urlFollow4 + x;" +
+                        "const json4 = {" +
+                        "userId: userId4," +
+                        "meetingId: x.replace(z4,space4)," +
                         "};" +
-                        "console.log(json3);" +
+                        "console.log(json4);" +
                         "const options = {" +
-                        "method: postMethod3," +
-                        "body: JSON.stringify(json3)," +
+                        "method: postMethod4," +
+                        "body: JSON.stringify(json4)," +
                         "headers: {" +
-                        "contentType: appJson3," +
+                        "contentType: appJson4," +
                         "}," +
                         "};" +
-                        "fetch(urlFollow3, options)" +
+                        "fetch(urlFollow4, options)" +
                         ".then((res) => res.json())" +
-                        ".then((res) => alert(followNoti3))" +
+                        ".then((res) => alert(followNoti4))" +
                         ".catch((err) => alert(err));" +
-                        "window.location.replace(urlThisPage3)" +
                         '})();return false;">' +
                         '<button href="#heheh" class="relative flex items-center justify-center w-full px-3 py-3 text-lg font-medium text-white rounded-xl group">' +
                         '<span class="absolute inset-0 w-full h-full transition-all duration-200 ease-out transform bg-green-500 group-hover:translate-y-0 group-hover:translate-x-0 rounded-xl"></span>' +
@@ -158,11 +165,11 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                         "</a>" +
                         "</div>";
                 });
-                container3.innerHTML = htmlElements3;
+                container4.innerHTML = htmlElements4;
             })
             .catch((err) => console.error(err));
 
-        container3.innerHTML = htmlElements3;
+        container4.innerHTML = htmlElements4;
     </script>
 </section>
 <div id="target"></div>

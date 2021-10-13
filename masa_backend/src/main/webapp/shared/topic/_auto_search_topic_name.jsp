@@ -200,7 +200,7 @@
         });
     }
     var topics = ["Agile", "Artificial Intelligence", "Business management", "Digital Maketing",
-        "English Language", "Information Assurance", "Japanese Language", "Japanese Language", "Soft Skills", "Software Engineering"]
+        "English Language", "Information Assurance", "Japanese Language", "Soft Skills", "Software Engineering"]
 
     autocomplete(document.getElementById("myInput"), topics);
 </script>
