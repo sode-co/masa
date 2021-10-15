@@ -253,7 +253,7 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Students Information</h1>
+                <h1 class="h3 mb-2 text-gray-800">Users Information</h1>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -282,14 +282,14 @@
                                     let z = 'z';
                                     const statusAlert = "UPDATE STATUS SUCCESS";
                                     const roleAlert = "UPDATE ROLE SUCCESS";
-                                    const paramName = window.location.href.slice(window.location.href.indexOf('name=')).replace('name=', '').replaceAll('%20',' ');
-                                    if(paramName || paramName!==''){
-                                        url = 'http://localhost:8080/masa/api/user-management/get-user-by-name/'+ paramName;
+                                    let paramName;
+                                    if(location.search.replace('?name=','')===''){
+                                        urlTable = "http://localhost:8080/masa/api/user-management/all";
                                     }else{
-                                        url = 'http://localhost:8080/masa/api/user-management/all';
+                                        urlTable = "http://localhost:8080/masa/api/user-management/get-user-by-name/"+location.search.replace('?name=','').replace('%20',' ');
                                     }
                                     $.getJSON(
-                                        url,
+                                        urlTable,
                                         function (data) {
                                             let htmlElements = "";
                                             const arr = data["users"];
