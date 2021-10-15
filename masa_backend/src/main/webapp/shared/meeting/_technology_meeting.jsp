@@ -28,7 +28,9 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                     <br/>
                 </div>
                 <h1 id="userId" style="display: none">${sessionScope.CURRENT_USER.getId()}</h1>
-                <div id="carousel_wrapper1" class="min-w-max  md:flex md:justify-center md:space-x-8 md:px-14" style="overflow-x: scroll"></div>
+              <div id="carousel_wrapper1" class="min-w-full overflow-auto md:flex md:justify-center md:space-x-8 md:px-14">
+                                                 //   "min-w-max  md:flex md:justify-center md:space-x-8 md:px-14"
+                </div>
             </div>
             <script>
                 const urlFollow1 = "http://localhost:8080/masa/api/appointment-management/create";
