@@ -69,27 +69,40 @@
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link" href="mentor.html">
-                <i class="fas fa-fw fa-user"></i>
+                <i class="fas fa-fw fa-chalkboard-teacher"></i>
                 <span>Mentors</span>
             </a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link" href="student.html">
+                <i class="fas fa-fw fa-user-graduate"></i>
+                <span>Students</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="member.html">
+                <i class="fas fa-fw fa-user"></i>
+                <span>Other</span>
+                <p style="font-size: 10px; font-style: italic">User can become mentor</p>
+            </a>
+        </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-               aria-expanded="true" aria-controls="collapseUtilities">
-                <i class="fas fa-fw fa-user-friends"></i>
-                <span>Members</span>
-            </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                 data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="student.html">Students</a>
-                    <a class="collapse-item" href="member.html">Members</a>
-                </div>
-            </div>
-        </li>
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"-->
+<!--               aria-expanded="true" aria-controls="collapseUtilities">-->
+<!--                <i class="fas fa-fw fa-user-friends"></i>-->
+<!--                <span>Members</span>-->
+<!--            </a>-->
+<!--            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"-->
+<!--                 data-parent="#accordionSidebar">-->
+<!--                <div class="bg-white py-2 collapse-inner rounded">-->
+<!--                    <a class="collapse-item" href="student.html">Students</a>-->
+<!--                    <a class="collapse-item" href="member.html">Members</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </li>-->
 
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -102,7 +115,7 @@
 
         <!-- Nav Item - Meetings -->
         <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="meeting.html">
                 <i class="fas fa-fw fa-calendar"></i>
                 <span>Meetings</span></a>
         </li>
@@ -144,15 +157,19 @@
                         <i class="fa fa-bars"></i>
                     </button>
                 </form>
-
+                <script>
+                    function search(){
+                        window.location.replace('/masa/admin/management/user.html'+'?name='+document.getElementById("inputsearchname").value)
+                    }
+                </script>
                 <!-- Topbar Search -->
                 <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                               aria-label="Search" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search user by name..."
+                               aria-label="Search" aria-describedby="basic-addon2" id="inputsearchname">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
+                            <button class="btn btn-primary" type="button" onclick="search()">
                                 <i class="fas fa-search fa-sm"></i>
                             </button>
                         </div>
@@ -251,7 +268,7 @@
                                     <th>Index</th>
                                     <th style="width: 100px">Full Name</th>
                                     <th>Email</th>
-                                    <th>Role</th>
+                                    <th>Status</th>
                                     <th>Update</th>
                                 </tr>
                                 </thead>
@@ -265,8 +282,14 @@
                                     let z = 'z';
                                     const statusAlert = "UPDATE STATUS SUCCESS";
                                     const roleAlert = "UPDATE ROLE SUCCESS";
+                                    const paramName = window.location.href.slice(window.location.href.indexOf('name=')).replace('name=', '').replaceAll('%20',' ');
+                                    if(paramName || paramName!==''){
+                                        url = 'http://localhost:8080/masa/api/user-management/get-user-by-name/'+ paramName;
+                                    }else{
+                                        url = 'http://localhost:8080/masa/api/user-management/all';
+                                    }
                                     $.getJSON(
-                                        "http://localhost:8080/masa/api/user-management/all",
+                                        url,
                                         function (data) {
                                             let htmlElements = "";
                                             const arr = data["users"];
