@@ -28,7 +28,7 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                     <br/>
                 </div>
                 <h1 id="userId" style="display: none">${sessionScope.CURRENT_USER.getId()}</h1>
-                <div id="carousel_wrapper1" class="min-w-full overflow-auto md:flex md:justify-center md:space-x-8 md:px-14">
+              <div id="carousel_wrapper1" class="min-w-full overflow-auto md:flex md:justify-center md:space-x-8 md:px-14">
                                                  //   "min-w-max  md:flex md:justify-center md:space-x-8 md:px-14"
                 </div>
             </div>
@@ -81,7 +81,7 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                             idsession1 = "Z"+element.id;
                             console.log('idsession1',idsession1);
                             htmlElements1 +=
-                                '<div class="relative flex flex-col justify-between flex-1 max-w-md p-8 lg:p-6 xl:p-8 rounded-2xl mb-11">' +
+                                '<div class="relative flex flex-col justify-between flex-1 max-w-md p-8 w-96 lg:p-6 xl:p-8 rounded-2xl mb-11">' +
                                 '<div class="absolute inset-0 w-full h-full transform bg-white rounded-2xl">' +
                                 '</div><div class="absolute inset-0 w-full h-full border-2 border-gray-900 rounded-2xl">' +
                                 '</div><div class="relative flex pb-5 space-x-5 border-b border-gray-200 lg:space-x-3 xl:space-x-5">' +

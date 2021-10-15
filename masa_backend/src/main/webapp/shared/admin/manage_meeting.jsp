@@ -167,6 +167,8 @@ template use File | Settings | File Templates. --%> <%@ page
                             '<br/>'+
                             '<br/>'+
                             '<br/>'+
+                            '<br/>'+
+                            '<br/>'+
                             '<h6 style="color: transparent" id="meetingId">' +
                             element.id +
                             "</h6>" +
