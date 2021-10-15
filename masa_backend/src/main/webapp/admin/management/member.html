@@ -236,7 +236,7 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Mentors Information</h1>
+                <h1 class="h3 mb-2 text-gray-800">Members Information</h1>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -267,7 +267,7 @@
                                     const statusAlert = "UPDATE STATUS SUCCESS";
                                     const roleAlert = "UPDATE ROLE SUCCESS";
                                     $.getJSON(
-                                        "http://localhost:8080/masa/api/user-management/get-user-by-role/mentor",
+                                        "http://localhost:8080/masa/api/user-management/get-user-by-role/member",
                                         function (data) {
                                             let htmlElements = "";
                                             const arr = data["users"];

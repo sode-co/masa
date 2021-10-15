@@ -236,7 +236,7 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Mentors Information</h1>
+                <h1 class="h3 mb-2 text-gray-800">Students Information</h1>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -253,7 +253,6 @@
                                     <th>Email</th>
                                     <th>Role</th>
                                     <th>Update</th>
-                                    <th>Update</th>
                                 </tr>
                                 </thead>
                                 <script>
@@ -267,7 +266,7 @@
                                     const statusAlert = "UPDATE STATUS SUCCESS";
                                     const roleAlert = "UPDATE ROLE SUCCESS";
                                     $.getJSON(
-                                        "http://localhost:8080/masa/api/user-management/get-user-by-role/mentor",
+                                        "http://localhost:8080/masa/api/user-management/get-user-by-role/student",
                                         function (data) {
                                             let htmlElements = "";
                                             const arr = data["users"];
@@ -298,25 +297,6 @@
                                                     // +'window.location.replace(window.location.href);'
                                                     +'})();return false;">'
                                                     +'<button style="background-color: transparent; margin-bottom: 30px; border: none">Status</button>'
-                                                    +'</a>'
-                                                    +'</div>'
-                                                    +'</td>'
-                                                    +'<td>'
-                                                    +'<div style="background-color: #f68859; width: 90px; height: 30px; border-radius: 25px; padding-top: 2px; padding-left: 12px; font-weight: 300">'
-                                                    +'<a href="" onClick="(function(){'
-                                                    +'const varToString = varObj => Object.keys(varObj)[0];'
-                                                    +'const '+idsession+'=i;'
-                                                    +'const x = varToString({'+idsession+'});'
-                                                    +'const url = urlRole + x.replace(z, space);'
-                                                    +'console.log(url);'
-                                                    +'$.getJSON(url, function(data) {'
-                                                    +'console.log(data);'
-                                                    +'});'
-                                                    +'alert(roleAlert);'
-                                                    +'window.location.replace(window.location.href);'
-                                                    // +'window.location.replace(window.location.href);'
-                                                    +'})();return false;">'
-                                                    +'<button style="background-color: transparent; margin-bottom: 30px; border: none">Role</button>'
                                                     +'</a>'
                                                     +'</div>'
                                                     +'</td>'
