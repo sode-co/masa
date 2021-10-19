@@ -274,8 +274,8 @@
                                 <script>
                                     const container = document.getElementById("container");
                                     let i = 0;
-                                    const urlStatus="http://localhost:8080/masa/api/user-management/update-status/";
-                                    const urlRole="http://localhost:8080/masa/api/user-management/update-role/";
+                                    const urlStatus="/masa/api/user-management/update-status/";
+                                    const urlRole="/masa/api/user-management/update-role/";
                                     let idsession = 0;
                                     let space = '';
                                     let z = 'z';
@@ -283,9 +283,9 @@
                                     const roleAlert = "UPDATE ROLE SUCCESS";
                                     let paramName;
                                     if(location.search.replace('?name=','')===''){
-                                        urlTable = "http://localhost:8080/masa/api/user-management/all";
+                                        urlTable = "/masa/api/user-management/all";
                                     }else{
-                                        urlTable = "http://localhost:8080/masa/api/user-management/get-user-by-name/"+location.search.replace('?name=','').replace('%20',' ');
+                                        urlTable = "/masa/api/user-management/get-user-by-name/"+location.search.replace('?name=','').replace('%20',' ');
                                     }
                                     $.getJSON(
                                         urlTable,
@@ -293,8 +293,6 @@
                                             let htmlElements = "";
                                             const arr = data["users"];
                                             arr.forEach((element) => {
-                                                const urlHref = "http://localhost:8080/masa/api/user-management/update-role/";
-
                                                 i++;
                                                 idsession = 'z'+ element.id;
                                                 if(element.status.status === 'ACTIVE'){
