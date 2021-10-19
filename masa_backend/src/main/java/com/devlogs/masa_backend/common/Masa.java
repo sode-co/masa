@@ -83,14 +83,13 @@ public class Masa {
         public static void init (ServletContext context, String webInfPath) {
             Dotenv env = io.github.cdimascio.dotenv.Dotenv.configure().directory(webInfPath+"/env/.env").ignoreIfMalformed().ignoreIfMissing().load();
             AUTH_MODE = env.get("AUTH");
+            GOOGLE_CLIENT_SECRET = env.get("GOOGLE_CLIENT_SECRET");
             MasaLog.normalLog("Auth mode: " + AUTH_MODE);
-            GOOGLE_CLIENT_SECRET = context.getInitParameter("GOOGLE_CLIENT_SECRET");
-            CLIENT_ID = context.getInitParameter("GOOGLE_CLIENT_ID");
-
-            DATABASE_HOST = context.getInitParameter("DATABASE_HOST");
-            DATABASE_NAME = context.getInitParameter("DATABASE_NAME");
-            DATABASE_USER = context.getInitParameter("DATABASE_USER");
-            DATABASE_PASSWORD = context.getInitParameter("DATABASE_PASSWORD");
+            CLIENT_ID = env.get("GOOGLE_CLIENT_ID");
+            DATABASE_HOST = env.get("DATABASE_HOST");
+            DATABASE_NAME = env.get("DATABASE_NAME");
+            DATABASE_USER = env.get("DATABASE_USER");
+            DATABASE_PASSWORD = env.get("DATABASE_PASSWORD");
         }
 
 }
