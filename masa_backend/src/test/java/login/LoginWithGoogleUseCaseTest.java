@@ -14,9 +14,9 @@ import com.devlogs.masa_backend.login.LoginWithGoogleUseCase.Result.GeneralError
 import com.devlogs.masa_backend.login.LoginWithGoogleUseCase.Result.NotAllowed;
 import com.devlogs.masa_backend.login.LoginWithGoogleUseCase.Result.Success;
 import com.devlogs.masa_backend.login_convention.EmailValidator;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.ArgumentCaptor;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
@@ -24,7 +24,7 @@ import static org.mockito.Mockito.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class StillLoginWithGoogleUseCaseTestButWithMockito {
+public class LoginWithGoogleUseCaseTest {
     private static final String ACCESS_TOKEN = "ACCESS_TOKEN";
     private static final String EMAIL = "EMAIL";
     private static final String ID = "ID";
@@ -45,9 +45,9 @@ public class StillLoginWithGoogleUseCaseTestButWithMockito {
     }
 
     private LoginWithGoogleUseCase SUT;
-    private GoogleGetUserEndpoint googleGetUserEndpoint;
-    private UserRepository userRepository;
-    private EmailValidator emailValidator;
+    GoogleGetUserEndpoint googleGetUserEndpoint;
+    UserRepository userRepository;
+    EmailValidator emailValidator;
 
     private void endpointGeneralError() throws ConnectionException {
         when(googleGetUserEndpoint.getUser(ACCESS_TOKEN)).thenReturn(new GoogleGetUserEndpoint.Result.GeneralError());
@@ -65,7 +65,7 @@ public class StillLoginWithGoogleUseCaseTestButWithMockito {
         when (userRepository.getUserByEmail(EMAIL)).thenThrow(new ConnectionException(""));
     }
 
-    @BeforeMethod(alwaysRun = true)
+    @Before
     public void setup () throws ConnectionException {
         googleGetUserEndpoint = mock(GoogleGetUserEndpoint.class);
         userRepository = mock(UserRepository.class);
