@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.devlogs</groupId>
-    <artifactId>masa_backend</artifactId>
+    <artifactId>masa</artifactId>
     <version>0.01</version>
     <packaging>war</packaging>
 
-    <name>masa_backend</name>
+    <name>masa</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -208,6 +208,6 @@
                 </configuration>
             </plugin>
         </plugins>
-        <finalName>masa_backend</finalName>
+        <finalName>masa</finalName>
     </build>
 </project>
