@@ -258,17 +258,17 @@
                                 <script>
                                     const container = document.getElementById("container");
                                     let i = 0;
-                                    const urlStatus="http://localhost:8080/masa/api/user-management/update-status/";
-                                    const urlRole="http://localhost:8080/masa/api/user-management/update-role/";
+                                    const urlStatus="/masa/api/user-management/update-status/";
+                                    const urlRole="/masa/api/user-management/update-role/";
                                     let idsession = 0;
                                     let space = '';
                                     let z = 'z';
                                     const statusAlert = "UPDATE STATUS SUCCESS";
                                     const roleAlert = "UPDATE ROLE SUCCESS";
                                     if(location.search.replace('?name=','')===''){
-                                        urlTable = "http://localhost:8080/masa/api/user-management/get-user-by-role/student";
+                                        urlTable = "/masa/api/user-management/get-user-by-role/student";
                                     }else{
-                                        urlTable = "http://localhost:8080/masa/api/user-management/get-user-by-name/"+location.search.replace('?name=','').replace('%20',' ');
+                                        urlTable = "/masa/api/user-management/get-user-by-name/"+location.search.replace('?name=','').replace('%20',' ');
                                     }
                                     $.getJSON(
                                         urlTable,
@@ -276,7 +276,7 @@
                                             let htmlElements = "";
                                             const arr = data["users"];
                                             arr.forEach((element) => {
-                                                const urlHref = "http://localhost:8080/masa/api/user-management/update-role/";
+                                                const urlHref = "/masa/api/user-management/update-role/";
                                                 i++;
                                                 idsession = 'z'+ element.id;
                                                 if(element.role.type === 'STUDENT'){

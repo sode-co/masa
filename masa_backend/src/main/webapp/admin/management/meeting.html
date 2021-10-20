@@ -246,21 +246,21 @@
                                 <script>
                                     const container = document.getElementById("container");
                                     let i = 0;
-                                    const urlStatus="http://localhost:8080/masa/api/user-management/update-status/";
-                                    const urlRole="http://localhost:8080/masa/api/user-management/update-role/";
+                                    const urlStatus="/masa/api/user-management/update-status/";
+                                    const urlRole="/masa/api/user-management/update-role/";
                                     let idsession = 0;
                                     let space = '';
                                     let z = 'z';
                                     const statusAlert = "UPDATE STATUS SUCCESS";
                                     const roleAlert = "UPDATE ROLE SUCCESS";
-                                    const urlTable = 'http://localhost:8080/masa/api/meeting-management/meetings';
+                                    const urlTable = '/masa/api/meeting-management/meetings';
                                     $.getJSON(
                                         urlTable,
                                         function (data) {
                                             let htmlElements = "";
                                             const arr = data["meetings"];
                                             arr.forEach((element) => {
-                                                const urlHref = "http://localhost:8080/masa/api/user-management/update-role/";
+                                                const urlHref = "/masa/api/user-management/update-role/";
                                                 var start = new Date(element.startTime); // create Date object
                                                 var starttime = start.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
                                                 var end = new Date(element.endTime); // create Date object
