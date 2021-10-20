@@ -135,14 +135,14 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-3" style="width: 360px">
+        <div class="col-sm-3" style="width: 365px">
             <input type="date" id="start-date" name="trip-start" class="form-control">
 
         </div>
     <script>
         document.getElementById("start-date").valueAsDate = new Date();
     </script>
-        <div class="col-sm-3" style="width: 360px">
+        <div class="col-sm-3" style="width: 365px">
             <input type="time" id="start-time" value='now' class="form-control" />
         </div>
     </div>
@@ -154,14 +154,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-3" style="width: 360px">
+        <div class="col-sm-3" style="width: 365px">
             <input type="date" id="end-date"class="form-control">
 
         </div>
         <script>
             document.getElementById("end-date").valueAsDate = new Date();
         </script>
-        <div class="col-sm-3" style="width: 360px">
+        <div class="col-sm-3" style="width: 365px">
             <input type="time" id="end-time" value='now' class="form-control" />
         </div>
     </div>
@@ -189,13 +189,13 @@
         </div>
     </div>
     <div class="row" style="padding-right:10px">
-        <div class="col-sm-3" style="width: 360px">
+        <div class="col-sm-3" style="width: 365px">
             <select class="form-select form-control" id="platform">
                 <option value="Zoom">Zoom</option>
                 <option value="Google Meet">Google Meet</option>
             </select>
         </div>
-        <div class="col-sm-3" style="width: 360px">
+        <div class="col-sm-3" style="width: 365px">
             <select class="form-select form-control" id="topic">
                 <option value="Agile">Agile</option>
                 <option value="Artificial Intelligence">Artificial Intelligence</option>
@@ -239,7 +239,7 @@
 
         <div class="text-center row">
             <div class="col-sm-9">
-                <button onclick="jsonCreate()" class="btn btn-dark" style="background-color: #3051a2; color: white; font-size: 20px; border-radius: 10px">Create Meeting!</button>
+                <button onclick="jsonCreate()" class="btn btn-dark" style="background-color: #4c44e4; color: white; font-size: 20px; border-radius: 10px; margin-left: 10%">Create Meeting!</button>
             </div>
         </div>
     </div>
