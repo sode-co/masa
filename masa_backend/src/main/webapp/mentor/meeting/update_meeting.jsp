@@ -171,7 +171,7 @@
 <%--                <a--%>
 <%--                        href="#"--%>
 <%--                        class="text-gray-700  text-md hover:text-blue-500 hover:no-underline"--%>
-<%--                >Email: Slimair.co@gmail.com</a--%>
+<%--                >Email: Slimair.com@gmail.com</a--%>
 <%--                ></span--%>
 <%--                    >--%>
 <%--                </div>--%>

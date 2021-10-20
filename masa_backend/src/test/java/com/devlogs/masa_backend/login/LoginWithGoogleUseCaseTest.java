@@ -1,4 +1,4 @@
-package login;
+package com.devlogs.masa_backend.login;
 
 import com.devlogs.masa_backend.domain.entities.UserEntity;
 import com.devlogs.masa_backend.domain.entities.UserRole;
@@ -7,21 +7,17 @@ import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.ports.UserRepository;
 import com.devlogs.masa_backend.domain.ports.google_api.GoogleGetUserEndpoint;
 import com.devlogs.masa_backend.domain.ports.google_api.GooglePojo;
-import com.devlogs.masa_backend.login.LoginWithGoogleUseCase;
 import com.devlogs.masa_backend.login.LoginWithGoogleUseCase.Result;
 import com.devlogs.masa_backend.login.LoginWithGoogleUseCase.Result.AuthError;
 import com.devlogs.masa_backend.login.LoginWithGoogleUseCase.Result.GeneralError;
 import com.devlogs.masa_backend.login.LoginWithGoogleUseCase.Result.NotAllowed;
 import com.devlogs.masa_backend.login.LoginWithGoogleUseCase.Result.Success;
 import com.devlogs.masa_backend.login_convention.EmailValidator;
-import org.junit.Assert;
+import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
-import org.junit.Test;
-import org.mockito.ArgumentCaptor;
-
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
 
 public class LoginWithGoogleUseCaseTest {

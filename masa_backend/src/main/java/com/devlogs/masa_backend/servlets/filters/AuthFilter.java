@@ -71,7 +71,7 @@ public class AuthFilter implements Filter {
                 chain.doFilter(request, response);
                 return;
             }
-            // if user want to access but don't have google_token => forward to google login page => forward to resource
+            // if user want to access but don't have google_token => forward to google com.devlogs.masa_backend.login page => forward to resource
             if (resource.contains("api")) {
                 // that's mean user access it as api => return 500 code
                 response.setStatus(500);

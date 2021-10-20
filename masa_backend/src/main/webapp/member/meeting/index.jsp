@@ -172,7 +172,7 @@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib uri = "
                             >
                             <span class="my-2 ml-48">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
-                                <a href="#" class="text-gray-700 text-md hover:text-blue-500 hover:no-underline">Email: Slimair.co@gmail.com</a></span
+                                <a href="#" class="text-gray-700 text-md hover:text-blue-500 hover:no-underline">Email: Slimair.com@gmail.com</a></span
                             >
                         </div>
                         <div class="flex flex-col flex-1 place-items-center">
