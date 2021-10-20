@@ -99,7 +99,7 @@ public class LoginWithGoogleUseCaseTest {
     public void loginWithGoogle_endPointAuthError_authErrorReturned () throws ConnectionException {
         endPointAuthError();
         Result result = SUT.executes(ACCESS_TOKEN);
-        assertTrue(false);
+        assertTrue(result instanceof AuthError);
     }
 
 
