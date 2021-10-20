@@ -34,27 +34,34 @@
             <!--NavItem -->
             <div>
                 <ul class="px-4 mt-6 leading-10">
-                    <li class="flex items-center justify-center p-2 mb-3 bg-indigo-400 rounded-md cursor-pointer">
-                        <i class="text-white fa fa-home fa-sm"></i>
-                        &nbsp;
-                        <span style="color: white; padding-top: 2px">Home</span>
-                        &nbsp;
-                        &nbsp;
-                        &nbsp;
-                    </li>
+                    <li  class="flex items-center justify-center p-2 mb-3 bg-indigo-400 rounded-md cursor-pointer">
+                        <a href="/masa/mentor/meeting/home.jsp" style="text-decoration:none">
+                            &nbsp;
+                            <i class="text-white fa fa-home"></i>
+                            <span style="color: white; padding-top: 0px">Home</span>
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                        </a>
+                        </li>
+
                     <li
                             class="flex items-center justify-center p-2 mb-3 bg-blue-400 rounded-md cursor-pointer"
                     >
+                        <a href="#footer" style="text-decoration:none; padding-right: 9px">
+                            &nbsp;
                         <i class="text-white fa fa-info-circle"></i>
-                        &nbsp;
                         <span style="color: white; padding-top: 2px">Contact</span>
                         &nbsp;
+                        </a>
                     </li>
-                    <li class="flex items-center justify-center p-2 mb-3 bg-yellow-400 rounded-md cursor-pointer" href="/masa/auth-management/signout">
-                        <i class="text-white fas fa-sign-out-alt"></i>
-                        &nbsp;
-                        <span style="color: white; padding-top: 2px">Log Out</span>
-                        &nbsp;
+                    <li class="flex items-center justify-center p-2 mb-3 bg-yellow-400 rounded-md cursor-pointer">
+                        <a href="/masa/auth-management/signout" style="text-decoration:none">
+                            &nbsp;
+                            <i class="text-white fas fa-sign-out-alt"></i>
+                            <span style="color: white; padding-top: 2px">Log Out</span>
+                            &nbsp;
+                        </a>
                     </li>
                 </ul>
             </div>
