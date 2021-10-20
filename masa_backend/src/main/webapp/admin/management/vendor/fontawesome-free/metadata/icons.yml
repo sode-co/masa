@@ -16517,7 +16517,7 @@ sign-in-alt:
       - enter
       - join
       - log in
-      - login
+      - com.devlogs.masa_backend.login
       - sign in
       - sign up
       - sign-in
