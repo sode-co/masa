@@ -14,15 +14,15 @@ import com.devlogs.masa_backend.login.LoginWithGoogleUseCase.Result.GeneralError
 import com.devlogs.masa_backend.login.LoginWithGoogleUseCase.Result.NotAllowed;
 import com.devlogs.masa_backend.login.LoginWithGoogleUseCase.Result.Success;
 import com.devlogs.masa_backend.login_convention.EmailValidator;
+import org.junit.Assert;
 import org.junit.Before;
+import static org.junit.Assert.*;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 public class LoginWithGoogleUseCaseTest {
     private static final String ACCESS_TOKEN = "ACCESS_TOKEN";
