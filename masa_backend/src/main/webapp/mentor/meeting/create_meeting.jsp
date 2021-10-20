@@ -62,12 +62,12 @@
                     "platform": platformInput,
                     "topic": document.getElementById("topic").value,
                     "host": "${CURRENT_USER.getId()}",
-                    //"host": "ME100002",
+                    // "host": "ME100002",
                     "startTime": millisecondsStart,
                     "endTime": millisecondsEnd,
                     "description": tinyMCE.activeEditor.getContent(),
                 }
-                alert(json);
+                console.log(json);
                 const options = {
                     method: 'POST',
                     body: JSON.stringify(json),
@@ -78,7 +78,7 @@
                 fetch('../../api/meeting/create', options)
                     .then(res => res.json())
                     .then(res => alert('CREATE NEW MEETING SUCCESS!'))
-                    .catch(err => alert(err));
+                    .catch(err => alert('ERROR '+err));
             }
         }
     </script>
@@ -94,14 +94,6 @@
 
 <h1 style="display: none" id="current-user">${sessionScope.CURRENT_USER.id}</h1>
 <div class="container createform">
-<%--    <div class="row">--%>
-<%--        <div class="col-sm-12" style="font-size: 25px; font-weight: bolder; color: black;">--%>
-<%--            Dear ${sessionScope.CURRENT_USER.fullName},--%>
-<%--        </div>--%>
-<%--        <div class="col-sm-12" style="font-size: 20px; font-weight: bold; color: black;">--%>
-<%--            Power is gained by sharing knowledge not hoarding it!--%>
-<%--        </div>--%>
-<%--    </div>--%>
     <br/>
     <br/>
     <div class="row">
@@ -116,18 +108,6 @@
     </div>
 
     <br/>
-<%--    <div class="row">--%>
-<%--        <div class="col-sm-1">--%>
-<%--            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-mic" viewBox="0 0 16 16">--%>
-<%--                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>--%>
-<%--                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>--%>
-<%--            </svg>--%>
-<%--        </div>--%>
-<%--        <div class="col-sm-7">--%>
-<%--            <input type="text" class="form-control" placeholder="${sessionScope.CURRENT_USER.fullName}" aria-label="Host" aria-describedby="basic-addon1" id="host" value="${sessionScope.CURRENT_USER.fullName}">--%>
-<%--        </div>--%>
-<%--    </div>--%>
-
     <div class="row">
         <div class="col-sm-2" style="margin-left: 3px; color: #9b9a9a">
             <span style="font-weight: bold" style="padding-left: 10px"> From<span style="color: red">*</span> :</span>
@@ -245,7 +225,7 @@
     </div>
 </div>
 
-    </div>
+</div>
 
 </body>
 </html>
