@@ -13,7 +13,6 @@ import com.devlogs.masa_backend.login.LoginWithGoogleUseCase.Result.GeneralError
 import com.devlogs.masa_backend.login.LoginWithGoogleUseCase.Result.NotAllowed;
 import com.devlogs.masa_backend.login.LoginWithGoogleUseCase.Result.Success;
 import com.devlogs.masa_backend.login_convention.EmailValidator;
-import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.junit.Test;
 import org.junit.Before;
@@ -101,8 +100,6 @@ public class LoginWithGoogleUseCaseTest {
         Result result = SUT.executes(ACCESS_TOKEN);
         assertTrue(result instanceof AuthError);
     }
-
-
 
     @Test
     public void loginWithGoogle_endPointConnectionExceptionOccurs_noInteractionWithRepository () throws ConnectionException {

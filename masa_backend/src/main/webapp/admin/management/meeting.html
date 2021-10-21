@@ -309,14 +309,14 @@
                                             }
                                             console.log('data', data);
                                             const arr = data["meetings"].slice(10*currentPage+1, 10*currentPage+11);
-                                            arr.forEach((element) => {
+                                            arr.forEach((element,i) => {
                                                 const urlHref = "/masa/api/user-management/update-role/";
                                                 var start = new Date(element.startTime); // create Date object
                                                 var starttime = start.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
                                                 var end = new Date(element.endTime); // create Date object
                                                 var endtime = end.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
                                                 i++;
-                                                idsession = 'z'+ element.id;
+                                                idsession = 'z'+ i;
                                                     htmlElements +=
                                                         '<tr>'
                                                         +'<td style="width: 10px">'+i+'</td>'
@@ -326,10 +326,10 @@
                                                         +'<td>'+starttime.slice(4, 21)+'</td>'
                                                         +'<td>'+endtime.slice(4, 21)+'</td>'
                                                         +'<td>'
-                                                        +'<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">'
+                                                        +'<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#' + idsession + '">'
                                                         +'  Detail'
                                                         +'</button>'
-                                                        +'<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
+                                                        +'<div class="modal fade" id="' + idsession +'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
                                                         '  <div class="modal-dialog" role="document">' +
                                                         '    <div class="modal-content">' +
                                                         '      <div class="modal-header">' +
