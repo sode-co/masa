@@ -321,7 +321,7 @@
                                             }else{
                                                 currentPage = 0;
                                             }
-                                            const arr = data["users"].slice(10*currentPage+1, 10*currentPage+11);
+                                            const arr = data["users"].slice(10*currentPage, 10*currentPage+11);
                                             arr.forEach((element) => {
                                                 i++;
                                                 idsession = 'z'+ element.id;
