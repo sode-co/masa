@@ -278,5 +278,69 @@ public class MeetingDAO {
         return listMeeting;
     }
 
+    public List<MeetingDTO> getMeetingsByHostName(String hostName) throws SQLException,ClassNotFoundException{
+        List<MeetingDTO> listMeetingByHostName = new ArrayList<>();
+        try (Connection con = dbHelper.connect()) {
+            CallableStatement ctm = con.prepareCall("SELECT ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, TOPIC_ID, DESCRIPTION " +
+                    "FROM MEETINGS WHERE MENTOR_ID IN (SELECT ID FROM USERS WHERE FULLNAME LIKE ?);");
+            ctm.setString(1,"%" +hostName+"%" );
+
+            ResultSet result = ctm.executeQuery();
+            while (result.next()) {
+                String id = result.getString(1);
+                String title = result.getString(2);
+                long startTime = result.getLong(3);
+                long endTime = result.getLong(4);
+                String host_id = result.getString(5);
+                int platform_id = result.getInt(6);
+                int status_id = result.getInt(7);
+                int topic_id = result.getInt(8);
+                String description = result.getString(9);
+                listMeetingByHostName.add(new MeetingDTO(id,title,platform_id,host_id,status_id,topic_id,startTime,endTime,description));
+            }
+        }
+        return listMeetingByHostName;
+    }
+
+    public List<MeetingDTO> getMeetingsByTitle(String meeting_title) throws SQLException,ClassNotFoundException{
+        List<MeetingDTO> listMeetingByTitle = new ArrayList<>();
+        try (Connection con = dbHelper.connect()) {
+            CallableStatement ctm = con.prepareCall("SELECT ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, TOPIC_ID, DESCRIPTION " +
+                    "FROM MEETINGS WHERE TITLE LIKE ?;");
+            ctm.setString(1,"%" +meeting_title+"%" );
+
+            ResultSet result = ctm.executeQuery();
+            while (result.next()) {
+                String id = result.getString(1);
+                String title = result.getString(2);
+                long startTime = result.getLong(3);
+                long endTime = result.getLong(4);
+                String host_id = result.getString(5);
+                int platform_id = result.getInt(6);
+                int status_id = result.getInt(7);
+                int topic_id = result.getInt(8);
+                String description = result.getString(9);
+                listMeetingByTitle.add(new MeetingDTO(id,title,platform_id,host_id,status_id,topic_id,startTime,endTime,description));
+            }
+        }
+        return listMeetingByTitle;
+    }
+
+
+    public MeetingDTO updateMeetingStatus(String meeting_id)  throws SQLException,ClassNotFoundException{
+        int rowEffect = 0;
+        try (Connection con = dbHelper.connect()) {
+            PreparedStatement ctm = con.prepareStatement("UPDATE Meetings " +
+                    "SET status_id = ? " +
+                    "WHERE id=?;");
+            ctm.setInt(1, 2);
+            ctm.setString(2, meeting_id);
+            rowEffect = ctm.executeUpdate();
+            if (rowEffect > 0) {
+                return getMeetingByID(meeting_id);
+            }
+        }
+        return null;
+    }
 
 }

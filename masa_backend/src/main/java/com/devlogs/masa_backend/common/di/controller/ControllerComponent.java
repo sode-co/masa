@@ -9,6 +9,7 @@ import com.devlogs.masa_backend.servlets.login.GoogleLoginProcessServlet;
 import com.devlogs.masa_backend.servlets.login.LoginServlet;
 import com.devlogs.masa_backend.servlets.meeting.createmeeting.CreateMeetingServlet;
 
+import com.devlogs.masa_backend.servlets.meeting.deletemeeting.DeleteMeetingServlet;
 import com.devlogs.masa_backend.servlets.meeting.getmeeting.*;
 import com.devlogs.masa_backend.servlets.meeting.updatemeeting.UpdateMeetingServlet;
 import com.devlogs.masa_backend.servlets.meeting_question.createMeetingQuestion.CreateMeetingQuestionServlet;
@@ -96,6 +97,12 @@ public interface ControllerComponent {
     void inject(GetMeetingsByTopicNameServlet getMeetingsByTopicNameServlet);
 
     void inject(GetUserFromRequestProcessingServlet getUserFromRequestProcessingServlet);
+
+    void inject(GetAllMeetingsByHostNameServlet getAllMeetingsByHostNameServlet);
+
+    void inject(GetAllMeetingsByTitleServlet getAllMeetingsByTitleServlet);
+
+    void inject(DeleteMeetingServlet deleteMeetingServlet);
 }
 
 

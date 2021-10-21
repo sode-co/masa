@@ -109,4 +109,20 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
     public List<MeetingEntity> getNewMeetings() throws ConnectionException {
         return null;
     }
+
+    @Override
+    public List<MeetingEntity> getMeetingsByTitle(String title) throws ConnectionException {
+        return null;
+    }
+
+    @Override
+    public List<MeetingEntity> getMeetingsByHostName(String hostName) throws ConnectionException {
+        return null;
+    }
+
+    @Override
+    public MeetingEntity updateMeetingStatus(String meetingId) throws ConnectionException, NotFoundException {
+        return null;
+    }
+
 }
