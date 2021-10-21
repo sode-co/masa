@@ -20,6 +20,9 @@
 
     <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <style>
         #tableMeeting{
@@ -29,7 +32,7 @@
 
     <script>
         let page = 0;
-        if(window.location.href==="http://localhost:8080/masa/admin/management/meeting.html"){
+        if(window.location.href===location.protocol + '//' + location.host+"/masa/admin/management/meeting.html"){
             setTimeout(function() {
                 $('#splash').fadeOut('fast');
             }, 1000);
@@ -50,12 +53,12 @@
         function toleft(){
             if(page>0) --page;
             else page = 0;
-            window.location.replace("http://localhost:8080/masa/admin/management/meeting.html"+"?page="+page);
+            window.location.replace(location.protocol + '//' + location.host+"/masa/admin/management/meeting.html"+"?page="+page);
             console.log(page);
         }
         function toright(){
             ++page;
-            window.location.replace("http://localhost:8080/masa/admin/management/meeting.html"+"?page="+page);
+            window.location.replace(location.protocol + '//' + location.host+"/masa/admin/management/meeting.html"+"?page="+page);
             console.log(page);
         }
     </script>
@@ -304,6 +307,7 @@
                                             }else{
                                                 currentPage = 0;
                                             }
+                                            console.log('data', data);
                                             const arr = data["meetings"].slice(10*currentPage+1, 10*currentPage+11);
                                             arr.forEach((element) => {
                                                 const urlHref = "/masa/api/user-management/update-role/";
@@ -321,7 +325,33 @@
                                                         +'<td>'+element.mentor.fullName+'</td>'
                                                         +'<td>'+starttime.slice(4, 21)+'</td>'
                                                         +'<td>'+endtime.slice(4, 21)+'</td>'
-                                                        +'<td>'+element.description.slice(0,30)+'....'+'</td>'
+                                                        +'<td>'
+                                                        +'<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">'
+                                                        +'  Detail'
+                                                        +'</button>'
+                                                        +'<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
+                                                        '  <div class="modal-dialog" role="document">' +
+                                                        '    <div class="modal-content">' +
+                                                        '      <div class="modal-header">' +
+                                                        '        <h5 class="modal-title" id="exampleModalLabel">'+element.title+'</h5>' +
+                                                        '        <button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+                                                        '          <span aria-hidden="true">&times;</span>' +
+                                                        '        </button>' +
+                                                        '      </div>' +
+                                                        '      <div class="modal-body">' +
+                                                        '        ...' +
+                                                        '      </div>' +
+                                                        '      <div class="modal-footer">' +
+                                                        '        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
+                                                        // '        <button type="button" class="btn btn-primary">Save changes</button>' +
+                                                        '      </div>' +
+                                                        '    </div>' +
+                                                        '  </div>' +
+                                                        '</div>'
+
+
+                                                        +'</td>'
+                                                        // +'<td>'+element.description.slice(0,30)+'....'+'</td>'
                                                         +'<td><a href="'+element.platform.url+'"><button style="height: 30px; width: 150px; background-color: #5bcb7d; border: solid; border-radius: 10px; color: white">'+element.platform.platform+'</button></a></td>'
                                                         +'<td><button style="height: 30px; width: 80px; background-color: #f57640; border-radius: 10px; color: black">Delete</button></td>'
                                                         +'</tr>'

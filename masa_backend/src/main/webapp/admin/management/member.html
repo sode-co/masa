@@ -31,7 +31,7 @@
 
     <script>
         let page = 0;
-        if(window.location.href==="http://localhost:8080/masa/admin/management/member.html"){
+        if(window.location.href===location.protocol + '//' + location.host+"/masa/admin/management/member.html"){
             setTimeout(function() {
                 $('#splash').fadeOut('fast');
             }, 300);
@@ -52,12 +52,12 @@
         function toleft(){
             if(page>0) --page;
             else page = 0;
-            window.location.replace("http://localhost:8080/masa/admin/management/member.html"+"?page="+page);
+            window.location.replace(location.protocol + '//' + location.host+"/masa/admin/management/member.html"+"?page="+page);
             console.log(page);
         }
         function toright(){
             ++page;
-            window.location.replace("http://localhost:8080/masa/admin/management/member.html"+"?page="+page);
+            window.location.replace(location.protocol + '//' + location.host+"/masa/admin/management/member.html"+"?page="+page);
             console.log(page);
         }
     </script>
