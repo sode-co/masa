@@ -306,7 +306,7 @@
                                     const statusAlert = "UPDATE STATUS SUCCESS";
                                     const roleAlert = "UPDATE ROLE SUCCESS";
                                     let paramName;
-                                    if(location.search.replace('?name=','')===''){
+                                    if(location.search.replace('?name=','')==='' || location.search.includes('page')){
                                         urlTable = "/masa/api/user-management/all";
                                     }else{
                                         urlTable = "/masa/api/user-management/get-user-by-name/"+location.search.replace('?name=','').replace('%20',' ');
