@@ -29,9 +29,6 @@
     <![endif]-->
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
 
         body {
             font: 16px Arial;
@@ -43,10 +40,9 @@
         }
 
         input {
-            border: 1px solid transparent;
             background-color: #f1f1f1;
             font-size: 13px;
-            border-radius: 5px !important;
+            border-radius: 10px !important;
             height: 50px;
             padding-left: 10px;
         }
@@ -111,23 +107,12 @@
     }
 </script>
 
-<!-- <div class="flex justify-between px-3 py-1 mt-5 mb-2 border-2 rounded-md rounde-md">
-    <div class="autocomplete">
-    <input class="flex-grow text-gray-600 outline-none focus:text-blue-600" name="topic" type="text" placeholder="Enter topic name..." />
-    </div>
-    <spa>
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-400 transition duration-100 cursor-pointer hover:text-blue-400" onclick="searchtopic()" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-      </svg>
-    </spa>
-  </div> -->
-
 <div class="flex justify-between px-3 py-1 mt-5 mb-2 border-2 rounded-md searchBar rounde-md" style="display: inline-block">
     <div class="autocomplete" style="width:300px;">
         <input class="flex flex-col flex-1 text-gray-600 outline-none" id="myInput" type="text" name="topic" placeholder="Enter topic name here...">
     </div>
     <button style="background-color: transparent; border: none; cursor: pointer" onclick="searchtopic()">
-        <i class="flex flex-col flex-1 icon-search icon-2x"></i>
+        <i class="flex flex-col flex-1 icon-search"></i>
     </button>
 </div>
 
@@ -200,7 +185,7 @@
         });
     }
     var topics = ["Agile", "Artificial Intelligence", "Business management", "Digital Maketing",
-        "English Language", "Information Assurance", "Japanese Language", "Soft Skills", "Software Engineering"]
+            "English Language", "Information Assurance", "Japanese Language", "Soft Skills", "Software Engineering"]
 
     autocomplete(document.getElementById("myInput"), topics);
 </script>
