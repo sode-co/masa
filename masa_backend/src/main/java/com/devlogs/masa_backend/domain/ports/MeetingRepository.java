@@ -36,4 +36,6 @@ public interface MeetingRepository {
     List<MeetingEntity> getMeetingsByHostName(String hostName) throws ConnectionException;
 
     MeetingEntity updateMeetingStatus(String meetingId) throws ConnectionException,NotFoundException;
+
+    List<MeetingEntity> getAllActiveMeetings() throws ConnectionException;
 }

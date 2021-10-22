@@ -65,7 +65,7 @@ public class MeetingRepositoryImp implements MeetingRepository {
 
     @Override
     public List<MeetingEntity> getAll() throws ConnectionException {
-        List<MeetingEntity> result = null;
+        List<MeetingEntity> result = new ArrayList<>();
         try{
             //get data from DAO
             List<MeetingDTO> listDTO = meetingSource.getAllMeetings();
@@ -318,5 +318,24 @@ public class MeetingRepositoryImp implements MeetingRepository {
             throw new ConnectionException(ex.getMessage());
         }
         return meeting;
+    }
+
+    @Override
+    public List<MeetingEntity> getAllActiveMeetings() throws ConnectionException {
+        List<MeetingEntity> result = new ArrayList<>();
+        try{
+            //get data from DAO
+            List<MeetingDTO> listDTO = meetingSource.getAllActiveMeetings();
+            if (listDTO != null) {
+                for (MeetingDTO dto : listDTO) {
+                    result.add(toMeetingEntity(dto));
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
+        return result;
     }
 }

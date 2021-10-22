@@ -125,4 +125,9 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
         return null;
     }
 
+    @Override
+    public List<MeetingEntity> getAllActiveMeetings() throws ConnectionException {
+        return null;
+    }
+
 }
