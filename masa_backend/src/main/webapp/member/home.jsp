@@ -175,14 +175,14 @@
                                         </a>
                                     </div>
                                     <c:if test = "${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=STUDENT}'}">
-                                    <div class="relative flex items-center justify-end flex-1 w-1/4 p-1 ml-5 mr-4 sm:mr-0 sm:right-auto">
-                                        <span style="margin-left: 100px; font-style: oblique">Happy learning - Happy money</span>
-                                    </div>
+                                        <div class="relative flex items-center justify-end flex-1 w-1/4 p-1 ml-5 mr-4 sm:mr-0 sm:right-auto">
+                                            <span style="margin-left: 100px; font-style: oblique">Happy learning - Happy money</span>
+                                        </div>
                                     </c:if>
                                     <c:if test = "${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MEMBER}'}">
-                                    <a href="/masa/member/registermentor.jsp" class="py-2 font-semibold text-white bg-blue-500 rounded-full px-7 text-md hover:bg-blue-400"
-                                    >Become a mentor now</a
-                                    >
+                                        <a href="/masa/member/registermentor.jsp" class="py-2 font-semibold text-white bg-blue-500 rounded-full px-7 text-md hover:bg-blue-400"
+                                        >Become a mentor now</a
+                                        >
                                     </c:if>
                                 </div>
                             </div>
@@ -190,68 +190,67 @@
                     </header>
                     <div class="h-screen pt-2 pb-24 pl-2 pr-2 overflow-auto md:pt-0 md:pr-0 md:pl-0">
                         <div class="flex flex-col flex-wrap sm:flex-row">
-<%--                            <div class="container flex flex-col-reverse items-center px-6 mx-auto sm:px-12 sm:flex-row">--%>
-<%--                                <div class="flex flex-col items-start mt-8 sm:w-2/5 sm:mt-0">--%>
-<%--                                    <h1 class="mb-3 lg:text-3xl sm:mb-3">Hi</h1>--%>
-<%--                                    <h1 class="mb-4 text-3xl leading-none lg:text-3xl">--%>
-<%--                                        <strong class="font-black">@name</strong>--%>
-<%--                                    </h1>--%>
-<%--                                    <a href="#" class="py-2 font-semibold text-white bg-blue-500 rounded-full px-7 text-md hover:bg-blue-400"--%>
-<%--                                    >Become a mentor now</a--%>
-<%--                                    >--%>
-<%--                                </div>--%>
-<%--                                <div class="sm:w-3/5">--%>
-<%--                                    <img--%>
-<%--                                            src="https://info.ehl.edu/hubfs/Blog-EHL-Insights/Blog-Header-EHL-Insights/invest%20-education.jpg"--%>
-<%--                                            alt=""--%>
-<%--                                    />--%>
-<%--                                </div>--%>
-                            </div>
+                            <%--                            <div class="container flex flex-col-reverse items-center px-6 mx-auto sm:px-12 sm:flex-row">--%>
+                            <%--                                <div class="flex flex-col items-start mt-8 sm:w-2/5 sm:mt-0">--%>
+                            <%--                                    <h1 class="mb-3 lg:text-3xl sm:mb-3">Hi</h1>--%>
+                            <%--                                    <h1 class="mb-4 text-3xl leading-none lg:text-3xl">--%>
+                            <%--                                        <strong class="font-black">@name</strong>--%>
+                            <%--                                    </h1>--%>
+                            <%--                                    <a href="#" class="py-2 font-semibold text-white bg-blue-500 rounded-full px-7 text-md hover:bg-blue-400"--%>
+                            <%--                                    >Become a mentor now</a--%>
+                            <%--                                    >--%>
+                            <%--                                </div>--%>
+                            <%--                                <div class="sm:w-3/5">--%>
+                            <%--                                    <img--%>
+                            <%--                                            src="https://info.ehl.edu/hubfs/Blog-EHL-Insights/Blog-Header-EHL-Insights/invest%20-education.jpg"--%>
+                            <%--                                            alt=""--%>
+                            <%--                                    />--%>
+                            <%--                                </div>--%>
+                        </div>
 
-                            <div id="new">
+                        <div id="new">
 
-                                New meeting
-                            </div>
+                            New meeting
+                        </div>
 
-                            <div id="on-going">
-                                <!-- Bỏ On-going meeting vào đây nha -->
-                            </div>
-                            <div id="se">
-                                <!-- Bỏ Software engineer meeting vào đây nha  -->
-                            </div>
-                            <div id="gd">
-                                <!-- Bỏ Graphic Design meeting vào đây nha -->
-                            </div>
-                            <div id="bm">
-                                <!-- Bỏ Business Management meeting vào đây nha -->
-                            </div>
-                            <div id="dm">
-                                <!-- Bỏ Digital Marketing meeting vào đây nha -->
-                            </div>
-                            <div id="jl">
-                                <!-- Bỏ Japanese Language meeting vào đây nha -->
-                            </div>
-                            <div id="el">
-                                <!-- Bỏ English Language meeting vào đây nha -->
-                            </div>
-                            <div id="ia">
-                                <!-- Bỏ IA meeting vào đây nha -->
-                            </div>
-                            <div id="ai">
-                                <!-- Bỏ AI meeting vào đây nha -->
-                            </div>
-                            <div id="ss">
-                                <!-- Bỏ Soft skill meeting vào đây nha -->
-                            </div>
-                            <div id="mt">
-                                <!-- Bỏ Multimedia meeting vào đây nha -->
-                            </div>
+                        <div id="on-going">
+                            <!-- Bỏ On-going meeting vào đây nha -->
+                        </div>
+                        <div id="se">
+                            <!-- Bỏ Software engineer meeting vào đây nha  -->
+                        </div>
+                        <div id="gd">
+                            <!-- Bỏ Graphic Design meeting vào đây nha -->
+                        </div>
+                        <div id="bm">
+                            <!-- Bỏ Business Management meeting vào đây nha -->
+                        </div>
+                        <div id="dm">
+                            <!-- Bỏ Digital Marketing meeting vào đây nha -->
+                        </div>
+                        <div id="jl">
+                            <!-- Bỏ Japanese Language meeting vào đây nha -->
+                        </div>
+                        <div id="el">
+                            <!-- Bỏ English Language meeting vào đây nha -->
+                        </div>
+                        <div id="ia">
+                            <!-- Bỏ IA meeting vào đây nha -->
+                        </div>
+                        <div id="ai">
+                            <!-- Bỏ AI meeting vào đây nha -->
+                        </div>
+                        <div id="ss">
+                            <!-- Bỏ Soft skill meeting vào đây nha -->
+                        </div>
+                        <div id="mt">
+                            <!-- Bỏ Multimedia meeting vào đây nha -->
                         </div>
                     </div>
                 </div>
             </div>
-        </main>
-    </div>
+    </main>
+</div>
 </div>
 </body>
 </html>
