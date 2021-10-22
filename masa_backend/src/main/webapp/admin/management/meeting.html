@@ -307,7 +307,7 @@
                                             }else{
                                                 currentPage = 0;
                                             }
-                                            console.log('data', data);
+
                                             const arr = data["meetings"].slice(10*currentPage+1, 10*currentPage+11);
                                             arr.forEach((element,i) => {
                                                 const urlHref = "/masa/api/user-management/update-role/";
@@ -339,7 +339,7 @@
                                                         '        </button>' +
                                                         '      </div>' +
                                                         '      <div class="modal-body">' +
-                                                        '        ...' +
+                                                                element.description +
                                                         '      </div>' +
                                                         '      <div class="modal-footer">' +
                                                         '        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
