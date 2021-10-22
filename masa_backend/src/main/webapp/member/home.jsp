@@ -210,7 +210,7 @@
 
                         <div id="new">
 
-                            New meeting
+                            <%@include  file="/shared/layout/newside.html"%>
                         </div>
 
                         <div id="on-going">
