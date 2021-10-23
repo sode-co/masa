@@ -23,7 +23,44 @@
 
     <!-- Custom styles for this page -->
 <!--    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">-->
+    <style>
+        #tableUser{
+            visibility: hidden;
+        }
+    </style>
 
+    <script>
+        let page = 0;
+        if(window.location.href===location.protocol + '//' + location.host+"/masa/admin/management/student.html"){
+            setTimeout(function() {
+                $('#splash').fadeOut('fast');
+            }, 300);
+
+            setTimeout(function () {
+                document.getElementById("tableUser").style.visibility = "visible";
+            }, 500);
+        }else{
+            setTimeout(function() {
+                $('#splash').fadeOut('fast');
+            }, -1);
+
+            setTimeout(function () {
+                document.getElementById("tableUser").style.visibility = "visible";
+            }, 0);
+        }
+
+        function toleft(){
+            if(page>0) --page;
+            else page = 0;
+            window.location.replace(location.protocol + '//' + location.host+"/masa/admin/management/student.html"+"?page="+page);
+            console.log(page);
+        }
+        function toright(){
+            ++page;
+            window.location.replace(location.protocol + '//' + location.host+"/masa/admin/management/student.html"+"?page="+page);
+            console.log(page);
+        }
+    </script>
 </head>
 
 <body id="page-top">
@@ -234,10 +271,10 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <div class="container-fluid">
-
-                <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Students Information</h1>
+            <div id="splash">
+                <iframe src="https://embed.lottiefiles.com/animation/9844" style="width: 1000px; height: 600px; border: transparent"></iframe>
+            </div>
+            <div class="container-fluid" id="tableUser">
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -265,7 +302,7 @@
                                     let z = 'z';
                                     const statusAlert = "UPDATE STATUS SUCCESS";
                                     const roleAlert = "UPDATE ROLE SUCCESS";
-                                    if(location.search.replace('?name=','')===''){
+                                    if(location.search.replace('?name=','')==='' || location.search.includes('page')){
                                         urlTable = "/masa/api/user-management/get-user-by-role/student";
                                     }else{
                                         urlTable = "/masa/api/user-management/get-user-by-name/"+location.search.replace('?name=','').replace('%20',' ');
@@ -274,7 +311,13 @@
                                         urlTable,
                                         function (data) {
                                             let htmlElements = "";
-                                            const arr = data["users"];
+                                            let currentPage;
+                                            if(window.location.href.indexOf("page")>0){
+                                                currentPage = window.location.href.slice(window.location.href.indexOf("page=")).replaceAll("page=",'');
+                                            }else{
+                                                currentPage = 0;
+                                            }
+                                            const arr = data["users"].slice(10*currentPage, 10*currentPage+11);
                                             arr.forEach((element) => {
                                                 const urlHref = "/masa/api/user-management/update-role/";
                                                 i++;
@@ -357,12 +400,23 @@
 
         </div>
         <!-- End of Main Content -->
-
+        <div style="margin-left: 550px">
+            <button style="background-color: transparent; border: none" onclick="toleft()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                </svg>
+            </button>
+            <button style="background-color: transparent; border: none" onclick="toright()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                </svg>
+            </button>
+        </div>
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2020</span>
+                    <span>Copyright &copy; slimair.cool MASA 2021</span>
                 </div>
             </div>
         </footer>
