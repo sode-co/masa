@@ -61,7 +61,7 @@ public class GetAllMeetingsByTitleServlet extends BaseHttpServlet {
                         hosts.add(cachedHost.get());
                     }
                 }
-                responseData.add(new GetMeetingResponse.Data(meeting.getTitle(),meeting.getPlatform(), meeting.getTopic(), cachedHost.get(), meeting.getStartTime(), meeting.getEndTime(), meeting.getDescription()));
+                responseData.add(new GetMeetingResponse.Data(meeting.getId(),meeting.getTitle(),meeting.getPlatform(), meeting.getTopic(), cachedHost.get(), meeting.getStartTime(), meeting.getEndTime(), meeting.getDescription()));
                 cachedHost = Optional.ofNullable(null);
 
             }
