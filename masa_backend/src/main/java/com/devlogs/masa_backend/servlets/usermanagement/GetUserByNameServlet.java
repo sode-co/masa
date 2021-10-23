@@ -42,7 +42,8 @@ public class GetUserByNameServlet extends BaseHttpServlet {
             }
             return false;
         } );
-        MasaLog.normalLog("NAME "+ name);
+        name = name.replaceAll("%20", " ");
+        //MasaLog.normalLog("NAME "+ name);
 
         GetUserByNameUseCase.Result result = getUserByNameUseCase.executes(name);
 

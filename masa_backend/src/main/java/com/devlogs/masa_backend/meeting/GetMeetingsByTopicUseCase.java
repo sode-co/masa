@@ -2,6 +2,7 @@ package com.devlogs.masa_backend.meeting;
 
 import com.devlogs.masa_backend.domain.entities.MeetingEntity;
 import com.devlogs.masa_backend.domain.entities.TopicEntity;
+import com.devlogs.masa_backend.domain.entities.UserEntity;
 import com.devlogs.masa_backend.domain.errors.ConnectionException;
 import com.devlogs.masa_backend.domain.ports.MeetingRepository;
 import com.devlogs.masa_backend.domain.ports.TopicRepository;

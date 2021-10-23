@@ -171,7 +171,7 @@
 <%--                <a--%>
 <%--                        href="#"--%>
 <%--                        class="text-gray-700  text-md hover:text-blue-500 hover:no-underline"--%>
-<%--                >Email: Slimair.co@gmail.com</a--%>
+<%--                >Email: Slimair.com@gmail.com</a--%>
 <%--                ></span--%>
 <%--                    >--%>
 <%--                </div>--%>
@@ -352,191 +352,90 @@
 </head>
 
 <body>
-
-<div class="items-center flex-grow lg:flex" id="navi">
-    <ul class="flex flex-col ml-auto list-none lg:flex-row">
-        <li class="nav-item">
-            <a
-                    class="
-                                    font-sans
-                                    text-2xl
-                                    font-semibold
-                                    text-gray-800
-                                    dark:text-gray-200 dark:hover:text-gray-200
-                                    hover:no-underline
-                                    border-b-2 border-green-800
-                                    mx-1.5
-                                    sm:mx-6
-                                    hover:text-gray-800
-                                "
-                    href="http://localhost:8080/masa/mentor/meeting/index.jsp"
-            >
-                Home
-            </a>
-        </li>
-        <li class="nav-item">
-            <a
-                    class="
-                                    font-sans
-                                    text-2xl
-                                    font-semibold
-                                    border-b-2 border-transparent
-                                    hover:text-gray-800
-                                    dark:hover:text-gray-200
-                                    hover:border-green-800 hover:no-underline
-                                    mx-1.5
-                                    sm:mx-6
-                                "
-                    href="/masa/mentor/meeting/create_meeting.jsp"
-            >
-                Create new meeting
-            </a>
-        </li>
-        <li class="nav-item">
-            <a
-                    class="
-                                    font-sans
-                                    text-2xl
-                                    font-semibold
-                                    border-b-2 border-transparent
-                                    hover:text-gray-800
-                                    dark:hover:text-gray-200
-                                    hover:border-green-800 hover:no-underline
-                                    mx-1.5
-                                    sm:mx-6
-                                "
-                    href="#footer"
-            >
-                Contact
-            </a>
-        </li>
-        <li class="nav-item" style="width: 80px; padding-left: 10px; background-color: #f68859; color: white; border-radius: 10px">
-            <a style="color: white; font-size: 14px; padding: 2px" href="/masa/auth-management/signout"> Log Out </a>
-        </li>
-    </ul>
-</div>
 <h1 style="display: none" id="current-user">${sessionScope.CURRENT_USER.id}</h1>
-<div class="container text-center createform">
+<div class="container createform">
+    <br/>
+    <br/>
     <div class="row">
-        <div class="col-sm-8" style="font-size: 25px; font-weight: bolder; color: black;">
-            Dear ${sessionScope.CURRENT_USER.fullName},
-        </div>
-        <div class="col-sm-8" style="font-size: 20px; font-weight: bold; color: black;">
-            Power is gained by sharing knowledge not hoarding it!
+        <div class="col-sm-2" style="margin-left: 3px; color: #9b9a9a">
+            <span style="font-weight: bold" style="padding-left: 10px"> Title<span style="color: red">*</span> :</span>
         </div>
     </div>
-    <br/>
-    <br/>
     <div class="row">
-        <div class="col-sm-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
-                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
-            </svg>
-        </div>
-        <div class="col-sm-7">
-            <input type="text" class="form-control" pattern="[a-zA-Z]" placeholder="Add Title" aria-label="Title" aria-describedby="basic-addon1" id="title">
+        <div class="col-sm-8" style="width: 730px">
+            <input type="text" class="form-control" pattern="[a-zA-Z]" placeholder="Add Title" aria-label="Title" aria-describedby="basic-addon1" id="title" required>
         </div>
     </div>
 
     <br/>
     <div class="row">
-        <div class="col-sm-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-mic" viewBox="0 0 16 16">
-                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
-                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
-            </svg>
-        </div>
-        <div class="col-sm-7">
-            <input type="text" class="form-control" placeholder="${sessionScope.CURRENT_USER.fullName}" aria-label="Host" aria-describedby="basic-addon1" id="host" value="${sessionScope.CURRENT_USER.fullName}">
-        </div>
-    </div>
-
-    <br/>
-    <div class="row">
-        <div class="col-sm-3">
-            Start Time
+        <div class="col-sm-2" style="margin-left: 3px; color: #9b9a9a">
+            <span style="font-weight: bold" style="padding-left: 10px"> From<span style="color: red">*</span> :</span>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-sm-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-calendar-date" viewBox="0 0 16 16">
-                <path d="M6.445 11.688V6.354h-.633A12.6 12.6 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61h.675zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82h-.684zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23z"/>
-                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-            </svg>
-        </div>
-        <div class="col-sm-3">
+        <div class="col-sm-3" style="width: 365px">
             <input type="date" id="start-date" name="trip-start" class="form-control">
 
         </div>
-        <div class="col-sm-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
-                <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
-                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-            </svg>
-        </div>
-        <div class="col-sm-3">
-            <input type="time" id="start-time" class="form-control" />
+        <script>
+            document.getElementById("start-date").valueAsDate = new Date();
+        </script>
+        <div class="col-sm-3" style="width: 365px">
+            <input type="time" id="start-time" value='now' class="form-control" />
         </div>
     </div>
 
     <br/>
     <div class="row">
-        <div class="col-sm-3">
-            End Time
+        <div class="col-sm-2" style="margin-left: 3px; color: #9b9a9a">
+            <span style="font-weight: bold" style="padding-left: 10px"> To<span style="color: red">*</span> :</span>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-calendar-date" viewBox="0 0 16 16">
-                <path d="M6.445 11.688V6.354h-.633A12.6 12.6 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61h.675zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82h-.684zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23z"/>
-                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-            </svg>
-        </div>
-        <div class="col-sm-3">
+        <div class="col-sm-3" style="width: 365px">
             <input type="date" id="end-date"class="form-control">
 
         </div>
-        <div class="col-sm-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
-                <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
-                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-            </svg>
-        </div>
-        <div class="col-sm-3">
-            <input type="time" id="end-time" class="form-control" />
+        <script>
+            document.getElementById("end-date").valueAsDate = new Date();
+        </script>
+        <div class="col-sm-3" style="width: 365px">
+            <input type="time" id="end-time" value='now' class="form-control" />
         </div>
     </div>
-    <p id="time-elapsed" style="font-style: italic"></p>
+    <script>
+        $(function(){
+            var d = new Date(),
+                h = d.getHours(),
+                m = d.getMinutes();
+            if(h < 10) h = '0' + h;
+            if(m < 10) m = '0' + m;
+            $('input[type="time"][value="now"]').each(function(){
+                $(this).attr({'value': h + ':' + m});
+            });
+        });
+    </script>
+    <p id="time-elapsed" style="font-style: italic; margin-left: 200px"></p>
 
     <br/>
-
     <div class="row">
-        <div class="col-sm-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
-            </svg>
+        <div class="col-sm-3" style="margin-left: 3px; color: #9b9a9a">
+            <span style="font-weight: bold" style="padding-left: 10px"> Platform<span style="color: red">*</span> :</span>
         </div>
-        <div class="col-sm-7">
+        <div class="col-sm-3" style="margin-left: 63px; color: #9b9a9a">
+            <span style="font-weight: bold" style="padding-left: 10px"> Topic<span style="color: red">*</span> :</span>
+        </div>
+    </div>
+    <div class="row" style="padding-right:10px">
+        <div class="col-sm-3" style="width: 365px">
             <select class="form-select form-control" id="platform">
                 <option value="Zoom">Zoom</option>
                 <option value="Google Meet">Google Meet</option>
             </select>
-
-            <%--            <input type="text" class="form-control" placeholder="Platform" aria-label="Platform" aria-describedby="basic-addon1">--%>
         </div>
-    </div>
-
-    <br/>
-    <div class="row">
-        <div class="col-sm-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
-            </svg>
-        </div>
-        <div class="col-sm-7">
+        <div class="col-sm-3" style="width: 365px">
             <select class="form-select form-control" id="topic">
                 <option value="Agile">Agile</option>
                 <option value="Artificial Intelligence">Artificial Intelligence</option>
@@ -550,39 +449,45 @@
                 <option value="Soft Skills">Soft Skills</option>
                 <option value="Software Engineering">Software Engineering</option>
             </select>
-
-            <%--            <input type="text" class="form-control" placeholder="Platform" aria-label="Platform" aria-describedby="basic-addon1">--%>
         </div>
     </div>
 
     <br/>
 
     <div class="row">
-        <div class="col-sm-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-            </svg>
-        </div>
-        <textarea id="mytextarea">Hi students, I'm glad too see you at meeting...</textarea>
+    </div>
+    <div class="row">
+    </div>
 
-        <hr/>
-        <br/>
+    <br/>
 
-        <%--        <div id="mytextarea" class="col-sm-7">Hello, World!</div>--%>
-
-        <div class="text-center row">
-            <div class="col-sm-9">
-                <button onclick="jsonCreate()" class="btn btn-dark" style="background-color: #3051a2; color: white; font-size: 20px; border-radius: 10px">Update Your Meeting!</button>
-            </div>
+    <div class="row">
+        <div class="col-sm-2" style="margin-left: 3px; color: #9b9a9a">
+            <span style="font-weight: bold" style="padding-left: 10px"> Description<span style="color: red">*</span> :</span>
         </div>
     </div>
-</div>
-<br/>
-<br/>
+
+    <div class="row" style="padding-left:2px">
+        <div class="col-sm-1" style="width: 100px !important;">
+            <textarea id="mytextarea" style="width: 100px !important;">Hi students, I'm glad too see you at meeting...</textarea>
+            <div>
+
+                <hr/>
+                <br/>
+
+                <%--        <div id="mytextarea" class="col-sm-7">Hello, World!</div>--%>
+
+                <div class="text-center row">
+                    <div class="col-sm-9">
+                        <button onclick="jsonCreate()" class="btn btn-dark" style="background-color: #4c44e4; color: white; font-size: 20px; border-radius: 10px; margin-left: 10%">Update Meeting!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 
-<%@include  file="/shared/footer/footer.html"%>
 <script>
     const url = "http://localhost:8080/masa/api/meeting-management/meetings/host/"+window.location.href.slice(window.location.href.indexOf('&host=')).replace('&host=','');
     console.log('url', url);
@@ -604,5 +509,10 @@
         });
     });
 </script>
+
+
+
+
+
 </body>
 </html>

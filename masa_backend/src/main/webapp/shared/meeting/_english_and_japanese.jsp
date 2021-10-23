@@ -49,6 +49,7 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                 let z3 = "Z";
                 let space3 = "";
 
+<<<<<<< HEAD
                 const json3 = {
                     topicName: ["Software engineering", "Artificial Intelligence", "Business management"],
                 };
@@ -166,6 +167,119 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                         container3.innerHTML = htmlElements3;
                     })
                     .catch((err) => console.error(err));
+=======
+        const json3 = {
+            topicName: ["Japanese Language", "English Language"],
+        };
+        console.log(json3);
+        const options3 = {
+            method: "POST",
+            body: JSON.stringify(json3),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        };
+        fetch("http://localhost:8080/masa/api/meeting-management/topic-name/meetings", options3)
+            .then((res) => res.json())
+            .then((res) => {
+                const arr = res["meetings"];
+                const width = arr.length;
+                arr.forEach((element) => {
+                    var startConvert = new Date(element.startTime); // create Date object
+                    var startConvertTime = startConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
+                    var endConvert = new Date(element.startTime); // create Date object
+                    var endConvertTime = endConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
+                    idsession3 = "Z"+element.id;
+                    htmlElements3 +=
+                        '<div class="relative flex flex-col justify-between flex-1 max-w-md p-8 lg:p-6 xl:p-8 rounded-2xl mb-11">' +
+                        '<div class="absolute inset-0 w-full h-full transform bg-white rounded-2xl">' +
+                        '</div><div class="absolute inset-0 w-full h-full border-2 border-gray-900 rounded-2xl">' +
+                        '</div><div class="relative flex pb-5 space-x-5 border-b border-gray-200 lg:space-x-3 xl:space-x-5">' +
+                        '<div class="relative flex flex-col items-start items-center flex-1">' +
+                        '<h3 class="relative text-3xl font-bold" style="color: #40b467; font-size: 20px">' +
+                        element.title +
+                        "</h3>" +
+                        '<h6 style="color: transparent" id="meetingId">' +
+                        element.id +
+                        "</h6>" +
+                        '<p class="tracking-tight text-gray-500"><span class="text-2xl font-bold" style="color: #342e2e; font-weight: 600;">' +
+                        startConvertTime.slice(0,11) +' '+startConvertTime.slice(15, 21)+
+                        '<br/>'+
+                        '-' +
+                        '<br/>'+
+                        endConvertTime.slice(0,11) +' '+endConvertTime.slice(15, 21)+
+                        "</span>" +
+                        '</p></div></div><ul class="relative py-12 space-y-3">' +
+                        '<li class="flex items-center space-x-2 text-lg font-medium text-gray-500">' +
+                        '<svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">' +
+                        '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd">' +
+                        '</path></svg><span>Mentor: _________</span></li><li class="flex items-center space-x-2 text-lg font-medium text-gray-500">' +
+                        '<svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">' +
+                        '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd">' +
+                        '</path></svg><span>Platform: '+element.platform.platform+'</span></li><li class="flex items-center space-x-2 text-lg font-medium text-gray-500">' +
+                        '<svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">' +
+                        '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>' +
+                        "" +
+                        "<span>Description</span></li></ul>" +
+                        '<a href="" onClick="(function(){' +
+                        "const varToString = varObj => Object.keys(varObj)[0];" +
+                        "const " +
+                        idsession3 +
+                        "=i3;" +
+                        "const x = varToString({" +
+                        idsession3 +
+                        "});" +
+                        "const url = urlAskPage3+userParam3+userId3+meetingParam3+x;" +
+                        "console.log(url);" +
+                        "window.open(url);" +
+                        '})();return false;" style="background-color: black">' +
+                        '<button href="#heheh" class="relative flex items-center justify-center w-full px-3 py-3 text-lg font-medium text-white rounded-xl group" style="background-color: black">' +
+                        '<span class="absolute inset-0 w-full h-full transition-all duration-200 ease-out transform bg-green-500 group-hover:translate-y-0 group-hover:translate-x-0 rounded-xl"></span>' +
+                        '<span class="absolute inset-0 w-full h-full border-0 border-gray-900 rounded-xl" style="background-image: linear-gradient(to right, #5bcb7d , #5bcb7d)">' +
+                        '</span><span class="relative" id="ask" style="color: white; font-size: 17px;">Ask</span>' +
+                        '<svg class="w-5 h-5 ml-2 transition-all duration-200 ease-out transform group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>' +
+                        "</button>" +
+                        "</a>" +
+                        "<br/>" +
+                        '<a href="" onClick="(function(){' +
+                        "const varToString = varObj => Object.keys(varObj)[0];" +
+                        "const " +
+                        idsession3 +
+                        "=i3;" +
+                        "const x = varToString({" +
+                        idsession3 +
+                        "});" +
+                        "const url = urlFollow3 + x;" +
+                        "const json3 = {" +
+                        "userId: userId3," +
+                        "meetingId: x.replace(z3,space3)," +
+                        "};" +
+                        "console.log(json3);" +
+                        "const options = {" +
+                        "method: postMethod3," +
+                        "body: JSON.stringify(json3)," +
+                        "headers: {" +
+                        "contentType: appJson3," +
+                        "}," +
+                        "};" +
+                        "fetch(urlFollow3, options)" +
+                        ".then((res) => res.json())" +
+                        ".then((res) => alert(followNoti3))" +
+                        ".catch((err) => alert(err));" +
+                        '})();return false;">' +
+                        '<button href="#heheh" class="relative flex items-center justify-center w-full px-3 py-3 text-lg font-medium text-white rounded-xl group">' +
+                        '<span class="absolute inset-0 w-full h-full transition-all duration-200 ease-out transform bg-green-500 group-hover:translate-y-0 group-hover:translate-x-0 rounded-xl"></span>' +
+                        '<span class="absolute inset-0 w-full h-full border-0 border-gray-900 rounded-xl" style="background-image: linear-gradient(to right, #f57640 , #f57640)">' +
+                        '</span><span class="relative" id="follow" style="color: white; font-size: 17px;">Follow</span>' +
+                        '<svg class="w-5 h-5 ml-2 transition-all duration-200 ease-out transform group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>' +
+                        "</button>" +
+                        "</a>" +
+                        "</div>";
+                });
+                container3.innerHTML = htmlElements3;
+            })
+            .catch((err) => console.error(err));
+>>>>>>> main
 
                 container3.innerHTML = htmlElements3;
             </script>

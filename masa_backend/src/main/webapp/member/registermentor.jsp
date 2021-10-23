@@ -44,7 +44,6 @@
 
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
-          alert(xhr.status);
           alert(xhr.responseText);
         }};
       const json = {

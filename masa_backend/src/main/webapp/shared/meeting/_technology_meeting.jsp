@@ -28,7 +28,9 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                     <br/>
                 </div>
                 <h1 id="userId" style="display: none">${sessionScope.CURRENT_USER.getId()}</h1>
-                <div id="carousel_wrapper1" class="min-w-full overflow-auto md:flex md:justify-center md:space-x-8 md:px-14"></div>
+              <div id="carousel_wrapper1" class="min-w-full overflow-auto md:flex md:justify-center md:space-x-8 md:px-14">
+                                                 //   "min-w-max  md:flex md:justify-center md:space-x-8 md:px-14"
+                </div>
             </div>
             <script>
                 const urlFollow1 = "http://localhost:8080/masa/api/appointment-management/create";
@@ -79,7 +81,7 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                             idsession1 = "Z"+element.id;
                             console.log('idsession1',idsession1);
                             htmlElements1 +=
-                                '<div class="relative flex flex-col justify-between flex-1 max-w-md p-8 lg:p-6 xl:p-8 rounded-2xl mb-11">' +
+                                '<div class="relative flex flex-col justify-between flex-1 max-w-md p-8 w-96 lg:p-6 xl:p-8 rounded-2xl mb-11">' +
                                 '<div class="absolute inset-0 w-full h-full transform bg-white rounded-2xl">' +
                                 '</div><div class="absolute inset-0 w-full h-full border-2 border-gray-900 rounded-2xl">' +
                                 '</div><div class="relative flex pb-5 space-x-5 border-b border-gray-200 lg:space-x-3 xl:space-x-5">' +
@@ -91,20 +93,20 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                                 element.id +
                                 "</h6>" +
                                 '<p class="tracking-tight text-gray-500"><span class="text-2xl font-bold" style="color: #342e2e; font-weight: 600;">' +
-                                startConvertTime.slice(0,21) +
+                                startConvertTime.slice(0,11) +' '+startConvertTime.slice(15, 21)+
                                 '<br/>'+
                                 '-' +
                                 '<br/>'+
-                                endConvertTime.slice(0,21) +
+                                endConvertTime.slice(0,11) +' '+endConvertTime.slice(15, 21)+
                                 "</span>" +
                                 '</p></div></div><ul class="relative py-12 space-y-3">' +
                                 '<li class="flex items-center space-x-2 text-lg font-medium text-gray-500">' +
                                 '<svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">' +
                                 '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd">' +
-                                '</path></svg><span>Mentor: mentorF</span></li><li class="flex items-center space-x-2 text-lg font-medium text-gray-500">' +
+                                '</path></svg><span>Mentor: _________</span></li><li class="flex items-center space-x-2 text-lg font-medium text-gray-500">' +
                                 '<svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">' +
                                 '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd">' +
-                                '</path></svg><span>Platform: Zoom</span></li><li class="flex items-center space-x-2 text-lg font-medium text-gray-500">' +
+                                '</path></svg><span>Platform: '+element.platform.platform+'</span></li><li class="flex items-center space-x-2 text-lg font-medium text-gray-500">' +
                                 '<svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">' +
                                 '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>' +
                                 "" +
