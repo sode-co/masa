@@ -629,14 +629,14 @@
     </div>
 </section>
 <button
-        id="left"
+        id="leftNewMeeting"
         class="absolute left-0 w-20 h-20 mt-32 -ml-6 text-2xl text-indigo-600 bg-white rounded-full shadow-md top-20 hover:text-indigo-400 focus:text-indigo-400 focus:outline-none focus:shadow-outline"
         style="margin-left: 100px; margin-top: 100px"
 >
     <span class="block" style="transform: scale(-1)">&#x279c;</span>
 </button>
 <button
-        id="right"
+        id="rightNewMeeting"
         class="absolute right-0 w-20 h-20 mt-32 -mr-6 text-2xl text-indigo-600 bg-white rounded-full shadow-md top-20 hover:text-indigo-400 focus:text-indigo-400 focus:outline-none focus:shadow-outline"
         style="margin-right: 150px; margin-top: 100px !important;"
 >
@@ -658,11 +658,11 @@
     runner.width(noofitems * liWidth);
     container.width(itemsPerPage * liWidth);
 
-    $("#right").click(function () {
+    $("#rightNewMeeting").click(function () {
         $(runner).animate({ left: "-=310px" }, "slow");
     });
 
-    $("#left").click(function () {
+    $("#leftNewMeeting").click(function () {
         $(runner).animate({ left: "+=310px" }, "slow");
     });
 </script>

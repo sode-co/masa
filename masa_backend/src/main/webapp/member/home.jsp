@@ -12,6 +12,13 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 </head>
 <body>
 <div class="flex w-full h-screen bg-gray-800" x-data="{openMenu:1}">
@@ -208,9 +215,46 @@
                             <%--                                </div>--%>
                         </div>
 
+                        <div class="links">
+                            <a class="openpop" href="http://getbootstrap.com/">Link 1</a>
+                            <a class="openpop" href="http://www.jsfiddle.net">Link 2</a>
+                            <a class="openpop" href="http://www.w3schools.com">Link 3</a>
+                        </div>
+                        <div class="wrapper">
+                            <div class="popup">
+                                <iframe src="">
+                                    <p>Your browser does not support iframes.</p>
+                                </iframe>
+                                <a href="#" class="close">X</a>
+                            </div>
+                        </div>
+                        <script>
+                            $(document).ready(function () {
+                                $(".popup").hide();
+                                $(".openpop").click(function (e) {
+                                    e.preventDefault();
+                                    $("iframe").attr("src", $(this).attr('href'));
+                                    $(".links").fadeOut('slow');
+                                    $(".popup").fadeIn('slow');
+                                });
+
+                                $(".close").click(function () {
+                                    $(this).parent().fadeOut("slow");
+                                    $(".links").fadeIn("slow");
+                                });
+                            });
+                        </script>
+                        <div id="simplemodal-overlay">
+
+                        </div>
+
                         <div id="new">
 
-                            <%@include  file="/shared/layout/newside.html"%>
+                            <iframe src="http://localhost:8080/masa/shared/layout/newside.html"
+                            style="width: 100%; height: 500px"
+                            >
+
+                            </iframe>
                         </div>
 
                         <div id="on-going">
@@ -246,6 +290,16 @@
                         <div id="mt">
                             <!-- Bỏ Multimedia meeting vào đây nha -->
                         </div>
+
+                        <div id="ex1" class="modal">
+                            <iframe src="http://localhost:8080/masa/shared/layout/newside.html"
+                                    style="width: 100%; height: 500px"> </iframe>
+                            <a href="#" rel="modal:close">Close</a>
+                        </div>
+
+                        <!-- Link to open the modal -->
+                        <p><a href="#ex1" rel="modal:open">Open Modal</a></p>
+
                     </div>
                 </div>
             </div>

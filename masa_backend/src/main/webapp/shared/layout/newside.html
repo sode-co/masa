@@ -302,7 +302,15 @@
             </div>
             </div>
         </section>
-
+<script>
+    $('#myModal').modal({
+        appendTo: $(window.parent.document).find('body'),
+        overlayCss: {backgroundColor:"#940c0c"}, // Optional overlay style
+        overlayClose:true,
+    });
+    // Set overlay's width
+    $(window.parent.document).find('#simplemodal-overlay').css('width', '100%');
+</script>
         <!-- <div id="buttons">
             <button id="left">Left</button>
             <button id="right">Right</button>
