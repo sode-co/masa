@@ -86,7 +86,7 @@
                     <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
                         <i class="text-indigo-600 fas fa-laptop fa-sm"></i>
                     </div>
-                    <a class="mt-1 text-xs font-semibold text-center" href="#se" onClick="(function(){window.open(location.pathname+'#se')})();return false;">Software Engineering</a>
+                    <a class="mt-1 text-xs font-semibold text-center" href="#se" onClick="(function(){window.location.replace(location.pathname+'#se'); location.reload()})();return false;">Software Engineering</a>
                 </div>
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
