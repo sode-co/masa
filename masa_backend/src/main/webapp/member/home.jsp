@@ -291,15 +291,23 @@
                             <!-- Bỏ Multimedia meeting vào đây nha -->
                         </div>
 
-                        <div id="ex1" class="modal">
-                            <iframe src="http://localhost:8080/masa/shared/layout/newside.html"
-                                    style="width: 100%; height: 500px"> </iframe>
-                            <a href="#" rel="modal:close">Close</a>
+                        <div id="ex1" class="modal" style="background-color: transparent; border-color: transparent">
+                            <iframe id="calendar" src="http://localhost:8080/masa/shared/layout/exampledialog.jsp"
+                                    style="background-color: transparent"> </iframe>
+<%--                            <a href="#" rel="modal:close">Close</a>--%>
                         </div>
 
                         <!-- Link to open the modal -->
-                        <p><a href="#ex1" rel="modal:open">Open Modal</a></p>
-
+                        <p><a href="#ex1" rel="modal:open" id="someLinkId">Open Modal</a></p>
+                        <script>
+                            function test(param){
+                                document.getElementById('calendar').src = "http://localhost:8080/masa/shared/layout/exampledialog.jsp?name="+param;
+                                $(document).ready(function() {
+                                    $('#someLinkId').click();
+                                });
+                            }
+                        </script>
+                        <button onclick="test()">test auto click</button>
                     </div>
                 </div>
             </div>
