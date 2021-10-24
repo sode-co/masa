@@ -1,59 +1,60 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <%-- Created by IntelliJ IDEA. User: Ngoc Thieu Date: 9/19/2021 Time: 1:11 PM To
 change this template use File | Settings | File Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
-    <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
-    <script
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+        <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+        <script
             defer
             src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
             integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
             crossorigin="anonymous"
-    ></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style></style>
-    <script></script>
-</head>
-<body>
-<section class="text-gray-600 body-font">
-    <div class="container px-5 py-5 mx-auto">
-        <div class="flex flex-wrap w-full mb-8">
-            <div class="w-full mb-6 lg:mb-0 sm:ml-20">
-                <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">Agile and Business management</h1>
-                <br/>
-                <div class="w-20 h-1 bg-green-500 rounded"></div>
+        ></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style></style>
+        <script></script>
+    </head>
+    <body>
+        <section class="text-gray-600 body-font">
+            <div class="container px-5 py-5 mx-auto">
+                <div class="flex flex-wrap w-full mb-8">
+                    <div class="w-full mb-6 lg:mb-0 sm:ml-20">
+                        <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">Agile and Business management</h1>
+                        <br />
+                        <div class="w-20 h-1 bg-green-500 rounded"></div>
+                    </div>
+                    <br />
+                </div>
+                <h1 id="userId" style="display: none">${sessionScope.CURRENT_USER.getId()}</h1>
+                <div id="carousel_wrapper2" class="min-w-max overscroll-x-auto md:flex md:justify-center md:space-x-8 md:px-14"></div>
             </div>
-            <br/>
-        </div>
-        <h1 id="userId" style="display: none">${sessionScope.CURRENT_USER.getId()}</h1>
-        <div id="carousel_wrapper2" class="min-w-full overflow-auto md:flex md:justify-center md:space-x-8 md:px-14"></div>
-    </div>
-    <script>
-        const urlFollow2 = "http://localhost:8080/masa/api/appointment-management/create";
-        let container2 = document.getElementById("carousel_wrapper2");
-        console.log("container2", container2);
-        const url2 = "http://localhost:8080/masa/api/meeting-management/not-followed-meetings/" + "${sessionScope.CURRENT_USER.getId()}";
-        console.log(url2);
-        let htmlElements2 = "";
-        const postMethod2 = "POST";
-        const contentType2 = "Content-Type";
-        const appJson2 = "application/json";
-        const userId2 = document.getElementById("userId").textContent;
-        let idsession2 = 0;
-        let followText2 = "Follow";
-        let unfollowText2 = "Unfollow";
-        let followId2 = "follow";
-        let i2 = 0;
-        let urlAskPage2 = "http://localhost:8080/masa/member/meeting/ask_question.jsp";
-        let userParam2 = "?user=";
-        let meetingParam2 = "&meeting=";
-        const urlThisPage2 = "http://localhost:8080/masa/member/meeting/index.jsp";
-        const quotationMarks2 = '"';
-        let z2 = 'Z';
-        let space2 = '';
-        let followNoti2 = "Follow meeting success";
+            <script>
+                const urlFollow2 = "http://localhost:8080/masa/api/appointment-management/create";
+                let container2 = document.getElementById("carousel_wrapper2");
+                console.log("container2", container2);
+                const url2 = "http://localhost:8080/masa/api/meeting-management/not-followed-meetings/" + "${sessionScope.CURRENT_USER.getId()}";
+                console.log(url2);
+                let htmlElements2 = "";
+                const postMethod2 = "POST";
+                const contentType2 = "Content-Type";
+                const appJson2 = "application/json";
+                const userId2 = document.getElementById("userId").textContent;
+                let idsession2 = 0;
+                let followText2 = "Follow";
+                let unfollowText2 = "Unfollow";
+                let followId2 = "follow";
+                let i2 = 0;
+                let urlAskPage2 = "http://localhost:8080/masa/member/meeting/ask_question.jsp";
+                let userParam2 = "?user=";
+                let meetingParam2 = "&meeting=";
+                const urlThisPage2 = "http://localhost:8080/masa/member/meeting/index.jsp";
+                const quotationMarks2 = '"';
+                let z2 = "Z";
+                let space2 = "";
+                let followNoti2 = "Follow meeting success";
+
 
         const json2 = {
             topicName: ["Agile", "Business management"],
@@ -168,17 +169,17 @@ change this template use File | Settings | File Templates. --%> <%@ page content
             })
             .catch((err) => console.error(err));
 
-        container2.innerHTML = htmlElements2;
-    </script>
-</section>
-<div id="target"></div>
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script
+                container2.innerHTML = htmlElements2;
+            </script>
+        </section>
+        <div id="target"></div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script
         defer
         src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
         integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
         crossorigin="anonymous"
-></script>
+    ></script>
 </html>

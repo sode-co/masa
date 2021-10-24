@@ -1,53 +1,54 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <%-- Created by IntelliJ IDEA. User: Ngoc Thieu Date: 9/19/2021 Time: 1:11 PM To
 change this template use File | Settings | File Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
-    <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style></style>
-    <script></script>
-</head>
-<body>
-<section class="text-gray-600 body-font">
-    <div class="container px-5 py-5 mx-auto">
-        <div class="flex flex-wrap w-full mb-8">
-            <div class="w-full mb-6 lg:mb-0 sm:ml-20">
-                <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">Foreign Language</h1>
-                <br/>
-                <div class="w-20 h-1 bg-green-500 rounded"></div>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+        <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style></style>
+        <script></script>
+    </head>
+    <body>
+        <section class="text-gray-600 body-font">
+            <div class="container px-5 py-5 mx-auto">
+                <div class="flex flex-wrap w-full mb-8">
+                    <div class="w-full mb-6 lg:mb-0 sm:ml-20">
+                        <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">Foreign Language</h1>
+                        <br />
+                        <div class="w-20 h-1 bg-green-500 rounded"></div>
+                    </div>
+                    <br />
+                </div>
+                <h1 id="userId" style="display: none">${sessionScope.CURRENT_USER.getId()}</h1>
+                <div id="carousel_wrapper3" class="min-w-max overscroll-x-auto md:flex md:justify-center md:space-x-8 md:px-14"></div>
             </div>
-            <br/>
-        </div>
-        <h1 id="userId" style="display: none">${sessionScope.CURRENT_USER.getId()}</h1>
-        <div id="carousel_wrapper3" class="min-w-full overflow-auto md:flex md:justify-center md:space-x-8 md:px-14"></div>
-    </div>
-    <script>
-        const urlFollow3 = "http://localhost:8080/masa/api/appointment-management/create";
-        let container3 = document.getElementById("carousel_wrapper3");
-        console.log("container3", container3);
-        const url3 = "http://localhost:8080/masa/api/meeting-management/not-followed-meetings/" + "${sessionScope.CURRENT_USER.getId()}";
-        console.log(url3);
-        let htmlElements3 = "";
-        const postMethod3 = "POST";
-        const contentType3 = "Content-Type";
-        const appJson3 = "application/json";
-        const userId3 = document.getElementById("userId").textContent;
-        let idsession3 = 0;
-        let followText3 = "Follow";
-        let unfollowText3 = "Unfollow";
-        let followId3 = "follow";
-        let i3 = 0;
-        let urlAskPage3 = "http://localhost:8080/masa/member/meeting/ask_question.jsp";
-        let userParam3 = "?user=";
-        let meetingParam3 = "&meeting=";
-        const urlThisPage3 = "http://localhost:8080/masa/member/meeting/index.jsp";
-        const quotationMarks3 = '"';
-        let followNoti3 = "Follow meeting success";
-        let z3 = 'Z';
-        let space3 = '';
+            <script>
+                const urlFollow3 = "http://localhost:8080/masa/api/appointment-management/create";
+                let container3 = document.getElementById("carousel_wrapper3");
+                console.log("container3", container3);
+                const url3 = "http://localhost:8080/masa/api/meeting-management/not-followed-meetings/" + "${sessionScope.CURRENT_USER.getId()}";
+                console.log(url3);
+                let htmlElements3 = "";
+                const postMethod3 = "POST";
+                const contentType3 = "Content-Type";
+                const appJson3 = "application/json";
+                const userId3 = document.getElementById("userId").textContent;
+                let idsession3 = 0;
+                let followText3 = "Follow";
+                let unfollowText3 = "Unfollow";
+                let followId3 = "follow";
+                let i3 = 0;
+                let urlAskPage3 = "http://localhost:8080/masa/member/meeting/ask_question.jsp";
+                let userParam3 = "?user=";
+                let meetingParam3 = "&meeting=";
+                const urlThisPage3 = "http://localhost:8080/masa/member/meeting/index.jsp";
+                const quotationMarks3 = '"';
+                let followNoti3 = "Follow meeting success";
+                let z3 = "Z";
+                let space3 = "";
+
 
         const json3 = {
             topicName: ["Japanese Language", "English Language"],
@@ -160,12 +161,11 @@ change this template use File | Settings | File Templates. --%> <%@ page content
                 container3.innerHTML = htmlElements3;
             })
             .catch((err) => console.error(err));
-
-        container3.innerHTML = htmlElements3;
-    </script>
-</section>
-<div id="target"></div>
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+                container3.innerHTML = htmlElements3;
+            </script>
+        </section>
+        <div id="target"></div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </html>

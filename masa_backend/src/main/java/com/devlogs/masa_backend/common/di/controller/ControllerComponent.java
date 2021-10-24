@@ -98,6 +98,7 @@ public interface ControllerComponent {
 
     void inject(GetUserFromRequestProcessingServlet getUserFromRequestProcessingServlet);
 
+    void inject(GetMeetingByIdServlet getMeetingByIdServlet);
     void inject(GetAllMeetingsByHostNameServlet getAllMeetingsByHostNameServlet);
 
     void inject(GetAllMeetingsByTitleServlet getAllMeetingsByTitleServlet);
