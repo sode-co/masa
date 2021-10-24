@@ -20,7 +20,7 @@ services:
   backend:
     restart: always
     container_name: masa_backend
-    image: tiendvlp/masa_webserver:0.1
+    image: tiendvlp/masa_backend:latest
     ports:
       - '8081:8080'    # cổng kết nối với tomcat
     volumes:

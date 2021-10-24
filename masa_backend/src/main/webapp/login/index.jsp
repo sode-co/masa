@@ -110,7 +110,7 @@
         WELCOME TO
       </h1>
       <img
-        src="login/hello.jpg"
+        src="com.devlogs.masa_backend.login/hello.jpg"
         alt="Welcome banner"
         width="95%"
         height="95%"
@@ -224,7 +224,7 @@
                 <a
                   href="#"
                   class="text-gray-700 text-md hover:text-blue-500 hover:no-underline"
-                  >Email: Slimair.co@gmail.com</a
+                  >Email: Slimair.com@gmail.com</a
                 ></span
               >
             </div>
