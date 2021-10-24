@@ -65,7 +65,7 @@ public class MeetingRepositoryImp implements MeetingRepository {
 
     @Override
     public List<MeetingEntity> getAll() throws ConnectionException {
-        List<MeetingEntity> result = null;
+        List<MeetingEntity> result = new ArrayList<>();
         try{
             //get data from DAO
             List<MeetingDTO> listDTO = meetingSource.getAllMeetings();
@@ -266,4 +266,95 @@ public class MeetingRepositoryImp implements MeetingRepository {
         return result;
     }
 
+    @Override
+    public List<MeetingEntity> getMeetingsByTitle(String title) throws ConnectionException {
+        List<MeetingEntity> result = new ArrayList<>();
+        try{
+            //get data from DAO
+            List<MeetingDTO> listDTO = meetingSource.getMeetingsByTitle(title);
+            if (listDTO != null) {
+                for(MeetingDTO dto:listDTO){
+                    result.add(toMeetingEntity(dto));
+                }//end traversed listDTO
+            }//end if listDTO existed
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
+        return result;
+    }
+
+    @Override
+    public List<MeetingEntity> getMeetingsByHostName(String hostName) throws ConnectionException {
+        List<MeetingEntity> result = new ArrayList<>();
+        try{
+            //get data from DAO
+            List<MeetingDTO> listDTO = meetingSource.getMeetingsByHostName(hostName);
+            if (listDTO != null) {
+                for(MeetingDTO dto:listDTO){
+                    result.add(toMeetingEntity(dto));
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
+        return result;
+    }
+
+    @Override
+    public MeetingEntity updateMeetingStatus(String meetingId) throws ConnectionException, NotFoundException {
+        MeetingEntity meeting = null;
+        try{
+            MeetingDTO dto = meetingSource.updateMeetingStatus(meetingId);
+            if(dto!=null){
+                meeting = toMeetingEntity(dto);
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
+        return meeting;
+    }
+
+    @Override
+    public List<MeetingEntity> getAllActiveMeetings() throws ConnectionException {
+        List<MeetingEntity> result = new ArrayList<>();
+        try{
+            //get data from DAO
+            List<MeetingDTO> listDTO = meetingSource.getAllActiveMeetings();
+            if (listDTO != null) {
+                for (MeetingDTO dto : listDTO) {
+                    result.add(toMeetingEntity(dto));
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
+        return result;
+    }
+
+    @Override
+    public List<MeetingEntity> getOnGoingMeetings() throws ConnectionException {
+        List<MeetingEntity> result = new ArrayList<>();
+        try{
+            //get data from DAO
+            List<MeetingDTO> listDTO = meetingSource.getAllOnGoingMeetings();
+            if (listDTO != null) {
+                for (MeetingDTO dto : listDTO) {
+                    result.add(toMeetingEntity(dto));
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
+        return result;
+    }
 }

@@ -1,15 +1,10 @@
 package com.devlogs.masa_backend.servlets.meeting.getmeeting;
 
 import com.devlogs.masa_backend.common.annotations.AccessRole;
-import com.devlogs.masa_backend.data.remote_database.MeetingDAO;
-import com.devlogs.masa_backend.data.remote_database.MeetingDTO;
 import com.devlogs.masa_backend.domain.entities.MeetingEntity;
-import com.devlogs.masa_backend.domain.entities.MeetingPlatform;
-import com.devlogs.masa_backend.domain.entities.TopicEntity;
 import com.devlogs.masa_backend.domain.entities.UserEntity;
-import com.devlogs.masa_backend.manage.GetUserFromRequestProcessingUseCase;
-import com.devlogs.masa_backend.meeting.GetAllMeetingUseCase;
-import com.devlogs.masa_backend.meeting.GetMeetingByHostUseCase;
+import com.devlogs.masa_backend.meeting.GetAllActiveMeetingsUseCase;
+import com.devlogs.masa_backend.meeting.GetOnGoingMeetingUseCase;
 import com.devlogs.masa_backend.servlets.common.base.BaseHttpServlet;
 import com.devlogs.masa_backend.servlets.meeting.common.GetMeetingResponse;
 import com.devlogs.masa_backend.user.GetUserByIdUseCase;
@@ -21,19 +16,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.*;
 
-@AccessRole(roles = {ADMIN})
-@WebServlet(name = "getallmeetingservlet", urlPatterns = {"/api/meeting-management/meetings"})
-public class GetAllMeetingServlet extends BaseHttpServlet {
-
+@AccessRole(roles = {ADMIN, MENTOR, STUDENT, MEMBER})
+@WebServlet(name = "getongoinmeetingsservlet", urlPatterns = {"/api/meeting-management/ongoing-meetings"})
+public class GetOnGoingMeetingsServlet extends BaseHttpServlet {
     @Inject
-    protected GetAllMeetingUseCase getAllMeetingUseCase;
+    protected GetOnGoingMeetingUseCase getOnGoingMeetingUseCase;
     @Inject
     protected GetUserByIdUseCase getUserByIdUseCase;
 
@@ -45,15 +37,15 @@ public class GetAllMeetingServlet extends BaseHttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        GetAllMeetingUseCase.Result result = getAllMeetingUseCase.executes();
+        GetOnGoingMeetingUseCase.Result result = getOnGoingMeetingUseCase.executes();
 
-        if (result instanceof GetAllMeetingUseCase.Result.ConnectionError) {
+        if (result instanceof GetOnGoingMeetingUseCase.Result.ConnectionError) {
             getRequestComponent().getResponseHelper().responseMessage(500, "Connection to db error");
-        } else if ( result instanceof GetAllMeetingUseCase.Result.Success) {
+        } else if ( result instanceof GetOnGoingMeetingUseCase.Result.Success) {
             ArrayList<GetMeetingResponse.Data> responseData = new ArrayList<>();
             ArrayList<UserEntity> hosts = new ArrayList<>();
             Optional<UserEntity> cachedHost;
-            for (MeetingEntity meeting : ((GetAllMeetingUseCase.Result.Success) result).meetings) {
+            for (MeetingEntity meeting : ((GetOnGoingMeetingUseCase.Result.Success) result).meetings) {
                 cachedHost = hosts.stream().filter(user -> user.id.equals(meeting.getHostId())).findFirst();
                 if (!cachedHost.isPresent()) {
                     GetUserByIdUseCase.Result getUserResult = getUserByIdUseCase.executes(meeting.getHostId());

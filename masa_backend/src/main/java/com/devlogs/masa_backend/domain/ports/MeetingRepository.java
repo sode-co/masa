@@ -13,7 +13,6 @@ public interface MeetingRepository {
 
     List<MeetingEntity> getByHostId(String hostId) throws ConnectionException;
 
-
     MeetingEntity create(String title, MeetingPlatform.PLATFORM platform, String hostId, TopicEntity topic, long startTime, long endTime, String description) throws ConnectionException;
 
     List<MeetingEntity> getMeetingsByTime(long from, long to) throws ConnectionException;
@@ -30,4 +29,14 @@ public interface MeetingRepository {
 
 
     List<MeetingEntity> getNewMeetings() throws ConnectionException;
+
+    List<MeetingEntity> getMeetingsByTitle(String title) throws ConnectionException;
+
+    List<MeetingEntity> getMeetingsByHostName(String hostName) throws ConnectionException;
+
+    MeetingEntity updateMeetingStatus(String meetingId) throws ConnectionException,NotFoundException;
+
+    List<MeetingEntity> getAllActiveMeetings() throws ConnectionException;
+
+    List<MeetingEntity> getOnGoingMeetings() throws ConnectionException;
 }
