@@ -86,7 +86,7 @@
                     <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
                         <i class="text-indigo-600 fas fa-laptop fa-sm"></i>
                     </div>
-                    <a class="mt-1 text-xs font-semibold text-center" href="#se">Software Engineering</a>
+                    <a class="mt-1 text-xs font-semibold text-center" href="#se" onClick="(function(){window.open(location.pathname+'#se')})();return false;">Software Engineering</a>
                 </div>
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
@@ -229,10 +229,14 @@
                                 >
                                 </iframe>
                         </div>
-                        <div id="se">
-                            <!-- Bỏ Software engineer meeting vào đây nha  -->
+                        <div id="se" style="height: 10000px; overflow: hidden; overflow-x: auto;">
+                            <iframe src="http://localhost:8080/masa/shared/meeting/SE_meeting.jsp"
+                                    style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none""
+                            >
+                            </iframe>
                         </div>
-
+                        <div id="ia" style="height: 10000px; overflow: hidden; overflow-x: auto;">
+                        </div>
                         <div id="dialogiframe" class="modal" style="background-color: transparent; border-color: transparent; align-items: center; margin-right: 280px; box-shadow:none; width: 1800px; padding-bottom:10px ">
                             <iframe id="dialogiframeelement" src="http://localhost:8080/masa/shared/layout/dialog.jsp"
                                     style="background-color: transparent; width: 800px; height: 500px; border-radius: 10px"> </iframe>
@@ -252,6 +256,9 @@
                                 $(document).ready(function() {
                                     $('#close-modal').click();
                                 });
+                            }
+                            if(!location.href.includes("se")){
+                                document.getElementById("se").style.display = "none";
                             }
                         </script>
                     </div>
