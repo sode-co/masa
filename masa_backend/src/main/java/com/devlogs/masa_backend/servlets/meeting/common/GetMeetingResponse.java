@@ -8,6 +8,7 @@ import java.util.List;
 
 public class GetMeetingResponse {
     public static class Data {
+        public String id;
         public String title;
         public MeetingPlatform platform;
         public TopicEntity topic;
@@ -20,7 +21,8 @@ public class GetMeetingResponse {
 
         }
 
-        public Data(String title, MeetingPlatform platform, TopicEntity topic, UserEntity mentor, long startTime, long endTime, String description) {
+        public Data(String id, String title, MeetingPlatform platform, TopicEntity topic, UserEntity mentor, long startTime, long endTime, String description) {
+            this.id = id;
             this.title = title;
             this.platform = platform;
             this.topic = topic;
