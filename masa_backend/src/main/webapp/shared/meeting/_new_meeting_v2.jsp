@@ -441,16 +441,23 @@
             </ul>
         </div>
         <!-- Dialog Start -->
+        <h1 id="currentSession">${sessionScope.CURRENT_USER.id}</h1>
         <div id="new_meeting_dialog">
             <script>
+                const urlFollowNewMeeting = "/masa/api/appointment-management/create";
                 let iDialog=0;
+                const z = "z";
+                const space = "";
+                const postMethod1 = "POST";
+                const appJson1 = "application/json";
+                const userId = document.getElementById("currentSession").innerText;
+                let followNoti1 = "Follow meeting success";
                 $.getJSON("/masa/api/meeting-management/new-meetings", function (data) {
                     let htmlDialogs = "";
                     const arr = data["meetings"];
                     arr.forEach((element) => {
                         iDialog++;
-                        const urlFollowNewMeeting = "/masa/api/appointment-management/create";
-
+                        const meetingId = "z"+element.id;
                         const idDialog = "myModalNewMeeting"+iDialog;
                         var startConvert = new Date(element.startTime); // create Date object
                         var startConvertTime = startConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
@@ -494,13 +501,38 @@
                                 +'</div>'
                                 +'</div>'
                                 +'<div class="flex justify-center w-full space-x-16 mt-9 mb-14">'
-
                                 +'<button'
                                 +' class="p-4 text-2xl font-semibold text-black bg-transparent border-2 border-gray-200 pl-28 pr-28 rounded-2xl hover:text-blue-500 focus:border-4 focus:border-blue-300"'
                                 +'>'
+                                +'<a href="" onClick="(function(){'
+                                +"const varToString = varObj => Object.keys(varObj)[0];"
+                                +"const " + meetingId +"=z;"
+                                +"const x = varToString({"
+                                +meetingId
+                                +"});"
+                                +"console.log(x);"
+                                +"const json = {"
+                                +"userId: userId,"
+                                +"meetingId: x.replace(z,space),"
+                                +"};"
+                                +"console.log(json);"
+                                +"const options = {"
+                                +"method: postMethod1,"
+                                +"body: JSON.stringify(json),"
+                                +"headers: {"
+                                +"contentType: appJson1,"
+                                +"},"
+                                +"};"
+                                +"console.log(options);"
+                                +"console.log(urlFollowNewMeeting);"
+                                +"fetch(urlFollowNewMeeting, options)"
+                                +".then((res) => res.json())"
+                                +".then((res) => alert(followNoti1))"
+                                +".catch((err) => alert(err));"
+                                +'})();return false;">'
                                 +'Follow'
+                                +'</a>'
                                 +'</button>'
-
                                 +'<button'
                                 +' class="p-4 pl-20 pr-20 text-2xl font-semibold text-white bg-indigo-700 border-blue-300 rounded-2xl focus:border-4 hover:bg-indigo-900"'
                                 +'>'
