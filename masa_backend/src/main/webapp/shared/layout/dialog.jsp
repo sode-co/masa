@@ -44,7 +44,7 @@
 >
 <div id="new_meeting_dialog">
 </div>
-<h1 id="currentSessionNewMeeting">${sessionScope.CURRENT_USER.id}</h1>
+<h1 id="currentSessionNewMeeting" style="display: none">${sessionScope.CURRENT_USER.id}</h1>
 <script>
                     const urlFollowNewMeeting = "/masa/api/appointment-management/create";
                     let iDialogNewMeeting=0;
@@ -55,9 +55,8 @@
                     const userId = document.getElementById("currentSessionNewMeeting").innerText;
                     let followNotiNewMeeting = "Follow meeting success";
                     const url = "/masa/api/meeting-management/meeting/"+location.search.replace("?id=","");
-                    $.getJSON(url, function (data) {
+                    $.getJSON(url, function (element) {
                         let htmlDialogsNewMeeting = "";
-                        const element = data["meeting"];
                         console.log(JSON.stringify(element));
                             iDialogNewMeeting++;
                             const meetingId = "z"+element.id;
@@ -74,7 +73,7 @@
                                     +'<div class="font-sans modal-dialog" role="document">'
                                     +'<div class="rounded-3xl modal-content" style="width: 680px;">'
                                     +'<div class="modal-body">'
-                                    +'<button type="button" class="close" data-dismiss="modal" aria-label="Close">'
+                                    +'<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="float: right" onclick="parent.autoclick()">'
                                     +'<span aria-hidden="true">&times;</span>'
                                     +'</button>'
                                     +'<h4 class="text-2xl font-bold text-black mt-11 ml-14 modal-title" id="myModalLabel">Meeting Information</h4>'
@@ -82,9 +81,9 @@
                                     +'<h1 class="relative inline-block mb-1 text-5xl font-semibold text-gray-900 mt-11 ml-14 date modal-title"'
                                     +'>'+element.title+'</h1'
                                     +'><a href="'+element.platform.url+'" class="text-2xl font-semibold text-blue-800 ml-7">Join Zoom</a><br>'
-                                    // +'<span class="relative inline-block pt-2 text-2xl font-normal text-black ml-14 date modal-title"'
-                                    // +'>with mentor <span class="text-2xl font-normal text-blue-800">'+element.mentor.fullName+'</span></span'
-                                    // +'>'
+                                    +'<span class="relative inline-block pt-2 text-2xl font-normal text-black ml-14 date modal-title"'
+                                    +'>with mentor <span class="text-2xl font-normal text-blue-800">'+element.mentor.fullName+'</span></span'
+                                    +'>'
                                     +'<div class="flex ml-7 modal-body">'
                                     +'<span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title"'
                                     +'>'+startConvertNewMeetingTime.slice(16,21)+'</span>'
@@ -152,7 +151,7 @@
                                     +'<div class="font-sans modal-dialog" role="document">'
                                     +'<div class="rounded-3xl modal-content" style="width: 680px;">'
                                     +'<div class="modal-body">'
-                                    +'<button type="button" class="close" data-dismiss="modal" aria-label="Close">'
+                                    +'<button type="button" class="close" data-dismiss="modal" aria-label="Close" style="float: right" onclick="parent.autoclick()">'
                                     +'<span aria-hidden="true">&times;</span>'
                                     +'</button>'
                                     +'<h4 class="text-2xl font-bold text-black mt-11 ml-14 modal-title" id="myModalLabel">Meeting Information</h4>'

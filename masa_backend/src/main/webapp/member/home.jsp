@@ -215,9 +215,11 @@
                             <%--                                </div>--%>
                         </div>
 
-                        <div id="new">
+                            <div
+                                 id="new" style="height: 550px; overflow: hidden; overflow-x: auto;">
                             <iframe src="http://localhost:8080/masa/shared/meeting/_new_meeting_v2.jsp"
-                                    style="width: 100%; height: 500px"
+                                    id="framenew"
+                                    style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none""
                             >
                             </iframe>
                         </div>
@@ -229,13 +231,14 @@
                             <!-- Bỏ Software engineer meeting vào đây nha  -->
                         </div>
 
-                        <div id="dialogiframe" class="modal" style="background-color: transparent; border-color: transparent;">
+                        <div id="dialogiframe" class="modal" style="background-color: transparent; border-color: transparent; align-items: center; margin-right: 280px; box-shadow:none; width: 1800px; padding-bottom:10px ">
                             <iframe id="dialogiframeelement" src="http://localhost:8080/masa/shared/layout/dialog.jsp"
                                     style="background-color: transparent; width: 800px; height: 500px; border-radius: 10px"> </iframe>
                         </div>
 
                         <!-- Link to open the modal -->
-                        <p><a href="#dialogiframe" rel="modal:open" id="openiframemodal">Open Modal</a></p>
+                        <p><a href="#dialogiframe" rel="modal:close" id="close-modal" style="display: none">close Modal</a></p>
+                        <p><a href="#dialogiframe" rel="modal:open" id="openiframemodal" style="display: none">Open Modal</a></p>
                         <script>
                             function calldialog(param){
                                 document.getElementById('dialogiframeelement').src = "http://localhost:8080/masa/shared/layout/dialog.jsp?id="+param;
@@ -243,8 +246,12 @@
                                     $('#openiframemodal').click();
                                 });
                             }
+                            function autoclick(){
+                                $(document).ready(function() {
+                                    $('#close-modal').click();
+                                });
+                            }
                         </script>
-                        <button onclick="calldialog()">test auto click</button>
                     </div>
                 </div>
             </div>
