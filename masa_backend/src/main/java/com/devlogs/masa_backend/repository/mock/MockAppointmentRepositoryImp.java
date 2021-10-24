@@ -58,4 +58,9 @@ public class MockAppointmentRepositoryImp implements AppointmentRepository {
     public void removeAppointment(String userId, String meetingId) throws ConnectionException {
 
     }
+
+    @Override
+    public void removeAllAppointmentsByMeetingId(String meetingId) throws ConnectionException {
+
+    }
 }
