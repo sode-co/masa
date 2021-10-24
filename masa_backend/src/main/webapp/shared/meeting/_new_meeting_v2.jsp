@@ -82,391 +82,389 @@
         </div>
         <div  id="new_meeting_carousel_wrapper" class="mx-auto space-x-4 md:flex md:justify-center md:space-x-8 md:px-8" style="width: 940px">
             <ul id="new_meeting_carousel_wrapper_list">
-            <script>
-                let i=0;
-                $.getJSON("/masa/api/meeting-management/new-meetings", function (data) {
-                    let htmlElements = "";
-                    const arr = data["meetings"];
-                    console.log("arr" + JSON. stringify(arr));
+                <script>
+                    let i=0;
+                    $.getJSON("/masa/api/meeting-management/new-meetings", function (data) {
+                        let htmlElementsNewMeeting = "";
+                        const arrNewMeeting = data["meetings"];
+                        arrNewMeeting.forEach((element) => {
+                            var startConvertNewMeeting = new Date(element.startTime); // create Date object
+                            var startConvertNewMeetingTime = startConvertNewMeeting.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
+                            var endConvertConvertNewMeeting = new Date(element.startTime); // create Date object
+                            var endConvertConvertNewMeetingTime = endConvertConvertNewMeeting.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
+                            i++;
+                            const target = "#myModalNewMeeting"+ i;
+                            if(element.topic.title==='Software Engineering'){
+                                htmlElementsNewMeeting +=
+                                    '<li>'
+                                    +'<div>'
+                                    +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
+                                    +'<div class="flex flex-col items-center justify-center w-sm">'
+                                    +'<div class="">'
+                                    +'<img class="object-cover w-64 h-64 mx-auto"'
+                                    +'src="https://image.freepik.com/free-vector/programming-concept-illustration_114360-1213.jpg"'
+                                    +'alt=""'
+                                    +'/>'
+                                    +'</div>'
+                                    +'<div class="mt-2 text-center">'
+                                    +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
+                                    +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
+                                    +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
+                                    +'<button'
+                                    +' type="button"'
+                                    +' data-toggle="modal"'
+                                    +' data-target='+target
+                                    +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
+                                    +'>'
+                                    +'See more'
+                                    +' </button> '
+                                    +'<a href="'+element.platform.url+'">'
+                                    +'<button'
+                                    +' type="button"'
+                                    +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
+                                    +'>'
+                                    +'Join now'
+                                    +' </button>'
+                                    +'</a>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</li>'
+                            }else if(element.topic.title==='Business management' || element.topic.title==='Agile'){
+                                htmlElementsNewMeeting +=
+                                    '<li>'
+                                    +'<div>'
+                                    +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
+                                    +'<div class="flex flex-col items-center justify-center w-sm">'
+                                    +'<div class="">'
+                                    +'<img class="object-cover w-64 h-64 mx-auto"'
+                                    +'src="https://image.freepik.com/free-vector/remote-business-management-concept-with-businessman-holding-tablet-showing-analytics-graphs-connected_1284-44658.jpg"'
+                                    +'alt=""'
+                                    +'/>'
+                                    +'</div>'
+                                    +'<div class="mt-2 text-center">'
+                                    +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
+                                    +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
+                                    +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
+                                    +'<button'
+                                    +' type="button"'
+                                    +' data-toggle="modal"'
+                                    +' data-target='+target
+                                    +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
+                                    +'>'
+                                    +'See more'
+                                    +' </button> '
+                                    +'<a href="'+element.platform.url+'">'
+                                    +'<button'
+                                    +' type="button"'
+                                    +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
+                                    +'>'
+                                    +'Join now'
+                                    +' </button>'
+                                    +'</a>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</li>'
+                            }else if(element.topic.title==='Artificial Intelligence'){
+                                htmlElementsNewMeeting +=
+                                    '<li>'
+                                    +'<div>'
+                                    +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
+                                    +'<div class="flex flex-col items-center justify-center w-sm">'
+                                    +'<div class="">'
+                                    +'<img class="object-cover w-64 h-64 mx-auto"'
+                                    +'src="https://image.freepik.com/free-vector/cloud-robotics-abstract-concept-illustration_335657-3801.jpg"'
+                                    +'alt=""'
+                                    +'/>'
+                                    +'</div>'
+                                    +'<div class="mt-2 text-center">'
+                                    +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
+                                    +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
+                                    +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
+                                    +'<button'
+                                    +' type="button"'
+                                    +' data-toggle="modal"'
+                                    +' data-target='+target
+                                    +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
+                                    +'>'
+                                    +'See more'
+                                    +' </button> '
+                                    +'<a href="'+element.platform.url+'">'
+                                    +'<button'
+                                    +' type="button"'
+                                    +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
+                                    +'>'
+                                    +'Join now'
+                                    +' </button>'
+                                    +'</a>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</li>'
+                            }else if(element.topic.title==='Digital Maketing'){
+                                htmlElementsNewMeeting +=
+                                    '<li>'
+                                    +'<div>'
+                                    +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
+                                    +'<div class="flex flex-col items-center justify-center w-sm">'
+                                    +'<div class="">'
+                                    +'<img class="object-cover w-64 h-64 mx-auto"'
+                                    +'src="https://image.freepik.com/free-vector/hand-drawn-illustration-people-with-smartphone-marketing_52683-66658.jpg"'
+                                    +'alt=""'
+                                    +'/>'
+                                    +'</div>'
+                                    +'<div class="mt-2 text-center">'
+                                    +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
+                                    +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
+                                    +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
+                                    +'<button'
+                                    +' type="button"'
+                                    +' data-toggle="modal"'
+                                    +' data-target='+target
+                                    +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
+                                    +'>'
+                                    +'See more'
+                                    +' </button> '
+                                    +'<a href="'+element.platform.url+'">'
+                                    +'<button'
+                                    +' type="button"'
+                                    +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
+                                    +'>'
+                                    +'Join now'
+                                    +' </button>'
+                                    +'</a>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</li>'
+                            }else if(element.topic.title==='English Language'){
+                                htmlElementsNewMeeting +=
+                                    '<li>'
+                                    +'<div>'
+                                    +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
+                                    +'<div class="flex flex-col items-center justify-center w-sm">'
+                                    +'<div class="">'
+                                    +'<img class="object-cover w-64 h-64 mx-auto"'
+                                    +'src="https://image.freepik.com/free-vector/famous-showplaces-united-kingdom_126523-12.jpg"'
+                                    +'alt=""'
+                                    +'/>'
+                                    +'</div>'
+                                    +'<div class="mt-2 text-center">'
+                                    +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
+                                    +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
+                                    +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
+                                    +'<button'
+                                    +' type="button"'
+                                    +' data-toggle="modal"'
+                                    +' data-target='+target
+                                    +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
+                                    +'>'
+                                    +'See more'
+                                    +' </button> '
+                                    +'<a href="'+element.platform.url+'">'
+                                    +'<button'
+                                    +' type="button"'
+                                    +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
+                                    +'>'
+                                    +'Join now'
+                                    +' </button>'
+                                    +'</a>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</li>'
+                            }else if(element.topic.title==='Information Assurance'){
+                                htmlElementsNewMeeting +=
+                                    '<li>'
+                                    +'<div>'
+                                    +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
+                                    +'<div class="flex flex-col items-center justify-center w-sm">'
+                                    +'<div class="">'
+                                    +'<img class="object-cover w-64 h-64 mx-auto"'
+                                    +'src="https://image.freepik.com/free-vector/global-data-security-personal-data-security-cyber-data-security-online-concept-illustration-internet-security-information-privacy-protection_1150-37336.jpg"'
+                                    +'alt=""'
+                                    +'/>'
+                                    +'</div>'
+                                    +'<div class="mt-2 text-center">'
+                                    +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
+                                    +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
+                                    +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
+                                    +'<button'
+                                    +' type="button"'
+                                    +' data-toggle="modal"'
+                                    +' data-target='+target
+                                    +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
+                                    +'>'
+                                    +'See more'
+                                    +' </button> '
+                                    +'<a href="'+element.platform.url+'">'
+                                    +'<button'
+                                    +' type="button"'
+                                    +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
+                                    +'>'
+                                    +'Join now'
+                                    +' </button>'
+                                    +'</a>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</li>'
+                            }else if(element.topic.title==='Japanese Language'){
+                                htmlElementsNewMeeting +=
+                                    '<li>'
+                                    +'<div>'
+                                    +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
+                                    +'<div class="flex flex-col items-center justify-center w-sm">'
+                                    +'<div class="">'
+                                    +'<img class="object-cover w-64 h-64 mx-auto"'
+                                    +'src="https://png.pngtree.com/element_our/20190531/ourlarge/pngtree-vector-cartoon-free-buckle-japan-image_1321521.jpg"'
+                                    +'alt=""'
+                                    +'/>'
+                                    +'</div>'
+                                    +'<div class="mt-2 text-center">'
+                                    +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
+                                    +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
+                                    +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
+                                    +'<button'
+                                    +' type="button"'
+                                    +' data-toggle="modal"'
+                                    +' data-target='+target
+                                    +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
+                                    +'>'
+                                    +'See more'
+                                    +' </button> '
+                                    +'<a href="'+element.platform.url+'">'
+                                    +'<button'
+                                    +' type="button"'
+                                    +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
+                                    +'>'
+                                    +'Join now'
+                                    +' </button>'
+                                    +'</a>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</li>'
+                            }else if(element.topic.title==='Multimedia' || element.topic.title==='Photoshop'){
+                                htmlElementsNewMeeting +=
+                                    '<li>'
+                                    +'<div>'
+                                    +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
+                                    +'<div class="flex flex-col items-center justify-center w-sm">'
+                                    +'<div class="">'
+                                    +'<img class="object-cover w-64 h-64 mx-auto"'
+                                    +'src="https://image.freepik.com/free-vector/company-employees-use-web-search-find-ideas-doing-business-company_1150-43196.jpg"'
+                                    +'alt=""'
+                                    +'/>'
+                                    +'</div>'
+                                    +'<div class="mt-2 text-center">'
+                                    +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
+                                    +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
+                                    +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
+                                    +'<button'
+                                    +' type="button"'
+                                    +' data-toggle="modal"'
+                                    +' data-target='+target
+                                    +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
+                                    +'>'
+                                    +'See more'
+                                    +' </button> '
+                                    +'<a href="'+element.platform.url+'">'
+                                    +'<button'
+                                    +' type="button"'
+                                    +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
+                                    +'>'
+                                    +'Join now'
+                                    +' </button>'
+                                    +'</a>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</li>'
+                            }else if(element.topic.title==='Soft Skills'){
+                                htmlElementsNewMeeting +=
+                                    '<li>'
+                                    +'<div>'
+                                    +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
+                                    +'<div class="flex flex-col items-center justify-center w-sm">'
+                                    +'<div class="">'
+                                    +'<img class="object-cover w-64 h-64 mx-auto"'
+                                    +'src="https://image.freepik.com/free-vector/scrum-board-concept-illustration_114360-2981.jpg"'
+                                    +'alt=""'
+                                    +'/>'
+                                    +'</div>'
+                                    +'<div class="mt-2 text-center">'
+                                    +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
+                                    +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
+                                    +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
+                                    +'<button'
+                                    +' type="button"'
+                                    +' data-toggle="modal"'
+                                    +' data-target='+target
+                                    +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
+                                    +'>'
+                                    +'See more'
+                                    +' </button> '
+                                    +'<a href="'+element.platform.url+'">'
+                                    +'<button'
+                                    +' type="button"'
+                                    +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
+                                    +'>'
+                                    +'Join now'
+                                    +' </button>'
+                                    +'</a>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</div>'
+                                    +'</li>'
+                            }
 
-                    arr.forEach((element) => {
-                        var startConvert = new Date(element.startTime); // create Date object
-                        var startConvertTime = startConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
-                        var endConvert = new Date(element.startTime); // create Date object
-                        var endConvertTime = endConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
-                        i++;
-                        const target = "#myModalNewMeeting"+ i;
-                        if(element.topic.title==='Software Engineering'){
-                            htmlElements +=
-                                '<li>'
-                                +'<div>'
-                                +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
-                                +'<div class="flex flex-col items-center justify-center w-sm">'
-                                +'<div class="">'
-                                +'<img class="object-cover w-64 h-64 mx-auto"'
-                                +'src="https://image.freepik.com/free-vector/programming-concept-illustration_114360-1213.jpg"'
-                                +'alt=""'
-                                +'/>'
-                                +'</div>'
-                                +'<div class="mt-2 text-center">'
-                                +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
-                                +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
-                                +'<p class="mt-4 text-gray-600">'+startConvertTime.slice(16,21)+' '+ startConvertTime.slice(4,10)+'</p>'
-                                +'<button'
-                                +' type="button"'
-                                +' data-toggle="modal"'
-                                +' data-target='+target
-                                +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                +'>'
-                                +'See more'
-                                +' </button> '
-                                +'<a href="'+element.platform.url+'">'
-                                +'<button'
-                                +' type="button"'
-                                +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
-                                +'>'
-                                +'Join now'
-                                +' </button>'
-                                +'</a>'
-                                +'</div>'
-                                +'</div>'
-                                +'</div>'
-                                +'</div>'
-                                +'</li>'
-                        }else if(element.topic.title==='Business management' || element.topic.title==='Agile'){
-                            htmlElements +=
-                                '<li>'
-                                +'<div>'
-                                +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
-                                +'<div class="flex flex-col items-center justify-center w-sm">'
-                                +'<div class="">'
-                                +'<img class="object-cover w-64 h-64 mx-auto"'
-                                +'src="https://image.freepik.com/free-vector/remote-business-management-concept-with-businessman-holding-tablet-showing-analytics-graphs-connected_1284-44658.jpg"'
-                                +'alt=""'
-                                +'/>'
-                                +'</div>'
-                                +'<div class="mt-2 text-center">'
-                                +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
-                                +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
-                                +'<p class="mt-4 text-gray-600">'+startConvertTime.slice(16,21)+' '+ startConvertTime.slice(4,10)+'</p>'
-                                +'<button'
-                                +' type="button"'
-                                +' data-toggle="modal"'
-                                +' data-target='+target
-                                +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                +'>'
-                                +'See more'
-                                +' </button> '
-                                +'<a href="'+element.platform.url+'">'
-                                +'<button'
-                                +' type="button"'
-                                +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
-                                +'>'
-                                +'Join now'
-                                +' </button>'
-                                +'</a>'
-                                +'</div>'
-                                +'</div>'
-                                +'</div>'
-                                +'</div>'
-                                +'</li>'
-                        }else if(element.topic.title==='Artificial Intelligence'){
-                            htmlElements +=
-                                '<li>'
-                                +'<div>'
-                                +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
-                                +'<div class="flex flex-col items-center justify-center w-sm">'
-                                +'<div class="">'
-                                +'<img class="object-cover w-64 h-64 mx-auto"'
-                                +'src="https://image.freepik.com/free-vector/cloud-robotics-abstract-concept-illustration_335657-3801.jpg"'
-                                +'alt=""'
-                                +'/>'
-                                +'</div>'
-                                +'<div class="mt-2 text-center">'
-                                +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
-                                +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
-                                +'<p class="mt-4 text-gray-600">'+startConvertTime.slice(16,21)+' '+ startConvertTime.slice(4,10)+'</p>'
-                                +'<button'
-                                +' type="button"'
-                                +' data-toggle="modal"'
-                                +' data-target='+target
-                                +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                +'>'
-                                +'See more'
-                                +' </button> '
-                                +'<a href="'+element.platform.url+'">'
-                                +'<button'
-                                +' type="button"'
-                                +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
-                                +'>'
-                                +'Join now'
-                                +' </button>'
-                                +'</a>'
-                                +'</div>'
-                                +'</div>'
-                                +'</div>'
-                                +'</div>'
-                                +'</li>'
-                        }else if(element.topic.title==='Digital Maketing'){
-                            htmlElements +=
-                                '<li>'
-                                +'<div>'
-                                +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
-                                +'<div class="flex flex-col items-center justify-center w-sm">'
-                                +'<div class="">'
-                                +'<img class="object-cover w-64 h-64 mx-auto"'
-                                +'src="https://image.freepik.com/free-vector/hand-drawn-illustration-people-with-smartphone-marketing_52683-66658.jpg"'
-                                +'alt=""'
-                                +'/>'
-                                +'</div>'
-                                +'<div class="mt-2 text-center">'
-                                +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
-                                +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
-                                +'<p class="mt-4 text-gray-600">'+startConvertTime.slice(16,21)+' '+ startConvertTime.slice(4,10)+'</p>'
-                                +'<button'
-                                +' type="button"'
-                                +' data-toggle="modal"'
-                                +' data-target='+target
-                                +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                +'>'
-                                +'See more'
-                                +' </button> '
-                                +'<a href="'+element.platform.url+'">'
-                                +'<button'
-                                +' type="button"'
-                                +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
-                                +'>'
-                                +'Join now'
-                                +' </button>'
-                                +'</a>'
-                                +'</div>'
-                                +'</div>'
-                                +'</div>'
-                                +'</div>'
-                                +'</li>'
-                        }else if(element.topic.title==='English Language'){
-                            htmlElements +=
-                                '<li>'
-                                +'<div>'
-                                +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
-                                +'<div class="flex flex-col items-center justify-center w-sm">'
-                                +'<div class="">'
-                                +'<img class="object-cover w-64 h-64 mx-auto"'
-                                +'src="https://image.freepik.com/free-vector/famous-showplaces-united-kingdom_126523-12.jpg"'
-                                +'alt=""'
-                                +'/>'
-                                +'</div>'
-                                +'<div class="mt-2 text-center">'
-                                +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
-                                +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
-                                +'<p class="mt-4 text-gray-600">'+startConvertTime.slice(16,21)+' '+ startConvertTime.slice(4,10)+'</p>'
-                                +'<button'
-                                +' type="button"'
-                                +' data-toggle="modal"'
-                                +' data-target='+target
-                                +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                +'>'
-                                +'See more'
-                                +' </button> '
-                                +'<a href="'+element.platform.url+'">'
-                                +'<button'
-                                +' type="button"'
-                                +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
-                                +'>'
-                                +'Join now'
-                                +' </button>'
-                                +'</a>'
-                                +'</div>'
-                                +'</div>'
-                                +'</div>'
-                                +'</div>'
-                                +'</li>'
-                        }else if(element.topic.title==='Information Assurance'){
-                            htmlElements +=
-                                '<li>'
-                                +'<div>'
-                                +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
-                                +'<div class="flex flex-col items-center justify-center w-sm">'
-                                +'<div class="">'
-                                +'<img class="object-cover w-64 h-64 mx-auto"'
-                                +'src="https://image.freepik.com/free-vector/global-data-security-personal-data-security-cyber-data-security-online-concept-illustration-internet-security-information-privacy-protection_1150-37336.jpg"'
-                                +'alt=""'
-                                +'/>'
-                                +'</div>'
-                                +'<div class="mt-2 text-center">'
-                                +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
-                                +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
-                                +'<p class="mt-4 text-gray-600">'+startConvertTime.slice(16,21)+' '+ startConvertTime.slice(4,10)+'</p>'
-                                +'<button'
-                                +' type="button"'
-                                +' data-toggle="modal"'
-                                +' data-target='+target
-                                +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                +'>'
-                                +'See more'
-                                +' </button> '
-                                +'<a href="'+element.platform.url+'">'
-                                +'<button'
-                                +' type="button"'
-                                +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
-                                +'>'
-                                +'Join now'
-                                +' </button>'
-                                +'</a>'
-                                +'</div>'
-                                +'</div>'
-                                +'</div>'
-                                +'</div>'
-                                +'</li>'
-                        }else if(element.topic.title==='Japanese Language'){
-                            htmlElements +=
-                                '<li>'
-                                +'<div>'
-                                +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
-                                +'<div class="flex flex-col items-center justify-center w-sm">'
-                                +'<div class="">'
-                                +'<img class="object-cover w-64 h-64 mx-auto"'
-                                +'src="https://png.pngtree.com/element_our/20190531/ourlarge/pngtree-vector-cartoon-free-buckle-japan-image_1321521.jpg"'
-                                +'alt=""'
-                                +'/>'
-                                +'</div>'
-                                +'<div class="mt-2 text-center">'
-                                +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
-                                +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
-                                +'<p class="mt-4 text-gray-600">'+startConvertTime.slice(16,21)+' '+ startConvertTime.slice(4,10)+'</p>'
-                                +'<button'
-                                +' type="button"'
-                                +' data-toggle="modal"'
-                                +' data-target='+target
-                                +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                +'>'
-                                +'See more'
-                                +' </button> '
-                                +'<a href="'+element.platform.url+'">'
-                                +'<button'
-                                +' type="button"'
-                                +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
-                                +'>'
-                                +'Join now'
-                                +' </button>'
-                                +'</a>'
-                                +'</div>'
-                                +'</div>'
-                                +'</div>'
-                                +'</div>'
-                                +'</li>'
-                        }else if(element.topic.title==='Multimedia' || element.topic.title==='Photoshop'){
-                            htmlElements +=
-                                '<li>'
-                                +'<div>'
-                                +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
-                                +'<div class="flex flex-col items-center justify-center w-sm">'
-                                +'<div class="">'
-                                +'<img class="object-cover w-64 h-64 mx-auto"'
-                                +'src="https://image.freepik.com/free-vector/company-employees-use-web-search-find-ideas-doing-business-company_1150-43196.jpg"'
-                                +'alt=""'
-                                +'/>'
-                                +'</div>'
-                                +'<div class="mt-2 text-center">'
-                                +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
-                                +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
-                                +'<p class="mt-4 text-gray-600">'+startConvertTime.slice(16,21)+' '+ startConvertTime.slice(4,10)+'</p>'
-                                +'<button'
-                                +' type="button"'
-                                +' data-toggle="modal"'
-                                +' data-target='+target
-                                +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                +'>'
-                                +'See more'
-                                +' </button> '
-                                +'<a href="'+element.platform.url+'">'
-                                +'<button'
-                                +' type="button"'
-                                +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
-                                +'>'
-                                +'Join now'
-                                +' </button>'
-                                +'</a>'
-                                +'</div>'
-                                +'</div>'
-                                +'</div>'
-                                +'</div>'
-                                +'</li>'
-                        }else if(element.topic.title==='Soft Skills'){
-                            htmlElements +=
-                                '<li>'
-                                +'<div>'
-                                +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
-                                +'<div class="flex flex-col items-center justify-center w-sm">'
-                                +'<div class="">'
-                                +'<img class="object-cover w-64 h-64 mx-auto"'
-                                +'src="https://image.freepik.com/free-vector/scrum-board-concept-illustration_114360-2981.jpg"'
-                                +'alt=""'
-                                +'/>'
-                                +'</div>'
-                                +'<div class="mt-2 text-center">'
-                                +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
-                                +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
-                                +'<p class="mt-4 text-gray-600">'+startConvertTime.slice(16,21)+' '+ startConvertTime.slice(4,10)+'</p>'
-                                +'<button'
-                                +' type="button"'
-                                +' data-toggle="modal"'
-                                +' data-target='+target
-                                +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                +'>'
-                                +'See more'
-                                +' </button> '
-                                +'<a href="'+element.platform.url+'">'
-                                +'<button'
-                                +' type="button"'
-                                +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
-                                +'>'
-                                +'Join now'
-                                +' </button>'
-                                +'</a>'
-                                +'</div>'
-                                +'</div>'
-                                +'</div>'
-                                +'</div>'
-                                +'</li>'
-                        }
-
+                        });
+                        let new_meeting_carousel_wrapper_list = document.getElementById("new_meeting_carousel_wrapper_list");
+                        new_meeting_carousel_wrapper_list.innerHTML = htmlElementsNewMeeting;
+                        document.getElementById("new_meeting_carousel_wrapper_list").style.width= 300*i+"px";
                     });
-                    let new_meeting_carousel_wrapper_list = document.getElementById("new_meeting_carousel_wrapper_list");
-                    new_meeting_carousel_wrapper_list.innerHTML = htmlElements;
-                    document.getElementById("new_meeting_carousel_wrapper_list").style.width= 300*i+"px";
-                });
-            </script>
+                </script>
 
             </ul>
         </div>
         <!-- Dialog Start -->
-        <h1 id="currentSession">${sessionScope.CURRENT_USER.id}</h1>
+        <h1 id="currentSessionNewMeeting">${sessionScope.CURRENT_USER.id}</h1>
         <div id="new_meeting_dialog">
             <script>
                 const urlFollowNewMeeting = "/masa/api/appointment-management/create";
-                let iDialog=0;
+                let iDialogNewMeeting=0;
                 const z = "z";
                 const space = "";
-                const postMethod1 = "POST";
-                const appJson1 = "application/json";
-                const userId = document.getElementById("currentSession").innerText;
-                let followNoti1 = "Follow meeting success";
+                const postMethodNewMeeting = "POST";
+                const appJsonNewMeeting = "application/json";
+                const userId = document.getElementById("currentSessionNewMeeting").innerText;
+                let followNotiNewMeeting = "Follow meeting success";
                 $.getJSON("/masa/api/meeting-management/new-meetings", function (data) {
-                    let htmlDialogs = "";
-                    const arr = data["meetings"];
-                    arr.forEach((element) => {
-                        iDialog++;
+                    let htmlDialogsNewMeeting = "";
+                    const arrNewMeeting = data["meetings"];
+                    arrNewMeeting.forEach((element) => {
+                        iDialogNewMeeting++;
                         const meetingId = "z"+element.id;
-                        const idDialog = "myModalNewMeeting"+iDialog;
-                        var startConvert = new Date(element.startTime); // create Date object
-                        var startConvertTime = startConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
-                        var endConvert = new Date(element.endTime); // create Date object
-                        const startDay = ("0"+startConvert.getDay()).slice(("0"+startConvert.getDay()).length-2, ("0"+startConvert.getDay()).length);
-                        const startMonth = ("0"+startConvert.getMonth()).slice(("0"+startConvert.getMonth()).length-2, ("0"+startConvert.getMonth()).length);
-                        var endConvertTime = endConvert.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
+                        const idDialog = "myModalNewMeeting"+iDialogNewMeeting;
+                        var startConvertNewMeeting = new Date(element.startTime); // create Date object
+                        var startConvertNewMeetingTime = startConvertNewMeeting.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
+                        var endConvertConvertNewMeeting = new Date(element.endTime); // create Date object
+                        const startDayNewMeeting = ("0"+startConvertNewMeeting.getDay()).slice(("0"+startConvertNewMeeting.getDay()).length-2, ("0"+startConvertNewMeeting.getDay()).length);
+                        const startMonthNewMeeting = ("0"+startConvertNewMeeting.getMonth()).slice(("0"+startConvertNewMeeting.getMonth()).length-2, ("0"+startConvertNewMeeting.getMonth()).length);
+                        var endConvertConvertNewMeetingTime = endConvertConvertNewMeeting.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
                         if(element.platform.platform === 'ZOOM'){
-                            htmlDialogs +=
+                            htmlDialogsNewMeeting +=
                                 '<div class="modal fade" id='+idDialog+' tabindex="-1" role="dialog" aria-labelledby="myModalLabel">'
                                 +'<div class="font-sans modal-dialog" role="document">'
                                 +'<div class="rounded-3xl modal-content" style="width: 680px;">'
@@ -484,26 +482,23 @@
                                 +'>'
                                 +'<div class="flex ml-7 modal-body">'
                                 +'<span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title"'
-                                +'>'+startConvertTime.slice(16,21)+'</span>'
+                                +'>'+startConvertNewMeetingTime.slice(16,21)+'</span>'
                                 +'<h1 class="relative inline-block my-auto ml-2 mr-2 text-2xl font-semibold text-gray-900 date modal-title p2"'
                                 +'>to:</h1'
                                 +'>'
                                 +'<span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title"'
-                                +'>'+endConvertTime.slice(16,21)+'</span>'
+                                +'>'+endConvertConvertNewMeetingTime.slice(16,21)+'</span>'
                                 +'<h1 class="relative inline-block my-auto ml-2 mr-2 text-2xl font-semibold text-gray-900 date modal-title p2"'
                                 +'>date:</h1'
                                 +'>'
                                 +'<span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title"'
-                                +'>'+startDay+'/'+startMonth+'/'+startConvert.getFullYear()+'</span>'
+                                +'>'+startDayNewMeeting+'/'+startMonthNewMeeting+'/'+startConvertNewMeeting.getFullYear()+'</span>'
                                 +'</div>'
                                 +'<div class="flex mb-4 modal-body">'
                                 +'<p class="mr-5 font-normal text-gray-500 ml-9">'+element.description+'</p>'
                                 +'</div>'
                                 +'</div>'
                                 +'<div class="flex justify-center w-full space-x-16 mt-9 mb-14">'
-                                +'<button'
-                                +' class="p-4 text-2xl font-semibold text-black bg-transparent border-2 border-gray-200 pl-28 pr-28 rounded-2xl hover:text-blue-500 focus:border-4 focus:border-blue-300"'
-                                +'>'
                                 +'<a href="" onClick="(function(){'
                                 +"const varToString = varObj => Object.keys(varObj)[0];"
                                 +"const " + meetingId +"=z;"
@@ -517,22 +512,25 @@
                                 +"};"
                                 +"console.log(json);"
                                 +"const options = {"
-                                +"method: postMethod1,"
+                                +"method: postMethodNewMeeting,"
                                 +"body: JSON.stringify(json),"
                                 +"headers: {"
-                                +"contentType: appJson1,"
+                                +"contentType: appJsonNewMeeting,"
                                 +"},"
                                 +"};"
                                 +"console.log(options);"
                                 +"console.log(urlFollowNewMeeting);"
                                 +"fetch(urlFollowNewMeeting, options)"
                                 +".then((res) => res.json())"
-                                +".then((res) => alert(followNoti1))"
+                                +".then((res) => alert(followNotiNewMeeting))"
                                 +".catch((err) => alert(err));"
                                 +'})();return false;">'
+                                +'<button'
+                                +' class="p-4 text-2xl font-semibold text-black bg-transparent border-2 border-gray-200 pl-28 pr-28 rounded-2xl hover:text-blue-500 focus:border-4 focus:border-blue-300"'
+                                +'>'
                                 +'Follow'
-                                +'</a>'
                                 +'</button>'
+                                +'</a>'
                                 +'<button'
                                 +' class="p-4 pl-20 pr-20 text-2xl font-semibold text-white bg-indigo-700 border-blue-300 rounded-2xl focus:border-4 hover:bg-indigo-900"'
                                 +'>'
@@ -544,7 +542,7 @@
                                 +'</div>'
                                 +'</div>'
                         }else{
-                            htmlDialogs +=
+                            htmlDialogsNewMeeting +=
                                 '<div class="modal fade" id='+idDialog+' tabindex="-1" role="dialog" aria-labelledby="myModalLabel">'
                                 +'<div class="font-sans modal-dialog" role="document">'
                                 +'<div class="rounded-3xl modal-content" style="width: 680px;">'
@@ -562,29 +560,55 @@
                                 +'>'
                                 +'<div class="flex ml-7 modal-body">'
                                 +'<span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title"'
-                                +'>'+startConvertTime.slice(16,21)+'</span>'
+                                +'>'+startConvertNewMeetingTime.slice(16,21)+'</span>'
                                 +'<h1 class="relative inline-block my-auto ml-2 mr-2 text-2xl font-semibold text-gray-900 date modal-title p2"'
                                 +'>to:</h1'
                                 +'>'
                                 +'<span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title"'
-                                +'>'+endConvertTime.slice(16,21)+'</span>'
+                                +'>'+endConvertConvertNewMeetingTime.slice(16,21)+'</span>'
                                 +'<h1 class="relative inline-block my-auto ml-2 mr-2 text-2xl font-semibold text-gray-900 date modal-title p2"'
                                 +'>date:</h1'
                                 +'>'
                                 +'<span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title"'
-                                +'>'+startDay+'/'+startMonth+'/'+startConvert.getFullYear()+'</span>'
+                                +'>'+startDayNewMeeting+'/'+startMonthNewMeeting+'/'+startConvertNewMeeting.getFullYear()+'</span>'
                                 +'</div>'
                                 +'<div class="flex mb-4 modal-body">'
                                 +'<p class="mr-5 font-normal text-gray-500 ml-9">'+element.description+'</p>'
                                 +'</div>'
                                 +'</div>'
                                 +'<div class="flex justify-center w-full space-x-16 mt-9 mb-14">'
+                                +'<a href="" onClick="(function(){'
+                                +"const varToString = varObj => Object.keys(varObj)[0];"
+                                +"const " + meetingId +"=z;"
+                                +"const x = varToString({"
+                                +meetingId
+                                +"});"
+                                +"console.log(x);"
+                                +"const json = {"
+                                +"userId: userId,"
+                                +"meetingId: x.replace(z,space),"
+                                +"};"
+                                +"console.log(json);"
+                                +"const options = {"
+                                +"method: postMethodNewMeeting,"
+                                +"body: JSON.stringify(json),"
+                                +"headers: {"
+                                +"contentType: appJsonNewMeeting,"
+                                +"},"
+                                +"};"
+                                +"console.log(options);"
+                                +"console.log(urlFollowNewMeeting);"
+                                +"fetch(urlFollowNewMeeting, options)"
+                                +".then((res) => res.json())"
+                                +".then((res) => alert(followNotiNewMeeting))"
+                                +".catch((err) => alert(err));"
+                                +'})();return false;">'
                                 +'<button'
                                 +' class="p-4 text-2xl font-semibold text-black bg-transparent border-2 border-gray-200 pl-28 pr-28 rounded-2xl hover:text-blue-500 focus:border-4 focus:border-blue-300"'
                                 +'>'
                                 +'Follow'
                                 +'</button>'
-
+                                +'</a>'
                                 +'<button'
                                 +' class="p-4 pl-20 pr-20 text-2xl font-semibold text-white bg-indigo-700 border-blue-300 rounded-2xl focus:border-4 hover:bg-indigo-900"'
                                 +'>'
@@ -599,13 +623,13 @@
 
                     });
                     let new_meeting_dialog = document.getElementById("new_meeting_dialog");
-                    new_meeting_dialog.innerHTML = htmlDialogs;
+                    new_meeting_dialog.innerHTML = htmlDialogsNewMeeting;
                 });
             </script>
 
-        <div>
-    </div>
-    </div>
+            <div>
+            </div>
+        </div>
     </div>
 </section>
 <button
