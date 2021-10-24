@@ -209,7 +209,7 @@ public class MeetingDAO {
         try (Connection con = dbHelper.connect()) {
             PreparedStatement queryStatement = con.prepareStatement("SELECT ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, TOPIC_ID,DESCRIPTION " +
                     "FROM MEETINGS " +
-                    "WHERE TIME_START <= ? AND END_TIME >= ? AND STATUS_ID = 1;");
+                    "WHERE TIME_END >= ? AND TIME_START <= ? AND STATUS_ID = 1;");
             queryStatement.setLong(1, System.currentTimeMillis());
             queryStatement.setLong(2, System.currentTimeMillis());
             ResultSet rs = queryStatement.executeQuery();

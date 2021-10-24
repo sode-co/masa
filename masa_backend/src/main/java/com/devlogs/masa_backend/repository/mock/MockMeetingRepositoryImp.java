@@ -130,4 +130,9 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
         return null;
     }
 
+    @Override
+    public List<MeetingEntity> getOnGoingMeetings() throws ConnectionException {
+        return null;
+    }
+
 }

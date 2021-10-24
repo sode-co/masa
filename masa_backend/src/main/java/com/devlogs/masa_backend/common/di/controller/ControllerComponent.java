@@ -105,6 +105,8 @@ public interface ControllerComponent {
     void inject(DeleteMeetingServlet deleteMeetingServlet);
 
     void inject(GetAllActiveMeetingServlet getAllActiveMeetingServlet);
+
+    void inject(GetOnGoingMeetingsServlet getOnGoingMeetingsServlet);
 }
 
 

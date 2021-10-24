@@ -338,4 +338,23 @@ public class MeetingRepositoryImp implements MeetingRepository {
         }
         return result;
     }
+
+    @Override
+    public List<MeetingEntity> getOnGoingMeetings() throws ConnectionException {
+        List<MeetingEntity> result = new ArrayList<>();
+        try{
+            //get data from DAO
+            List<MeetingDTO> listDTO = meetingSource.getAllOnGoingMeetings();
+            if (listDTO != null) {
+                for (MeetingDTO dto : listDTO) {
+                    result.add(toMeetingEntity(dto));
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
+        return result;
+    }
 }
