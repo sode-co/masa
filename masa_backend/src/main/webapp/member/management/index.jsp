@@ -247,6 +247,14 @@
                                     <%@include  file="/shared/meeting/_new_meeting_v2.jsp"%>
                                 </div>
                             </div>
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">On going Meeting</h6>
+                                </div>
+                                <div class="card-body" >
+                                    <%@include  file="/shared/meeting/_on_going_meeting.jsp"%>
+                                </div>
+                            </div>
 
                             <!-- Approach -->
                             <div class="card shadow mb-4">
