@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>New Meeting</title>
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
     <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
@@ -21,6 +20,9 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
     <style>
+        body{
+            width: 2000px;
+        }
         div#new_meeting_carousel_wrapper {
             overflow: hidden;
             position: relative;
@@ -74,13 +76,7 @@
 <body>
 <section class="text-gray-600 body-font">
     <div class="container px-5 py-24 mx-auto">
-        <div class="flex flex-wrap w-full mb-8">
-            <div class="w-full mb-6 lg:mb-0 sm:ml-20">
-                <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">Meeting</h1>
-                <div class="w-20 h-1 bg-blue-500 rounded"></div>
-            </div>
-        </div>
-        <div  id="new_meeting_carousel_wrapper" class="mx-auto space-x-4 md:flex md:justify-center md:space-x-8 md:px-8" style="width: 940px">
+        <div  id="new_meeting_carousel_wrapper" class="mx-auto space-x-4 md:flex md:justify-center md:space-x-8 md:px-8" style="width: 940px;">
             <ul id="new_meeting_carousel_wrapper_list">
                 <script>
                     let i=0;
@@ -635,14 +631,16 @@
 <button
         id="left"
         class="absolute left-0 w-20 h-20 mt-32 -ml-6 text-2xl text-indigo-600 bg-white rounded-full shadow-md top-20 hover:text-indigo-400 focus:text-indigo-400 focus:outline-none focus:shadow-outline"
+        style="margin-left: 100px; margin-top: 100px"
 >
     <span class="block" style="transform: scale(-1)">&#x279c;</span>
 </button>
 <button
         id="right"
         class="absolute right-0 w-20 h-20 mt-32 -mr-6 text-2xl text-indigo-600 bg-white rounded-full shadow-md top-20 hover:text-indigo-400 focus:text-indigo-400 focus:outline-none focus:shadow-outline"
+        style="margin-right: 150px; margin-top: 100px !important;"
 >
-    <span class="block" style="transform: scale(1)">&#x279c;</span>
+    <span class="block" style="transform: scale(1)x">&#x279c;</span>
 </button>
 
 <!-- <div id="buttons">
