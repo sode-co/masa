@@ -291,9 +291,9 @@
                             <!-- Bỏ Multimedia meeting vào đây nha -->
                         </div>
 
-                        <div id="ex1" class="modal" style="background-color: transparent; border-color: transparent">
+                        <div id="ex1" class="modal" style="background-color: transparent; border-color: transparent;">
                             <iframe id="calendar" src="http://localhost:8080/masa/shared/layout/exampledialog.jsp"
-                                    style="background-color: transparent"> </iframe>
+                                    style="background-color: transparent; width: 800px; height: 500px; border-radius: 10px"> </iframe>
 <%--                            <a href="#" rel="modal:close">Close</a>--%>
                         </div>
 
