@@ -1,119 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="../styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-    />
-    <link
-      href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="path/to/font-awesome/css/font-awesome.min.css"
-    />
-    <link rel="dns-prefetch" href="//unpkg.com" />
-    <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script
-      defer
-      src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
-      integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
-      defer
-    ></script>
-    <style>
-      div#carousel_wrapper {
-        overflow: hidden;
-        position: relative;
-        width: 500px;
-        height: 100px;
-      }
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+        <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+        <link rel="dns-prefetch" href="//unpkg.com" />
+        <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script
+            defer
+            src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
+            integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+        <style>
+            div#carousel_wrapper {
+                overflow: hidden;
+                position: relative;
+                width: 500px;
+                height: 100px;
+            }
 
-      ul {
-        padding: 0px;
-        margin: 0px;
-        position: absolute;
-        top: 50px;
-        left: 0px;
-        width: 300px;
-        height: 50px;
-        overflow: hidden;
-      }
-      ul li {
-        list-style: none;
-        float: left;
-      }
-      ul li div {
-        border: 1px solid white;
-        width: 50px;
-        height: 50px;
-        background-color: gray;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="carousel_wrapper">
-      <ul>
-        <li>
-          <div>0</div>
-        </li>
-        <li>
-          <div>1</div>
-        </li>
-        <li>
-          <div>2</div>
-        </li>
-        <li>
-          <div>3</div>
-        </li>
-        <li>
-          <div>4</div>
-        </li>
-        <li>
-          <div>5</div>
-        </li>
-        <li>
-          <div>6</div>
-        </li>
-        <li>
-          <div>7</div>
-        </li>
-      </ul>
-    </div>
+            ul {
+                padding: 0px;
+                margin: 0px;
+                position: absolute;
+                top: 50px;
+                left: 0px;
+                width: 300px;
+                height: 50px;
+                overflow: hidden;
+            }
+            ul li {
+                list-style: none;
+                float: left;
+            }
+            ul li div {
+                border: 1px solid white;
+                width: 50px;
+                height: 50px;
+                background-color: gray;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="carousel_wrapper">
+            <ul>
+                <li>
+                    <div>0</div>
+                </li>
+                <li>
+                    <div>1</div>
+                </li>
+                <li>
+                    <div>2</div>
+                </li>
+                <li>
+                    <div>3</div>
+                </li>
+                <li>
+                    <div>4</div>
+                </li>
+                <li>
+                    <div>5</div>
+                </li>
+                <li>
+                    <div>6</div>
+                </li>
+                <li>
+                    <div>7</div>
+                </li>
+            </ul>
+        </div>
 
-    <div id="buttons">
-      <button id="left">Next</button>
-      <button id="right">Previous</button>
-    </div>
-    <script>
-      var container = $("#carousel_wrapper");
+        <div id="buttons">
+            <button id="left">Next</button>
+            <button id="right">Previous</button>
+        </div>
+        <script>
+            var container = $("#carousel_wrapper");
 
-      var runner = container.find("ul");
-      var liWidth = runner.find("li:first").outerWidth();
-      var itemsPerPage = 3;
-      var noofitems = runner.find("li").length;
+            var runner = container.find("ul");
+            var liWidth = runner.find("li:first").outerWidth();
+            var itemsPerPage = 3;
+            var noofitems = runner.find("li").length;
 
-      runner.width(noofitems * liWidth);
-      container.width(itemsPerPage * liWidth);
+            runner.width(noofitems * liWidth);
+            container.width(itemsPerPage * liWidth);
 
-      $("#right").click(function () {
-        $(runner).animate({ left: "-=51px" }, "slow");
-      });
+            $("#right").click(function () {
+                $(runner).animate({ left: "-=51px" }, "slow");
+            });
 
-      $("#left").click(function () {
-        $(runner).animate({ left: "+=51px" }, "slow");
-      });
-    </script>
-  </body>
+            $("#left").click(function () {
+                $(runner).animate({ left: "+=51px" }, "slow");
+            });
+        </script>
+    </body>
 </html>

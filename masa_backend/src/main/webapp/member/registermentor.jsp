@@ -9,22 +9,30 @@
 <html>
 <head>
     <title>Register Become Mentor</title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
-  <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
-  <style>
-    @import url(https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css);
-  </style>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script
-          defer
-          src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
-          integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
-          crossorigin="anonymous"
-  ></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
+      defer
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+    <link
+      href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="path/to/font-awesome/css/font-awesome.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
+      integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      @import url("https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css");
+    </style>
   <script>
     function becomeMentor () {
       var xhr = new XMLHttpRequest();
@@ -266,14 +274,14 @@
               />
             </svg>
           </div>
-          <div class="w-full px-4 py-7 md:px-10">
+          <div class="w-full px-5 py-10 md:w-1/2 md:px-10">
             <div class="mb-10 text-center">
-              <h1 class="text-3xl font-bold text-gray-900" style="color: #f57640">REGISTER</h1>
+              <h1 class="text-3xl font-bold text-gray-900">REGISTER</h1>
               <p>Wanna become a mentor? Register here</p>
             </div>
             <div class="flex -mx-3">
                 <div class="w-full px-3 mb-5">
-                  <label for="description" class="px-1 text-xs font-semibold">Description</label>
+                  <label for="" class="px-1 text-xs font-semibold">Description</label>
                   <div class="flex">
                     <div
                       class="z-10 flex items-center justify-center w-10 pl-1 text-center pointer-events-none "
@@ -283,7 +291,7 @@
                         <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
                       </svg>
                     </div>
-                    <input id="description"
+                    <input
                       type="text"
                       class="w-full py-2 pl-10 pr-3 -ml-10 border-2 border-gray-200 rounded-lg outline-none focus:border-indigo-500"
                       placeholder="Why do you want to become a mentor?"
@@ -293,7 +301,7 @@
               </div>
               <div class="flex -mx-3">
                 <div class="w-full px-3 mb-5">
-                  <label for="description" class="px-1 text-xs font-semibold">Zoom url</label>
+                  <label for="" class="px-1 text-xs font-semibold">Zoom url</label>
                   <div class="flex">
                     <div
                       class="z-10 flex items-center justify-center w-10 pl-1 text-center pointer-events-none "
@@ -304,7 +312,7 @@
                       </svg>
                     </div>
                     <input
-                      type="text" id="zoomUrl" 
+                      type="text" type="text" id="zoomUrl" 
                       class="w-full py-2 pl-10 pr-3 -ml-10 border-2 border-gray-200 rounded-lg outline-none focus:border-indigo-500"
                       placeholder="https://ucalgary.zoom.us/j/example"
                     />
@@ -313,7 +321,7 @@
               </div>
               <div class="flex -mx-3">
                 <div class="w-full px-3 mb-12">
-                  <label for="description" class="px-1 text-xs font-semibold"
+                  <label for="" class="px-1 text-xs font-semibold"
                     >Google Meet url</label
                   >
                   <div class="flex">
@@ -326,7 +334,7 @@
                       </svg>
                     </div>
                     <input
-                      type="text" id="googleMeetUrl"
+                    type="text" id="googleMeetUrl"
                       class="w-full py-2 pl-10 pr-3 -ml-10 border-2 border-gray-200 rounded-lg outline-none focus:border-indigo-500"
                       placeholder="https://meet.google.com/example"
                     />
@@ -338,7 +346,6 @@
                   <%--      <input type="submit" value="BECOME MENTOR" onclick="becomeMentor()">--%>
                   <button onclick="becomeMentor()"
                     class="block w-full max-w-xs px-3 py-3 mx-auto font-semibold text-white bg-indigo-500 rounded-lg hover:bg-indigo-700 focus:bg-indigo-700"
-                    style="color: white; background-color: #3bc064"
                   >
                     REGISTER NOW
                   </button>
@@ -354,9 +361,5 @@
         </div>
       </div>
     </div>
-
-
-
-
-</body>
+  </body>
 </html>
