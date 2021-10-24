@@ -22,6 +22,9 @@ public class GetMeetingByIdUseCase {
         public static class ConnectionError extends Result {
 
         }
+        public static class NotFound extends Result {
+
+        }
     }
 
     private MeetingRepository meetingRepository;
@@ -32,8 +35,11 @@ public class GetMeetingByIdUseCase {
 
     public Result executes (String meetingId) {
         try {
-            MeetingEntity meetings = meetingRepository.getById(meetingId);
-            return new Result.Success(meetings);
+            MeetingEntity meeting = meetingRepository.getById(meetingId);
+            if (meeting == null) {
+                return new Result.NotFound();
+            }
+            return new Result.Success(meeting);
         } catch (ConnectionException e) {
             return new Result.ConnectionError();
         }
