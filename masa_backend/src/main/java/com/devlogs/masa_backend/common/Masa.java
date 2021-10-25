@@ -73,11 +73,12 @@ public class Masa {
         }
 
         public static void onServerName (String protocol, String serverName, int port) {
-                if (protocol.equals("HTTP/1.1")) {
-                    SERVER_HOST = "http://"+serverName+":"+port+"/masa";
+                SERVER_HOST = serverName;
+                if (port != 80) {
+                    SERVER_HOST += ":"+port+"/masa";
                 }
                 MasaLog.normalLog("Server host: " + SERVER_HOST);
-                GOOGLE_REDIRECT_URI = "http://localhost:"+port+"/masa/logingoogle";
+                GOOGLE_REDIRECT_URI = SERVER_HOST + "/logingoogle";
         }
 
         public static void init (ServletContext context, String webInfPath) {
