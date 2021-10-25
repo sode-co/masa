@@ -61,6 +61,27 @@
             window.location.replace(location.protocol + '//' + location.host+"/masa/admin/management/meeting.html"+"?page="+page);
             console.log(page);
         }
+        function deleteMeeting(param){
+            const json = {
+                id: param,
+            };
+            console.log(json);
+            const options = {
+                method: "POST",
+                body: JSON.stringify(json),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            };
+            fetch("/masa/api/meeting-management/delete", options)
+                .then((res) => res.json())
+                .then((res) => {
+                    alert("Delete meeting successfully!");
+                    window.location.replace(window.location.href);
+                })
+                .catch((err) => alert(err));
+
+        }
     </script>
 </head>
 
@@ -296,7 +317,7 @@
                                     let z = 'z';
                                     const statusAlert = "UPDATE STATUS SUCCESS";
                                     const roleAlert = "UPDATE ROLE SUCCESS";
-                                    const urlTable = '/masa/api/meeting-management/meetings';
+                                    const urlTable = '/masa/api/meeting-management/active-meetings';
                                     $.getJSON(
                                         urlTable,
                                         function (data) {
@@ -353,7 +374,7 @@
                                                         +'</td>'
                                                         // +'<td>'+element.description.slice(0,30)+'....'+'</td>'
                                                         +'<td><a href="'+element.platform.url+'"><button style="height: 30px; width: 150px; background-color: #5bcb7d; border: solid; border-radius: 10px; color: white">'+element.platform.platform+'</button></a></td>'
-                                                        +'<td><button style="height: 30px; width: 80px; background-color: #f57640; border-radius: 10px; color: black">Delete</button></td>'
+                                                        +'<td><button style="height: 30px; width: 80px; background-color: #f57640; border-radius: 10px; color: black" onclick="deleteMeeting('+element.id+')">Delete</button></td>'
                                                         +'</tr>'
                                                 let container = document.getElementById("container");
                                                 container.innerHTML = htmlElements;
