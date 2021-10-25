@@ -86,7 +86,7 @@
                     <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
                         <i class="text-indigo-600 fas fa-laptop fa-sm"></i>
                     </div>
-                    <a class="mt-1 text-xs font-semibold text-center" href="?topicId=1">Software Engineering</a>
+                    <a class="mt-1 text-xs font-semibold text-center" onclick="onTopicSelected(1)">Software Engineering</a>
                 </div>
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
@@ -94,7 +94,7 @@
                     <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
                         <i class="text-indigo-600 fas fa-pencil-ruler fa-sm"></i>
                     </div>
-                    <a class="mt-1 text-xs font-semibold text-center" href="?topicId=2">Graphic Design</a>
+                    <a class="mt-1 text-xs font-semibold text-center" onclick="onTopicSelected(10)">Graphic Design</a>
                 </div>
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
@@ -230,7 +230,7 @@
                                 </iframe>
                         </div>
                         <div id="se" style="height: 10000px; overflow: hidden; overflow-x: auto;">
-                            <iframe src="http://localhost:8080/masa/shared/meeting/SE_meeting.jsp?topicId=${param.topicId}"
+                            <iframe id="meetingiframe" src="http://localhost:8080/masa/shared/meeting/SE_meeting.jsp?topicId=1"
                                     style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none""
                             >
                             </iframe>
@@ -246,8 +246,12 @@
                         <p><a href="#dialogiframe" rel="modal:close" id="close-modal" style="display: none">close Modal</a></p>
                         <p><a href="#dialogiframe" rel="modal:open" id="openiframemodal" style="display: none">Open Modal</a></p>
                         <script>
+                            function onTopicSelected(topicId) {
+                                console.log("Topic selected: " + topicId);
+                                document.getElementById('meetingiframe').src = "http://localhost:8080/masa/shared/meeting/SE_meeting.jsp?topicId="+topicId;
+                            }
                             function calldialog(param){
-                                document.getElementById('dialogiframeelement').src = "http://localhost:8080/masa/shared/layout/dialog.jsp?id="+param;
+                                document.getElementById('dialogiframeelement').src = "http://localhost:8080/masa/shared/layout/dialog.jsp?"+param;
                                 $(document).ready(function() {
                                     $('#openiframemodal').click();
                                 });
