@@ -77,7 +77,7 @@ public class AuthFilter implements Filter {
                 response.setStatus(500);
                 response.getWriter().println("UnAuthorized");
             } else {
-                String googleProcessLogin = "http://localhost:"+request.getServerPort()+"/masa/logingoogle";
+                String googleProcessLogin = Masa.SERVER_HOST+"/logingoogle";
                 MasaLog.normalLog("Google redirect url: "+ googleProcessLogin);
             String loginWithGoogleUrl = String.format(
                     "https://accounts.google.com/o/oauth2/auth?" +

@@ -154,7 +154,7 @@
                     <div class="block mt-8 text-indigo-700 justify-items-center">
                         <c:set
                         var="redirectUrl"
-                        value="http://localhost:${pageContext.request.serverPort}/masa/logingoogle"
+                        value="${Masa.SERVER_HOST}/logingoogle"
                       />
                 
                       <form
