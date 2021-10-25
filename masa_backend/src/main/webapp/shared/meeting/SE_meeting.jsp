@@ -197,7 +197,7 @@
         <script>
             let htmlElements = "";
             let i=0;
-            $.getJSON("/masa/api/meeting-management/topic/meetings/1", function (data) {
+            $.getJSON("/masa/api/meeting-management/topic/meetings/${param.topicId}", function (data) {
                 let htmlElementsNewMeeting = "";
                 const arrNewMeeting = data["meetings"];
                 arrNewMeeting.forEach((element) => {
