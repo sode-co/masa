@@ -186,8 +186,8 @@
     </script>
 </head>
 <body>
-<div class="w-full mb-6 lg:mb-0 sm:ml-20">
-    <h1 class="mb-2 text-3xl font-medium text-gray-900 sm:text-4xl title-font" style="font-size: 25px; font-weight: 300">Software <Engineering></Engineering> Meetings</h1>
+<div class="w-full body-font mb-6 lg:mb-0 sm:ml-20">
+    <h1 class="mb-2 text-3xl font-medium text-gray-900 sm:text-2xl title-font" style="font-weight: 530">Software Engineering Meetings</h1>
     <div class="w-20 h-1 bg-blue-500 rounded"></div>
 </div>
 
@@ -229,7 +229,7 @@
                     +'<a href="'+element.platform.url+'">'
                     +'<button'
                     +' type="button"'
-                    +' class="px-3 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
+                    +' class="float-right px-3 py-2 mt-1 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400""'
                     +'>'
                     +'Join now'
                     +' </button>'

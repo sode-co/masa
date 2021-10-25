@@ -19,6 +19,11 @@
     <!-- jQuery Modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <style>
+        .ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-close {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 <div class="flex w-full h-screen bg-gray-800" x-data="{openMenu:1}">
@@ -86,7 +91,7 @@
                     <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
                         <i class="text-indigo-600 fas fa-laptop fa-sm"></i>
                     </div>
-                    <a class="mt-1 text-xs font-semibold text-center" onclick="onTopicSelected(1)">Software Engineering</a>
+                    <a class="mt-1 text-xs font-semibold text-center" href="#meetingbytopic" onclick="onTopicSelected(1)">Software Engineering</a>
                 </div>
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
@@ -94,7 +99,7 @@
                     <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
                         <i class="text-indigo-600 fas fa-pencil-ruler fa-sm"></i>
                     </div>
-                    <a class="mt-1 text-xs font-semibold text-center" onclick="onTopicSelected(10)">Graphic Design</a>
+                    <a class="mt-1 text-xs font-semibold text-center" href="#meetingbytopic" onclick="onTopicSelected(10)">Graphic Design</a>
                 </div>
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
@@ -102,7 +107,7 @@
                     <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
                         <i class="text-indigo-600 fas fa-business-time fa-sm"></i>
                     </div>
-                    <a class="mt-1 text-xs font-semibold text-center" href="#bm">Business management</a>
+                    <a class="mt-1 text-xs font-semibold text-center" href="#meetingbytopic" onclick="onTopicSelected(7)">Business management</a>
                 </div>
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
@@ -110,7 +115,7 @@
                     <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
                         <i class="text-indigo-600 fas fa-poll fa-sm"></i>
                     </div>
-                    <a class="mt-1 text-xs font-semibold text-center" href="#dm">Digital Marketing</a>
+                    <a class="mt-1 text-xs font-semibold text-center" href="#meetingbytopic" onclick="onTopicSelected(2)">Digital Marketing</a>
                 </div>
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
@@ -118,7 +123,7 @@
                     <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
                         <i class="text-indigo-600 fas fa-mountain fa-sm"></i>
                     </div>
-                    <a class="mt-1 text-xs font-semibold text-center" href="#jl">Japanese Language</a>
+                    <a class="mt-1 text-xs font-semibold text-center" href="#meetingbytopic" onclick="onTopicSelected(6)">Japanese Language</a>
                 </div>
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
@@ -126,7 +131,7 @@
                     <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
                         <i class="text-indigo-600 fas fa-globe-europe fa-sm"></i>
                     </div>
-                    <a class="mt-1 text-xs font-semibold text-center" href="#el">English Language</a>
+                    <a class="mt-1 text-xs font-semibold text-center" href="#meetingbytopic" onclick="onTopicSelected(5)">English Language</a>
                 </div>
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
@@ -134,7 +139,7 @@
                     <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
                         <i class="text-indigo-600 fas fa-shield-alt fa-sm"></i>
                     </div>
-                    <a class="mt-1 text-xs font-semibold text-center" href="#ia">Information Assurance</a>
+                    <a class="mt-1 text-xs font-semibold text-center" href="#meetingbytopic" onclick="onTopicSelected(3)">Information Assurance</a>
                 </div>
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
@@ -142,7 +147,7 @@
                     <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
                         <i class="text-indigo-600 fas fa-robot fa-sm"></i>
                     </div>
-                    <a class="mt-1 text-xs font-semibold text-center" href="#ai">Artificial Intelligence</a>
+                    <a class="mt-1 text-xs font-semibold text-center" href="#meetingbytopic" onclick="onTopicSelected(4)">Artificial Intelligence</a>
                 </div>
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
@@ -150,7 +155,7 @@
                     <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
                         <i class="text-indigo-600 fas fa-list-alt fa-sm"></i>
                     </div>
-                    <a class="mt-1 text-xs font-semibold text-center" href="#ss">Soft Skills</a>
+                    <a class="mt-1 text-xs font-semibold text-center" href="#meetingbytopic" onclick="onTopicSelected(9)">Soft Skills</a>
                 </div>
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
@@ -158,7 +163,7 @@
                     <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
                         <i class="text-indigo-600 fas fa-photo-video fa-sm"></i>
                     </div>
-                    <a class="mt-1 text-xs font-semibold text-center" href="#mt">Multimedia</a>
+                    <a class="mt-1 text-xs font-semibold text-center" href="#meetingbytopic" onclick="onTopicSelected(8)">Multimedia</a>
                 </div>
                 <!-- End Navitem -->
             </div>
@@ -229,7 +234,7 @@
                                 >
                                 </iframe>
                         </div>
-                        <div id="se" style="height: 10000px; overflow: hidden; overflow-x: auto;">
+                        <div id="meetingbytopic" style="height: 10000px; overflow: hidden; overflow-x: auto;">
                             <iframe id="meetingiframe" src="http://localhost:8080/masa/shared/meeting/SE_meeting.jsp?topicId=1"
                                     style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none""
                             >
@@ -239,7 +244,19 @@
                         </div>
                         <div id="dialogiframe" class="modal" style="background-color: transparent; border-color: transparent; align-items: center; margin-right: 280px; box-shadow:none; width: 1800px; padding-bottom:10px ">
                             <iframe id="dialogiframeelement" src="http://localhost:8080/masa/shared/layout/dialog.jsp"
-                                    style="background-color: transparent; width: 800px; height: 500px; border-radius: 10px"> </iframe>
+                                    frameborder="0" style="overflow:hidden; width: 700px; height: 486px; border-radius: 20px;" height="100%" width="100%"> </iframe>
+<%--                            <iframe id="dialogiframeelement" src="http://localhost:8080/masa/shared/layout/dialog.jsp"--%>
+<%--                                    style="background-color: transparent; width: 780px; height: 400px; border-radius: 10px;"> </iframe>--%>
+                            <script>
+                                var millisecondsToWait = 500;
+                                document.getElementById("dialogiframe").style.color = "transparent";
+                                setTimeout(function() {
+                                    console.log(document.getElementById("dialogiframe").innerHTML);
+                                    console.log('hihi');
+                                    document.getElementsByClassName("close-modal")[0].style.visibility = "hidden";
+                                    console.log(document.getElementsByClassName("close-modal")[0]);
+                                }, millisecondsToWait);
+                            </script>
                         </div>
 
                         <!-- Link to open the modal -->
@@ -251,7 +268,7 @@
                                 document.getElementById('meetingiframe').src = "http://localhost:8080/masa/shared/meeting/SE_meeting.jsp?topicId="+topicId;
                             }
                             function calldialog(param){
-                                document.getElementById('dialogiframeelement').src = "http://localhost:8080/masa/shared/layout/dialog.jsp?"+param;
+                                document.getElementById('dialogiframeelement').src = "http://localhost:8080/masa/shared/layout/dialog.jsp?id="+param;
                                 $(document).ready(function() {
                                     $('#openiframemodal').click();
                                 });

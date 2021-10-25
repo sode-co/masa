@@ -128,6 +128,7 @@
                                     +'</div>'
                                     +'</div>'
                                     +'</div>'
+                                    +'</div>'
                                     +'</li>'
                             }else if(element.topic.title==='Business management' || element.topic.title==='Agile'){
                                 htmlElementsNewMeeting +=
