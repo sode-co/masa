@@ -7,11 +7,12 @@
     <title>Question</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+        const meetingId = location.search.slice(location.search.indexOf("?id="),location.search.indexOf("&page")).replace("?id=","");
         function askquestion(){
                 const json = {
                     title: document.getElementById("questionContent").value,
                     userId: document.getElementById("currentSessionNewMeeting").textContent,
-                    meetingId: location.search.replace("?id=",""),
+                    meetingId: location.search.slice(location.search.indexOf("?id="),location.search.indexOf("&page")).replace("?id=",""),
                 };
                 console.log(json);
                 const options = {
@@ -23,10 +24,25 @@
                 };
                 fetch("/masa/api/meeting_question/create", options)
                     .then((res) => res.json())
-                    .then((res) => alert("Send question successfully!"))
+                    .then((res) => {
+                        alert("Send question successfully!");
+                        window.location.replace(location.protocol + '//' + location.host+"/masa/member/question.jsp?id="+meetingId+"&page=0");
+                    })
                     .catch((err) => alert(err));
-                document.getElementById("follow").textContent = "Unfollow";
         }
+        let page = 0;
+        function previous(){
+            if(page>0) --page;
+            else page = 0;
+            window.location.replace(location.protocol + '//' + location.host+"/masa/member/question.jsp?id="+meetingId+"&page="+page);
+            console.log(page);
+        }
+        function next(){
+            ++page;
+            window.location.replace(location.protocol + '//' + location.host+"/masa/member/question.jsp?id="+meetingId+"&page="+page);
+            console.log(page);
+        }
+
     </script>
 </head>
 <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
@@ -54,7 +70,7 @@
                                         mx-1.5
                                         sm:mx-6
                                     "
-                                href="#info"
+                                href="/masa/member/home.jsp"
                         >
                             Meeting
                         </a>
@@ -72,7 +88,7 @@
                                         mx-1.5
                                         sm:mx-6
                                     "
-                                href="#"
+                                href="/masa/member/question.jsp"
                         >
                             Question Page
                         </a>
@@ -128,14 +144,6 @@
             <div class="max-w-4xl lg:w-8/12">
                 <div class="flex items-center justify-between">
                     <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Question</h1>
-                    <div>
-                        <select
-                                class="w-full border-gray-300 rounded-md shadow-sm  focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                        >
-                            <option>Latest</option>
-                            <option>Last Week</option>
-                        </select>
-                    </div>
                 </div>
                 <div class="mt-6">
                     <div class="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">
@@ -164,11 +172,29 @@
 
                 <div id="questionList">
                     <script>
-                        let htmlElements = "";
+                        let currentPage;
+                        if(window.location.href.indexOf("page")>0){
+                            currentPage = window.location.href.slice(window.location.href.indexOf("page=")).replaceAll("page=",'');
+                        }else{
+                            currentPage = 0;
+                        }
+                        const url = "/masa/api/meeting-management/meeting/"+location.search.slice(location.search.indexOf("?id="),location.search.indexOf("&page")).replace("?id=","");
+                        $.getJSON(url, function (element) {
+                            document.getElementById("descriptionContent").innerHTML = element.description;
+                            document.getElementById("meetingTitle").innerHTML = element.title;
+                            document.getElementById("meetingMentor").innerHTML = element.mentor.fullName;
+                            const start = new Date(element.startTime);
+                            const end = new Date(element.endTime);
+                            document.getElementById("meetingTime").innerHTML = start.getHours()+":"+start.getMinutes()+" - "+end.getHours()+":"+end.getMinutes();
+                            document.getElementById("meetingDate").innerHTML = start.getDay()+"/"+start.getMonth()+"/"+start.getFullYear();
+                            document.getElementById("meetingUrl").href = element.platform.url;
+                        })
+                            let htmlElements = "";
                         let i =0;
-                        $.getJSON("/masa/api/meeting_question/questions/M1", function (data) {
+                        // const meetingId =location.search.slice(location.search.indexOf("?id="),location.search.indexOf("&page")).replace("?id=","");
+                        $.getJSON("/masa/api/meeting_question/questions/"+meetingId, function (data) {
                             const arr = data["meetingQuestions"];
-                            arr.slice(i,i+4).forEach((element) => {
+                            arr.slice(4*currentPage, 4*currentPage+4).forEach((element) => {
                                 const date = new Date(element.createdDate);
                                 const date_create = ("0"+date.getHours()).slice(0,2)+":"+date.getMinutes()+" "+date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear();
                                 htmlElements+=
@@ -181,7 +207,7 @@
                                     +'alt="avatar"'
                                     +'class="hidden object-cover w-10 h-10 mx-4 rounded-full sm:block"'
                                     +'/>'
-                                    +'<h1 class="font-bold text-gray-700 hover:underline">Tui ne</h1>'
+                                    +'<h1 class="font-bold text-gray-700 hover:underline">'+element.user.fullName+'</h1>'
                                     +'</a>'
                                     +'<span class="font-light text-gray-600">'+date_create+'</span>'
                                     +'</div>'
@@ -202,7 +228,8 @@
 
                 <div class="mt-8">
                     <div class="flex">
-                        <button onclick="previous()" class="px-3 py-2 mx-1 font-medium text-gray-500 bg-white rounded-md cursor-not-allowed"> previous </button>
+                        <button onclick="previous()" class="px-3 py-2 mx-1 font-medium text-gray-500 bg-white rounded-md cursor-not-allowed">
+                            Previous </button>
                         <button onclick="next()" class="px-3 py-2 mx-1 font-medium text-gray-700 bg-white rounded-md hover:bg-blue-500 hover:text-white">
                             Next
                         </button>
@@ -217,7 +244,7 @@
                             <div class="flex flex-wrap items-center">
                                 <div class="w-full px-4 mb-10 ml-5">
                                     <div class="md:pr-12">
-                                        <h3 class="text-4xl font-semibold">Data Analysis</h3>
+                                        <h3 class="text-4xl font-semibold" id="meetingTitle">Data Analysis</h3>
                                         <p class="mt-4 text-lg leading-relaxed text-blueGray-500"></p>
                                         <ul class="mt-6 list-none">
                                             <li class="py-2">
@@ -229,7 +256,7 @@
                                                                 ></span>
                                                     </div>
                                                     <div>
-                                                        <h4 class="text-blueGray-500">Mentor: <span class="text-semibold">Tam Nhu</span></h4>
+                                                        <h4 class="text-blueGray-500">Mentor: <span class="text-semibold" id="meetingMentor">Tam Nhu</span></h4>
                                                     </div>
                                                 </div>
                                             </li>
@@ -242,7 +269,7 @@
                                                                 ></span>
                                                     </div>
                                                     <div>
-                                                        <h4 class="text-blueGray-500">10:00 - 12:00</h4>
+                                                        <h4 class="text-blueGray-500" id="meetingTime">10:00 - 12:00</h4>
                                                     </div>
                                                 </div>
                                             </li>
@@ -255,18 +282,20 @@
                                                                 ></span>
                                                     </div>
                                                     <div>
-                                                        <h4 class="text-blueGray-500">Thu, Oct 22th, 2021</h4>
+                                                        <h4 class="text-blueGray-500" id="meetingDate">Thu, Oct 22th, 2021</h4>
                                                     </div>
                                                 </div>
                                             </li>
                                             <li class="py-2">
                                                 <div class="flex w-full mx-auto">
-                                                    <button
-                                                            type="button"
-                                                            class="px-5 py-3 mx-auto font-semibold text-white bg-indigo-500 rounded-lg  hover:bg-indigo-400"
-                                                    >
-                                                        Join now
-                                                    </button>
+                                                    <a id="meetingUrl">
+                                                        <button
+                                                                type="button"
+                                                                class="px-5 py-3 mx-auto font-semibold text-white bg-indigo-500 rounded-lg  hover:bg-indigo-400"
+                                                        >
+                                                            Join now
+                                                        </button>
+                                                    </a>
                                                 </div>
                                             </li>
                                         </ul>
@@ -279,7 +308,7 @@
                 <div class="max-w-lg px-8 mt-10">
                     <h1 class="mb-4 text-xl font-bold text-gray-700">Description</h1>
                     <div class="flex flex-col max-w-lg px-4 py-6 mx-auto bg-white rounded-lg shadow-md">
-                        <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+                        <p class="mt-4 text-lg leading-relaxed text-blueGray-500" id="descriptionContent">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque.
                             Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!
                         </p>
