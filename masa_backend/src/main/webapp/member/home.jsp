@@ -196,7 +196,23 @@
                                         >Become a mentor now</a
                                         >
                                     </c:if>
+                                    <c:if test = "${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MENTOR}'}">
+                                        <a id="createdmeeting" href="/masa/mentor/mycreatedmeeting.jsp" class="py-2 font-semibold text-white bg-blue-500 rounded-full px-7 text-md hover:bg-blue-400"
+                                        >Your Created Meeting</a
+                                        >
+                                    </c:if>
+                                    <c:if test = "${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MENTOR}'}">
+                                        <a href="/masa/mentor/meeting/createnewmeeting.jsp" class="py-2 font-semibold text-white bg-blue-500 rounded-full px-7 text-md hover:bg-blue-400"
+                                        >Create New Meeting</a
+                                        >
+                                    </c:if>
                                 </div>
+                                <h1 id="currentUser" style="display: none">${sessionScope.CURRENT_USER.id}</h1>
+                                <script>
+                                    if(document.getElementById("createdmeeting")){
+                                        document.getElementById("createdmeeting").href="/masa/mentor/mycreatedmeeting.jsp?mentor="+document.getElementById("currentUser").innerText;
+                                    }
+                                </script>
                             </div>
                         </div>
                     </header>
@@ -221,7 +237,7 @@
                         </div>
 
                         <div id="new" style="height: 600px; overflow-y: hidden; overflow-x: auto;">
-                            <iframe src="http://localhost:8080/masa/shared/meeting/_new_meeting_v2.jsp"
+                            <iframe src="/masa/shared/meeting/_new_meeting_v2.jsp"
                                     id="framenew"
                                     style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none""
                             >
@@ -229,13 +245,13 @@
                         </div>
 
                         <div id="on-going" style="height: 600px; overflow: hidden; overflow-x: auto;">
-                            <iframe src="http://localhost:8080/masa/shared/meeting/_on_going_meeting.jsp"
+                            <iframe src="/masa/shared/meeting/_on_going_meeting.jsp"
                                  style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none"
                                 >
                                 </iframe>
                         </div>
                         <div id="meetingbytopic" style="height: 10000px; overflow: hidden; overflow-x: auto;">
-                            <iframe id="meetingiframe" src="http://localhost:8080/masa/shared/meeting/SE_meeting.jsp?topicId=1"
+                            <iframe id="meetingiframe" src="/masa/shared/meeting/SE_meeting.jsp?topicId=1"
                                     style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none""
                             >
                             </iframe>
@@ -243,7 +259,7 @@
                         <div id="ia" style="height: 10000px; overflow: hidden; overflow-x: auto;">
                         </div>
                         <div id="dialogiframe" class="modal" style="background-color: transparent; border-color: transparent; align-items: center; margin-right: 280px; box-shadow:none; width: 1800px; padding-bottom:10px ">
-                            <iframe id="dialogiframeelement" src="http://localhost:8080/masa/shared/layout/dialog.jsp"
+                            <iframe id="dialogiframeelement" src="/masa/shared/layout/dialog.jsp"
                                     frameborder="0" style="overflow:hidden; width: 700px; height: 486px; border-radius: 20px;" height="100%" width="100%"> </iframe>
 <%--                            <iframe id="dialogiframeelement" src="http://localhost:8080/masa/shared/layout/dialog.jsp"--%>
 <%--                                    style="background-color: transparent; width: 780px; height: 400px; border-radius: 10px;"> </iframe>--%>
@@ -265,10 +281,10 @@
                         <script>
                             function onTopicSelected(topicId) {
                                 console.log("Topic selected: " + topicId);
-                                document.getElementById('meetingiframe').src = "http://localhost:8080/masa/shared/meeting/SE_meeting.jsp?topicId="+topicId;
+                                document.getElementById('meetingiframe').src = "/masa/shared/meeting/SE_meeting.jsp?topicId="+topicId;
                             }
                             function calldialog(param){
-                                document.getElementById('dialogiframeelement').src = "http://localhost:8080/masa/shared/layout/dialog.jsp?id="+param;
+                                document.getElementById('dialogiframeelement').src = "/masa/shared/layout/dialog.jsp?id="+param;
                                 $(document).ready(function() {
                                     $('#openiframemodal').click();
                                 });

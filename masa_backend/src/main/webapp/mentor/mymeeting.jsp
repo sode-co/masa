@@ -222,7 +222,7 @@
                         + '>'
                         + 'See more'
                         + '</button>'
-                        +'<a href="'+element.platform.url+'">'
+                        +'<a href="'+element.platform.url+'" target="_blank">'
                         + '<button'
                         + ' type="button"'
                         + ' class="float-right py-2 mt-1 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500  px-7 rounded-xl hover:bg-green-400"'
@@ -270,7 +270,7 @@
                             + '<h1 class="relative inline-block mb-1 text-5xl font-semibold text-gray-900 mt-11 ml-14 date modal-title">'
                             +element.title
                             + '</h1>'
-                            + '<a href="'+element.platform.url+'" class="text-2xl font-semibold text-blue-800 ml-7">Join Google Meet</a><br />'
+                            + '<a href="'+element.platform.url+'" class="text-2xl font-semibold text-blue-800 ml-7" target="_blank">Join Google Meet</a><br />'
                             + '<span class="relative inline-block pt-2 text-2xl font-normal text-black ml-14 date modal-title"'
                             + '>with mentor <span class="text-2xl font-normal text-blue-800">'+element.mentor.fullName+'</span></span'
                             + '>'
@@ -333,7 +333,7 @@
                             + '<h1 class="relative inline-block mb-1 text-5xl font-semibold text-gray-900 mt-11 ml-14 date modal-title">'
                             +element.title
                             + '</h1>'
-                            + '<a href="'+element.platform.url+'" class="text-2xl font-semibold text-blue-800 ml-7">Join Zoom</a><br />'
+                            + '<a href="'+element.platform.url+'" class="text-2xl font-semibold text-blue-800 ml-7" target="_blank">Join Zoom</a><br />'
                             + '<span class="relative inline-block pt-2 text-2xl font-normal text-black ml-14 date modal-title"'
                             + '>with mentor <span class="text-2xl font-normal text-blue-800">'+element.mentor.fullName+'</span></span'
                             + '>'
