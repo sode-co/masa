@@ -1,6 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ page import="com.devlogs.masa_backend.common.Masa"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,7 +75,7 @@
                         'Content-Type': 'application/json'
                     }
                 }
-                fetch('../../api/meeting/create', options)
+                fetch('${Masa.SERVER_HOST}/api/meeting/create', options)
                     .then(res => res.json())
                     .then(res => alert('CREATE NEW MEETING SUCCESS!'))
                     .catch(err => alert('ERROR '+err));

@@ -1,3 +1,5 @@
+<%@ page import="com.devlogs.masa_backend.common.Masa"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +37,7 @@
             <div>
                 <ul class="px-4 mt-6 leading-10">
                     <li  class="flex items-center justify-center p-2 mb-3 bg-indigo-400 rounded-md cursor-pointer">
-                        <a href="/masa/mentor/meeting/home.jsp" style="text-decoration:none">
+                        <a href="${Masa.SERVER_HOST}/mentor/meeting/home.jsp" style="text-decoration:none">
                             &nbsp;
                             <i class="text-white fa fa-home"></i>
                             <span style="color: white; padding-top: 0px">Home</span>
@@ -56,7 +58,7 @@
                         </a>
                     </li>
                     <li class="flex items-center justify-center p-2 mb-3 bg-yellow-400 rounded-md cursor-pointer">
-                        <a href="/masa/auth-management/signout" style="text-decoration:none">
+                        <a href="${Masa.SERVER_HOST}/auth-management/signout" style="text-decoration:none">
                             &nbsp;
                             <i class="text-white fas fa-sign-out-alt"></i>
                             <span style="color: white; padding-top: 2px">Log Out</span>
@@ -106,7 +108,7 @@
                                 <div class="container relative left-0 z-50 flex w-full h-auto h-full">
                                     <div class="relative flex items-center flex-5 w-full h-full lg:w-90 group">
                                         <a href="#" class="relative block">
-                                            <img src="../icon/weblogo.svg" alt="Logo" width="30%" height="30%" />
+                                            <img src="${Masa.SERVER_HOST}/shared/icon/weblogo.svg" alt="Logo" width="30%" height="30%" />
                                         </a>
                                     </div>
                                     <div class="relative flex items-center flex-4 w-full h-full lg:w-90 group">

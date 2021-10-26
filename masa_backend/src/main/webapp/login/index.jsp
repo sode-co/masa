@@ -110,7 +110,7 @@
         WELCOME TO
       </h1>
       <img
-        src="com.devlogs.masa_backend.login/hello.jpg"
+        src="${Masa.SERVER_HOST}/login/hello.jpg"
         alt="Welcome banner"
         width="95%"
         height="95%"
@@ -154,7 +154,7 @@
                     <div class="block mt-8 text-indigo-700 justify-items-center">
                         <c:set
                         var="redirectUrl"
-                        value="http://localhost:${pageContext.request.serverPort}/masa/logingoogle"
+                        value="${Masa.SERVER_HOST}/logingoogle"
                       />
                 
                       <form

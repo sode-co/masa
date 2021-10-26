@@ -37,27 +37,28 @@ public class Masa {
         }
 
         public static class PAGE {
+
             public static class AUTH {
                 public static class PERMISSION_MANAGEMENT {
                     public static final String DENIED_PAGE = "auth/permission-management/permission-denied/index.jsp";
                 }
             }
             public static class MEMBER {
-                public static String MEETING_PAGE = "member/meeting/index.jsp";
+                public static final String HOME = "member/home.jsp";
+                public static String MENTOR_REQUEST = "member/registermentor.jsp";
             }
             public static class ADMIN {
                 public static class REQUEST_MANAGEMENT {
                     public static String RESPONSE = "admin/request-management/response/index.jsp";
                 }
-                public static String USER_MANAGEMENT_PAGE = "admin/user-management/index.jsp";
+                public static String MEMBER_MANAGEMENT = "admin/management/student.html";
+                public static String MEETING_MANAGEMENT = "admin/manage_meeting.jsp";
             }
 
             public static class MENTOR {
-                public static String MEETING_PAGE = "mentor/meeting/index.jsp";
-            }
-
-            public static class GUEST {
-                public static String WELCOME = "guest/welcome/home.jsp";
+                public static String MEETING_PAGE = "mentor/meeting/mymeeting.jsp";
+                public static String MEETING_CREATE = "mentor/meeting/createnewmeeting.jsp";
+                public static String MEETING_UPDATE = "mentor/meeting/updatemeeting.jsp";
             }
         }
 
@@ -73,11 +74,12 @@ public class Masa {
         }
 
         public static void onServerName (String protocol, String serverName, int port) {
-                if (protocol.equals("HTTP/1.1")) {
-                    SERVER_HOST = "http://"+serverName+":"+port+"/masa";
+                SERVER_HOST = "http://"+serverName;
+                if (port != 80) {
+                    SERVER_HOST += ":"+port+"/masa";
                 }
                 MasaLog.normalLog("Server host: " + SERVER_HOST);
-                GOOGLE_REDIRECT_URI = "http://localhost:"+port+"/masa/logingoogle";
+                GOOGLE_REDIRECT_URI = SERVER_HOST + "/logingoogle";
         }
 
         public static void init (ServletContext context, String webInfPath) {
