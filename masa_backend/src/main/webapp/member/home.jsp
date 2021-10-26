@@ -99,7 +99,7 @@
                     <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
                         <i class="text-indigo-600 fas fa-pencil-ruler fa-sm"></i>
                     </div>
-                    <a class="mt-1 text-xs font-semibold text-center" href="#meetingbytopic" onclick="onTopicSelected(10)">Graphic Design</a>
+                    <a class="mt-1 text-xs font-semibold text-center" href="#meetingbytopic" onclick="onTopicSelected(1002)">Graphic Design</a>
                 </div>
                 <!-- End Navitem -->
                 <!-- Start Navitem -->

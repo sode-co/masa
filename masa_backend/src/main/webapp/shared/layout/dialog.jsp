@@ -103,11 +103,13 @@
                         Follow
                     </button>
 
+                    <a href="#" target="_blank" id="questionUrl">
                     <button
                             class="p-4 pl-20 pr-20 text-2xl font-semibold text-white bg-indigo-700 border-blue-300  rounded-2xl focus:border-4 hover:bg-indigo-900"
                     >
                         Leave question
                     </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -138,11 +140,12 @@
                         if(element.platform.platform === 'ZOOM'){
                             document.getElementById('linkjoin').innerText = "Join Zoom";
                             document.getElementById("meetingtile").innerText = element.title;
-                            document.getElementById("meetingdescription").innerText = element.description;
+                            document.getElementById("meetingdescription").innerHTML = element.description;
                             document.getElementById("meetingmentor").innerText = element.mentor.fullName;
                             document.getElementById("meetingdate").innerText = startDayNewMeeting+'/'+startMonthNewMeeting+'/'+startConvertNewMeeting.getFullYear()
                             document.getElementById("meetingendtime").innerText = endConvertConvertNewMeetingTime.slice(16,21);
                             document.getElementById("meetingstarttime").innerText =startConvertNewMeetingTime.slice(16,21).toString();
+                            document.getElementById("questionUrl").href ="/masa/member/question.jsp?id="+location.search.replace("?id=","")+"&page=0";
 
                         }
                     })
