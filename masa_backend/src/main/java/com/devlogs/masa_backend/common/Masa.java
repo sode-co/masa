@@ -46,6 +46,7 @@ public class Masa {
             public static class MEMBER {
                 public static final String HOME = "member/home.jsp";
                 public static String MENTOR_REQUEST = "member/registermentor.jsp";
+                public static String QUESTION = "member/question.jsp";
             }
             public static class ADMIN {
                 public static class REQUEST_MANAGEMENT {
