@@ -247,7 +247,7 @@
                         <p><a href="#dialogiframe" rel="modal:open" id="openiframemodal" style="display: none">Open Modal</a></p>
                         <script>
                             function calldialog(param){
-                                document.getElementById('dialogiframeelement').src = "http://localhost:8080/masa/shared/layout/dialog.jsp?id="+param;
+                                document.getElementById('dialogiframeelement').src = "http://localhost:8080/masa/shared/layout/dialog.jsp?id=M1"+param;
                                 $(document).ready(function() {
                                     $('#openiframemodal').click();
                                 });

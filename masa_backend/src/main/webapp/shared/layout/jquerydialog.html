@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+        <style></style>
+    </head>
+    <body>
+        <div id="ex" class="modal">
+            <p>Hello</p>
+            <a href="#" rel="modal:close">X</a>
+        </div>
+        <p><a href="#ex" rel="modal:open">Open dialog</a></p>
+        <script>
+            $("#ex").modal({
+                escapeClose: false,
+                clickClose: false,
+                showClose: false,
+            });
+        </script>
+    </body>
+</html>
