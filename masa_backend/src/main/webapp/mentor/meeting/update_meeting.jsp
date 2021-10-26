@@ -332,7 +332,7 @@
                         'Content-Type': 'application/json'
                     }
                 }
-                fetch('http://localhost:8080/masa/api/meeting/update', options)
+                fetch('/masa/api/meeting/update', options)
                     .then(res => res.json())
                     .then(res => alert('Update your meeting SUCCESS!'))
                     .catch(err => alert(err));
@@ -489,8 +489,7 @@
 
 
 <script>
-    const url = "http://localhost:8080/masa/api/meeting-management/meetings/host/"+window.location.href.slice(window.location.href.indexOf('&host=')).replace('&host=','');
-    console.log('url', url);
+    const url = "/masa/api/meeting-management/meetings/host/"+window.location.href.slice(window.location.href.indexOf('&host=')).replace('&host=','');
     $.getJSON(url, function (data) {
         const arr = data["meetings"];
         const meetingId = window.location.href.slice(window.location.href.indexOf('?id='), window.location.href.indexOf('&host=')).replace('?id=','').replace('Z','');

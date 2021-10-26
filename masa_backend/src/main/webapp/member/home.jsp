@@ -230,7 +230,7 @@
 
                         <div id="on-going" style="height: 600px; overflow: hidden; overflow-x: auto;">
                             <iframe src="http://localhost:8080/masa/shared/meeting/_on_going_meeting.jsp"
-                                 style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none""
+                                 style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none"
                                 >
                                 </iframe>
                         </div>

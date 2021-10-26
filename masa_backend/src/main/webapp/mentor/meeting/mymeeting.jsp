@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>My Meeting</title>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,7 +21,10 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
     <style>
-        div#new_meeting_carousel_wrapper {
+        body{
+            width: 2000px;
+        }
+        div#ongoing_meeting_carousel_wrapper {
             overflow: hidden;
             position: relative;
             width: 5000px;
@@ -60,11 +64,11 @@
         function testAnim(x) {
             $(".modal .modal-dialog").attr("class", "modal-dialog  " + x + "  animated");
         }
-        $("#myModalNewMeeting").on("show.bs.modal", function (e) {
+        $("#myModalOngoingMeeting").on("show.bs.modal", function (e) {
             var anim = $("#entrance").val();
             testAnim(anim);
         });
-        $("#myModalNewMeeting").on("hide.bs.modal", function (e) {
+        $("#myModalOngoingMeeting").on("hide.bs.modal", function (e) {
             var anim = $("#exit").val();
             testAnim(anim);
         });
@@ -72,29 +76,24 @@
 </head>
 <body>
 <section class="text-gray-600 body-font">
-    <div class="container px-5 py-24 mx-auto" style="margin-left: 0px; padding-left: 0px">
-        <div class="flex flex-wrap w-full mb-8">
-            <div class="w-full mb-6 lg:mb-0 sm:ml-20">
-                <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">New Meetings</h1>
-                <div class="w-20 h-1 bg-blue-500 rounded"></div>
-            </div>
-        </div>
-        <div  id="new_meeting_carousel_wrapper" class="mx-auto space-x-4 md:flex md:justify-center md:space-x-8 md:px-8" style="width: 940px;">
-            <ul id="new_meeting_carousel_wrapper_list">
+    <div class="container px-5 py-24 mx-auto">
+        <div  id="ongoing_meeting_carousel_wrapper" class="mx-auto space-x-4 md:flex md:justify-center md:space-x-8 md:px-8" style="width: 940px;">
+            <ul id="ongoing_meeting_carousel_wrapper_list">
                 <script>
-                    let i=0;
-                    $.getJSON("/masa/api/meeting-management/new-meetings", function (data) {
-                        let htmlElementsNewMeeting = "";
-                        const arrNewMeeting = data["meetings"];
-                        arrNewMeeting.forEach((element) => {
-                            var startConvertNewMeeting = new Date(element.startTime); // create Date object
-                            var startConvertNewMeetingTime = startConvertNewMeeting.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
-                            var endConvertConvertNewMeeting = new Date(element.startTime); // create Date object
-                            var endConvertConvertNewMeetingTime = endConvertConvertNewMeeting.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
-                            i++;
-                            const target = "#myModalNewMeeting"+ i;
+                    let iOngoingMeeting=0;
+                    $.getJSON("/masa/api/meeting-management/meetings/host/ME100002", function (data) {
+                        let htmlElementsOngoingMeeting = "";
+                        const arrOngoingMeeting = data["meetings"];
+                        arrOngoingMeeting.forEach((element) => {
+                            var startConvertOngoingMeeting = new Date(element.startTime); // create Date object
+                            var startConvertOngoingMeetingTime = startConvertOngoingMeeting.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
+                            var endConvertConvertOngoingMeeting = new Date(element.startTime); // create Date object
+                            var endConvertConvertOngoingMeetingTime = endConvertConvertOngoingMeeting.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
+                            iOngoingMeeting++;
+                            const target = "#myModalOngoingMeeting"+ iOngoingMeeting;
+                            console.log('target', target);
                             if(element.topic.title==='Software Engineering'){
-                                htmlElementsNewMeeting +=
+                                htmlElementsOngoingMeeting +=
                                     '<li>'
                                     +'<div>'
                                     +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
@@ -108,15 +107,16 @@
                                     +'<div class="mt-2 text-center">'
                                     +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
                                     +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
-                                    +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
+                                    +'<p class="mt-4 text-gray-600">'+startConvertOngoingMeetingTime.slice(16,21)+' '+ startConvertOngoingMeetingTime.slice(4,10)+'</p>'
                                     +'<button'
                                     +' type="button"'
+                                    +' data-toggle="modal"'
+                                    +' data-target='+target
                                     +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                    +' onclick=parent.calldialog('+element.id+')'
                                     +'>'
                                     +'See more'
                                     +' </button> '
-                                    +'<a href="'+element.platform.url+'" target="_blank">'
+                                    +'<a href="'+element.platform.url+'">'
                                     +'<button'
                                     +' type="button"'
                                     +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
@@ -128,10 +128,9 @@
                                     +'</div>'
                                     +'</div>'
                                     +'</div>'
-                                    +'</div>'
                                     +'</li>'
                             }else if(element.topic.title==='Business management' || element.topic.title==='Agile'){
-                                htmlElementsNewMeeting +=
+                                htmlElementsOngoingMeeting +=
                                     '<li>'
                                     +'<div>'
                                     +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
@@ -145,15 +144,16 @@
                                     +'<div class="mt-2 text-center">'
                                     +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
                                     +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
-                                    +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
+                                    +'<p class="mt-4 text-gray-600">'+startConvertOngoingMeetingTime.slice(16,21)+' '+ startConvertOngoingMeetingTime.slice(4,10)+'</p>'
                                     +'<button'
                                     +' type="button"'
+                                    +' data-toggle="modal"'
+                                    +' data-target='+target
                                     +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                    +' onclick=parent.calldialog('+element.id+')'
                                     +'>'
                                     +'See more'
                                     +' </button> '
-                                    +'<a href="'+element.platform.url+'" target="_blank">'
+                                    +'<a href="'+element.platform.url+'">'
                                     +'<button'
                                     +' type="button"'
                                     +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
@@ -167,7 +167,7 @@
                                     +'</div>'
                                     +'</li>'
                             }else if(element.topic.title==='Artificial Intelligence'){
-                                htmlElementsNewMeeting +=
+                                htmlElementsOngoingMeeting +=
                                     '<li>'
                                     +'<div>'
                                     +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
@@ -181,15 +181,16 @@
                                     +'<div class="mt-2 text-center">'
                                     +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
                                     +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
-                                    +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
+                                    +'<p class="mt-4 text-gray-600">'+startConvertOngoingMeetingTime.slice(16,21)+' '+ startConvertOngoingMeetingTime.slice(4,10)+'</p>'
                                     +'<button'
                                     +' type="button"'
+                                    +' data-toggle="modal"'
+                                    +' data-target='+target
                                     +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                    +' onclick=parent.calldialog('+'"'+element.id.toString()+'"'+')'
                                     +'>'
                                     +'See more'
                                     +' </button> '
-                                    +'<a href="'+element.platform.url+'" target="_blank">'
+                                    +'<a href="'+element.platform.url+'">'
                                     +'<button'
                                     +' type="button"'
                                     +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
@@ -203,7 +204,7 @@
                                     +'</div>'
                                     +'</li>'
                             }else if(element.topic.title==='Digital Maketing'){
-                                htmlElementsNewMeeting +=
+                                htmlElementsOngoingMeeting +=
                                     '<li>'
                                     +'<div>'
                                     +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
@@ -217,15 +218,16 @@
                                     +'<div class="mt-2 text-center">'
                                     +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
                                     +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
-                                    +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
+                                    +'<p class="mt-4 text-gray-600">'+startConvertOngoingMeetingTime.slice(16,21)+' '+ startConvertOngoingMeetingTime.slice(4,10)+'</p>'
                                     +'<button'
                                     +' type="button"'
+                                    +' data-toggle="modal"'
+                                    +' data-target='+target
                                     +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                    +' onclick=parent.calldialog('+element.id+')'
                                     +'>'
                                     +'See more'
                                     +' </button> '
-                                    +'<a href="'+element.platform.url+'" target="_blank">'
+                                    +'<a href="'+element.platform.url+'">'
                                     +'<button'
                                     +' type="button"'
                                     +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
@@ -239,7 +241,7 @@
                                     +'</div>'
                                     +'</li>'
                             }else if(element.topic.title==='English Language'){
-                                htmlElementsNewMeeting +=
+                                htmlElementsOngoingMeeting +=
                                     '<li>'
                                     +'<div>'
                                     +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
@@ -253,15 +255,16 @@
                                     +'<div class="mt-2 text-center">'
                                     +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
                                     +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
-                                    +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
+                                    +'<p class="mt-4 text-gray-600">'+startConvertOngoingMeetingTime.slice(16,21)+' '+ startConvertOngoingMeetingTime.slice(4,10)+'</p>'
                                     +'<button'
                                     +' type="button"'
+                                    +' data-toggle="modal"'
+                                    +' data-target='+target
                                     +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                    +' onclick=parent.calldialog('+element.id+')'
                                     +'>'
                                     +'See more'
                                     +' </button> '
-                                    +'<a href="'+element.platform.url+'" target="_blank">'
+                                    +'<a href="'+element.platform.url+'">'
                                     +'<button'
                                     +' type="button"'
                                     +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
@@ -275,7 +278,7 @@
                                     +'</div>'
                                     +'</li>'
                             }else if(element.topic.title==='Information Assurance'){
-                                htmlElementsNewMeeting +=
+                                htmlElementsOngoingMeeting +=
                                     '<li>'
                                     +'<div>'
                                     +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
@@ -289,15 +292,16 @@
                                     +'<div class="mt-2 text-center">'
                                     +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
                                     +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
-                                    +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
+                                    +'<p class="mt-4 text-gray-600">'+startConvertOngoingMeetingTime.slice(16,21)+' '+ startConvertOngoingMeetingTime.slice(4,10)+'</p>'
                                     +'<button'
                                     +' type="button"'
+                                    +' data-toggle="modal"'
+                                    +' data-target='+target
                                     +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                    +' onclick=parent.calldialog('+element.id+')'
                                     +'>'
                                     +'See more'
                                     +' </button> '
-                                    +'<a href="'+element.platform.url+'" target="_blank">'
+                                    +'<a href="'+element.platform.url+'">'
                                     +'<button'
                                     +' type="button"'
                                     +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
@@ -311,7 +315,7 @@
                                     +'</div>'
                                     +'</li>'
                             }else if(element.topic.title==='Japanese Language'){
-                                htmlElementsNewMeeting +=
+                                htmlElementsOngoingMeeting +=
                                     '<li>'
                                     +'<div>'
                                     +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
@@ -325,15 +329,16 @@
                                     +'<div class="mt-2 text-center">'
                                     +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
                                     +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
-                                    +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
+                                    +'<p class="mt-4 text-gray-600">'+startConvertOngoingMeetingTime.slice(16,21)+' '+ startConvertOngoingMeetingTime.slice(4,10)+'</p>'
                                     +'<button'
                                     +' type="button"'
+                                    +' data-toggle="modal"'
+                                    +' data-target='+target
                                     +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                    +' onclick=parent.calldialog('+element.id+')'
                                     +'>'
                                     +'See more'
                                     +' </button> '
-                                    +'<a href="'+element.platform.url+'" target="_blank">'
+                                    +'<a href="'+element.platform.url+'">'
                                     +'<button'
                                     +' type="button"'
                                     +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
@@ -347,7 +352,7 @@
                                     +'</div>'
                                     +'</li>'
                             }else if(element.topic.title==='Multimedia' || element.topic.title==='Photoshop'){
-                                htmlElementsNewMeeting +=
+                                htmlElementsOngoingMeeting +=
                                     '<li>'
                                     +'<div>'
                                     +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
@@ -361,15 +366,16 @@
                                     +'<div class="mt-2 text-center">'
                                     +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
                                     +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
-                                    +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
+                                    +'<p class="mt-4 text-gray-600">'+startConvertOngoingMeetingTime.slice(16,21)+' '+ startConvertOngoingMeetingTime.slice(4,10)+'</p>'
                                     +'<button'
                                     +' type="button"'
+                                    +' data-toggle="modal"'
+                                    +' data-target='+target
                                     +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                    +' onclick=parent.calldialog('+element.id+')'
                                     +'>'
                                     +'See more'
                                     +' </button> '
-                                    +'<a href="'+element.platform.url+'" target="_blank">'
+                                    +'<a href="'+element.platform.url+'">'
                                     +'<button'
                                     +' type="button"'
                                     +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
@@ -383,7 +389,7 @@
                                     +'</div>'
                                     +'</li>'
                             }else if(element.topic.title==='Soft Skills'){
-                                htmlElementsNewMeeting +=
+                                htmlElementsOngoingMeeting +=
                                     '<li>'
                                     +'<div>'
                                     +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
@@ -397,15 +403,16 @@
                                     +'<div class="mt-2 text-center">'
                                     +'<h1 class="mb-2 text-3xl font-bold text-green-600">'+element.title+'</h1>'
                                     +'<h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
-                                    +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
+                                    +'<p class="mt-4 text-gray-600">'+startConvertOngoingMeetingTime.slice(16,21)+' '+ startConvertOngoingMeetingTime.slice(4,10)+'</p>'
                                     +'<button'
                                     +' type="button"'
+                                    +' data-toggle="modal"'
+                                    +' data-target='+target
                                     +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                    +' onclick=parent.calldialog('+element.id+')'
                                     +'>'
                                     +'See more'
                                     +' </button> '
-                                    +'<a href="'+element.platform.url+'" target="_blank">'
+                                    +'<a href="'+element.platform.url+'">'
                                     +'<button'
                                     +' type="button"'
                                     +' class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400"'
@@ -421,223 +428,184 @@
                             }
 
                         });
-                        let new_meeting_carousel_wrapper_list = document.getElementById("new_meeting_carousel_wrapper_list");
-                        new_meeting_carousel_wrapper_list.innerHTML = htmlElementsNewMeeting;
-                        document.getElementById("new_meeting_carousel_wrapper_list").style.width= 300*i+"px";
+                        let ongoing_meeting_carousel_wrapper_list = document.getElementById("ongoing_meeting_carousel_wrapper_list");
+                        ongoing_meeting_carousel_wrapper_list.innerHTML = htmlElementsOngoingMeeting;
+                        document.getElementById("ongoing_meeting_carousel_wrapper_list").style.width= 300*iOngoingMeeting+"px";
                     });
                 </script>
 
             </ul>
-            <button
-                    id="leftNewMeeting"
-                    class="absolute left-0 w-20 h-20 mt-32 -ml-6 text-2xl text-indigo-600 bg-white rounded-full shadow-md top-20 hover:text-indigo-400 focus:text-indigo-400 focus:outline-none focus:shadow-outline"
-            >
-                <span class="block" style="transform: scale(-1)">&#x279c;</span>
-            </button>
-            <button
-                    id="rightNewMeeting"
-                    class="absolute right-0 w-20 h-20 mt-32 -mr-6 text-2xl text-indigo-600 bg-white rounded-full shadow-md top-20 hover:text-indigo-400 focus:text-indigo-400 focus:outline-none focus:shadow-outline"
-            >
-                <span class="block" style="transform: scale(1)x">&#x279c;</span>
-            </button>
-
         </div>
         <!-- Dialog Start -->
-        <h1 id="currentSessionNewMeeting" style="display: none">${sessionScope.CURRENT_USER.id}</h1>
-<%--        <div id="new_meeting_dialog">--%>
-<%--            <script>--%>
-<%--            <script>--%>
-<%--                const urlFollowNewMeeting = "/masa/api/appointment-management/create";--%>
-<%--                let iDialogNewMeeting=0;--%>
-<%--                const z = "z";--%>
-<%--                const space = "";--%>
-<%--                const postMethodNewMeeting = "POST";--%>
-<%--                const appJsonNewMeeting = "application/json";--%>
-<%--                const userId = document.getElementById("currentSessionNewMeeting").innerText;--%>
-<%--                let followNotiNewMeeting = "Follow meeting success";--%>
-<%--                $.getJSON("/masa/api/meeting-management/new-meetings", function (data) {--%>
-<%--                    let htmlDialogsNewMeeting = "";--%>
-<%--                    const arrNewMeeting = data["meetings"];--%>
-<%--                    arrNewMeeting.forEach((element) => {--%>
-<%--                        iDialogNewMeeting++;--%>
-<%--                        const meetingId = "z"+element.id;--%>
-<%--                        const idDialog = "myModalNewMeeting"+iDialogNewMeeting;--%>
-<%--                        var startConvertNewMeeting = new Date(element.startTime); // create Date object--%>
-<%--                        var startConvertNewMeetingTime = startConvertNewMeeting.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');--%>
-<%--                        var endConvertConvertNewMeeting = new Date(element.endTime); // create Date object--%>
-<%--                        const startDayNewMeeting = ("0"+startConvertNewMeeting.getDay()).slice(("0"+startConvertNewMeeting.getDay()).length-2, ("0"+startConvertNewMeeting.getDay()).length);--%>
-<%--                        const startMonthNewMeeting = ("0"+startConvertNewMeeting.getMonth()).slice(("0"+startConvertNewMeeting.getMonth()).length-2, ("0"+startConvertNewMeeting.getMonth()).length);--%>
-<%--                        var endConvertConvertNewMeetingTime = endConvertConvertNewMeeting.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');--%>
-<%--                        if(element.platform.platform === 'ZOOM'){--%>
-<%--                            htmlDialogsNewMeeting +=--%>
-<%--                                '<div class="modal fade" id='+idDialog+' tabindex="-1" role="dialog" aria-labelledby="myModalLabel">'--%>
-<%--                                +'<div class="font-sans modal-dialog" role="document">'--%>
-<%--                                +'<div class="rounded-3xl modal-content" style="width: 680px;">'--%>
-<%--                                +'<div class="modal-body">'--%>
-<%--                                +'<button type="button" class="close" data-dismiss="modal" aria-label="Close">'--%>
-<%--                                +'<span aria-hidden="true">&times;</span>'--%>
-<%--                                +'</button>'--%>
-<%--                                +'<h4 class="text-2xl font-bold text-black mt-11 ml-14 modal-title" id="myModalLabel">Meeting Information</h4>'--%>
-<%--                                +'<div>'--%>
-<%--                                +'<h1 class="relative inline-block mb-1 text-5xl font-semibold text-gray-900 mt-11 ml-14 date modal-title"'--%>
-<%--                                +'>'+element.title+'</h1'--%>
-<%--                                +'><a href="'+element.platform.url+'" class="text-2xl font-semibold text-blue-800 ml-7">Join Zoom</a><br>'--%>
-<%--                                +'<span class="relative inline-block pt-2 text-2xl font-normal text-black ml-14 date modal-title"'--%>
-<%--                                +'>with mentor <span class="text-2xl font-normal text-blue-800">'+element.mentor.fullName+'</span></span'--%>
-<%--                                +'>'--%>
-<%--                                +'<div class="flex ml-7 modal-body">'--%>
-<%--                                +'<span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title"'--%>
-<%--                                +'>'+startConvertNewMeetingTime.slice(16,21)+'</span>'--%>
-<%--                                +'<h1 class="relative inline-block my-auto ml-2 mr-2 text-2xl font-semibold text-gray-900 date modal-title p2"'--%>
-<%--                                +'>to:</h1'--%>
-<%--                                +'>'--%>
-<%--                                +'<span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title"'--%>
-<%--                                +'>'+endConvertConvertNewMeetingTime.slice(16,21)+'</span>'--%>
-<%--                                +'<h1 class="relative inline-block my-auto ml-2 mr-2 text-2xl font-semibold text-gray-900 date modal-title p2"'--%>
-<%--                                +'>date:</h1'--%>
-<%--                                +'>'--%>
-<%--                                +'<span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title"'--%>
-<%--                                +'>'+startDayNewMeeting+'/'+startMonthNewMeeting+'/'+startConvertNewMeeting.getFullYear()+'</span>'--%>
-<%--                                +'</div>'--%>
-<%--                                +'<div class="flex mb-4 modal-body">'--%>
-<%--                                +'<p class="mr-5 font-normal text-gray-500 ml-9">'+element.description+'</p>'--%>
-<%--                                +'</div>'--%>
-<%--                                +'</div>'--%>
-<%--                                +'<div class="flex justify-center w-full space-x-16 mt-9 mb-14">'--%>
-<%--                                +'<a href="" onClick="(function(){'--%>
-<%--                                +"const varToString = varObj => Object.keys(varObj)[0];"--%>
-<%--                                +"const " + meetingId +"=z;"--%>
-<%--                                +"const x = varToString({"--%>
-<%--                                +meetingId--%>
-<%--                                +"});"--%>
-<%--                                +"console.log(x);"--%>
-<%--                                +"const json = {"--%>
-<%--                                +"userId: userId,"--%>
-<%--                                +"meetingId: x.replace(z,space),"--%>
-<%--                                +"};"--%>
-<%--                                +"console.log(json);"--%>
-<%--                                +"const options = {"--%>
-<%--                                +"method: postMethodNewMeeting,"--%>
-<%--                                +"body: JSON.stringify(json),"--%>
-<%--                                +"headers: {"--%>
-<%--                                +"contentType: appJsonNewMeeting,"--%>
-<%--                                +"},"--%>
-<%--                                +"};"--%>
-<%--                                +"console.log(options);"--%>
-<%--                                +"console.log(urlFollowNewMeeting);"--%>
-<%--                                +"fetch(urlFollowNewMeeting, options)"--%>
-<%--                                +".then((res) => res.json())"--%>
-<%--                                +".then((res) => alert(followNotiNewMeeting))"--%>
-<%--                                +".catch((err) => alert(err));"--%>
-<%--                                +'})();return false;">'--%>
-<%--                                +'<button'--%>
-<%--                                +' class="p-4 text-2xl font-semibold text-black bg-transparent border-2 border-gray-200 pl-28 pr-28 rounded-2xl hover:text-blue-500 focus:border-4 focus:border-blue-300"'--%>
-<%--                                +'>'--%>
-<%--                                +'Follow'--%>
-<%--                                +'</button>'--%>
-<%--                                +'</a>'--%>
-<%--                                +'<button'--%>
-<%--                                +' class="p-4 pl-20 pr-20 text-2xl font-semibold text-white bg-indigo-700 border-blue-300 rounded-2xl focus:border-4 hover:bg-indigo-900"'--%>
-<%--                                +'>'--%>
-<%--                                +'Leave question'--%>
-<%--                                +'</button>'--%>
-<%--                                +'</div>'--%>
-<%--                                +'</div>'--%>
-<%--                                +'</div>'--%>
-<%--                                +'</div>'--%>
-<%--                                +'</div>'--%>
-<%--                        }else{--%>
-<%--                            htmlDialogsNewMeeting +=--%>
-<%--                                '<div class="modal fade" id='+idDialog+' tabindex="-1" role="dialog" aria-labelledby="myModalLabel">'--%>
-<%--                                +'<div class="font-sans modal-dialog" role="document">'--%>
-<%--                                +'<div class="rounded-3xl modal-content" style="width: 680px;">'--%>
-<%--                                +'<div class="modal-body">'--%>
-<%--                                +'<button type="button" class="close" data-dismiss="modal" aria-label="Close">'--%>
-<%--                                +'<span aria-hidden="true">&times;</span>'--%>
-<%--                                +'</button>'--%>
-<%--                                +'<h4 class="text-2xl font-bold text-black mt-11 ml-14 modal-title" id="myModalLabel">Meeting Information</h4>'--%>
-<%--                                +'<div>'--%>
-<%--                                +'<h1 class="relative inline-block mb-1 text-5xl font-semibold text-gray-900 mt-11 ml-14 date modal-title"'--%>
-<%--                                +'>'+element.title+'</h1'--%>
-<%--                                +'><a href="'+element.platform.url+'" class="text-2xl font-semibold text-blue-800 ml-7">Join Google Meet</a><br>'--%>
-<%--                                +'<span class="relative inline-block pt-2 text-2xl font-normal text-black ml-14 date modal-title"'--%>
-<%--                                +'>with mentor <span class="text-2xl font-normal text-blue-800">'+element.mentor.fullName+'</span></span'--%>
-<%--                                +'>'--%>
-<%--                                +'<div class="flex ml-7 modal-body">'--%>
-<%--                                +'<span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title"'--%>
-<%--                                +'>'+startConvertNewMeetingTime.slice(16,21)+'</span>'--%>
-<%--                                +'<h1 class="relative inline-block my-auto ml-2 mr-2 text-2xl font-semibold text-gray-900 date modal-title p2"'--%>
-<%--                                +'>to:</h1'--%>
-<%--                                +'>'--%>
-<%--                                +'<span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title"'--%>
-<%--                                +'>'+endConvertConvertNewMeetingTime.slice(16,21)+'</span>'--%>
-<%--                                +'<h1 class="relative inline-block my-auto ml-2 mr-2 text-2xl font-semibold text-gray-900 date modal-title p2"'--%>
-<%--                                +'>date:</h1'--%>
-<%--                                +'>'--%>
-<%--                                +'<span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title"'--%>
-<%--                                +'>'+startDayNewMeeting+'/'+startMonthNewMeeting+'/'+startConvertNewMeeting.getFullYear()+'</span>'--%>
-<%--                                +'</div>'--%>
-<%--                                +'<div class="flex mb-4 modal-body">'--%>
-<%--                                +'<p class="mr-5 font-normal text-gray-500 ml-9">'+element.description+'</p>'--%>
-<%--                                +'</div>'--%>
-<%--                                +'</div>'--%>
-<%--                                +'<div class="flex justify-center w-full space-x-16 mt-9 mb-14">'--%>
-<%--                                +'<a href="" onClick="(function(){'--%>
-<%--                                +"const varToString = varObj => Object.keys(varObj)[0];"--%>
-<%--                                +"const " + meetingId +"=z;"--%>
-<%--                                +"const x = varToString({"--%>
-<%--                                +meetingId--%>
-<%--                                +"});"--%>
-<%--                                +"console.log(x);"--%>
-<%--                                +"const json = {"--%>
-<%--                                +"userId: userId,"--%>
-<%--                                +"meetingId: x.replace(z,space),"--%>
-<%--                                +"};"--%>
-<%--                                +"console.log(json);"--%>
-<%--                                +"const options = {"--%>
-<%--                                +"method: postMethodNewMeeting,"--%>
-<%--                                +"body: JSON.stringify(json),"--%>
-<%--                                +"headers: {"--%>
-<%--                                +"contentType: appJsonNewMeeting,"--%>
-<%--                                +"},"--%>
-<%--                                +"};"--%>
-<%--                                +"console.log(options);"--%>
-<%--                                +"console.log(urlFollowNewMeeting);"--%>
-<%--                                +"fetch(urlFollowNewMeeting, options)"--%>
-<%--                                +".then((res) => res.json())"--%>
-<%--                                +".then((res) => alert(followNotiNewMeeting))"--%>
-<%--                                +".catch((err) => alert(err));"--%>
-<%--                                +'})();return false;">'--%>
-<%--                                +'<button'--%>
-<%--                                +' class="p-4 text-2xl font-semibold text-black bg-transparent border-2 border-gray-200 pl-28 pr-28 rounded-2xl hover:text-blue-500 focus:border-4 focus:border-blue-300"'--%>
-<%--                                +'>'--%>
-<%--                                +'Follow'--%>
-<%--                                +'</button>'--%>
-<%--                                +'</a>'--%>
-<%--                                +'<button'--%>
-<%--                                +' class="p-4 pl-20 pr-20 text-2xl font-semibold text-white bg-indigo-700 border-blue-300 rounded-2xl focus:border-4 hover:bg-indigo-900"'--%>
-<%--                                +'>'--%>
-<%--                                +'Leave question'--%>
-<%--                                +'</button>'--%>
-<%--                                +'</div>'--%>
-<%--                                +'</div>'--%>
-<%--                                +'</div>'--%>
-<%--                                +'</div>'--%>
-<%--                                +'</div>'--%>
-<%--                        }--%>
+        <h1 id="currentSessionOngoingMeeting">${sessionScope.CURRENT_USER.id}</h1>
+        <div id="ongoing_meeting_dialog">
+            <script>
+                const urlFollowOngoingMeeting = "/masa/api/appointment-management/create";
+                let iDialogOngoingMeeting=0;
+                const zOngoingMeeting = "z";
+                const spaceOngoingMeeting = "";
+                const postMethodOngoingMeeting = "POST";
+                const appJsonOngoingMeeting = "application/json";
+                const userIdOngoingMeeting = document.getElementById("currentSessionOngoingMeeting").innerText;
+                let followNotiOngoingMeeting = "Follow meeting success";
+                $.getJSON("/masa/api/meeting-management/meetings/host/ME100002", function (data) {
+                    let htmlDialogsOngoingMeeting = "";
+                    const arrOngoingMeeting = data["meetings"];
+                    arrOngoingMeeting.forEach((element) => {
+                        iDialogOngoingMeeting++;
+                        const meetingId = "z"+element.id;
+                        const idDialog = "myModalOngoingMeeting"+iDialogOngoingMeeting;
+                        console.log('idDialog', idDialog);
+                        var startConvertOngoingMeeting = new Date(element.startTime); // create Date object
+                        var startConvertOngoingMeetingTime = startConvertOngoingMeeting.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
+                        var endConvertConvertOngoingMeeting = new Date(element.endTime); // create Date object
+                        const startDayOngoingMeeting = ("0"+startConvertOngoingMeeting.getDay()).slice(("0"+startConvertOngoingMeeting.getDay()).length-2, ("0"+startConvertOngoingMeeting.getDay()).length);
+                        const startMonthOngoingMeeting = ("0"+startConvertOngoingMeeting.getMonth()).slice(("0"+startConvertOngoingMeeting.getMonth()).length-2, ("0"+startConvertOngoingMeeting.getMonth()).length);
+                        var endConvertConvertOngoingMeetingTime = endConvertConvertOngoingMeeting.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
+                        if(element.platform.platform === 'ZOOM'){
+                            htmlDialogsOngoingMeeting +=
+                                '<div class="modal fade" id='+idDialog+' tabindex="-1" role="dialog" aria-labelledby="myModalLabel">'
+                                +'<div class="font-sans modal-dialog" role="document">'
+                                +'<div class="rounded-3xl modal-content" style="width: 680px;">'
+                                +'<div class="modal-body">'
+                                +'<button type="button" class="close" data-dismiss="modal" aria-label="Close">'
+                                +'<span aria-hidden="true">&times;</span>'
+                                +'</button>'
+                                +'<h4 class="text-2xl font-bold text-black mt-11 ml-14 modal-title" id="myModalLabel">Meeting Information</h4>'
+                                +'<div>'
+                                +'<h1 class="relative inline-block mb-1 text-5xl font-semibold text-gray-900 mt-11 ml-14 date modal-title"'
+                                +'>'+element.title+'</h1'
+                                +'><a href="'+element.platform.url+'" class="text-2xl font-semibold text-blue-800 ml-7">Join Zoom</a><br>'
+                                +'<span class="relative inline-block pt-2 text-2xl font-normal text-black ml-14 date modal-title"'
+                                +'>with mentor <span class="text-2xl font-normal text-blue-800">'+element.mentor.fullName+'</span></span'
+                                +'>'
+                                +'<div class="flex ml-7 modal-body">'
+                                +'<span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title"'
+                                +'>'+startConvertOngoingMeetingTime.slice(16,21)+'</span>'
+                                +'<h1 class="relative inline-block my-auto ml-2 mr-2 text-2xl font-semibold text-gray-900 date modal-title p2"'
+                                +'>to:</h1'
+                                +'>'
+                                +'<span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title"'
+                                +'>'+endConvertConvertOngoingMeetingTime.slice(16,21)+'</span>'
+                                +'<h1 class="relative inline-block my-auto ml-2 mr-2 text-2xl font-semibold text-gray-900 date modal-title p2"'
+                                +'>date:</h1'
+                                +'>'
+                                +'<span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title"'
+                                +'>'+startDayOngoingMeeting+'/'+startMonthOngoingMeeting+'/'+startConvertOngoingMeeting.getFullYear()+'</span>'
+                                +'</div>'
+                                +'<div class="flex mb-4 modal-body">'
+                                +'<p class="mr-5 font-normal text-gray-500 ml-9">'+element.description+'</p>'
+                                +'</div>'
+                                +'</div>'
+                                +'<div class="flex justify-center w-full space-x-16 mt-9 mb-14">'
+                                +'<a href="/masa/mentor/meeting/updatemeeting.jsp?id='+element.id+'&host='+element.mentor.id+'" >'
+                                +'<button'
+                                +' class="p-4 text-2xl font-semibold text-black bg-transparent border-2 border-gray-200 pl-28 pr-28 rounded-2xl hover:text-blue-500 focus:border-4 focus:border-blue-300"'
+                                +'>'
+                                +'Update'
+                                +'</button>'
+                                +'</a>'
+                                +' <a href="/masa/member/question.jsp?id='+element.id+'&page=0">'
+                                +'<button'
+                                +' class="p-4 pl-20 pr-20 text-2xl font-semibold text-white bg-indigo-700 border-blue-300 rounded-2xl focus:border-4 hover:bg-indigo-900"'
+                                +'>'
+                                +'View question'
+                                +'</button>'
+                                +' </a>'
+                                +'</div>'
+                                +'</div>'
+                                +'</div>'
+                                +'</div>'
+                                +'</div>'
+                        }else{
+                            htmlDialogsOngoingMeeting +=
+                                '<div class="modal fade" id='+idDialog+' tabindex="-1" role="dialog" aria-labelledby="myModalLabel">'
+                                +'<div class="font-sans modal-dialog" role="document">'
+                                +'<div class="rounded-3xl modal-content" style="width: 680px;">'
+                                +'<div class="modal-body">'
+                                +'<button type="button" class="close" data-dismiss="modal" aria-label="Close">'
+                                +'<span aria-hidden="true">&times;</span>'
+                                +'</button>'
+                                +'<h4 class="text-2xl font-bold text-black mt-11 ml-14 modal-title" id="myModalLabel">Meeting Information</h4>'
+                                +'<div>'
+                                +'<h1 class="relative inline-block mb-1 text-5xl font-semibold text-gray-900 mt-11 ml-14 date modal-title"'
+                                +'>'+element.title+'</h1'
+                                +'><a href="'+element.platform.url+'" class="text-2xl font-semibold text-blue-800 ml-7">Join Google Meet</a><br>'
+                                +'<span class="relative inline-block pt-2 text-2xl font-normal text-black ml-14 date modal-title"'
+                                +'>with mentor <span class="text-2xl font-normal text-blue-800">'+element.mentor.fullName+'</span></span'
+                                +'>'
+                                +'<div class="flex ml-7 modal-body">'
+                                +'<span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title"'
+                                +'>'+startConvertOngoingMeetingTime.slice(16,21)+'</span>'
+                                +'<h1 class="relative inline-block my-auto ml-2 mr-2 text-2xl font-semibold text-gray-900 date modal-title p2"'
+                                +'>to:</h1'
+                                +'>'
+                                +'<span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title"'
+                                +'>'+endConvertConvertOngoingMeetingTime.slice(16,21)+'</span>'
+                                +'<h1 class="relative inline-block my-auto ml-2 mr-2 text-2xl font-semibold text-gray-900 date modal-title p2"'
+                                +'>date:</h1'
+                                +'>'
+                                +'<span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title"'
+                                +'>'+startDayOngoingMeeting+'/'+startMonthOngoingMeeting+'/'+startConvertOngoingMeeting.getFullYear()+'</span>'
+                                +'</div>'
+                                +'<div class="flex mb-4 modal-body">'
+                                +'<p class="mr-5 font-normal text-gray-500 ml-9">'+element.description+'</p>'
+                                +'</div>'
+                                +'</div>'
+                                +'<div class="flex justify-center w-full space-x-16 mt-9 mb-14">'
+                                +'<a href="/masa/mentor/meeting/updatemeeting.jsp?id='+element.id+'&host='+element.mentor.id+'" >'
+                                +'<button'
+                                +' class="p-4 text-2xl font-semibold text-black bg-transparent border-2 border-gray-200 pl-28 pr-28 rounded-2xl hover:text-blue-500 focus:border-4 focus:border-blue-300"'
+                                +'>'
+                                +'Update'
+                                +'</button>'
+                                +'</a>'
+                                +' <a href="/masa/member/question.jsp?id='+element.id+'&page=0">'
+                                +'<button'
+                                +' class="p-4 pl-20 pr-20 text-2xl font-semibold text-white bg-indigo-700 border-blue-300 rounded-2xl focus:border-4 hover:bg-indigo-900"'
+                                +'>'
+                                +'View question'
+                                +'</button>'
+                                +' </a>'
+                                +'</div>'
+                                +'</div>'
+                                +'</div>'
+                                +'</div>'
+                                +'</div>'
+                        }
 
-<%--                    });--%>
-<%--                    let new_meeting_dialog = document.getElementById("new_meeting_dialog");--%>
-<%--                    new_meeting_dialog.innerHTML = htmlDialogsNewMeeting;--%>
-<%--                });--%>
-<%--            </script>--%>
-<%--            <div>--%>
+                    });
+                    let ongoing_meeting_dialog = document.getElementById("ongoing_meeting_dialog");
+                    ongoing_meeting_dialog.innerHTML = htmlDialogsOngoingMeeting;
+                });
+            </script>
+
+            <div>
             </div>
         </div>
     </div>
 </section>
+<button
+        id="leftOngoingMeeting"
+        class="absolute left-0 w-20 h-20 mt-32 -ml-6 text-2xl text-indigo-600 bg-white rounded-full shadow-md top-20 hover:text-indigo-400 focus:text-indigo-400 focus:outline-none focus:shadow-outline"
+        style="margin-left: 100px; margin-top: 100px"
+>
+    <span class="block" style="transform: scale(-1)">&#x279c;</span>
+</button>
+<button
+        id="rightOngoingMeeting"
+        class="absolute right-0 w-20 h-20 mt-32 -mr-6 text-2xl text-indigo-600 bg-white rounded-full shadow-md top-20 hover:text-indigo-400 focus:text-indigo-400 focus:outline-none focus:shadow-outline"
+        style="margin-right: 150px; margin-top: 100px !important;"
+>
+    <span class="block" style="transform: scale(1)x">&#x279c;</span>
+</button>
+
+<!-- <div id="buttons">
+    <button id="left">Left</button>
+    <button id="right">Right</button>
+</div> -->
 <script>
-    var container = $("#new_meeting_carousel_wrapper");
+    var container = $("#ongoing_meeting_carousel_wrapper");
 
     var runner = container.find("ul");
     var liWidth = runner.find("li:first").outerWidth();
@@ -647,11 +615,11 @@
     runner.width(noofitems * liWidth);
     container.width(itemsPerPage * liWidth);
 
-    $("#rightNewMeeting").click(function () {
+    $("#right").click(function () {
         $(runner).animate({ left: "-=310px" }, "slow");
     });
 
-    $("#leftNewMeeting").click(function () {
+    $("#left").click(function () {
         $(runner).animate({ left: "+=310px" }, "slow");
     });
 </script>

@@ -49,7 +49,7 @@
     <script>
         function becomeMentor () {
             var xhr = new XMLHttpRequest();
-            const url = `http://localhost:8080/masa/api/mentor-management/become-mentor/${CURRENT_USER.getId()}`;
+            const url = `/masa/api/mentor-management/become-mentor/${CURRENT_USER.getId()}`;
             console.log('url', url);
             xhr.open("POST", url);
             xhr.setRequestHeader("Accept", "application/json");

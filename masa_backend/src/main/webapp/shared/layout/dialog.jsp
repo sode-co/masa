@@ -61,7 +61,7 @@
                 <h4 class="text-2xl font-bold text-black mt-16 ml-14">Meeting Information</h4>
                 <div>
                     <h1 class="relative inline-block mb-1 text-5xl font-semibold text-gray-900 mt-9 ml-14 date" id="meetingtile">React for beginner</h1>
-                    <a href="#" class="text-2xl font-semibold text-blue-800 ml-7" id="linkjoin">Join Google Meet</a><br />
+                    <a href="#" class="text-2xl font-semibold text-blue-800 ml-7" id="linkjoin" target="_blank">Join Google Meet</a><br />
                     <span class="relative inline-block pt-2 mb-1 text-2xl font-normal text-black ml-14 date"
                     >with mentor <span class="text-2xl font-normal text-blue-800" id="meetingmentor">Thieu Ngoc</span></span
                     >

@@ -226,7 +226,7 @@
                     +'>'
                     +'See more'
                     +'</button>'
-                    +'<a href="'+element.platform.url+'">'
+                    +'<a href="'+element.platform.url+'" target="_blank">'
                     +'<button'
                     +' type="button"'
                     +' class="float-right px-3 py-2 mt-1 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400""'
