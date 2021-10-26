@@ -192,7 +192,9 @@
         <script>
             let htmlElements = "";
             let iOngoingMeeting=0;
-            $.getJSON("/masa/api/meeting-management/meetings/host/ME100002", function (data) {
+            const hostId = location.search.replace("?mentor=","");
+            // $.getJSON("/masa/api/meeting-management/meetings/host/ME100002", function (data) {
+            $.getJSON("/masa/api/meeting-management/meetings/host/"+hostId, function (data) {
                 const arrOngoingMeeting = data["meetings"];
                 arrOngoingMeeting.forEach((element) => {
                     var startConvertOngoingMeeting = new Date(element.startTime); // create Date object
@@ -241,8 +243,9 @@
         <script>
             let htmlDialog = "";
             let i =0;
-            const hostId = location.search.replace("mentor?=","");
-            $.getJSON("/masa/api/meeting-management/meetings/host/"+hostId, function (data) {
+            const hostIdDialog = location.search.replace("?mentor=","");
+            // $.getJSON("/masa/api/meeting-management/meetings/host/ME100002", function (data) {
+            $.getJSON("/masa/api/meeting-management/meetings/host/"+hostIdDialog, function (data) {
                 const arrOngoingMeeting = data["meetings"];
                 arrOngoingMeeting.forEach((element) => {
                     var startConvertOngoingMeeting = new Date(element.startTime); // create Date object
@@ -297,14 +300,14 @@
                             + '</div>'
                             + '</div>'
                             + '<div class="flex justify-center w-full space-x-16 mt-9 mb-14">'
-                            +'<a href="/masa/mentor/meeting/updatemeeting.jsp?id='+element.id+'&host='+element.mentor.id+'" >'
+                            +'<a href="/masa/mentor/meeting/updatemeeting.jsp?id='+element.id+'&host='+element.mentor.id+'"  target="_blank">'
                             + '<button'
                             + ' class="p-4 text-2xl font-semibold text-black bg-transparent border-2 border-gray-200  pl-28 pr-28 rounded-2xl hover:text-blue-500 focus:border-4 focus:border-blue-300"'
                             + '>'
                             + 'Update'
                             + '</button>'
                             + '</a>'
-                            +' <a href="/masa/member/question.jsp?id='+element.id+'&page=0">'
+                            +' <a href="/masa/member/question.jsp?id='+element.id+'&page=0" target="_blank">'
                             + '<button'
                             + ' class="p-4 pl-20 pr-20 text-2xl font-semibold text-white bg-indigo-700 border-blue-300  rounded-2xl focus:border-4 hover:bg-indigo-900"'
                             + '>'
@@ -317,7 +320,68 @@
                             + '</div>'
                             + '</div>'
                     }else{
-
+                        htmlDialog +=
+                            '<div class="modal fade" id=' + idDialog + ' tabindex="-1" role="dialog" aria-labelledby="myModalLabel">'
+                            + '<div class="font-sans modal-dialog" role="document">'
+                            + '<div class="rounded-3xl modal-content" style="width: 680px">'
+                            + '<div class="modal-body">'
+                            + '<button type="button" class="close" data-dismiss="modal" aria-label="Close">'
+                            + '<span aria-hidden="true">&times;</span>'
+                            + '</button>'
+                            + '<h4 class="text-2xl font-bold text-black mt-11 ml-14 modal-title" id="myModalLabel">Meeting Information</h4>'
+                            + '<div>'
+                            + '<h1 class="relative inline-block mb-1 text-5xl font-semibold text-gray-900 mt-11 ml-14 date modal-title">'
+                            +element.title
+                            + '</h1>'
+                            + '<a href="'+element.platform.url+'" class="text-2xl font-semibold text-blue-800 ml-7">Join Zoom</a><br />'
+                            + '<span class="relative inline-block pt-2 text-2xl font-normal text-black ml-14 date modal-title"'
+                            + '>with mentor <span class="text-2xl font-normal text-blue-800">'+element.mentor.fullName+'</span></span'
+                            + '>'
+                            + '<div class="flex ml-7 modal-body">'
+                            + '<span'
+                            + ' class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200  rounded-2xl date modal-title"'
+                            + '>'+startConvertOngoingMeetingTime.slice(16,21)+'</span'
+                            + '>'
+                            + '<h1 class="relative inline-block my-auto ml-2 mr-2 text-2xl font-semibold text-gray-900 date modal-title p2">'
+                            + 'to:'
+                            + '</h1>'
+                            + '<span'
+                            + ' class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200  rounded-2xl date modal-title">'
+                            +  endConvertConvertOngoingMeetingTime.slice(16,21)+'</span>'
+                            + '<h1 class="relative inline-block my-auto ml-2 mr-2 text-2xl font-semibold text-gray-900 date modal-title p2">'
+                            + 'date:'
+                            + '</h1>'
+                            + '<span'
+                            + ' class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200  rounded-2xl date modal-title"'
+                            + '>'+startDayOngoingMeeting+'/'+startMonthOngoingMeeting+'/'+startConvertOngoingMeeting.getFullYear()+'</span'
+                            + '>'
+                            + '</div>'
+                            + '<div class="flex mb-4 modal-body">'
+                            + '<p class="mr-5 font-normal text-gray-500 ml-9">'
+                            +  element.description
+                            + '</p>'
+                            + '</div>'
+                            + '</div>'
+                            + '<div class="flex justify-center w-full space-x-16 mt-9 mb-14">'
+                            +'<a href="/masa/mentor/meeting/updatemeeting.jsp?id='+element.id+'&host='+element.mentor.id+'" target="_blank">'
+                            + '<button'
+                            + ' class="p-4 text-2xl font-semibold text-black bg-transparent border-2 border-gray-200  pl-28 pr-28 rounded-2xl hover:text-blue-500 focus:border-4 focus:border-blue-300"'
+                            + '>'
+                            + 'Update'
+                            + '</button>'
+                            + '</a>'
+                            +' <a href="/masa/member/question.jsp?id='+element.id+'&page=0" target="_blank">'
+                            + '<button'
+                            + ' class="p-4 pl-20 pr-20 text-2xl font-semibold text-white bg-indigo-700 border-blue-300  rounded-2xl focus:border-4 hover:bg-indigo-900"'
+                            + '>'
+                            + 'View question'
+                            + '</button>'
+                            + '</a>'
+                            + '</div>'
+                            + '</div>'
+                            + '</div>'
+                            + '</div>'
+                            + '</div>'
                     }
                 });
                 document.getElementById("meetingDialog").innerHTML = htmlDialog;

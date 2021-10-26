@@ -12,6 +12,7 @@
                 const json = {
                     title: document.getElementById("questionContent").value,
                     userId: document.getElementById("currentSessionNewMeeting").textContent,
+                    // userId: 'AD100007',
                     meetingId: location.search.slice(location.search.indexOf("?id="),location.search.indexOf("&page")).replace("?id=",""),
                 };
                 console.log(json);
