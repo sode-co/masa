@@ -238,15 +238,15 @@
                             <%--                                </div>--%>
                         </div>
 
-                        <div id="new" style="height: 600px; overflow-y: hidden; overflow-x: auto;">
+                        <div id="new" style="height: 450px; overflow-y: hidden; overflow-x: auto;">
                             <iframe src="/masa/shared/meeting/_new_meeting_v2.jsp"
                                     id="framenew"
-                                    style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none""
+                                    style="width: 100%; height: 450px; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none""
                             >
                             </iframe>
                         </div>
 
-                        <div id="on-going" style="height: 600px; overflow: hidden; overflow-x: auto;">
+                        <div id="on-going" style="height: 450px; overflow: hidden; overflow-x: auto;">
                             <iframe src="/masa/shared/meeting/_on_going_meeting.jsp"
                                  style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none"
                                 >

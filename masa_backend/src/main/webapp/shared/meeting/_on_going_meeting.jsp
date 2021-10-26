@@ -72,9 +72,9 @@
 </head>
 <body>
 <section class="text-gray-600 body-font">
-    <div class="container px-5 py-24 mx-auto" style="margin-left: 0px; padding-left: 0px">
-        <div class="flex flex-wrap w-full mb-8">
-            <div class="w-full mb-6 lg:mb-0 sm:ml-20">
+    <div class="container px-5 mx-auto" style="margin-left: 0px; padding-left: 0px">
+        <div class="flex flex-wrap w-full">
+            <div class="w-full lg:mb-0 sm:ml-20">
                 <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">Ongoing Meetings</h1>
                 <div class="w-20 h-1 bg-blue-500 rounded"></div>
             </div>
@@ -97,7 +97,7 @@
                                 htmlElementsNewMeeting +=
                                     '<li>'
                                     +'<div>'
-                                    +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
+                                    +'<div class="px-4 mx-auto transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
                                     +'<div class="flex flex-col items-center justify-center w-sm">'
                                     +'<div class="">'
                                     +'<img class="object-cover w-64 h-64 mx-auto"'
@@ -133,7 +133,7 @@
                                 htmlElementsNewMeeting +=
                                     '<li>'
                                     +'<div>'
-                                    +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
+                                    +'<div class="px-4   mx-auto    transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
                                     +'<div class="flex flex-col items-center justify-center w-sm">'
                                     +'<div class="">'
                                     +'<img class="object-cover w-64 h-64 mx-auto"'
@@ -169,7 +169,7 @@
                                 htmlElementsNewMeeting +=
                                     '<li>'
                                     +'<div>'
-                                    +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
+                                    +'<div class="px-4   mx-auto    transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
                                     +'<div class="flex flex-col items-center justify-center w-sm">'
                                     +'<div class="">'
                                     +'<img class="object-cover w-64 h-64 mx-auto"'
@@ -205,7 +205,7 @@
                                 htmlElementsNewMeeting +=
                                     '<li>'
                                     +'<div>'
-                                    +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
+                                    +'<div class="px-4   mx-auto    transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
                                     +'<div class="flex flex-col items-center justify-center w-sm">'
                                     +'<div class="">'
                                     +'<img class="object-cover w-64 h-64 mx-auto"'
@@ -241,7 +241,7 @@
                                 htmlElementsNewMeeting +=
                                     '<li>'
                                     +'<div>'
-                                    +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
+                                    +'<div class="px-4   mx-auto    transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
                                     +'<div class="flex flex-col items-center justify-center w-sm">'
                                     +'<div class="">'
                                     +'<img class="object-cover w-64 h-64 mx-auto"'
@@ -277,7 +277,7 @@
                                 htmlElementsNewMeeting +=
                                     '<li>'
                                     +'<div>'
-                                    +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
+                                    +'<div class="px-4   mx-auto    transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
                                     +'<div class="flex flex-col items-center justify-center w-sm">'
                                     +'<div class="">'
                                     +'<img class="object-cover w-64 h-64 mx-auto"'
@@ -313,7 +313,7 @@
                                 htmlElementsNewMeeting +=
                                     '<li>'
                                     +'<div>'
-                                    +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
+                                    +'<div class="px-4   mx-auto    transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
                                     +'<div class="flex flex-col items-center justify-center w-sm">'
                                     +'<div class="">'
                                     +'<img class="object-cover w-64 h-64 mx-auto"'
@@ -349,7 +349,7 @@
                                 htmlElementsNewMeeting +=
                                     '<li>'
                                     +'<div>'
-                                    +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
+                                    +'<div class="px-4   mx-auto    transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
                                     +'<div class="flex flex-col items-center justify-center w-sm">'
                                     +'<div class="">'
                                     +'<img class="object-cover w-64 h-64 mx-auto"'
@@ -385,7 +385,7 @@
                                 htmlElementsNewMeeting +=
                                     '<li>'
                                     +'<div>'
-                                    +'<div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
+                                    +'<div class="px-4   mx-auto    transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">'
                                     +'<div class="flex flex-col items-center justify-center w-sm">'
                                     +'<div class="">'
                                     +'<img class="object-cover w-64 h-64 mx-auto"'
