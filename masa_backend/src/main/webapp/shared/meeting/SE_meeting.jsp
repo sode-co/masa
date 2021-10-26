@@ -187,10 +187,33 @@
 </head>
 <body>
 <div class="w-full body-font mb-6 lg:mb-0 sm:ml-20">
-    <h1 class="mb-2 text-3xl font-medium text-gray-900 sm:text-2xl title-font" style="font-weight: 530">Software Engineering Meetings</h1>
+    <h1 class="mb-2 text-3xl font-medium text-gray-900 sm:text-2xl title-font" style="font-weight: 530" id="topictitle">Software Engineering Meetings</h1>
     <div class="w-20 h-1 bg-blue-500 rounded"></div>
 </div>
-
+<script>
+    const idtopic = location.search.replace("?topicId=", '');
+    if(idtopic==='1'){
+        document.getElementById("topictitle").innerText = "Software Engineering Meetings";
+    }else if(idtopic==='1002'){
+        document.getElementById("topictitle").innerText = "Graphic Design Meetings";
+    }else if(idtopic==='4'){
+        document.getElementById("topictitle").innerText = "Artificial Intelligence";
+    }else if(idtopic==='7'){
+        document.getElementById("topictitle").innerText = "Business management";
+    }else if(idtopic==='2'){
+        document.getElementById("topictitle").innerText = "Digital Maketing";
+    }else if(idtopic==='5'){
+        document.getElementById("topictitle").innerText = "English Language";
+    }else if(idtopic==='3'){
+        document.getElementById("topictitle").innerText = "Information Assurance";
+    }else if(idtopic==='6'){
+        document.getElementById("topictitle").innerText = "Japanese Language";
+    }else if(idtopic==='8'){
+        document.getElementById("topictitle").innerText = "Multimedia";
+    }else if(idtopic==='9'){
+        document.getElementById("topictitle").innerText = "Soft Skills";
+    }
+</script>
 <div class="container">
     <div class="row" id="rowne">
         <!-- The meeting bat dau o day -->
@@ -238,7 +261,6 @@
                     +'</div>'
                     +'</div>'
             });
-            console.log(htmlElements);
             document.getElementById("rowne").innerHTML = htmlElements;
             });
         </script>

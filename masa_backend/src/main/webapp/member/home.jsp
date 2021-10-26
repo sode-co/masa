@@ -52,9 +52,11 @@
                     <li class="flex items-center justify-center p-2 mb-3 bg-indigo-400 rounded-md cursor-pointer">
                         <i class="text-white fas fa-eye-slash fa-sm"></i>
                     </li>
-                    <li class="flex items-center justify-center p-2 mb-3 bg-yellow-400 rounded-md cursor-pointer">
-                        <i class="text-white fas fa-sign-out-alt fa-sm"></i>
+                    <a href="/masa/auth-management/signout">
+                    <li class="flex items-center justify-center p-2 mb-3 bg-yellow-400 rounded-md cursor-pointer" >
+                            <i class="text-white fas fa-sign-out-alt fa-sm"></i>
                     </li>
+                    </a>
                 </ul>
             </div>
             <!--End of NavItem -->
@@ -267,10 +269,7 @@
                                 var millisecondsToWait = 500;
                                 document.getElementById("dialogiframe").style.color = "transparent";
                                 setTimeout(function() {
-                                    console.log(document.getElementById("dialogiframe").innerHTML);
-                                    console.log('hihi');
                                     document.getElementsByClassName("close-modal")[0].style.visibility = "hidden";
-                                    console.log(document.getElementsByClassName("close-modal")[0]);
                                 }, millisecondsToWait);
                             </script>
                         </div>
@@ -280,7 +279,6 @@
                         <p><a href="#dialogiframe" rel="modal:open" id="openiframemodal" style="display: none">Open Modal</a></p>
                         <script>
                             function onTopicSelected(topicId) {
-                                console.log("Topic selected: " + topicId);
                                 document.getElementById('meetingiframe').src = "/masa/shared/meeting/SE_meeting.jsp?topicId="+topicId;
                             }
                             function calldialog(param){

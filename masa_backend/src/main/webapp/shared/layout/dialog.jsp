@@ -146,7 +146,15 @@
                             document.getElementById("meetingendtime").innerText = endConvertConvertNewMeetingTime.slice(16,21);
                             document.getElementById("meetingstarttime").innerText =startConvertNewMeetingTime.slice(16,21).toString();
                             document.getElementById("questionUrl").href ="/masa/member/question.jsp?id="+location.search.replace("?id=","")+"&page=0";
-
+                        }else{
+                            document.getElementById('linkjoin').innerText = "Join Google Meet";
+                            document.getElementById("meetingtile").innerText = element.title;
+                            document.getElementById("meetingdescription").innerHTML = element.description;
+                            document.getElementById("meetingmentor").innerText = element.mentor.fullName;
+                            document.getElementById("meetingdate").innerText = startDayNewMeeting+'/'+startMonthNewMeeting+'/'+startConvertNewMeeting.getFullYear()
+                            document.getElementById("meetingendtime").innerText = endConvertConvertNewMeetingTime.slice(16,21);
+                            document.getElementById("meetingstarttime").innerText =startConvertNewMeetingTime.slice(16,21).toString();
+                            document.getElementById("questionUrl").href ="/masa/member/question.jsp?id="+location.search.replace("?id=","")+"&page=0";
                         }
                     })
 </script>
