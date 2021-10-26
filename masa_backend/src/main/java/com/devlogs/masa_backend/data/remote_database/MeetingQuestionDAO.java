@@ -20,7 +20,8 @@ public class MeetingQuestionDAO {
     public List<MeetingQuestionDTO> getAllQuestionsByMeetingId(String meeting_id) throws SQLException, ClassNotFoundException {
         List<MeetingQuestionDTO> meetingQuestionDTOList = new ArrayList<>();
         try (Connection con = dbHelper.connect()) {
-            CallableStatement ctm = con.prepareCall("SELECT ID, TITLE, USER_ID, MEETING_ID, CREATED_DATE FROM MEETINGQUESTIONS WHERE MEETING_ID =?;");
+            CallableStatement ctm = con.prepareCall("SELECT ID, TITLE, USER_ID, MEETING_ID, CREATED_DATE FROM MEETINGQUESTIONS " +
+                    "WHERE MEETING_ID =? ORDER BY CREATED_DATE DESC;");
             ctm.setString(1,meeting_id);
             ResultSet result = ctm.executeQuery();
             while (result.next()) {
