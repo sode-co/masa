@@ -73,7 +73,7 @@ public class Masa {
         }
 
         public static void onServerName (String protocol, String serverName, int port) {
-                SERVER_HOST = serverName;
+                SERVER_HOST = "http://"+serverName;
                 if (port != 80) {
                     SERVER_HOST += ":"+port+"/masa";
                 }
