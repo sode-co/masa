@@ -110,7 +110,7 @@
         WELCOME TO
       </h1>
       <img
-        src="com.devlogs.masa_backend.login/hello.jpg"
+        src="${Masa.SERVER_HOST}/login/hello.jpg"
         alt="Welcome banner"
         width="95%"
         height="95%"

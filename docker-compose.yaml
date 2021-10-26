@@ -10,7 +10,7 @@ services:
     environment: 
       SA_PASSWORD: Password123
       ACCEPT_EULA: 'Y'
-    image:  tiendvlp/masa_db:0.1
+    image:  tiendvlp/masa_db:latest
     container_name: mssqlserver
     restart: always
     volumes:
