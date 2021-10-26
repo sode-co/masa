@@ -267,7 +267,7 @@
                         </div>
 
                         <div id="followed" style="height: 450px; overflow: hidden; overflow-x: auto;">
-                            <iframe src="${Masa.SERVER_HOST}/shared/meeting/_followed_meeting.jsp"
+                            <iframe id="iframefollowed" src="${Masa.SERVER_HOST}/shared/meeting/_followed_meeting.jsp"
                                  style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none"
                                 >
                                 </iframe>
@@ -299,6 +299,12 @@
                         <p><a href="#dialogiframe" rel="modal:close" id="close-modal" style="display: none">close Modal</a></p>
                         <p><a href="#dialogiframe" rel="modal:open" id="openiframemodal" style="display: none">Open Modal</a></p>
                         <script>
+                            function onFollowedMeetingChanged () {
+                                console.log("onFollowedMeetingChanged");
+                                let followedIframe = document.getElementById('iframefollowed');
+                                followedIframe.contentDocument.location.reload(true);
+                                followedIframe.src = "${Masa.SERVER_HOST}/shared/meeting/_followed_meeting.jsp";
+                            }
                             function onTopicSelected(topicId) {
                                 document.getElementById('meetingiframe').src = "${Masa.SERVER_HOST}/shared/meeting/SE_meeting.jsp?topicId="+topicId;
                             }

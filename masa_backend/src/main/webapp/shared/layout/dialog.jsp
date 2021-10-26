@@ -38,11 +38,13 @@
             };
             fetch("../../api/appointment-management/create", options)
                 .then((res) => res.json())
-                .then((res) => alert("Follow meeting success"))
+                .then((res) => {
+                        alert("Follow meeting success");
+                        parent.onFollowedMeetingChanged();
+                    }
+                )
                 .catch((err) => alert(err));
-            document.getElementById("follow").textContent = "Unfollow";
-
-        }
+            }
     </script>
 </head>
 

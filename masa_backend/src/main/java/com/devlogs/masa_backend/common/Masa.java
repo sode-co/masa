@@ -37,12 +37,14 @@ public class Masa {
         }
 
         public static class PAGE {
+
             public static class AUTH {
                 public static class PERMISSION_MANAGEMENT {
                     public static final String DENIED_PAGE = "auth/permission-management/permission-denied/index.jsp";
                 }
             }
             public static class MEMBER {
+                public static final String HOME = "member/home.jsp";
                 public static String MEETING_PAGE = "member/meeting/index.jsp";
             }
             public static class ADMIN {

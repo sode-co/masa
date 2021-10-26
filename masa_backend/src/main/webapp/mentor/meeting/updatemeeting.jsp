@@ -108,7 +108,7 @@
                                 <div class="container relative left-0 z-50 flex w-full h-auto h-full">
                                     <div class="relative flex items-center flex-5 w-full h-full lg:w-90 group">
                                         <a href="#" class="relative block">
-                                            <img src="../icon/weblogo.svg" alt="Logo" width="30%" height="30%" />
+                                            <img src="${Masa.SERVER_HOST}/shared/icon/weblogo.svg" alt="Logo" width="30%" height="30%" />
                                         </a>
                                     </div>
                                     <div class="relative flex items-center flex-4 w-full h-full lg:w-90 group">

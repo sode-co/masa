@@ -106,7 +106,7 @@
                 <div class="container relative left-0 z-50 flex w-full h-auto h-full">
                   <div class="relative flex items-center flex-5 w-full h-full lg:w-90 group">
                     <a href="#" class="relative block">
-                      <img src="../icon/weblogo.svg" alt="Logo" width="30%" height="30%" />
+                      <img src="${Masa.SERVER_HOST}/icon/weblogo.svg" alt="Logo" width="30%" height="30%" />
                     </a>
                   </div>
                   <div class="relative flex items-center flex-4 w-full h-full lg:w-90 group">
@@ -119,11 +119,11 @@
             </div>
           </header>
           <div style="padding-right: 30%">
-            <iframe src="/masa/mentor/mymeeting.jsp" style="width: 1700px; height: 5000px" id="createdmeeting">
+            <iframe src="${Masa.SERVER_HOST}/mentor/mymeeting.jsp" style="width: 1700px; height: 5000px" id="createdmeeting">
             </iframe>
           </div>
           <script>
-            document.getElementById("createdmeeting").src = "/masa/mentor/mymeeting.jsp"+location.search;
+            document.getElementById("createdmeeting").src = "${Masa.SERVER_HOST}/mentor/mymeeting.jsp"+location.search;
           </script>
         </div>
       </div>

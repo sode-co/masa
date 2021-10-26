@@ -194,7 +194,7 @@
             let iOngoingMeeting=0;
             const hostId = location.search.replace("?mentor=","");
             // $.getJSON("/masa/api/meeting-management/meetings/host/ME100002", function (data) {
-            $.getJSON("/masa/api/meeting-management/meetings/host/"+hostId, function (data) {
+            $.getJSON("${Masa.SERVER_HOST}/api/meeting-management/meetings/host/"+hostId, function (data) {
                 const arrOngoingMeeting = data["meetings"];
                 arrOngoingMeeting.forEach((element) => {
                     var startConvertOngoingMeeting = new Date(element.startTime); // create Date object
