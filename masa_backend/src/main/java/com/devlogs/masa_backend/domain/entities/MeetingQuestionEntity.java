@@ -3,14 +3,14 @@ package com.devlogs.masa_backend.domain.entities;
 public class MeetingQuestionEntity {
     private String id;
     private String title;
-    private String userId;
+    private UserEntity user;
     private String meetingId;
     private long createdDate;
 
-    public MeetingQuestionEntity(String id, String title, String userId, String meetingId, long createdDate) {
+    public MeetingQuestionEntity(String id, String title, UserEntity user, String meetingId, long createdDate) {
         this.id = id;
         this.title = title;
-        this.userId = userId;
+        this.user = user;
         this.meetingId = meetingId;
         this.createdDate = createdDate;
     }
@@ -31,12 +31,12 @@ public class MeetingQuestionEntity {
         this.title = title;
     }
 
-    public String getUserId() {
-        return userId;
+    public UserEntity getUser() {
+        return user;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 
     public String getMeetingId() {
@@ -60,9 +60,9 @@ public class MeetingQuestionEntity {
         return "MeetingQuestionEntity{" +
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
-                ", userId='" + userId + '\'' +
+                ", user=" + user +
                 ", meetingId='" + meetingId + '\'' +
-                ", createdDate='" + createdDate + '\'' +
+                ", createdDate=" + createdDate +
                 '}';
     }
 }
