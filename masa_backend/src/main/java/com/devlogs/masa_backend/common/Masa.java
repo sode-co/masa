@@ -51,7 +51,7 @@ public class Masa {
                 public static class REQUEST_MANAGEMENT {
                     public static String RESPONSE = "admin/request-management/response/index.jsp";
                 }
-                public static String USER_MANAGEMENT_PAGE = "admin/user-management/index.jsp";
+                public static String MANAGEMENT = "admin/management/index.html";
             }
 
             public static class MENTOR {
