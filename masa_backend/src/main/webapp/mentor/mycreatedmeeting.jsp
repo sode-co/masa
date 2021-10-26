@@ -119,11 +119,12 @@
             </div>
           </header>
           <div style="padding-right: 30%">
-            <iframe src="/masa/mentor/mymeeting.jsp" style="width: 1700px; height: 5000px">
-
+            <iframe src="/masa/mentor/mymeeting.jsp" style="width: 1700px; height: 5000px" id="createdmeeting">
             </iframe>
-<%--            <%@include  file="/mentor/mymeeting.jsp"%>--%>
           </div>
+          <script>
+            document.getElementById("createdmeeting").src = "/masa/mentor/mymeeting.jsp"+location.search;
+          </script>
         </div>
       </div>
     </main>

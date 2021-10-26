@@ -241,7 +241,8 @@
         <script>
             let htmlDialog = "";
             let i =0;
-            $.getJSON("/masa/api/meeting-management/meetings/host/ME100002", function (data) {
+            const hostId = location.search.replace("mentor?=","");
+            $.getJSON("/masa/api/meeting-management/meetings/host/"+hostId, function (data) {
                 const arrOngoingMeeting = data["meetings"];
                 arrOngoingMeeting.forEach((element) => {
                     var startConvertOngoingMeeting = new Date(element.startTime); // create Date object
@@ -315,6 +316,8 @@
                             + '</div>'
                             + '</div>'
                             + '</div>'
+                    }else{
+
                     }
                 });
                 document.getElementById("meetingDialog").innerHTML = htmlDialog;
