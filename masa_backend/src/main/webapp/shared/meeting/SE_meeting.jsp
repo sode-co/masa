@@ -196,7 +196,7 @@
     const idtopic = location.search.replace("?topicId=", '');
     if(idtopic==='1'){
         document.getElementById("topictitle").innerText = "Software Engineering Meetings";
-    }else if(idtopic==='1002'){
+    }else if(idtopic==='10'){
         document.getElementById("topictitle").innerText = "Graphic Design Meetings";
     }else if(idtopic==='4'){
         document.getElementById("topictitle").innerText = "Artificial Intelligence";

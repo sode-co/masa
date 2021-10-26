@@ -114,7 +114,7 @@
                     <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
                         <i class="text-indigo-600 fas fa-pencil-ruler fa-sm"></i>
                     </div>
-                    <a class="mt-1 text-xs font-semibold text-center" href="#meetingbytopic" onclick="onTopicSelected(1002)">Graphic Design</a>
+                    <a class="mt-1 text-xs font-semibold text-center" href="#meetingbytopic" onclick="onTopicSelected(10)">Graphic Design</a>
                 </div>
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
@@ -254,7 +254,7 @@
                         <div id="new" style="height: 450px; overflow-y: hidden; overflow-x: auto;">
                             <iframe src="${Masa.SERVER_HOST}/shared/meeting/_new_meeting_v2.jsp"
                                     id="framenew"
-                                    style="width: 100%; height: 450px; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none""
+                                    style="width: 100%; height: 450px; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none"
                             >
                             </iframe>
                         </div>
@@ -286,13 +286,6 @@
                                     frameborder="0" style="overflow:hidden; width: 700px; height: 486px; border-radius: 20px;" height="100%" width="100%"> </iframe>
 <%--                            <iframe id="dialogiframeelement" src="http://localhost:8080${Masa.SERVER_HOST}/shared/layout/dialog.jsp"--%>
 <%--                                    style="background-color: transparent; width: 780px; height: 400px; border-radius: 10px;"> </iframe>--%>
-                            <script>
-                                var millisecondsToWait = 500;
-                                document.getElementById("dialogiframe").style.color = "transparent";
-                                setTimeout(function() {
-                                    document.getElementsByClassName("close-modal")[0].style.visibility = "hidden";
-                                }, millisecondsToWait);
-                            </script>
                         </div>
 
                         <!-- Link to open the modal -->
@@ -308,8 +301,12 @@
                             function onTopicSelected(topicId) {
                                 document.getElementById('meetingiframe').src = "${Masa.SERVER_HOST}/shared/meeting/SE_meeting.jsp?topicId="+topicId;
                             }
-                            function calldialog(param){
-                                document.getElementById('dialogiframeelement').src = "${Masa.SERVER_HOST}/shared/layout/dialog.jsp?id="+param;
+                            function calldialog(param, param01){
+                                if(param01){
+                                    document.getElementById('dialogiframeelement').src = "${Masa.SERVER_HOST}/shared/layout/dialog.jsp?id="+param+"&followed="+param01;
+                                }else{
+                                    document.getElementById('dialogiframeelement').src = "${Masa.SERVER_HOST}/shared/layout/dialog.jsp?id="+param;
+                                }
                                 $(document).ready(function() {
                                     $('#openiframemodal').click();
                                 });

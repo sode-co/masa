@@ -45,6 +45,28 @@
                 )
                 .catch((err) => alert(err));
             }
+            function unfollow(){
+            const json = {
+                userId: document.getElementById("currentSessionNewMeeting").textContent,
+                meetingId: location.search.slice(location.search.indexOf("followed=")).replace("followed=",""),
+            };
+            console.log(json);
+            const options = {
+                method: "POST",
+                body: JSON.stringify(json),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            };
+            fetch("../../api/appointment-management/remove", options)
+                .then((res) => res.json())
+                .then((res) => {
+                        alert("Unfollow meeting success");
+                        parent.onFollowedMeetingChanged();
+                    }
+                )
+                .catch((err) => alert(err));
+            }
     </script>
 </head>
 
@@ -102,6 +124,7 @@
                 <div class="flex justify-center w-full mt-20 space-x-20 mb-7">
                     <button onclick="follow()"
                             class="p-4 text-2xl font-semibold text-black bg-transparent border-2 border-gray-200  pl-28 pr-28 rounded-2xl hover:text-blue-500 focus:border-4 focus:border-blue-300"
+                            id="followbutton"
                     >
                         Follow
                     </button>
@@ -118,6 +141,7 @@
         </div>
     </div>
 </div>
+<h1 style="display: none">${sessionScope.CURRENT_USER.id}</h1>
 <script>
                     const urlFollowNewMeeting = "${Masa.SERVER_HOST}/api/appointment-management/create";
                     let iDialogNewMeeting=0;
@@ -127,7 +151,10 @@
                     const appJsonNewMeeting = "application/json";
                     const userId = document.getElementById("currentSessionNewMeeting").innerText;
                     let followNotiNewMeeting = "Follow meeting success";
-                    const url = "${Masa.SERVER_HOST}/api/meeting-management/meeting/"+location.search.replace("?id=","");
+                    let url = "${Masa.SERVER_HOST}/api/meeting-management/meeting/"+location.search.slice(location.search.indexOf("?id=")).replace("?id=","");
+                    if(location.search.includes("followed")){
+                        url = "${Masa.SERVER_HOST}/api/meeting-management/meeting/"+location.search.slice(location.search.indexOf("followed=")).replace("followed=","");
+                    }
                     $.getJSON(url, function (element) {
                         iDialogNewMeeting++;
                         const meetingId = "z"+element.id;
@@ -140,6 +167,7 @@
                         var endConvertConvertNewMeetingTime = endConvertConvertNewMeeting.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
 
                         document.getElementById('linkjoin').href = element.platform.url;
+
                         if(element.platform.platform === 'ZOOM'){
                             document.getElementById('linkjoin').innerText = "Join Zoom";
                             document.getElementById("meetingtile").innerText = element.title;
@@ -158,6 +186,10 @@
                             document.getElementById("meetingendtime").innerText = endConvertConvertNewMeetingTime.slice(16,21);
                             document.getElementById("meetingstarttime").innerText =startConvertNewMeetingTime.slice(16,21).toString();
                             document.getElementById("questionUrl").href ="${Masa.SERVER_HOST}/member/question.jsp?id="+location.search.replace("?id=","")+"&page=0";
+                        }
+                        if(location.search.includes("followed")){
+                            document.getElementById("followbutton").innerText = "Unfollow";
+                            document.getElementById("followbutton").onclick = unfollow;
                         }
                     })
 </script>
