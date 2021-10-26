@@ -87,6 +87,18 @@
                     </div>
                     <a class="mt-1 text-xs font-semibold text-center" href="#on-going">On-going meetings</a>
                 </div>
+                <div class="flex flex-col items-center justify-center p-2 bg-white rounded-md shadow-xl cursor-pointer">
+                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
+                        <i class="text-indigo-600 fas fa-calendar-alt fa-sm"></i>
+                    </div>
+                    <a class="mt-1 text-xs font-semibold text-center" href="#followed">Followed meetings</a>
+                </div>
+                <div class="flex flex-col items-center justify-center p-2 bg-white rounded-md shadow-xl cursor-pointer" style="background-color: transparent; color: transparent; border-color: transparent; box-shadow: 0 0 transparent">
+                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full"  style="background-color: transparent; color: transparent; border-color: transparent; box-shadow: transparent">
+                        <i class="text-indigo-600 fas fa-calendar-alt fa-sm"  style="background-color: transparent; color: transparent; border-color: transparent; box-shadow: transparent" ></i>
+                    </div>
+                    <a class="mt-1 text-xs font-semibold text-center" href="#on-going" style="display: none"></a>
+                </div>
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
                 <div class="flex flex-col items-center justify-center p-2 bg-white rounded-md shadow-xl cursor-pointer">
@@ -252,6 +264,14 @@
                                 >
                                 </iframe>
                         </div>
+
+                        <div id="followed" style="height: 450px; overflow: hidden; overflow-x: auto;">
+                            <iframe src="/masa/shared/meeting/_followed_meeting.jsp"
+                                 style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none"
+                                >
+                                </iframe>
+                        </div>
+
                         <div id="meetingbytopic" style="height: 10000px; overflow: hidden; overflow-x: auto;">
                             <iframe id="meetingiframe" src="/masa/shared/meeting/SE_meeting.jsp?topicId=1"
                                     style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none""
