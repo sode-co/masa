@@ -124,7 +124,7 @@
                                     +'<button'
                                     +' type="button"'
                                     +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                    +' onclick=parent.calldialog('+element.id+')'
+                                    +' onclick=parent.calldialog('+element.id+','+element.id+')'
                                     +'>'
                                     +'See more'
                                     +' </button> '
