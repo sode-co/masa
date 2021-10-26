@@ -1,3 +1,5 @@
+<%@ page import="com.devlogs.masa_backend.common.Masa"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,7 +91,7 @@
             <ul id="new_meeting_carousel_wrapper_list">
                 <script>
                     let i=0;
-                    $.getJSON("/masa/api/meeting-management/new-meetings", function (data) {
+                    $.getJSON("${Masa.SERVER_HOST}/api/meeting-management/new-meetings", function (data) {
                         let htmlElementsNewMeeting = "";
                         const arrNewMeeting = data["meetings"];
                         arrNewMeeting.forEach((element) => {
@@ -453,7 +455,7 @@
 <%--        <div id="new_meeting_dialog">--%>
 <%--            <script>--%>
 <%--            <script>--%>
-<%--                const urlFollowNewMeeting = "/masa/api/appointment-management/create";--%>
+<%--                const urlFollowNewMeeting = "${Masa.SERVER_HOST}/api/appointment-management/create";--%>
 <%--                let iDialogNewMeeting=0;--%>
 <%--                const z = "z";--%>
 <%--                const space = "";--%>
@@ -461,7 +463,7 @@
 <%--                const appJsonNewMeeting = "application/json";--%>
 <%--                const userId = document.getElementById("currentSessionNewMeeting").innerText;--%>
 <%--                let followNotiNewMeeting = "Follow meeting success";--%>
-<%--                $.getJSON("/masa/api/meeting-management/new-meetings", function (data) {--%>
+<%--                $.getJSON("${Masa.SERVER_HOST}/api/meeting-management/new-meetings", function (data) {--%>
 <%--                    let htmlDialogsNewMeeting = "";--%>
 <%--                    const arrNewMeeting = data["meetings"];--%>
 <%--                    arrNewMeeting.forEach((element) => {--%>

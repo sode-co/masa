@@ -1,3 +1,5 @@
+<%@ page import="com.devlogs.masa_backend.common.Masa"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -220,7 +222,7 @@
         <script>
             let htmlElements = "";
             let i=0;
-            $.getJSON("/masa/api/meeting-management/topic/meetings/${param.topicId}", function (data) {
+            $.getJSON("${Masa.SERVER_HOST}/api/meeting-management/topic/meetings/${param.topicId}", function (data) {
                 let htmlElementsNewMeeting = "";
                 const arrNewMeeting = data["meetings"];
                 arrNewMeeting.forEach((element) => {

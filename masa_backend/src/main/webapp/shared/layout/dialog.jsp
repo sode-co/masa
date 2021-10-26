@@ -1,3 +1,4 @@
+<%@ page import="com.devlogs.masa_backend.common.Masa"%>
 
 
 <!DOCTYPE html>
@@ -116,7 +117,7 @@
     </div>
 </div>
 <script>
-                    const urlFollowNewMeeting = "/masa/api/appointment-management/create";
+                    const urlFollowNewMeeting = "${Masa.SERVER_HOST}/api/appointment-management/create";
                     let iDialogNewMeeting=0;
                     const z = "z";
                     const space = "";
@@ -124,7 +125,7 @@
                     const appJsonNewMeeting = "application/json";
                     const userId = document.getElementById("currentSessionNewMeeting").innerText;
                     let followNotiNewMeeting = "Follow meeting success";
-                    const url = "/masa/api/meeting-management/meeting/"+location.search.replace("?id=","");
+                    const url = "${Masa.SERVER_HOST}/api/meeting-management/meeting/"+location.search.replace("?id=","");
                     $.getJSON(url, function (element) {
                         iDialogNewMeeting++;
                         const meetingId = "z"+element.id;
@@ -145,7 +146,7 @@
                             document.getElementById("meetingdate").innerText = startDayNewMeeting+'/'+startMonthNewMeeting+'/'+startConvertNewMeeting.getFullYear()
                             document.getElementById("meetingendtime").innerText = endConvertConvertNewMeetingTime.slice(16,21);
                             document.getElementById("meetingstarttime").innerText =startConvertNewMeetingTime.slice(16,21).toString();
-                            document.getElementById("questionUrl").href ="/masa/member/question.jsp?id="+location.search.replace("?id=","")+"&page=0";
+                            document.getElementById("questionUrl").href ="${Masa.SERVER_HOST}/member/question.jsp?id="+location.search.replace("?id=","")+"&page=0";
                         }else{
                             document.getElementById('linkjoin').innerText = "Join Google Meet";
                             document.getElementById("meetingtile").innerText = element.title;
@@ -154,7 +155,7 @@
                             document.getElementById("meetingdate").innerText = startDayNewMeeting+'/'+startMonthNewMeeting+'/'+startConvertNewMeeting.getFullYear()
                             document.getElementById("meetingendtime").innerText = endConvertConvertNewMeetingTime.slice(16,21);
                             document.getElementById("meetingstarttime").innerText =startConvertNewMeetingTime.slice(16,21).toString();
-                            document.getElementById("questionUrl").href ="/masa/member/question.jsp?id="+location.search.replace("?id=","")+"&page=0";
+                            document.getElementById("questionUrl").href ="${Masa.SERVER_HOST}/member/question.jsp?id="+location.search.replace("?id=","")+"&page=0";
                         }
                     })
 </script>

@@ -1,3 +1,5 @@
+<%@ page import="com.devlogs.masa_backend.common.Masa"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,8 +94,8 @@
                 <script>
                     let i=0;
                     const userIdSession = document.getElementById("currentSessionNewMeeting").innerText;
-                    $.getJSON("/masa/api/meeting-management/followed-meetings/"+userIdSession, function (data) {
-                        console.log("/masa/api/meeting-management/followed-meetings/"+userIdSession);
+                    $.getJSON("${Masa.SERVER_HOST}/api/meeting-management/followed-meetings/"+userIdSession, function (data) {
+                        console.log("${Masa.SERVER_HOST}/api/meeting-management/followed-meetings/"+userIdSession);
                         let htmlElementsNewMeeting = "";
                         const arrNewMeeting = data["meetings"];
                         arrNewMeeting.forEach((element) => {

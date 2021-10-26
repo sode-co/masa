@@ -1,4 +1,5 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ page import="com.devlogs.masa_backend.common.Masa"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +53,7 @@
                     <li class="flex items-center justify-center p-2 mb-3 bg-indigo-400 rounded-md cursor-pointer">
                         <i class="text-white fas fa-eye-slash fa-sm"></i>
                     </li>
-                    <a href="/masa/auth-management/signout">
+                    <a href="${Masa.SERVER_HOST}/auth-management/signout">
                     <li class="flex items-center justify-center p-2 mb-3 bg-yellow-400 rounded-md cursor-pointer" >
                             <i class="text-white fas fa-sign-out-alt fa-sm"></i>
                     </li>
@@ -197,7 +198,7 @@
                                 <div class="container relative left-0 z-50 flex w-full h-auto h-full">
                                     <div class="relative flex items-center flex-1 w-full h-full lg:w-90 group">
                                         <a href="#" class="relative block">
-                                            <img src="../icon/weblogo.svg" alt="Logo" width="30%" height="30%" />
+                                            <img src="${Masa.SERVER_HOST}/shared/icon/weblogo.svg" alt="Logo" width="30%" height="30%" />
                                         </a>
                                     </div>
                                     <c:if test = "${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=STUDENT}'}">
@@ -206,17 +207,17 @@
                                         </div>
                                     </c:if>
                                     <c:if test = "${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MEMBER}'}">
-                                        <a href="/masa/member/registermentor.jsp" class="py-2 font-semibold text-white bg-blue-500 rounded-full px-7 text-md hover:bg-blue-400"
+                                        <a href="${Masa.SERVER_HOST}/member/registermentor.jsp" class="py-2 font-semibold text-white bg-blue-500 rounded-full px-7 text-md hover:bg-blue-400"
                                         >Become a mentor now</a
                                         >
                                     </c:if>
                                     <c:if test = "${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MENTOR}'}">
-                                        <a id="createdmeeting" href="/masa/mentor/mycreatedmeeting.jsp" class="py-2 font-semibold text-white bg-blue-500 rounded-full px-7 text-md hover:bg-blue-400"
+                                        <a id="createdmeeting" href="${Masa.SERVER_HOST}/mentor/mycreatedmeeting.jsp" class="py-2 font-semibold text-white bg-blue-500 rounded-full px-7 text-md hover:bg-blue-400"
                                         >Your Created Meeting</a
                                         >
                                     </c:if>
                                     <c:if test = "${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MENTOR}'}">
-                                        <a href="/masa/mentor/meeting/createnewmeeting.jsp" class="py-2 font-semibold text-white bg-blue-500 rounded-full px-7 text-md hover:bg-blue-400"
+                                        <a href="${Masa.SERVER_HOST}/mentor/meeting/createnewmeeting.jsp" class="py-2 font-semibold text-white bg-blue-500 rounded-full px-7 text-md hover:bg-blue-400"
                                         >Create New Meeting</a
                                         >
                                     </c:if>
@@ -224,7 +225,7 @@
                                 <h1 id="currentUser" style="display: none">${sessionScope.CURRENT_USER.id}</h1>
                                 <script>
                                     if(document.getElementById("createdmeeting")){
-                                        document.getElementById("createdmeeting").href="/masa/mentor/mycreatedmeeting.jsp?mentor="+document.getElementById("currentUser").innerText;
+                                        document.getElementById("createdmeeting").href="${Masa.SERVER_HOST}/mentor/mycreatedmeeting.jsp?mentor="+document.getElementById("currentUser").innerText;
                                     }
                                 </script>
                             </div>
@@ -251,7 +252,7 @@
                         </div>
 
                         <div id="new" style="height: 450px; overflow-y: hidden; overflow-x: auto;">
-                            <iframe src="/masa/shared/meeting/_new_meeting_v2.jsp"
+                            <iframe src="${Masa.SERVER_HOST}/shared/meeting/_new_meeting_v2.jsp"
                                     id="framenew"
                                     style="width: 100%; height: 450px; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none""
                             >
@@ -259,21 +260,21 @@
                         </div>
 
                         <div id="on-going" style="height: 450px; overflow: hidden; overflow-x: auto;">
-                            <iframe src="/masa/shared/meeting/_on_going_meeting.jsp"
+                            <iframe src="${Masa.SERVER_HOST}/shared/meeting/_on_going_meeting.jsp"
                                  style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none"
                                 >
                                 </iframe>
                         </div>
 
                         <div id="followed" style="height: 450px; overflow: hidden; overflow-x: auto;">
-                            <iframe src="/masa/shared/meeting/_followed_meeting.jsp"
+                            <iframe src="${Masa.SERVER_HOST}/shared/meeting/_followed_meeting.jsp"
                                  style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none"
                                 >
                                 </iframe>
                         </div>
 
                         <div id="meetingbytopic" style="height: 10000px; overflow: hidden; overflow-x: auto;">
-                            <iframe id="meetingiframe" src="/masa/shared/meeting/SE_meeting.jsp?topicId=1"
+                            <iframe id="meetingiframe" src="${Masa.SERVER_HOST}/shared/meeting/SE_meeting.jsp?topicId=1"
                                     style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none""
                             >
                             </iframe>
@@ -281,9 +282,9 @@
                         <div id="ia" style="height: 10000px; overflow: hidden; overflow-x: auto;">
                         </div>
                         <div id="dialogiframe" class="modal" style="background-color: transparent; border-color: transparent; align-items: center; margin-right: 280px; box-shadow:none; width: 1800px; padding-bottom:10px ">
-                            <iframe id="dialogiframeelement" src="/masa/shared/layout/dialog.jsp"
+                            <iframe id="dialogiframeelement" src="${Masa.SERVER_HOST}/shared/layout/dialog.jsp"
                                     frameborder="0" style="overflow:hidden; width: 700px; height: 486px; border-radius: 20px;" height="100%" width="100%"> </iframe>
-<%--                            <iframe id="dialogiframeelement" src="http://localhost:8080/masa/shared/layout/dialog.jsp"--%>
+<%--                            <iframe id="dialogiframeelement" src="http://localhost:8080${Masa.SERVER_HOST}/shared/layout/dialog.jsp"--%>
 <%--                                    style="background-color: transparent; width: 780px; height: 400px; border-radius: 10px;"> </iframe>--%>
                             <script>
                                 var millisecondsToWait = 500;
@@ -299,10 +300,10 @@
                         <p><a href="#dialogiframe" rel="modal:open" id="openiframemodal" style="display: none">Open Modal</a></p>
                         <script>
                             function onTopicSelected(topicId) {
-                                document.getElementById('meetingiframe').src = "/masa/shared/meeting/SE_meeting.jsp?topicId="+topicId;
+                                document.getElementById('meetingiframe').src = "${Masa.SERVER_HOST}/shared/meeting/SE_meeting.jsp?topicId="+topicId;
                             }
                             function calldialog(param){
-                                document.getElementById('dialogiframeelement').src = "/masa/shared/layout/dialog.jsp?id="+param;
+                                document.getElementById('dialogiframeelement').src = "${Masa.SERVER_HOST}/shared/layout/dialog.jsp?id="+param;
                                 $(document).ready(function() {
                                     $('#openiframemodal').click();
                                 });
