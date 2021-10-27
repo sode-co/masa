@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.management.QueryEval;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class MeetingDAO {
@@ -204,6 +205,31 @@ public class MeetingDAO {
         return listMeeting;
     }
 
+    public List<MeetingDTO> getCreatedMeetingFromTimeToTime(long from, long to) throws SQLException, ClassNotFoundException {
+        List<MeetingDTO> listMeeting = new ArrayList<>();
+        try (Connection con = dbHelper.connect()) {
+            PreparedStatement queryStatement = con.prepareStatement("SELECT ID, TITLE, TIME_START, TIME_END, MENTOR_ID, PLATFORM_ID, STATUS_ID, TOPIC_ID,DESCRIPTION " +
+                    "FROM MEETINGS " +
+                    "WHERE TIME_START >= ? AND TIME_START <= ?;");
+            queryStatement.setLong(1, from);
+            queryStatement.setLong(2, to);
+            ResultSet rs = queryStatement.executeQuery();
+            while (rs.next()) {
+                String id = rs.getString(1);
+                String title = rs.getString(2);
+                long startTime = rs.getLong(3);
+                long endTime = rs.getLong(4);
+                String host_id = rs.getString(5);
+                int platform_id = rs.getInt(6);
+                int status_id = rs.getInt(7);
+                int topic_id = rs.getInt(8);
+                String description = rs.getString(9);
+                listMeeting.add(new MeetingDTO(id, title, platform_id, host_id, status_id,topic_id, startTime, endTime, description));
+            }
+        }
+        return listMeeting;
+    }
+
     public List<MeetingDTO> getAllOnGoingMeetings() throws SQLException, ClassNotFoundException {
         List<MeetingDTO> listMeeting = new ArrayList<>();
         try (Connection con = dbHelper.connect()) {
@@ -366,4 +392,19 @@ public class MeetingDAO {
         return listMeeting;
     }
 
+    public int countNumOfUserFollowedMeetingInWeek(long monday, long sunday) throws SQLException, ClassNotFoundException {
+        int result = 0;
+        try (Connection con = dbHelper.connect()) {
+
+            CallableStatement ctm = con.prepareCall("SELECT COUNT(MEETING_ID) AS TOTAL FROM APPOINTMENTS WHERE MEETING_ID IN (SELECT ID " +
+                                     "FROM MEETINGS WHERE TIME_START >= ? AND TIME_START <= ? AND STATUS_ID = 1);");
+            ctm.setLong(1,monday);
+            ctm.setLong(2,sunday);
+            ResultSet resultSet = ctm.executeQuery();
+            if(resultSet.next()) {
+                result = resultSet.getInt(1);
+            }
+        }
+        return result;
+    }
 }
