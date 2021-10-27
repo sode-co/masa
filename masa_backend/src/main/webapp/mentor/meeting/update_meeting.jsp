@@ -180,7 +180,7 @@
         </div>
         <div class="col-sm-3" style="width: 365px">
             <select class="form-select form-control" id="topic">
-                <option value="Agile">Agile</option>
+                <option value="Agile">Graphic Design</option>
                 <option value="Artificial Intelligence">Artificial Intelligence</option>
                 <option value="Business management">Business management</option>
                 <option value="Digital Maketing">Digital Maketing</option>
