@@ -304,9 +304,11 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <div id="dialogiframe" class="modal" style="background-color: white; align-items: center; width: 1000px; height: 300px; padding-bottom:10px ">
+            <div id="dialogiframe" class="modal"
+                 style="background-color: transparent; border-color: transparent; align-items: center; margin-right: 280px; box-shadow:none; width: 500px; padding-bottom:10px ">
                 <iframe id="dialogiframeelement" src="${Masa.SERVER_HOST}/admin/management/descriptiondialog.jsp"
-                        frameborder="0" style="overflow:hidden; width: 700px; height: 486px; border-radius: 20px;" height="100%" width="120%"> </iframe>
+                        frameborder="0" style="width: 700px; height: 486px; border-radius: 20px;" height="100%" width="120%">
+                </iframe>
             </div>
 
             <p><a href="#dialogiframe" rel="modal:close" id="close-modal" style="display: none">close Modal</a></p>

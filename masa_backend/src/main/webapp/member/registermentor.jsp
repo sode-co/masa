@@ -39,7 +39,7 @@
   <script>
     function becomeMentor () {
       var xhr = new XMLHttpRequest();
-      const url = `${Masa.SERVER_HOST}/api/mentor-management/become-mentor/${CURRENT_USER.getId()}`;
+      const url = `${Masa.SERVER_HOST}/api/mentor-management/become-mentor/${sessionScope.CURRENT_USER.getId()}`;
       console.log('url', url);
       xhr.open("POST", url);
       xhr.setRequestHeader("Accept", "application/json");

@@ -344,8 +344,9 @@
                 <div id="dialogiframe" class="modal"
                      style="background-color: transparent; border-color: transparent; align-items: center; margin-right: 280px; box-shadow:none; width: 1800px; padding-bottom:10px ">
                     <iframe id="dialogiframeelement" src="${Masa.SERVER_HOST}/shared/layout/dialog.jsp"
-                            frameborder="0" style="overflow:hidden; width: 700px; height: 486px; border-radius: 20px;"
-                            height="100%" width="120%"></iframe>
+                            frameborder="0" style="overflow:hidden; width: 700px; height: 486px; border-radius: 20px;" height="100%" width="120%">
+
+                    </iframe>
                     <%--                            <iframe id="dialogiframeelement" src="http://localhost:8080${Masa.SERVER_HOST}/shared/layout/dialog.jsp"--%>
                     <%--                                    style="background-color: transparent; width: 780px; height: 400px; border-radius: 10px;"> </iframe>--%>
                 </div>
