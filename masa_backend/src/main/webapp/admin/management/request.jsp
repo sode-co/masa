@@ -1,3 +1,6 @@
+<%@ page import="com.devlogs.masa_backend.common.Masa"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,44 +26,6 @@
 
     <!-- Custom styles for this page -->
 <!--    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">-->
-    <style>
-        #tableUser{
-            visibility: hidden;
-        }
-    </style>
-
-    <script>
-        let page = 0;
-        if(window.location.href===location.protocol + '//' + location.host+"/masa/admin/management/user.html"){
-            setTimeout(function() {
-                $('#splash').fadeOut('fast');
-            }, 300);
-
-            setTimeout(function () {
-                document.getElementById("tableUser").style.visibility = "visible";
-            }, 500);
-        }else{
-            setTimeout(function() {
-                $('#splash').fadeOut('fast');
-            }, -1);
-
-            setTimeout(function () {
-                document.getElementById("tableUser").style.visibility = "visible";
-            }, 0);
-        }
-
-        function toleft(){
-            if(page>0) --page;
-            else page = 0;
-            window.location.replace(location.protocol + '//' + location.host+"/masa/admin/management/user.html"+"?page="+page);
-            console.log(page);
-        }
-        function toright(){
-            ++page;
-            window.location.replace(location.protocol + '//' + location.host+"/masa/admin/management/user.html"+"?page="+page);
-            console.log(page);
-        }
-    </script>
 
 </head>
 
@@ -73,7 +38,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -85,7 +50,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="index.jsp">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -98,7 +63,7 @@
             User Management
         </div>
         <li class="nav-item">
-            <a class="nav-link" href="user.html">
+            <a class="nav-link" href="user.jsp">
                 <i class="fas fa-fw fa-users"></i>
                 <span>All User</span>
             </a>
@@ -106,20 +71,20 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" href="mentor.html">
+            <a class="nav-link" href="mentor.jsp">
                 <i class="fas fa-fw fa-chalkboard-teacher"></i>
                 <span>Mentors</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="student.html">
+            <a class="nav-link" href="student.jsp">
                 <i class="fas fa-fw fa-user-graduate"></i>
                 <span>Students</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="member.html">
+            <a class="nav-link" href="member.jsp">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Other</span>
                 <p style="font-size: 10px; font-style: italic">can become mentor</p>
@@ -137,7 +102,7 @@
 
         <!-- Nav Item - Meetings -->
         <li class="nav-item">
-            <a class="nav-link" href="meeting.html">
+            <a class="nav-link" href="meeting.jsp">
                 <i class="fas fa-fw fa-calendar"></i>
                 <span>Meetings</span></a>
         </li>
@@ -147,7 +112,7 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="request.html">
+            <a class="nav-link" href="request.jsp">
                 <i class="fas fa-fw fa-question"></i>
                 <span>Requests</span></a>
         </li>
@@ -159,8 +124,6 @@
         <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
-
-
     </ul>
     <!-- End of Sidebar -->
 
@@ -179,25 +142,6 @@
                         <i class="fa fa-bars"></i>
                     </button>
                 </form>
-                <script>
-                    function search(){
-                        window.location.replace('/masa/admin/management/user.html'+'?name='+document.getElementById("inputsearchname").value)
-                    }
-                </script>
-                <!-- Topbar Search -->
-                <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search user by name..."
-                               aria-label="Search" aria-describedby="basic-addon2" id="inputsearchname">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button" onclick="search()">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
 
@@ -225,7 +169,7 @@
                         </div>
                     </li>
 
-                    <a href="/masa/auth-management/signout" style="color: #9b9a9a; margin-top: 21px;text-decoration: none;">
+                    <a href="${Masa.SERVER_HOST}/auth-management/signout" style="color: #9b9a9a; margin-top: 21px;text-decoration: none;">
                         <span style="font-size: 12px">Log Out</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
@@ -239,7 +183,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin Ngọc</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">${sessionScope.CURRENT_USER.fullName}</span>
                             <img class="img-profile rounded-circle"
                                  src="img/undraw_profile.svg">
                         </a>
@@ -272,122 +216,128 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
+            <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <div id="splash">
-                    <iframe src="https://embed.lottiefiles.com/animation/9844" style="width: 1000px; height: 600px; border: transparent"></iframe>
-                </div>
-            <div class="container-fluid" id="tableUser">
+                <h1 class="h3 mb-2 text-gray-800">Requests Information</h1>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">All User</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Requests</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th style="width: 30px">Index</th>
-                                    <th style="width: 210px">Full Name</th>
+                                    <th style="font-size: 15px; width: 10px">Index</th>
                                     <th>Email</th>
-                                    <th></th>
+                                    <th>Full Name</th>
+                                    <th>Description</th>
+                                    <th>Create Date</th>
+                                    <th>Zoom</th>
+                                    <th>Google Meet</th>
+                                    <th>Accept</th>
+                                    <th>Deny</th>
                                 </tr>
                                 </thead>
                                 <script>
                                     const container = document.getElementById("container");
                                     let i = 0;
-                                    const urlStatus="/masa/api/user-management/update-status/";
-                                    const urlRole="/masa/api/user-management/update-role/";
+                                    const urlStatus="${Masa.SERVER_HOST}/api/user-management/update-status/";
+                                    const urlRole="${Masa.SERVER_HOST}/api/user-management/update-role/";
+                                    let urlAccept = "${Masa.SERVER_HOST}/api/admin/request-management/response/";
+                                    let accept = "?answer=accept";
+                                    let deny = "?answer=denied";
                                     let idsession = 0;
-                                    let space = '';
-                                    let z = 'z';
-                                    let bugreload = '#';
-                                    const statusAlert = "UPDATE STATUS SUCCESS";
-                                    const roleAlert = "UPDATE ROLE SUCCESS";
-                                    let paramName;
-                                    if(location.search.replace('?name=','')==='' || location.search.includes('page')){
-                                        urlTable = "/masa/api/user-management/all";
-                                    }else{
-                                        urlTable = "/masa/api/user-management/get-user-by-name/"+location.search.replace('?name=','').replace('%20',' ');
-                                    }
+                                    let htmlElements = "";
+                                    const spec = 'ZZZ';
+                                    const space = '';
+                                    const acceptStatus = "ACCEPT REQUEST SUCCESSFULLY!";
+                                    const deniedStatus = "ACCEPT REQUEST SUCCESSFULLY!";
                                     $.getJSON(
-                                        urlTable,
+                                        "${Masa.SERVER_HOST}/api/user-management/get_user_in_processing",
                                         function (data) {
-                                            let htmlElements = "";
-                                            let currentPage;
-                                            if(window.location.href.indexOf("page")>0){
-                                                currentPage = window.location.href.slice(window.location.href.indexOf("page=")).replaceAll("page=",'');
-                                            }else{
-                                                currentPage = 0;
-                                            }
-                                            const arr = data["users"].slice(10*currentPage, 10*currentPage+11);
+                                            const arr = data["userEntities"];
                                             arr.forEach((element) => {
-                                                i++;
-                                                idsession = 'z'+ element.id;
-                                                if(element.status.status === 'ACTIVE'){
-                                                    htmlElements +=
-                                                        '<tr>'
-                                                        +'<td>'+i+'</td>'
-                                                        +'<td>'+element.fullName+'</td>'
-                                                        +'<td>'+element.email+'</td>'
-                                                        //    +'<td>'+element.status.status+'</td>'
-                                                        +'<td>'
-                                                        +'<div style="background-color: #f57640; width: 110px; height: 30px; border-radius: 25px; padding-top: 2px; padding-left: 22px; font-weight: 300">'
-                                                        +'<a href="" onClick="(function(){'
-                                                        +'const varToString = varObj => Object.keys(varObj)[0];'
-                                                        +'const '+idsession+'=i;'
-                                                        +'const x = varToString({'+idsession+'});'
-                                                        +'const url = urlStatus + x.replace(z, space);'
-                                                        +'console.log(url);'
-                                                        +'$.getJSON(url, function(data) {'
-                                                        +'console.log(data);'
-                                                        +'});'
-                                                        +'alert(statusAlert);'
-                                                        +'window.location.replace(window.location.href);'
-                                                        // +'window.location.replace(window.location.href);'
-                                                        +'})();return false;">'
-                                                        +'<button style="background-color: transparent; margin-bottom: 30px; border: none">BLOCK</button>'
-                                                        +'</a>'
-                                                        +'</div>'
-                                                        +'</td>'
-                                                        +'</tr>'
-                                                }else if(element.status.status === 'BLOCKED'){
-                                                    htmlElements +=
-                                                        '<tr>'
-                                                        +'<td>'+i+'</td>'
-                                                        +'<td>'+element.fullName+'</td>'
-                                                        +'<td>'+element.email+'</td>'
-                                                        //    +'<td>'+element.status.status+'</td>'
-                                                        +'<td>'
-                                                        +'<div style="background-color: #5bcb7d; width: 115px; height: 30px; border-radius: 25px; padding-top: 2px; padding-left: 12px; font-weight: 300">'
-                                                        +'<a href="" onClick="(function(){'
-                                                        +'const varToString = varObj => Object.keys(varObj)[0];'
-                                                        +'const '+idsession+'=i;'
-                                                        +'const x = varToString({'+idsession+'});'
-                                                        +'const url = urlStatus + x.replace(z, space);'
-                                                        +'console.log(url);'
-                                                        +'$.getJSON(url, function(data) {'
-                                                        +'console.log(data);'
-                                                        +'});'
-                                                        +'alert(statusAlert);'
-                                                        +'window.location.replace(window.location.href);'
-                                                        // +'window.location.replace(window.location.href);'
-                                                        +'})();return false;">'
-                                                        +'<button style="background-color: transparent; margin-bottom: 30px; border: none">UNBLOCK</button>'
-                                                        +'</a>'
-                                                        +'</div>'
-                                                        +'</td>'
-                                                        +'</tr>'
-                                                }
-                                                let container = document.getElementById("container");
-                                                container.innerHTML = htmlElements;
+                                                $.getJSON(
+                                                    "${Masa.SERVER_HOST}/api/request-management/requests",
+                                                    function (data2) {
+                                                        const arr2 = data2["requests"];
+                                                        arr2.forEach((element2) => {
+                                                            var time = new Date().getTime(); // get your number
+                                                            var date = new Date(element2.createdDate); // create Date object
+                                                            var stringdatetime = date.toString().replace("GMT+0700 (Indochina Time)",'');
+                                                            if(element2.userId===element.id){
+
+                                                                i++;
+                                                                idsession = 'ZZZ'+element2.id;
+                                                                htmlElements +=
+                                                                    '<tr>'
+                                                                    +'<td id="index" style="font-size: 15px; color: black; text-align: center">'+i+'</td>'
+                                                                    +'<td id="fullName" style="font-size: 15px; color: black">'
+                                                                    +element.fullName
+                                                                    +'</td>'
+                                                                    +'<td id="email" style="font-size: 15px; color: black">'
+                                                                    +element.email
+                                                                    +'</td>'
+                                                                    +'<td id="role" style="font-size: 15px; color: black">'
+                                                                    +element2.description
+                                                                    +'</td>'
+                                                                    +'<td id="role" style="font-size: 15px; color: black">'
+                                                                    +stringdatetime
+                                                                    +'</td>'
+                                                                    +'<td id="role" style="font-size: 15px; color: black"><a href="'+element2.zoomUrl+'">ZOOM</a>'
+                                                                    +'</td>'
+                                                                    +'<td id="role" style="font-size: 15px; color: black"><a href="'+element2.meetUrl+'">GOOGLE MEET</a>'
+                                                                    +'</td>'
+                                                                    +'<td>'
+                                                                    +'<div style="background-color: #33bd43; width: 90px; height: 30px; border-radius: 25px; padding-top: 3px; padding-left: 10px">'
+                                                                    +'<a href="" onClick="(function(){'
+                                                                    +'console.log(idsession);'
+                                                                    +'const varToString = varObj => Object.keys(varObj)[0];'
+                                                                    +"const "+idsession+"=i;"
+                                                                    +'const x = varToString({'+idsession+'});'
+                                                                    +'const url = (urlAccept + x +accept).replace(spec, space);'
+                                                                    +'$.getJSON(url, function(data) {'
+                                                                    +'console.log(data);'
+                                                                    +'});'
+                                                                    +'alert(acceptStatus);'
+                                                                    +'window.location.replace(window.location.href);'
+                                                                    +'})();return false;">'
+                                                                    +'<button style="background-color: transparent; color: white; border: none">ACCEPT</button>'
+                                                                    +'</a>'
+                                                                    +'</div>'
+                                                                    +'</td>'
+                                                                    +'<td>'
+                                                                    +'<div style="background-color: #d01010; width: 90px; height: 30px; border-radius: 25px; padding-top: 3px; padding-left: 10px">'
+                                                                    +'<a href="" onClick="(function(){'
+                                                                    +'console.log(idsession);'
+                                                                    +'const varToString = varObj => Object.keys(varObj)[0];'
+                                                                    +"const "+idsession+"=i;"
+                                                                    +'const x = varToString({'+idsession+'});'
+                                                                    +'const url = (urlAccept + x +deny).replace(spec, space);'
+                                                                    +'$.getJSON(url, function(data) {'
+                                                                    +'console.log(data);'
+                                                                    +'});'
+                                                                    +'alert(denyStatus);'
+                                                                    +'window.location.replace(window.location.href);'
+                                                                    +'})();return false;">'
+                                                                    +'<button style="background-color: transparent; color: white; border: none">DENY</button>'
+                                                                    +'</a>'
+                                                                    +'</div>'
+                                                                    +'</td>'
+                                                                    +'</tr>';
+                                                                let container = document.getElementById("container");
+                                                                container.innerHTML = htmlElements;
+
+                                                            }
+                                                        });
+                                                    });
                                             });
-                                        }
-                                    );
-
-
+                                        });
+                                    console.log(htmlElements);
                                 </script>
                                 <tbody id="container">
 
@@ -402,18 +352,6 @@
 
         </div>
         <!-- End of Main Content -->
-        <div style="margin-left: 550px">
-            <button style="background-color: transparent; border: none" onclick="toleft()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
-                </svg>
-            </button>
-            <button style="background-color: transparent; border: none" onclick="toright()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-                </svg>
-            </button>
-        </div>
 
         <!-- Footer -->
         <footer class="sticky-footer bg-white">

@@ -1,3 +1,5 @@
+<%@ page import="com.devlogs.masa_backend.common.Masa"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +33,7 @@
 
     <script>
         let page = 0;
-        if(window.location.href===location.protocol + '//' + location.host+"/masa/admin/management/student.html"){
+        if(window.location.href==="${Masa.SERVER_HOST}/admin/management/student.jsp"){
             setTimeout(function() {
                 $('#splash').fadeOut('fast');
             }, 300);
@@ -52,12 +54,12 @@
         function toleft(){
             if(page>0) --page;
             else page = 0;
-            window.location.replace(location.protocol + '//' + location.host+"/masa/admin/management/student.html"+"?page="+page);
+            window.location.replace("${Masa.SERVER_HOST}/admin/management/student.jsp"+"?page="+page);
             console.log(page);
         }
         function toright(){
             ++page;
-            window.location.replace(location.protocol + '//' + location.host+"/masa/admin/management/student.html"+"?page="+page);
+            window.location.replace("${Masa.SERVER_HOST}/admin/management/student.jsp"+"?page="+page);
             console.log(page);
         }
     </script>
@@ -72,7 +74,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -84,7 +86,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="index.jsp">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -97,7 +99,7 @@
             User Management
         </div>
         <li class="nav-item">
-            <a class="nav-link" href="user.html">
+            <a class="nav-link" href="user.jsp">
                 <i class="fas fa-fw fa-users"></i>
                 <span>All User</span>
             </a>
@@ -105,23 +107,23 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" href="mentor.html">
+            <a class="nav-link" href="mentor.jsp">
                 <i class="fas fa-fw fa-chalkboard-teacher"></i>
                 <span>Mentors</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="student.html">
+            <a class="nav-link" href="student.jsp">
                 <i class="fas fa-fw fa-user-graduate"></i>
                 <span>Students</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="member.html">
+            <a class="nav-link" href="member.jsp">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Other</span>
-                <p style="font-size: 10px; font-style: italic">User can become mentor</p>
+                <p style="font-size: 10px; font-style: italic">can become mentor</p>
             </a>
         </li>
 
@@ -136,7 +138,7 @@
 
         <!-- Nav Item - Meetings -->
         <li class="nav-item">
-            <a class="nav-link" href="meeting.html">
+            <a class="nav-link" href="meeting.jsp">
                 <i class="fas fa-fw fa-calendar"></i>
                 <span>Meetings</span></a>
         </li>
@@ -146,7 +148,7 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="request.html">
+            <a class="nav-link" href="request.jsp">
                 <i class="fas fa-fw fa-question"></i>
                 <span>Requests</span></a>
         </li>
@@ -180,7 +182,7 @@
                 </form>
                 <script>
                     function search(){
-                        window.location.replace('/masa/admin/management/student.html'+'?name='+document.getElementById("inputsearchname").value)
+                        window.location.replace('${Masa.SERVER_HOST}/admin/management/student.jsp'+'?name='+document.getElementById("inputsearchname").value)
                     }
                 </script>
                 <!-- Topbar Search -->
@@ -224,7 +226,7 @@
                         </div>
                     </li>
 
-                    <a href="/masa/auth-management/signout" style="color: #9b9a9a; margin-top: 21px;text-decoration: none;">
+                    <a href="${Masa.SERVER_HOST}/auth-management/signout" style="color: #9b9a9a; margin-top: 21px;text-decoration: none;">
                         <span style="font-size: 12px">Log Out</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
@@ -238,7 +240,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin Ngọc</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">${sessionScope.CURRENT_USER.fullName}</span>
                             <img class="img-profile rounded-circle"
                                  src="img/undraw_profile.svg">
                         </a>
@@ -295,17 +297,17 @@
                                 <script>
                                     const container = document.getElementById("container");
                                     let i = 0;
-                                    const urlStatus="/masa/api/user-management/update-status/";
-                                    const urlRole="/masa/api/user-management/update-role/";
+                                    const urlStatus="${Masa.SERVER_HOST}/api/user-management/update-status/";
+                                    const urlRole="${Masa.SERVER_HOST}/api/user-management/update-role/";
                                     let idsession = 0;
                                     let space = '';
                                     let z = 'z';
                                     const statusAlert = "UPDATE STATUS SUCCESS";
                                     const roleAlert = "UPDATE ROLE SUCCESS";
                                     if(location.search.replace('?name=','')==='' || location.search.includes('page')){
-                                        urlTable = "/masa/api/user-management/get-user-by-role/student";
+                                        urlTable = "${Masa.SERVER_HOST}/api/user-management/get-user-by-role/student";
                                     }else{
-                                        urlTable = "/masa/api/user-management/get-user-by-name/"+location.search.replace('?name=','').replace('%20',' ');
+                                        urlTable = "${Masa.SERVER_HOST}/api/user-management/get-user-by-name/"+location.search.replace('?name=','').replace('%20',' ');
                                     }
                                     $.getJSON(
                                         urlTable,
@@ -319,7 +321,7 @@
                                             }
                                             const arr = data["users"].slice(10*currentPage, 10*currentPage+11);
                                             arr.forEach((element) => {
-                                                const urlHref = "/masa/api/user-management/update-role/";
+                                                const urlHref = "${Masa.SERVER_HOST}/api/user-management/update-role/";
                                                 i++;
                                                 idsession = 'z'+ element.id;
                                                 if(element.role.type === 'STUDENT'){

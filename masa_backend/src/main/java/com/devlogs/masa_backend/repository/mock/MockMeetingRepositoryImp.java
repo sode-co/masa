@@ -135,4 +135,26 @@ public class MockMeetingRepositoryImp implements MeetingRepository {
         return null;
     }
 
+    @Override
+    public int countAllGoingMeetingsInWeek() throws ConnectionException {
+        return 0;
+    }
+
+    @Override
+    public int countAllCreatedMeetingsInWeek() throws ConnectionException {
+        return 0;
+    }
+
+    @Override
+    public int countAllActiveMeetings() throws ConnectionException {
+        return 0;
+    }
+
+    @Override
+    public int countNumOfUserFollowedMeetingInWeek() throws ConnectionException {
+        return 0;
+    }
+
+
+
 }

@@ -134,4 +134,16 @@ public class BecomeMentorRequestRepositoryImp implements BecomeMentorRequestRepo
             throw new RuntimeException(e.getMessage());
         }
     }
+
+    @Override
+    public int countAllProcessingRequest() throws ConnectionException {
+        try {
+            int result = requestDao.countAllProcessingRequestsBecomeMentor();
+            return result;
+        } catch (SQLException e) {
+            throw new RuntimeException("Sql exception: " + e.getMessage());
+        } catch (ClassNotFoundException e) {
+            throw new ConnectionException(e.getMessage());
+        }
+    }
 }

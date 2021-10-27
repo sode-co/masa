@@ -1,3 +1,5 @@
+<%@ page import="com.devlogs.masa_backend.common.Masa"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +21,7 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
@@ -31,7 +34,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -43,7 +46,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="index.jsp">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -56,7 +59,7 @@
                 User Management
             </div>
             <li class="nav-item">
-                <a class="nav-link" href="user.html">
+                <a class="nav-link" href="user.jsp">
                     <i class="fas fa-fw fa-users"></i>
                     <span>All User</span>
                 </a>
@@ -64,20 +67,20 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="mentor.html">
+                <a class="nav-link" href="mentor.jsp">
                     <i class="fas fa-fw fa-chalkboard-teacher"></i>
                     <span>Mentors</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="student.html">
+                <a class="nav-link" href="student.jsp">
                     <i class="fas fa-fw fa-user-graduate"></i>
                     <span>Students</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="member.html">
+                <a class="nav-link" href="member.jsp">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Other</span>
                     <p style="font-size: 10px; font-style: italic">User can become mentor</p>
@@ -95,7 +98,7 @@
 
             <!-- Nav Item - Meetings -->
             <li class="nav-item">
-                <a class="nav-link" href="meeting.html">
+                <a class="nav-link" href="meeting.jsp">
                     <i class="fas fa-fw fa-calendar"></i>
                     <span>Meetings</span></a>
             </li>
@@ -105,7 +108,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="request.html">
+                <a class="nav-link" href="request.jsp">
                     <i class="fas fa-fw fa-question"></i>
                     <span>Requests</span></a>
             </li>
@@ -166,7 +169,7 @@
 
 
                         <!-- Nav Item - Messages -->
-                            <a href="/masa/auth-management/signout" style="color: #9b9a9a; margin-top: 21px;text-decoration: none;">
+                            <a href="${Masa.SERVER_HOST}/auth-management/signout" style="color: #9b9a9a; margin-top: 21px;text-decoration: none;">
                                 <span style="font-size: 12px">Log Out</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
@@ -180,7 +183,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin Ngoc</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">${sessionScope.CURRENT_USER.fullName}</span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -210,8 +213,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Meetings (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">40,000</div>
+                                                Active Meetings</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="activemeeting">40,000</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -228,11 +231,11 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                New Mentors (Annual)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">2,000</div>
+                                                Active meeting (Weekly)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="meetingsinweek">2,000</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -245,18 +248,11 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">New Member (Weekly)
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">All Created Meeting (Weekly)
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50</div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 200px" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800" id="createdmeetingweekly">50</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -275,8 +271,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                                User follow meeting</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="userfollowmeeting">18</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -289,6 +285,28 @@
 
                     <!-- Content Row -->
 
+                    <script>
+                        $.getJSON(
+                            "${Masa.SERVER_HOST}/api/meeting-statistics/active-meetings",
+                            function (data) {
+                                document.getElementById("activemeeting").innerHTML = data.numOfMeetings;
+                        })
+                        $.getJSON(
+                            "${Masa.SERVER_HOST}/api/meeting-statistics/meetings-in-week",
+                            function (data) {
+                                document.getElementById("meetingsinweek").innerHTML = data.numOfMeetings;
+                        })
+                        $.getJSON(
+                            "${Masa.SERVER_HOST}/api/meeting-statistics/user-followed-meetings",
+                            function (data) {
+                                document.getElementById("userfollowmeeting").innerHTML = data.numOfUserFollowed;
+                        })
+                        $.getJSON(
+                            "${Masa.SERVER_HOST}/api/meeting-statistics/created-meetings-in-week",
+                            function (data) {
+                                document.getElementById("createdmeetingweekly").innerHTML = data.numOfMeetings;
+                        })
+                    </script>
                     <div class="row">
 
 
@@ -307,35 +325,30 @@
                             <!-- Illustrations -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Google Analytics</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="text-center">
                                         <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
                                             src="img/undraw_posting_photo.svg" alt="...">
                                     </div>
-                                    <p>Add some quality, svg illustrations to your project courtesy of <a
-                                            target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
-                                        constantly updated collection of beautiful svg images that you can use
-                                        completely free and without attribution!</p>
-                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
-                                        unDraw &rarr;</a>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus pulvinar elit non porta. Fusce id ante facilisis, ornare massa eu, euismod felis. Nunc non ex nec diam pharetra maximus ac non tellus. Nam ac molestie sapien. Duis nec lacus non lorem facilisis gravida id in velit. Nunc at eros mollis, gravida purus quis, bibendum nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat a augue a aliquam.
+
+                                        Aliquam porttitor gravida velit, ut sodales velit. Vestibulum pulvinar eleifend eleifend. Praesent sollicitudin malesuada sapien. Vestibulum viverra volutpat tellus, sed bibendum nulla interdum sit amet. Sed porta ultricies egestas. Donec vulputate, augue in sollicitudin suscipit, sem dui mattis massa, a facilisis mauris est sit amet elit. Mauris dignissim placerat arcu. Aenean sagittis ex id ipsum sodales semper.
+
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus pulvinar elit non porta. Fusce id ante facilisis, ornare massa eu, euismod felis. Nunc non ex nec diam pharetra maximus ac non tellus. Nam ac molestie sapien. Duis nec lacus non lorem facilisis gravida id in velit. Nunc at eros mollis, gravida purus quis, bibendum nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat a augue a aliquam.
+
+                                        Aliquam porttitor gravida velit, ut sodales velit. Vestibulum pulvinar eleifend eleifend. Praesent sollicitudin malesuada sapien. Vestibulum viverra volutpat tellus, sed bibendum nulla interdum sit amet. Sed porta ultricies egestas. Donec vulputate, augue in sollicitudin suscipit, sem dui mattis massa, a facilisis mauris est sit amet elit. Mauris dignissim placerat arcu. Aenean sagittis ex id ipsum sodales semper.
+
+
+                                    </p>
                                 </div>
                             </div>
 
                             <!-- Approach -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
-                                </div>
-                                <div class="card-body">
-                                    <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
-                                        CSS bloat and poor page performance. Custom CSS classes are used to create
-                                        custom components and custom utility classes.</p>
-                                    <p class="mb-0">Before working with this theme, you should become familiar with the
-                                        Bootstrap framework, especially the utility classes.</p>
-                                </div>
-                            </div>
 
                         </div>
                     </div>
@@ -350,7 +363,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; slimair.cool MASA 2021</span>
                     </div>
                 </div>
             </footer>
