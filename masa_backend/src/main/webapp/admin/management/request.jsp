@@ -267,72 +267,72 @@
                                                     function (data2) {
                                                         const arr2 = data2["requests"];
                                                         arr2.forEach((element2) => {
+                                                            if (element2.status === "PROCESSING") {
                                                             var time = new Date().getTime(); // get your number
                                                             var date = new Date(element2.createdDate); // create Date object
                                                             var stringdatetime = date.toString().replace("GMT+0700 (Indochina Time)",'');
-                                                            if(element2.userId===element.id){
-
+                                                            if(element2.userId===element.id) {
                                                                 i++;
-                                                                idsession = 'ZZZ'+element2.id;
+                                                                idsession = 'ZZZ' + element2.id;
                                                                 htmlElements +=
                                                                     '<tr>'
-                                                                    +'<td id="index" style="font-size: 15px; color: black; text-align: center">'+i+'</td>'
-                                                                    +'<td id="fullName" style="font-size: 15px; color: black">'
-                                                                    +element.fullName
-                                                                    +'</td>'
-                                                                    +'<td id="email" style="font-size: 15px; color: black">'
-                                                                    +element.email
-                                                                    +'</td>'
-                                                                    +'<td id="role" style="font-size: 15px; color: black">'
-                                                                    +element2.description
-                                                                    +'</td>'
-                                                                    +'<td id="role" style="font-size: 15px; color: black">'
-                                                                    +stringdatetime
-                                                                    +'</td>'
-                                                                    +'<td id="role" style="font-size: 15px; color: black"><a href="'+element2.zoomUrl+'">ZOOM</a>'
-                                                                    +'</td>'
-                                                                    +'<td id="role" style="font-size: 15px; color: black"><a href="'+element2.meetUrl+'">GOOGLE MEET</a>'
-                                                                    +'</td>'
-                                                                    +'<td>'
-                                                                    +'<div style="background-color: #33bd43; width: 90px; height: 30px; border-radius: 25px; padding-top: 3px; padding-left: 10px">'
-                                                                    +'<a href="" onClick="(function(){'
-                                                                    +'console.log(idsession);'
-                                                                    +'const varToString = varObj => Object.keys(varObj)[0];'
-                                                                    +"const "+idsession+"=i;"
-                                                                    +'const x = varToString({'+idsession+'});'
-                                                                    +'const url = (urlAccept + x +accept).replace(spec, space);'
-                                                                    +'$.getJSON(url, function(data) {'
-                                                                    +'console.log(data);'
-                                                                    +'});'
-                                                                    +'alert(acceptStatus);'
-                                                                    +'window.location.replace(window.location.href);'
-                                                                    +'})();return false;">'
-                                                                    +'<button style="background-color: transparent; color: white; border: none">ACCEPT</button>'
-                                                                    +'</a>'
-                                                                    +'</div>'
-                                                                    +'</td>'
-                                                                    +'<td>'
-                                                                    +'<div style="background-color: #d01010; width: 90px; height: 30px; border-radius: 25px; padding-top: 3px; padding-left: 10px">'
-                                                                    +'<a href="" onClick="(function(){'
-                                                                    +'console.log(idsession);'
-                                                                    +'const varToString = varObj => Object.keys(varObj)[0];'
-                                                                    +"const "+idsession+"=i;"
-                                                                    +'const x = varToString({'+idsession+'});'
-                                                                    +'const url = (urlAccept + x +deny).replace(spec, space);'
-                                                                    +'$.getJSON(url, function(data) {'
-                                                                    +'console.log(data);'
-                                                                    +'});'
-                                                                    +'alert(denyStatus);'
-                                                                    +'window.location.replace(window.location.href);'
-                                                                    +'})();return false;">'
-                                                                    +'<button style="background-color: transparent; color: white; border: none">DENY</button>'
-                                                                    +'</a>'
-                                                                    +'</div>'
-                                                                    +'</td>'
-                                                                    +'</tr>';
+                                                                    + '<td id="index" style="font-size: 15px; color: black; text-align: center">' + i + '</td>'
+                                                                    + '<td id="fullName" style="font-size: 15px; color: black">'
+                                                                    + element.fullName
+                                                                    + '</td>'
+                                                                    + '<td id="email" style="font-size: 15px; color: black">'
+                                                                    + element.email
+                                                                    + '</td>'
+                                                                    + '<td id="role" style="font-size: 15px; color: black">'
+                                                                    + element2.description
+                                                                    + '</td>'
+                                                                    + '<td id="role" style="font-size: 15px; color: black">'
+                                                                    + stringdatetime
+                                                                    + '</td>'
+                                                                    + '<td id="role" style="font-size: 15px; color: black"><a href="' + element2.zoomUrl + '">ZOOM</a>'
+                                                                    + '</td>'
+                                                                    + '<td id="role" style="font-size: 15px; color: black"><a href="' + element2.meetUrl + '">GOOGLE MEET</a>'
+                                                                    + '</td>'
+                                                                    + '<td>'
+                                                                    + '<div style="background-color: #33bd43; width: 90px; height: 30px; border-radius: 25px; padding-top: 3px; padding-left: 10px">'
+                                                                    + '<a href="" onClick="(function(){'
+                                                                    + 'console.log(idsession);'
+                                                                    + 'const varToString = varObj => Object.keys(varObj)[0];'
+                                                                    + "const " + idsession + "=i;"
+                                                                    + 'const x = varToString({' + idsession + '});'
+                                                                    + 'const url = (urlAccept + x +accept).replace(spec, space);'
+                                                                    + '$.getJSON(url, function(data) {'
+                                                                    + 'console.log(data);'
+                                                                    + '});'
+                                                                    + 'alert(acceptStatus);'
+                                                                    + 'window.location.replace(window.location.href);'
+                                                                    + '})();return false;">'
+                                                                    + '<button style="background-color: transparent; color: white; border: none">ACCEPT</button>'
+                                                                    + '</a>'
+                                                                    + '</div>'
+                                                                    + '</td>'
+                                                                    + '<td>'
+                                                                    + '<div style="background-color: #d01010; width: 90px; height: 30px; border-radius: 25px; padding-top: 3px; padding-left: 10px">'
+                                                                    + '<a href="" onClick="(function(){'
+                                                                    + 'console.log(idsession);'
+                                                                    + 'const varToString = varObj => Object.keys(varObj)[0];'
+                                                                    + "const " + idsession + "=i;"
+                                                                    + 'const x = varToString({' + idsession + '});'
+                                                                    + 'const url = (urlAccept + x +deny).replace(spec, space);'
+                                                                    + '$.getJSON(url, function(data) {'
+                                                                    + 'console.log(data);'
+                                                                    + '});'
+                                                                    + 'alert(denyStatus);'
+                                                                    + 'window.location.replace(window.location.href);'
+                                                                    + '})();return false;">'
+                                                                    + '<button style="background-color: transparent; color: white; border: none">DENY</button>'
+                                                                    + '</a>'
+                                                                    + '</div>'
+                                                                    + '</td>'
+                                                                    + '</tr>';
                                                                 let container = document.getElementById("container");
                                                                 container.innerHTML = htmlElements;
-
+                                                            }
                                                             }
                                                         });
                                                     });
