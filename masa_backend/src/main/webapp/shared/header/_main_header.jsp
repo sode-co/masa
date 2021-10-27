@@ -4,6 +4,14 @@
 <html>
 <head>
   <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+  <script>
+    function search(){
+      const searchMethod = document.getElementById("searchmethod").value;
+      const searchKey = document.getElementById("searchkeyword").value;
+      const urlForward = "${Masa.SERVER_HOST}/member/searchmeeting.jsp?method="+searchMethod+"&keyword="+searchKey;
+      window.open(urlForward);
+    }
+  </script>
 </head>
 <body>
 <header id="overlay">
@@ -20,7 +28,7 @@
                 <div class="flex items-center h-12 border border-gray-200 rounded w-30">
                   <input name="select" id="searchkeyword" class="w-full px-4 text-gray-800 outline-none appearance-none" checked />
                   <select
-                          id="drop"
+                          id="searchmethod"
                           class="h-10 text-gray-600 border-0 appearance-none hover:border-0 focus:border-0"
                           style="border: none; border-color: transparent"
                   >
@@ -28,6 +36,7 @@
                     <option>Title</option>
                   </select>
                   <button
+                          onclick="search()"
                           class="pl-5 pr-5 text-gray-300 transition-all outline-none cursor-pointer  focus:outline-none hover:text-gray-600"
                   >
                     <svg
@@ -79,6 +88,7 @@
       <div class="w-8 h-1 rounded opacity-25"></div>
       <div class="w-8 h-1 rounded opacity-25"></div>
     </div>
+
   </nav>
 </header>
 </body>
