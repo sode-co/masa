@@ -339,8 +339,23 @@
                                 </tr>
                                 </thead>
                                 <script>
-                                    const urlTable = '${Masa.SERVER_HOST}/api/meeting-management/active-meetings';
-
+                                    let urlTable = '${Masa.SERVER_HOST}/api/meeting-management/active-meetings';
+                                    const method = location.search.slice(location.search.indexOf("method="),location.search.indexOf("&keyword=")).replace("method=", "");
+                                    const keyword = location.search.slice(location.search.indexOf("keyword=")).replace("keyword=", "");
+                                    if(window.location.href.includes("method")){
+                                        if(method==="Title"){
+                                            urlTable ="${Masa.SERVER_HOST}"+"/api/meeting-management/meetings/title/"+keyword;
+                                        }
+                                        if(method==="Mentor"){
+                                            urlTable ="${Masa.SERVER_HOST}"+"/api/meeting-management/meetings/hostname/"+keyword;
+                                        }
+                                        if(keyword===""){
+                                            urlTable = '${Masa.SERVER_HOST}/api/meeting-management/active-meetings';
+                                        }
+                                    }
+                                    console.log('method',method);
+                                    console.log('keyword',keyword);
+                                    console.log('urlTable',urlTable);
                                     function calldialog(param){
                                             document.getElementById('dialogiframeelement').src = "${Masa.SERVER_HOST}/admin/management/descriptiondialog.jsp?id="+param;
                                         $(document).ready(function() {
@@ -353,9 +368,9 @@
                                         });
                                     }
                                     function search(){
-                                        if(document.getElementById("searchkeyword").innerText !== ""){
-
-                                        }
+                                        const method = document.getElementById("searchmethod").value;
+                                        const keyword = document.getElementById("searchkeyword").value;
+                                        window.location.replace("${Masa.SERVER_HOST}/admin/management/meeting.jsp?method="+method+"&keyword="+keyword);
                                     }
 
 
@@ -379,8 +394,7 @@
                                             }else{
                                                 currentPage = 0;
                                             }
-
-                                            const arr = data["meetings"].slice(10*currentPage+1, 10*currentPage+11);
+                                            const arr = data["meetings"].slice(10*currentPage, 10*currentPage+10);
                                             arr.forEach((element,i) => {
                                                 const urlHref = "${Masa.SERVER_HOST}/api/user-management/update-role/";
                                                 var start = new Date(element.startTime); // create Date object

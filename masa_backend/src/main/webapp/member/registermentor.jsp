@@ -1,4 +1,5 @@
-<%--
+<%--<%@ page import="com.devlogs.masa_backend.common.Masa"%>
+
   Created by IntelliJ IDEA.
   User: Admin
   Date: 10/8/2021
@@ -6,6 +7,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.devlogs.masa_backend.common.Masa"%>
+
 <html>
 <head>
     <title>Register Become Mentor</title>
@@ -36,7 +39,7 @@
   <script>
     function becomeMentor () {
       var xhr = new XMLHttpRequest();
-      const url = `http://localhost:8080/masa/api/mentor-management/become-mentor/${CURRENT_USER.getId()}`;
+      const url = `${Masa.SERVER_HOST}/api/mentor-management/become-mentor/${CURRENT_USER.getId()}`;
       console.log('url', url);
       xhr.open("POST", url);
       xhr.setRequestHeader("Accept", "application/json");
@@ -281,7 +284,7 @@
             </div>
             <div class="flex -mx-3">
                 <div class="w-full px-3 mb-5">
-                  <label for="" class="px-1 text-xs font-semibold">Description</label>
+                  <label class="px-1 text-xs font-semibold">Description</label>
                   <div class="flex">
                     <div
                       class="z-10 flex items-center justify-center w-10 pl-1 text-center pointer-events-none "
@@ -295,13 +298,14 @@
                       type="text"
                       class="w-full py-2 pl-10 pr-3 -ml-10 border-2 border-gray-200 rounded-lg outline-none focus:border-indigo-500"
                       placeholder="Why do you want to become a mentor?"
+                      id="description"
                     />
                   </div>
                 </div>
               </div>
               <div class="flex -mx-3">
                 <div class="w-full px-3 mb-5">
-                  <label for="" class="px-1 text-xs font-semibold">Zoom url</label>
+                  <label class="px-1 text-xs font-semibold">Zoom url</label>
                   <div class="flex">
                     <div
                       class="z-10 flex items-center justify-center w-10 pl-1 text-center pointer-events-none "
@@ -336,7 +340,7 @@
                     <input
                     type="text" id="googleMeetUrl"
                       class="w-full py-2 pl-10 pr-3 -ml-10 border-2 border-gray-200 rounded-lg outline-none focus:border-indigo-500"
-                      placeholder="https://meet.google.com/example"
+                        placeholder="https://meet.google.com/example"
                     />
                   </div>
                 </div>
@@ -351,9 +355,9 @@
                   </button>
                 </div>
               </div>
-              <p class="text-center">Continue exploring? <a href="/masa/member/meeting/index.jsp" class="text-blue-500">Home</a></p>
+              <p class="text-center">Continue exploring? <a href="${Masa.SERVER_HOST}/member/home.jsp" class="text-blue-500">Home</a></p>
               <p class="text-center"></p>
-              <p class="text-center">Already done? <a href="/masa/auth-management/signout" class="text-blue-500">Logout</a></p>
+              <p class="text-center">Already done? <a href="${Masa.SERVER_HOST}/auth-management/signout" class="text-blue-500">Logout</a></p>
             
             </div>
             </div>
