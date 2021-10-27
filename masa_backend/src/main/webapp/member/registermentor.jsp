@@ -33,10 +33,11 @@
       integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
       crossorigin="anonymous"
     ></script>
+    <%@include file="/shared/gg_analytics/_analytics_script"%>
     <style>
       @import url("https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css");
     </style>
-  <script>
+    <script>
     function becomeMentor () {
       var xhr = new XMLHttpRequest();
       const url = `${Masa.SERVER_HOST}/api/mentor-management/become-mentor/${sessionScope.CURRENT_USER.getId()}`;

@@ -17,6 +17,7 @@
             background-color: #00B4CC;
         }
     </style>
+    <%@include file="/shared/gg_analytics/_analytics_script"%>
 </head>
 <body>
 <div class="flex w-full h-screen bg-gray-800">

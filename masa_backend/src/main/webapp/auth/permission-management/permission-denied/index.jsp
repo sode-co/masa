@@ -11,6 +11,7 @@
 <head>
     <title>Title</title>
     <link href="${Masa.SERVER_HOST}/shared/styles/auth/permission-denied/style.css" rel="stylesheet" type="text/css"/>
+    <%@include file="../../../shared/gg_analytics/_analytics_script"%>
 </head>
 <body>
     
