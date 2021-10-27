@@ -65,6 +65,11 @@ public class AuthFilter implements Filter {
         MasaLog.normalLog("EncodedResource" + encodedResource);
 
         if (googleAccessToken.isEmpty()) {
+            if (resource.contains("shared/icon") || resource.contains("shared/styles")) {
+                // get shared resource => allow
+                chain.doFilter(request, response);
+                return;
+            }
             if (resource.isEmpty()) {
                 MasaLog.normalLog("NO ACCESS_TOKEN GO MAIN PAGE, ALLOWED");
                 // means user want to go to main page => allowed even user don't have google_access token

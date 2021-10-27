@@ -8,29 +8,21 @@ import com.devlogs.masa_backend.servlets.filters.RoleFilter;
 import com.devlogs.masa_backend.servlets.login.GoogleLoginProcessServlet;
 import com.devlogs.masa_backend.servlets.login.LoginServlet;
 import com.devlogs.masa_backend.servlets.meeting.createmeeting.CreateMeetingServlet;
-
 import com.devlogs.masa_backend.servlets.meeting.deletemeeting.DeleteMeetingServlet;
 import com.devlogs.masa_backend.servlets.meeting.getmeeting.*;
+import com.devlogs.masa_backend.servlets.meeting.statisticize.GetNumOfActiveMeetingsServlet;
+import com.devlogs.masa_backend.servlets.meeting.statisticize.GetNumOfCreatedMeetingsInWeekServlet;
+import com.devlogs.masa_backend.servlets.meeting.statisticize.GetNumOfMeetingsInWeekServlet;
+import com.devlogs.masa_backend.servlets.meeting.statisticize.GetNumOfUserFollowedMeetingInWeekServlet;
 import com.devlogs.masa_backend.servlets.meeting.updatemeeting.UpdateMeetingServlet;
 import com.devlogs.masa_backend.servlets.meeting_question.createMeetingQuestion.CreateMeetingQuestionServlet;
 import com.devlogs.masa_backend.servlets.meeting_question.getMeetingQuestion.GetAllMeetingQuestionByMeetingIdServlet;
 import com.devlogs.masa_backend.servlets.request_managment.AnswerRequestServlet;
 import com.devlogs.masa_backend.servlets.request_managment.getRequest.GetAllRequestServlet;
 import com.devlogs.masa_backend.servlets.request_managment.getRequest.GetRequestByUserIdServlet;
-
-
-import com.devlogs.masa_backend.servlets.topics.GetAllTopicsServlet;
-
-
-import com.devlogs.masa_backend.servlets.request_managment.AnswerRequestServlet;
-
-
-
+import com.devlogs.masa_backend.servlets.request_managment.statisticize.GetNumberOfProcessingRequestsServlet;
 import com.devlogs.masa_backend.servlets.topics.GetAllTopicsServlet;
 import com.devlogs.masa_backend.servlets.usermanagement.*;
-
-//import com.devlogs.masa_backend.servlets.usermanagement.UpdateUserRoleServlet;
-
 import com.devlogs.masa_backend.servlets.usermanagement.get_user_from_request.GetUserFromRequestProcessingServlet;
 import dagger.Subcomponent;
 
@@ -99,6 +91,7 @@ public interface ControllerComponent {
     void inject(GetUserFromRequestProcessingServlet getUserFromRequestProcessingServlet);
 
     void inject(GetMeetingByIdServlet getMeetingByIdServlet);
+
     void inject(GetAllMeetingsByHostNameServlet getAllMeetingsByHostNameServlet);
 
     void inject(GetAllMeetingsByTitleServlet getAllMeetingsByTitleServlet);
@@ -108,6 +101,16 @@ public interface ControllerComponent {
     void inject(GetAllActiveMeetingServlet getAllActiveMeetingServlet);
 
     void inject(GetOnGoingMeetingsServlet getOnGoingMeetingsServlet);
+
+    void inject(GetNumberOfProcessingRequestsServlet getNumberOfProcessingRequestsServlet);
+
+    void inject(GetNumOfMeetingsInWeekServlet getNumOfMeetingsInWeekServlet);
+
+    void inject(GetNumOfActiveMeetingsServlet getNumOfActiveMeetingsServlet);
+
+    void inject(GetNumOfUserFollowedMeetingInWeekServlet getNumOfUserFollowedMeetingInWeekServlet);
+
+    void inject(GetNumOfCreatedMeetingsInWeekServlet getNumOfCreatedMeetingsInWeekServlet);
 }
 
 

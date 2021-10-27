@@ -18,7 +18,7 @@
       href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="${Masa.SERVER_HOST}/shared/styles.css">
+    <link rel="stylesheet" href="${Masa.SERVER_HOST}/shared/styles/styles.css">
   </head>
   <body>
     <!-- Navigation -->
@@ -111,7 +111,7 @@
         WELCOME TO
       </h1>
       <img
-        src="${Masa.SERVER_HOST}/login/hello.jpg"
+        src="${Masa.SERVER_HOST}/shared/icon/hello.jpg"
         alt="Welcome banner"
         width="95%"
         height="95%"
