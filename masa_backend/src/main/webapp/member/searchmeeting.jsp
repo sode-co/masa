@@ -127,7 +127,6 @@
                     </div>
                     <script>
                         document.getElementById("createdmeeting").src = "${Masa.SERVER_HOST}/shared/layout/searchresult.jsp"+location.search;
-
                     </script>
                 </div>
             </div>

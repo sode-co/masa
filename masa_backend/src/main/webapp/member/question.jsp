@@ -6,8 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Question</title>
+    <%@include file="/shared/gg_analytics/_analytics_script"%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+        if (window.location.href.includes("followed")){
+            const newUrl = window.location.href.slice(0,window.location.href.indexOf("&followed=")).replace("&followed=","")+window.location.href.slice(window.location.href.indexOf("&page="));
+            // console.log(newUrl);
+            window.location.replace(newUrl);
+        }
+
         const meetingId = location.search.slice(location.search.indexOf("?id="),location.search.indexOf("&page")).replace("?id=","");
         function askquestion(){
                 const json = {

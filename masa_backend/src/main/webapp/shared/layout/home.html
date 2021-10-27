@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+    <link rel="dns-prefetch" href="//unpkg.com" />
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+    <style>
+        div#carousel_wrapper {
+            overflow: hidden;
+            position: relative;
+            width: 5000px;
+            height: 400px;
+        }
+        
+        ul {
+            padding: 0px;
+            /* margin-left: 20%; */
+            /* margin-right: 20%; */
+            position: absolute;
+            left: 0px;
+            width: 450px;
+            height: 450px;
+            overflow: hidden;
+        }
+        
+        ul li {
+            list-style: none;
+            float: left;
+        }
+        
+        ul li div {
+            border: 1px solid white;
+            width: 300px;
+            height: 400px;
+        }
+        
+        .modal.fade {
+            opacity: 1;
+        }
+        
+        .modal.fade .modal-dialog {
+            -webkit-transform: translate(0);
+            -moz-transform: translate(0);
+            transform: translate(0);
+        }
+    </style>
+    <script>
+        function testAnim(x) {
+            $(".modal .modal-dialog").attr("class", "modal-dialog  " + x + "  animated");
+        }
+        $("#myModal").on("show.bs.modal", function(e) {
+            var anim = $("#entrance").val();
+            testAnim(anim);
+        });
+        $("#myModal").on("hide.bs.modal", function(e) {
+            var anim = $("#exit").val();
+            testAnim(anim);
+        });
+    </script>
+</head>
+
+<body>
+    <section class="text-gray-600 body-font">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-wrap w-full mb-8">
+                <div class="w-full mb-6 lg:mb-0 sm:ml-20">
+                    <div class="flex flex-col flex-1 float-left">
+                        <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">New Meeting</h1>
+
+                        <div class="w-20 h-1 bg-blue-500 rounded"></div>
+                    </div>
+                    <div class="flex flex-col flex-1 float-right">
+                        <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">New Meeting</h1>
+
+                        <div class="w-20 h-1 bg-blue-500 rounded"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="carousel_wrapper" class="mx-auto space-x-4 md:flex md:justify-center md:space-x-8 md:px-8">
+                <ul>
+                    <!-- Bat dau 1 card meeting -->
+                    <li>
+                        <div>
+                            <div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">
+                                <div class="flex flex-col items-center justify-center w-sm">
+                                    <div class="">
+                                        <img class="object-cover w-64 h-64 mx-auto" src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/a17abde8d83650a582a28432/users-with-speech-bubbles-vector_53876-82250.jpg" alt="" />
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <h1 class="mb-2 text-3xl font-bold text-green-600">Data Analysis</h1>
+                                        <h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">Tam Nhu</strong></h2>
+                                        <p class="mt-4 text-gray-600">20:00 Oct 20th</p>
+                                        <button type="button" data-toggle="modal" data-target="#myModal" class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400">
+                                                See more
+                                            </button>
+                                        <button type="button" class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400">
+                                                Join now
+                                            </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Ket thuc 1 card meeting -->
+                    <!-- Bat dau 1 card meeting -->
+                    <li>
+                        <div>
+                            <div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">
+                                <div class="flex flex-col items-center justify-center w-sm">
+                                    <div class="">
+                                        <img class="object-cover w-64 h-64 mx-auto" src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/a17abde8d83650a582a28432/users-with-speech-bubbles-vector_53876-82250.jpg" alt="" />
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <h1 class="mb-2 text-3xl font-bold text-green-600">Data Analysis</h1>
+                                        <h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">Tam Nhu</strong></h2>
+                                        <p class="mt-4 text-gray-600">20:00 Oct 20th</p>
+                                        <button type="button" data-toggle="modal" data-target="#myModal" class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400">
+                                                See more
+                                            </button>
+                                        <button type="button" class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400">
+                                                Join now
+                                            </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Ket thuc 1 card meeting -->
+                    <!-- Bat dau 1 card meeting -->
+                    <li>
+                        <div>
+                            <div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">
+                                <div class="flex flex-col items-center justify-center w-sm">
+                                    <div class="">
+                                        <img class="object-cover w-64 h-64 mx-auto" src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/a17abde8d83650a582a28432/users-with-speech-bubbles-vector_53876-82250.jpg" alt="" />
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <h1 class="mb-2 text-3xl font-bold text-green-600">Data Analysis</h1>
+                                        <h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">Tam Nhu</strong></h2>
+                                        <p class="mt-4 text-gray-600">20:00 Oct 20th</p>
+                                        <button type="button" data-toggle="modal" data-target="#myModal" class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400">
+                                                See more
+                                            </button>
+                                        <button type="button" class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400">
+                                                Join now
+                                            </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Ket thuc 1 card meeting -->
+                    <!-- Bat dau 1 card meeting -->
+                    <li>
+                        <div>
+                            <div class="px-4 py-4 mx-auto mt-16 transition duration-500 transform bg-white shadow-lg bg-whit rounded-xl hover:shadow-xl hover:scale-110 md:mx-0">
+                                <div class="flex flex-col items-center justify-center w-sm">
+                                    <div class="">
+                                        <img class="object-cover w-64 h-64 mx-auto" src="https://images01.nicepage.com/c461c07a441a5d220e8feb1a/a17abde8d83650a582a28432/users-with-speech-bubbles-vector_53876-82250.jpg" alt="" />
+                                    </div>
+                                    <div class="mt-2 text-center">
+                                        <h1 class="mb-2 text-3xl font-bold text-green-600">Data Analysis</h1>
+                                        <h2 class="text-2xl text-indigo-600">with mentor <strong class="py-2 text-indigo-600">Tam Nhu</strong></h2>
+                                        <p class="mt-4 text-gray-600">20:00 Oct 20th</p>
+                                        <button type="button" data-toggle="modal" data-target="#myModal" class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400">
+                                                See more
+                                            </button>
+                                        <button type="button" class="px-8 py-2 mt-8 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400">
+                                                Join now
+                                            </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Ket thuc 1 card meeting -->
+                </ul>
+                <button id="left" class="absolute left-0 w-20 h-20 mt-32 -ml-6 text-2xl text-indigo-600 bg-white rounded-full shadow-md top-20 hover:text-indigo-400 focus:text-indigo-400 focus:outline-none focus:shadow-outline">
+                        <span class="block" style="transform: scale(-1)">&#x279c;</span>
+                    </button>
+                <button id="right" class="absolute right-0 w-20 h-20 mt-32 -mr-6 text-2xl text-indigo-600 bg-white rounded-full shadow-md top-20 hover:text-indigo-400 focus:text-indigo-400 focus:outline-none focus:shadow-outline">
+                        <span class="block" style="transform: scale(1)">&#x279c;</span>
+                    </button>
+            </div>
+            <!-- Dialog -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="font-sans modal-dialog" role="document">
+                    <div class="rounded-3xl modal-content" style="width: 680px;">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            <h4 class="text-2xl font-bold text-black mt-11 ml-14 modal-title" id="myModalLabel">Meeting Information</h4>
+                            <div>
+                                <h1 class="relative inline-block mb-1 text-5xl font-semibold text-gray-900 mt-11 ml-14 date modal-title">React for beginner</h1><a href="#" class="text-2xl font-semibold text-blue-800 ml-7">Join Zoom</a><br>
+                                <span class="relative inline-block pt-2 text-2xl font-normal text-black ml-14 date modal-title">with mentor <span class="text-2xl font-normal text-blue-800">Thieu Ngoc</span></span>
+                                <div class="flex ml-7 modal-body">
+                                    <span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title">10:10</span>
+                                    <h1 class="relative inline-block my-auto ml-2 mr-2 text-2xl font-semibold text-gray-900 date modal-title p2">to:</h1>
+                                    <span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title">20:20</span>
+                                    <h1 class="relative inline-block my-auto ml-2 mr-2 text-2xl font-semibold text-gray-900 date modal-title p2">date:</h1>
+                                    <span class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200 rounded-2xl date modal-title">15/05/2021</span>
+                                </div>
+                                <div class="flex mb-4 modal-body">
+                                    <p class="mr-5 font-normal text-gray-500 ml-9">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod ut sit lacus risus malesuada magna lectus. Aliquet viverra volutpat orci lacus aliquam, amet duis viverra. Auctor tortor facilisis magna praesent nunc,
+                                        tristique felis amet, nibh. Lacinia mauris vulputate quis pretium sed. Arcu risus ac justo condimentum amet, mauris tempor. Posuere viverra pellentesque tempus euismod est aliquam sit enim massa. Potenti volutpat,
+                                        sed turpis tempor arcu elementum.</p>
+
+                                </div>
+                            </div>
+                            <div class="flex justify-center w-full space-x-16 mt-9 mb-14">
+                                <button class="p-4 text-2xl font-semibold text-black bg-transparent border-2 border-gray-200 pl-28 pr-28 rounded-2xl hover:text-blue-500 focus:border-4 focus:border-blue-300">
+                                        Follow
+                                    </button>
+
+                                <button class="p-4 pl-20 pr-20 text-2xl font-semibold text-white bg-indigo-700 border-blue-300 rounded-2xl focus:border-4 hover:bg-indigo-900">
+                                        Leave question
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- <div id="buttons">
+            <button id="left">Left</button>
+            <button id="right">Right</button>
+        </div> -->
+    <script>
+        var container = $("#carousel_wrapper");
+
+        var runner = container.find("ul");
+        var liWidth = runner.find("li:first").outerWidth();
+        var itemsPerPage = 4;
+        var noofitems = runner.find("li").length;
+
+        runner.width(noofitems * liWidth);
+        container.width(itemsPerPage * liWidth);
+
+        $("#right").click(function() {
+            $(runner).animate({
+                left: "-=310px"
+            }, "slow");
+        });
+
+        $("#left").click(function() {
+            $(runner).animate({
+                left: "+=310px"
+            }, "slow");
+        });
+    </script>
+</body>
+
+</html>

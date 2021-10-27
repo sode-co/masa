@@ -8,10 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
     <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
-    
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
     <link rel="dns-prefetch" href="//unpkg.com" />
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -36,7 +36,7 @@
                     "Content-Type": "application/json",
                 },
             };
-            fetch("${Masa.SERVER_HOST}/api/appointment-management/create", options)
+            fetch("../../api/appointment-management/create", options)
                 .then((res) => res.json())
                 .then((res) => {
                         alert("Follow meeting success");
@@ -58,7 +58,7 @@
                     "Content-Type": "application/json",
                 },
             };
-            fetch("${Masa.SERVER_HOST}/api/appointment-management/remove", options)
+            fetch("../../api/appointment-management/remove", options)
                 .then((res) => res.json())
                 .then((res) => {
                         alert("Unfollow meeting success");
@@ -80,8 +80,8 @@
                 <button type="button" class="mr-16 close mt-9" aria-label="Close"
                         onclick="parent.autoclick()"
                 >
-                   <span class="text-4xl" aria-hidden="true"
-                   >&times;</span>
+                    <span class="text-4xl" aria-hidden="true"
+                    >&times;</span>
                 </button>
                 <h4 class="text-2xl font-bold text-black mt-16 ml-14">Meeting Information</h4>
                 <div>
@@ -91,11 +91,11 @@
                     >with mentor <span class="text-2xl font-normal text-blue-800" id="meetingmentor">Thieu Ngoc</span></span
                     >
                     <div class="flex ml-14 mt-7">
-                               <span
-                                       class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200  rounded-2xl date"
-                                       id="meetingstarttime"
-                               >10:10</span
-                               >
+                                <span
+                                        class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200  rounded-2xl date"
+                                        id="meetingstarttime"
+                                >10:10</span
+                                >
                         <h1 class="relative inline-block my-auto ml-2 mr-2 text-2xl font-semibold text-gray-900 date p2">to:</h1>
                         <span
                                 class="relative inline-block p-2 pl-5 pr-5 text-3xl font-bold text-blue-800 bg-transparent border-2 border-gray-200  rounded-2xl date"
@@ -195,5 +195,3 @@
 </script>
 </body>
 </html>
-
-
