@@ -186,6 +186,151 @@
     </script>
 </head>
 
+<<<<<<< HEAD
+            h5 {
+                font-size: 1.28571429em;
+                font-weight: 700;
+                line-height: 1.2857em;
+                margin: 0;
+            }
+
+            .card {
+                font-size: 1em;
+                overflow: hidden;
+                padding: 0;
+                border: none;
+                border-radius: 0.28571429rem;
+                box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+            }
+
+            .card-block {
+                font-size: 1em;
+                position: relative;
+                margin: 0;
+                padding: 1em;
+                border: none;
+                border-top: 1px solid white;
+                box-shadow: none;
+            }
+
+            .card-img-top {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+
+            .card-title {
+                font-size: 1.28571429em;
+                font-weight: 700;
+                line-height: 1.2857em;
+            }
+
+            .card-text {
+                clear: both;
+                margin-top: 0.5em;
+                color: rgba(0, 0, 0, 0.68);
+            }
+
+            .card-footer {
+                font-size: 1em;
+                position: static;
+                top: 0;
+                left: 0;
+                max-width: 100%;
+                padding: 0.75em 1em;
+                color: rgba(0, 0, 0, 0.4);
+                border-top: 1px solid white !important;
+                background: #fff;
+            }
+
+            .card-inverse .btn {
+                border: 1px solid rgba(0, 0, 0, 0.05);
+            }
+
+            .profile {
+                position: absolute;
+                top: -12px;
+                display: inline-block;
+                overflow: hidden;
+                box-sizing: border-box;
+                width: 25px;
+                height: 25px;
+                margin: 0;
+                border: 1px solid #fff;
+                border-radius: 50%;
+            }
+
+            .profile-avatar {
+                display: block;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+
+            .profile-inline {
+                position: relative;
+                top: 0;
+                display: inline-block;
+            }
+
+            .profile-inline ~ .card-title {
+                display: inline-block;
+                margin-left: 4px;
+                vertical-align: top;
+            }
+
+            .text-bold {
+                font-weight: 700;
+            }
+
+            .meta {
+                font-size: 1em;
+                color: rgba(0, 0, 0, 0.4);
+            }
+
+            .meta a {
+                text-decoration: none;
+                color: rgba(0, 0, 0, 0.4);
+            }
+
+            .meta a:hover {
+                color: rgba(0, 0, 0, 0.87);
+            }
+        </style>
+        <script>
+            function testAnim(x) {
+                $(".modal .modal-dialog").attr("class", "modal-dialog  " + x + "  animated");
+            }
+            $("#myModal").on("show.bs.modal", function (e) {
+                var anim = $("#entrance").val();
+                testAnim(anim);
+            });
+            $("#myModal").on("hide.bs.modal", function (e) {
+                var anim = $("#exit").val();
+                testAnim(anim);
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <!-- The meeting bat dau o day -->
+                <div class="mt-4 transition duration-500 transform col-sm-6 col-md-4 col-lg-3 hover:shadow-xl hover:scale-110">
+                    <div class="card" style="width: 70%; height: 70%">
+                        <img class="card-img-top" src="https://image.freepik.com/free-vector/programming-concept-illustration_114360-1213.jpg" />
+                        <div class="card-block" style="text-align: center">
+                            <h1 class="text-xl font-bold text-green-600">Data Analysis</h1>
+                            <h2 class="text-lg text-indigo-600">with mentor <strong class="text-indigo-600">Tam Nhu</strong></h2>
+                            <p class="text-lg text-gray-600">20:00 Oct 20th</p>
+                        </div>
+                        <div class="card-footer">
+                            <button
+                                type="button"
+                                data-toggle="modal"
+                                data-target="#myModal"
+                                class="float-left py-2 mt-1 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500  px-7 rounded-xl hover:bg-indigo-400"
+                            >
+=======
 <body>
     <div class="container">
         <div class="row">
@@ -200,6 +345,7 @@
                     </div>
                     <div class="card-footer">
                         <button type="button" data-toggle="modal" data-target="#myModal" class="float-left py-2 mt-1 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500  px-7 rounded-xl hover:bg-indigo-400">
+>>>>>>> e2497849cbe4d527c8cc6cb591618ba31d7c9606
                                 See more
                             </button>
                         <button type="button" class="float-right py-2 mt-1 mb-4 ml-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500  px-7 rounded-xl hover:bg-green-400">
