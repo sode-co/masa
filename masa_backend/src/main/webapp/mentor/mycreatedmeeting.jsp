@@ -1,3 +1,5 @@
+<%@page import="com.devlogs.masa_backend.common.Masa" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +11,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+  <%@include file="/shared/gg_analytics/_analytics_script"%>
+
   <style>
     body{
       background-color: #00B4CC;
@@ -35,7 +38,7 @@
       <div>
         <ul class="px-4 mt-6 leading-10">
           <li  class="flex items-center justify-center p-2 mb-3 bg-indigo-400 rounded-md cursor-pointer">
-            <a href="/masa/member/home.jsp" style="text-decoration:none">
+            <a href="${Masa.SERVER_HOST}/member/home.jsp" style="text-decoration:none">
               &nbsp;
               <i class="text-white fa fa-home"></i>
               <span style="color: white; padding-top: 0px">Home</span>
@@ -56,7 +59,7 @@
             </a>
           </li>
           <li class="flex items-center justify-center p-2 mb-3 bg-yellow-400 rounded-md cursor-pointer">
-            <a href="/masa/auth-management/signout" style="text-decoration:none">
+            <a href="${Masa.SERVER_HOST}/auth-management/signout" style="text-decoration:none">
               &nbsp;
               <i class="text-white fas fa-sign-out-alt"></i>
               <span style="color: white; padding-top: 2px">Log Out</span>
@@ -106,13 +109,8 @@
                 <div class="container relative left-0 z-50 flex w-full h-auto h-full">
                   <div class="relative flex items-center flex-5 w-full h-full lg:w-90 group">
                     <a href="#" class="relative block">
-                      <img src="${Masa.SERVER_HOST}/icon/weblogo.svg" alt="Logo" width="30%" height="30%" />
+                      <img src="${Masa.SERVER_HOST}/shared/icon/weblogo.svg" alt="Logo" width="30%" height="30%" />
                     </a>
-                  </div>
-                  <div class="relative flex items-center flex-4 w-full h-full lg:w-90 group">
-                    <p style="font-weight: 300; font-size: 20px; font-style: oblique">Share your knowledge. It is a way to achieve immortality.</p>
-                    <div>
-                    </div>
                   </div>
                 </div>
               </div>

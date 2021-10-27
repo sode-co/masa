@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+<%@page import="com.devlogs.masa_backend.common.Masa" %>
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Question</title>
+    <%@include file="/shared/gg_analytics/_analytics_script"%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+        if (window.location.href.includes("followed")){
+            const newUrl = window.location.href.slice(0,window.location.href.indexOf("&followed=")).replace("&followed=","")+window.location.href.slice(window.location.href.indexOf("&page="));
+            // console.log(newUrl);
+            window.location.replace(newUrl);
+        }
+
         const meetingId = location.search.slice(location.search.indexOf("?id="),location.search.indexOf("&page")).replace("?id=","");
         function askquestion(){
                 const json = {
@@ -23,11 +31,11 @@
                         "Content-Type": "application/json",
                     },
                 };
-                fetch("/masa/api/meeting_question/create", options)
+                fetch("${Masa.SERVER_HOST}/api/meeting_question/create", options)
                     .then((res) => res.json())
                     .then((res) => {
                         alert("Send question successfully!");
-                        window.location.replace(location.protocol + '//' + location.host+"/masa/member/question.jsp?id="+meetingId+"&page=0");
+                        window.location.replace("${Masa.SERVER_HOST}/member/question.jsp?id="+meetingId+"&page=0");
                     })
                     .catch((err) => alert(err));
         }
@@ -35,12 +43,12 @@
         function previous(){
             if(page>0) --page;
             else page = 0;
-            window.location.replace(location.protocol + '//' + location.host+"/masa/member/question.jsp?id="+meetingId+"&page="+page);
+            window.location.replace("${Masa.SERVER_HOST}/member/question.jsp?id="+meetingId+"&page="+page);
             console.log(page);
         }
         function next(){
             ++page;
-            window.location.replace(location.protocol + '//' + location.host+"/masa/member/question.jsp?id="+meetingId+"&page="+page);
+            window.location.replace("${Masa.SERVER_HOST}/member/question.jsp?id="+meetingId+"&page="+page);
             console.log(page);
         }
 
@@ -54,7 +62,7 @@
     <nav class="relative flex flex-wrap items-center justify-between px-2 py-2 mb-2 bg-white">
         <div class="container flex flex-wrap items-center justify-between px-4 mx-auto">
             <div class="relative flex justify-between w-full px-4 lg:w-auto lg:static lg:block lg:justify-start">
-                <img src="../icon/weblogo.svg" alt="Logo" width="30%" height="30%" />
+                <img src="${Masa.SERVER_HOST}/shared/icon/weblogo.svg" alt="Logo" width="30%" height="30%" />
             </div>
             <div class="items-center flex-grow lg:flex" id="navi">
                 <ul class="flex flex-col ml-auto list-none lg:flex-row">
@@ -71,7 +79,7 @@
                                         mx-1.5
                                         sm:mx-6
                                     "
-                                href="/masa/member/home.jsp"
+                                href="${Masa.SERVER_HOST}/member/home.jsp"
                         >
                             Meeting
                         </a>
@@ -89,7 +97,7 @@
                                         mx-1.5
                                         sm:mx-6
                                     "
-                                href="/masa/member/question.jsp"
+                                href="${Masa.SERVER_HOST}/member/question.jsp"
                         >
                             Question Page
                         </a>
@@ -114,10 +122,7 @@
                     </li>
                     <li class="nav-item">
                         <a
-                                class="
-                                        font-sans
-                                        text-2xl
-                                        font-semibold
+                                class="font-sans text-2xl font-semibold
                                         border-b-2 border-transparent
                                         hover:text-white
                                         dark:hover:text-white
@@ -130,7 +135,7 @@
                                         py-2
                                         sm:mx-6
                                     "
-                                href="/masa/auth-management/signout"
+                                href="${Masa.SERVER_HOST}/auth-management/signout"
                         >
                             Log Out
                         </a>
@@ -179,7 +184,7 @@
                         }else{
                             currentPage = 0;
                         }
-                        const url = "/masa/api/meeting-management/meeting/"+location.search.slice(location.search.indexOf("?id="),location.search.indexOf("&page")).replace("?id=","");
+                        const url = "${Masa.SERVER_HOST}/api/meeting-management/meeting/"+location.search.slice(location.search.indexOf("?id="),location.search.indexOf("&page")).replace("?id=","");
                         $.getJSON(url, function (element) {
                             document.getElementById("descriptionContent").innerHTML = element.description;
                             document.getElementById("meetingTitle").innerHTML = element.title;
@@ -193,7 +198,7 @@
                             let htmlElements = "";
                         let i =0;
                         // const meetingId =location.search.slice(location.search.indexOf("?id="),location.search.indexOf("&page")).replace("?id=","");
-                        $.getJSON("/masa/api/meeting_question/questions/"+meetingId, function (data) {
+                        $.getJSON("${Masa.SERVER_HOST}/api/meeting_question/questions/"+meetingId, function (data) {
                             const arr = data["meetingQuestions"];
                             arr.slice(4*currentPage, 4*currentPage+4).forEach((element) => {
                                 const date = new Date(element.createdDate);
@@ -354,7 +359,7 @@
                         >
                     </div>
                     <div class="flex flex-col flex-1 place-items-center">
-                        <img class="my-2" src="../icon/fpt-university.png" width="50%" height="50%" />
+                        <img class="my-2" src="${Masa.SERVER_HOST}/shared/icon/fpt-university.png" width="50%" height="50%" />
                     </div>
                 </div>
             </div>

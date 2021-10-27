@@ -39,4 +39,12 @@ public interface MeetingRepository {
     List<MeetingEntity> getAllActiveMeetings() throws ConnectionException;
 
     List<MeetingEntity> getOnGoingMeetings() throws ConnectionException;
+
+    int countAllGoingMeetingsInWeek() throws ConnectionException;
+
+    int countAllCreatedMeetingsInWeek() throws ConnectionException;
+
+    int countAllActiveMeetings() throws ConnectionException;
+
+    int countNumOfUserFollowedMeetingInWeek() throws ConnectionException;
 }

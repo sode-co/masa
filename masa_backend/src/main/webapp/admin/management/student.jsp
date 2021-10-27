@@ -1,3 +1,5 @@
+<%@ page import="com.devlogs.masa_backend.common.Masa"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <%@include file="../../shared/gg_analytics/_analytics_script"%>
 
     <title>Administrator Page</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -31,7 +34,7 @@
 
     <script>
         let page = 0;
-        if(window.location.href===location.protocol + '//' + location.host+"/masa/admin/management/mentor.html"){
+        if(window.location.href==="${Masa.SERVER_HOST}/admin/management/student.jsp"){
             setTimeout(function() {
                 $('#splash').fadeOut('fast');
             }, 300);
@@ -52,16 +55,15 @@
         function toleft(){
             if(page>0) --page;
             else page = 0;
-            window.location.replace(location.protocol + '//' + location.host+"/masa/admin/management/mentor.html"+"?page="+page);
+            window.location.replace("${Masa.SERVER_HOST}/admin/management/student.jsp"+"?page="+page);
             console.log(page);
         }
         function toright(){
             ++page;
-            window.location.replace(location.protocol + '//' + location.host+"/masa/admin/management/mentor.html"+"?page="+page);
+            window.location.replace("${Masa.SERVER_HOST}/admin/management/student.jsp"+"?page="+page);
             console.log(page);
         }
     </script>
-
 </head>
 
 <body id="page-top">
@@ -73,7 +75,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -85,7 +87,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="index.jsp">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -98,7 +100,7 @@
             User Management
         </div>
         <li class="nav-item">
-            <a class="nav-link" href="user.html">
+            <a class="nav-link" href="user.jsp">
                 <i class="fas fa-fw fa-users"></i>
                 <span>All User</span>
             </a>
@@ -106,23 +108,23 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" href="mentor.html">
+            <a class="nav-link" href="mentor.jsp">
                 <i class="fas fa-fw fa-chalkboard-teacher"></i>
                 <span>Mentors</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="student.html">
+            <a class="nav-link" href="student.jsp">
                 <i class="fas fa-fw fa-user-graduate"></i>
                 <span>Students</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="member.html">
+            <a class="nav-link" href="member.jsp">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Other</span>
-                <p style="font-size: 10px; font-style: italic">User can become mentor</p>
+                <p style="font-size: 10px; font-style: italic">can become mentor</p>
             </a>
         </li>
 
@@ -137,7 +139,7 @@
 
         <!-- Nav Item - Meetings -->
         <li class="nav-item">
-            <a class="nav-link" href="meeting.html">
+            <a class="nav-link" href="meeting.jsp">
                 <i class="fas fa-fw fa-calendar"></i>
                 <span>Meetings</span></a>
         </li>
@@ -147,7 +149,7 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="request.html">
+            <a class="nav-link" href="request.jsp">
                 <i class="fas fa-fw fa-question"></i>
                 <span>Requests</span></a>
         </li>
@@ -181,10 +183,9 @@
                 </form>
                 <script>
                     function search(){
-                        window.location.replace('/masa/admin/management/mentor.html'+'?name='+document.getElementById("inputsearchname").value)
+                        window.location.replace('${Masa.SERVER_HOST}/admin/management/student.jsp'+'?name='+document.getElementById("inputsearchname").value)
                     }
                 </script>
-
                 <!-- Topbar Search -->
                 <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -226,7 +227,7 @@
                         </div>
                     </li>
 
-                    <a href="/masa/auth-management/signout" style="color: #9b9a9a; margin-top: 21px;text-decoration: none;">
+                    <a href="${Masa.SERVER_HOST}/auth-management/signout" style="color: #9b9a9a; margin-top: 21px;text-decoration: none;">
                         <span style="font-size: 12px">Log Out</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
@@ -240,7 +241,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin Ngọc</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">${sessionScope.CURRENT_USER.fullName}</span>
                             <img class="img-profile rounded-circle"
                                  src="img/undraw_profile.svg">
                         </a>
@@ -281,34 +282,33 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Mentor</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Student</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th>Index</th>
+                                    <th style="width: 30px">Index</th>
                                     <th style="width: 210px">Full Name</th>
                                     <th>Email</th>
-                                    <th></th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <script>
                                     const container = document.getElementById("container");
                                     let i = 0;
-                                    const urlStatus="/masa/api/user-management/update-status/";
-                                    const urlRole="/masa/api/user-management/update-role/";
+                                    const urlStatus="${Masa.SERVER_HOST}/api/user-management/update-status/";
+                                    const urlRole="${Masa.SERVER_HOST}/api/user-management/update-role/";
                                     let idsession = 0;
                                     let space = '';
                                     let z = 'z';
                                     const statusAlert = "UPDATE STATUS SUCCESS";
                                     const roleAlert = "UPDATE ROLE SUCCESS";
                                     if(location.search.replace('?name=','')==='' || location.search.includes('page')){
-                                        urlTable = "/masa/api/user-management/get-user-by-role/mentor";
+                                        urlTable = "${Masa.SERVER_HOST}/api/user-management/get-user-by-role/student";
                                     }else{
-                                        urlTable = "/masa/api/user-management/get-user-by-name/"+location.search.replace('?name=','').replace('%20',' ');
+                                        urlTable = "${Masa.SERVER_HOST}/api/user-management/get-user-by-name/"+location.search.replace('?name=','').replace('%20',' ');
                                     }
                                     $.getJSON(
                                         urlTable,
@@ -322,18 +322,17 @@
                                             }
                                             const arr = data["users"].slice(10*currentPage, 10*currentPage+11);
                                             arr.forEach((element) => {
-                                                const urlHref = "/masa/api/user-management/update-role/";
-
+                                                const urlHref = "${Masa.SERVER_HOST}/api/user-management/update-role/";
                                                 i++;
                                                 idsession = 'z'+ element.id;
-                                                if(element.role.type === 'MENTOR'){
-                                                    if(element.status.status === 'ACTIVE') {
+                                                if(element.role.type === 'STUDENT'){
+                                                    if(element.status.status === 'ACTIVE'){
                                                         htmlElements +=
                                                             '<tr>'
                                                             +'<td>'+i+'</td>'
                                                             +'<td>'+element.fullName+'</td>'
                                                             +'<td>'+element.email+'</td>'
-                                                            //       +'<td>'+element.status.status+'</td>'
+                                                        //    +'<td>'+element.status.status+'</td>'
                                                             +'<td>'
                                                             +'<div style="background-color: #f57640; width: 110px; height: 30px; border-radius: 25px; padding-top: 2px; padding-left: 22px; font-weight: 300">'
                                                             +'<a href="" onClick="(function(){'
@@ -353,33 +352,14 @@
                                                             +'</a>'
                                                             +'</div>'
                                                             +'</td>'
-                                                            +'<td>'
-                                                            +'<div style="background-color: #000000; width: 160px; height: 30px; border-radius: 25px; padding-top: 2px; padding-left: 3px; font-weight: 300">'
-                                                            +'<a href="" onClick="(function(){'
-                                                            +'const varToString = varObj => Object.keys(varObj)[0];'
-                                                            +'const '+idsession+'=i;'
-                                                            +'const x = varToString({'+idsession+'});'
-                                                            +'const url = urlRole + x.replace(z, space);'
-                                                            +'console.log(url);'
-                                                            +'$.getJSON(url, function(data) {'
-                                                            +'console.log(data);'
-                                                            +'});'
-                                                            +'alert(roleAlert);'
-                                                            +'window.location.replace(window.location.href);'
-                                                            // +'window.location.replace(window.location.href);'
-                                                            +'})();return false;">'
-                                                            +'<button style="background-color: transparent; margin-bottom: 30px; border: none; color: white">BACK TO MEMBER</button>'
-                                                            +'</a>'
-                                                            +'</div>'
-                                                            +'</td>'
                                                             +'</tr>'
-                                                    }else{
+                                                    }else if(element.status.status === 'BLOCKED'){
                                                         htmlElements +=
                                                             '<tr>'
                                                             +'<td>'+i+'</td>'
                                                             +'<td>'+element.fullName+'</td>'
                                                             +'<td>'+element.email+'</td>'
-                                                            //       +'<td>'+element.status.status+'</td>'
+                                                            //    +'<td>'+element.status.status+'</td>'
                                                             +'<td>'
                                                             +'<div style="background-color: #5bcb7d; width: 115px; height: 30px; border-radius: 25px; padding-top: 2px; padding-left: 12px; font-weight: 300">'
                                                             +'<a href="" onClick="(function(){'
@@ -395,26 +375,7 @@
                                                             +'window.location.replace(window.location.href);'
                                                             // +'window.location.replace(window.location.href);'
                                                             +'})();return false;">'
-                                                            +'<button style="background-color: transparent; margin-bottom: 30px; border: none; color: #000000">UNBLOCK</button>'
-                                                            +'</a>'
-                                                            +'</div>'
-                                                            +'</td>'
-                                                            +'<td>'
-                                                            +'<div style="background-color: #000000; width: 160px; height: 30px; border-radius: 25px; padding-top: 2px; padding-left: 3px; font-weight: 300">'
-                                                            +'<a href="" onClick="(function(){'
-                                                            +'const varToString = varObj => Object.keys(varObj)[0];'
-                                                            +'const '+idsession+'=i;'
-                                                            +'const x = varToString({'+idsession+'});'
-                                                            +'const url = urlRole + x.replace(z, space);'
-                                                            +'console.log(url);'
-                                                            +'$.getJSON(url, function(data) {'
-                                                            +'console.log(data);'
-                                                            +'});'
-                                                            +'alert(roleAlert);'
-                                                            +'window.location.replace(window.location.href);'
-                                                            // +'window.location.replace(window.location.href);'
-                                                            +'})();return false;">'
-                                                            +'<button style="background-color: transparent; margin-bottom: 30px; border: none; color: white">BACK TO MEMBER</button>'
+                                                            +'<button style="background-color: transparent; margin-bottom: 30px; border: none">UNBLOCK</button>'
                                                             +'</a>'
                                                             +'</div>'
                                                             +'</td>'
@@ -454,7 +415,6 @@
                 </svg>
             </button>
         </div>
-
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">

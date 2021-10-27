@@ -1,3 +1,4 @@
+<%@page import="com.devlogs.masa_backend.common.Masa" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +9,10 @@
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
     <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+   
     <link rel="dns-prefetch" href="//unpkg.com" />
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+    <%@include file="/shared/gg_analytics/_analytics_script"%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script
@@ -193,7 +195,6 @@
             let htmlElements = "";
             let iOngoingMeeting=0;
             const hostId = location.search.replace("?mentor=","");
-            // $.getJSON("/masa/api/meeting-management/meetings/host/ME100002", function (data) {
             $.getJSON("${Masa.SERVER_HOST}/api/meeting-management/meetings/host/"+hostId, function (data) {
                 const arrOngoingMeeting = data["meetings"];
                 arrOngoingMeeting.forEach((element) => {
@@ -244,8 +245,7 @@
             let htmlDialog = "";
             let i =0;
             const hostIdDialog = location.search.replace("?mentor=","");
-            // $.getJSON("/masa/api/meeting-management/meetings/host/ME100002", function (data) {
-            $.getJSON("/masa/api/meeting-management/meetings/host/"+hostIdDialog, function (data) {
+            $.getJSON("${Masa.SERVER_HOST}/api/meeting-management/meetings/host/"+hostIdDialog, function (data) {
                 const arrOngoingMeeting = data["meetings"];
                 arrOngoingMeeting.forEach((element) => {
                     var startConvertOngoingMeeting = new Date(element.startTime); // create Date object
@@ -300,14 +300,14 @@
                             + '</div>'
                             + '</div>'
                             + '<div class="flex justify-center w-full space-x-16 mt-9 mb-14">'
-                            +'<a href="/masa/mentor/meeting/updatemeeting.jsp?id='+element.id+'&host='+element.mentor.id+'"  target="_blank">'
+                            +'<a href="${Masa.SERVER_HOST}/mentor/meeting/updatemeeting.jsp?id='+element.id+'&host='+element.mentor.id+'"  target="_blank">'
                             + '<button'
                             + ' class="p-4 text-2xl font-semibold text-black bg-transparent border-2 border-gray-200  pl-28 pr-28 rounded-2xl hover:text-blue-500 focus:border-4 focus:border-blue-300"'
                             + '>'
                             + 'Update'
                             + '</button>'
                             + '</a>'
-                            +' <a href="/masa/member/question.jsp?id='+element.id+'&page=0" target="_blank">'
+                            +' <a href="${Masa.SERVER_HOST}/member/question.jsp?id='+element.id+'&page=0" target="_blank">'
                             + '<button'
                             + ' class="p-4 pl-20 pr-20 text-2xl font-semibold text-white bg-indigo-700 border-blue-300  rounded-2xl focus:border-4 hover:bg-indigo-900"'
                             + '>'
@@ -363,14 +363,14 @@
                             + '</div>'
                             + '</div>'
                             + '<div class="flex justify-center w-full space-x-16 mt-9 mb-14">'
-                            +'<a href="/masa/mentor/meeting/updatemeeting.jsp?id='+element.id+'&host='+element.mentor.id+'" target="_blank">'
+                            +'<a href="${Masa.SERVER_HOST}/mentor/meeting/updatemeeting.jsp?id='+element.id+'&host='+element.mentor.id+'" target="_blank">'
                             + '<button'
                             + ' class="p-4 text-2xl font-semibold text-black bg-transparent border-2 border-gray-200  pl-28 pr-28 rounded-2xl hover:text-blue-500 focus:border-4 focus:border-blue-300"'
                             + '>'
                             + 'Update'
                             + '</button>'
                             + '</a>'
-                            +' <a href="/masa/member/question.jsp?id='+element.id+'&page=0" target="_blank">'
+                            +' <a href="${Masa.SERVER_HOST}/member/question.jsp?id='+element.id+'&page=0" target="_blank">'
                             + '<button'
                             + ' class="p-4 pl-20 pr-20 text-2xl font-semibold text-white bg-indigo-700 border-blue-300  rounded-2xl focus:border-4 hover:bg-indigo-900"'
                             + '>'

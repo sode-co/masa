@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <%@include file="/shared/gg_analytics/_analytics_script"%>
     <title>Login</title>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="${Masa.ICON_URL}"/>
@@ -17,7 +18,7 @@
       href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${Masa.SERVER_HOST}/shared/styles/styles.css">
   </head>
   <body>
     <!-- Navigation -->
@@ -31,7 +32,7 @@
           class="relative flex justify-between w-full px-4 lg:w-auto lg:static lg:block lg:justify-start"
         >
           <img
-            src="/masa/shared/icon/weblogo.svg"
+            src="${Masa.SERVER_HOST}/shared/icon/weblogo.svg"
             alt="Logo"
             width="30%"
             height="30%"
@@ -110,7 +111,7 @@
         WELCOME TO
       </h1>
       <img
-        src="${Masa.SERVER_HOST}/login/hello.jpg"
+        src="${Masa.SERVER_HOST}/shared/icon/hello.jpg"
         alt="Welcome banner"
         width="95%"
         height="95%"
@@ -129,7 +130,7 @@
                     <div class="flex items-center justify-center">
                         <div class="max-w-full">
                             <img class="object-cover object-center w-full"
-                            src="/masa/shared/icon/logo.svg"
+                            src="${Masa.SERVER_HOST}/shared/icon/logo.svg"
                             alt="MASA logo"
                           width="70%" height="70%"/>
                         </div>
@@ -231,7 +232,7 @@
             <div class="flex flex-col flex-1 place-items-center">
               <img
                 class="my-2"
-                src="/masa/shared/icon/fpt-university.png"
+                src="${Masa.SERVER_HOST}/shared/icon/fpt-university.png"
                 width="50%"
                 height="50%"
               />

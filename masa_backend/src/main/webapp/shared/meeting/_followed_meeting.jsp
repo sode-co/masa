@@ -6,12 +6,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../styles/styles.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
     <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+   
     <link rel="dns-prefetch" href="//unpkg.com" />
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+    <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script
@@ -73,23 +74,20 @@
     </script>
 </head>
 <body>
+<div class="flex mb-7 w-full">
+    <div class="ml-24 flex flex-col flex-1 float-left">
+        <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">Followed Meeting</h1>
+        <div class="w-20 h-1 bg-blue-500 rounded"></div>
+    </div>
+    <div class="flex flex-col flex-1 float-right">
+        <a href="#" class="text-right mb-2 mr-24 text-2xl font-medium text-gray-900 sm:text-2xl title-font">See more</a>
+    </div>
+</div>
 <section class="text-gray-600 body-font">
-    <div class="container px-5 mx-auto" style="margin-left: 0px; padding-left: 0px">
-        <div class="flex flex-wrap w-full">
-            <div class="w-full lg:mb-0 sm:ml-20">
-                <div class="flex flex-col flex-1 float-left">
-                    <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">Followed Meetings</h1>
-
-                    <div class="w-20 h-1 bg-blue-500 rounded"></div>
-                </div>
-                <div class="flex flex-col flex-1 float-right">
-                    <button style="color: #186ef5; font-size: 15px; border-radius: 10px; width: 100px; height: 30px">See more</button>
-                </div>            </div>
-        </div>
-
+    <div class="container px-5 mx-auto" style="padding-left: 0px">
         <h1 id="currentSessionNewMeeting" style="display: none">${sessionScope.CURRENT_USER.id}</h1>
 
-        <div  id="new_meeting_carousel_wrapper" class="mx-auto space-x-4 md:flex md:justify-center md:space-x-8 md:px-8" style="width: 940px;">
+        <div  id="new_meeting_carousel_wrapper" class="mx-auto space-x-4 md:justify-center md:space-x-8 md:px-8" style="width: 940px;">
             <ul id="new_meeting_carousel_wrapper_list">
                 <script>
                     let i=0;
@@ -160,7 +158,7 @@
                                     +'<button'
                                     +' type="button"'
                                     +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                    +' onclick=parent.calldialog('+element.id+')'
+                                    +' onclick=parent.calldialog('+element.id+','+element.id+')'
                                     +'>'
                                     +'See more'
                                     +' </button> '
@@ -196,7 +194,7 @@
                                     +'<button'
                                     +' type="button"'
                                     +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                    +' onclick=parent.calldialog('+'"'+element.id.toString()+'"'+')'
+                                    +' onclick=parent.calldialog('+element.id+','+element.id+')'
                                     +'>'
                                     +'See more'
                                     +' </button> '
@@ -232,7 +230,7 @@
                                     +'<button'
                                     +' type="button"'
                                     +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                    +' onclick=parent.calldialog('+element.id+')'
+                                    +' onclick=parent.calldialog('+element.id+','+element.id+')'
                                     +'>'
                                     +'See more'
                                     +' </button> '
@@ -268,7 +266,7 @@
                                     +'<button'
                                     +' type="button"'
                                     +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                    +' onclick=parent.calldialog('+element.id+')'
+                                    +' onclick=parent.calldialog('+element.id+','+element.id+')'
                                     +'>'
                                     +'See more'
                                     +' </button> '
@@ -304,7 +302,7 @@
                                     +'<button'
                                     +' type="button"'
                                     +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                    +' onclick=parent.calldialog('+element.id+')'
+                                    +' onclick=parent.calldialog('+element.id+','+element.id+')'
                                     +'>'
                                     +'See more'
                                     +' </button> '
@@ -340,7 +338,7 @@
                                     +'<button'
                                     +' type="button"'
                                     +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                    +' onclick=parent.calldialog('+element.id+')'
+                                    +' onclick=parent.calldialog('+element.id+','+element.id+')'
                                     +'>'
                                     +'See more'
                                     +' </button> '
@@ -376,7 +374,7 @@
                                     +'<button'
                                     +' type="button"'
                                     +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                    +' onclick=parent.calldialog('+element.id+')'
+                                    +' onclick=parent.calldialog('+element.id+','+element.id+')'
                                     +'>'
                                     +'See more'
                                     +' </button> '
@@ -412,7 +410,7 @@
                                     +'<button'
                                     +' type="button"'
                                     +' class="px-8 py-2 mt-8 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500 rounded-xl hover:bg-indigo-400"'
-                                    +' onclick=parent.calldialog('+element.id+')'
+                                    +' onclick=parent.calldialog('+element.id+','+element.id+')'
                                     +'>'
                                     +'See more'
                                     +' </button> '
@@ -463,7 +461,7 @@
 
     var runner = container.find("ul");
     var liWidth = runner.find("li:first").outerWidth();
-    var itemsPerPage = 3;
+    var itemsPerPage = 4;
     var noofitems = runner.find("li").length;
 
     runner.width(noofitems * liWidth);

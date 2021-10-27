@@ -42,12 +42,13 @@ public class LoginServlet extends BaseHttpServlet {
             out.flush();
         }
         return null;
+
     }
 
     private void navigateByUserRole (UserRole userRole, HttpServletResponse response) throws IOException {
         switch (userRole.getType()) {
             case ADMIN: {
-                response.sendRedirect(PAGE.ADMIN.MEMBER_MANAGEMENT);
+                response.sendRedirect(PAGE.ADMIN.MANAGEMENT);
                 break;
             }
             case STUDENT:
