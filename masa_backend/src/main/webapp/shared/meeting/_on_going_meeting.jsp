@@ -73,19 +73,18 @@
     </script>
 </head>
 <body>
+<div class="flex mb-7 w-full">
+    <div class="ml-24 flex flex-col flex-1 float-left">
+        <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">On-going Meetings</h1>
+        <div class="w-20 h-1 bg-blue-500 rounded"></div>
+    </div>
+    <div class="flex flex-col flex-1 float-right">
+        <a href="#" class="text-right mb-2 mr-24 text-2xl font-medium text-gray-900 sm:text-2xl title-font">See more</a>
+    </div>
+</div>
 <section class="text-gray-600 body-font">
-    <div class="container px-5 mx-auto" style="margin-left: 0px; padding-left: 0px">
-        <div class="flex flex-wrap w-full">
-            <div class="w-full lg:mb-0 sm:ml-20">
-                <div class="flex flex-col flex-1 float-left">
-                    <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">Ongoing Meetings</h1>
+    <div class="container px-5 mx-auto" style="margin: auto; padding-left: 0px">
 
-                    <div class="w-20 h-1 bg-blue-500 rounded"></div>
-                </div>
-                <div class="flex flex-col flex-1 float-right">
-                    <button style="color: #186ef5; font-size: 15px; border-radius: 10px; width: 100px; height: 30px">See more</button>
-                </div>            </div>
-        </div>
         <div  id="new_meeting_carousel_wrapper" class="mx-auto space-x-4 md:flex md:justify-center md:space-x-8 md:px-8" style="width: 940px;">
             <ul id="new_meeting_carousel_wrapper_list">
                 <script>

@@ -90,8 +90,9 @@
         }
 
         .card-img-top {
-            display: block;
-            width: 100%;
+            display: block center;
+            margin: auto;
+            width: 70%;
             height: auto;
         }
 
@@ -232,7 +233,7 @@
                     var endConvertConvertNewMeetingTime = endConvertConvertNewMeeting.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
                     i++;
                     htmlElements +=
-                        '<div class="mt-4 transition duration-500 transform col-sm-6 col-md-4 col-lg-3 hover:shadow-xl hover:scale-110">'
+                        '<div class="mt-4 transition duration-500 transform col-sm-6 col-md-4 col-lg-3 hover:shadow-xl hover:scale-110" style="width:300px">'
                         +'<div class="card">'
                         +'<img'
                         +' class="card-img-top"'
@@ -240,13 +241,13 @@
                         +'/>'
                         +'<div class="card-block" style="text-align: center">'
                         +'<h1 class="text-xl font-bold text-green-600">'+element.title+'</h1>'
-                        +'<h2 class="text-lg text-indigo-600">with mentor <strong class="text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
+                        +'<h2 class="text-lg text-indigo-600">with <strong class="text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
                         +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
                         +'</div>'
                         +'<div class="card-footer">'
                         +'<button'
                         +' type="button"'
-                        +' class="float-left py-2 mt-1 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500  px-3 rounded-xl hover:bg-indigo-400"'
+                        +' class="float-left py-2 mt-1 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500  px-5 rounded-xl hover:bg-indigo-400"'
                         +' onclick=parent.calldialog('+element.id+')'
                         +'>'
                         +'See more'
@@ -254,7 +255,7 @@
                         +'<a href="'+element.platform.url+'" target="_blank">'
                         +'<button'
                         +' type="button"'
-                        +' class="float-right px-3 py-2 mt-1 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 rounded-xl hover:bg-green-400""'
+                        +' class="float-right px-3 py-2 mt-1 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 px-5 rounded-xl hover:bg-green-400""'
                         +'>'
                         +'Join now'
                         +' </button>'
