@@ -162,8 +162,9 @@
         var startConvertNewMeeting = new Date(element.startTime); // create Date object
         var startConvertNewMeetingTime = startConvertNewMeeting.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
         var endConvertConvertNewMeeting = new Date(element.endTime); // create Date object
-        const startDayNewMeeting = ("0"+startConvertNewMeeting.getDay()).slice(("0"+startConvertNewMeeting.getDay()).length-2, ("0"+startConvertNewMeeting.getDay()).length);
-        const startMonthNewMeeting = ("0"+startConvertNewMeeting.getMonth()).slice(("0"+startConvertNewMeeting.getMonth()).length-2, ("0"+startConvertNewMeeting.getMonth()).length);
+        const startDayNewMeeting = ("0"+startConvertNewMeeting.getDate()).slice(("0"+startConvertNewMeeting.getDate()).length-2, ("0"+startConvertNewMeeting.getDate()).length);
+        const month = startConvertNewMeeting.getMonth() + 1;
+        const startMonthNewMeeting = ("0"+month).slice(("0"+month).length-2, ("0"+month).length);
         var endConvertConvertNewMeetingTime = endConvertConvertNewMeeting.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
 
         document.getElementById('linkjoin').href = element.platform.url;
@@ -173,7 +174,7 @@
             document.getElementById("meetingtile").innerText = element.title;
             document.getElementById("meetingdescription").innerHTML = element.description;
             document.getElementById("meetingmentor").innerText = element.mentor.fullName;
-            document.getElementById("meetingdate").innerText = startDayNewMeeting+'/'+startMonthNewMeeting+'/'+startConvertNewMeeting.getFullYear()
+            document.getElementById("meetingdate").innerText = startDayNewMeeting+'/'+startMonthNewMeeting+'/'+startConvertNewMeeting.getFullYear();
             document.getElementById("meetingendtime").innerText = endConvertConvertNewMeetingTime.slice(16,21);
             document.getElementById("meetingstarttime").innerText =startConvertNewMeetingTime.slice(16,21).toString();
             document.getElementById("questionUrl").href ="${Masa.SERVER_HOST}/member/question.jsp?id="+location.search.replace("?id=","")+"&page=0";
@@ -182,7 +183,7 @@
             document.getElementById("meetingtile").innerText = element.title;
             document.getElementById("meetingdescription").innerHTML = element.description;
             document.getElementById("meetingmentor").innerText = element.mentor.fullName;
-            document.getElementById("meetingdate").innerText = startDayNewMeeting+'/'+startMonthNewMeeting+'/'+startConvertNewMeeting.getFullYear()
+            document.getElementById("meetingdate").innerText = startDayNewMeeting+'/'+startMonthNewMeeting+'/'+startConvertNewMeeting.getFullYear();
             document.getElementById("meetingendtime").innerText = endConvertConvertNewMeetingTime.slice(16,21);
             document.getElementById("meetingstarttime").innerText =startConvertNewMeetingTime.slice(16,21).toString();
             document.getElementById("questionUrl").href ="${Masa.SERVER_HOST}/member/question.jsp?id="+location.search.replace("?id=","")+"&page=0";
