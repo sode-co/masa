@@ -52,6 +52,7 @@ public class Masa {
                 public static class REQUEST_MANAGEMENT {
                     public static String RESPONSE = "admin/request-management/response/index.jsp";
                 }
+                public static String MANAGEMENT = "admin/management/index.jsp";
                 public static String MEMBER_MANAGEMENT = "admin/management/student.jsp";
                 public static String MEETING_MANAGEMENT = "admin/manage_meeting.jsp";
             }

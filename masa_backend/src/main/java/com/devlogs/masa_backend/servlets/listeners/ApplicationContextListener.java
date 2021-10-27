@@ -5,9 +5,7 @@ import com.devlogs.masa_backend.common.di.application.ApplicationComponent;
 import com.devlogs.masa_backend.common.di.application.ApplicationModule;
 import com.devlogs.masa_backend.common.di.application.DaggerApplicationComponent;
 import com.devlogs.masa_backend.domain.entities.UserRole;
-import com.devlogs.masa_backend.domain.entities.UserRole.TYPE.*;
 import com.devlogs.masa_backend.servlets.common.RoleAndRequestMapper;
-import com.devlogs.masa_backend.domain.entities.UserRole.TYPE.*;
 import javax.inject.Inject;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -31,7 +29,8 @@ public class ApplicationContextListener implements ServletContextListener {
     }
 
     public void registerResourcePage () {
-        roleAndRequestMapper.register(PAGE.MEMBER.HOME, Arrays.asList(UserRole.TYPE.STUDENT, UserRole.TYPE.MEMBER));
+        roleAndRequestMapper.register(PAGE.MEMBER.HOME, Arrays.asList(UserRole.TYPE.STUDENT, UserRole.TYPE.MEMBER, UserRole.TYPE.MENTOR));
+        roleAndRequestMapper.register(PAGE.ADMIN.MANAGEMENT, Arrays.asList(UserRole.TYPE.ADMIN));
         roleAndRequestMapper.register(PAGE.MEMBER.MENTOR_REQUEST, Arrays.asList( UserRole.TYPE.MEMBER));
         roleAndRequestMapper.register(PAGE.MEMBER.QUESTION, Arrays.asList(UserRole.TYPE.STUDENT, UserRole.TYPE.MEMBER));
         roleAndRequestMapper.register(PAGE.ADMIN.MEMBER_MANAGEMENT, Arrays.asList(UserRole.TYPE.ADMIN));

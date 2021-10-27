@@ -50,7 +50,7 @@
             <div class="flex justify-center">
                 <div class="mt-2 bg-gray-300 border-2 border-white rounded-full w-14 h-14">
                     <img
-                            src="https://cdn-icons.flaticon.com/png/512/3736/premium/3736531.png?token=exp=1634232550~hmac=141946b09c018b139aba2b150055ece6"
+                            src="http://lilithaengineering.co.za/wp-content/uploads/2017/08/person-placeholder.jpg"
                             class="w-auto rounded-full"
                     />
                 </div>
@@ -236,7 +236,10 @@
     <!-- End Sidebar -->
     <div class="flex flex-col flex-1 w-full overflow-y-auto duration-500" style="smooth-scroll:true">
         <main class="relative z-0 flex-1 bg-white">
-        <%@include file="../shared/header/_main_header.jsp"%>
+
+        <div id="overlay">
+            <%@include file="../shared/header/_main_header.jsp"%>
+        </div>
     <div class="grid">
         <div class="flex flex-col w-full pl-0">
             <div class="h-screen pt-2 pb-24 pl-2 pr-2 overflow-auto md:pt-0 md:pr-0 md:pl-0">

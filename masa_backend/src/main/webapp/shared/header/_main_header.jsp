@@ -6,8 +6,8 @@
   <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
 </head>
 <body>
-<header class="bg-white">
-  <nav class="flex justify-between px-6 border-0">
+<header id="overlay">
+  <nav class=" bg-white flex justify-between px-6 border-0">
     <div class="flex items-center space-x-12">
       <div class="flex items-center space-x-2 text-2xl">
         <img src="${Masa.SERVER_HOST}/shared/icon/weblogo.svg" style="width: 30%; height: 30%" />
@@ -17,15 +17,15 @@
           <div class="flex flex-col flex-1 float-left">
             <div class="">
               <div class="relative">
-                <div class="flex items-center h-12 bg-white border border-gray-200 rounded w-30">
-                  <input name="select" id="select" class="w-full px-4 text-gray-800 outline-none appearance-none" checked />
+                <div class="flex items-center h-12 border border-gray-200 rounded w-30">
+                  <input name="select" id="searchkeyword" class="w-full px-4 text-gray-800 outline-none appearance-none" checked />
                   <select
                           id="drop"
-                          class="h-10 text-gray-600 bg-white border-0 appearance-none hover:border-0 focus:border-0"
+                          class="h-10 text-gray-600 border-0 appearance-none hover:border-0 focus:border-0"
                           style="border: none; border-color: transparent"
                   >
                     <option>Mentor</option>
-                    <option>Meeting</option>
+                    <option>Title</option>
                   </select>
                   <button
                           class="pl-5 pr-5 text-gray-300 transition-all outline-none cursor-pointer  focus:outline-none hover:text-gray-600"
@@ -61,24 +61,23 @@
            class="py-2 font-semibold text-white bg-blue-500 rounded-full px-7 text-md hover:bg-blue-400">Become mentor</a>
        </c:if>
       <c:if test="${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MENTOR}'}">
-        <a id="createdmeeting" href="${Masa.SERVER_HOST}/mentor/mycreatedmeeting.jsp?mentor=${sessionScope.CURRENT_USER}"
+        <a id="createdmeeting" href="${Masa.SERVER_HOST}/mentor/mycreatedmeeting.jsp?mentor=${sessionScope.CURRENT_USER.getId()}"
            class="py-2 font-semibold text-white bg-blue-500 rounded-full px-7 text-md hover:bg-blue-400">Your Meetings</a>
         <a href="${Masa.SERVER_HOST}/mentor/meeting/createnewmeeting.jsp"
            class="py-2 font-semibold text-white bg-blue-500 rounded-full px-7 text-md hover:bg-blue-400">New Meeting</a>
       </c:if>
       <div>
-        <img
+        <div
                 class="w-10 h-10 rounded-full"
-                src="http://lilithaengineering.co.za/wp-content/uploads/2017/08/person-placeholder.jpg"
-                alt=""
+
         />
       </div>
       </script>
     </div>
     <div class="space-y-1.5 cursor-pointer lg:hidden">
-      <div class="w-8 h-1 bg-white rounded opacity-25"></div>
-      <div class="w-8 h-1 bg-white rounded opacity-25"></div>
-      <div class="w-8 h-1 bg-white rounded opacity-25"></div>
+      <div class="w-8 h-1 rounded opacity-25"></div>
+      <div class="w-8 h-1 rounded opacity-25"></div>
+      <div class="w-8 h-1 rounded opacity-25"></div>
     </div>
   </nav>
 </header>

@@ -37,11 +37,10 @@
       <div>
         <ul class="px-4 mt-6 leading-10">
           <li  class="flex items-center justify-center p-2 mb-3 bg-indigo-400 rounded-md cursor-pointer">
-            <a href="${Masa.SERVER_HOST}/mentor/meeting/home.jsp" style="text-decoration:none">
+            <a href="${Masa.SERVER_HOST}/member/home.jsp" style="text-decoration:none">
               &nbsp;
               <i class="text-white fa fa-home"></i>
               <span style="color: white; padding-top: 0px">Home</span>
-              &nbsp;
               &nbsp;
               &nbsp;
             </a>

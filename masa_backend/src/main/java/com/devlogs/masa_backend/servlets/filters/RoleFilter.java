@@ -52,7 +52,7 @@ public class RoleFilter extends BaseServletFilter {
                 if (requestedResource.isEmpty()) {
                      switch (currentUser.getRole().getType()) {
                         case ADMIN: {
-                            response.sendRedirect(Masa.PAGE.ADMIN.MEMBER_MANAGEMENT);
+                            response.sendRedirect(Masa.PAGE.ADMIN.MANAGEMENT);
                             break;
                         }
                          case STUDENT:
