@@ -12,6 +12,7 @@
    
     <link rel="dns-prefetch" href="//unpkg.com" />
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+    <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script
@@ -86,7 +87,7 @@
     <div class="container px-5 mx-auto" style="padding-left: 0px">
         <h1 id="currentSessionNewMeeting" style="display: none">${sessionScope.CURRENT_USER.id}</h1>
 
-        <div  id="new_meeting_carousel_wrapper" class="mx-auto space-x-4 md:flex md:justify-center md:space-x-8 md:px-8" style="width: 940px;">
+        <div  id="new_meeting_carousel_wrapper" class="mx-auto space-x-4 md:justify-center md:space-x-8 md:px-8" style="width: 940px;">
             <ul id="new_meeting_carousel_wrapper_list">
                 <script>
                     let i=0;
@@ -460,7 +461,7 @@
 
     var runner = container.find("ul");
     var liWidth = runner.find("li:first").outerWidth();
-    var itemsPerPage = 3;
+    var itemsPerPage = 4;
     var noofitems = runner.find("li").length;
 
     runner.width(noofitems * liWidth);
