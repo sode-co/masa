@@ -13,7 +13,7 @@ import="com.devlogs.masa_backend.common.Masa"%>
 <title>Student Meeting</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
 <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+
 <style>
   @import url(https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css);
 </style>

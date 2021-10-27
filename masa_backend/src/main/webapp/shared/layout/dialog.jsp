@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
     <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+    
     <link rel="dns-prefetch" href="//unpkg.com" />
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -36,7 +36,7 @@
                     "Content-Type": "application/json",
                 },
             };
-            fetch("../../api/appointment-management/create", options)
+            fetch("${Masa.SERVER_HOST}/api/appointment-management/create", options)
                 .then((res) => res.json())
                 .then((res) => {
                         alert("Follow meeting success");
@@ -58,7 +58,7 @@
                     "Content-Type": "application/json",
                 },
             };
-            fetch("../../api/appointment-management/remove", options)
+            fetch("${Masa.SERVER_HOST}/api/appointment-management/remove", options)
                 .then((res) => res.json())
                 .then((res) => {
                         alert("Unfollow meeting success");
