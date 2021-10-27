@@ -320,32 +320,14 @@
                             <!-- Color System -->
                         </div>
 
-                        <div class="col-lg-12 mb-4">
+                        <div class="col-lg-12 mb-4 mx-auto">
 
                             <!-- Illustrations -->
-                            <div class="card shadow mb-4">
+                            <div class="card shadow mb-4" style="padding: 12px; padding-left: 30px; width: 500px; height: 500px">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Google Analytics</h6>
                                 </div>
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                            src="img/undraw_posting_photo.svg" alt="...">
-                                    </div>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus pulvinar elit non porta. Fusce id ante facilisis, ornare massa eu, euismod felis. Nunc non ex nec diam pharetra maximus ac non tellus. Nam ac molestie sapien. Duis nec lacus non lorem facilisis gravida id in velit. Nunc at eros mollis, gravida purus quis, bibendum nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat a augue a aliquam.
-
-                                        Aliquam porttitor gravida velit, ut sodales velit. Vestibulum pulvinar eleifend eleifend. Praesent sollicitudin malesuada sapien. Vestibulum viverra volutpat tellus, sed bibendum nulla interdum sit amet. Sed porta ultricies egestas. Donec vulputate, augue in sollicitudin suscipit, sem dui mattis massa, a facilisis mauris est sit amet elit. Mauris dignissim placerat arcu. Aenean sagittis ex id ipsum sodales semper.
-
-                                    </p>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dapibus pulvinar elit non porta. Fusce id ante facilisis, ornare massa eu, euismod felis. Nunc non ex nec diam pharetra maximus ac non tellus. Nam ac molestie sapien. Duis nec lacus non lorem facilisis gravida id in velit. Nunc at eros mollis, gravida purus quis, bibendum nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam volutpat a augue a aliquam.
-
-                                        Aliquam porttitor gravida velit, ut sodales velit. Vestibulum pulvinar eleifend eleifend. Praesent sollicitudin malesuada sapien. Vestibulum viverra volutpat tellus, sed bibendum nulla interdum sit amet. Sed porta ultricies egestas. Donec vulputate, augue in sollicitudin suscipit, sem dui mattis massa, a facilisis mauris est sit amet elit. Mauris dignissim placerat arcu. Aenean sagittis ex id ipsum sodales semper.
-
-
-                                    </p>
-                                </div>
+                                <%@include file="gg_analy.html"%>
                             </div>
 
                             <!-- Approach -->

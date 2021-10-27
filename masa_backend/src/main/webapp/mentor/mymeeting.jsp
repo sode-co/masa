@@ -12,6 +12,7 @@
    
     <link rel="dns-prefetch" href="//unpkg.com" />
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+    <%@include file="/shared/gg_analytics/_analytics_script"%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script
