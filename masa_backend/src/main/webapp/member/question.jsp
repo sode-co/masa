@@ -115,10 +115,7 @@
                     </li>
                     <li class="nav-item">
                         <a
-                                class="
-                                        font-sans
-                                        text-2xl
-                                        font-semibold
+                                class="font-sans text-2xl font-semibold
                                         border-b-2 border-transparent
                                         hover:text-white
                                         dark:hover:text-white

@@ -9,11 +9,11 @@
             position: absolute;
             display: block;
             width: 100%;
-            height: 60px;
+            height: 90px;
             top: 0;
             right: 0;
             bottom: 0;
-            background-color: white;
+            /*background-color: white;*/
             z-index: 2;
             cursor: pointer;
         }
@@ -236,99 +236,163 @@
     <!-- End Sidebar -->
     <div class="flex flex-col flex-1 w-full overflow-y-auto duration-500" style="smooth-scroll:true">
         <main class="relative z-0 flex-1 bg-white">
-        <%@include file="../shared/header/_main_header.jsp"%>
-    <div class="grid">
-        <div class="flex flex-col w-full pl-0">
-            <div class="h-screen pt-2 pb-24 pl-2 pr-2 overflow-auto md:pt-0 md:pr-0 md:pl-0">
-                <div class="flex flex-col flex-wrap sm:flex-row">
-                </div>
+            <%--             Header            --%>
+            <div id="overlay">
+                <div class="bg-gray-100 flex">
+                    <div class="mt-5 mb-2 bg-gray-100">
+                        <%--Search box--%>
+                        <div class="flex flex-col flex-1 float-left">
+                            <div class="">
+                                <div class="relative">
+                                    <div class="flex items-center h-12 w-30 bg-white border border-gray-200 rounded">
+                                        <input name="select" id="select"
+                                               class="w-full px-4 text-gray-800 outline-none appearance-none" checked/>
+                                        <select id="drop"
+                                                class="h-10 text-gray-600 bg-white border-0 appearance-none hover:border-0 focus:border-0" style="border: none; border-color: transparent">
+                                            <option>Mentor</option>
+                                            <option>Meeting</option>
+                                        </select>
+                                        <button class="pl-5 pr-5 text-gray-300 transition-all outline-none cursor-pointer focus:outline-none hover:text-gray-600">
+                                            <svg
+                                                    class="w-4 h-4 text-gray-600 fill-current"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                    version="1.1"
+                                                    id="Capa_1"
+                                                    x="0px"
+                                                    y="0px"
+                                                    viewBox="0 0 56.966 56.966"
+                                                    xml:space="preserve"
+                                                    width="512px"
+                                                    height="60px"
+                                            >
+                                <path
+                                        d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"
+                                />
+                            </svg>
+                                        </button>
 
-                <div style="height: 100px; overflow-y: hidden; overflow-x: auto;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col flex-1 float-right">
+                        <c:if test="${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MEMBER}'}">
+                            <a href="${Masa.SERVER_HOST}/member/registermentor.jsp"
+                               class="py-3 font-semibold text-white w-30 mb-2 mt-5 rounded-md bg-blue-500 px-4 text-md hover:bg-blue-400">Become mentor</a>
+                        </c:if>
+                        <c:if test="${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MENTOR}'}">
+                            <a id="createdmeeting" href="${Masa.SERVER_HOST}/mentor/mycreatedmeeting.jsp"
+                               class="py-3 font-semibold text-white w-30 mb-2 mt-5 rounded-md bg-blue-500 px-4 text-md hover:bg-blue-400">Your meetings</a>
+                            <a href="${Masa.SERVER_HOST}/mentor/meeting/createnewmeeting.jsp"
+                               class="py-3 font-semibold text-white w-30 mb-2 mt-5 rounded-md bg-blue-500 px-4 text-md hover:bg-blue-400">New meeting</a>
+                        </c:if>
+                    </div>
+                    <h1 id="currentUser" style="display: none">${sessionScope.CURRENT_USER.id}</h1>
 
-                </div>
-
-                <div id="new" style="height: 450px; overflow-y: hidden; overflow-x: auto;">
-                    <iframe src="${Masa.SERVER_HOST}/shared/meeting/_new_meeting_v2.jsp"
-                            id="framenew"
-                            style="width: 100%; height: 450px; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none"
-                    >
-                    </iframe>
-                </div>
-
-                <div id="on-going" style="height: 450px; overflow: hidden; overflow-x: auto;">
-                    <iframe src="${Masa.SERVER_HOST}/shared/meeting/_on_going_meeting.jsp"
-                            style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none"
-                    >
-                    </iframe>
-                </div>
-
-                <div id="followed" style="height: 450px; overflow: hidden; overflow-x: auto;">
-                    <iframe id="iframefollowed" src="${Masa.SERVER_HOST}/shared/meeting/_followed_meeting.jsp"
-                            style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none"
-                    >
-                    </iframe>
-                </div>
-                <div id="scroll-target" style="height: 90px; overflow-y: hidden; overflow-x: auto;">
-
-                </div>
-                <div id="meetingbytopic" style="height: 1000px; overflow: hidden; overflow-x: auto;">
-                    <iframe id="meetingiframe" class="flex flex-col mx-auto"
-                            src="${Masa.SERVER_HOST}/shared/meeting/SE_meeting.jsp?topicId=1"
-                            style="
-                                        width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none"
-                            scrolling="no"
-                    >
-                    </iframe>
-                </div>
-                <div id="ia" style="height: 1500px; overflow: hidden; overflow-x: auto;">
-                </div>
-                <div id="dialogiframe" class="modal"
-                     style="background-color: transparent; border-color: transparent; align-items: center; margin-right: 280px; box-shadow:none; width: 1800px; padding-bottom:10px ">
-                    <iframe id="dialogiframeelement" src="${Masa.SERVER_HOST}/shared/layout/dialog.jsp"
-                            frameborder="0" style="overflow:hidden; width: 700px; height: 486px; border-radius: 20px;"
-                            height="100%" width="120%"></iframe>
-                    <%--                            <iframe id="dialogiframeelement" src="http://localhost:8080${Masa.SERVER_HOST}/shared/layout/dialog.jsp"--%>
-                    <%--                                    style="background-color: transparent; width: 780px; height: 400px; border-radius: 10px;"> </iframe>--%>
-                </div>
-
-                <!-- Link to open the modal -->
-                <p><a href="#dialogiframe" rel="modal:close" id="close-modal" style="display: none">close Modal</a></p>
-                <p><a href="#dialogiframe" rel="modal:open" id="openiframemodal" style="display: none">Open Modal</a>
-                </p>
-                <script>
-                    function onFollowedMeetingChanged() {
-                        console.log("onFollowedMeetingChanged");
-                        let followedIframe = document.getElementById('iframefollowed');
-                        followedIframe.contentDocument.location.reload(true);
-                        followedIframe.src = "${Masa.SERVER_HOST}/shared/meeting/_followed_meeting.jsp";
-                    }
-
-                    function onTopicSelected(topicId) {
-                        document.getElementById('meetingiframe').src = "${Masa.SERVER_HOST}/shared/meeting/SE_meeting.jsp?topicId=" + topicId;
-                    }
-
-                    function calldialog(param, param01) {
-                        if (param01) {
-                            document.getElementById('dialogiframeelement').src = "${Masa.SERVER_HOST}/shared/layout/dialog.jsp?id=" + param + "&followed=" + param01;
-                        } else {
-                            document.getElementById('dialogiframeelement').src = "${Masa.SERVER_HOST}/shared/layout/dialog.jsp?id=" + param;
+                    <script>
+                        if (document.getElementById("createdmeeting")) {
+                            document.getElementById("createdmeeting").href = "/masa/mentor/mycreatedmeeting.jsp?mentor=" + document.getElementById("currentUser").innerText;
                         }
-                        $(document).ready(function () {
-                            $('#openiframemodal').click();
-                        });
-                    }
-
-                    function autoclick() {
-                        $(document).ready(function () {
-                            $('#close-modal').click();
-                        });
-                    }
-                </script>
+                    </script>
+                </div>
             </div>
-        </div>
+            <div class="grid">
+                <div class="flex flex-col w-full pl-0">
+                    <div class="h-screen pt-2 pb-24 pl-2 pr-2 overflow-auto md:pt-0 md:pr-0 md:pl-0">
+                        <div class="flex flex-col flex-wrap sm:flex-row">
+                        </div>
+
+                        <div style="height: 80px; overflow-y: hidden; overflow-x: auto;">
+
+                        </div>
+
+                        <div id="new" style="height: 450px; overflow-y: hidden; overflow-x: auto;">
+                            <iframe src="${Masa.SERVER_HOST}/shared/meeting/_new_meeting_v2.jsp"
+                                    id="framenew"
+                                    style="width: 100%; height: 450px; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none"
+                            >
+                            </iframe>
+                        </div>
+
+                        <div id="on-going" style="height: 450px; overflow: hidden; overflow-x: auto;">
+                            <iframe src="${Masa.SERVER_HOST}/shared/meeting/_on_going_meeting.jsp"
+                                    style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none"
+                            >
+                            </iframe>
+                        </div>
+
+                        <div id="followed" style="height: 450px; overflow: hidden; overflow-x: auto;">
+                            <iframe id="iframefollowed" src="${Masa.SERVER_HOST}/shared/meeting/_followed_meeting.jsp"
+                                    style="width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none"
+                            >
+                            </iframe>
+                        </div>
+                        <div id="scroll-target" style="height: 80px; overflow-y: hidden; overflow-x: auto;">
+
+                        </div>
+                        <div id="meetingbytopic" style="height: 1000px; overflow: hidden; overflow-x: auto;">
+                            <iframe id="meetingiframe" class="flex flex-col mx-auto"
+                                    src="${Masa.SERVER_HOST}/shared/meeting/SE_meeting.jsp?topicId=1"
+                                    style="
+                                        width: 100%; height: 100%; overflow: hidden; margin-left: 0px; margin-right: 100px; scrollbar-width:none"
+                                    scrolling="no"
+                            >
+                            </iframe>
+                        </div>
+                        <div id="ia" style="height: 1500px; overflow: hidden; overflow-x: auto;">
+                        </div>
+                        <div id="dialogiframe" class="modal"
+                             style="background-color: transparent; border-color: transparent; align-items: center; margin-right: 280px; box-shadow:none; width: 1800px; padding-bottom:10px ">
+                            <iframe id="dialogiframeelement" src="${Masa.SERVER_HOST}/shared/layout/dialog.jsp"
+                                    frameborder="0"
+                                    style="overflow:hidden; width: 700px; height: 486px; border-radius: 20px;"
+                                    height="100%" width="120%"></iframe>
+                            <%--                            <iframe id="dialogiframeelement" src="http://localhost:8080${Masa.SERVER_HOST}/shared/layout/dialog.jsp"--%>
+                            <%--                                    style="background-color: transparent; width: 780px; height: 400px; border-radius: 10px;"> </iframe>--%>
+                        </div>
+
+                        <!-- Link to open the modal -->
+                        <p><a href="#dialogiframe" rel="modal:close" id="close-modal" style="display: none">close
+                            Modal</a></p>
+                        <p><a href="#dialogiframe" rel="modal:open" id="openiframemodal" style="display: none">Open
+                            Modal</a>
+                        </p>
+                        <script>
+                            function onFollowedMeetingChanged() {
+                                console.log("onFollowedMeetingChanged");
+                                let followedIframe = document.getElementById('iframefollowed');
+                                followedIframe.contentDocument.location.reload(true);
+                                followedIframe.src = "${Masa.SERVER_HOST}/shared/meeting/_followed_meeting.jsp";
+                            }
+
+                            function onTopicSelected(topicId) {
+                                document.getElementById('meetingiframe').src = "${Masa.SERVER_HOST}/shared/meeting/SE_meeting.jsp?topicId=" + topicId;
+                            }
+
+                            function calldialog(param, param01) {
+                                if (param01) {
+                                    document.getElementById('dialogiframeelement').src = "${Masa.SERVER_HOST}/shared/layout/dialog.jsp?id=" + param + "&followed=" + param01;
+                                } else {
+                                    document.getElementById('dialogiframeelement').src = "${Masa.SERVER_HOST}/shared/layout/dialog.jsp?id=" + param;
+                                }
+                                $(document).ready(function () {
+                                    $('#openiframemodal').click();
+                                });
+                            }
+
+                            function autoclick() {
+                                $(document).ready(function () {
+                                    $('#close-modal').click();
+                                });
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-    </main>
-</div>
 </div>
 </body>
 </html>
