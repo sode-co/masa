@@ -14,10 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.ADMIN;
-import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.MENTOR;
+import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.*;
 
-@AccessRole(roles = {MENTOR, ADMIN})
+@AccessRole(roles = {MEMBER, MENTOR, ADMIN})
 @WebServlet(name = "followmeetingservlet", urlPatterns = "/api/appointment-management/create")
 public class CreateAppointmentServlet extends BaseHttpServlet {
 
