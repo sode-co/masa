@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <%@include file="/shared/gg_analytics/_analytics_script"%>
     <title>Login</title>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="${Masa.ICON_URL}"/>
