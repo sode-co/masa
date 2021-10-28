@@ -266,8 +266,12 @@
                     var startConvertOngoingMeeting = new Date(element.startTime); // create Date object
                     var startConvertOngoingMeetingTime = startConvertOngoingMeeting.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
                     var endConvertConvertOngoingMeeting = new Date(element.endTime); // create Date object
-                    const startDayOngoingMeeting = ("0"+startConvertOngoingMeeting.getDay()).slice(("0"+startConvertOngoingMeeting.getDay()).length-2, ("0"+startConvertOngoingMeeting.getDay()).length);
-                    const startMonthOngoingMeeting = ("0"+startConvertOngoingMeeting.getMonth()).slice(("0"+startConvertOngoingMeeting.getMonth()).length-2, ("0"+startConvertOngoingMeeting.getMonth()).length);
+
+                    const startDayOngoingMeeting = ("0"+startConvertOngoingMeeting.getDate()).slice(("0"+startConvertOngoingMeeting.getDate()).length-2, ("0"+startConvertOngoingMeeting.getDate()).length);
+                    const month = startConvertOngoingMeeting.getMonth() + 1;
+                    const startMonthOngoingMeeting = ("0"+month).slice(("0"+month).length-2, ("0"+month).length);
+
+
                     var endConvertConvertOngoingMeetingTime = endConvertConvertOngoingMeeting.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
                     i++;
                     let idDialog = "myModal"+i;
