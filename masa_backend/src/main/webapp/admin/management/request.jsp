@@ -332,6 +332,7 @@
                                                                     + '</tr>';
                                                                 let container = document.getElementById("container");
                                                                 container.innerHTML = htmlElements;
+                                                                return;
                                                             }
                                                             }
                                                         });
