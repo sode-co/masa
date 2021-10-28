@@ -21,4 +21,6 @@ public interface BecomeMentorRequestRepository {
 
     void updateRequestStatus(String requestId, RequestEntity.STATUS status) throws ConnectionException;
 
+    int countAllProcessingRequest() throws ConnectionException;
+
 }

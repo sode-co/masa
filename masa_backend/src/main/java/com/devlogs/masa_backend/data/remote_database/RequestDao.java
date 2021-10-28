@@ -135,4 +135,17 @@ public class RequestDao {
         }
     }
 
+    public int countAllProcessingRequestsBecomeMentor () throws SQLException, ClassNotFoundException {
+        int result = 0;
+        try (Connection con = dbHelper.connect()) {
+            Statement queryStatement = con.createStatement();
+            ResultSet dbResults = queryStatement.executeQuery("select count(ID) AS TOTAL from REQUESTS WHERE status_id = 2 AND type_id = 1;");
+            RequestDto cached;
+            while (dbResults.next()) {
+                result = dbResults.getInt("TOTAL");
+            }
+        }
+        return result;
+    }
+
 }

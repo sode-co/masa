@@ -10,6 +10,7 @@ import com.devlogs.masa_backend.domain.ports.MeetingRepository;
 import javax.inject.Inject;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class MeetingRepositoryImp implements MeetingRepository {
@@ -356,5 +357,75 @@ public class MeetingRepositoryImp implements MeetingRepository {
             throw new ConnectionException(ex.getMessage());
         }
         return result;
+    }
+
+    @Override
+    public int countAllGoingMeetingsInWeek() throws ConnectionException {
+        try{
+            Calendar c = Calendar.getInstance();
+            c.setFirstDayOfWeek(Calendar.MONDAY);
+            c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+            long monday = c.getTimeInMillis();
+            c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+            long sunday = c.getTimeInMillis();
+            //get data from DAO
+            int result = meetingSource.getMeetingFromTimeToTime(monday,sunday).size();
+            return result;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
+    }
+
+    @Override
+    public int countAllCreatedMeetingsInWeek() throws ConnectionException {
+        try{
+            Calendar c = Calendar.getInstance();
+            c.setFirstDayOfWeek(Calendar.MONDAY);
+            c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+            long monday = c.getTimeInMillis();
+            c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+            long sunday = c.getTimeInMillis();
+            //get data from DAO
+            int result = meetingSource.getCreatedMeetingFromTimeToTime(monday,sunday).size();
+            return result;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
+    }
+
+    @Override
+    public int countAllActiveMeetings() throws ConnectionException {
+        try{
+            //get data from DAO
+            int result = meetingSource.getAllActiveMeetings().size();
+            return result;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
+    }
+
+    @Override
+    public int countNumOfUserFollowedMeetingInWeek() throws ConnectionException {
+        try{
+            Calendar c = Calendar.getInstance();
+            c.setFirstDayOfWeek(Calendar.MONDAY);
+            c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+            long monday = c.getTimeInMillis();
+            c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+            long sunday = c.getTimeInMillis();
+            //get data from DAO
+            int result = meetingSource.countNumOfUserFollowedMeetingInWeek(monday,sunday);
+            return result;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            throw new ConnectionException(ex.getMessage());
+        }
     }
 }
