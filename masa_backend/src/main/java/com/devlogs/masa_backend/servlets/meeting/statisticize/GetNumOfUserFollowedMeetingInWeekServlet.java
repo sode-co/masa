@@ -15,7 +15,7 @@ import java.io.IOException;
 import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.ADMIN;
 
 @AccessRole(roles = {ADMIN})
-@WebServlet(name = "getNumOfUserFollowedMeetingInWeek", urlPatterns = {"/api/meeting-management/statistics/user-followed-meetings"})
+@WebServlet(name = "getNumOfUserFollowedMeetingInWeek", urlPatterns = {"/api/meeting-statistics/user-followed-meetings"})
 public class GetNumOfUserFollowedMeetingInWeekServlet extends BaseHttpServlet {
     @Inject
     GetNumOfUserFollowedMeetingInWeekUseCase getNumOfUserFollowedMeetingInWeekUseCase;

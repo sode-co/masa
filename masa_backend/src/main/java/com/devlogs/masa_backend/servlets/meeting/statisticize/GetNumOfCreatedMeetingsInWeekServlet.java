@@ -1,7 +1,7 @@
 package com.devlogs.masa_backend.servlets.meeting.statisticize;
 
 import com.devlogs.masa_backend.common.annotations.AccessRole;
-import com.devlogs.masa_backend.meeting.GetNumOfActiveMeetingsUseCase;
+import com.devlogs.masa_backend.meeting.GetNumOfCreatedMeetingInWeekUseCase;
 import com.devlogs.masa_backend.meeting.GetNumOfMeetingInWeekUseCase;
 import com.devlogs.masa_backend.servlets.common.base.BaseHttpServlet;
 import com.google.gson.Gson;
@@ -17,10 +17,10 @@ import java.io.IOException;
 import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.ADMIN;
 
 @AccessRole(roles = {ADMIN})
-@WebServlet(name = "getNumOfActiveMeetings", urlPatterns = {"/api/meeting-statistics/active-meetings"})
-public class GetNumOfActiveMeetingsServlet extends BaseHttpServlet {
+@WebServlet(name = "getNumOfCreatedMeetingsInWeek", urlPatterns = {"/api/meeting-statistics/created-meetings-in-week"})
+public class GetNumOfCreatedMeetingsInWeekServlet extends BaseHttpServlet {
     @Inject
-    GetNumOfActiveMeetingsUseCase getNumOfActiveMeetingsUseCase;
+    GetNumOfCreatedMeetingInWeekUseCase getNumOfCreatedMeetingInWeekUseCase;
 
     @Override
     public void init() throws ServletException {
@@ -30,10 +30,10 @@ public class GetNumOfActiveMeetingsServlet extends BaseHttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        GetNumOfActiveMeetingsUseCase.Result result = getNumOfActiveMeetingsUseCase.executes();
-        if (result instanceof GetNumOfActiveMeetingsUseCase.Result.ConnectionError) {
+        GetNumOfCreatedMeetingInWeekUseCase.Result result = getNumOfCreatedMeetingInWeekUseCase.executes();
+        if (result instanceof GetNumOfCreatedMeetingInWeekUseCase.Result.ConnectionError) {
             getRequestComponent().getResponseHelper().responseMessage(500, "Connection to db error");
-        } else if ( result instanceof GetNumOfActiveMeetingsUseCase.Result.Success) {
+        } else if ( result instanceof GetNumOfCreatedMeetingInWeekUseCase.Result.Success) {
             String json = new Gson().toJson(result);
             getRequestComponent().getResponseHelper().responseJsonOk(json);
         }

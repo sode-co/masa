@@ -17,7 +17,7 @@ import java.io.IOException;
 import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.ADMIN;
 
 @AccessRole(roles = {ADMIN})
-@WebServlet(name = "numberOfProcessingRequests", urlPatterns = "/api/admin/request-management/statistics")
+@WebServlet(name = "numberOfProcessingRequests", urlPatterns = "/api/admin/request-statistics/processing-requests")
 public class GetNumberOfProcessingRequestsServlet extends BaseHttpServlet {
     @Inject
     GetNumberOfProcessingRequestsUseCase getNumberOfProcessingRequestsUseCase;

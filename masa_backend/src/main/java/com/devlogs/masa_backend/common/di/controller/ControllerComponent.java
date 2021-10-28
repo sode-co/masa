@@ -11,6 +11,7 @@ import com.devlogs.masa_backend.servlets.meeting.createmeeting.CreateMeetingServ
 import com.devlogs.masa_backend.servlets.meeting.deletemeeting.DeleteMeetingServlet;
 import com.devlogs.masa_backend.servlets.meeting.getmeeting.*;
 import com.devlogs.masa_backend.servlets.meeting.statisticize.GetNumOfActiveMeetingsServlet;
+import com.devlogs.masa_backend.servlets.meeting.statisticize.GetNumOfCreatedMeetingsInWeekServlet;
 import com.devlogs.masa_backend.servlets.meeting.statisticize.GetNumOfMeetingsInWeekServlet;
 import com.devlogs.masa_backend.servlets.meeting.statisticize.GetNumOfUserFollowedMeetingInWeekServlet;
 import com.devlogs.masa_backend.servlets.meeting.updatemeeting.UpdateMeetingServlet;
@@ -108,6 +109,8 @@ public interface ControllerComponent {
     void inject(GetNumOfActiveMeetingsServlet getNumOfActiveMeetingsServlet);
 
     void inject(GetNumOfUserFollowedMeetingInWeekServlet getNumOfUserFollowedMeetingInWeekServlet);
+
+    void inject(GetNumOfCreatedMeetingsInWeekServlet getNumOfCreatedMeetingsInWeekServlet);
 }
 
 

@@ -362,14 +362,10 @@ public class MeetingRepositoryImp implements MeetingRepository {
     @Override
     public int countAllGoingMeetingsInWeek() throws ConnectionException {
         try{
-            Calendar c = Calendar.getInstance();
-            c.setFirstDayOfWeek(Calendar.MONDAY);
-            c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-            long monday = c.getTimeInMillis();
-            c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
-            long sunday = c.getTimeInMillis();
+            long to = System.currentTimeMillis();
+            long from = to - 1000 * 60 * 60 * 24 * 7;
             //get data from DAO
-            int result = meetingSource.getMeetingFromTimeToTime(monday,sunday).size();
+            int result = meetingSource.getMeetingFromTimeToTime(from,to).size();
             return result;
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
@@ -381,14 +377,10 @@ public class MeetingRepositoryImp implements MeetingRepository {
     @Override
     public int countAllCreatedMeetingsInWeek() throws ConnectionException {
         try{
-            Calendar c = Calendar.getInstance();
-            c.setFirstDayOfWeek(Calendar.MONDAY);
-            c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-            long monday = c.getTimeInMillis();
-            c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
-            long sunday = c.getTimeInMillis();
+            long to = System.currentTimeMillis();
+            long from = to - 1000 * 60 * 60 * 24 * 7;
             //get data from DAO
-            int result = meetingSource.getCreatedMeetingFromTimeToTime(monday,sunday).size();
+            int result = meetingSource.getCreatedMeetingFromTimeToTime(from,to).size();
             return result;
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
@@ -413,14 +405,10 @@ public class MeetingRepositoryImp implements MeetingRepository {
     @Override
     public int countNumOfUserFollowedMeetingInWeek() throws ConnectionException {
         try{
-            Calendar c = Calendar.getInstance();
-            c.setFirstDayOfWeek(Calendar.MONDAY);
-            c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-            long monday = c.getTimeInMillis();
-            c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
-            long sunday = c.getTimeInMillis();
+            long to = System.currentTimeMillis();
+            long from = to - 1000 * 60 * 60 * 24 * 7;
             //get data from DAO
-            int result = meetingSource.countNumOfUserFollowedMeetingInWeek(monday,sunday);
+            int result = meetingSource.countNumOfUserFollowedMeetingInWeek(from,to);
             return result;
         } catch (SQLException ex) {
             throw new RuntimeException(ex.getMessage());
