@@ -76,7 +76,10 @@ public class Masa {
         }
 
         public static void onServerName (String protocol, String serverName, int port) {
-                SERVER_HOST = "http://"+serverName;
+            if (SERVER_HOST != null && !SERVER_HOST.isEmpty()) {
+                return;
+            }
+            SERVER_HOST = "http://"+serverName;
                 if (port != 80) {
                     SERVER_HOST += ":"+port+"/masa";
                 }
@@ -87,6 +90,10 @@ public class Masa {
         public static void init (ServletContext context, String webInfPath) {
             Dotenv env = io.github.cdimascio.dotenv.Dotenv.configure().directory(webInfPath+"/env/.env").ignoreIfMalformed().ignoreIfMissing().load();
             AUTH_MODE = env.get("AUTH");
+            if (env.get("SERVER_NAME") != null) {
+                SERVER_HOST = env.get("SERVER_NAME");
+            }
+            SERVER_HOST = env.get("SERVER_NAME");
             GOOGLE_CLIENT_SECRET = env.get("GOOGLE_CLIENT_SECRET");
             MasaLog.normalLog("Auth mode: " + AUTH_MODE);
             CLIENT_ID = env.get("GOOGLE_CLIENT_ID");
