@@ -35,6 +35,7 @@ public class AuthFilter implements Filter {
             chain.doFilter(request, response);
             return;
         }
+        MasaLog.normalLog("Request url: " + request.getRequestURL());
         Masa.onServerName(request.getProtocol(),request.getServerName(),request.getServerPort());
 
         if (request.getSession(true).getAttribute(Masa.SESSION_KEY.USER) != null) {
