@@ -92,6 +92,7 @@ public class Masa {
             AUTH_MODE = env.get("AUTH");
             if (env.get("SERVER_NAME") != null) {
                 SERVER_HOST = env.get("SERVER_NAME");
+                GOOGLE_REDIRECT_URI = SERVER_HOST + "/logingoogle";
             }
             SERVER_HOST = env.get("SERVER_NAME");
             GOOGLE_CLIENT_SECRET = env.get("GOOGLE_CLIENT_SECRET");
