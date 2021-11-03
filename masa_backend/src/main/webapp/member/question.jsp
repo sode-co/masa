@@ -97,7 +97,7 @@
                                         mx-1.5
                                         sm:mx-6
                                     "
-                                href="${Masa.SERVER_HOST}/member/question.jsp"
+                                href="#"
                         >
                             Question Page
                         </a>
