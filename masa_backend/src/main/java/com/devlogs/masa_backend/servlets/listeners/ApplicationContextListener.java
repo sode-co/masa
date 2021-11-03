@@ -32,7 +32,7 @@ public class ApplicationContextListener implements ServletContextListener {
         roleAndRequestMapper.register(PAGE.MEMBER.HOME, Arrays.asList(UserRole.TYPE.STUDENT, UserRole.TYPE.MEMBER, UserRole.TYPE.MENTOR));
         roleAndRequestMapper.register(PAGE.ADMIN.MANAGEMENT, Arrays.asList(UserRole.TYPE.ADMIN));
         roleAndRequestMapper.register(PAGE.MEMBER.MENTOR_REQUEST, Arrays.asList( UserRole.TYPE.MEMBER));
-        roleAndRequestMapper.register(PAGE.MEMBER.QUESTION, Arrays.asList(UserRole.TYPE.STUDENT, UserRole.TYPE.MEMBER));
+        roleAndRequestMapper.register(PAGE.MEMBER.QUESTION, Arrays.asList(UserRole.TYPE.STUDENT, UserRole.TYPE.MEMBER, UserRole.TYPE.MENTOR));
         roleAndRequestMapper.register(PAGE.ADMIN.MEMBER_MANAGEMENT, Arrays.asList(UserRole.TYPE.ADMIN));
         roleAndRequestMapper.register(PAGE.ADMIN.MEETING_MANAGEMENT, Arrays.asList(UserRole.TYPE.ADMIN));
         roleAndRequestMapper.register(PAGE.ADMIN.REQUEST_MANAGEMENT.RESPONSE, Arrays.asList(UserRole.TYPE.ADMIN));
