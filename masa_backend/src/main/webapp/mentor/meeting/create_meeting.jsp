@@ -54,7 +54,7 @@
             else platformInput='ZOOM';
 
             if(millisecondsEnd <= millisecondsStart){
-                alert('End time of meeting must be bigger than start time');
+                alert('Start time must before end time');
             }else{
                 const description = $("#mytextarea").html();
                 const json = {
