@@ -7,11 +7,22 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.devlogs.masa_backend.common.Masa" %>
+
 <html>
 <head>
     <title>Title</title>
     <link href="${Masa.SERVER_HOST}/shared/styles/auth/permission-denied/style.css" rel="stylesheet" type="text/css"/>
     <%@include file="../../../shared/gg_analytics/_analytics_script"%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        #signoutbtn{
+            background-color: transparent; height: 50px; width: 100px; font-size: 15px; border-radius: 10px; border-color: black;
+        }
+        a :hover{
+            background-color: white;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     
@@ -36,24 +47,12 @@
 
 
     <div class="relative w-full mx-auto mt-4 mb-4 overflow-hidden">
-        <button class="inline-flex items-center px-4 py-2 font-bold text-white bg-indigo hover:bg-indigo-dark">
-            <svg class="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-
-                <path
-
-                    stroke-linecap="round"
-
-                    stroke-linejoin="round"
-
-                    stroke-width="2"
-
-                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-
-                ></path>
-
-            </svg>
-            <span class="text-4xl ml-7">SIGN OUT</span>
+        <a href="${Masa.SERVER_HOST}/auth-management/signout" style="text-decoration: none;">
+        <button id="signoutbtn" class="inline-flex items-center px-4 py-2 font-bold text-white bg-indigo hover:bg-indigo-dark" style=" ">
+            Sign out <i class="fa fa-sign-out" aria-hidden="true"></i>
         </button>
+        </a>
+
     </div>
 
 
@@ -62,9 +61,5 @@
 
 
     </div>
-
-    <!-- <h1>
-        You do not have permission to access this page !!
-    </h1> -->
 </body>
 </html>
