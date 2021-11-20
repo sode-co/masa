@@ -202,7 +202,13 @@
                             const arr = data["meetingQuestions"];
                             arr.slice(4*currentPage, 4*currentPage+4).forEach((element) => {
                                 const date = new Date(element.createdDate);
-                                const date_create = ("0"+date.getHours()).slice(0,2)+":"+date.getMinutes()+" "+date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear();
+                                console.log(("0"+18).slice(0,2));
+                                const hour = date.getHours() < 10 ? ("0"+date.getHours()).slice(0,2) : date.getHours();
+                                const minute = date.getMinutes() < 10 ? ("0"+date.getMinutes()).slice(0,2) : date.getMinutes();
+                                const day = date.getDate() < 10 ? ("0"+date.getDate()).slice(0,2) : date.getDate();
+                                const month = date.getMonth() < 10 ? ("0"+date.getMonth()).slice(0,2) : date.getMonth();
+                                const date_create = hour+":"+minute+" "+day+"/"+month+"/"+date.getFullYear();
+                                //const date_create = ("0"+date.getHours()).slice(0,2)+":"+("0"+date.getMinutes()).slice(0,2)+" "+date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear();
                                 htmlElements+=
                                     '<div class="mt-6">'
                                     +'<div class="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">'
