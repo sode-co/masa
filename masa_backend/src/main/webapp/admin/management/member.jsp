@@ -23,6 +23,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this page -->
 <!--    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">-->
@@ -159,7 +160,7 @@
 
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            <button class="rounded-circle border-0" id="sidebarToggle">close</button>
         </div>
 
 
