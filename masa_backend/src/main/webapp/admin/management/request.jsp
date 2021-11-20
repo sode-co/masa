@@ -116,7 +116,7 @@
         <li class="nav-item">
             <a class="nav-link" href="request.jsp">
                 <i class="fas fa-fw fa-question"></i>
-                <span>Requests</span></a>
+                <span style="font-weight: 800; color: white">Requests</span></a>
         </li>
 
         <!-- Divider -->

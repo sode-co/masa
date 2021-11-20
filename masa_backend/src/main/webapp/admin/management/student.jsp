@@ -118,7 +118,7 @@
         <li class="nav-item">
             <a class="nav-link" href="student.jsp">
                 <i class="fas fa-fw fa-user-graduate"></i>
-                <span>Students</span>
+                <span style="font-weight: 800; color: white">Students</span>
             </a>
         </li>
         <li class="nav-item">

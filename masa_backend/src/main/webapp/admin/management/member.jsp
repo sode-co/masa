@@ -124,7 +124,7 @@
         <li class="nav-item">
             <a class="nav-link" href="member.jsp">
                 <i class="fas fa-fw fa-user"></i>
-                <span>Other</span>
+                <span style="font-weight: 800; color: white">Other</span>
                 <p style="font-size: 10px; font-style: italic">can become mentor</p>
             </a>
         </li>
@@ -160,7 +160,7 @@
 
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle">close</button>
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
 
 

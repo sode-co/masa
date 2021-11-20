@@ -172,7 +172,7 @@
         <li class="nav-item">
             <a class="nav-link" href="meeting.jsp">
                 <i class="fas fa-fw fa-calendar"></i>
-                <span>Meetings</span></a>
+                <span style="font-weight: 800; color: white">Meetings</span></a>
         </li>
         <div class="sidebar-heading">
             Request Management

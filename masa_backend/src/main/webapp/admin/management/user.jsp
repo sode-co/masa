@@ -104,7 +104,7 @@
         <li class="nav-item">
             <a class="nav-link" href="user.jsp">
                 <i class="fas fa-fw fa-users"></i>
-                <span>All User</span>
+                <span style="font-weight: 800; color: white">All User</span>
             </a>
         </li>
 
@@ -191,7 +191,7 @@
                 <!-- Topbar Search -->
                 <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
+                    <div class="input-group" style="border-color: black">
                         <input type="text" class="form-control bg-light border-0 small" placeholder="Search user by name..."
                                aria-label="Search" aria-describedby="basic-addon2" id="inputsearchname">
                         <div class="input-group-append">
@@ -287,7 +287,7 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">All User</h6>
+                        <h6 class="m-0 font-weight-bold text-primary" style="font-weight: bolder">All User</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

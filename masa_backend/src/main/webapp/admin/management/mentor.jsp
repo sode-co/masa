@@ -112,7 +112,7 @@
         <li class="nav-item">
             <a class="nav-link" href="mentor.jsp">
                 <i class="fas fa-fw fa-chalkboard-teacher"></i>
-                <span>Mentors</span>
+                <span style="font-weight: 800; color: white">Mentors</span>
             </a>
         </li>
 
