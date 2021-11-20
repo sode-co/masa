@@ -80,8 +80,28 @@
                                         sm:mx-6
                                     "
                                 href="${Masa.SERVER_HOST}/member/home.jsp"
+                                style="font-size: 19px"
+
                         >
                             Meeting
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                                class="
+                                        font-sans
+                                        text-2xl
+                                        font-semibold
+                                        border-b-2 border-transparent
+                                        hover:text-gray-800
+                                        dark:hover:text-gray-200
+                                        mx-1.5
+                                        sm:mx-6
+                                    "
+                                style="font-size: 18px; color: #9b9a9a"
+
+                        >
+                            |
                         </a>
                     </li>
                     <li class="nav-item">
@@ -98,6 +118,8 @@
                                         sm:mx-6
                                     "
                                 href="#"
+                                style="font-size: 19px"
+
                         >
                             Question Page
                         </a>
@@ -111,33 +133,47 @@
                                         border-b-2 border-transparent
                                         hover:text-gray-800
                                         dark:hover:text-gray-200
+                                        mx-1.5
+                                        sm:mx-6
+                                    "
+                                style="font-size: 18px; color: #9b9a9a"
+
+                        >
+                            |
+                        </a>
+                    </li>
+                        <li class="nav-item">
+                        <a
+                                class="
+                                        font-sans
+                                        text-2xl
+                                        font-semibold
+                                        border-b-2 border-transparent
+                                        hover:text-gray-800
+                                        dark:hover:text-gray-200
                                         hover:border-green-800 hover:no-underline
                                         mx-1.5
                                         sm:mx-6
                                     "
                                 href="#footer"
+                                style="font-size: 19px"
                         >
                             About us
                         </a>
-                    </li>
+                    </li>&nbsp;&nbsp;
                     <li class="nav-item">
                         <a
-                                class="font-sans text-2xl font-semibold
-                                        border-b-2 border-transparent
-                                        hover:text-white
-                                        dark:hover:text-white
-                                        hover:bg-green-700 hover:no-underline
-                                        bg-green-500
-                                        text-white
-                                        mx-1.5
-                                        px-5
-                                        rounded-full
-                                        py-2
-                                        sm:mx-6
-                                    "
                                 href="${Masa.SERVER_HOST}/auth-management/signout"
                         >
-                            Log Out
+                            <button class="bg-transparent  hover:bg-red-500 border border-red-500 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center hover:border-transparent hover:text-white"
+                                style="border-radius: 10px"
+                            >
+                                <span style="font-size: 17px">Log out</span> &nbsp; &nbsp;
+                                <svg style="margin-top: 7px; font-weight: bold" class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                                    <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                                </svg>
+                            </button>
                         </a>
                     </li>
                 </ul>
@@ -240,9 +276,11 @@
 
                 <div class="mt-8">
                     <div class="flex">
-                        <button onclick="previous()" class="px-3 py-2 mx-1 font-medium text-gray-500 bg-white rounded-md cursor-not-allowed">
-                            Previous </button>
-                        <button onclick="next()" class="px-3 py-2 mx-1 font-medium text-gray-700 bg-white rounded-md hover:bg-blue-500 hover:text-white">
+                        <button onclick="previous()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
+                            Prev
+                        </button>
+                        &nbsp;
+                        <button onclick="next()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
                             Next
                         </button>
                     </div>
@@ -298,6 +336,7 @@
                                                     </div>
                                                 </div>
                                             </li>
+                                            <br/>
                                             <li class="py-2">
                                                 <div class="flex w-full mx-auto">
                                                     <a id="meetingUrl">
