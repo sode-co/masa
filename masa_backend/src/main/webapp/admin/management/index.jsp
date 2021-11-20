@@ -231,7 +231,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Active meeting (Weekly)</div>
+                                                Active meeting (This week)</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" id="meetingsinweek">2,000</div>
                                         </div>
                                         <div class="col-auto">
@@ -248,7 +248,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">All Created Meeting (Weekly)
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">All Created Meeting (This week)
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
@@ -313,19 +313,12 @@
                     <!-- Content Row -->
                     <div class="row">
 
-                        <!-- Content Column -->
-                        <div class="col-lg-12 mb-4">
-
-
-                            <!-- Color System -->
-                        </div>
-
                         <div class="col-lg-12 mb-4 mx-auto">
 
                             <!-- Illustrations -->
-                            <div class="card shadow mb-4" style="padding: 12px; padding-left: 30px; width: 500px; height: 500px">
+                            <div class="card shadow mb-4" style="margin-left: 13px; width: 1420px; padding-left: 12px; height: 500px">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Google Analytics</h6>
+                                    <h5 class="m-0 font-weight-bold text-primary">Google Analytics</h5>
                                 </div>
                                 <%@include file="gg_analy.html"%>
                             </div>
