@@ -31,17 +31,18 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #414e62">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">MASA</div>
-            </a>
+                <!-- <div class="sidebar-brand-icon rotate-n-15">
+                      <i class="fas fa-laugh-wink"></i>
+                  </div>
+                  <div class="sidebar-brand-text mx-3">MASA</div>-->
+                 <img src="https://i.ibb.co/qCg5gr8/masalogo.png" alt="masa" width="180" height="75">
+              </a>
 
-            <!-- Divider -->
+              <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
@@ -130,7 +131,6 @@
 
             <!-- Main Content -->
             <div id="content">
-
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -321,7 +321,7 @@
                             <!-- Illustrations -->
                             <div class="card shadow mb-4" style="margin-left: 13px; width: 1420px; padding-left: 12px; height: 500px">
                                 <div class="card-header py-3">
-                                    <h5 class="m-0 font-weight-bold text-primary">Google Analytics</h5>
+                                    <h5 class="m-0 font-weight-bold" style="color: #46546D">Google Analytics</h5>
                                 </div>
                                 <%@include file="gg_analy.html"%>
                             </div>
