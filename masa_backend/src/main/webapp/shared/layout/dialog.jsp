@@ -36,14 +36,14 @@
                     "Content-Type": "application/json",
                 },
             };
-            fetch("../../api/appointment-management/create", options)
+            fetch("${Masa.SERVER_HOST}/api/appointment-management/create", options)
                 .then((res) => res.json())
                 .then((res) => {
-                        alert("Follow meeting success");
+                        alert("Follow meeting success!");
                         parent.onFollowedMeetingChanged();
                     }
                 )
-                .catch((err) => alert(err));
+                .catch((err) => alert("Oops Sorry, there seems little error..."));
         }
         function unfollow(){
             const json = {
@@ -58,14 +58,14 @@
                     "Content-Type": "application/json",
                 },
             };
-            fetch("../../api/appointment-management/remove", options)
+            fetch("${Masa.SERVER_HOST}/api/appointment-management/remove", options)
                 .then((res) => res.json())
                 .then((res) => {
-                        alert("Unfollow meeting success");
+                        alert("Unfollow meeting success!");
                         parent.onFollowedMeetingChanged();
                     }
                 )
-                .catch((err) => alert(err));
+                .catch((err) => alert("Oops Sorry, there seems little error..."));
         }
     </script>
 </head>
