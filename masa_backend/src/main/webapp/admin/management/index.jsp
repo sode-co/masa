@@ -169,12 +169,15 @@
 
 
                         <!-- Nav Item - Messages -->
-                            <a href="${Masa.SERVER_HOST}/auth-management/signout" style="color: #9b9a9a; margin-top: 21px;text-decoration: none;">
-                                <span style="font-size: 12px">Log Out</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-                                    <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-                                </svg>
+                            <a href="${Masa.SERVER_HOST}/auth-management/signout" style="color: #9b9a9a; margin-top: 17px;text-decoration: none; border-color: red">
+                                <button class="btn btn-outline-dark">
+                                    <span style="font-size: 14px; font-weight: 600">Log Out</span>
+                                    &nbsp;
+                                    <svg style="margin-bottom: 3px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                                        <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                                    </svg>
+                                </button>
                             </a>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
@@ -183,7 +186,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">${sessionScope.CURRENT_USER.fullName}</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" style="font-size: 14px">${sessionScope.CURRENT_USER.fullName}</span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -231,7 +234,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Active meeting (Weekly)</div>
+                                                Active meeting (This week)</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800" id="meetingsinweek">2,000</div>
                                         </div>
                                         <div class="col-auto">
@@ -248,7 +251,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">All Created Meeting (Weekly)
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">All Created Meeting (This week)
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
@@ -313,19 +316,12 @@
                     <!-- Content Row -->
                     <div class="row">
 
-                        <!-- Content Column -->
-                        <div class="col-lg-12 mb-4">
-
-
-                            <!-- Color System -->
-                        </div>
-
                         <div class="col-lg-12 mb-4 mx-auto">
 
                             <!-- Illustrations -->
-                            <div class="card shadow mb-4" style="padding: 12px; padding-left: 30px; width: 500px; height: 500px">
+                            <div class="card shadow mb-4" style="margin-left: 13px; width: 1420px; padding-left: 12px; height: 500px">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Google Analytics</h6>
+                                    <h5 class="m-0 font-weight-bold text-primary">Google Analytics</h5>
                                 </div>
                                 <%@include file="gg_analy.html"%>
                             </div>
