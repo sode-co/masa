@@ -239,9 +239,9 @@
                                     <th>Description</th>
                                     <th>Create Date</th>
                                     <th>Zoom</th>
-                                    <th>Google Meet</th>
-                                    <th>Accept</th>
-                                    <th>Deny</th>
+                                    <th style="width: 150px">Google Meet</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <script>
@@ -290,12 +290,12 @@
                                                                     + '<td id="role" style="font-size: 15px; color: black">'
                                                                     + stringdatetime
                                                                     + '</td>'
-                                                                    + '<td id="role" style="font-size: 15px; color: black"><a href="' + element2.zoomUrl + '">ZOOM</a>'
+                                                                    + '<td id="role" style="font-size: 15px; color: black"><a href="' + element2.zoomUrl + '"><button class="btn btn-light text-primary">Zoom</button></a>'
                                                                     + '</td>'
-                                                                    + '<td id="role" style="font-size: 15px; color: black"><a href="' + element2.meetUrl + '">GOOGLE MEET</a>'
+                                                                    + '<td id="role" style="font-size: 15px; color: black"><a href="' + element2.meetUrl + '"><button class="btn btn-light text-primary">Google Meet</button></a>'
                                                                     + '</td>'
                                                                     + '<td>'
-                                                                    + '<div style="background-color: #33bd43; width: 90px; height: 30px; border-radius: 25px; padding-top: 3px; padding-left: 10px">'
+                                                                    + '<div style="width: 90px; height: 30px; border-radius: 5px; padding-top: 2px; padding-left: 10px; font-weight: 600"  class="btn btn-outline-success" data-toggle="tooltip" data-placement="top" title="User is accepted will become mentor">'
                                                                     + '<a href="" onClick="(function(){'
                                                                     + 'console.log(idsession);'
                                                                     + 'const varToString = varObj => Object.keys(varObj)[0];'
@@ -308,12 +308,12 @@
                                                                     + 'alert(acceptStatus);'
                                                                     + 'window.location.replace(window.location.href);'
                                                                     + '})();return false;">'
-                                                                    + '<button style="background-color: transparent; color: white; border: none">ACCEPT</button>'
+                                                                    + '<button style="color: green; border: none; background-color: transparent">Accept</button>'
                                                                     + '</a>'
                                                                     + '</div>'
                                                                     + '</td>'
                                                                     + '<td>'
-                                                                    + '<div style="background-color: #d01010; width: 90px; height: 30px; border-radius: 25px; padding-top: 3px; padding-left: 10px">'
+                                                                    + '<div style="width: 90px; height: 30px; border-radius: 5px; padding-top: 3px; padding-left: 10px" class="btn btn-outline-danger" data-toggle="tooltip" data-placement="top" title="Member is denied still act like member">'
                                                                     + '<a href="" onClick="(function(){'
                                                                     + 'console.log(idsession);'
                                                                     + 'const varToString = varObj => Object.keys(varObj)[0];'
@@ -326,7 +326,7 @@
                                                                     + 'alert(denyStatus);'
                                                                     + 'window.location.replace(window.location.href);'
                                                                     + '})();return false;">'
-                                                                    + '<button style="background-color: transparent; color: white; border: none">DENY</button>'
+                                                                    + '<button style="background-color: transparent; color: #130000; border: none">Deny</button>'
                                                                     + '</a>'
                                                                     + '</div>'
                                                                     + '</td>'
