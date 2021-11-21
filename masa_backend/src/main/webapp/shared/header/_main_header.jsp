@@ -20,7 +20,7 @@
       <div class="flex items-center space-x-2 text-2xl">
         <img src="${Masa.SERVER_HOST}/shared/icon/weblogo.svg" style="width: 30%; height: 30%" />
       </div>
-      <div class="hidden lg:block">
+      <div class="hidden lg:block hover:border-red-300 focus:border-red-300" style="border-radius: 10px; border-color: #00B4CC">
         <div class="relative">
           <div class="flex flex-col flex-1 float-left">
             <div class="">
@@ -29,8 +29,8 @@
                   <input name="select" id="searchkeyword" class="w-full px-4 text-gray-800 outline-none appearance-none" checked />
                   <select
                           id="searchmethod"
-                          class="h-10 text-gray-600 border-0 appearance-none hover:border-0 focus:border-0"
-                          style="border: none; border-color: transparent"
+                          class="h-10 text-gray-600  appearance-none  "
+                          style="border-color: #bdbcbc"
                   >
                     <option>Mentor</option>
                     <option>Title</option>

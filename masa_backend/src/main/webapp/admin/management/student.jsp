@@ -73,21 +73,18 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #414e62">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
-            </div>
-            <div class="sidebar-brand-text mx-3">MASA</div>
+            <img src="https://i.ibb.co/qCg5gr8/masalogo.png" alt="masa" width="180" height="75">
         </a>
 
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link" href="index.jsp">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
@@ -191,11 +188,13 @@
                 <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search user by name..."
-                               aria-label="Search" aria-describedby="basic-addon2" id="inputsearchname">
+                        <input type="text" class="form-control bg-light small" placeholder="Search user by name..."
+                               aria-label="Search" aria-describedby="basic-addon2" id="inputsearchname" style="border-color: #414E62 ">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button" onclick="search()">
-                                <i class="fas fa-search fa-sm"></i>
+                            <button class="btn btn-primary" type="button" onclick="search()" style="background-color: #414E62; border-color: #414E62">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                </svg>
                             </button>
                         </div>
                     </div>
@@ -286,7 +285,7 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Student</h6>
+                        <h6 class="m-0 font-weight-bold" style="color: #414E62">Student</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -338,7 +337,7 @@
                                                             +'<td>'+element.email+'</td>'
                                                         //    +'<td>'+element.status.status+'</td>'
                                                             +'<td>'
-                                                            +'<div style="background-color: #f57640; width: 110px; height: 30px; border-radius: 25px; padding-top: 2px; padding-left: 22px; font-weight: 300">'
+                                                            +'<div style="width: 80px; height: 30px; border-radius: 5px; padding-top: 2px; padding-left: 17px; font-weight: 300" class="btn btn-outline-danger" data-toggle="tooltip" data-placement="top" title="Blocked user cannot access this web">'
                                                             +'<a href="" onClick="(function(){'
                                                             +'const varToString = varObj => Object.keys(varObj)[0];'
                                                             +'const '+idsession+'=i;'
@@ -352,7 +351,7 @@
                                                             +'window.location.replace(window.location.href);'
                                                             // +'window.location.replace(window.location.href);'
                                                             +'})();return false;">'
-                                                            +'<button style="background-color: transparent; margin-bottom: 30px; border: none">BLOCK</button>'
+                                                            +'<button style="background-color: transparent; margin-bottom: 30px; border: none; font-weight: 600; padding-left: 0px; border: 5px; color: orange">Block</button>'
                                                             +'</a>'
                                                             +'</div>'
                                                             +'</td>'
@@ -365,7 +364,7 @@
                                                             +'<td>'+element.email+'</td>'
                                                             //    +'<td>'+element.status.status+'</td>'
                                                             +'<td>'
-                                                            +'<div style="background-color: #5bcb7d; width: 115px; height: 30px; border-radius: 25px; padding-top: 2px; padding-left: 12px; font-weight: 300">'
+                                                            +'<div style="width: 80px; height: 30px; border-radius: 5px; padding-top: 2px; padding-left: 3px; font-weight: 600" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top" title="Active blocked account">'
                                                             +'<a href="" onClick="(function(){'
                                                             +'const varToString = varObj => Object.keys(varObj)[0];'
                                                             +'const '+idsession+'=i;'
@@ -379,7 +378,7 @@
                                                             +'window.location.replace(window.location.href);'
                                                             // +'window.location.replace(window.location.href);'
                                                             +'})();return false;">'
-                                                            +'<button style="background-color: transparent; margin-bottom: 30px; border: none">UNBLOCK</button>'
+                                                            +'<button style="background-color: transparent; margin-bottom: 30px; border: none; color: #4eab77; font-weight: 600">Unblock</button>'
                                                             +'</a>'
                                                             +'</div>'
                                                             +'</td>'
