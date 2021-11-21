@@ -85,7 +85,7 @@
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link" href="index.jsp">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
@@ -287,7 +287,7 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Mentor</h6>
+                        <h6 class="m-0 font-weight-bold" style="color: #414E62">Mentor</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
