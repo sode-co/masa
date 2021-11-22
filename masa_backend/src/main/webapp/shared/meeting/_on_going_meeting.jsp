@@ -437,13 +437,13 @@
                     id="leftNewMeeting"
                     class="absolute left-0 w-20 h-20 mt-32 -ml-6 text-2xl text-indigo-600 bg-white rounded-full shadow-md top-20 hover:text-indigo-400 focus:text-indigo-400 focus:outline-none focus:shadow-outline"
             >
-                <span class="block" style="transform: scale(-1)">&#x279c;</span>
+                <span class="block" style="transform: scale(-1); color: #414E62">&#x279c;</span>
             </button>
             <button
                     id="rightNewMeeting"
                     class="absolute right-0 w-20 h-20 mt-32 -mr-6 text-2xl text-indigo-600 bg-white rounded-full shadow-md top-20 hover:text-indigo-400 focus:text-indigo-400 focus:outline-none focus:shadow-outline"
             >
-                <span class="block" style="transform: scale(1)x">&#x279c;</span>
+                <span class="block" style="transform: scale(1)x; color: #414E62">&#x279c;</span>
             </button>
 
         </div>
