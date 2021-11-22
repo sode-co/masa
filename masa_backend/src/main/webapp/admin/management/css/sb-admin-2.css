@@ -10405,7 +10405,7 @@ a:focus {
 .text-gray-900 {
     color: #3a3b45 !important;
 }
-
+ 
 .icon-circle {
     height: 2.5rem;
     width: 2.5rem;
@@ -10416,11 +10416,11 @@ a:focus {
 }
 
 .border-left-primary {
-    border-left: 0.25rem solid #4e73df !important;
+    border-left: 0.25rem solid #414E62 !important;
 }
 
 .border-bottom-primary {
-    border-bottom: 0.25rem solid #4e73df !important;
+    border-bottom: 0.25rem solid #414E62 !important;
 }
 
 .border-left-secondary {

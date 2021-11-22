@@ -212,15 +212,17 @@
                 <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search meeting by name..."
-                               aria-label="Search" aria-describedby="basic-addon2" id="searchkeyword">
-                        <select id="searchmethod" class="h-10 pl-5 pr-10 text-gray-600 bg-white border-0 appearance-none hover:border-0 focus:border-0">
+                        <input type="text" class="form-control bg-light small" placeholder="Search meeting by..."
+                               aria-label="Search" aria-describedby="basic-addon2" id="searchkeyword" style="border-color: #414E62; width: 100px">
+                        <select id="searchmethod" class="h-10 text-gray-600 bg-white appearance-none hover:border-0 focus:border-0">
                             <option>Mentor</option>
                             <option>Title</option>
                         </select>
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button" onclick="search()">
-                                <i class="fas fa-search fa-sm"></i>
+                            <button class="btn btn-primary" type="button" onclick="search()" style="background-color: #414E62; border-color: #414E62">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                </svg>
                             </button>
                         </div>
                     </div>
@@ -322,7 +324,7 @@
                 <div class="card shadow mb-4" >
 
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Meetings</h6>
+                        <h6 class="m-0 font-weight-bold" style="color: #414E62">Meetings</h6>
                     </div>
                     <div class="card-body" >
                         <div class="table-responsive">
@@ -415,7 +417,7 @@
                                                         +'<td>'+endtime.slice(4, 21)+'</td>'
                                                         +'<td>'
                                                         // +'<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#' + idsession + '">'
-                                                        +'<button type="button" class="btn btn-primary" onclick="calldialog('+element.id+')'+'">'
+                                                        +'<button type="button" class="btn btn-outline-info font-weight-bold" onclick="calldialog('+element.id+')'+'" style="">'
                                                         +'  Detail'
                                                         +'</button>'
                                                         +'<div class="modal fade" id="' + idsession +'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
@@ -441,8 +443,8 @@
 
                                                         +'</td>'
                                                         // +'<td>'+element.description.slice(0,30)+'....'+'</td>'
-                                                        +'<td><a href="'+element.platform.url+'"><button style="height: 30px; width: 150px; background-color: #5bcb7d; border: solid; border-radius: 10px; color: white">'+element.platform.platform+'</button></a></td>'
-                                                        +'<td><button style="height: 30px; width: 80px; background-color: #f57640; border-radius: 10px; color: black" onclick="deleteMeeting('+element.id+')">Delete</button></td>'
+                                                        +'<td><a href="'+element.platform.url+'"><button style="width: 150px;" class="btn btn-outline-success font-weight-medium">'+element.platform.platform+'</button></a></td>'
+                                                        +'<td><button style="" class="btn btn-outline-danger font-weight-bold" onclick="deleteMeeting('+element.id+')">Delete</button></td>'
                                                         +'</tr>'
                                                 let container = document.getElementById("container");
                                                 container.innerHTML = htmlElements;
