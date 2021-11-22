@@ -44,7 +44,7 @@
 
 <div class="flex w-full h-screen bg-gray-800" x-data="{openMenu:1}">
     <!--SideBar-->
-    <aside class="relative z-20 flex-shrink-0 w-20 px-2 overflow-y-auto bg-indigo-600 sm:block">
+    <aside class="relative z-20 flex-shrink-0 w-20 px-2 overflow-y-auto bg-indigo-600 sm:block" style="background-color: #015fc5">
         <div class="">
             <!--User Icon-->
             <div class="flex justify-center">
@@ -89,24 +89,6 @@
         <div class="mb-6">
             <!--Start Sidebar for open menu -->
             <div class="grid grid-cols-1 grid-cols-2 gap-4 mt-6">
-                <div class="flex flex-col items-center justify-center p-2 bg-white rounded-md shadow-xl cursor-pointer"
-                     style="background-color: transparent; color: transparent; border-color: transparent; box-shadow: 0 0 transparent">
-                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full"
-                         style="background-color: transparent; color: transparent; border-color: transparent; box-shadow: transparent">
-                        <i class="text-indigo-600 fas fa-calendar-alt fa-sm"
-                           style="background-color: transparent; color: transparent; border-color: transparent; box-shadow: transparent"></i>
-                    </div>
-                    <a class="mt-1 text-xs font-semibold text-center" href="#on-going" style="display: none"></a>
-                </div>
-                <div class="flex flex-col items-center justify-center p-2 bg-white rounded-md shadow-xl cursor-pointer"
-                     style="background-color: transparent; color: transparent; border-color: transparent; box-shadow: 0 0 transparent">
-                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full"
-                         style="background-color: transparent; color: transparent; border-color: transparent; box-shadow: transparent">
-                        <i class="text-indigo-600 fas fa-calendar-alt fa-sm"
-                           style="background-color: transparent; color: transparent; border-color: transparent; box-shadow: transparent"></i>
-                    </div>
-                    <a class="mt-1 text-xs font-semibold text-center" href="#on-going" style="display: none"></a>
-                </div>
                 <!-- Start Navitem -->
                 <div class="flex flex-col items-center justify-center p-2 bg-white rounded-md shadow-xl cursor-pointer">
                     <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">

@@ -18,7 +18,7 @@
   <nav class=" bg-white flex justify-between px-6 border-0">
     <div class="flex items-center space-x-12">
       <div class="flex items-center space-x-2 text-2xl">
-        <img src="${Masa.SERVER_HOST}/shared/icon/weblogo.svg" style="width: 30%; height: 30%" />
+        <img src="https://i.ibb.co/qCg5gr8/masalogo.png" style="width: 50%;"/>
       </div>
       <div class="hidden lg:block hover:border-red-300 focus:border-red-300" style="border-radius: 10px; border-color: #00B4CC">
         <div class="relative">
