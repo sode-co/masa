@@ -190,8 +190,8 @@
 </head>
 <body>
 <div class="w-full body-font mb-6 lg:mb-0 sm:ml-20">
-    <h1 class="mb-2 text-3xl font-medium text-gray-900 sm:text-2xl title-font" style="font-weight: 530" id="topictitle">Software Engineering Meetings</h1>
-    <div class="w-20 h-1 bg-blue-500 rounded"></div>
+    <h1 class="mb-2 text-5xl font-medium text-gray-900 title-font" style="font-size: 20px; font-weight: 600" id="topictitle">Software Engineering Meetings</h1>
+    <div class="w-20 h-1 bg-blue-500 rounded" style="background-color: #66ce93"></div>
 </div>
 <script>
     const idtopic = location.search.replace("?topicId=", '');
@@ -241,13 +241,13 @@
                         +'/>'
                         +'<div class="card-block" style="text-align: center">'
                         +'<h1 class="text-xl font-bold text-green-600">'+element.title+'</h1>'
-                        +'<h2 class="text-lg text-indigo-600">with <strong class="text-indigo-600">'+element.mentor.fullName+'</strong></h2>'
+                        +'<h2 class="text-lg text-indigo-600" style="color: #414e62">with mentor: <strong class="text-indigo-600" style="color: coral">'+element.mentor.fullName+'</strong></h2>'
                         +'<p class="mt-4 text-gray-600">'+startConvertNewMeetingTime.slice(16,21)+' '+ startConvertNewMeetingTime.slice(4,10)+'</p>'
                         +'</div>'
                         +'<div class="card-footer">'
                         +'<button'
                         +' type="button"'
-                        +' class="float-left py-2 mt-1 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-indigo-500  px-5 rounded-xl hover:bg-indigo-400"'
+                        +' class="float-left py-2 mt-1 mb-4 mr-2 font-semibold tracking-widest bg-blue-500 hover:bg-indigo-900 text-white font-bold py-2 px-4 border bg-indigo-800 rounded-md"'
                         +' onclick=parent.calldialog('+element.id+')'
                         +'>'
                         +'See more'
@@ -255,7 +255,7 @@
                         +'<a href="'+element.platform.url+'" target="_blank">'
                         +'<button'
                         +' type="button"'
-                        +' class="float-right px-3 py-2 mt-1 mb-4 mr-2 font-semibold tracking-widest text-white transition duration-200 bg-green-500 px-5 rounded-xl hover:bg-green-400""'
+                        +' class="float-right px-3 py-2 mt-1 mb-4 mr-2 font-semibold tracking-widest bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded-lg""'
                         +'>'
                         +'Join now'
                         +' </button>'
