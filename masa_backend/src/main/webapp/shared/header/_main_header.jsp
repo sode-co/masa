@@ -52,16 +52,18 @@
     </div>
 
     <div class="items-center hidden space-x-4 cursor-pointer lg:flex">
-       <c:if test="${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MEMBER}'}">
-        <a href="${Masa.SERVER_HOST}/member/registermentor.jsp"
-           class="py-2 font-semibold text-white bg-blue-500 rounded-full px-7 text-md hover:bg-blue-400">Become mentor</a>
-       </c:if>
-      <c:if test="${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MENTOR}'}">
-        <a id="createdmeeting" href="${Masa.SERVER_HOST}/mentor/mycreatedmeeting.jsp?mentor=${sessionScope.CURRENT_USER.getId()}"
-           class="py-2 font-semibold text-white bg-blue-500 rounded-full px-7 text-md hover:bg-blue-400">Your Meetings</a>
-        <a href="${Masa.SERVER_HOST}/mentor/meeting/createnewmeeting.jsp"
-           class="py-2 font-semibold text-white bg-blue-500 rounded-full px-7 text-md hover:bg-blue-400">New Meeting</a>
+
+      <c:if test="${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MEMBER}'}">
+      <a href="${Masa.SERVER_HOST}/member/registermentor.jsp"
+           class="bg-gray-600 border-0  hover:bg-gray-900 text-white font-semibold hover:text-white py-2 px-4 border border-green-600 hover:border-transparent rounded">Become mentor</a>
       </c:if>
+
+        <a id="createdmeeting" href="${Masa.SERVER_HOST}/mentor/mycreatedmeeting.jsp?mentor=${sessionScope.CURRENT_USER.getId()}"
+           class="bg-transparent hover:bg-yellow-500 text-gray font-semibold hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded">Your Meetings</a>
+        <a href="${Masa.SERVER_HOST}/mentor/meeting/createnewmeeting.jsp"
+           class="bg-green-500 border-0 hover:bg-green-700 text-white font-semibold hover:text-white py-2 px-4 border border-green-600 hover:border-transparent rounded">New Meeting</a>
+
+
       <div>
         <div
                 class="w-10 h-10 rounded-full"
