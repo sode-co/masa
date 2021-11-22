@@ -44,13 +44,13 @@
 
 <div class="flex w-full h-screen bg-gray-800" x-data="{openMenu:1}">
     <!--SideBar-->
-    <aside class="relative z-20 flex-shrink-0 w-20 px-2 overflow-y-auto bg-indigo-600 sm:block" style="background-color: #015fc5">
+    <aside class="relative z-20 flex-shrink-0 w-20 px-2 overflow-y-auto bg-indigo-600 sm:block" style="background-color:#414E62">
         <div class="">
             <!--User Icon-->
             <div class="flex justify-center">
                 <div class="mt-2 bg-gray-300 border-2 border-white rounded-full w-14 h-14">
                     <img
-                            src="http://lilithaengineering.co.za/wp-content/uploads/2017/08/person-placeholder.jpg"
+                            src="https://cdn.imgbin.com/2/14/6/imgbin-computer-icons-avatar-avatar-XRKxbbuivVKcP1e2BUGHYbx5V.jpg"
                             class="w-auto rounded-full"
                     />
                 </div>
@@ -62,14 +62,15 @@
                     <li
                             class="flex items-center justify-center p-2 mb-3 bg-blue-400 rounded-md cursor-pointer"
                             @click="openMenu !== 1 ? openMenu = 1 : openMenu = null"
+                            style="background-color: #5bcb7d"
                     >
                         <i class="text-white fas fa-align-justify fa-sm"></i>
                     </li>
-                    <li class="flex items-center justify-center p-2 mb-3 bg-indigo-400 rounded-md cursor-pointer">
+                    <li class="flex items-center justify-center p-2 mb-3 bg-indigo-400 rounded-md cursor-pointer"  >
                         <i class="text-white fas fa-eye-slash fa-sm"></i>
                     </li>
                     <a href="${Masa.SERVER_HOST}/auth-management/signout">
-                        <li class="flex items-center justify-center p-2 mb-3 bg-yellow-400 rounded-md cursor-pointer">
+                        <li class="flex items-center justify-center p-2 mb-3 bg-yellow-400 rounded-md cursor-pointer" style="background-color: orange">
                             <i class="text-white fas fa-sign-out-alt fa-sm"></i>
                         </li>
                     </a>
@@ -91,22 +92,22 @@
             <div class="grid grid-cols-1 grid-cols-2 gap-4 mt-6">
                 <!-- Start Navitem -->
                 <div class="flex flex-col items-center justify-center p-2 bg-white rounded-md shadow-xl cursor-pointer">
-                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
-                        <i class="text-indigo-600 fas fa-bell fa-sm"></i>
+                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full" style="background-color: #414E62">
+                        <i class="text-white fas fa-bell fa-sm"></i>
                     </div>
                     <a class="mt-1 text-xs font-semibold text-center" href="#new">New meetings</a>
                 </div>
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
                 <div class="flex flex-col items-center justify-center p-2 bg-white rounded-md shadow-xl cursor-pointer">
-                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
-                        <i class="text-indigo-600 fas fa-calendar-alt fa-sm"></i>
+                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full" style="background-color: #414E62">
+                        <i class="text-white fas fa-calendar-alt fa-sm"></i>
                     </div>
                     <a class="mt-1 text-xs font-semibold text-center" href="#on-going">On-going meetings</a>
                 </div>
                 <div class="flex flex-col items-center justify-center p-2 bg-white rounded-md shadow-xl cursor-pointer">
-                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
-                        <i class="text-indigo-600 fas fa-calendar-alt fa-sm"></i>
+                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full" style="background-color: #414E62">
+                        <i class="text-white fas fa-calendar-alt fa-sm"></i>
                     </div>
                     <a class="mt-1 text-xs font-semibold text-center" href="#followed">Followed meetings</a>
                 </div>
@@ -122,8 +123,8 @@
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
                 <div class="flex flex-col items-center justify-center p-2 bg-white rounded-md shadow-xl cursor-pointer">
-                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
-                        <i class="text-indigo-600 fas fa-laptop fa-sm"></i>
+                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full" style="background-color: #414E62">
+                        <i class="text-white fas fa-laptop fa-sm"></i>
                     </div>
                     <a class="mt-1 text-xs font-semibold text-center" href="#scroll-target"
                        onclick="onTopicSelected(1)">Software Engineering</a>
@@ -131,8 +132,8 @@
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
                 <div class="flex flex-col items-center justify-center p-2 bg-white rounded-md shadow-xl cursor-pointer">
-                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
-                        <i class="text-indigo-600 fas fa-pencil-ruler fa-sm"></i>
+                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full" style="background-color: #414E62">
+                        <i class="text-white fas fa-pencil-ruler fa-sm"></i>
                     </div>
                     <a class="mt-1 text-xs font-semibold text-center" href="#scroll-target"
                        onclick="onTopicSelected(10)">Graphic Design</a>
@@ -140,8 +141,8 @@
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
                 <div class="flex flex-col items-center justify-center p-2 bg-white rounded-md shadow-xl cursor-pointer">
-                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
-                        <i class="text-indigo-600 fas fa-business-time fa-sm"></i>
+                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full" style="background-color: #414E62">
+                        <i class="text-white fas fa-business-time fa-sm"></i>
                     </div>
                     <a class="mt-1 text-xs font-semibold text-center" href="#scroll-target"
                        onclick="onTopicSelected(7)">Business management</a>
@@ -149,8 +150,8 @@
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
                 <div class="flex flex-col items-center justify-center p-2 bg-white rounded-md shadow-xl cursor-pointer">
-                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
-                        <i class="text-indigo-600 fas fa-poll fa-sm"></i>
+                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full" style="background-color: #414E62">
+                        <i class="text-white fas fa-poll fa-sm"></i>
                     </div>
                     <a class="mt-1 text-xs font-semibold text-center" href="#scroll-target"
                        onclick="onTopicSelected(2)">Digital Marketing</a>
@@ -158,8 +159,8 @@
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
                 <div class="flex flex-col items-center justify-center p-2 bg-white rounded-md shadow-xl cursor-pointer">
-                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
-                        <i class="text-indigo-600 fas fa-mountain fa-sm"></i>
+                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full" style="background-color: #414E62">
+                        <i class="text-white fas fa-mountain fa-sm"></i>
                     </div>
                     <a class="mt-1 text-xs font-semibold text-center" href="#scroll-target"
                        onclick="onTopicSelected(6)">Japanese Language</a>
@@ -167,8 +168,8 @@
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
                 <div class="flex flex-col items-center justify-center p-2 bg-white rounded-md shadow-xl cursor-pointer">
-                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
-                        <i class="text-indigo-600 fas fa-globe-europe fa-sm"></i>
+                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full" style="background-color: #414E62">
+                        <i class="text-white fas fa-globe-europe fa-sm"></i>
                     </div>
                     <a class="mt-1 text-xs font-semibold text-center" href="#meetingbytopic"
                        onclick="onTopicSelected(5)">English Language</a>
@@ -176,8 +177,8 @@
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
                 <div class="flex flex-col items-center justify-center p-2 bg-white rounded-md shadow-xl cursor-pointer">
-                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
-                        <i class="text-indigo-600 fas fa-shield-alt fa-sm"></i>
+                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full" style="background-color: #414E62">
+                        <i class="text-white fas fa-shield-alt fa-sm"></i>
                     </div>
                     <a class="mt-1 text-xs font-semibold text-center" href="#meetingbytopic"
                        onclick="onTopicSelected(3)">Information Assurance</a>
@@ -185,8 +186,8 @@
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
                 <div class="flex flex-col items-center justify-center p-2 bg-white rounded-md shadow-xl cursor-pointer">
-                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
-                        <i class="text-indigo-600 fas fa-robot fa-sm"></i>
+                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full" style="background-color: #414E62">
+                        <i class="text-white fas fa-robot fa-sm"></i>
                     </div>
                     <a class="mt-1 text-xs font-semibold text-center" href="#meetingbytopic"
                        onclick="onTopicSelected(4)">Artificial Intelligence</a>
@@ -194,8 +195,8 @@
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
                 <div class="flex flex-col items-center justify-center p-2 bg-white rounded-md shadow-xl cursor-pointer">
-                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
-                        <i class="text-indigo-600 fas fa-list-alt fa-sm"></i>
+                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full" style="background-color: #414E62">
+                        <i class="text-white fas fa-list-alt fa-sm"></i>
                     </div>
                     <a class="mt-1 text-xs font-semibold text-center" href="#meetingbytopic"
                        onclick="onTopicSelected(9)">Soft Skills</a>
@@ -203,8 +204,8 @@
                 <!-- End Navitem -->
                 <!-- Start Navitem -->
                 <div class="flex flex-col items-center justify-center p-2 bg-white rounded-md shadow-xl cursor-pointer">
-                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full">
-                        <i class="text-indigo-600 fas fa-photo-video fa-sm"></i>
+                    <div class="flex flex-col items-center p-2 bg-indigo-200 rounded-full" style="background-color: #414E62">
+                        <i class="text-white fas fa-photo-video fa-sm"></i>
                     </div>
                     <a class="mt-1 text-xs font-semibold text-center" href="#meetingbytopic"
                        onclick="onTopicSelected(8)">Multimedia</a>

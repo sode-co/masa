@@ -75,8 +75,8 @@
 <body>
 <div class="flex mb-7 w-full">
     <div class="ml-24 flex flex-col flex-1 float-left">
-        <h1 class="mb-2 text-5xl font-medium text-gray-900 sm:text-4xl title-font">On-going Meetings</h1>
-        <div class="w-20 h-1 bg-blue-500 rounded"></div>
+        <h1 class="mb-2 text-5xl font-medium text-gray-900 title-font" style="font-size: 20px">On-going Meetings</h1>
+        <div class="w-20 h-1 bg-blue-500 rounded" style="background-color: #66ce93"></div>
     </div>
     <div class="flex flex-col flex-1 float-right">
         <a href="#" class="text-right mb-2 mr-24 text-2xl font-medium text-gray-900 sm:text-2xl title-font">See more</a>
