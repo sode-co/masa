@@ -1,4 +1,5 @@
 <%@ page import="com.devlogs.masa_backend.common.Masa"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +56,15 @@
                             &nbsp;
                         </a>
                     </li>
-
+                    <c:if test="${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MENTOR}'}">
+                        <li  class="flex items-center justify-center p-2 mb-3 bg-indigo-400 rounded-md cursor-pointer" style="background-color: #f57640">
+                            <a href="${Masa.SERVER_HOST}/mentor/mycreatedmeeting.jsp?mentor=${sessionScope.CURRENT_USER.getId()}" style="text-decoration:none; ">
+                            &nbsp;
+                            <i class="text-white fa fa-calendar"></i>
+                            <span style="color: white; padding-top: 0px">Mine</span>
+                            </a>
+                        </li>
+                    </c:if>
                     <li
                             class="flex items-center justify-center p-2 mb-3 bg-indigo-400 rounded-md cursor-pointer"
                     >
@@ -67,7 +76,7 @@
                         </a>
                     </li>
                     <li class="flex items-center justify-center p-2 mb-3 bg-yellow-400 rounded-md cursor-pointer">
-                        <a href="/masa/auth-management/signout" style="text-decoration:none">
+                        <a href="${Masa.SERVER_HOST}/auth-management/signout" style="text-decoration:none">
                             &nbsp;
                             <i class="text-white fas fa-sign-out-alt"></i>
                             <span style="color: white; padding-top: 2px">Log Out</span>
