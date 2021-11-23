@@ -57,7 +57,6 @@
           </li>
           <li  class="flex items-center justify-center p-2 mb-3 bg-indigo-400 rounded-md cursor-pointer" style="background-color: #f57640">
             <a href="${Masa.SERVER_HOST}/mentor/mycreatedmeeting.jsp?mentor=${sessionScope.CURRENT_USER.getId()}" style="text-decoration:none; ">
-              &nbsp;
               <i class="text-white fa fa-calendar"></i>
               <span style="color: white; padding-top: 0px">Mine</span>
             </a>

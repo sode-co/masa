@@ -51,7 +51,12 @@
             window.location.replace("${Masa.SERVER_HOST}/member/question.jsp?id="+meetingId+"&page="+page);
             console.log(page);
         }
-
+        function search(){
+            const searchMethod = document.getElementById("searchmethod").value;
+            const searchKey = document.getElementById("searchkeyword").value;
+            const urlForward = "${Masa.SERVER_HOST}/member/searchmeeting.jsp?method="+searchMethod+"&keyword="+searchKey;
+            window.location.replace(urlForward);
+        }
     </script>
 </head>
 <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet" />
@@ -62,9 +67,28 @@
     <nav class="relative flex flex-wrap items-center justify-between px-2 py-2 mb-2 bg-white">
         <div class="container flex flex-wrap items-center justify-between px-4 mx-auto">
             <div class="relative flex justify-between w-full px-4 lg:w-auto lg:static lg:block lg:justify-start">
-                <a href="${Masa.SERVER_HOST}/member/home.jsp" class="relative block">
                     <img src="https://i.ibb.co/qCg5gr8/masalogo.png" style="width: 40%;"/>
-                </a>
+            </div>
+            <div class="relative flex justify-between w-full px-1 lg:w-auto lg:static lg:block lg:justify-start">
+                <div class="flex items-center h-12 border border-gray-700 rounded-lg w-30" style="border-color: #414E62; border-width: medium; margin-bottom: 5px; margin-left: -190px;">
+                    <input placeholder="Search meeting by..." name="select" id="searchkeyword" class="w-full px-4 text-gray-800 outline-none appearance-none" checked />
+                    <span style="font-weight: lighter; font-size: 40px; color: #414e62; margin-bottom: 10px">|</span>
+                    <select
+                            id="searchmethod"
+                            class="h-10 text-gray-600  appearance-none  "
+                            style="border-color: transparent"
+                    >
+                        <option>Mentor</option>
+                        <option>Title</option>
+                    </select>
+                    <span style="font-weight: lighter; font-size: 40px; color: #414e62; margin-bottom: 10px">|</span>
+                    <button
+                            onclick="search()"
+                            class="pl-5 pr-5 text-gray-900 transition-all outline-none cursor-pointer  focus:outline-none hover:text-gray-600 bg-gradient-dark "
+                    >
+                        <img src="https://img.icons8.com/ios-filled/50/000000/search--v4.png"/>
+                    </button>
+                </div>
             </div>
             <div class="items-center flex-grow lg:flex" id="navi">
                 <ul class="flex flex-col ml-auto list-none lg:flex-row">
@@ -86,6 +110,7 @@
                             Meeting
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a
                                 class="
@@ -180,11 +205,11 @@
         </div>
     </nav>
 
-    <div class="px-6 py-8">
+    <div class="px-10 py-8">
         <div class="container flex justify-between mx-auto">
             <div class="max-w-4xl lg:w-8/12">
                 <div class="flex items-center justify-between">
-                    <h1 class="text-xl font-bold text-gray-700 md:text-2xl">Question</h1>
+                    <h2 class="text-xl font-bold" style="color: #414E62; font-size: 25px">Question</h2>
                 </div>
                 <div class="mt-6">
                     <div class="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">
@@ -194,6 +219,7 @@
                                             rows="5"
                                             placeholder="Ask about the meeting"
                                             id="questionContent"
+                                            style="padding-left: 20px"
                                     ></textarea>
 
                             <div class="flex flex-row flex-wrap w-full mx-auto mt-3">
@@ -201,7 +227,7 @@
                                     <button
                                             onclick="askquestion()"
                                             type="button"
-                                            class="float-right p-2 font-semibold text-white bg-indigo-500 rounded-lg hover:bg-indigo-400"
+                                            class="float-right p-2 font-semibold text-white bg-indigo-800 rounded-md hover:bg-indigo-600"
                                     >
                                         Leave question
                                     </button>
@@ -297,10 +323,10 @@
                                         <p class="mt-4 text-lg leading-relaxed text-blueGray-500"></p>
                                         <ul class="mt-6 list-none">
                                             <li class="py-2">
-                                                <div class="flex items-center">
+                                                <div class="flex items-center" >
                                                     <div>
-                                                                <span
-                                                                        class="inline-block px-2 py-1 mr-3 text-xl font-semibold text-blue-600 uppercase bg-blue-200 rounded-full "
+                                                                <span style="background-color: #414E62"
+                                                                        class="inline-block px-2 py-1 mr-3 text-xl font-semibold text-white uppercase bg-blue-200 rounded-full "
                                                                 ><i class="fas fa-user"></i
                                                                 ></span>
                                                     </div>
@@ -312,8 +338,8 @@
                                             <li class="py-2">
                                                 <div class="flex items-center">
                                                     <div>
-                                                                <span
-                                                                        class="inline-block px-2 py-1 mr-3 text-xl font-semibold text-blue-600 uppercase bg-blue-200 rounded-full "
+                                                                <span style="background-color: #414E62"
+                                                                      class="inline-block px-2 py-1 mr-3 text-xl font-semibold text-white uppercase bg-blue-200 rounded-full "
                                                                 ><i class="fas fa-clock"></i
                                                                 ></span>
                                                     </div>
@@ -325,8 +351,8 @@
                                             <li class="py-2">
                                                 <div class="flex items-center">
                                                     <div>
-                                                                <span
-                                                                        class="inline-block px-2 py-1 mr-3 text-xl font-semibold text-blue-600 uppercase bg-blue-200 rounded-full "
+                                                                <span style="background-color: #414E62"
+                                                                      class="inline-block px-2 py-1 mr-3 text-xl font-semibold text-white uppercase bg-blue-200 rounded-full "
                                                                 ><i class="far fa-calendar-alt"></i
                                                                 ></span>
                                                     </div>
@@ -341,7 +367,7 @@
                                                     <a id="meetingUrl">
                                                         <button
                                                                 type="button"
-                                                                class="px-5 py-3 mx-auto font-semibold text-white bg-indigo-500 rounded-lg  hover:bg-indigo-400"
+                                                                class="bg-transparent hover:bg-green-500 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded"
                                                         >
                                                             Join now
                                                         </button>
@@ -372,7 +398,7 @@
             <div class="sm:flex sm:mt-8">
                 <div class="flex flex-col justify-between mt-8 sm:mt-0 sm:w-full sm:px-8 md:flex-row">
                     <div class="flex flex-col flex-1">
-                        <span class="mb-2 font-bold text-center text-green-700 uppercase">A product of Sode team</span>
+                        <span class="mb-2 font-bold text-center text-info-700 uppercase" style="color: #414E62">A product of Sode team</span>
                         <span class="my-2"
                         ><p class="text-gray-700 text-md">
                                         We created an application that makes it easy for students to create meetings between students and mentors
@@ -380,7 +406,7 @@
                         >
                     </div>
                     <div class="flex flex-col flex-1">
-                        <span class="mt-4 mb-2 font-bold text-center text-green-700 uppercase md:mt-0">Contact us</span>
+                        <span class="mt-4 mb-2 font-bold text-center text-green-700 uppercase md:mt-0" style="color: #414E62">Contact us</span>
                         <span class="my-2 ml-48">
                                     <i class="fab fa-facebook"></i>
                                     <a href="#" class="text-gray-700 hover:no-underline text-md hover:text-blue-500"
@@ -411,7 +437,7 @@
         <div class="container px-6 mx-auto">
             <div class="flex flex-col items-center mt-16 border-t-2 border-gray-300">
                 <div class="py-6 text-center sm:w-2/3">
-                    <p class="mb-2 text-sm font-bold text-gray-700">©2021-Sode Team-FPTU HCM</p>
+                    <p class="mb-2 text-sm font-bold text-gray-700"> © 2021-Sode Team-FPTU HCM</p>
                 </div>
             </div>
         </div>
