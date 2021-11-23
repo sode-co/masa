@@ -62,7 +62,9 @@
     <nav class="relative flex flex-wrap items-center justify-between px-2 py-2 mb-2 bg-white">
         <div class="container flex flex-wrap items-center justify-between px-4 mx-auto">
             <div class="relative flex justify-between w-full px-4 lg:w-auto lg:static lg:block lg:justify-start">
-                <img src="${Masa.SERVER_HOST}/shared/icon/weblogo.svg" alt="Logo" width="30%" height="30%" />
+                <a href="${Masa.SERVER_HOST}/member/home.jsp" class="relative block">
+                    <img src="https://i.ibb.co/qCg5gr8/masalogo.png" style="width: 40%;"/>
+                </a>
             </div>
             <div class="items-center flex-grow lg:flex" id="navi">
                 <ul class="flex flex-col ml-auto list-none lg:flex-row">
@@ -70,7 +72,6 @@
                         <a
                                 class="
                                         font-sans
-                                        text-2xl
                                         font-semibold
                                         border-b-2 border-transparent
                                         hover:text-gray-800
@@ -80,8 +81,7 @@
                                         sm:mx-6
                                     "
                                 href="${Masa.SERVER_HOST}/member/home.jsp"
-                                style="font-size: 19px"
-
+                                style="font-size: 18px; font-weight: 600; color: #414E62"
                         >
                             Meeting
                         </a>
@@ -113,13 +113,12 @@
                                         text-gray-800
                                         dark:text-gray-200 dark:hover:text-gray-200
                                         hover:no-underline
-                                        border-b-2 border-green-800
+                                        border-b-2 border-green-600
                                         mx-1.5
                                         sm:mx-6
                                     "
                                 href="#"
-                                style="font-size: 19px"
-
+                                style="font-size: 18px; font-weight: 600; color: #414E62"
                         >
                             Question Page
                         </a>
@@ -156,7 +155,7 @@
                                         sm:mx-6
                                     "
                                 href="#footer"
-                                style="font-size: 19px"
+                                style="font-size: 18px; font-weight: 600; color: #414E62"
                         >
                             About us
                         </a>
@@ -165,8 +164,8 @@
                         <a
                                 href="${Masa.SERVER_HOST}/auth-management/signout"
                         >
-                            <button class="bg-transparent  hover:bg-red-500 border border-red-500 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center hover:border-transparent hover:text-white"
-                                style="border-radius: 10px"
+                            <button class="bg-transparent  hover:bg-gray-500 border border-gray-500 text-white-800 font-semibold py-2 px-4 rounded inline-flex items-center hover:border-transparent hover:text-white"
+                                style="border-radius: 5px; margin-bottom: 10px"
                             >
                                 <span style="font-size: 17px">Log out</span> &nbsp; &nbsp;
                                 <svg style="margin-top: 7px; font-weight: bold" class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
