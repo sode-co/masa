@@ -55,7 +55,7 @@
 
       <c:if test="${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MEMBER}'}">
       <a href="${Masa.SERVER_HOST}/member/registermentor.jsp"
-           class="bg-gray-600 border-0  hover:bg-gray-900 text-white font-semibold hover:text-white py-2 px-4 border border-green-600 hover:border-transparent rounded">Become mentor</a>
+           class="bg-green-500 border-0  hover:bg-gray-900 text-white font-semibold hover:text-white py-2 px-4 border border-green-600 hover:border-transparent rounded">Become mentor</a>
       </c:if>
 
       <c:if test="${sessionScope.CURRENT_USER.getRole() == 'UserRole{type=MENTOR}'}">
