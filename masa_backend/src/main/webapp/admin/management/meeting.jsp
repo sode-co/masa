@@ -307,9 +307,9 @@
 
             <!-- Begin Page Content -->
             <div id="dialogiframe" class="modal"
-                 style="background-color: transparent; border-color: transparent; align-items: center; margin-right: 280px; box-shadow:none; width: 500px; padding-bottom:10px ">
+                 style="background-color: transparent; border-color: transparent; align-items: center; margin-left: 150px; box-shadow:none; width: 500px; padding-bottom:10px ">
                 <iframe id="dialogiframeelement" src="${Masa.SERVER_HOST}/admin/management/descriptiondialog.jsp"
-                        frameborder="0" style="width: 100%; height: 486px; border-radius: 20px;" height="100%" width="100%">
+                        frameborder="0" style="width: 100%; height: 486px; margin-top:100px; border-radius: 20px;" height="100%" width="100%">
                 </iframe>
             </div>
 
