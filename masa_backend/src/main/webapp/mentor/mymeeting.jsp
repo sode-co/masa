@@ -202,7 +202,7 @@
                     var startConvertOngoingMeetingTime = startConvertOngoingMeeting.toString().replace("GMT+0700 (Indochina Time)",'').replace("GMT+0800 (Indochina Time)",'');
                     iOngoingMeeting++;
                     htmlElements +=
-                        '<div class="mt-4 transition duration-500 transform col-sm-6 col-md-4 col-lg-3 hover:shadow-xl hover:scale-110">'
+                        '<div class="mt-4 transition duration-500 transform col-sm-6 col-md-4 col-lg-4 hover:shadow-xl hover:scale-110">'
                         + '<div class="card">'
                         + '<img'
                         + ' class="card-img-top"'
