@@ -286,7 +286,7 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold" style="font-weight: bolder; color: #414E62">All User</h6>
+                        <h6 class="m-0 font-weight-bold" style="font-weight: bolder; color: #414E62">All Users</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
