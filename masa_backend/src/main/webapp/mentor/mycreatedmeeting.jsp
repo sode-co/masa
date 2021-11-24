@@ -152,8 +152,8 @@
               </div>
             </div>
           </header>
-          <div style="padding-right: 30%">
-            <iframe src="${Masa.SERVER_HOST}/mentor/mymeeting.jsp" style="width: 1700px; height: 5000px" id="createdmeeting">
+          <div style="padding-right: 30%; width: 100px">
+            <iframe src="${Masa.SERVER_HOST}/mentor/mymeeting.jsp" style="width: 1200px; height: 5000px" id="createdmeeting">
             </iframe>
           </div>
           <script>
