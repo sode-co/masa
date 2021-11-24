@@ -18,7 +18,7 @@ import java.io.IOException;
 
 import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.*;
 
-@AccessRole(roles = {STUDENT})
+@AccessRole(roles = {MEMBER,STUDENT})
 @WebServlet(name = "unfollowmeetingservlet", urlPatterns = "/api/appointment-management/remove")
 public class RemoveAppointmentServlet extends BaseHttpServlet {
 
