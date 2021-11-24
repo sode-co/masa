@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Created Meeting</title>
+    <title>Search Meeting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
@@ -61,7 +61,7 @@
                             <a href="${Masa.SERVER_HOST}/mentor/mycreatedmeeting.jsp?mentor=${sessionScope.CURRENT_USER.getId()}" style="text-decoration:none; ">
                             &nbsp;
                             <i class="text-white fa fa-calendar"></i>
-                            <span style="color: white; padding-top: 0px">Mine</span>
+                            <span style="color: white; padding-top: 0px">Yours</span>
                             </a>
                         </li>
                     </c:if>
@@ -157,7 +157,7 @@
                         </div>
                     </header>
                     <div style="padding-right: 30%">
-                        <iframe src="${Masa.SERVER_HOST}/mentor/mymeeting.jsp" style="width: 1700px; height: 5000px" id="createdmeeting">
+                        <iframe src="${Masa.SERVER_HOST}/mentor/mymeeting.jsp" style="width: 1300px; height: 10000px; overflow: hidden" id="createdmeeting">
                         </iframe>
                     </div>
                     <script>
