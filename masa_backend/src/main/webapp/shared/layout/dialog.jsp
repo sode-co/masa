@@ -39,6 +39,7 @@
             fetch("${Masa.SERVER_HOST}/api/appointment-management/create", options)
                 .then((res) => res.json())
                 .then((res) => {
+                        console.log("${Masa.SERVER_HOST}/api/appointment-management/create");
                         alert("Follow meeting success!");
                         parent.onFollowedMeetingChanged();
                     }
@@ -61,6 +62,7 @@
             fetch("${Masa.SERVER_HOST}/api/appointment-management/remove", options)
                 .then((res) => res.json())
                 .then((res) => {
+                        console.log("${Masa.SERVER_HOST}/api/appointment-management/remove");
                         alert("Unfollow meeting success!");
                         parent.onFollowedMeetingChanged();
                     }
