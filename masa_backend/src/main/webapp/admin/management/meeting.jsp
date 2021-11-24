@@ -273,7 +273,7 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">${sessionScope.CURRENT_USER.fullName}</span>
                             <img class="img-profile rounded-circle"
-                                 src="img/undraw_profile.svg">
+                                 src="https://i.pinimg.com/474x/4b/71/f8/4b71f8137985eaa992d17a315997791e.jpg">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -309,7 +309,7 @@
             <div id="dialogiframe" class="modal"
                  style="background-color: transparent; border-color: transparent; align-items: center; margin-right: 280px; box-shadow:none; width: 500px; padding-bottom:10px ">
                 <iframe id="dialogiframeelement" src="${Masa.SERVER_HOST}/admin/management/descriptiondialog.jsp"
-                        frameborder="0" style="width: 700px; height: 486px; border-radius: 20px;" height="100%" width="120%">
+                        frameborder="0" style="width: 100%; height: 486px; border-radius: 20px;" height="100%" width="100%">
                 </iframe>
             </div>
 
@@ -375,6 +375,9 @@
                                         const method = document.getElementById("searchmethod").value;
                                         const keyword = document.getElementById("searchkeyword").value;
                                         window.location.replace("${Masa.SERVER_HOST}/admin/management/meeting.jsp?method="+method+"&keyword="+keyword);
+                                        setTimeout(function(){
+                                            window.location.replace("${Masa.SERVER_HOST}/admin/management/meeting.jsp?method="+method+"&keyword="+keyword);
+                                        }, 1000);
                                     }
 
 
