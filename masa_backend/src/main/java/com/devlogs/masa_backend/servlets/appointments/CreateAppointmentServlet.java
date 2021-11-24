@@ -16,7 +16,7 @@ import java.io.IOException;
 
 import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.*;
 
-@AccessRole(roles = {MEMBER, MENTOR, ADMIN})
+@AccessRole(roles = {MEMBER, STUDENT, MENTOR, ADMIN})
 @WebServlet(name = "followmeetingservlet", urlPatterns = "/api/appointment-management/create")
 public class CreateAppointmentServlet extends BaseHttpServlet {
 
