@@ -39,12 +39,11 @@
             fetch("${Masa.SERVER_HOST}/api/appointment-management/create", options)
                 .then((res) => res.json())
                 .then((res) => {
-                        console.log("${Masa.SERVER_HOST}/api/appointment-management/create");
                         alert("Follow meeting success!");
                         parent.onFollowedMeetingChanged();
                     }
                 )
-                .catch((err) => alert("Oops Sorry, there seems little error..."));
+                .catch((err) => alert("Oops Sorry, there seems to be little error..."));
         }
         function unfollow(){
             const json = {
@@ -62,12 +61,11 @@
             fetch("${Masa.SERVER_HOST}/api/appointment-management/remove", options)
                 .then((res) => res.json())
                 .then((res) => {
-                        console.log("${Masa.SERVER_HOST}/api/appointment-management/remove");
                         alert("Unfollow meeting success!");
                         parent.onFollowedMeetingChanged();
                     }
                 )
-                .catch((err) => alert("Oops Sorry, there seems little error..."));
+                .catch((err) => alert("Oops Sorry, there seems to be little error..."));
         }
     </script>
 </head>
