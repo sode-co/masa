@@ -18,6 +18,14 @@
       background-color: #00B4CC;
     }
   </style>
+  <script>
+    function search(){
+      const searchMethod = document.getElementById("searchmethod").value;
+      const searchKey = document.getElementById("searchkeyword").value;
+      const urlForward = "${Masa.SERVER_HOST}/member/searchmeeting.jsp?method="+searchMethod+"&keyword="+searchKey;
+      window.location.replace(urlForward);
+    }
+  </script>
 </head>
 <body>
 <div class="flex w-full h-screen bg-gray-800">
@@ -108,19 +116,19 @@
     <main class="relative z-0 flex-1 px-6 pb-8 bg-white">
       <div class="grid pb-10 mt-4">
         <div class="flex flex-col w-full pl-0 md:p-4 md:space-y-4">
-          <header class="z-40 items-center w-full h-16 bg-white shadow-lg dark:bg-gray-700 rounded-2xl">
+          <header class="z-40 items-center w-full h-16 bg-white shadow-lg dark:bg-gray-700 rounded-2xl" style="height: 60px">
             <div class="relative z-20 flex flex-col justify-center h-full px-3 mx-auto flex-center">
               <div class="relative flex items-center w-full pl-1 lg:max-w-68 sm:pr-2 sm:ml-0">
-                <div class="container relative left-0 z-50 flex w-full h-auto h-full" style="height: 300px">
+                <div class="container relative left-0 z-50 flex w-full h-auto h-full" style="height: 100px">
                   <div class="relative flex items-center flex-5 w-full h-full lg:w-90 group" style="margin-left: 20px">
                     <a href="${Masa.SERVER_HOST}/member/home.jsp" class="relative block">
                       <img src="https://i.ibb.co/qCg5gr8/masalogo.png" style="width: 50%;"/>
                     </a>
                   </div>
                   <div class="relative flex items-center flex-4 w-full h-full lg:w-90 group">
-                    <div class="flex items-center h-12 border border-gray-700 rounded-lg w-30" style="border-color: #414E62; border-width: medium; margin-bottom: 20px">
+                    <div class="flex items-center h-13 border border-gray-700 rounded-lg w-30" style="border-color: #414E62; border-width: medium; margin-bottom: 22px; height: 48px">
                       <input placeholder="Search meeting by..." name="select" id="searchkeyword" class="w-full px-4 text-gray-800 outline-none appearance-none" checked />
-                      <span style="font-weight: lighter; font-size: 40px; color: #414e62; margin-bottom: 10px">|</span>
+                      <span style="font-weight: lighter; font-size: 40px; color: #414e62; margin-bottom: 5px">|</span>
                       <select
                               id="searchmethod"
                               class="h-10 text-gray-600  appearance-none  "
@@ -129,7 +137,7 @@
                         <option>Mentor</option>
                         <option>Title</option>
                       </select>
-                      <span style="font-weight: lighter; font-size: 40px; color: #414e62; margin-bottom: 10px">|</span>
+                      <span style="font-weight: lighter; font-size: 40px; color: #414e62; margin-bottom: 5px">|</span>
                       <button
                               onclick="search()"
                               class="pl-5 pr-5 text-gray-900 transition-all outline-none cursor-pointer  focus:outline-none hover:text-gray-600 bg-gradient-dark "
