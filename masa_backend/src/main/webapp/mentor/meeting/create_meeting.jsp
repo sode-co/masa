@@ -78,7 +78,7 @@
                 fetch('${Masa.SERVER_HOST}/api/meeting/create', options)
                     .then(res => res.json())
                     .then(res => alert('CREATE NEW MEETING SUCCESS!'))
-                    .catch(err => alert('ERROR '+err));
+                    .catch(err => alert('Oops, try again with title length in range 10 and 20 :) '));
             }
         }
     </script>
@@ -106,8 +106,7 @@
             <input type="text" class="form-control" pattern="[a-zA-Z]" placeholder="Add Title" aria-label="Title" aria-describedby="basic-addon1" id="title" required>
         </div>
     </div>
-
-    <br/>
+    <p style="margin-left: 340px; font-style: italic; color: #f6a3a3">Meeting title's length must be between 10 to 20 characters</p>
     <div class="row">
         <div class="col-sm-2" style="margin-left: 3px; color: #9b9a9a">
             <span style="font-weight: bold" style="padding-left: 10px"> From<span style="color: red">*</span> :</span>
@@ -213,13 +212,11 @@
         <div>
 
         <hr/>
-        <br/>
-
     <%--        <div id="mytextarea" class="col-sm-7">Hello, World!</div>--%>
 
         <div class="text-center row">
             <div class="col-sm-9">
-                <button onclick="jsonCreate()" class="btn btn-dark" style="background-color: #4c44e4; color: white; font-size: 20px; border-radius: 10px; margin-left: 10%">Create Meeting!</button>
+                <button onclick="jsonCreate()" class="btn btn-dark" style="background-color: #414E62; color: white; font-size: 20px; border-radius: 5px; margin-left: 10%">Create Meeting!</button>
             </div>
         </div>
     </div>
