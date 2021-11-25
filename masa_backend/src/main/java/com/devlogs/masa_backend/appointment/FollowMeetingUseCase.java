@@ -53,13 +53,13 @@ public class FollowMeetingUseCase {
         private SendMailGateway sendMailGateway;
 
         @Inject
-    public FollowMeetingUseCase(UserRepository userRepository, MeetingRepository meetingRepository, AppointmentRepository appointmentRepository, RemindMeetingTime remindMeetingTime, SendMailGateway sendMailGateway) {
-        this.userRepository = userRepository;
-        this.meetingRepository = meetingRepository;
-        this.appointmentRepository = appointmentRepository;
-        this.remindMeetingTime = remindMeetingTime;
-        this.sendMailGateway = sendMailGateway;
-    }
+        public FollowMeetingUseCase(UserRepository userRepository, MeetingRepository meetingRepository, AppointmentRepository appointmentRepository, RemindMeetingTime remindMeetingTime, SendMailGateway sendMailGateway) {
+            this.userRepository = userRepository;
+            this.meetingRepository = meetingRepository;
+            this.appointmentRepository = appointmentRepository;
+            this.remindMeetingTime = remindMeetingTime;
+            this.sendMailGateway = sendMailGateway;
+        }
 
         public Result executes (String userId, String meetingId) {
             try {

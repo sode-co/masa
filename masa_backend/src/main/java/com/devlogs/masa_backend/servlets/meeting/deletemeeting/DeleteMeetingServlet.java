@@ -22,9 +22,10 @@ import java.io.IOException;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.ADMIN;
 import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.MENTOR;
 
-@AccessRole(roles = {MENTOR})
+@AccessRole(roles = {MENTOR, ADMIN})
 @WebServlet(name = "delete-meeting", urlPatterns = {"/api/meeting/delete", "/api/meeting-management/delete"})
 public class DeleteMeetingServlet extends BaseHttpServlet {
     @Inject
