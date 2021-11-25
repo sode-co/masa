@@ -21,7 +21,7 @@ import java.util.Optional;
 
 import static com.devlogs.masa_backend.domain.entities.UserRole.TYPE.*;
 
-@AccessRole(roles = {ADMIN, MENTOR, STUDENT})
+@AccessRole(roles = {ADMIN, MENTOR, STUDENT, MEMBER})
 @WebServlet(name = "getnewmeetingsservlet", urlPatterns = {"/api/meeting-management/new-meetings"})
 public class GetNewMeetingsServlet extends BaseHttpServlet {
 
