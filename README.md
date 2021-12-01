@@ -1,6 +1,6 @@
 # Masa: Meetings management
 
-# Feature by role: 
+## Feature by role: 
 - Student: 
 	- Follow meeting
 	- Unfollow meeting
@@ -29,7 +29,7 @@
 		- Enroll mentor
 		- Uneroll mentor
 
-# Technology:
+## Technology:
 - Frontend:
 	- HTML/CSS
 	- Javascript
@@ -48,7 +48,7 @@
 	- Docker
 	- Digital Ocean
 
-# Team member:
+## Team member:
 - Lâm Tâm Như - Frontend
 	- Github: (https://github.com/shelling-dahlia)
 - Phan Thiều Ngọc - Frontend
@@ -61,22 +61,64 @@
 	- Github: (https://github.com/khangnv-d)
 
 # Project image:
-- Login page:
+## Login page:
 ![image](https://user-images.githubusercontent.com/74105069/144252833-63a6701d-e25d-4f94-993c-a6198036b8bb.png)
-- Admin page:
+
+##  Admin page:
 ![image](https://user-images.githubusercontent.com/74105069/144254635-b58c4f42-ea77-44b2-8250-b194c8ec7ad7.png)
-- Student page:
+
+## Student page:
 ![image](https://user-images.githubusercontent.com/74105069/144255471-21984c33-c76d-4c33-85cb-6eda6cc632bb.png)
 ![image](https://user-images.githubusercontent.com/74105069/144255615-8875f39e-94c6-47a9-b7d8-9e95b33a8fdc.png)
 ![image](https://user-images.githubusercontent.com/74105069/144255694-668d5b48-77d1-472b-be4d-25cc7083b10e.png)
-- Member page:
+
+## Member page:
 ![image](https://user-images.githubusercontent.com/74105069/144255840-46d7c36e-b94a-4ef4-bd3f-5eebffb801ff.png)
 ![image](https://user-images.githubusercontent.com/74105069/144255928-29777d49-18c4-46f5-9eec-bdd53b86425b.png)
-- Mentor page:
+
+##  Mentor page:
 ![image](https://user-images.githubusercontent.com/74105069/144256113-cb00c6e5-034f-4bdc-a0cf-0d6d9e81480c.png)
 ![image](https://user-images.githubusercontent.com/74105069/144256264-99f91331-3df4-41b8-9437-6fefc7a6b472.png)
 ![image](https://user-images.githubusercontent.com/74105069/144256491-bee740a3-52fe-43b5-96b9-81cf09069b95.png)
 
 
 
+# HOW TO BUILD:
+	docker-compose up -d serverdev
+serverdev là nhóm các services nhưng không bao gồm tomcat
+
+## GIẢI THÍCH CẤU TRÚC FOLDERS:
+- MAILDATA: CHỨA NHỮNG EMAIL ĐANG GỬI
+## CẤU HÌNH DATABASE:
+- DATABASE NAME: MASA
+- DATABASE USER: SA
+- DATABASE USER PASSWORD: Password123
+- PORT: 1533
+- SERVER: LOCALHOST
+## CONNECT DB USING AZURE:
+	server: localhost,1533
+	password: Password123
+	user: SA
+## CÁCH RESET LẠI DỮ LIỆU TRONG DATABASE:
+- Tắt container:
+	docker-compose down
+- Xóa volume xx_vmssql
+	docker volume rm masa_vmssql
+	
+## CÁCH XEM VÀ RESET LẠI DỮ LIỆU CỦA SERVER EMAIL:
+- XÓA FILE MAIL.JSON ĐỂ HỦY HÀNG ĐỢI GỬI EMAIL.
+
+## CÁCH DỌN DẸP SAU KHI CODE XONG:
+	docker-compose down
+## CÁCH UPDATE DOCKER:
+- Tắt container:
+	docker-compose down
+- Xóa volumes để reset dữ liệu:
+	docker volume rm masa_vmssql
+- Tải bản cập nhật mới:
+	docker-compose pull
+- Rebuild docker
+	docker-compose build
+- Khởi động lại Docker và đợi 50 giây:
+	docker-compose up -d serverdev
 
